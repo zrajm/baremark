@@ -1,0 +1,222 @@
+<!DOCTYPE html><!--*-js-indent-level:2;css-indent-offset:2-*-->
+<!-- Copyright (c) 2022 by zrajm. License: GPLv2 -->
+<meta charset="utf-8">
+<link rel=icon href="data:,">
+<title>Baremark – Minimal Markdown Parser</title>
+<style>
+  /* Mini reset. */
+  html { box-sizing: border-box; }
+  *, :before, :after { box-sizing: inherit; padding: 0; margin: 0; }
+  /* Other. */
+  body { margin: 1em; line-height: 1.25; }
+  blockquote { border: 1px solid #000; }
+  code, tt {
+    background: #aaac;
+    border-radius: .25em;
+    padding: .125em .25em .1875em;
+    outline: 1px solid #0003;
+    background: #0001;
+    position: relative;
+    bottom: .125em;
+  }
+  details {
+    border-radius: .25em;
+    margin: 2px 0;
+    padding: .125em .25em;
+    border: 1px solid #0008;
+  }
+  details details.pass { background: #4b4; }
+  details details.fail { background: #d44; }
+  details.pass { background: #6f6; }
+  details.fail { background: #f55; }
+  details.ignore { background: #777; }
+  details.ignore summary { text-decoration-line: line-through; }
+  .group {
+    padding-left: 1em;
+  }
+  .group > summary {
+    font-weight: bold;
+    margin-left: -.75em;
+  }
+  .group div.count { float: right; }
+  div.count > span.pass, div.count > span.fail, div.count > span.ignore {
+    width: 1.5em;
+    display: inline-block;
+    text-align: right;
+    color: #444;
+  }
+  div.count > span.pass { color: #050; }
+  div.count > span.fail { color: #600; }
+  textarea { width: 100%; overflow: visible; height: fit-content; background: #0000;}
+  summary { cursor: pointer; }
+  hr { margin: 2em; }
+  table {
+    border-spacing: .125em;
+  }
+  td, th {
+    vertical-align: baseline;
+    font-family: sans;
+  }
+  th {
+    color: #000d;
+  }
+  tbody th { text-align: right; }
+  td {
+    border-radius: .25em;
+    background: #0002;
+    font-weight: normal;
+    text-align: left;
+    padding: .125em .25em .1875em;
+  }
+  li { margin-left: 1em; }
+  p, h1, h2, footer { margin: 1em 0; }
+  footer { text-align: center; }
+</style>
+<body>
+</body>
+<script src="jquery-3.6.0.slim.js"></script>
+<script src="baremark.js"></script>
+
+<h1>Baremark – Minimal Markdown Parser</h1>
+
+<p>Based on Van Tigranyan’s
+  Gist <a href="https://gist.github.com/VanTigranyan/651b7c77cfc149cb858a044c2108acbb"
+  target=_blank>Landmark</a> (another minimal Markdown parser).
+  Using <a href="https://spec.commonmark.org/0.30/spec.json" target=_blank>test
+  cases</a> of the <a href="https://spec.commonmark.org/0.30/"
+  target=_blank>CommonMark 0.30 spec</a>. Here’s my (Emacs org-mode) file
+  of <a href="TODO.txt" target=_blank>what to add next</a>.
+
+<h2>Baremark Test Cases</h2>
+
+<div id=baremark>[NONE YET]</div>
+
+
+<h2>CommmonMark 0.30 Test Cases</h2>
+
+<p>Baremark is intended to be minimal in size, so not all of these CommonMark
+tests will ever pass, but they can give you an idea of how compatible Baremark
+is.
+
+<div id=commonmark></div>
+
+<script>
+  $(()=>{
+    // jQuery plugins.
+    jQuery.fn.forEach = [].forEach
+
+    function escapeHtml(x) {
+      return x.replace(
+        /["&<>]/g,
+        x => `&${{ '"': 'quot', '&': 'amp', '<': 'lt', '>': 'gt' }[x]};`)
+    }
+    // Escape any ASCII control characters with C escape sequences.
+    function escapeAscii(x) {
+      return x.replace(
+        /[\x00-\x1f\x7f-\x9f\\]/g,
+        m => ({
+          '\a': '\\a', '\b': '\\b', '\f': '\\f',  '\n'  : '\\n', '\r': '\\r',
+          '\t': '\\t', '\v': '\\v', '\\': '\\\\', '\x1B': '\\e', ' ' : '␣',
+        }[m] ||
+          '\\x' + m.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0')))
+    }
+    function warn(html) {
+      if (/<style\b/.test(html)) {
+        return '!!! Contains <tt>&lt;style&gt;</tt> tag, won’t display here!'
+      } else if (/<script\b/.test(html)) {
+        return '!!! Contains <tt>&lt;script&gt;</tt> tag, won’t display here!'
+      } else if (/<img\b/.test(html)) {
+        return '!!! Contains <tt>&lt;img&gt;</tt> tag, won’t display here!'
+      }
+      return ''
+    }
+
+    window.fetch('tests-commonmark.json')
+      .then(response => response.text())
+      .then(json => {
+        let sectionName
+        let $section
+        let counters = { ignore: 0, pass: 0, fail: 0 }
+        JSON.parse(json).forEach((test) => {
+          // If section name as changed, append new section.
+          if (sectionName !== test.section) {
+            if ($section) {
+              $section.data(counters)
+            }
+            sectionName = test.section
+            counters = { ignore: 0, pass: 0, fail: 0 }
+            $section = $(
+              `<details class=group>
+                <summary>${test.section}</summary>
+              </details>`).appendTo('#commonmark')
+          }
+          // Count as pass, fail or ignore.
+          const expect = test.bare || test.html
+          const got = Baremark.render(test.markdown)
+          counters[test.ignore ? 'ignore' : got === expect ? 'pass' : 'fail'] += 1
+
+          // Add test to current section.
+          $section.append(
+            `<details class="test ${test.ignore ? 'ignore' : got === expect ? 'pass' : 'fail'}">
+              <summary>Test ${test.example}${test.title ? ': ' + test.title : ''}</summary>
+              <table>
+                <thead><tr><th><th>Code<th>Appearance</thead>
+                <tr><th>Markdown
+                  <td><pre>${escapeAscii(escapeHtml(test.markdown))}</pre>
+                  <td><pre>${warn(test.markdown) || escapeHtml(test.markdown)}</pre>
+                <tr><th>Expected
+                  <td><pre>${escapeAscii(escapeHtml(expect))}</pre>
+                  <td>${warn(expect) || expect}
+                <tr><th>Got
+                  <td><pre>${escapeAscii(escapeHtml(got))}</pre>
+                  <td>${warn(got) || got}
+              </table>
+            </details>`)
+        })
+        $section.data(counters)
+
+        // Go through sections, set color and append counters.
+        $('#commonmark').find('> details.group').forEach(e => {
+          const $e = $(e)
+          const counter = $e.data()
+          $e.addClass(
+            (counter.ignore && counter.fail === 0 && counter.pass === 0)
+              ? 'ignore'
+              : counter.fail ? 'fail' : 'pass')
+            .find('> summary').append(
+              `<div class=count>
+                <span class=fail>${counter.fail}</span>
+                <span class=pass>${counter.pass}</span>
+                <span class=ignore>${counter.ignore}</span>
+              </div>`)
+        })
+      })
+  })
+</script>
+<script>
+  (() => {
+    let c = 0
+    const x = [{
+      src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" width="22">'
+        + '<path d="M0 22h22v2H0zM0 0v20h22V0H0Zm10 4h2v10.6l2.3-2.3.7-.7 1.4 1.4-.7.7-4 4-.7.7-.7-.7-4-4-.7-.7L7 11.6l.7.7 2.3 2.3V4Z"/></svg>',
+      title: 'Show all test results'
+    }, {
+      src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" width="22">'
+        + '<path d="M0 2h22V0H0Zm0 22V4h22v20H0Zm10-4h2V9.4l2.3 2.3.7.7 1.4-1.4-.7-.7-4-4-.7-.7-.7.7-4 4-.7.7L7 12.4l.7-.7L10 9.4V20z"/></svg>',
+      title: 'Hide all test results'
+    }]
+    const $t = $('<img>')
+      .prependTo('body')
+      .css({ opacity: .3, position: 'fixed', top: '.5rem', right: '.5rem', cursor: 'pointer' })
+      .attr(x[c])
+      .on('click', () => {
+        $('details').attr('open', !c)
+        c = !c + 0
+        $t.attr(x[c])
+      })
+  })()
+</script>
+
+
+<footer>© 2022 by zrajm, Uppsala.</footer>
+<!--[eof]-->

@@ -1,0 +1,59 @@
+-*- org -*-
+
+* [0/1] Tests
+** TODO Use passing CommonMark 0.30 tests as baseline
+* [0/12] Size
+** TODO Remove unnecessary space
+   E.g. after comma, around equal sign, plus etc.
+** TODO Indent with tabs
+** TODO Make all variable names one letter
+** TODO Use fat arrow functions (`=>`)
+** TODO Use of `.reduce()` instead of for loops
+** TODO Make rules list-of-lists (not list-of-objects)
+** TODO Use regex character class instead of group
+   E.g. change `(-|*)` to `[-*]`.
+** TODO Use template strings
+** TODO Use shorter HTML tag names
+   |----------+------|
+   | CHANGE   | TO   |
+   |----------+------|
+   | <strong> | <b>  |
+   | <em>     | <i>  |
+   | <code>   | <tt> |
+   | <del>    | <u>  |
+   |----------+------|
+** TODO Remove optional trailing HTML tags
+   </li>, </p>
+** TODO Replaced unnecessary `.*?` with `.*`
+   Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
+** TODO Refactor `esc()` for shortness
+* [0/6] Features
+** TODO Horizontal line should need only 3 chars
+   And may be either _, - or * according to CommonMark standard.
+** TODO Support Markdown backslash escapes
+** TODO Add reference links
+** TODO Hanging indent lists
+** TODO Indented code blocks(?)
+** TODO Nested lists
+* [0/6] Bugs
+** TODO Disallow space around headline and code fence markup
+   Before `#`, `---` and `===` in headings, and before/after ```.
+** TODO Fix `#` headings
+   Are broken in Van Tigranyan's original gist.
+** TODO Bold, italics and inline code may span newlines
+   But never an empty line.
+** TODO Bullet must have space after `*` or `-`
+   To avoids confusion with italics.
+** TODO Blockquotes should be able to contain lists
+** TODO Blank line in list/blockquote should start new list/blockquote
+* Limitations
+** Blockquotes can't be nested
+** Simplistic paragraph detection with HTML
+   Somewhat simplistic insertion of <p> -- it will be added around some HTML
+   elements (like <div> and others) which <p> can't contain, so if user uses
+   those, you'll get some empty <p> elements in the DOM (before and after those
+   block elements).
+* FINISHED
+** DONE Add own testsuite
+   CLOSED: [2022-03-17 Thu 19:27]
+* [eof]
