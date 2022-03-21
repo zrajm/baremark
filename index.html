@@ -89,7 +89,7 @@
 
 <h2>Baremark Test Cases</h2>
 
-<div id=baremark>[NONE YET]</div>
+<div id=baremark></div>
 
 
 <h2>CommmonMark 0.30 Test Cases</h2>
@@ -130,67 +130,71 @@ is.
       }
       return ''
     }
+    function processTests(tests, $e) {
+      if (!tests.length) {
+        $e.html('[NONE YET]')
+        return
+      }
+      let sectionName, $section, counter = { ignore: 0, pass: 0, fail: 0 }
+      tests.forEach((test) => {
+        // If section name as changed, append new section.
+        if (sectionName !== test.section) {
+          if ($section) { $section.data(counter) }
+          sectionName = test.section
+          counter = { ignore: 0, pass: 0, fail: 0 }
+          $section = $(`<details class=group>
+              <summary>${test.section}</summary>
+             </details>`).appendTo($e)
+        }
+        // Count as pass, fail or ignore.
+        const expect = test.bare || test.html
+        const got = Baremark.render(test.markdown)
+        counter[test.ignore ? 'ignore' : got === expect ? 'pass' : 'fail'] += 1
 
-    window.fetch('tests-commonmark.json')
-      .then(response => response.text())
-      .then(json => {
-        let sectionName
-        let $section
-        let counters = { ignore: 0, pass: 0, fail: 0 }
-        JSON.parse(json).forEach((test) => {
-          // If section name as changed, append new section.
-          if (sectionName !== test.section) {
-            if ($section) {
-              $section.data(counters)
-            }
-            sectionName = test.section
-            counters = { ignore: 0, pass: 0, fail: 0 }
-            $section = $(
-              `<details class=group>
-                <summary>${test.section}</summary>
-              </details>`).appendTo('#commonmark')
-          }
-          // Count as pass, fail or ignore.
-          const expect = test.bare || test.html
-          const got = Baremark.render(test.markdown)
-          counters[test.ignore ? 'ignore' : got === expect ? 'pass' : 'fail'] += 1
-
-          // Add test to current section.
-          $section.append(
-            `<details class="test ${test.ignore ? 'ignore' : got === expect ? 'pass' : 'fail'}">
-              <summary>Test ${test.example}${test.title ? ': ' + test.title : ''}</summary>
-              <table>
-                <thead><tr><th><th>Code<th>Appearance</thead>
-                <tr><th>Markdown
-                  <td><pre>${escapeAscii(escapeHtml(test.markdown))}</pre>
-                  <td><pre>${warn(test.markdown) || escapeHtml(test.markdown)}</pre>
-                <tr><th>Expected
-                  <td><pre>${escapeAscii(escapeHtml(expect))}</pre>
-                  <td>${warn(expect) || expect}
-                <tr><th>Got
-                  <td><pre>${escapeAscii(escapeHtml(got))}</pre>
-                  <td>${warn(got) || got}
-              </table>
-            </details>`)
-        })
-        $section.data(counters)
-
-        // Go through sections, set color and append counters.
-        $('#commonmark').find('> details.group').forEach(e => {
-          const $e = $(e)
-          const counter = $e.data()
-          $e.addClass(
-            (counter.ignore && counter.fail === 0 && counter.pass === 0)
-              ? 'ignore'
-              : counter.fail ? 'fail' : 'pass')
-            .find('> summary').append(
-              `<div class=count>
-                <span class=fail>${counter.fail}</span>
-                <span class=pass>${counter.pass}</span>
-                <span class=ignore>${counter.ignore}</span>
-              </div>`)
-        })
+        // Add test result to current section.
+        $section.append(
+          `<details class="test ${test.ignore ? 'ignore' : got === expect ? 'pass' : 'fail'}">
+            <summary>Test ${test.example}${test.title ? ': ' + test.title : ''}</summary>
+            <table>
+              <thead><tr><th><th>Code<th>Appearance</thead>
+              <tr><th>Markdown
+                <td><pre>${escapeAscii(escapeHtml(test.markdown))}</pre>
+                <td><pre>${warn(test.markdown) || escapeHtml(test.markdown)}</pre>
+              <tr><th>Expected
+                <td><pre>${escapeAscii(escapeHtml(expect))}</pre>
+                <td>${warn(expect) || expect}
+              <tr><th>Got
+                <td><pre>${escapeAscii(escapeHtml(got))}</pre>
+                <td>${warn(got) || got}
+            </table>
+          </details>`)
       })
+      $section.data(counter)
+
+      // Go through sections, set color and append counters.
+      $e.find('> details.group').forEach(e => {
+        const $e = $(e)
+        const counter = $e.data()
+        $e.addClass(
+          (counter.ignore && counter.fail === 0 && counter.pass === 0)
+            ? 'ignore' : counter.fail ? 'fail' : 'pass')
+          .find('> summary').append(
+            `<div class=count>
+              <span class=fail>${counter.fail}</span>
+              <span class=pass>${counter.pass}</span>
+              <span class=ignore>${counter.ignore}</span>
+            </div>`)
+      })
+    }
+    // Load test cases from jsonUrl and show in $e (jQuery DOM element).
+    function testSuite(jsonUrl, $e) {
+      window.fetch(jsonUrl)
+        .then(response => response.text())
+        .then(json => processTests(JSON.parse(json), $e))
+    }
+
+    testSuite('tests-baremark.json', $('#baremark'))
+    testSuite('tests-commonmark.json', $('#commonmark'))
   })
 </script>
 <script>
