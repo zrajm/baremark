@@ -96,7 +96,7 @@
   <span class="legend fail">Failed</span>
   <span class="legend ignore"><s>All ignored</s></span></p>
 
-<div id=baremark></div>
+<div data-testsuite="tests-baremark.json"></div>
 
 
 <h2>CommmonMark 0.30 Test Cases</h2>
@@ -110,7 +110,7 @@
 tests will ever pass, but they can give you an idea of how compatible Baremark
 is.</p>
 
-<div id=commonmark></div>
+<div data-testsuite="tests-commonmark.json"></div>
 
 
 <h2>Test Framework</h2>
@@ -123,7 +123,7 @@ failures, passes and ignored tests.</p>
   <span class="legend fail">Failed</span>
   <span class="legend ignore"><s>All ignored</s></span></p>
 
-<div id=testframework></div>
+<div data-testsuite="tests-framework.json"></div>
 
 <script>
   $(()=>{
@@ -230,9 +230,8 @@ failures, passes and ignored tests.</p>
           }
         })
     }
-    testSuite('tests-baremark.json', $('#baremark'))
-    testSuite('tests-commonmark.json', $('#commonmark'))
-    testSuite('tests-framework.json', $('#testframework'))
+    $('[data-testsuite]')
+      .forEach(e => testSuite(e.dataset.testsuite, $(e)))
   })
 </script>
 <script>
