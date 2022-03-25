@@ -19,18 +19,18 @@
     position: relative;
     bottom: .125em;
   }
-  details, .error {
+  details, .error, .legend {
     border-radius: .25em;
     margin: 2px 0;
     padding: .125em .25em;
     border: 1px solid #0008;
   }
-  details details.pass { background: #4b4; }
-  details details.fail { background: #d44; }
-  details.pass { background: #6f6; }
-  details.fail, .error { background: #f55; }
-  details.ignore { background: #777; }
-  details.ignore summary { text-decoration-line: line-through; }
+  details.group.ignore, .legend.ignore { background: #777; }
+  details.group.pass,   .legend.pass   { background: #4b4; }
+  details.test.pass                    { background: #5d5; }
+  details.group.fail,   .legend.fail   { background: #d44; }
+  details.test.fail,    .error         { background: #e55; }
+  details.ignore > summary { text-decoration-line: line-through; }
   .group {
     padding-left: 1em;
   }
@@ -71,6 +71,7 @@
   li { margin-left: 1em; }
   p, h1, h2, footer { margin: 1em 0; }
   footer { text-align: center; }
+  .fixme { background: #ff0b; font-weight: bold; }
 </style>
 <body>
 </body>
@@ -87,23 +88,48 @@
   target=_blank>CommonMark 0.30 spec</a>. Here’s my (Emacs org-mode) file
   of <a href="TODO.txt" target=_blank>what to add next</a>.
 
+
 <h2>Baremark Test Cases</h2>
+
+<p><b>Legend:</b>
+  <span class="legend pass">Passed</span>
+  <span class="legend fail">Failed</span>
+  <span class="legend ignore"><s>All ignored</s></span></p>
 
 <div id=baremark></div>
 
 
 <h2>CommmonMark 0.30 Test Cases</h2>
 
+<p><b>Legend:</b>
+  <span class="legend pass">Passed</span>
+  <span class="legend fail">Failed</span>
+  <span class="legend ignore"><s>All ignored</s></span></p>
+
 <p>Baremark is intended to be minimal in size, so not all of these CommonMark
 tests will ever pass, but they can give you an idea of how compatible Baremark
-is.
+is.</p>
 
 <div id=commonmark></div>
+
+
+<h2>Test Framework</h2>
+
+<p>This is mostly here to show what the test suites look like in case of
+failures, passes and ignored tests.</p>
+
+<p><b>Legend:</b>
+  <span class="legend pass">Passed</span>
+  <span class="legend fail">Failed</span>
+  <span class="legend ignore"><s>All ignored</s></span></p>
+
+<div id=testframework></div>
 
 <script>
   $(()=>{
     // jQuery plugins.
     jQuery.fn.forEach = [].forEach
+    jQuery.fn.reduce = [].reduce
 
     function escapeHtml(x) {
       return x.replace(
@@ -135,13 +161,11 @@ is.
         $e.html('[NONE YET]')
         return
       }
-      let sectionName, $section, counter = { ignore: 0, pass: 0, fail: 0 }
+      let sectionName, $section
       tests.forEach((test) => {
         // If section name as changed, append new section.
         if (sectionName !== test.section) {
-          if ($section) { $section.data(counter) }
           sectionName = test.section
-          counter = { ignore: 0, pass: 0, fail: 0 }
           $section = $(`<details class=group>
               <summary>${test.section}</summary>
              </details>`).appendTo($e)
@@ -149,12 +173,16 @@ is.
         // Count as pass, fail or ignore.
         const expect = test.bare || test.html
         const got = Baremark.render(test.markdown)
-        counter[test.ignore ? 'ignore' : got === expect ? 'pass' : 'fail'] += 1
 
         // Add test result to current section.
         $section.append(
-          `<details class="test ${test.ignore ? 'ignore' : got === expect ? 'pass' : 'fail'}">
-            <summary>Test ${test.example}${test.title ? ': ' + test.title : ''}</summary>
+          `<details class="test ${test.ignore ? 'ignore' : ''} ${got === expect ? 'pass' : 'fail'}">
+            <summary>
+              ${test.example ? `Test ${test.example}` : ''}
+              ${test.example && test.title ? ': ' : ''}
+              ${test.title ? escapeAscii(test.title) : ''}
+              ${test.FIXME ? ` (<span class=fixme>FIXME: ${escapeAscii(test.FIXME)}</span>)` : ''}
+            </summary>
             <table>
               <thead><tr><th><th>Code<th>Appearance</thead>
               <tr><th>Markdown
@@ -169,15 +197,19 @@ is.
             </table>
           </details>`)
       })
-      $section.data(counter)
 
       // Go through sections, set color and append counters.
       $e.find('> details.group').forEach(e => {
         const $e = $(e)
-        const counter = $e.data()
-        $e.addClass(
-          (counter.ignore && counter.fail === 0 && counter.pass === 0)
-            ? 'ignore' : counter.fail ? 'fail' : 'pass')
+        const counter = $e.find('> details.test').reduce((a, e) => {
+          const $e = $(e)
+          a[$e.hasClass('ignore') ? 'ignore' : $e.hasClass('pass') ? 'pass' : 'fail'] += 1
+          return a
+        }, { pass: 0, fail: 0, ignore: 0 })
+        $e.addClass(`
+          ${counter.fail   ? 'fail'   : ''}
+          ${counter.pass   ? 'pass'   : ''}
+          ${counter.ignore ? 'ignore' : ''}`)
           .find('> summary').append(
             `<div class=count>
               <span class=fail>${counter.fail}</span>
@@ -198,9 +230,9 @@ is.
           }
         })
     }
-
     testSuite('tests-baremark.json', $('#baremark'))
     testSuite('tests-commonmark.json', $('#commonmark'))
+    testSuite('tests-framework.json', $('#testframework'))
   })
 </script>
 <script>

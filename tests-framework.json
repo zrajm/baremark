@@ -1,0 +1,67 @@
+[{
+    "markdown": "xx",
+    "html": "<p>xx</p>",
+    "section": "No ignored tests, all passing (GREEN, no strikethrough)",
+    "title": "Non-ignored, passed"
+},{
+    "markdown": "xx",
+    "html": "<p>xx</p>",
+    "section": "No ignored tests, some failing (RED, no strikethrough)",
+    "title": "Non-ignored, passed"
+},{
+    "markdown": "xx",
+    "html": "<p>xy</p>",
+    "section": "No ignored tests, some failing (RED, no strikethrough)",
+    "title": "Non-ignored, failed"
+},{
+    "markdown": "xx",
+    "html": "<p>xx</p>",
+    "section": "Some ignored tests, all non-ignored passing (GREEN, with strikethrough)",
+    "title": "Non-ignored, passed"
+},{
+    "ignore": true,
+    "markdown": "xx",
+    "html": "<p>xx</p>",
+    "section": "Some ignored tests, all non-ignored passing (GREEN, with strikethrough)",
+    "title": "Ignored, passed"
+},{
+    "ignore": true,
+    "markdown": "xx",
+    "html": "<p>xy</p>",
+    "section": "Some ignored tests, all non-ignored passing (GREEN, with strikethrough)",
+    "title": "Ignored, failed"
+},{
+    "markdown": "xx",
+    "html": "<p>xy</p>",
+    "section": "Some ignored tests, some non-ignored failing (RED, with strikethrough)",
+    "title": "Non-ignored, failed"
+},{
+    "markdown": "xx",
+    "html": "<p>xx</p>",
+    "section": "Some ignored tests, some non-ignored failing (RED, with strikethrough)",
+    "title": "Non-ignored, passed"
+},{
+    "ignore": true,
+    "markdown": "xx",
+    "html": "<p>xx</p>",
+    "section": "Some ignored tests, some non-ignored failing (RED, with strikethrough)",
+    "title": "Ignored, passed"
+},{
+    "ignore": true,
+    "markdown": "xx",
+    "html": "<p>xy</p>",
+    "section": "Some ignored tests, some non-ignored failing (RED, with strikethrough)",
+    "title": "Ignored, failed"
+},{
+    "ignore": true,
+    "markdown": "xx",
+    "html": "<p>xx</p>",
+    "section": "Only ignored tests (GRAY, with strikethrough)",
+    "title": "Ignored, passed"
+},{
+    "ignore": true,
+    "markdown": "xx",
+    "html": "<p>xy</p>",
+    "section": "Only ignored tests (GRAY, with strikethrough)",
+    "title": "Ignored, failed"
+}]
