@@ -8,7 +8,7 @@
   html { box-sizing: border-box; }
   *, :before, :after { box-sizing: inherit; padding: 0; margin: 0; }
   /* Other. */
-  body { margin: 1em; line-height: 1.25; }
+  body { margin: 1em; line-height: 1.5; }
   blockquote { border: 1px solid #000; }
   code, tt {
     background: #aaac;
@@ -19,7 +19,7 @@
     position: relative;
     bottom: .125em;
   }
-  details {
+  details, .error {
     border-radius: .25em;
     margin: 2px 0;
     padding: .125em .25em;
@@ -28,7 +28,7 @@
   details details.pass { background: #4b4; }
   details details.fail { background: #d44; }
   details.pass { background: #6f6; }
-  details.fail { background: #f55; }
+  details.fail, .error { background: #f55; }
   details.ignore { background: #777; }
   details.ignore summary { text-decoration-line: line-through; }
   .group {
@@ -190,7 +190,13 @@ is.
     function testSuite(jsonUrl, $e) {
       window.fetch(jsonUrl)
         .then(response => response.text())
-        .then(json => processTests(JSON.parse(json), $e))
+        .then(json => {
+          try {
+            return processTests(JSON.parse(json), $e)
+          } catch (e) {
+            $e.append(`<div class=error><b>Failed to load JSON file ‘${jsonUrl}’</b><br>${e}`)
+          }
+        })
     }
 
     testSuite('tests-baremark.json', $('#baremark'))
