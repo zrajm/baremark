@@ -1,10 +1,6 @@
 ((w,n)=>{
-	var esc=x=>{
-		x=x.replace(/\&/g,'&amp;')
-		var c='\'#<>`*-~_=:"![]()nt',l=c.length,i
-		for(i=0;i<l;i++)x=x.replace(RegExp('\\'+c[i],'g'),m=>`&#${m.charCodeAt(0)};`)
-		return x
-	},r=[
+	let esc=x=>x.replace(/\&/g,'&amp;').replace(/['#<>`*~_=:"!\[\]()\n\t-]/g,m=>`&#${m.charCodeAt(0)};`),
+	r=[
 		[/\r\n/g,'\n'],
 		[/\n\s*```\n([^]*?)\n\s*```\s*\n/g,(_,m)=>`<pre>${esc(m)}</pre>`],
 		[/`(.*?)`/g,(_,m)=>`<code>${esc(m)}</code>`],
@@ -26,15 +22,8 @@
 		[/\n{3,}/g,'\n\n'],
 		[/\n([^\n]+)\n/g,(_,m)=>{m=m.trim();return/^\<\/?(ul|ol|bl|h\d|p).*/.test(m.slice(0,9))?m:`<p>${m}</p>`}],
 		[/>\s+</g,'><']
-	],l=r.length,i
+	]
 	w[n]={
 		addRule:(p,s)=>r.push([RegExp(p,'g'),s]),
-		render:x=>{
-			if(x=x||''){
-				x=`\n${x.trim()}\n`
-				for(var i=0;i<l;i++)x=x.replace(r[i][0],r[i][1])
-			}
-			return x
-		}
-	}
+		render:x=>r.reduce((x,[p,s])=>x.replace(p,s),`\n${x}\n`)}
 })(self,'Baremark')
