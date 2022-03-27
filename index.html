@@ -76,6 +76,7 @@
 <body>
 </body>
 <script src="jquery-3.6.0.slim.js"></script>
+<script src="landmark.js"></script>
 <script src="baremark.js"></script>
 
 <h1>Baremark – Minimal Markdown Parser</h1>
@@ -101,6 +102,19 @@ is to err on the side of brevity.</p>
   <span class="legend ignore"><s>All ignored</s></span></p>
 
 <div data-testsuite="tests-baremark.json"></div>
+
+
+<h2>Baremark Test Cases Run against Landmark</h2>
+
+<p>These are the same test cases as above, but run against the original
+Landmark module.</p>
+
+<p><b>Legend:</b>
+  <span class="legend pass">Passed</span>
+  <span class="legend fail">Failed</span>
+  <span class="legend ignore"><s>All ignored</s></span></p>
+
+<div data-testsuite="tests-baremark.json" data-module="Landmark"></div>
 
 
 <h2>CommmonMark 0.30 Test Cases</h2>
@@ -164,7 +178,7 @@ look like on the page.</p>
       }
       return ''
     }
-    function processTests(tests, $e) {
+    function processTests(tests, $e, cb) {
       if (!tests.length) {
         $e.html('[NONE YET]')
         return
@@ -180,7 +194,7 @@ look like on the page.</p>
         }
         // Count as pass, fail or ignore.
         const expect = test.bare || test.html
-        const got = Baremark.render(test.markdown)
+        const got = cb(test.markdown)
 
         // Add test result to current section.
         $section.append(
@@ -227,19 +241,23 @@ look like on the page.</p>
       })
     }
     // Load test cases from jsonUrl and show in $e (jQuery DOM element).
-    function testSuite(jsonUrl, $e) {
+    function testSuite(jsonUrl, $e, cb) {
       window.fetch(jsonUrl)
         .then(response => response.text())
         .then(json => {
           try {
-            return processTests(JSON.parse(json), $e)
+            return processTests(JSON.parse(json), $e, cb)
           } catch (e) {
             $e.append(`<div class=error><b>Failed to load JSON file ‘${jsonUrl}’</b><br>${e}`)
           }
         })
     }
     $('[data-testsuite]')
-      .forEach(e => testSuite(e.dataset.testsuite, $(e)))
+      .forEach(e => testSuite(
+        e.dataset.testsuite,
+        $(e),
+        self[e.dataset.module || 'Baremark'].render
+      ))
   })
 </script>
 <script>
