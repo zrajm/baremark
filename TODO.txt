@@ -2,9 +2,7 @@
 
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/10] Size
-** TODO Remove unnecessary space
-   E.g. after comma, around equal sign, plus etc.
+* [0/9] Size
 ** TODO Make all variable names one letter
 ** TODO Use fat arrow functions (`=>`)
 ** TODO Use of `.reduce()` instead of for loops
@@ -59,6 +57,9 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Remove unnecessary space (-67 bytes)
+   CLOSED: [2022-03-27 Sun 05:24]
+   E.g. after comma, around equal sign, plus etc.
 ** DONE Indent with tabs (-234 bytes)
    CLOSED: [2022-03-27 Sun 05:13]
 ** DONE Make rules list-of-lists (not list-of-objects) (-85 bytes)
