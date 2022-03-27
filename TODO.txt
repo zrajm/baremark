@@ -2,14 +2,13 @@
 
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/12] Size
+* [0/11] Size
 ** TODO Remove unnecessary space
    E.g. after comma, around equal sign, plus etc.
 ** TODO Indent with tabs
 ** TODO Make all variable names one letter
 ** TODO Use fat arrow functions (`=>`)
 ** TODO Use of `.reduce()` instead of for loops
-** TODO Make rules list-of-lists (not list-of-objects)
 ** TODO Use regex character class instead of group
    E.g. change `(-|*)` to `[-*]`.
 ** TODO Use template strings
@@ -35,7 +34,7 @@
 ** TODO Hanging indent lists
 ** TODO Indented code blocks(?)
 ** TODO Nested lists
-* [0/6] Bugs
+* [0/7] Bugs
 ** TODO Disallow space around headline and code fence markup
    Before `#`, `---` and `===` in headings, and before/after ```.
 ** TODO Fix `#` headings
@@ -46,6 +45,13 @@
    To avoids confusion with italics.
 ** TODO Blockquotes should be able to contain lists
 ** TODO Blank line in list/blockquote should start new list/blockquote
+** TODO Link/image regex shortening
+   Both link and image regex have a needless non-greedy regex.
+
+   /\!\[([^\[]+?)\]\s*\(([^\)]+?)\)/g
+   /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
+               |
+               HERE
 * Limitations
 ** Blockquotes can't be nested
 ** Simplistic paragraph detection with HTML
@@ -54,6 +60,8 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Make rules list-of-lists (not list-of-objects) (-85 bytes)
+   CLOSED: [2022-03-27 Sun 04:58]
 ** DONE Add own testsuite
    CLOSED: [2022-03-17 Thu 19:27]
 * [eof]
