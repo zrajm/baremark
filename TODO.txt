@@ -2,8 +2,7 @@
 
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/8] Size
-** TODO Use fat arrow functions (`=>`)
+* [0/7] Size
 ** TODO Use of `.reduce()` instead of for loops
 ** TODO Use regex character class instead of group
    E.g. change `(-|*)` to `[-*]`.
@@ -56,6 +55,8 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Use fat arrow functions (`=>`) (-91 bytes)
+   CLOSED: [2022-03-27 Sun 05:51]
 ** DONE Make all variable names one letter (-149 bytes)
    CLOSED: [2022-03-27 Sun 05:44]
 ** DONE Remove unnecessary space (-67 bytes)
