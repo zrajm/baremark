@@ -2,13 +2,13 @@
 	var esc=x=>{
 		x=x.replace(/\&/g,'&amp;')
 		var c='\'#<>`*-~_=:"![]()nt',l=c.length,i
-		for(i=0;i<l;i++)x=x.replace(RegExp('\\'+c[i],'g'),m=>'&#'+m.charCodeAt(0)+';')
+		for(i=0;i<l;i++)x=x.replace(RegExp('\\'+c[i],'g'),m=>`&#${m.charCodeAt(0)};`)
 		return x
 	},r=[
 		[/\r\n/g,'\n'],
-		[/\n\s*```\n([^]*?)\n\s*```\s*\n/g,(_,m)=>'<pre>'+esc(m)+'</pre>'],
-		[/`(.*?)`/g,(_,m)=>'<code>'+esc(m)+'</code>'],
-		[/\n\s*(#+)(.*?)/g,(_,m,n)=>'<h'+m.length+'>'+n.trim()+'</h'+m.length+'>'],
+		[/\n\s*```\n([^]*?)\n\s*```\s*\n/g,(_,m)=>`<pre>${esc(m)}</pre>`],
+		[/`(.*?)`/g,(_,m)=>`<code>${esc(m)}</code>`],
+		[/\n\s*(#+)(.*?)/g,(_,m,n)=>`<h${m.length}>${n.trim()}</h${m.length}>`],
 		[/\n\s*(.*?)\n={3,}\n/g,'\n<h1>$1</h1>\n'],
 		[/\n\s*(.*?)\n-{3,}\n/g,'\n<h2>$1</h2>\n'],
 		[/___(.*?)___/g,'<u>$1</u>'],
@@ -24,14 +24,14 @@
 		[/<\/(ul|ol|blockquote)>\s*<\1>/g,' '],
 		[/\n\s*\*{5,}\s*\n/g,'\n<hr>'],
 		[/\n{3,}/g,'\n\n'],
-		[/\n([^\n]+)\n/g,(_,m)=>{m=m.trim();return/^\<\/?(ul|ol|bl|h\d|p).*/.test(m.slice(0,9))?m:('<p>'+m+'</p>')}],
+		[/\n([^\n]+)\n/g,(_,m)=>{m=m.trim();return/^\<\/?(ul|ol|bl|h\d|p).*/.test(m.slice(0,9))?m:`<p>${m}</p>`}],
 		[/>\s+</g,'><']
 	],l=r.length,i
 	w[n]={
 		addRule:(p,s)=>r.push([RegExp(p,'g'),s]),
 		render:x=>{
 			if(x=x||''){
-				x='\n'+x.trim()+'\n'
+				x=`\n${x.trim()}\n`
 				for(var i=0;i<l;i++)x=x.replace(r[i][0],r[i][1])
 			}
 			return x

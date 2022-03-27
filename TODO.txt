@@ -2,11 +2,10 @@
 
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/7] Size
+* [0/6] Size
 ** TODO Use of `.reduce()` instead of for loops
 ** TODO Use regex character class instead of group
    E.g. change `(-|*)` to `[-*]`.
-** TODO Use template strings
 ** TODO Use shorter HTML tag names
    |----------+------|
    | CHANGE   | TO   |
@@ -55,6 +54,8 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Use template strings (-10 bytes)
+   CLOSED: [2022-03-27 Sun 06:25]
 ** DONE Use fat arrow functions (`=>`) (-91 bytes)
    CLOSED: [2022-03-27 Sun 05:51]
 ** DONE Make all variable names one letter (-149 bytes)
