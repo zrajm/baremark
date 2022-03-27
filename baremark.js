@@ -1,14 +1,14 @@
-(function(w,libName){
-	var esc=function(s){
-		s=s.replace(/\&/g,'&amp;')
-		var escChars='\'#<>`*-~_=:"![]()nt',c,l=escChars.length,i
-		for(i=0;i<l;i++)s=s.replace(RegExp('\\'+escChars[i],'g'),function(m){return'&#'+m.charCodeAt(0)+';'})
-		return s
-	},rules=[
+(function(w,n){
+	var esc=function(x){
+		x=x.replace(/\&/g,'&amp;')
+		var c='\'#<>`*-~_=:"![]()nt',l=c.length,i
+		for(i=0;i<l;i++)x=x.replace(RegExp('\\'+c[i],'g'),function(m){return'&#'+m.charCodeAt(0)+';'})
+		return x
+	},r=[
 		[/\r\n/g,'\n'],
-		[/\n\s*```\n([^]*?)\n\s*```\s*\n/g,function(m,grp){return'<pre>'+esc(grp)+'</pre>'}],
-		[/`(.*?)`/g,function(m,grp){return'<code>'+esc(grp)+'</code>'}],
-		[/\n\s*(#+)(.*?)/g,function(m,hset,hval){m=hset.length;return'<h'+m+'>'+hval.trim()+'</h'+m+'>'}],
+		[/\n\s*```\n([^]*?)\n\s*```\s*\n/g,function(_,m){return'<pre>'+esc(m)+'</pre>'}],
+		[/`(.*?)`/g,function(_,m){return'<code>'+esc(m)+'</code>'}],
+		[/\n\s*(#+)(.*?)/g,function(l,m,n){l=m.length;return'<h'+l+'>'+n.trim()+'</h'+l+'>'}],
 		[/\n\s*(.*?)\n={3,}\n/g,'\n<h1>$1</h1>\n'],
 		[/\n\s*(.*?)\n-{3,}\n/g,'\n<h2>$1</h2>\n'],
 		[/___(.*?)___/g,'<u>$1</u>'],
@@ -24,17 +24,17 @@
 		[/<\/(ul|ol|blockquote)>\s*<\1>/g,' '],
 		[/\n\s*\*{5,}\s*\n/g,'\n<hr>'],
 		[/\n{3,}/g,'\n\n'],
-		[/\n([^\n]+)\n/g,function(m,grp){grp=grp.trim();return/^\<\/?(ul|ol|bl|h\d|p).*/.test(grp.slice(0,9))?grp:('<p>'+grp+'</p>')}],
+		[/\n([^\n]+)\n/g,function(_,m){m=m.trim();return/^\<\/?(ul|ol|bl|h\d|p).*/.test(m.slice(0,9))?m:('<p>'+m+'</p>')}],
 		[/>\s+</g,'><']
-	],l=rules.length,i
-	w[libName]={
-		addRule:function(ruleString,replacement){rules.push([RegExp(ruleString,'g'),replacement])},
-		render:function(text){
-			if(text=text||''){
-				text='\n'+text.trim()+'\n'
-				for(var i=0;i<l;i++)text=text.replace(rules[i][0],rules[i][1])
+	],l=r.length,i
+	w[n]={
+		addRule:function(p,s){r.push([RegExp(p,'g'),s])},
+		render:function(x){
+			if(x=x||''){
+				x='\n'+x.trim()+'\n'
+				for(var i=0;i<l;i++)x=x.replace(r[i][0],r[i][1])
 			}
-			return text
+			return x
 		}
 	}
 })(self,'Baremark')
