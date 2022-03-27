@@ -1,7 +1,7 @@
 ((w,n)=>{
 	let esc=x=>x.replace(/\&/g,'&amp;').replace(/['#<>`*~_=:"!\[\]()\n\t-]/g,m=>`&#${m.charCodeAt(0)};`),
 	r=[
-		[/\r\n/g,'\n'],
+		[/\r\n?/g,'\n'],
 		[/\n\s*```\n([^]*?)\n\s*```\s*\n/g,(_,m)=>`<pre>${esc(m)}</pre>`],
 		[/`(.*?)`/g,(_,m)=>`<code>${esc(m)}</code>`],
 		[/\n\s*(#+)(.*?)/g,(_,m,n)=>`<h${m.length}>${n.trim()}</h${m.length}>`],
