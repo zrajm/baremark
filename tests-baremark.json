@@ -375,37 +375,31 @@
   "title": "cannot be followed by single newline"
 }, {
   "markdown": "# xx",
-  "FIXME": "Landmark bug",
   "html": "<h1>xx</h1>",
   "section": "ATX headings",
   "title": "level 1"
 }, {
   "markdown": "## xx",
-  "FIXME": "Landmark bug",
   "html": "<h2>xx</h2>",
   "section": "ATX headings",
   "title": "level 2"
 }, {
   "markdown": "### xx",
-  "FIXME": "Landmark bug",
   "html": "<h3>xx</h3>",
   "section": "ATX headings",
   "title": "level 3"
 }, {
   "markdown": "#### xx",
-  "FIXME": "Landmark bug",
   "html": "<h4>xx</h4>",
   "section": "ATX headings",
   "title": "level 4"
 }, {
   "markdown": "##### xx",
-  "FIXME": "Landmark bug",
   "html": "<h5>xx</h5>",
   "section": "ATX headings",
   "title": "level 5"
 }, {
   "markdown": "###### xx",
-  "FIXME": "Landmark bug",
   "html": "<h6>xx</h6>",
   "section": "ATX headings",
   "title": "level 6"
@@ -778,12 +772,15 @@
   "section": "Emphasized spans",
   "title": "using underlines: two words"
 }, {
-  "ignore": true,
   "markdown": "_xx\nyy_",
-  "FIXME": "Should work across newlines, but not blank lines",
   "html": "<p><em>xx\nyy</em></p>",
   "section": "Emphasized spans",
   "title": "using underlines: across newlines"
+}, {
+  "markdown": "_xx\n\nyy_",
+  "html": "<p>_xx</p>\n\n<p>yy_</p>",
+  "section": "Emphasized spans",
+  "title": "using underlines: not across blank line"
 }, {
   "markdown": "*xx*",
   "html": "<p><em>xx</em></p>",
@@ -795,12 +792,15 @@
   "section": "Emphasized spans",
   "title": "using asterisks: two words"
 }, {
-  "ignore": true,
   "markdown": "*xx\nyy*",
-  "FIXME": "Should work across newlines, but not blank lines",
   "html": "<p><em>xx\nyy</em></p>",
   "section": "Emphasized spans",
   "title": "using asterisks: across newlines"
+}, {
+  "markdown": "*xx\n\nyy*",
+  "html": "<p>*xx</p>\n\n<p>yy*</p>",
+  "section": "Emphasized spans",
+  "title": "using asterisks: not across blank line"
 }, {
   "markdown": "__xx__",
   "html": "<p><strong>xx</strong></p>",
@@ -812,12 +812,15 @@
   "section": "Strong spans",
   "title": "using underlines: two words"
 }, {
-  "ignore": true,
   "markdown": "__xx\nyy__",
-  "FIXME": "Should work across newlines, but not blank lines",
   "html": "<p><strong>xx\nyy</strong></p>",
   "section": "Strong spans",
   "title": "using underlines: across newlines"
+}, {
+  "markdown": "__xx\n\nyy__",
+  "html": "<p>__xx</p>\n\n<p>yy__</p>",
+  "section": "Strong spans",
+  "title": "using underlines: not across blank line"
 }, {
   "markdown": "**xx**",
   "html": "<p><strong>xx</strong></p>",
@@ -830,17 +833,50 @@
   "title": "using asterisks: two words"
 }, {
   "ignore": true,
+  "markdown": "***xx** yy*",
+  "FIXME": "End tags in reversed order",
+  "html": "<p><em><strong>xx</strong> yy</em></p>",
+  "section": "Strong spans",
+  "title": "using asterisks: two words, first strong inside emphasized"
+}, {
+  "markdown": "*xx **yy***",
+  "html": "<p><em>xx <strong>yy</strong></em></p>",
+  "section": "Strong spans",
+  "title": "using asterisks: two words, last strong inside emphasized"
+}, {
+  "markdown": "***xx* yy**",
+  "html": "<p><strong><em>xx</em> yy</strong></p>",
+  "section": "Strong spans",
+  "title": "using asterisks: two words, first emphasized inside strong"
+}, {
+  "ignore": true,
+  "markdown": "**xx *yy***",
+  "FIXME": "End tags in reversed order",
+  "html": "<p><strong>xx <em>yy</em></strong></p>",
+  "section": "Strong spans",
+  "title": "using asterisks: two words, last emphasized inside strong"
+}, {
   "markdown": "**xx\nyy**",
-  "FIXME": "Should work across newlines, but not blank lines",
   "html": "<p><strong>xx\nyy</strong></p>",
   "section": "Strong spans",
   "title": "using asterisks: across newlines"
 }, {
+  "markdown": "**xx\n\nyy**",
+  "html": "<p>**xx</p>\n\n<p>yy**</p>",
+  "section": "Strong spans",
+  "title": "using asterisks: not across blank line"
+}, {
+  "ignore": true,
   "markdown": "***xx\nyy***",
-  "FIXME": "Should work across newlines, but not blank lines",
-  "html": "<p><strong>xx\nyy</strong></p>",
+  "FIXME": "End tags in reversed order",
+  "html": "<p><strong><em>xx\nyy</em></strong></p>",
   "section": "Strong spans",
   "title": "using asterisks: across newlines"
+}, {
+  "markdown": "***xx\n\nyy***",
+  "html": "<p>***xx</p>\n\n<p>yy***</p>",
+  "section": "Strong spans",
+  "title": "using asterisks: not across blank line"
 }, {
   "markdown": "___xx___",
   "html": "<p><u>xx</u></p>",
@@ -877,12 +913,15 @@
   "section": "Deleted spans (Landmark-specific)",
   "title": "two words"
 }, {
-  "ignore": true,
   "markdown": "~~xx\nyy~~",
-  "FIXME": "Should work across newlines, but not blank lines",
   "html": "<p><del>xx\nyy</del></p>",
   "section": "Deleted spans (Landmark-specific)",
   "title": "across newlines"
+}, {
+  "markdown": "~~xx\n\nyy~~",
+  "html": "<p>~~xx</p>\n\n<p>yy~~</p>",
+  "section": "Deleted spans (Landmark-specific)",
+  "title": "not across blank line"
 }, {
   "markdown": ":\"xx\":",
   "html": "<p><q>xx</q></p>",
@@ -894,12 +933,15 @@
   "section": "Quote spans (Landmark-specific)",
   "title": "two words"
 }, {
-  "ignore": true,
   "markdown": ":\"xx\nyy\":",
-  "FIXME": "Should work across newlines, but not blank lines",
   "html": "<p><q>xx\nyy</q></p>",
   "section": "Quote spans (Landmark-specific)",
   "title": "across newlines"
+}, {
+  "markdown": ":\"xx\n\nyy\":",
+  "html": "<p>:\"xx</p>\n\n<p>yy\":</p>",
+  "section": "Quote spans (Landmark-specific)",
+  "title": "not across blank line"
 }, {
   "markdown": "[x](y)",
   "html": "<p><a href=\"y\">x</a></p>",
@@ -913,9 +955,7 @@
   "section": "Inline links",
   "title": "matched brackets in link text, not allowed"
 }, {
-  "ignore": true,
   "markdown": "[x\\[x\\]x](y)",
-  "FIXME": "Bug",
   "html": "<p><a href=\"y\">x&#91;x&#93;x</a></p>",
   "section": "Inline links",
   "title": "backslash-escaped brackets in link text"

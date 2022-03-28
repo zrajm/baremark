@@ -2,9 +2,7 @@
 
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/4] Size
-** TODO Use regex character class instead of group
-   E.g. change `(-|*)` to `[-*]`.
+* [0/3] Size
 ** TODO Use shorter HTML tag names
    |----------+------|
    | CHANGE   | TO   |
@@ -18,10 +16,9 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/6] Features
+* [0/5] Features
 ** TODO Horizontal line should need only 3 chars
    And may be either _, - or * according to CommonMark standard.
-** TODO Support Markdown backslash escapes
 ** TODO Add reference links
 ** TODO Hanging indent lists
 ** TODO Indented code blocks(?)
@@ -52,6 +49,11 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Support Markdown backslash escapes
+   CLOSED: [2022-03-28 Mon 03:03]
+** DONE Use regex character class instead of group
+   CLOSED: [2022-03-28 Mon 03:03]
+   E.g. change `(-|*)` to `[-*]`.
 ** DONE Refactored `esc()` and `for` loop (-161 bytes)
    CLOSED: [2022-03-27 Sun 06:42]
    Now using `.reduce()` instead for loop.
