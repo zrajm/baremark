@@ -1,1 +1,935 @@
-[]
+[{
+  "markdown": "xx\nyy",
+  "html": "<p>xx\nyy</p>",
+  "section": "Newlines",
+  "title": "Linux newline (\n)"
+}, {
+  "markdown": "xx\ryy",
+  "html": "<p>xx\nyy</p>",
+  "section": "Newlines",
+  "title": "old Mac newline (\r)"
+}, {
+  "markdown": "xx\r\nyy",
+  "html": "<p>xx\nyy</p>",
+  "section": "Newlines",
+  "title": "Windows newline (\r\n)"
+}, {
+  "markdown": "xx",
+  "html": "<p>xx</p>",
+  "section": "Paragraphs",
+  "title": "one"
+}, {
+  "markdown": "xx\nyy",
+  "html": "<p>xx\nyy</p>",
+  "section": "Paragraphs",
+  "title": "with newline in (CommonMark)"
+}, {
+  "markdown": "xx\n\nyy",
+  "html": "<p>xx</p>\n\n<p>yy</p>",
+  "section": "Paragraphs",
+  "title": "two"
+}, {
+  "markdown": "```\nxx\n```",
+  "html": "<pre>xx</pre>",
+  "section": "Fenced code blocks",
+  "title": "single paragraph"
+}, {
+  "markdown": "```\nxx\nyy\n```",
+  "html": "<pre>xx&#10;yy</pre>",
+  "section": "Fenced code blocks",
+  "title": "single paragraph (containing newline)"
+}, {
+  "markdown": "```\nxx\n\nyy\n```",
+  "html": "<pre>xx&#10;&#10;yy</pre>",
+  "section": "Fenced code blocks",
+  "title": "two paragraphs (with blank line between)"
+}, {
+  "markdown": "```\n\n*****\n\n```",
+  "html": "<pre>&#10;&#42;&#42;&#42;&#42;&#42;&#10;</pre>",
+  "section": "Fenced code blocks",
+  "title": "ignore Markdown, thematic break"
+}, {
+  "markdown": "```\n\n# xx\n\n```",
+  "html": "<pre>&#10;&#35; xx&#10;</pre>",
+  "section": "Fenced code blocks",
+  "title": "ignore Markdown, ATX heading"
+}, {
+  "markdown": "```\nx&x\n```",
+  "html": "<pre>x&amp;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, ampersand"
+}, {
+  "markdown": "```\nx\\x\n```",
+  "html": "<pre>x&#92;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, backslash"
+}, {
+  "markdown": "```\nx\tx\n```",
+  "html": "<pre>x&#9;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, tab"
+}, {
+  "markdown": "```\nx\nx\n```",
+  "html": "<pre>x&#10;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, newline"
+}, {
+  "markdown": "```\nx!x\n```",
+  "html": "<pre>x&#33;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, exclamation mark"
+}, {
+  "markdown": "```\nx\"x\n```",
+  "html": "<pre>x&#34;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, double quote"
+}, {
+  "markdown": "```\nx#x\n```",
+  "html": "<pre>x&#35;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, hashtag sign"
+}, {
+  "markdown": "```\nx'x\n```",
+  "html": "<pre>x&#39;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, apostrophe"
+}, {
+  "markdown": "```\nx(x\n```",
+  "html": "<pre>x&#40;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, start parenthesis"
+}, {
+  "markdown": "```\nx)x\n```",
+  "html": "<pre>x&#41;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, end parenthesis"
+}, {
+  "markdown": "```\nx*x\n```",
+  "html": "<pre>x&#42;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, asterisk"
+}, {
+  "markdown": "```\nx-x\n```",
+  "html": "<pre>x&#45;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, hyphen"
+}, {
+  "markdown": "```\nx:x\n```",
+  "html": "<pre>x&#58;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, colon"
+}, {
+  "markdown": "```\nx<x\n```",
+  "html": "<pre>x&#60;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, less than sign"
+}, {
+  "markdown": "```\nx=x\n```",
+  "html": "<pre>x&#61;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, equal sign"
+}, {
+  "markdown": "```\nx>x\n```",
+  "html": "<pre>x&#62;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, greater than sign"
+}, {
+  "markdown": "```\nx[x\n```",
+  "html": "<pre>x&#91;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, start bracket"
+}, {
+  "markdown": "```\nx]x\n```",
+  "html": "<pre>x&#93;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, end bracket"
+}, {
+  "markdown": "```\nx_x\n```",
+  "html": "<pre>x&#95;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, underline char"
+}, {
+  "markdown": "```\nx`x\n```",
+  "html": "<pre>x&#96;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, backtick"
+}, {
+  "markdown": "```\nx~x\n```",
+  "html": "<pre>x&#126;x</pre>",
+  "section": "Fenced code blocks",
+  "title": "interpret literally, tilde"
+}, {
+  "markdown": "\\\n",
+  "html": "<p><br></p>",
+  "section": "Backslash escapes",
+  "title": "newline (hard newline)"
+}, {
+  "markdown": "\\!",
+  "html": "<p>&#33;</p>",
+  "section": "Backslash escapes",
+  "title": "exclamation mark"
+}, {
+  "markdown": "\\\"",
+  "html": "<p>&#34;</p>",
+  "section": "Backslash escapes",
+  "title": "double quote"
+}, {
+  "markdown": "\\#",
+  "html": "<p>&#35;</p>",
+  "section": "Backslash escapes",
+  "title": "hashtag"
+}, {
+  "markdown": "\\$",
+  "html": "<p>&#36;</p>",
+  "section": "Backslash escapes",
+  "title": "dollar sign"
+}, {
+  "markdown": "\\%",
+  "html": "<p>&#37;</p>",
+  "section": "Backslash escapes",
+  "title": "percent"
+}, {
+  "markdown": "\\&",
+  "html": "<p>&#38;</p>",
+  "section": "Backslash escapes",
+  "title": "ampersand"
+}, {
+  "markdown": "\\'",
+  "html": "<p>&#39;</p>",
+  "section": "Backslash escapes",
+  "title": "single quote"
+}, {
+  "markdown": "\\(",
+  "html": "<p>&#40;</p>",
+  "section": "Backslash escapes",
+  "title": "start parenthesis"
+}, {
+  "markdown": "\\)",
+  "html": "<p>&#41;</p>",
+  "section": "Backslash escapes",
+  "title": "end parenthesis"
+}, {
+  "markdown": "\\*",
+  "html": "<p>&#42;</p>",
+  "section": "Backslash escapes",
+  "title": "asterisk"
+}, {
+  "markdown": "\\+",
+  "html": "<p>&#43;</p>",
+  "section": "Backslash escapes",
+  "title": "plus sign"
+}, {
+  "markdown": "\\,",
+  "html": "<p>&#44;</p>",
+  "section": "Backslash escapes",
+  "title": "comma"
+}, {
+  "markdown": "\\-",
+  "html": "<p>&#45;</p>",
+  "section": "Backslash escapes",
+  "title": "hyphen"
+}, {
+  "markdown": "\\.",
+  "html": "<p>&#46;</p>",
+  "section": "Backslash escapes",
+  "title": "period"
+}, {
+  "markdown": "\\/",
+  "html": "<p>&#47;</p>",
+  "section": "Backslash escapes",
+  "title": "slash"
+}, {
+  "markdown": "\\:",
+  "html": "<p>&#58;</p>",
+  "section": "Backslash escapes",
+  "title": "colon"
+}, {
+  "markdown": "\\;",
+  "html": "<p>&#59;</p>",
+  "section": "Backslash escapes",
+  "title": "semicolon"
+}, {
+  "markdown": "\\<",
+  "html": "<p>&#60;</p>",
+  "section": "Backslash escapes",
+  "title": "less than"
+}, {
+  "markdown": "\\=",
+  "html": "<p>&#61;</p>",
+  "section": "Backslash escapes",
+  "title": "equals"
+}, {
+  "markdown": "\\>",
+  "html": "<p>&#62;</p>",
+  "section": "Backslash escapes",
+  "title": "greater than"
+}, {
+  "markdown": "\\?",
+  "html": "<p>&#63;</p>",
+  "section": "Backslash escapes",
+  "title": "question mark"
+}, {
+  "markdown": "\\@",
+  "html": "<p>&#64;</p>",
+  "section": "Backslash escapes",
+  "title": "at sign"
+}, {
+  "markdown": "\\[",
+  "html": "<p>&#91;</p>",
+  "section": "Backslash escapes",
+  "title": "start bracket"
+}, {
+  "markdown": "\\\\",
+  "html": "<p>&#92;</p>",
+  "section": "Backslash escapes",
+  "title": "backslash"
+}, {
+  "markdown": "\\]",
+  "html": "<p>&#93;</p>",
+  "section": "Backslash escapes",
+  "title": "end bracket"
+}, {
+  "markdown": "\\^",
+  "html": "<p>&#94;</p>",
+  "section": "Backslash escapes",
+  "title": "caret"
+}, {
+  "markdown": "\\_",
+  "html": "<p>&#95;</p>",
+  "section": "Backslash escapes",
+  "title": "underscore"
+}, {
+  "markdown": "\\`",
+  "html": "<p>&#96;</p>",
+  "section": "Backslash escapes",
+  "title": "backtick"
+}, {
+  "markdown": "\\{",
+  "html": "<p>&#123;</p>",
+  "section": "Backslash escapes",
+  "title": "start curly bracket"
+}, {
+  "markdown": "\\|",
+  "html": "<p>&#124;</p>",
+  "section": "Backslash escapes",
+  "title": "pipe"
+}, {
+  "markdown": "\\}",
+  "html": "<p>&#125;</p>",
+  "section": "Backslash escapes",
+  "title": "end curly bracket"
+}, {
+  "markdown": "\\~",
+  "html": "<p>&#126;</p>",
+  "section": "Backslash escapes",
+  "title": "tilde"
+}, {
+  "markdown": "\\a",
+  "html": "<p>\\a</p>",
+  "section": "Backslash escapes",
+  "title": "lower case ‘a’"
+}, {
+  "markdown": "\\ö",
+  "html": "<p>\\ö</p>",
+  "section": "Backslash escapes",
+  "title": "lower case ‘ö’"
+}, {
+  "markdown": "\\1",
+  "html": "<p>\\1</p>",
+  "section": "Backslash escapes",
+  "title": "number ‘1’"
+}, {
+  "markdown": "***",
+  "html": "<hr>",
+  "section": "Thematic breaks",
+  "title": "three (or more) asterisks"
+}, {
+  "markdown": "---",
+  "html": "<hr>",
+  "section": "Thematic breaks",
+  "title": "three (or more) hyphens"
+}, {
+  "markdown": "___",
+  "html": "<hr>",
+  "section": "Thematic breaks",
+  "title": "three (or more) underlines"
+}, {
+  "markdown": "* * *",
+  "html": "<hr>",
+  "section": "Thematic breaks",
+  "title": "three (or more) asterisks with space between them"
+}, {
+  "markdown": "**",
+  "html": "<p>**</p>",
+  "section": "Thematic breaks",
+  "title": "two asterisks are not enough"
+}, {
+  "markdown": "xx\n***\n\nyy",
+  "html": "<p>xx\n***</p>\n\n<p>yy</p>",
+  "section": "Thematic breaks",
+  "title": "cannot be preceded by single newline"
+}, {
+  "markdown": "xx\n\n***\nyy",
+  "html": "<p>xx</p>\n\n<p>***\nyy</p>",
+  "section": "Thematic breaks",
+  "title": "cannot be followed by single newline"
+}, {
+  "markdown": "# xx",
+  "FIXME": "Landmark bug",
+  "html": "<h1>xx</h1>",
+  "section": "ATX headings",
+  "title": "level 1"
+}, {
+  "markdown": "## xx",
+  "FIXME": "Landmark bug",
+  "html": "<h2>xx</h2>",
+  "section": "ATX headings",
+  "title": "level 2"
+}, {
+  "markdown": "### xx",
+  "FIXME": "Landmark bug",
+  "html": "<h3>xx</h3>",
+  "section": "ATX headings",
+  "title": "level 3"
+}, {
+  "markdown": "#### xx",
+  "FIXME": "Landmark bug",
+  "html": "<h4>xx</h4>",
+  "section": "ATX headings",
+  "title": "level 4"
+}, {
+  "markdown": "##### xx",
+  "FIXME": "Landmark bug",
+  "html": "<h5>xx</h5>",
+  "section": "ATX headings",
+  "title": "level 5"
+}, {
+  "markdown": "###### xx",
+  "FIXME": "Landmark bug",
+  "html": "<h6>xx</h6>",
+  "section": "ATX headings",
+  "title": "level 6"
+}, {
+  "markdown": "####### xx",
+  "html": "<p>####### xx</p>",
+  "section": "ATX headings",
+  "title": "level 7 not allowed"
+}, {
+  "markdown": "# xx\n\n## yy\n\n### zz",
+  "html": "<h1>xx</h1>\n\n<h2>yy</h2>\n\n<h3>zz</h3>",
+  "section": "ATX headings",
+  "title": "multiple headings after each other"
+}, {
+  "markdown": "#",
+  "html": "<p>#</p>",
+  "section": "ATX headings",
+  "title": "empty heading not allowed (w/ no space after ‘#’) (anti-CommonMark)"
+}, {
+  "markdown": "# ",
+  "html": "<p># </p>",
+  "section": "ATX headings",
+  "title": "empty heading not allowed (w/ one space after ‘#’) (anti-CommonMark)"
+}, {
+  "markdown": "#  ",
+  "html": "<p>#  </p>",
+  "section": "ATX headings",
+  "title": "empty heading not allowed (w/ multiple spaces after ‘#’) (anti-CommonMark)"
+}, {
+  "markdown": "\\## xx",
+  "html": "<p>&#35;# xx</p>",
+  "section": "ATX headings",
+  "title": "leading ‘#’ can be escaped to suppress a heading (first ‘#’ suppressed) (CommonMark)"
+}, {
+  "markdown": "#\\# xx",
+  "html": "<p>#&#35; xx</p>",
+  "section": "ATX headings",
+  "title": "leading ‘#’ can be escaped to suppress a heading (second ‘#’ suppressed) (CommonMark)"
+}, {
+  "markdown": "xx\n\n# yy",
+  "html": "<p>xx</p>\n\n<h1>yy</h1>",
+  "section": "ATX headings",
+  "title": "leading ‘#’ must be preceded by blank line (anti-CommonMark?)"
+}, {
+  "markdown": "#xx",
+  "html": "<p>#xx</p>",
+  "section": "ATX headings",
+  "title": "leading ‘#’ must be followed by space (CommonMark)"
+}, {
+  "markdown": " # xx",
+  "html": "<p> # xx</p>",
+  "section": "ATX headings",
+  "title": "leading ‘#’ cannot be indented (anti-CommonMark)"
+}, {
+  "markdown": "xx\n# yy",
+  "html": "<p>xx\n# yy</p>",
+  "section": "ATX headings",
+  "title": "leading ‘#’ cannot be preceded by single newline (anti-CommonMark?)"
+}, {
+  "markdown": "# xx  ###",
+  "html": "<h1>xx</h1>",
+  "section": "ATX headings",
+  "title": "trailing ‘#’s are allowed (CommonMark)"
+}, {
+  "markdown": "# xx###",
+  "html": "<h1>xx###</h1>",
+  "section": "ATX headings",
+  "title": "trailing ‘#’s must be preceded by space (CommonMark)"
+}, {
+  "markdown": "x\n=",
+  "html": "<h1>x</h1>",
+  "section": "Setext headings",
+  "title": "single character as underlining"
+}, {
+  "markdown": "xxx\n===",
+  "html": "<h1>xxx</h1>",
+  "section": "Setext headings",
+  "title": "level 1"
+}, {
+  "markdown": "xx\nyy\n===",
+  "html": "<h1>xx\nyy</h1>",
+  "section": "Setext headings",
+  "title": "level 1, with multiple lines"
+}, {
+  "markdown": "xxx\n---",
+  "html": "<h2>xxx</h2>",
+  "section": "Setext headings",
+  "title": "level 2"
+}, {
+  "markdown": "xx\n==\n\nyy\n--",
+  "html": "<h1>xx</h1>\n\n<h2>yy</h2>",
+  "section": "Setext headings",
+  "title": "multiple headings after each other"
+}, {
+  "markdown": "xx\n\nyy\n==\n\nzz",
+  "html": "<p>xx</p>\n\n<h1>yy</h1>\n\n<p>zz</p>",
+  "section": "Setext headings",
+  "title": "heading between paragraphs"
+}, {
+  "markdown": "xx\n==\nyy",
+  "FIXME": "Maybe paragraph should be able to occur after, without blank line?",
+  "html": "<p>xx\n==\nyy</p>",
+  "section": "Setext headings",
+  "title": "blank line required after Setext heading"
+}, {
+  "markdown": "xx\n ==",
+  "html": "<p>xx\n ==</p>",
+  "section": "Setext headings",
+  "title": "underline cannot be indented (anti-CommonMark)"
+}, {
+  "markdown": "xx\n== ",
+  "html": "<p>xx\n== </p>",
+  "section": "Setext headings",
+  "title": "underline cannot be followed by space (anti-CommonMark)"
+}, {
+  "markdown": "> xx",
+  "html": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>",
+  "section": "Block quotes",
+  "title": "one line as separate paragraph (CommonMark)"
+}, {
+  "markdown": "xx\n> yy\nzz",
+  "html": "<p>xx</p>\n\n<blockquote>\n\n<p>yy</p>\n\n</blockquote>\n\n<p>zz</p>",
+  "section": "Block quotes",
+  "title": "one line inside other paragraph (CommonMark)"
+}, {
+  "markdown": "xx\n> yy",
+  "html": "<p>xx</p>\n\n<blockquote>\n\n<p>yy</p>\n\n</blockquote>",
+  "section": "Block quotes",
+  "title": "one line at end of paragraph (CommonMark)"
+}, {
+  "markdown": "> yy\nzz",
+  "html": "<blockquote>\n\n<p>yy</p>\n\n</blockquote>\n\n<p>zz</p>",
+  "section": "Block quotes",
+  "title": "one line at beginning of paragraph (CommonMark)"
+}, {
+  "markdown": "> xx\n> yy",
+  "html": "<blockquote>\n\n<p>xx\nyy</p>\n\n</blockquote>",
+  "section": "Block quotes",
+  "title": "two lines as separate paragraph (CommonMark)"
+}, {
+  "markdown": "xx\n> yy\n> zz\naa",
+  "html": "<p>xx</p>\n\n<blockquote>\n\n<p>yy\nzz</p>\n\n</blockquote>\n\n<p>aa</p>",
+  "section": "Block quotes",
+  "title": "two lines inside other paragraph (CommonMark)"
+}, {
+  "markdown": "> xx\n>\n> yy",
+  "html": "<blockquote>\n\n<p>xx</p>\n\n<p>yy</p>\n\n</blockquote>",
+  "section": "Block quotes",
+  "title": "two paragraphs inside blockquote (CommonMark)"
+}, {
+  "ignore": true,
+  "markdown": "> > xx\n> > yy",
+  "FIXME": "Not supported",
+  "html": "<blockquote><blockquote><p>xx</p>\n\n<p>zz</p></blockquote></blockquote>",
+  "section": "Block quotes",
+  "title": "nested blockquotes (CommonMark)"
+}, {
+  "markdown": "> * xx\n> * yy",
+  "html": "<blockquote>\n\n\n<ul><li>xx</li><li>yy</li></ul>\n\n\n</blockquote>",
+  "section": "Block quotes",
+  "title": "bullet list inside blockquote (CommonMark)"
+}, {
+  "markdown": "* xx\n* yy",
+  "html": "<ul><li>xx</li><li>yy</li></ul>",
+  "section": "Bullet lists",
+  "title": "with ‘*’ (CommonMark)"
+}, {
+  "markdown": "+ xx\n+ yy",
+  "html": "<ul><li>xx</li><li>yy</li></ul>",
+  "section": "Bullet lists",
+  "title": "with ‘+’ (CommonMark)"
+}, {
+  "markdown": "- xx\n- yy",
+  "html": "<ul><li>xx</li><li>yy</li></ul>",
+  "section": "Bullet lists",
+  "title": "with ‘-’ (CommonMark)"
+}, {
+  "markdown": "xx\n* yy\n* zz",
+  "html": "<p>xx</p>\n\n<ul><li>yy</li><li>zz</li></ul>",
+  "section": "Bullet lists",
+  "title": "with ‘*’ at end of paragraph (CommonMark)"
+}, {
+  "markdown": "* xx\n* yy\nzz",
+  "html": "<ul><li>xx</li><li>yy</li></ul>\n\n<p>zz</p>",
+  "section": "Bullet lists",
+  "title": "with ‘*’ at beginning of paragraph (CommonMark)"
+}, {
+  "markdown": "1. xx\n2. yy",
+  "html": "<ol><li>xx</li><li>yy</li></ol>",
+  "section": "Ordered lists",
+  "title": "using period (CommonMark)"
+}, {
+  "markdown": "1) xx\n2) yy",
+  "html": "<ol><li>xx</li><li>yy</li></ol>",
+  "section": "Ordered lists",
+  "title": "using end parenthesis (CommonMark)"
+}, {
+  "markdown": "`xx`",
+  "html": "<p><code>xx</code></p>",
+  "section": "Code spans",
+  "title": "single word"
+}, {
+  "markdown": "` xx`",
+  "html": "<p><code> xx</code></p>",
+  "section": "Code spans",
+  "title": "single word preceded by single space"
+}, {
+  "markdown": "`xx `",
+  "html": "<p><code>xx </code></p>",
+  "section": "Code spans",
+  "title": "single word followed by single space"
+}, {
+  "markdown": "` xx `",
+  "html": "<p><code>xx</code></p>",
+  "section": "Code spans",
+  "title": "single word surrounded by single spaces (stripped)"
+}, {
+  "markdown": "`  xx  `",
+  "html": "<p><code> xx </code></p>",
+  "section": "Code spans",
+  "title": "single word surrounded by two spaces (one of them stripped)"
+}, {
+  "markdown": "`xx\nyy`",
+  "html": "<p><code>xx&#10;yy</code></p>",
+  "section": "Code spans",
+  "title": "single word containing newline"
+}, {
+  "markdown": "`\nxx`",
+  "html": "<p><code>&#10;xx</code></p>",
+  "section": "Code spans",
+  "title": "single word preceded by newline"
+}, {
+  "markdown": "`xx\n`",
+  "html": "<p><code>xx&#10;</code></p>",
+  "section": "Code spans",
+  "title": "single word followed by newline"
+}, {
+  "markdown": "`xx\n\nyy`",
+  "html": "<p>`xx</p>\n\n<p>yy`</p>",
+  "section": "Code spans",
+  "title": "blank line not allowed"
+}, {
+  "markdown": "`x`x`",
+  "html": "<p><code>x</code>x`</p>",
+  "section": "Code spans",
+  "title": "backtick occuring later in same paragraph"
+}, {
+  "markdown": "``x`x``",
+  "html": "<p><code>x&#96;x</code></p>",
+  "section": "Code spans",
+  "title": "surrounded by double backticks, containing single backtick"
+}, {
+  "markdown": "`x``x`",
+  "html": "<p><code>x&#96;&#96;x</code></p>",
+  "section": "Code spans",
+  "title": "surrounded by single backticks, containing double backtick"
+}, {
+  "markdown": "`x&x`",
+  "html": "<p><code>x&amp;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, ampersand"
+}, {
+  "markdown": "`x\\x`",
+  "html": "<p><code>x&#92;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, backslash"
+}, {
+  "markdown": "`x\\\\x`",
+  "html": "<p><code>x&#92;&#92;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, two backslashes"
+}, {
+  "markdown": "`x\tx`",
+  "html": "<p><code>x&#9;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, tab"
+}, {
+  "markdown": "`x\nx`",
+  "html": "<p><code>x&#10;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, newline"
+}, {
+  "markdown": "`x!x`",
+  "html": "<p><code>x&#33;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, exclamation mark"
+}, {
+  "markdown": "`x\"x`",
+  "html": "<p><code>x&#34;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, double quote"
+}, {
+  "markdown": "`x#x`",
+  "html": "<p><code>x&#35;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, hashtag sign"
+}, {
+  "markdown": "`x'x`",
+  "html": "<p><code>x&#39;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, apostrophe"
+}, {
+  "markdown": "`x(x`",
+  "html": "<p><code>x&#40;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, start parenthesis"
+}, {
+  "markdown": "`x)x`",
+  "html": "<p><code>x&#41;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, end parenthesis"
+}, {
+  "markdown": "`x*x`",
+  "html": "<p><code>x&#42;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, asterisk"
+}, {
+  "markdown": "`x-x`",
+  "html": "<p><code>x&#45;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, hyphen"
+}, {
+  "markdown": "`x:x`",
+  "html": "<p><code>x&#58;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, colon"
+}, {
+  "markdown": "`x<x`",
+  "html": "<p><code>x&#60;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, less than sign"
+}, {
+  "markdown": "`x=x`",
+  "html": "<p><code>x&#61;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, equal sign"
+}, {
+  "markdown": "`x>x`",
+  "html": "<p><code>x&#62;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, greater than sign"
+}, {
+  "markdown": "`x[x`",
+  "html": "<p><code>x&#91;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, start bracket"
+}, {
+  "markdown": "`x]x`",
+  "html": "<p><code>x&#93;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, end bracket"
+}, {
+  "markdown": "`x_x`",
+  "html": "<p><code>x&#95;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, underline char"
+}, {
+  "markdown": "`x~x`",
+  "html": "<p><code>x&#126;x</code></p>",
+  "section": "Code spans",
+  "title": "interpret literally, tilde"
+}, {
+  "markdown": "_xx_",
+  "html": "<p><em>xx</em></p>",
+  "section": "Emphasized spans",
+  "title": "using underlines: single word"
+}, {
+  "markdown": "_xx yy_",
+  "html": "<p><em>xx yy</em></p>",
+  "section": "Emphasized spans",
+  "title": "using underlines: two words"
+}, {
+  "ignore": true,
+  "markdown": "_xx\nyy_",
+  "FIXME": "Should work across newlines, but not blank lines",
+  "html": "<p><em>xx\nyy</em></p>",
+  "section": "Emphasized spans",
+  "title": "using underlines: across newlines"
+}, {
+  "markdown": "*xx*",
+  "html": "<p><em>xx</em></p>",
+  "section": "Emphasized spans",
+  "title": "using asterisks: single word"
+}, {
+  "markdown": "*xx yy*",
+  "html": "<p><em>xx yy</em></p>",
+  "section": "Emphasized spans",
+  "title": "using asterisks: two words"
+}, {
+  "ignore": true,
+  "markdown": "*xx\nyy*",
+  "FIXME": "Should work across newlines, but not blank lines",
+  "html": "<p><em>xx\nyy</em></p>",
+  "section": "Emphasized spans",
+  "title": "using asterisks: across newlines"
+}, {
+  "markdown": "__xx__",
+  "html": "<p><strong>xx</strong></p>",
+  "section": "Strong spans",
+  "title": "using underlines: single word"
+}, {
+  "markdown": "__xx yy__",
+  "html": "<p><strong>xx yy</strong></p>",
+  "section": "Strong spans",
+  "title": "using underlines: two words"
+}, {
+  "ignore": true,
+  "markdown": "__xx\nyy__",
+  "FIXME": "Should work across newlines, but not blank lines",
+  "html": "<p><strong>xx\nyy</strong></p>",
+  "section": "Strong spans",
+  "title": "using underlines: across newlines"
+}, {
+  "markdown": "**xx**",
+  "html": "<p><strong>xx</strong></p>",
+  "section": "Strong spans",
+  "title": "using asterisks: single word"
+}, {
+  "markdown": "**xx yy**",
+  "html": "<p><strong>xx yy</strong></p>",
+  "section": "Strong spans",
+  "title": "using asterisks: two words"
+}, {
+  "ignore": true,
+  "markdown": "**xx\nyy**",
+  "FIXME": "Should work across newlines, but not blank lines",
+  "html": "<p><strong>xx\nyy</strong></p>",
+  "section": "Strong spans",
+  "title": "using asterisks: across newlines"
+}, {
+  "markdown": "***xx\nyy***",
+  "FIXME": "Should work across newlines, but not blank lines",
+  "html": "<p><strong>xx\nyy</strong></p>",
+  "section": "Strong spans",
+  "title": "using asterisks: across newlines"
+}, {
+  "markdown": "___xx___",
+  "html": "<p><u>xx</u></p>",
+  "section": "Underline spans (Landmark-specific)",
+  "title": "single word"
+}, {
+  "markdown": "___\nxx___",
+  "html": "<p><u>\nxx</u></p>",
+  "section": "Underline spans (Landmark-specific)",
+  "title": "single word preceded by newline"
+}, {
+  "markdown": "___xx\n___",
+  "html": "<p><u>xx\n</u></p>",
+  "section": "Underline spans (Landmark-specific)",
+  "title": "single word followed newline"
+}, {
+  "markdown": "___xx\nyy___",
+  "html": "<p><u>xx\nyy</u></p>",
+  "section": "Underline spans (Landmark-specific)",
+  "title": "two words with newline between"
+}, {
+  "markdown": "___xx\n\nyy___",
+  "html": "<p>___xx</p>\n\n<p>yy___</p>",
+  "section": "Underline spans (Landmark-specific)",
+  "title": "two words with blank line between, shouldn’t work"
+}, {
+  "markdown": "~~xx~~",
+  "html": "<p><del>xx</del></p>",
+  "section": "Deleted spans (Landmark-specific)",
+  "title": "single word"
+}, {
+  "markdown": "~~xx yy~~",
+  "html": "<p><del>xx yy</del></p>",
+  "section": "Deleted spans (Landmark-specific)",
+  "title": "two words"
+}, {
+  "ignore": true,
+  "markdown": "~~xx\nyy~~",
+  "FIXME": "Should work across newlines, but not blank lines",
+  "html": "<p><del>xx\nyy</del></p>",
+  "section": "Deleted spans (Landmark-specific)",
+  "title": "across newlines"
+}, {
+  "markdown": ":\"xx\":",
+  "html": "<p><q>xx</q></p>",
+  "section": "Quote spans (Landmark-specific)",
+  "title": "single word"
+}, {
+  "markdown": ":\"xx yy\":",
+  "html": "<p><q>xx yy</q></p>",
+  "section": "Quote spans (Landmark-specific)",
+  "title": "two words"
+}, {
+  "ignore": true,
+  "markdown": ":\"xx\nyy\":",
+  "FIXME": "Should work across newlines, but not blank lines",
+  "html": "<p><q>xx\nyy</q></p>",
+  "section": "Quote spans (Landmark-specific)",
+  "title": "across newlines"
+}, {
+  "markdown": "[x](y)",
+  "html": "<p><a href=\"y\">x</a></p>",
+  "section": "Inline links",
+  "title": "single word"
+}, {
+  "ignore": true,
+  "markdown": "[x[x]x](y)",
+  "FIXME": "Allowed in CommonMark spec, won't be supported in Baremark",
+  "html": "<p><a href=\"y\">x[x]x</a></p>",
+  "section": "Inline links",
+  "title": "matched brackets in link text, not allowed"
+}, {
+  "ignore": true,
+  "markdown": "[x\\[x\\]x](y)",
+  "FIXME": "Bug",
+  "html": "<p><a href=\"y\">x&#91;x&#93;x</a></p>",
+  "section": "Inline links",
+  "title": "backslash-escaped brackets in link text"
+}, {
+  "ignore": true,
+  "markdown": "[x] (dest)",
+  "FIXME": "Not allowed in CommonMark spec",
+  "html": "<p>[x] (dest)</p>",
+  "section": "Inline links",
+  "title": "space between end bracket and start parethesis, not allowed"
+}, {
+  "ignore": true,
+  "markdown": "[x][y]\n\n[y]: dest",
+  "html": "<p><a href=\"dest\">x</a></p>",
+  "section": "Reference links (not supported by Landmark)",
+  "title": "single word"
+}]
