@@ -967,9 +967,23 @@
   "section": "Inline links",
   "title": "space between end bracket and start parethesis, not allowed"
 }, {
-  "ignore": true,
   "markdown": "[x][y]\n\n[y]: dest",
-  "html": "<p><a href=\"dest\">x</a></p>",
+  "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
   "section": "Reference links (not supported by Landmark)",
   "title": "single word"
+}, {
+  "markdown": "[foo]: /url 'title'\n\n[foo]\n",
+  "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
+  "section": "Reference links (not supported by Landmark)",
+  "title": "single-quoted title"
+}, {
+  "markdown": "[foo]: /url \"title\"\n\n[foo]\n",
+  "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
+  "section": "Reference links (not supported by Landmark)",
+  "title": "double-quoted title"
+}, {
+  "markdown": "[foo]: /url (title)\n\n[foo]\n",
+  "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
+  "section": "Reference links (not supported by Landmark)",
+  "title": "title in parentheses"
 }]

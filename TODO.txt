@@ -16,10 +16,9 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/5] Features
+* [0/4] Features
 ** TODO Horizontal line should need only 3 chars
    And may be either _, - or * according to CommonMark standard.
-** TODO Add reference links
 ** TODO Hanging indent lists
 ** TODO Indented code blocks(?)
 ** TODO Nested lists
@@ -49,6 +48,8 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Add reference links (+297 bytes)
+   CLOSED: [2022-09-05 Mon 17:09]
 ** DONE Support Markdown backslash escapes
    CLOSED: [2022-03-28 Mon 03:03]
 ** DONE Use regex character class instead of group

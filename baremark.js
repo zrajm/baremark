@@ -1,6 +1,7 @@
 ((w,n)=>{
-	let esc=x=>x.replace(/\&/g,'&amp;').replace(/['\\#<>`*~_=:"!\[\]()\n\t-]/g,m=>`&#${m.charCodeAt(0)};`),r=[
+	let ref,esc=x=>x.replace(/\&/g,'&amp;').replace(/['\\#<>`*~_=:"!\[\]()\n\t-]/g,m=>`&#${m.charCodeAt(0)};`),r=[
 		[/\r\n?/g,'\n'],
+		[/\n\[([^\[\]]+?)\]:\s+(?:<\s*([^>]*)\s*>|(\S+))(?:\s+(?:'([^']*)'|"([^"]*)"|\(([^)]*)\)|(\S+)))?$/gm,(_,n,a,b,c,d,e,f)=>(ref[n]=[a||b,c||d||e||f],'')],
 		[/\n\n```\n([^]*?)\n```(?=\n\n)/g,(_,m)=>`\n\n<pre>${esc(m)}</pre>`],
 		[/(`+)((\n?.+?)*?(\n?[^`\n]|.\n))\1(?!`)/g,(_,m,n)=>`<code>${esc(n.replace(/^(\s)(.*)\1$/,'$2'))}</code>`],
 		[/\\[\x21-\x2f:;<=>?@[\\\]^_`{|}~\n]/g,m=>(x=>x==10?'<br>':`&#${x};`)(m.charCodeAt(1))],
@@ -19,9 +20,10 @@
 		[/~~(\n?(.+\n)*?.+?\n?)~~/g,'<del>$1</del>'],
 		[/:"(\n?(.+\n)*?.+?\n?)":/g,'<q>$1</q>'],
 		[/\!\[([^\[]+?)\]\s*\(([^\)]+?)\)/g,'<img src="$2" alt="$1">'],
+		[/\[([^\[]+?)\](?:\s*\[([^\)]+?)\])?/g,(w,t,n)=>(n=n||t,ref[n]?`<a href="${ref[n][0]}" title="${ref[n][1]||''}">${t}</a>`:w)],
 		[/\[([^\[]+?)\]\s*\(([^\)]+?)\)/g,'<a href="$2">$1</a>'],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/g,(w,m)=>/^\<(\/|blockquote|h\d|hr|li|ol|ul|p|pre|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]]
 	w[n]={
 		addRule:(p,s)=>r.push([RegExp(p,'g'),s]),
-		render:x=>r.reduce((x,[p,s])=>x.replace(p,s),`\n\n${x}\n\n`).trim()}
+		render:x=>(ref={},r.reduce((x,[p,s])=>x.replace(p,s),`\n\n${x}\n\n`).trim())}
 })(self,'Baremark')
