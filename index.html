@@ -190,13 +190,18 @@ look like on the page.</p>
       }
       let sectionName, $section
       tests.forEach((test) => {
+        // If test is just a string (not object) turn it into section heading.
+        if (typeof test === 'string') {
+          test = { section: test }
+        }
         // If section name as changed, append new section.
-        if (sectionName !== test.section) {
+        if (test.section !== undefined && sectionName !== test.section) {
           sectionName = test.section
           $section = $(`<details class=group>
               <summary>${test.section}</summary>
              </details>`).appendTo($e)
         }
+        if (test.markdown === undefined) { return }
         // Count as pass, fail or ignore.
         const expect = test.bare || test.html
         const got = cb(test.markdown)
