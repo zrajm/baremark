@@ -76,26 +76,31 @@
 
 <h1 id=top>Baremark – Minimal Markdown Parser</h1>
 
-<p><a href="baremark.js" target=_blank>Baremark</a> is a minimal Markdown
-parser based on Van Tigranyan’s
+<p><i><a href="baremark.js" target=_blank>Baremark</a></i> is a minimal (but
+extendable) Javascript
+<a href="https://daringfireball.net/projects/markdown/"
+target=_blank>Markdown</a> parser originally inspired by Van Tigranyan’s
 Gist <a href="https://gist.github.com/VanTigranyan/651b7c77cfc149cb858a044c2108acbb"
-target=_blank>Landmark</a>, but with some bugfixes, optimizations, and (a
-little more) standards compliance. Here’s my <a href="TODO.txt"
-target=_blank>TODO list</a> for Baremark (in Emacs org-mode format).</p>
+target=_blank><i>Landmark</i></a>, but with added bugfixes, optimizations,
+support for reference links, and a little more CommonMark compliance. (Note
+that Baremark will never be <i>fully</i> CommonMark compliant, however, as the
+intent of Baremark is source code brevity above featurefulness.)
+
+<p>Indented code blocks are not supported (but <i>fenced</i> code blocks – with
+leading and trailing <tt>```</tt> – can be used instead). Blockquotes
+(<tt>&gt;...</tt>) are allowed but cannot be nested. Where the CommonMark
+standard allow whitespace at the end of a line (e.g. at the end of lines
+with <tt>#</tt> and <tt>```</tt>) Baremark instead interpret these spaces
+literally. These things might change in the future.
+
+<p>Here’s my <a href="TODO.txt" target=_blank>TODO list</a> for Baremark (in
+Emacs org-mode format).
 
 
 <h2 id=baremark>Baremark Test Cases</h2>
 
-<p>These test cases are meant work as the specs for Baremark, though they will
-likely evolve as Baremark does so. I strive to make Baremark more CommonMark
-compliant, but full compliance will never be achieved as the intent of Baremark
-is to err on the side of brevity.</p>
-
-<p>Baremark does not have indented code blocks (use <i>fenced</i> code blocks
-instead). Also indenting header or fenced code markup etc. is not supported.
-Where the CommonMark standard allow whitespace at the end of lines (e.g. after
-final ‘#’ and ‘```’) Baremark interpret these literally. These things might
-change in the future.</p>
+<p>The test cases below are intended as specs for Baremark, though they will
+evolve as Baremark does so.
 
 <p><b>Legend:</b>
   <span class="legend pass">Passed</span>
