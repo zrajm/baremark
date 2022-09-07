@@ -1,13 +1,25 @@
 -*- org -*-
 
+* [0/1] HTML
+** TODO Remove Landmark tests, focus more on CommonMark tests
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/2] Size
+* [0/5] Size
+** TODO Shorten variable name 'ref' => 'r'
+** TODO Shorten function name 'esc' => 'e'
+** TODO Shorten method name 'addRule' to 'add'
 ** TODO Remove optional trailing HTML tags
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/4] Features
+* [0/7] Features
+** TODO Invoke Baremark as `baremark(...)` rather than `Baremark.render(...)`
+   Adding a rule should then use `baremark.addRule(regex, repl)`.
+** TODO '  \n' should result in '<br>'
+   Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
+   interfere with backslash escapes).
+** TODO Add comments to code (and include a version stripped of comments)
+   There should also exist a git hook to verify that these always are in sync.
 ** TODO Horizontal line should need only 3 chars
    And may be either _, - or * according to CommonMark standard.
 ** TODO Hanging indent lists
