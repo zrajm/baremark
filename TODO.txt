@@ -2,16 +2,7 @@
 
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/3] Size
-** TODO Use shorter HTML tag names
-   |----------+------|
-   | CHANGE   | TO   |
-   |----------+------|
-   | <strong> | <b>  |
-   | <em>     | <i>  |
-   | <code>   | <tt> |
-   | <del>    | <u>  |
-   |----------+------|
+* [0/2] Size
 ** TODO Remove optional trailing HTML tags
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
@@ -48,6 +39,16 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Use shorter HTML tag names
+   CLOSED: [2022-09-07 Wed 09:35]
+   |----------+------|
+   | CHANGE   | TO   |
+   |----------+------|
+   | <strong> | <b>  |
+   | <em>     | <i>  |
+   | <code>   | <tt> |
+   | <del>    | <u>  |
+   |----------+------|
 ** DONE Add reference links (+297 bytes)
    CLOSED: [2022-09-05 Mon 17:09]
 ** DONE Support Markdown backslash escapes

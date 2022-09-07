@@ -490,35 +490,35 @@
   },
   "Code spans <tt>`code`</tt>", {
     "markdown": "`xx`",
-    "html": "<p><code>xx</code></p>",
+    "html": "<p><tt>xx</tt></p>",
     "title": "single word"
   }, {
     "markdown": "` xx`",
-    "html": "<p><code> xx</code></p>",
+    "html": "<p><tt> xx</tt></p>",
     "title": "single word preceded by single space"
   }, {
     "markdown": "`xx `",
-    "html": "<p><code>xx </code></p>",
+    "html": "<p><tt>xx </tt></p>",
     "title": "single word followed by single space"
   }, {
     "markdown": "` xx `",
-    "html": "<p><code>xx</code></p>",
+    "html": "<p><tt>xx</tt></p>",
     "title": "single word surrounded by single spaces (stripped)"
   }, {
     "markdown": "`  xx  `",
-    "html": "<p><code> xx </code></p>",
+    "html": "<p><tt> xx </tt></p>",
     "title": "single word surrounded by two spaces (one of them stripped)"
   }, {
     "markdown": "`xx\nyy`",
-    "html": "<p><code>xx&#10;yy</code></p>",
+    "html": "<p><tt>xx&#10;yy</tt></p>",
     "title": "single word containing newline"
   }, {
     "markdown": "`\nxx`",
-    "html": "<p><code>&#10;xx</code></p>",
+    "html": "<p><tt>&#10;xx</tt></p>",
     "title": "single word preceded by newline"
   }, {
     "markdown": "`xx\n`",
-    "html": "<p><code>xx&#10;</code></p>",
+    "html": "<p><tt>xx&#10;</tt></p>",
     "title": "single word followed by newline"
   }, {
     "markdown": "`xx\n\nyy`",
@@ -526,112 +526,112 @@
     "title": "blank line not allowed"
   }, {
     "markdown": "`x`x`",
-    "html": "<p><code>x</code>x`</p>",
+    "html": "<p><tt>x</tt>x`</p>",
     "title": "backtick occuring later in same paragraph"
   }, {
     "markdown": "``x`x``",
-    "html": "<p><code>x&#96;x</code></p>",
+    "html": "<p><tt>x&#96;x</tt></p>",
     "title": "surrounded by double backticks, containing single backtick"
   }, {
     "markdown": "`x``x`",
-    "html": "<p><code>x&#96;&#96;x</code></p>",
+    "html": "<p><tt>x&#96;&#96;x</tt></p>",
     "title": "surrounded by single backticks, containing double backtick"
   }, {
     "markdown": "`x&x`",
-    "html": "<p><code>x&#38;x</code></p>",
+    "html": "<p><tt>x&#38;x</tt></p>",
     "title": "interpret literally, ampersand"
   }, {
     "markdown": "`x\\x`",
-    "html": "<p><code>x&#92;x</code></p>",
+    "html": "<p><tt>x&#92;x</tt></p>",
     "title": "interpret literally, backslash"
   }, {
     "markdown": "`x\\\\x`",
-    "html": "<p><code>x&#92;&#92;x</code></p>",
+    "html": "<p><tt>x&#92;&#92;x</tt></p>",
     "title": "interpret literally, two backslashes"
   }, {
     "markdown": "`x\tx`",
-    "html": "<p><code>x&#9;x</code></p>",
+    "html": "<p><tt>x&#9;x</tt></p>",
     "title": "interpret literally, tab"
   }, {
     "markdown": "`x\nx`",
-    "html": "<p><code>x&#10;x</code></p>",
+    "html": "<p><tt>x&#10;x</tt></p>",
     "title": "interpret literally, newline"
   }, {
     "markdown": "`x!x`",
-    "html": "<p><code>x&#33;x</code></p>",
+    "html": "<p><tt>x&#33;x</tt></p>",
     "title": "interpret literally, exclamation mark"
   }, {
     "markdown": "`x\"x`",
-    "html": "<p><code>x&#34;x</code></p>",
+    "html": "<p><tt>x&#34;x</tt></p>",
     "title": "interpret literally, double quote"
   }, {
     "markdown": "`x#x`",
-    "html": "<p><code>x&#35;x</code></p>",
+    "html": "<p><tt>x&#35;x</tt></p>",
     "title": "interpret literally, hashtag sign"
   }, {
     "markdown": "`x'x`",
-    "html": "<p><code>x&#39;x</code></p>",
+    "html": "<p><tt>x&#39;x</tt></p>",
     "title": "interpret literally, apostrophe"
   }, {
     "markdown": "`x(x`",
-    "html": "<p><code>x&#40;x</code></p>",
+    "html": "<p><tt>x&#40;x</tt></p>",
     "title": "interpret literally, start parenthesis"
   }, {
     "markdown": "`x)x`",
-    "html": "<p><code>x&#41;x</code></p>",
+    "html": "<p><tt>x&#41;x</tt></p>",
     "title": "interpret literally, end parenthesis"
   }, {
     "markdown": "`x*x`",
-    "html": "<p><code>x&#42;x</code></p>",
+    "html": "<p><tt>x&#42;x</tt></p>",
     "title": "interpret literally, asterisk"
   }, {
     "markdown": "`x-x`",
-    "html": "<p><code>x&#45;x</code></p>",
+    "html": "<p><tt>x&#45;x</tt></p>",
     "title": "interpret literally, hyphen"
   }, {
     "markdown": "`x:x`",
-    "html": "<p><code>x&#58;x</code></p>",
+    "html": "<p><tt>x&#58;x</tt></p>",
     "title": "interpret literally, colon"
   }, {
     "markdown": "`x<x`",
-    "html": "<p><code>x&#60;x</code></p>",
+    "html": "<p><tt>x&#60;x</tt></p>",
     "title": "interpret literally, less than sign"
   }, {
     "markdown": "`x=x`",
-    "html": "<p><code>x&#61;x</code></p>",
+    "html": "<p><tt>x&#61;x</tt></p>",
     "title": "interpret literally, equal sign"
   }, {
     "markdown": "`x>x`",
-    "html": "<p><code>x&#62;x</code></p>",
+    "html": "<p><tt>x&#62;x</tt></p>",
     "title": "interpret literally, greater than sign"
   }, {
     "markdown": "`x[x`",
-    "html": "<p><code>x&#91;x</code></p>",
+    "html": "<p><tt>x&#91;x</tt></p>",
     "title": "interpret literally, start bracket"
   }, {
     "markdown": "`x]x`",
-    "html": "<p><code>x&#93;x</code></p>",
+    "html": "<p><tt>x&#93;x</tt></p>",
     "title": "interpret literally, end bracket"
   }, {
     "markdown": "`x_x`",
-    "html": "<p><code>x&#95;x</code></p>",
+    "html": "<p><tt>x&#95;x</tt></p>",
     "title": "interpret literally, underline char"
   }, {
     "markdown": "`x~x`",
-    "html": "<p><code>x&#126;x</code></p>",
+    "html": "<p><tt>x&#126;x</tt></p>",
     "title": "interpret literally, tilde"
   },
-  "Emphasized spans <tt>*text*</tt> <tt>_text_</tt>", {
+  "Italic spans <tt>*text*</tt> <tt>_text_</tt>", {
     "markdown": "_xx_",
-    "html": "<p><em>xx</em></p>",
+    "html": "<p><i>xx</i></p>",
     "title": "using underlines: single word"
   }, {
     "markdown": "_xx yy_",
-    "html": "<p><em>xx yy</em></p>",
+    "html": "<p><i>xx yy</i></p>",
     "title": "using underlines: two words"
   }, {
     "markdown": "_xx\nyy_",
-    "html": "<p><em>xx\nyy</em></p>",
+    "html": "<p><i>xx\nyy</i></p>",
     "title": "using underlines: across newlines"
   }, {
     "markdown": "_xx\n\nyy_",
@@ -639,32 +639,32 @@
     "title": "using underlines: not across blank line"
   }, {
     "markdown": "*xx*",
-    "html": "<p><em>xx</em></p>",
+    "html": "<p><i>xx</i></p>",
     "title": "using asterisks: single word"
   }, {
     "markdown": "*xx yy*",
-    "html": "<p><em>xx yy</em></p>",
+    "html": "<p><i>xx yy</i></p>",
     "title": "using asterisks: two words"
   }, {
     "markdown": "*xx\nyy*",
-    "html": "<p><em>xx\nyy</em></p>",
+    "html": "<p><i>xx\nyy</i></p>",
     "title": "using asterisks: across newlines"
   }, {
     "markdown": "*xx\n\nyy*",
     "html": "<p>*xx</p>\n\n<p>yy*</p>",
     "title": "using asterisks: not across blank line"
   },
-  "Strong spans <tt>**text**</tt> <tt>__text__</tt>", {
+  "Bold spans <tt>**text**</tt> <tt>__text__</tt>", {
     "markdown": "__xx__",
-    "html": "<p><strong>xx</strong></p>",
+    "html": "<p><b>xx</b></p>",
     "title": "using underlines: single word"
   }, {
     "markdown": "__xx yy__",
-    "html": "<p><strong>xx yy</strong></p>",
+    "html": "<p><b>xx yy</b></p>",
     "title": "using underlines: two words"
   }, {
     "markdown": "__xx\nyy__",
-    "html": "<p><strong>xx\nyy</strong></p>",
+    "html": "<p><b>xx\nyy</b></p>",
     "title": "using underlines: across newlines"
   }, {
     "markdown": "__xx\n\nyy__",
@@ -672,35 +672,35 @@
     "title": "using underlines: not across blank line"
   }, {
     "markdown": "**xx**",
-    "html": "<p><strong>xx</strong></p>",
+    "html": "<p><b>xx</b></p>",
     "title": "using asterisks: single word"
   }, {
     "markdown": "**xx yy**",
-    "html": "<p><strong>xx yy</strong></p>",
+    "html": "<p><b>xx yy</b></p>",
     "title": "using asterisks: two words"
   }, {
     "ignore": true,
     "markdown": "***xx** yy*",
     "FIXME": "End tags in reversed order",
-    "html": "<p><em><strong>xx</strong> yy</em></p>",
-    "title": "using asterisks: two words, first strong inside emphasized"
+    "html": "<p><i><b>xx</b> yy</i></p>",
+    "title": "using asterisks: two words, first bold inside italic"
   }, {
     "markdown": "*xx **yy***",
-    "html": "<p><em>xx <strong>yy</strong></em></p>",
-    "title": "using asterisks: two words, last strong inside emphasized"
+    "html": "<p><i>xx <b>yy</b></i></p>",
+    "title": "using asterisks: two words, last bold inside italic"
   }, {
     "markdown": "***xx* yy**",
-    "html": "<p><strong><em>xx</em> yy</strong></p>",
-    "title": "using asterisks: two words, first emphasized inside strong"
+    "html": "<p><b><i>xx</i> yy</b></p>",
+    "title": "using asterisks: two words, first italic inside bold"
   }, {
     "ignore": true,
     "markdown": "**xx *yy***",
     "FIXME": "End tags in reversed order",
-    "html": "<p><strong>xx <em>yy</em></strong></p>",
-    "title": "using asterisks: two words, last emphasized inside strong"
+    "html": "<p><b>xx <i>yy</i></b></p>",
+    "title": "using asterisks: two words, last italic inside bold"
   }, {
     "markdown": "**xx\nyy**",
-    "html": "<p><strong>xx\nyy</strong></p>",
+    "html": "<p><b>xx\nyy</b></p>",
     "title": "using asterisks: across newlines"
   }, {
     "markdown": "**xx\n\nyy**",
@@ -710,7 +710,7 @@
     "ignore": true,
     "markdown": "***xx\nyy***",
     "FIXME": "End tags in reversed order",
-    "html": "<p><strong><em>xx\nyy</em></strong></p>",
+    "html": "<p><b><i>xx\nyy</i></b></p>",
     "title": "using asterisks: across newlines"
   }, {
     "markdown": "***xx\n\nyy***",
@@ -738,17 +738,17 @@
     "html": "<p>___xx</p>\n\n<p>yy___</p>",
     "title": "two words with blank line between, shouldn’t work"
   },
-  "Deleted spans <tt>~~text~~</tt> (Landmark-specific)", {
+  "Strikethrough spans <tt>~~text~~</tt> (Landmark-specific)", {
     "markdown": "~~xx~~",
-    "html": "<p><del>xx</del></p>",
+    "html": "<p><s>xx</s></p>",
     "title": "single word"
   }, {
     "markdown": "~~xx yy~~",
-    "html": "<p><del>xx yy</del></p>",
+    "html": "<p><s>xx yy</s></p>",
     "title": "two words"
   }, {
     "markdown": "~~xx\nyy~~",
-    "html": "<p><del>xx\nyy</del></p>",
+    "html": "<p><s>xx\nyy</s></p>",
     "title": "across newlines"
   }, {
     "markdown": "~~xx\n\nyy~~",
