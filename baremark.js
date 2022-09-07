@@ -24,6 +24,6 @@
 		[/\[([^\[]+?)\]\s*\(([^\)]+?)\)/g,'<a href="$2">$1</a>'],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/g,(w,m)=>/^\<(\/|blockquote|h\d|hr|li|ol|ul|p|pre|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]]
 	w[n]={
-		addRule:(p,s)=>r.push([RegExp(p,'g'),s]),
+		add:(p,s)=>r.push([RegExp(p,'g'),s]),
 		render:x=>(l={},r.reduce((x,[p,s])=>x.replace(p,s),`\n\n${x}\n\n`).trim())}
 })(self,'Baremark')

@@ -4,15 +4,14 @@
 ** TODO Remove Landmark tests, focus more on CommonMark tests
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/3] Size
-** TODO Shorten method name 'addRule' to 'add'
+* [0/2] Size
 ** TODO Remove optional trailing HTML tags
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
 * [0/7] Features
 ** TODO Invoke Baremark as `baremark(...)` rather than `Baremark.render(...)`
-   Adding a rule should then use `baremark.addRule(regex, repl)`.
+   Adding a rule should then use `baremark.add(regex, repl)`.
 ** TODO '  \n' should result in '<br>'
    Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
    interfere with backslash escapes).
@@ -49,6 +48,8 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Shorten method name 'addRule' to 'add' (-4 bytes)
+   CLOSED: [2022-09-07 Wed 16:14]
 ** DONE Shorten variable name 'ref' => 'l' (-12 bytes)
    CLOSED: [2022-09-07 Wed 14:58]
 ** DONE Shorten function name 'esc' => 'e' (-6 bytes)
