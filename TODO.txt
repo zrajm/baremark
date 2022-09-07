@@ -4,9 +4,8 @@
 ** TODO Remove Landmark tests, focus more on CommonMark tests
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/5] Size
+* [0/4] Size
 ** TODO Shorten variable name 'ref' => 'r'
-** TODO Shorten function name 'esc' => 'e'
 ** TODO Shorten method name 'addRule' to 'add'
 ** TODO Remove optional trailing HTML tags
    </li>, </p>
@@ -51,6 +50,8 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Shorten function name 'esc' => 'e' (-6 bytes)
+   CLOSED: [2022-09-07 Wed 14:53]
 ** DONE Use shorter HTML tag names
    CLOSED: [2022-09-07 Wed 09:35]
    |----------+------|
