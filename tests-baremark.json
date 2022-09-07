@@ -47,7 +47,7 @@
     "title": "ignore Markdown, ATX heading"
   }, {
     "markdown": "```\nx&x\n```",
-    "html": "<pre>x&amp;x</pre>",
+    "html": "<pre>x&#38;x</pre>",
     "title": "interpret literally, ampersand"
   }, {
     "markdown": "```\nx\\x\n```",
@@ -538,7 +538,7 @@
     "title": "surrounded by single backticks, containing double backtick"
   }, {
     "markdown": "`x&x`",
-    "html": "<p><code>x&amp;x</code></p>",
+    "html": "<p><code>x&#38;x</code></p>",
     "title": "interpret literally, ampersand"
   }, {
     "markdown": "`x\\x`",
