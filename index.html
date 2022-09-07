@@ -209,7 +209,13 @@ look like on the page.</p>
         if (test.markdown === undefined) { return }
         // Count as pass, fail or ignore.
         const expect = test.bare || test.html
-        const got = cb(test.markdown)
+        const got = (() => {
+          try {
+            return cb(test.markdown)
+          } catch (e) {
+            return `CAUGHT ERROR: ${e}`
+          }
+        })()
 
         // Add test result to current section.
         $section.append(
