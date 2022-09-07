@@ -71,7 +71,7 @@
   li { margin-left: 1em; }
   p, h1, h2, footer { margin: 1em 0 .5em; }
   footer { text-align: center; }
-  .fixme { background: #ff0b; font-weight: bold; }
+  .fixme, .note { background: #ff0b; font-weight: bold; }
 </style>
 
 <h1 id=top>Baremark – Minimal Markdown Parser</h1>
@@ -218,7 +218,8 @@ look like on the page.</p>
               ${test.example ? `Test ${test.example}` : ''}
               ${test.example && test.title ? ': ' : ''}
               ${test.title ? escapeAscii(test.title) : ''}
-              ${test.FIXME ? ` (<span class=fixme>FIXME: ${escapeAscii(test.FIXME)}</span>)` : ''}
+              ${test.FIXME ? ` <span class=fixme>(FIXME: ${escapeAscii(test.FIXME)})</span>` : ''}
+              ${test.NOTE ? ` <span class=note>(NOTE: ${escapeAscii(test.NOTE)})</span>` : ''}
             </summary>
             <table>
               <thead><tr><th><th>Code<th>Appearance</thead>
