@@ -1,7 +1,5 @@
 -*- org -*-
 
-* [0/1] HTML
-** TODO Remove Landmark tests, focus more on CommonMark tests
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
 * [0/2] Size
@@ -46,6 +44,8 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Remove Landmark tests, focus more on CommonMark tests
+   CLOSED: [2022-09-09 Fri 14:10]
 ** DONE Invoke Baremark as `baremark(...)` rather than `Baremark.render(...)`
    CLOSED: [2022-09-09 Fri 12:34]
    Adding a rule should then use `baremark.add(regex, repl)`.
