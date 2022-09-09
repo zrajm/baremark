@@ -25,5 +25,5 @@
 		[/\n\n(.+(\n.+)*)(?=\n\n)/g,(w,m)=>/^\<(\/|blockquote|h\d|hr|li|ol|ul|p|pre|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]]
 	w.Baremark={
 		add:(p,s)=>r.push([RegExp(p,'g'),s]),
-		render:x=>(l={},r.reduce((x,[p,s])=>x.replace(p,s),`\n\n${x}\n\n`).trim())}
+		render:x=>(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())}
 })(self)
