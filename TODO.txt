@@ -9,9 +9,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/7] Features
-** TODO Invoke Baremark as `baremark(...)` rather than `Baremark.render(...)`
-   Adding a rule should then use `baremark.add(regex, repl)`.
+* [0/6] Features
 ** TODO '  \n' should result in '<br>'
    Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
    interfere with backslash escapes).
@@ -48,6 +46,9 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Invoke Baremark as `baremark(...)` rather than `Baremark.render(...)`
+   CLOSED: [2022-09-09 Fri 12:34]
+   Adding a rule should then use `baremark.add(regex, repl)`.
 ** DONE Shorten method name 'addRule' to 'add' (-4 bytes)
    CLOSED: [2022-09-07 Wed 16:14]
 ** DONE Shorten variable name 'ref' => 'l' (-12 bytes)

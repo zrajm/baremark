@@ -23,7 +23,6 @@
 		[/\[([^\[]+?)\](?:\s*\[([^\)]+?)\])?/g,(w,t,n)=>(n=n||t,l[n]?`<a href="${l[n][0]}" title="${l[n][1]||''}">${t}</a>`:w)],
 		[/\[([^\[]+?)\]\s*\(([^\)]+?)\)/g,'<a href="$2">$1</a>'],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/g,(w,m)=>/^\<(\/|blockquote|h\d|hr|li|ol|ul|p|pre|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]]
-	w.Baremark={
-		add:(p,s)=>r.push([RegExp(p,'g'),s]),
-		render:x=>(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())}
+	w.baremark=x=>(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())
+	w.baremark.add=(p,s)=>r.push([RegExp(p,'g'),s])
 })(self)
