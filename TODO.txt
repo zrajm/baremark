@@ -44,6 +44,10 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Remove unneeded backslash escapes in regexes
+   CLOSED: [2022-09-09 Fri 14:19]
+   These superfluous backslash escapes where found by Taco de Wolff's 'minify'
+   tool for Javascript: https://go.tacodewolff.nl/minify
 ** DONE Remove Landmark tests, focus more on CommonMark tests
    CLOSED: [2022-09-09 Fri 14:10]
 ** DONE Invoke Baremark as `baremark(...)` rather than `Baremark.render(...)`
