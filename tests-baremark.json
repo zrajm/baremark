@@ -296,6 +296,10 @@
     "html": "<p>**</p>",
     "title": "two asterisks are not enough"
   }, {
+    "markdown": "***\n\n***",
+    "html": "<hr>\n\n<hr>",
+    "title": "two thematic breaks"
+  }, {
     "markdown": "xx\n***\n\nyy",
     "html": "<p>xx\n***</p>\n\n<p>yy</p>",
     "title": "cannot be preceded by single newline"
