@@ -38,6 +38,10 @@
     "html": "<pre>xx&#10;&#10;yy</pre>",
     "title": "two paragraphs (with blank line between)"
   }, {
+    "markdown": "```\nxx\n\nyy\n\nzz\n```",
+    "html": "<pre>xx&#10;&#10;yy&#10;&#10;zz</pre>",
+    "title": "three paragraphs (with blank line between)"
+  }, {
     "markdown": "```\n\n*****\n\n```",
     "html": "<pre>&#10;&#42;&#42;&#42;&#42;&#42;&#10;</pre>",
     "title": "ignore Markdown, thematic break"
@@ -529,6 +533,10 @@
     "html": "<p>`xx</p>\n\n<p>yy`</p>",
     "title": "blank line not allowed"
   }, {
+    "markdown": "`x`y`z`",
+    "html": "<p><tt>x</tt>y<tt>z</tt></p>",
+    "title": "two code spans in same paragraph"
+  }, {
     "markdown": "`x`x`",
     "html": "<p><tt>x</tt>x`</p>",
     "title": "backtick occuring later in same paragraph"
@@ -540,6 +548,14 @@
     "markdown": "`x``x`",
     "html": "<p><tt>x&#96;&#96;x</tt></p>",
     "title": "surrounded by single backticks, containing double backtick"
+  }, {
+    "markdown": "``x`y`z``",
+    "html": "<p><tt>x&#96;y&#96;z</tt></p>",
+    "title": "surrounded by double backticks, containing backtick sequence"
+  }, {
+    "markdown": "`x``y``z`",
+    "html": "<p><tt>x&#96;&#96;y&#96;&#96;z</tt></p>",
+    "title": "surrounded by single backticks, containing double backtick sequence"
   }, {
     "markdown": "`x&x`",
     "html": "<p><tt>x&#38;x</tt></p>",
@@ -683,10 +699,9 @@
     "html": "<p><b>xx yy</b></p>",
     "title": "using asterisks: two words"
   }, {
-    "ignore": true,
     "markdown": "***xx** yy*",
-    "FIXME": "End tags in reversed order",
-    "html": "<p><i><b>xx</b> yy</i></p>",
+    "NOTE": "End tags are in reversed order",
+    "html": "<p><b><i>xx</b> yy</i></p>",
     "title": "using asterisks: two words, first bold inside italic"
   }, {
     "markdown": "*xx **yy***",
@@ -697,10 +712,9 @@
     "html": "<p><b><i>xx</i> yy</b></p>",
     "title": "using asterisks: two words, first italic inside bold"
   }, {
-    "ignore": true,
     "markdown": "**xx *yy***",
-    "FIXME": "End tags in reversed order",
-    "html": "<p><b>xx <i>yy</i></b></p>",
+    "NOTE": "End tags are in reversed order",
+    "html": "<p><b>xx <i>yy</b></i></p>",
     "title": "using asterisks: two words, last italic inside bold"
   }, {
     "markdown": "**xx\nyy**",
@@ -711,17 +725,24 @@
     "html": "<p>**xx</p>\n\n<p>yy**</p>",
     "title": "using asterisks: not across blank line"
   }, {
-    "ignore": true,
     "markdown": "***xx\nyy***",
-    "FIXME": "End tags in reversed order",
-    "html": "<p><b><i>xx\nyy</i></b></p>",
+    "NOTE": "End tags are in reversed order",
+    "html": "<p><b><i>xx\nyy</b></i></p>",
     "title": "using asterisks: across newlines"
   }, {
     "markdown": "***xx\n\nyy***",
     "html": "<p>***xx</p>\n\n<p>yy***</p>",
     "title": "using asterisks: not across blank line"
+  }, {
+    "markdown": "_*xx_*",
+    "html": "<p><i>*xx</i>*</p>",
+    "title": "mixing asterisks and underlines: shouldn't result in bold"
+  }, {
+    "markdown": "_*xx*_",
+    "html": "<p><i>*xx*</i></p>",
+    "title": "mixing asterisks and underlines: shouldn't result in bold"
   },
-  "Underline spans <tt>***text***</tt> <tt>___text___</tt> (Landmark-specific)", {
+  "Underline spans <tt>___text___</tt> (Landmark-specific)", {
     "markdown": "___xx___",
     "html": "<p><u>xx</u></p>",
     "title": "single word"
@@ -783,7 +804,7 @@
   }, {
     "ignore": true,
     "markdown": "[x[x]x](y)",
-    "FIXME": "Allowed in CommonMark spec, won't be supported in Baremark",
+    "NOTE": "CommonMark requirement (won’t be supported)",
     "html": "<p><a href=\"y\">x[x]x</a></p>",
     "title": "matched brackets in link text, not allowed"
   }, {
@@ -791,9 +812,8 @@
     "html": "<p><a href=\"y\">x&#91;x&#93;x</a></p>",
     "title": "backslash-escaped brackets in link text"
   }, {
-    "ignore": true,
     "markdown": "[x] (dest)",
-    "FIXME": "Not allowed in CommonMark spec",
+    "NOTE": "CommonMark requirement",
     "html": "<p>[x] (dest)</p>",
     "title": "space between end bracket and start parethesis, not allowed"
   },
@@ -813,5 +833,10 @@
     "markdown": "[foo]: /url (title)\n\n[foo]\n",
     "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
     "title": "title in parentheses"
+  }, {
+    "markdown": "[text] [ref]\n\n[ref]: dest",
+    "NOTE": "CommonMark requirement",
+    "html": "<p>[text] <a href=\"dest\" title=\"\">ref</a></p>",
+    "title": "space between end bracket and next start bracket, not allowed"
   }
 ]
