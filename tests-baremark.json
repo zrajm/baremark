@@ -531,7 +531,15 @@
   }, {
     "markdown": "`xx\n\nyy`",
     "html": "<p>`xx</p>\n\n<p>yy`</p>",
-    "title": "blank line not allowed"
+    "title": "not across blank line"
+  }, {
+    "markdown": "`\n\nyy`",
+    "html": "<p>`</p>\n\n<p>yy`</p>",
+    "title": "not across blank line at start"
+  }, {
+    "markdown": "`xx\n\n`",
+    "html": "<p>`xx</p>\n\n<p>`</p>",
+    "title": "not across blank line at end"
   }, {
     "markdown": "`x`y`z`",
     "html": "<p><tt>x</tt>y<tt>z</tt></p>",
@@ -650,13 +658,33 @@
     "html": "<p><i>xx yy</i></p>",
     "title": "using underlines: two words"
   }, {
+    "markdown": "_xx_ _yy_",
+    "html": "<p><i>xx</i> <i>yy</i></p>",
+    "title": "using underlines: two words, each italic"
+  }, {
     "markdown": "_xx\nyy_",
     "html": "<p><i>xx\nyy</i></p>",
-    "title": "using underlines: across newlines"
+    "title": "using underlines: across newline"
+  }, {
+    "markdown": "_\nyy_",
+    "html": "<p><i>\nyy</i></p>",
+    "title": "using underlines: across newline at start"
+  }, {
+    "markdown": "_xx\n_",
+    "html": "<p><i>xx\n</i></p>",
+    "title": "using underlines: across newline at end"
   }, {
     "markdown": "_xx\n\nyy_",
     "html": "<p>_xx</p>\n\n<p>yy_</p>",
     "title": "using underlines: not across blank line"
+  }, {
+    "markdown": "_\n\nyy_",
+    "html": "<p>_</p>\n\n<p>yy_</p>",
+    "title": "using underlines: not across blank line at start"
+  }, {
+    "markdown": "_xx\n\n_",
+    "html": "<p>_xx</p>\n\n<p>_</p>",
+    "title": "using underlines: not across blank line at end"
   }, {
     "markdown": "*xx*",
     "html": "<p><i>xx</i></p>",
@@ -666,13 +694,33 @@
     "html": "<p><i>xx yy</i></p>",
     "title": "using asterisks: two words"
   }, {
+    "markdown": "*xx* *yy*",
+    "html": "<p><i>xx</i> <i>yy</i></p>",
+    "title": "using asterisks: two words, each italic"
+  }, {
     "markdown": "*xx\nyy*",
     "html": "<p><i>xx\nyy</i></p>",
-    "title": "using asterisks: across newlines"
+    "title": "using asterisks: across newline"
+  }, {
+    "markdown": "*\nyy*",
+    "html": "<p><i>\nyy</i></p>",
+    "title": "using asterisks: across newline at start"
+  }, {
+    "markdown": "*xx\n*",
+    "html": "<p><i>xx\n</i></p>",
+    "title": "using asterisks: across newline at end"
   }, {
     "markdown": "*xx\n\nyy*",
     "html": "<p>*xx</p>\n\n<p>yy*</p>",
     "title": "using asterisks: not across blank line"
+  }, {
+    "markdown": "*\n\nyy*",
+    "html": "<p>*</p>\n\n<p>yy*</p>",
+    "title": "using asterisks: not across blank line at start"
+  }, {
+    "markdown": "*xx\n\n*",
+    "html": "<p>*xx</p>\n\n<p>*</p>",
+    "title": "using asterisks: not across blank line at end"
   },
   "Bold spans <tt>**text**</tt> <tt>__text__</tt>", {
     "markdown": "__xx__",
@@ -683,13 +731,33 @@
     "html": "<p><b>xx yy</b></p>",
     "title": "using underlines: two words"
   }, {
+    "markdown": "__xx__ __yy__",
+    "html": "<p><b>xx</b> <b>yy</b></p>",
+    "title": "using underlines: two words, each bold"
+  }, {
     "markdown": "__xx\nyy__",
     "html": "<p><b>xx\nyy</b></p>",
-    "title": "using underlines: across newlines"
+    "title": "using underlines: across newline"
+  }, {
+    "markdown": "__\nyy__",
+    "html": "<p><b>\nyy</b></p>",
+    "title": "using underlines: across newline at start"
+  }, {
+    "markdown": "__xx\n__",
+    "html": "<p><b>xx\n</b></p>",
+    "title": "using underlines: across newline at end"
   }, {
     "markdown": "__xx\n\nyy__",
     "html": "<p>__xx</p>\n\n<p>yy__</p>",
     "title": "using underlines: not across blank line"
+  }, {
+    "markdown": "__\n\nyy__",
+    "html": "<p>__</p>\n\n<p>yy__</p>",
+    "title": "using underlines: not across blank line at start"
+  }, {
+    "markdown": "__xx\n\n__",
+    "html": "<p>__xx</p>\n\n<p>__</p>",
+    "title": "using underlines: not across blank line at end"
   }, {
     "markdown": "**xx**",
     "html": "<p><b>xx</b></p>",
@@ -698,6 +766,10 @@
     "markdown": "**xx yy**",
     "html": "<p><b>xx yy</b></p>",
     "title": "using asterisks: two words"
+  }, {
+    "markdown": "**xx** **yy**",
+    "html": "<p><b>xx</b> <b>yy</b></p>",
+    "title": "using asterisks: two words, each bold"
   }, {
     "markdown": "***xx** yy*",
     "NOTE": "End tags are in reversed order",
@@ -719,20 +791,54 @@
   }, {
     "markdown": "**xx\nyy**",
     "html": "<p><b>xx\nyy</b></p>",
-    "title": "using asterisks: across newlines"
+    "title": "using asterisks: across newline"
+  }, {
+    "markdown": "**\nyy**",
+    "html": "<p><b>\nyy</b></p>",
+    "title": "using asterisks: across newline at start"
+  }, {
+    "markdown": "**xx\n**",
+    "html": "<p><b>xx\n</b></p>",
+    "title": "using asterisks: across newline at end"
   }, {
     "markdown": "**xx\n\nyy**",
     "html": "<p>**xx</p>\n\n<p>yy**</p>",
     "title": "using asterisks: not across blank line"
   }, {
+    "markdown": "**\n\nyy**",
+    "html": "<p>**</p>\n\n<p>yy**</p>",
+    "title": "using asterisks: not across blank line at start"
+  }, {
+    "markdown": "**xx\n\n**",
+    "html": "<p>**xx</p>\n\n<p>**</p>",
+    "title": "using asterisks: not across blank line at end"
+  }, {
     "markdown": "***xx\nyy***",
     "NOTE": "End tags are in reversed order",
     "html": "<p><b><i>xx\nyy</b></i></p>",
-    "title": "using asterisks: across newlines"
+    "title": "using three asterisks: across newline"
+  }, {
+    "markdown": "***\nyy***",
+    "NOTE": "End tags are in reversed order",
+    "html": "<p><b><i>\nyy</b></i></p>",
+    "title": "using three asterisks: across newline at start"
+  }, {
+    "markdown": "***xx\n***",
+    "NOTE": "End tags are in reversed order",
+    "html": "<p><b><i>xx\n</b></i></p>",
+    "title": "using three asterisks: across newline at end"
   }, {
     "markdown": "***xx\n\nyy***",
     "html": "<p>***xx</p>\n\n<p>yy***</p>",
-    "title": "using asterisks: not across blank line"
+    "title": "using three asterisks: not across blank line"
+  }, {
+    "markdown": "***\n\nyy***",
+    "html": "<hr>\n\n<p>yy***</p>",
+    "title": "using three asterisks: not across blank line at start"
+  }, {
+    "markdown": "***xx\n\n***",
+    "html": "<p>***xx</p>\n\n<hr>",
+    "title": "using three asterisks: not across blank line at end"
   }, {
     "markdown": "_*xx_*",
     "html": "<p><i>*xx</i>*</p>",
@@ -747,21 +853,37 @@
     "html": "<p><u>xx</u></p>",
     "title": "single word"
   }, {
-    "markdown": "___\nxx___",
-    "html": "<p><u>\nxx</u></p>",
-    "title": "single word preceded by newline"
+    "markdown": "___xx yy___",
+    "html": "<p><u>xx yy</u></p>",
+    "title": "two words"
   }, {
-    "markdown": "___xx\n___",
-    "html": "<p><u>xx\n</u></p>",
-    "title": "single word followed newline"
+    "markdown": "___xx___ ___yy___",
+    "html": "<p><u>xx</u> <u>yy</u></p>",
+    "title": "two underlines"
   }, {
     "markdown": "___xx\nyy___",
     "html": "<p><u>xx\nyy</u></p>",
-    "title": "two words with newline between"
+    "title": "across newline"
+  }, {
+    "markdown": "___\nyy___",
+    "html": "<p><u>\nyy</u></p>",
+    "title": "across newline at start"
+  }, {
+    "markdown": "___xx\n___",
+    "html": "<p><u>xx\n</u></p>",
+    "title": "across newline at end"
   }, {
     "markdown": "___xx\n\nyy___",
     "html": "<p>___xx</p>\n\n<p>yy___</p>",
-    "title": "two words with blank line between, shouldn’t work"
+    "title": "not across blank line"
+  }, {
+    "markdown": "___\n\nyy___",
+    "html": "<hr>\n\n<p>yy___</p>",
+    "title": "not across blank line at start"
+  }, {
+    "markdown": "___xx\n\n___",
+    "html": "<p>___xx</p>\n\n<hr>",
+    "title": "not across blank line at end"
   },
   "Strikethrough spans <tt>~~text~~</tt> (Landmark-specific)", {
     "markdown": "~~xx~~",
@@ -774,11 +896,27 @@
   }, {
     "markdown": "~~xx\nyy~~",
     "html": "<p><s>xx\nyy</s></p>",
-    "title": "across newlines"
+    "title": "across newline"
+  }, {
+    "markdown": "~~\nyy~~",
+    "html": "<p><s>\nyy</s></p>",
+    "title": "across newline at start"
+  }, {
+    "markdown": "~~xx\n~~",
+    "html": "<p><s>xx\n</s></p>",
+    "title": "across newline at end"
   }, {
     "markdown": "~~xx\n\nyy~~",
     "html": "<p>~~xx</p>\n\n<p>yy~~</p>",
     "title": "not across blank line"
+  }, {
+    "markdown": "~~\n\nyy~~",
+    "html": "<p>~~</p>\n\n<p>yy~~</p>",
+    "title": "not across blank line at start"
+  }, {
+    "markdown": "~~xx\n\n~~",
+    "html": "<p>~~xx</p>\n\n<p>~~</p>",
+    "title": "not across blank line at end"
   },
   "Quote spans <tt>:\"text\":</tt> (Landmark-specific)", {
     "markdown": ":\"xx\":",
@@ -791,11 +929,27 @@
   }, {
     "markdown": ":\"xx\nyy\":",
     "html": "<p><q>xx\nyy</q></p>",
-    "title": "across newlines"
+    "title": "across newline"
+  }, {
+    "markdown": ":\"\nyy\":",
+    "html": "<p><q>\nyy</q></p>",
+    "title": "across newline at start"
+  }, {
+    "markdown": ":\"xx\n\":",
+    "html": "<p><q>xx\n</q></p>",
+    "title": "across newline at end"
   }, {
     "markdown": ":\"xx\n\nyy\":",
     "html": "<p>:\"xx</p>\n\n<p>yy\":</p>",
     "title": "not across blank line"
+  }, {
+    "markdown": ":\"\n\nyy\":",
+    "html": "<p>:\"</p>\n\n<p>yy\":</p>",
+    "title": "not across blank line at start"
+  }, {
+    "markdown": ":\"xx\n\n\":",
+    "html": "<p>:\"xx</p>\n\n<p>\":</p>",
+    "title": "not across blank line at end"
   },
   "Inline links <tt>[text](dest)</tt>", {
     "markdown": "[x](y)",
