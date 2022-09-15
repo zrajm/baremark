@@ -7,7 +7,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/6] Features
+* [0/9] Features
 ** TODO '  \n' should result in '<br>'
    Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
    interfere with backslash escapes).
@@ -16,7 +16,11 @@
 ** TODO Horizontal line should need only 3 chars
    And may be either _, - or * according to CommonMark standard.
 ** TODO Hanging indent lists
-** TODO Indented code blocks(?)
+** TODO Indented code blocks
+** TODO Autolink(?) without the <...>?
+** TODO Autolinked URLs <http://example.com?find=\\*>
+   Content need to be URL encoded. CommonMark example 20 illustrate this.
+** TODO Autolinked emails <me@email.com>
 ** TODO Nested lists
 * [0/7] Bugs
 ** TODO Disallow space around headline and code fence markup
