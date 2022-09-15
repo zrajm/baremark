@@ -32,15 +32,15 @@
   }, {
     "markdown": "```\nxx\nyy\n```",
     "html": "<pre>xx&#10;yy</pre>",
-    "title": "single paragraph (containing newline)"
+    "title": "across newline"
   }, {
     "markdown": "```\nxx\n\nyy\n```",
     "html": "<pre>xx&#10;&#10;yy</pre>",
-    "title": "two paragraphs (with blank line between)"
+    "title": "across blank line"
   }, {
     "markdown": "```\nxx\n\nyy\n\nzz\n```",
     "html": "<pre>xx&#10;&#10;yy&#10;&#10;zz</pre>",
-    "title": "three paragraphs (with blank line between)"
+    "title": "across blank line, multiple"
   }, {
     "markdown": "```\n\n*****\n\n```",
     "html": "<pre>&#10;&#42;&#42;&#42;&#42;&#42;&#10;</pre>",
@@ -49,6 +49,46 @@
     "markdown": "```\n\n# xx\n\n```",
     "html": "<pre>&#10;&#35; xx&#10;</pre>",
     "title": "ignore Markdown, ATX heading"
+  }, {
+    "markdown": "```\n`xx`\n```",
+    "html": "<pre>&#96;xx&#96;</pre>",
+    "title": "ignore Markdown, code span"
+  }, {
+    "markdown": "```\n*xx*\n```",
+    "html": "<pre>&#42;xx&#42;</pre>",
+    "title": "ignore Markdown, italic (using asterisks)"
+  }, {
+    "markdown": "```\n_xx_\n```",
+    "html": "<pre>&#95;xx&#95;</pre>",
+    "title": "ignore Markdown, italic (using underlines)"
+  }, {
+    "markdown": "```\n**xx**\n```",
+    "html": "<pre>&#42;&#42;xx&#42;&#42;</pre>",
+    "title": "ignore Markdown, bold (using asterisks)"
+  }, {
+    "markdown": "```\n__xx__\n```",
+    "html": "<pre>&#95;&#95;xx&#95;&#95;</pre>",
+    "title": "ignore Markdown, bold (using underlines)"
+  }, {
+    "markdown": "```\n___xx___\n```",
+    "html": "<pre>&#95;&#95;&#95;xx&#95;&#95;&#95;</pre>",
+    "title": "ignore Markdown, underline (using underlines)"
+  }, {
+    "markdown": "```\n~~xx~~\n```",
+    "html": "<pre>&#126;&#126;xx&#126;&#126;</pre>",
+    "title": "ignore Markdown, strikethrough"
+  }, {
+    "markdown": "```\n[x](y)\n```",
+    "html": "<pre>&#91;x&#93;&#40;y&#41;</pre>",
+    "title": "ignore Markdown, inline link"
+  }, {
+    "markdown": "```\n[text][ref]\n```\n\n[text][ref]\n\n[ref]: dest \"title\"",
+    "html": "<pre>&#91;text&#93;&#91;ref&#93;</pre>\n\n<p><a href=\"dest\" title=\"title\">text</a></p>",
+    "title": "ignore Markdown, reference link"
+  }, {
+    "markdown": "[text][ref]\n\n```\n[ref]: dest \"title\"\n```",
+    "html": "<p>[text][ref]</p>\n\n<pre>&#91;ref&#93;&#58; dest &#34;title&#34;</pre>",
+    "title": "ignore Markdown, link reference"
   }, {
     "markdown": "```\nx&x\n```",
     "html": "<pre>x&#38;x</pre>",
