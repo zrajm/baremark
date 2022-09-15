@@ -545,6 +545,14 @@
     "html": "<p><tt>xx</tt></p>",
     "title": "single word"
   }, {
+    "markdown": "\\`xx`",
+    "html": "<p>&#96;xx`</p>",
+    "title": "single word, first delimiter backslashed"
+  }, {
+    "markdown": "`xx\\`",
+    "html": "<p>`xx&#96;</p>",
+    "title": "single word, last delimiter backslashed"
+  }, {
     "markdown": "`xx yy`",
     "html": "<p><tt>xx yy</tt></p>",
     "title": "two words"
@@ -552,6 +560,10 @@
     "markdown": "`xx` `yy`",
     "html": "<p><tt>xx</tt> <tt>yy</tt></p>",
     "title": "two words, each a code span"
+  }, {
+    "markdown": "`x``y`",
+    "html": "<p><tt>x&#96;&#96;y</tt></p>",
+    "title": "two words, each a code span, no space between"
   }, {
     "markdown": "` xx`",
     "html": "<p><tt> xx</tt></p>",
@@ -700,6 +712,22 @@
     "markdown": "`x~x`",
     "html": "<p><tt>x&#126;x</tt></p>",
     "title": "interpret literally, tilde"
+  }, {
+    "markdown": "`x\\&x`",
+    "html": "<p><tt>x&#92;&#38;x</tt></p>",
+    "title": "interpret literally, backslashed ampersand"
+  }, {
+    "markdown": "`x&amp;x`",
+    "html": "<p><tt>x&#38;amp;x</tt></p>",
+    "title": "interpret literally, named HTML entity"
+  }, {
+    "markdown": "`x&#38;x`",
+    "html": "<p><tt>x&#38;&#35;38;x</tt></p>",
+    "title": "interpret literally, numerical HTML entity"
+  }, {
+    "markdown": "`x\\`y`",
+    "html": "<p><tt>x&#92;&#96;y</tt></p>",
+    "title": "interpret literally, backslashed backtick"
   },
   "Italic spans <tt>*text*</tt> <tt>_text_</tt>", {
     "markdown": "_xx_",
