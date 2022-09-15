@@ -15,15 +15,19 @@
   "Paragraphs", {
     "markdown": "xx",
     "html": "<p>xx</p>",
-    "title": "one"
+    "title": "single word"
+  }, {
+    "markdown": "xx yy",
+    "html": "<p>xx yy</p>",
+    "title": "two words"
   }, {
     "markdown": "xx\nyy",
     "html": "<p>xx\nyy</p>",
-    "title": "with newline in (CommonMark)"
+    "title": "across newline"
   }, {
     "markdown": "xx\n\nyy",
     "html": "<p>xx</p>\n\n<p>yy</p>",
-    "title": "two"
+    "title": "two paragraphs"
   },
   "Fenced code blocks <tt>```code```</tt>", {
     "markdown": "```\nxx\n```",
@@ -541,6 +545,14 @@
     "html": "<p><tt>xx</tt></p>",
     "title": "single word"
   }, {
+    "markdown": "`xx yy`",
+    "html": "<p><tt>xx yy</tt></p>",
+    "title": "two words"
+  }, {
+    "markdown": "`xx` `yy`",
+    "html": "<p><tt>xx</tt> <tt>yy</tt></p>",
+    "title": "two words, each a code span"
+  }, {
     "markdown": "` xx`",
     "html": "<p><tt> xx</tt></p>",
     "title": "single word preceded by single space"
@@ -899,7 +911,7 @@
   }, {
     "markdown": "___xx___ ___yy___",
     "html": "<p><u>xx</u> <u>yy</u></p>",
-    "title": "two underlines"
+    "title": "two words, each underlined"
   }, {
     "markdown": "___xx\nyy___",
     "html": "<p><u>xx\nyy</u></p>",
@@ -934,6 +946,10 @@
     "html": "<p><s>xx yy</s></p>",
     "title": "two words"
   }, {
+    "markdown": "~~xx~~ ~~yy~~",
+    "html": "<p><s>xx</s> <s>yy</s></p>",
+    "title": "two words, each strikethrough"
+  }, {
     "markdown": "~~xx\nyy~~",
     "html": "<p><s>xx\nyy</s></p>",
     "title": "across newline"
@@ -966,6 +982,10 @@
     "markdown": ":\"xx yy\":",
     "html": "<p><q>xx yy</q></p>",
     "title": "two words"
+  }, {
+    "markdown": ":\"xx\": :\"yy\":",
+    "html": "<p><q>xx</q> <q>yy</q></p>",
+    "title": "two words, each quoted"
   }, {
     "markdown": ":\"xx\nyy\":",
     "html": "<p><q>xx\nyy</q></p>",
