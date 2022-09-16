@@ -629,6 +629,10 @@
     "html": "<p><tt>x&#96;&#96;y&#96;&#96;z</tt></p>",
     "title": "surrounded by single backticks, containing double backtick sequence"
   }, {
+    "markdown": "[text][ref]\n\n```\n[ref]: dest \"title\"```",
+    "html": "<p>[text][ref]</p>\n\n<p><tt>&#10;&#91;ref&#93;&#58; dest &#34;title&#34;</tt></p>",
+    "title": "ignore Markdown, link reference"
+  }, {
     "markdown": "`x&x`",
     "html": "<p><tt>x&#38;x</tt></p>",
     "title": "interpret literally, ampersand"
