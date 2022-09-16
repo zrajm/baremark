@@ -1056,7 +1056,11 @@
   }, {
     "markdown": "[x\\[x\\]x](y)",
     "html": "<p><a href=\"y\">x&#91;x&#93;x</a></p>",
-    "title": "backslash-escaped brackets in link text"
+    "title": "backslash escaped character in link text"
+  }, {
+    "markdown": "[x](\\#top)",
+    "html": "<p><a href=\"&#35;top\">x</a></p>",
+    "title": "backslash escaped character in link URL"
   }, {
     "markdown": "[x] (dest)",
     "NOTE": "CommonMark requirement",
@@ -1079,6 +1083,19 @@
     "markdown": "[foo]: /url (title)\n\n[foo]\n",
     "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
     "title": "title in parentheses"
+  }, {
+    "markdown": "[ref]: link \"title\"\n\n[*\\*][ref]\n",
+    "html": "<p><a href=\"link\" title=\"title\">*&#42;</a></p>",
+    "title": "backslash escape in link text"
+  }, {
+    "markdown": "[ref]: link \"*\\*\"\n\n[text][ref]\n",
+    "html": "<p><a href=\"link\" title=\"*&#42;\">text</a></p>",
+    "title": "backslash escape in link title"
+  }, {
+    "markdown": "[*\\*]: link \"title\"\n\n[text][*\\*]\n",
+    "NOTE": "All references must look exactly the same, including escapes.",
+    "html": "<p><a href=\"link\" title=\"title\">text</a></p>",
+    "title": "backslash escape in link reference"
   }, {
     "markdown": "[text] [ref]\n\n[ref]: dest",
     "NOTE": "CommonMark requirement",
