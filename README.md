@@ -80,8 +80,8 @@ which case it will be escaped appropriately.
 Baremark
 --------
 
-Baremark is based on VanTigranyan's [Landmark], which is 2060 bytes in size. In
-the current version Baremark is 1808 bytes. :)
+Baremark is based on VanTigranyan's [Landmark], which is 2060 bytes in size.
+The current version Baremark is 1756 bytes in size (without minification). :)
 
 It was shortened by:
 
