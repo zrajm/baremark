@@ -1156,5 +1156,26 @@
     "NOTE": "CommonMark requirement",
     "html": "<p>[text] <a href=\"dest\" title=\"\">ref</a></p>",
     "title": "space between end bracket and next start bracket, not allowed"
+  },
+  "Images <tt>![text](url)</tt>", {
+    "markdown": "![x](y)",
+    "html": "<p><img src=\"y\" alt=\"x\"></p>",
+    "title": "single word"
+  }, {
+    "markdown": "![x[x]x](y)",
+    "html": "<p><img src=\"y\" alt=\"x[x]x\"></p>",
+    "title": "matched brackets in link text, not allowed"
+  }, {
+    "markdown": "![x\\[x\\]x](y)",
+    "html": "<p><img src=\"y\" alt=\"x&#91;x&#93;x\"></p>",
+    "title": "backslash escaped character in link text"
+  }, {
+    "markdown": "![x](\\#top)",
+    "html": "<p><img src=\"&#35;top\" alt=\"x\"></p>",
+    "title": "backslash escaped character in link URL"
+  }, {
+    "markdown": "![x] (dest)",
+    "html": "<p>![x] (dest)</p>",
+    "title": "space between end bracket and start parethesis, not allowed"
   }
 ]
