@@ -1,5 +1,11 @@
 -*- org -*-
 
+* TODO Bring this TODO up to speed with the project
+* [0/3] Webpage
+** TODO Prettier CSS
+   <tt> and <pre> should use gray background (a la Github or Stackoverflow).
+** TODO Make sure README is up-to date
+** TODO Test suite should have links to README and vice versa
 * [0/1] Tests
 ** TODO Use passing CommonMark 0.30 tests as baseline
 * [0/2] Size
