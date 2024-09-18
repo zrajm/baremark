@@ -20,7 +20,7 @@ Markdown syntax used in Landmark resembles both classical and GitHub-flavored Ma
 ```
     Heading level 1
     ===============
-    
+
     Heading level 2
     ---------------
 ```
@@ -44,11 +44,11 @@ Markdown syntax used in Landmark resembles both classical and GitHub-flavored Ma
 ```
     - unordered item 1
     - unordered item 2
-    
+
     * another unordered item 1
     * another unordered item 2
     * another unordered item 3
-    
+
     1. ordered item 1
     2. ordered item 2
     3. ordered item 3
@@ -58,7 +58,7 @@ Markdown syntax used in Landmark resembles both classical and GitHub-flavored Ma
 - Images: `![alt text](http://example.com/flower.jpg)`
 - Horizontal rules: `****************` (5 and more asterisks on a new line)
 - Paragraphs: just like in standard Markdown, any non-special text is enclosed into paragraphs by default, just surround it with newlines.
- 
+
 Of course, you can use plain old HTML in Markdown documents, and it will pass as is, unless it's enclosed into inline or multiline preformatted blocks, in which case it will be escaped appropriately.
 
 Zrajm's Fork
