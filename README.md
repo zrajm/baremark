@@ -98,3 +98,5 @@ Known bugs:
 
 * Blockquotes can't be nested.
 * Somewhat simplistic insertion of `<p>` -- it will be added around some HTML elements (like `<div>` and others) which `<p>` can't contain, so if user uses those, you'll get some empty `<p>` elements in the DOM (before and after those block elements).
+
+<!--[eof]-->
