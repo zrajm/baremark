@@ -530,13 +530,21 @@
     "html": "<ul><li>xx</li><li>yy</li></ul>",
     "title": "with ‘-’ (CommonMark)"
   }, {
+    "markdown": "* xx\n yy\n* zz",
+    "html": "<ul><li>xx\n yy</li><li>zz</li></ul>",
+    "title": "multiline item with indented lines"
+  }, {
     "markdown": "xx\n* yy\n* zz",
     "html": "<p>xx</p>\n\n<ul><li>yy</li><li>zz</li></ul>",
-    "title": "with ‘*’ at end of paragraph (CommonMark)"
+    "title": "paragraph followed by list, no blank line between (CommonMark)"
   }, {
     "markdown": "* xx\n* yy\nzz",
     "html": "<ul><li>xx</li><li>yy</li></ul>\n\n<p>zz</p>",
-    "title": "with ‘*’ at beginning of paragraph (CommonMark)"
+    "title": "list followed by paragraph, no blank line between (CommonMark)"
+  }, {
+    "markdown": "xx\n* xx\n* yy\nzz",
+    "html": "<p>xx</p>\n\n<ul><li>xx</li><li>yy</li></ul>\n\n<p>zz</p>",
+    "title": "paragraphs before AND after list, no blank lines between"
   },
   "Ordered lists <tt>1. item</tt>", {
     "markdown": "1. xx\n2. yy",
@@ -546,6 +554,22 @@
     "markdown": "1) xx\n2) yy",
     "html": "<ol><li>xx</li><li>yy</li></ol>",
     "title": "using end parenthesis (CommonMark)"
+  }, {
+    "markdown": "1. xx\n yy\n2. zz",
+    "html": "<ol><li>xx\n yy</li><li>zz</li></ol>",
+    "title": "multiline item with indented lines"
+  }, {
+    "markdown": "xx\n1. yy\n2. zz",
+    "html": "<p>xx</p>\n\n<ol><li>yy</li><li>zz</li></ol>",
+    "title": "paragraph followed by list, no blank line between"
+  }, {
+    "markdown": "1. xx\n2. yy\nzz",
+    "html": "<ol><li>xx</li><li>yy</li></ol>\n\n<p>zz</p>",
+    "title": "list followed by paragraph, no blank line between"
+  }, {
+    "markdown": "xx\n1. xx\n2. yy\nzz",
+    "html": "<p>xx</p>\n\n<ol><li>xx</li><li>yy</li></ol>\n\n<p>zz</p>",
+    "title": "paragraphs before AND after list, no blank lines between"
   },
   "Code spans <tt>`code`</tt>", {
     "markdown": "`xx`",
