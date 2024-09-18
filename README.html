@@ -1,0 +1,11 @@
+<!DOCTYPE html><!--*-js-indent-level:2;css-indent-offset:2-*-->
+<meta charset=utf-8>
+<link rel=icon href="data:,">
+<title>README</title>
+<script src=baremark.js></script>
+<script>
+  fetch('README.md')
+    .then(x => x.text())
+    .then(md => document.body.innerHTML = baremark(md))
+</script>
+<!--[eof]-->
