@@ -452,16 +452,23 @@
   }, {
     "markdown": "xx\n==\n\nyy\n--",
     "html": "<h1>xx</h1>\n\n<h2>yy</h2>",
-    "title": "multiple headings after each other"
+    "title": "multiple headings after each other, blank line between"
+  }, {
+    "markdown": "xx\n==\nyy\n--",
+    "html": "<h1>xx</h1>\n\n<h2>yy</h2>",
+    "title": "multiple headings after each other, no blank line between"
   }, {
     "markdown": "xx\n\nyy\n==\n\nzz",
     "html": "<p>xx</p>\n\n<h1>yy</h1>\n\n<p>zz</p>",
     "title": "heading between paragraphs"
   }, {
+    "markdown": "xx\n==\n\nyy",
+    "html": "<h1>xx</h1>\n\n<p>yy</p>",
+    "title": "heading and paragraph, blank line between"
+  }, {
     "markdown": "xx\n==\nyy",
-    "FIXME": "Maybe paragraph should be able to occur after, without blank line?",
-    "html": "<p>xx\n==\nyy</p>",
-    "title": "blank line required after Setext heading"
+    "html": "<h1>xx</h1>\n\n<p>yy</p>",
+    "title": "heading and paragraph, no blank line between"
   }, {
     "markdown": "xx\n ==",
     "html": "<p>xx\n ==</p>",
