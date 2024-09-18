@@ -34,6 +34,30 @@
     "html": "<pre>xx</pre>",
     "title": "single paragraph"
   }, {
+    "markdown": "xx\n\n```\nyy\n```",
+    "html": "<p>xx</p>\n\n<pre>yy</pre>",
+    "title": "paragraph followed by fenced block, blank line between"
+  }, {
+    "markdown": "```\nxx\n```\n\nyy",
+    "html": "<pre>xx</pre>\n\n<p>yy</p>",
+    "title": "fenced block followed by paragraph, blank line between"
+  }, {
+    "markdown": "xx\n\n```\nyy\n```\n\nzz",
+    "html": "<p>xx</p>\n\n<pre>yy</pre>\n\n<p>zz</p>",
+    "title": "paragraphs before AND after fenced block, blank lines between"
+  }, {
+    "markdown": "xx\n```\nyy\n```",
+    "html": "<p>xx</p>\n\n<pre>yy</pre>",
+    "title": "paragraph followed by fenced block, no blank line between"
+  }, {
+    "markdown": "```\nxx\n```\nyy",
+    "html": "<pre>xx</pre>\n\n<p>yy</p>",
+    "title": "fenced block followed by paragraph, no blank line between"
+  }, {
+    "markdown": "xx\n```\nyy\n```\nzz",
+    "html": "<p>xx</p>\n\n<pre>yy</pre>\n\n<p>zz</p>",
+    "title": "paragraphs before AND after fenced block, no blank lines between"
+  }, {
     "markdown": "```\nxx\nyy\n```",
     "html": "<pre>xx&#10;yy</pre>",
     "title": "across newline"
