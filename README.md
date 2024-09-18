@@ -17,13 +17,13 @@ Markdown syntax used in Landmark resembles both classical and GitHub-flavored Ma
 
 - Headings, single-line form: `# Heading level 1`, `## Heading level 2` and so on
 - Headings of levels 1 and 2, two-line form:
-    ```
+```
     Heading level 1
     ===============
     
     Heading level 2
     ---------------
-    ```
+```
 - Inline formatting: `**bold**` or `__bold__`, `*italic*` or `_italic_`, `~~strike~~`, `:"quote":` and even non-standard `___underline___` (triple underscore) tag!
 - Preformatted inline blocks:`` `inline code` ``
 - Preformatted multiline blocks:
@@ -53,7 +53,7 @@ Markdown syntax used in Landmark resembles both classical and GitHub-flavored Ma
     2. ordered item 2
     3. ordered item 3
     4. ordered item 4
-``` 
+```
 - Links: `[link text](http://example.com)`
 - Images: `![alt text](http://example.com/flower.jpg)`
 - Horizontal rules: `****************` (5 and more asterisks on a new line)
