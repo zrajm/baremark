@@ -73,7 +73,7 @@ Shortened by:
 * Use of `.reduce()` instead of `for` loops.
 * Rules is a list-of-lists (instead of a list of objects).
 * Single letter groups in regexes changed to character classes (e.g. `(-|*)` to `[-*]`).
-* Using template strings (with `).
+* Using template strings (with \`).
 * Not allowing space before `#`, `---` and `===` in headings, and before/after \`\`\`.
 * Replaced unnessesary `.*?` with `.*` (greediness is fine if anchored by `\n`, since `.` won't match newlines).
 * Use HTML `<b>` instead of `<strong>` and `<i>` instead of `<em>`.
