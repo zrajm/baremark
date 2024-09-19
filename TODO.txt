@@ -54,6 +54,14 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Bugfix: Don't mangle regex flags in user added rules (-15 bytes)
+   CLOSED: [2024-09-19 Thu 21:57]
+   Previously forced the RegExp flag 'g' by running the first argument of
+   `baremark.add()` through `RegExp(p,'g')` which stripped all *other* flags
+   off of the regexp! (No good!) Rather than burdening the source with
+   additional error checks Baremark now the arguments are now fed as-is into
+   the rules array (i.e. when applied, whatever you specify is passed as to
+   Javascript's 'String.replace()' function).
 ** DONE Remove unneeded backslash escapes in regexes
    CLOSED: [2022-09-09 Fri 14:19]
    These superfluous backslash escapes where found by Taco de Wolff's 'minify'

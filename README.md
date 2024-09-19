@@ -10,12 +10,17 @@ Usage
 -----
 Baremark features only 2 methods:
 
-- `baremark(text)` - Takes the Markdown source and returns ready HTML code
-  (most of the time, this is the only method you'll need).
-- `baremark.add(regexp, replacement)` - Adds a new processing rule that allows
-  you to create your own custom Markdown tags, both the `regexp` and
-  `replacement` arguments are both passed on as-is to Javascript’s string
-  `replace()` function (see [string replacement documentation] for reference).
+- `baremark(MARKDOWN)` – Process `MARKDOWN` and return HTML. (Most of the time,
+  this is the only function you'll need.)
+- `baremark.add(REGEX, REPLACEMENT)` – Add a new processing rule. This is used
+  to create custom markup. Arguments given to `add()` are passed on as-is to
+  Javascript's `replace()` function during markdown processing (see: [MDN
+  docs]). Each rule is applied to the entirety of the markdown source. This
+  means that, for [block elements], `REGEX` may use `.*?` (with the `/s` flag),
+  but that for [span elements] it is wise to make sure that `REGEX` does not
+  match across blank lines (for example, using `(.+?(?:\n.+?)*` to match single
+  newlines, but not two or more newlines after each other). **Nota Bene: Make
+  sure `REGEX` has the `/g` flag, or it will only match once!**
 
 Markdown syntax
 ---------------
@@ -81,7 +86,7 @@ Baremark
 --------
 
 Baremark is based on VanTigranyan's [Landmark], which is 2060 bytes in size.
-The current version Baremark is 1756 bytes in size (without minification). :)
+The current version Baremark is 1741 bytes in size (without minification!). :)
 
 It was shortened by:
 
@@ -129,7 +134,9 @@ Known bugs:
 
 [Landmark]: https://gist.github.com/VanTigranyan/651b7c77cfc149cb858a044c2108acbb
 [Sitemark]: http://plugnburn.github.io/sitemark/
-[string replacement documentation]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+[MDN docs]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+[block elements]: https://daringfireball.net/projects/markdown/syntax#block
+[span elements]: https://daringfireball.net/projects/markdown/syntax#span
 [test suite]: https://zrajm.github.io/baremark/
 [Github]: https://github.com/zrajm/baremark/
 
