@@ -24,5 +24,5 @@
 		[/\[(.+?)\](?:\[(.+?)\])?/g,(w,t,n)=>(n=n||t,l[n]?`<a href="${l[n][0]}" title="${l[n][1]||''}">${t}</a>`:w)],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/g,(w,m)=>/^<(\/|blockquote|h\d|hr|li|ol|ul|p|pre|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]]
 	w.baremark=x=>(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())
-	w.baremark.add=(p,s)=>r.push([RegExp(p,'g'),s])
+	w.baremark.add=(...x)=>r.push(x)
 })(self)
