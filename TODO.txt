@@ -1,9 +1,7 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/3] Webpage
-** TODO Prettier CSS
-   <tt> and <pre> should use gray background (a la Github or Stackoverflow).
+* [0/2] Webpage
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
 * [0/1] Tests
@@ -13,7 +11,8 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/9] Features
+* [0/10] Features
+** TODO Add '![text][ref]' image support
 ** TODO '  \n' should result in '<br>'
    Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
    interfere with backslash escapes).
@@ -53,7 +52,10 @@
    elements (like <div> and others) which <p> can't contain, so if user uses
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
-* FINISHED
+* [21/21] FINISHED
+** DONE Prettier CSS
+   CLOSED: [2024-09-20 Fri 04:55]
+   <tt> and <pre> should use gray background (a la Github or Stackoverflow).
 ** DONE Bugfix: Normalize space in reference links (+158 bytes)
    CLOSED: [2024-09-20 Fri 04:03]
    Space in reference links needs to be normalized, so that wrapped lines (or

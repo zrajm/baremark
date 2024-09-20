@@ -1,0 +1,74 @@
+/*-*- css-indent-offset: 2 -*-*/
+
+/* Mini reset. */
+html { box-sizing: border-box; }
+*, :before, :after { box-sizing: inherit; padding: 0; margin: 0; }
+
+/* Other. */
+body { margin: 1em; line-height: 1.75; }
+blockquote { border: 1px solid #000; }
+code, tt {
+  background: #aaac;
+  border-radius: .25em;
+  padding: .125em .25em .1875em;
+  outline: 1px solid #0003;
+  background: #0001;
+  position: relative;
+  bottom: .125em;
+}
+details, .error, .legend {
+  line-height: 1.5;
+  border-radius: .25em;
+  margin: 2px 0;
+  padding: .125em .25em;
+  border: 1px solid #0008;
+}
+details.group.ignore, .legend.ignore { background: #777; }
+details.group.pass,   .legend.pass   { background: #4b4; }
+details.test.pass                    { background: #5d5; }
+details.group.fail,   .legend.fail   { background: #d44; }
+details.test.fail,    .error         { background: #e55; }
+details.ignore > summary { text-decoration-line: line-through; }
+.group {
+  padding-left: 1em;
+}
+.group > summary {
+  font-weight: bold;
+  margin-left: -.75em;
+}
+.group div.count { float: right; }
+div.count > span.pass, div.count > span.fail, div.count > span.ignore {
+  width: 1.5em;
+  display: inline-block;
+  text-align: right;
+  color: #444;
+}
+div.count > span.pass { color: #050; }
+div.count > span.fail { color: #600; }
+textarea { width: 100%; overflow: visible; height: fit-content; background: #0000;}
+summary { cursor: pointer; }
+hr { margin: 2em; }
+table {
+  border-spacing: .125em;
+}
+td, th {
+  vertical-align: baseline;
+  font-family: sans;
+}
+th {
+  color: #000d;
+}
+tbody th { text-align: right; }
+td {
+  border-radius: .25em;
+  background: #0002;
+  font-weight: normal;
+  text-align: left;
+  padding: .125em .25em .1875em;
+}
+li { margin-left: 1em; }
+p, h1, h2, footer { margin: 1em 0 .5em; }
+footer { text-align: center; }
+.fixme, .note { background: #ff0b; font-weight: bold; }
+
+/*[eof]*/
