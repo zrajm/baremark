@@ -86,7 +86,7 @@ Baremark
 --------
 
 Baremark is based on VanTigranyan's [Landmark], which is 2060 bytes in size.
-The current version Baremark is 1741 bytes in size (without minification!). :)
+The current version Baremark is 1899 bytes in size (without minification!). :)
 
 It was shortened by:
 
