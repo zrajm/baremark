@@ -54,6 +54,23 @@
    those, you'll get some empty <p> elements in the DOM (before and after those
    block elements).
 * FINISHED
+** DONE Bugfix: Normalize space in reference links (+158 bytes)
+   CLOSED: [2024-09-20 Fri 04:03]
+   Space in reference links needs to be normalized, so that wrapped lines (or
+   multiple spaces) do not break links. That is, this should work:
+
+       Link with too many spaces [some  link], or line break [some other
+       link] -- whitespace does not need to match in link references.
+
+       [some
+       link]: http://example.com/
+
+       [some  other link
+       ]: http://example.com/
+
+   The builtin rules match for one optional newline in the beginning/end of the
+   link references. (Since this is shorter than writing a regex that forbids
+   space in the beginning/end of the reference.)
 ** DONE Bugfix: Don't mangle regex flags in user added rules (-15 bytes)
    CLOSED: [2024-09-19 Thu 21:57]
    Previously forced the RegExp flag 'g' by running the first argument of
