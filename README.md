@@ -6,6 +6,7 @@ used for [Sitemark] and some other projects. There is a [test suite] (which is
 kinda-sorta based on the CommonMark test suite), and the source code is
 available on [Github].
 
+
 Usage
 -----
 Baremark features only 2 methods:
@@ -21,6 +22,7 @@ Baremark features only 2 methods:
   match across blank lines (for example, using `(.+?(?:\n.+?)*` to match single
   newlines, but not two or more newlines after each other). **Nota Bene: Make
   sure `REGEX` has the `/g` flag, or it will only match once!**
+
 
 Markdown syntax
 ---------------
@@ -84,7 +86,6 @@ which case it will be escaped appropriately.
 
 Baremark
 --------
-
 Baremark is based on VanTigranyan's [Landmark], which is 2060 bytes in size.
 The current version Baremark is 1860 bytes in size (without minification!). :)
 
