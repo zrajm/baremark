@@ -458,57 +458,131 @@
     "title": "trailing ‘#’s must be preceded by space (CommonMark)"
   },
   "Setext headings <tt>heading\\n=======</tt>", {
-    "markdown": "x\n=",
-    "html": "<h1>x</h1>",
-    "title": "single character as underlining"
+    "markdown": "xx\n==",
+    "html": "<h1>xx</h1>",
+    "title": "level 1 heading, single word"
   }, {
-    "markdown": "xxx\n===",
-    "html": "<h1>xxx</h1>",
-    "title": "level 1"
+    "markdown": "xx\n=",
+    "html": "<h1>xx</h1>",
+    "title": "level 1 heading, single character underlining"
   }, {
-    "markdown": "xx\nyy\n===",
+    "markdown": "xx\n===",
+    "html": "<h1>xx</h1>",
+    "title": "level 1 heading, underlining longer than heading"
+  }, {
+    "markdown": "xx yy\n==",
+    "html": "<h1>xx yy</h1>",
+    "title": "level 1 heading, containing space"
+  }, {
+    "markdown": "xx\nyy\n==",
     "html": "<h1>xx\nyy</h1>",
-    "title": "level 1, with multiple lines"
+    "title": "level 1 heading, containing newline"
   }, {
-    "markdown": "xxx\n---",
-    "html": "<h2>xxx</h2>",
-    "title": "level 2"
-  }, {
-    "markdown": "xx\n==\n\nyy\n--",
-    "html": "<h1>xx</h1>\n\n\n<h2>yy</h2>",
-    "title": "multiple headings after each other, blank line between"
-  }, {
-    "markdown": "xx\n==\n\nyy\n==",
-    "html": "<h1>xx</h1>\n\n\n<h1>yy</h1>",
-    "title": "multiple headings of same kind after each other, blank line between"
-  }, {
-    "markdown": "xx\n==\nyy\n--",
-    "html": "<h1>xx</h1>\n\n<h2>yy</h2>",
-    "title": "multiple headings after each other, no blank line between"
-  }, {
-    "markdown": "xx\n==\nyy\n==",
-    "html": "<h1>xx</h1>\n\n<h1>yy</h1>",
-    "title": "multiple headings of same kind after each other, no blank line between"
-  }, {
-    "markdown": "xx\n\nyy\n==\n\nzz",
-    "html": "<p>xx</p>\n\n<h1>yy</h1>\n\n\n<p>zz</p>",
-    "title": "heading between paragraphs"
-  }, {
-    "markdown": "xx\n==\n\nyy",
-    "html": "<h1>xx</h1>\n\n\n<p>yy</p>",
-    "title": "heading and paragraph, blank line between"
+    "markdown": "xx\n\nyy\n==",
+    "html": "<p>xx</p>\n\n<h1>yy</h1>",
+    "title": "level 1 heading + paragraph before"
   }, {
     "markdown": "xx\n==\nyy",
     "html": "<h1>xx</h1>\n\n<p>yy</p>",
-    "title": "heading and paragraph, no blank line between"
+    "title": "level 1 heading + paragraph after (separated by newline)"
+  }, {
+    "markdown": "xx\n==\n\nyy",
+    "html": "<h1>xx</h1>\n\n\n<p>yy</p>",
+    "title": "level 1 heading + paragraph after (separated by blank line)"
+  }, {
+    "markdown": "xx\n\nyy\n==\nzz",
+    "html": "<p>xx</p>\n\n<h1>yy</h1>\n\n<p>zz</p>",
+    "title": "level 1 heading + paragraphs surrounding (separated by newline)"
+  }, {
+    "markdown": "xx\n\nyy\n==\n\nzz",
+    "html": "<p>xx</p>\n\n<h1>yy</h1>\n\n\n<p>zz</p>",
+    "title": "level 1 heading + paragraphs surrounding (separated by blank line)"
+  }, {
+    "markdown": "xx\n==\nyy\n==",
+    "html": "<h1>xx</h1>\n\n<h1>yy</h1>",
+    "title": "level 1 headings, two in a row (separated by newline)"
+  }, {
+    "markdown": "xx\n==\n\nyy\n==",
+    "html": "<h1>xx</h1>\n\n\n<h1>yy</h1>",
+    "title": "level 1 headings, two in a row (separated by blank line)"
+  }, {
+    "markdown": "xx\n==\nyy\n--",
+    "html": "<h1>xx</h1>\n\n<h2>yy</h2>",
+    "title": "level 1 heading + level 2 heading (separated by newline)"
+  }, {
+    "markdown": "xx\n==\n\nyy\n--",
+    "html": "<h1>xx</h1>\n\n\n<h2>yy</h2>",
+    "title": "level 1 heading + level 2 heading (separated by blank line)"
+  }, {
+    "markdown": "xx\n--",
+    "html": "<h2>xx</h2>",
+    "title": "level 2 heading, single word"
+  }, {
+    "markdown": "xx\n-",
+    "html": "<h2>xx</h2>",
+    "title": "level 2 heading, single character underlining"
+  }, {
+    "markdown": "xx\n---",
+    "html": "<h2>xx</h2>",
+    "title": "level 2 heading, underlining longer than heading"
+  }, {
+    "markdown": "xx yy\n--",
+    "html": "<h2>xx yy</h2>",
+    "title": "level 2 heading, containing space"
+  }, {
+    "markdown": "xx\nyy\n--",
+    "html": "<h2>xx\nyy</h2>",
+    "title": "level 2 heading, containing newline"
+  }, {
+    "markdown": "xx\n\nyy\n--",
+    "html": "<p>xx</p>\n\n<h2>yy</h2>",
+    "title": "level 2 heading + paragraph before"
+  }, {
+    "markdown": "xx\n--\nyy",
+    "html": "<h2>xx</h2>\n\n<p>yy</p>",
+    "title": "level 2 heading + paragraph after (separated by newline)"
+  }, {
+    "markdown": "xx\n--\n\nyy",
+    "html": "<h2>xx</h2>\n\n\n<p>yy</p>",
+    "title": "level 2 heading + paragraph after (separated by blank line)"
+  }, {
+    "markdown": "xx\n\nyy\n--\nzz",
+    "html": "<p>xx</p>\n\n<h2>yy</h2>\n\n<p>zz</p>",
+    "title": "level 2 heading + paragraphs surrounding (separated by newline)"
+  }, {
+    "markdown": "xx\n\nyy\n--\n\nzz",
+    "html": "<p>xx</p>\n\n<h2>yy</h2>\n\n\n<p>zz</p>",
+    "title": "level 2 heading + paragraphs surrounding (separated by blank line)"
+  }, {
+    "markdown": "xx\n--\nyy\n--",
+    "html": "<h2>xx</h2>\n\n<h2>yy</h2>",
+    "title": "level 2 headings, two in a row (separated by newline)"
+  }, {
+    "markdown": "xx\n--\n\nyy\n--",
+    "html": "<h2>xx</h2>\n\n\n<h2>yy</h2>",
+    "title": "level 2 headings, two in a row (separated by blank line)"
+  }, {
+    "markdown": "xx\n--\nyy\n==",
+    "html": "<h2>xx</h2>\n\n<h1>yy</h1>",
+    "title": "level 2 heading + level 1 heading (separated by newline)"
+  }, {
+    "markdown": "xx\n--\n\nyy\n==",
+    "html": "<h2>xx</h2>\n\n\n<h1>yy</h1>",
+    "title": "level 2 heading + level 1 heading (separated by blank line)"
+  }, {
+    "markdown": "xx\n=-",
+    "html": "<p>xx\n=-</p>",
+    "title": "underlining is mix of '-' and '=', not allowed"
   }, {
     "markdown": "xx\n ==",
+    "NOTE": "Unsupported CommonMark feature",
     "html": "<p>xx\n ==</p>",
-    "title": "underline cannot be indented (anti-CommonMark)"
+    "title": "underlining has leading space, not allowed"
   }, {
     "markdown": "xx\n== ",
+    "NOTE": "Unsupported CommonMark feature",
     "html": "<p>xx\n== </p>",
-    "title": "underline cannot be followed by space (anti-CommonMark)"
+    "title": "underlining has trailing space, not allowed"
   },
   "Block quotes <tt>&gt; quote</tt>", {
     "markdown": "> xx",
