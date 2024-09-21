@@ -475,11 +475,11 @@
     "title": "level 2"
   }, {
     "markdown": "xx\n==\n\nyy\n--",
-    "html": "<h1>xx</h1>\n\n<h2>yy</h2>",
+    "html": "<h1>xx</h1>\n\n\n<h2>yy</h2>",
     "title": "multiple headings after each other, blank line between"
   }, {
     "markdown": "xx\n==\n\nyy\n==",
-    "html": "<h1>xx</h1>\n\n<h1>yy</h1>",
+    "html": "<h1>xx</h1>\n\n\n<h1>yy</h1>",
     "title": "multiple headings of same kind after each other, blank line between"
   }, {
     "markdown": "xx\n==\nyy\n--",
@@ -491,11 +491,11 @@
     "title": "multiple headings of same kind after each other, no blank line between"
   }, {
     "markdown": "xx\n\nyy\n==\n\nzz",
-    "html": "<p>xx</p>\n\n<h1>yy</h1>\n\n<p>zz</p>",
+    "html": "<p>xx</p>\n\n<h1>yy</h1>\n\n\n<p>zz</p>",
     "title": "heading between paragraphs"
   }, {
     "markdown": "xx\n==\n\nyy",
-    "html": "<h1>xx</h1>\n\n<p>yy</p>",
+    "html": "<h1>xx</h1>\n\n\n<p>yy</p>",
     "title": "heading and paragraph, blank line between"
   }, {
     "markdown": "xx\n==\nyy",
