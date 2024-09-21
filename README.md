@@ -1,5 +1,5 @@
-Baremark: The Simplest Markdown Engine for the Browser
-======================================================
+Baremark: A Tiny Markdown Engine
+================================
 Baremark is a small but extensible JavaScript library that allows to render
 Markdown documents into HTML. It is based on [Landmark], which is the engine
 used for [Sitemark] and some other projects. There is a [test suite] (which is
