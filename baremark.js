@@ -22,6 +22,5 @@
 		[/\[(\n?.+?(\n.+?)*?\n?)\]\( *\n? *([^\n ]+) *\n? *\)/g,'<a href="$3">$1</a>'],
 		[/\[(\n?.+?(\n.+?)*?\n?)\](?:\[(\n?.+?(\n.+?)*?\n?)\])?/g,(w,t,_,n)=>(n=s(n||t),l[n]?`<a href="${l[n][0]}" title="${l[n][1]||''}">${t}</a>`:w)],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/g,(w,m)=>/^<(\/|blockquote|h\d|hr|li|ol|ul|p|pre|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]]
-	w.baremark=x=>(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())
-	w.baremark.add=(...x)=>r.push(x)
+	w.baremark=x=>x===undefined?r:(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())
 })(self)
