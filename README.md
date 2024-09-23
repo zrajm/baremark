@@ -47,9 +47,8 @@ to the end of the current ruleset using `baremark().push()` (meaning that it
 will be applied *after* the previously existing rules).
 
 ```
-    // Fragment URL anchor: Turns `[#text]` into <a id="text"></a>.
-    baremark().push([/\[#([^.:\[\]\s]+)\][\t ]*/g, '<a id="$1"></a>'])
-
+// Fragment URL anchor: Turns `[#text]` into <a id="text"></a>.
+baremark().push([/\[#([^.:\[\]\s]+)\][\t ]*/g, '<a id="$1"></a>'])
 ```
 
 Below’s is another, more involved, example of a Baremark rule. This one parses
@@ -66,27 +65,27 @@ extra method `get()` that can be used to return the metadata after invoking
 `baremark()`.
 
 ```
-    // Baremark rule for reading header style metadata. Processes first paragraph
-    // as metadata if (and only if) it looks like an email headers (e.g. 'Author:
-    // <name>'). After `baremark()` cal `baremarkHeaders.get()` to get object
-    // with metadata values.
-    const baremarkHeaders = (meta => Object.assign([
-        /^(\n*)((\w+:.*\n)+)\n+/,
-        (_, nl, txt) => {
-            meta = {}
-            txt.split(/^/m).forEach(x => {
-                const [_, name, value] = /^(\w+):\s*(.*)\n/.exec(x)
-                meta[name.toLowerCase()] = value
-            })
-            return nl
-        }],
-        { get: () => meta })
-    )()
+// Baremark rule for reading header style metadata. Processes first paragraph
+// as metadata if (and only if) it looks like an email headers (e.g. 'Author:
+// <name>'). After `baremark()` cal `baremarkHeaders.get()` to get object
+// with metadata values.
+const baremarkHeaders = (meta => Object.assign([
+    /^(\n*)((\w+:.*\n)+)\n+/,
+    (_, nl, txt) => {
+        meta = {}
+        txt.split(/^/m).forEach(x => {
+            const [_, name, value] = /^(\w+):\s*(.*)\n/.exec(x)
+            meta[name.toLowerCase()] = value
+        })
+        return nl
+    }],
+    { get: () => meta })
+)()
 
-    // Invoking it.
-    baremark().unshift(baremarkHeaders)        // add rule
-    const html = baremark(markdown)
-    const meta = baremarkHeaders.get()         // get metadata
+// Invoking it.
+baremark().unshift(baremarkHeaders)        // add rule
+const html = baremark(markdown)
+const meta = baremarkHeaders.get()         // get metadata
 ```
 
 Finally, since rules are passed exactly as-is to the Javascript string method
@@ -100,7 +99,7 @@ when adding rules (with `baremark().push([…])` or `baremark().unshift([…])`)
 you’ll get a very cryptic error message upon running `baremark(markdown)`.
 
 ```
-    Uncaught TypeError: r is not iterable
+Uncaught TypeError: r is not iterable
 ```
 
 **Forgetting the `/g` flag on the regex.** – If you forget this flag, your
@@ -158,11 +157,11 @@ tables). The following tags are supported:
   on
 - Setext headings of levels 1 and 2:
 ```
-    Heading level 1
-    ===============
+Heading level 1
+===============
 
-    Heading level 2
-    ---------------
+Heading level 2
+---------------
 ```
 - Inline formatting: `**bold**` or `__bold__`, `*italic*` or `_italic_`,
   `~~strike~~`, `:"quote":` and even non-standard `___underline___` (triple
@@ -170,53 +169,61 @@ tables). The following tags are supported:
 - Preformatted inline blocks: `` `inline code` ``
 - Preformatted multiline blocks:
 ```
-    ```
-    first line of preformatted text
-    second line of preformatted text
-    etc...
-    ```
+``` 
+first line of preformatted text
+second line of preformatted text
+etc...
+``` 
 ```
 - Block quotes:
 ```
-    > first line of quote
-    > second line of quote
-    > etc...
+> first line of quote
+> second line of quote
+> etc...
 ```
 - Lists:
 ```
-    - unordered item 1
-    - unordered item 2
+- unordered item 1
+- unordered item 2
 
-    * another unordered item 1
-    * another unordered item 2
-    * another unordered item 3
+* another unordered item 1
+* another unordered item 2
+* another unordered item 3
 
-    1. ordered item 1
-    2. ordered item 2
-    3. ordered item 3
-    4. ordered item 4
++ a third kind of unordered item 1
++ a third kind of unordered item 2
++ a third kind of unordered item 3
+
+1. ordered item 1
+2. ordered item 2
+3. ordered item 3
+4. ordered item 4
 ```
+
 - Both reference links and inline links are supported. Newline and whitespace
-  is allowed inside the link texts, but not between the `](` and `][`.
-```
-    * This is an [inline link](http://example.com).
-    * You can also use [reference links].
-    * Which may also have [custom link text][reference link2].
-
-    [reference links]: http://example.com
-    [reference link2]: http://example.com "Optional page title here"
+  is allowed inside the link texts, but not between the `](` and `][`. The
+  reference text is case sensitive.
 
 ```
+* This is an [inline link](http://example.com).
+* This is a [reference link].
+* And this is a reference link with [custom link text][reference link 2].
+
+[reference link]: http://example.com
+[reference link 2]: http://example.com "Optional page title here"
+```
+
 - Images: `![alt text](http://example.com/flower.jpg)`
 - Horizontal rule: `***`, `---`, or `___` (three or more of either asterisk,
   dash or underscore on a line separated by blank lines).
 - Paragraphs: Just as in standard Markdown, any non-special text is put inside
   `<p>` tags by default, just surround each paragraph with with blank lines.
   Between a Setext heading an a paragraph a blank line isn’t required:
+
 ```
-    Heading
-    =======
-    Some text in a paragraph.
+Heading
+=======
+Some text in a paragraph.
 ```
 
 Of course, you can use plain old HTML in Markdown documents, and it will be
