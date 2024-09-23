@@ -7,7 +7,7 @@ html { box-sizing: border-box; }
 /* Other. */
 body { margin: 1em; line-height: 1.75; }
 blockquote { border: 1px solid #000; }
-code, tt {
+code, tt, pre {
   background: #aaac;
   border-radius: .25em;
   padding: .125em .25em .1875em;
@@ -16,6 +16,7 @@ code, tt {
   position: relative;
   bottom: .125em;
 }
+pre { margin: 1.5em; padding: .5em 1em; }
 details, .error, .legend {
   line-height: 1.5;
   border-radius: .25em;
