@@ -88,8 +88,17 @@ const html = baremark(markdown)
 const meta = baremarkHeaders.get()         // get metadata
 ```
 
+Also, multiple rules can be added at the same time:
+
+```
+baremark().push(
+    [/\[#([^.:\[\]\s]+)\][\t ]*/g, '<a id="$1"></a>'],        // hash anchor
+    [/\b[a-z]+:\/\/[^ \n<>]*[a-z]/gi, '<a href="$&">$&</a>'], // autolink URLs
+)
+```
+
 Finally, since rules are passed exactly as-is to the Javascript string method
-`replace()`, the [MDN docs] on the subject is recommended reading.
+`replace()`, so the [MDN docs] on the subject is recommended reading.
 
 
 Common Gotchas when Extending Baremark
