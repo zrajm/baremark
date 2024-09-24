@@ -47,12 +47,55 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-** Simplistic paragraph detection with HTML
-   Somewhat simplistic insertion of <p> -- it will be added around some HTML
-   elements (like <div> and others) which <p> can't contain, so if user uses
-   those, you'll get some empty <p> elements in the DOM (before and after those
-   block elements).
-* [21/21] FINISHED
+* [22/22] FINISHED
+** DONE Improved insertion of <p> tags
+   CLOSED: [2024-09-24 Tue 20:30]
+   Will no longer insert <p> around the following HTML tags:
+
+     + address
+     + article
+     + aside
+     + blockquote
+     + details
+     + div
+     + dl
+     + fieldset
+     + figcaption
+     + figure
+     + footer
+     + form
+     + h#
+     + header
+     + hgroup
+     + hr
+     + main
+     + menu
+     + nav
+     + noscript
+     + ol
+     + p
+     + pre
+     + script
+     + search
+     + section
+     + style
+     + table
+     + ul
+
+   These tags will all result in the end of a paragraph (as an omitted </p> is
+   assumed), as explained in the MDN docs for '<p>: The Paragraph element'
+   (under 'tag omission')
+   https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p#technical_summary
+
+   A blocklist like this is probably the only ways to achieve this. :(
+
+   The previous statement (below) is thereby hopefully not true any more.
+   (Future will tell!)
+
+   "Simplistic paragraph detection with HTML: Somewhat simplistic insertion of
+   <p> -- it will be added around some HTML elements (like <div> and others)
+   which <p> can't contain, so if user uses those, you'll get some empty <p>
+   elements in the DOM (before and after those block elements)."
 ** DONE Prettier CSS
    CLOSED: [2024-09-20 Fri 04:55]
    <tt> and <pre> should use gray background (a la Github or Stackoverflow).
