@@ -25,12 +25,16 @@ Usage
 =====
 Baremark can be invoked in two ways.
 
-* `baremark(MARKDOWN)` – Process `MARKDOWN` and return HTML. (Most of the time,
+* `baremark(markdown)` – Process `markdown` and return HTML. (Most of the time,
   this is the only function you need.)
 
 * `baremark()` – Returns the list of rules used internally by Baremark. This is
   used to extend the Baremark rules (for supporting your own non-standard
   Markdown). See below.
+
+* `baremark.escape(string)` – Expands any characters in `string` that are
+  special in Markdown into HTML `&#…;` entities. This means that further
+  processing will not affect `string`. For example of use, see below.
 
 
 Extending Baremark
@@ -91,11 +95,17 @@ const meta = baremarkHeaders.get()         // get metadata
 Also, multiple rules can be added at the same time:
 
 ```
-baremark().push(
+baremark().unshift(
     [/\[#([^.:\[\]\s]+)\][\t ]*/g, '<a id="$1"></a>'],        // hash anchor
-    [/\b[a-z]+:\/\/[^ \n<>]*[a-z]/gi, '<a href="$&">$&</a>'], // autolink URLs
+    [/\b[a-z]+:\/\/[^ \n<>]*\w/gi,x =>                        // autolink URL
+        `<a href="${baremark.escape(x)}">${baremark.escape(x)}</a>`],
 )
 ```
+
+Above we also use the `baremark.escape()` to prevent the autolinked URL from
+being further processed by Baremark. This stops Markdown characters (like `_`)
+which might occur in the URL from being expanded by later Baremark rules (which
+would result in HTML tags being inserted, breaking the link it).
 
 Finally, since rules are passed exactly as-is to the Javascript string method
 `replace()`, so the [MDN docs] on the subject is recommended reading.
