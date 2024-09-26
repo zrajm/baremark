@@ -18,8 +18,8 @@
 		[/([*_])(?!\1)(\n?(.+\n)*?.*?)\1/g,'<i>$2</i>'],
 		[/~~(\n?(.+\n)*?.*?)~~/g,'<s>$1</s>'],
 		[/:"(\n?(.+\n)*?.*?)":/g,'<q>$1</q>'],
-		[/!\[(\n?.+?(\n.+?)*?\n?)\]\( *\n? *([^\n ]+) *\n? *\)/g,'<img src="$3" alt="$1">'],
-		[/\[(\n?.+?(\n.+?)*?\n?)\]\( *\n? *([^\n ]+) *\n? *\)/g,'<a href="$3">$1</a>'],
+		[/!\[(\n?.+?(\n.+?)*?\n?)\]\( *\n? *([^\n ()]+) *\n? *\)/g,'<img src="$3" alt="$1">'],
+		[/\[(\n?.+?(\n.+?)*?\n?)\]\( *\n? *([^\n ()]+) *\n? *\)/g,'<a href="$3">$1</a>'],
 		[/\[(\n?.+?(\n.+?)*?\n?)\](?:\[(\n?.+?(\n.+?)*?\n?)\])?/g,(w,t,_,n)=>(n=s(n||t),l[n]?`<a href="${l[n][0]}" title="${l[n][1]||''}">${t}</a>`:w)],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/g,(w,m)=>/^<(\/|address|article|aside|blockquote|details|div|[dou]l|fieldset|fig(caption|ure)|footer|form|h\d|header|hgroup|hr|main|menu|nav|p|pre|(no)?script|search|section|style|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]]
 	w.baremark=x=>x===undefined?r:(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())
