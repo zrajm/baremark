@@ -1509,6 +1509,10 @@
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
     "title": "no space in text or url"
   }, {
+    "markdown": "![](y)",
+    "html": "<p><img src=\"y\" alt=\"\"></p>",
+    "title": "empty text"
+  }, {
     "markdown": "![ x](y)",
     "html": "<p><img src=\"y\" alt=\" x\"></p>",
     "title": "leading space in text"
