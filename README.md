@@ -18,7 +18,7 @@ featurefulness.)
 * [Test suite]
 * [Github page]
 
-It is currently 1998 bytes in size *without minification!*
+It is currently 1873 bytes in size *without minification!*
 
 
 Usage
@@ -157,13 +157,17 @@ These limitations might change in the future.
   end of lines with <tt>#</tt> and <tt>```</tt>) but Baremark instead interpret
   these spaces literally.
 
-* Somewhat simplistic insertion of `<p>` – it will be added around some HTML
-  elements (like `<div>` and others) which `<p>` can’t contain, so if user uses
-  those, you’ll get some empty `<p>` elements in the DOM (before and after
-  those block elements).
+* Somewhat simplistic insertion of `<p>` – Any piece of text separated from the
+  rest of the text by blank lines will be considered a paragraph, except if it
+  begins with one of the following block level HTML tags (or their
+  corresponding end tags): `address`, `article`, `aside`, `blockquote`,
+  `details`, `div`, `dl`, `fieldset`, `figcaption`, `figure`, `footer`, `form`,
+  `h1…h6`, `header`, `hgroup`, `hr`, `main`, `menu`, `nav`, `noscript`, `ol`,
+  `p`, `pre`, `script`, `search`, `section`, `style`, `table`, `ul`.
 
-* Newline and whitespace is allowed inside the brackets and parentheses of the
-  link tags, but not between `](`, `][` or inside URLs.
+* Newline and whitespace (though not blank lines) is allowed inside the
+  brackets and parentheses of the link tags, but not between `](`, `][` or
+  inside URLs.
 
 
 Markdown syntax
@@ -172,8 +176,8 @@ Markdown syntax used in Baremark resembles both classical and GitHub-flavored
 Markdown versions, however it does not support some advanced features (such as
 tables). The following tags are supported:
 
-- Headings, single-line form: `# Heading level 1`, `## Heading level 2` and so
-  on
+- ATX style headings, single-line form: `# Heading level 1`, `## Heading level
+  2` etc.
 - Setext headings of levels 1 and 2:
 ```
 Heading level 1
@@ -258,6 +262,8 @@ size) but add several features (such as reference links) and fixes some bugs
 
 It was shortened by:
 
+* Regexes are expanded by preprocessing (so that they may be written even
+  shorter).
 * Tabs for indentation.
 * Shortening all variable names to single letter.
 * Using fat arrow functions (`=>`).
@@ -266,18 +272,18 @@ It was shortened by:
 * Single letter groups in regexes changed to character classes (e.g. `(-|*)` to
   `[-*]`).
 * Using Javascript template strings (`` `…` ``).
-* Not allowing space before `#`, `---` and `===` in headings, and before/after
+* Not allowing space before `#`, `---` and `===` in headings, or before/after
   `` ``` ``.
 * Replaced unnecessary `.*?` with `.*` (greediness is fine if anchored by `\n`,
   since `.` won’t match newlines).
 * Use HTML `<b>` instead of `<strong>` and `<i>` instead of `<em>`.
 * Removing unneccesary spaces in source.
-* `esc` rewritten.
+* `escape` rewritten.
 
 
 Added features
 --------------
-* Exports the `esc` method (so you can use it when adding rules).
+* Exports the `escape` method (so you can use it when adding rules).
 * `<hr>` need only 3 chars, and may be either `_`, `-` or `*` (as Markdown standard says).
 * Supports Markdown escaping (using `` \ `` character).
 

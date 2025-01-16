@@ -11,6 +11,10 @@
     "markdown": "xx\r\nyy",
     "html": "<p>xx\nyy</p>",
     "title": "Windows newline (\r\n)"
+  }, {
+    "markdown": "xx\r\nyy\r\nzz",
+    "html": "<p>xx\nyy\nzz</p>",
+    "title": "multiple Windows newlines (\r\n)"
   },
   "Paragraphs", {
     "markdown": "xx",
