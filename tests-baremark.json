@@ -1206,8 +1206,8 @@
     "title": "leading space in url"
   }, {
     "markdown": "[x](y z)",
-    "html": "<p>[x](y z)</p>",
-    "title": "middle space in url, not allowed"
+    "html": "<p><a href=\"y z\">x</a></p>",
+    "title": "middle space in url"
   }, {
     "markdown": "[x](y )",
     "html": "<p><a href=\"y\">x</a></p>",
@@ -1230,8 +1230,8 @@
     "title": "leading newline in url"
   }, {
     "markdown": "[x](y\nz)",
-    "html": "<p>[x](y\nz)</p>",
-    "title": "middle newline in url, not allowed"
+    "html": "<p><a href=\"y z\">x</a></p>",
+    "title": "middle newline in url"
   }, {
     "markdown": "[x](y\n)",
     "html": "<p><a href=\"y\">x</a></p>",
@@ -1534,8 +1534,8 @@
     "title": "leading space in url"
   }, {
     "markdown": "![x](y z)",
-    "html": "<p>![x](y z)</p>",
-    "title": "middle space in url, not allowed"
+    "html": "<p><img src=\"y z\" alt=\"x\"></p>",
+    "title": "middle space in url"
   }, {
     "markdown": "![x](y )",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
@@ -1558,8 +1558,8 @@
     "title": "leading newline in url"
   }, {
     "markdown": "![x](y\nz)",
-    "html": "<p>![x](y\nz)</p>",
-    "title": "middle newline in url, not allowed"
+    "html": "<p><img src=\"y z\" alt=\"x\"></p>",
+    "title": "middle newline in url"
   }, {
     "markdown": "![x](y\n)",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",

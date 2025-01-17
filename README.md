@@ -18,7 +18,7 @@ featurefulness.)
 * [Test suite]
 * [Github page]
 
-It is currently 1873 bytes in size *without minification!*
+It is currently 1854 bytes in size *without minification!*
 
 
 Usage
@@ -223,9 +223,12 @@ etc...
 4. ordered item 4
 ```
 
-- Both reference links and inline links are supported. Newline and whitespace
-  is allowed inside the link texts, but not between the `](` and `][`. The
-  reference text is case sensitive.
+- Reference links (`[text][ref]` or `[ref]`), and inline links (`[text](url)`)
+  are both supported. Spaces and single newlines (but not multiple consecutive
+  newlines) are allowed in both `text` and `url` but not between `](` and `][`.
+  Reference text (`ref`) is case sensitive. Any whitespace occurring inside
+  `url` is replaced by single spaces, and leading/trailing whitespace is
+  removed. (But you should not be putting whitespace in your URLs!)
 
 ```
 * This is an [inline link](http://example.com).
