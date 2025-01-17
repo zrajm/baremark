@@ -1512,7 +1512,7 @@
     "html": "<p>[text] <a href=\"url\" title=\"\">ref</a></p>",
     "title": "space between <tt>text</tt> and <tt>ref</tt>, not allowed"
   },
-  "Images <tt>![text](url)</tt>", {
+  "Inline images <tt>![text](url)</tt>", {
     "markdown": "![x](y)",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
     "title": "no space in text or url"

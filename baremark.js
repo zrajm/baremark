@@ -18,8 +18,7 @@
 		[/([*_])(?!\1)X\1/,'<i>$2</i>'],
 		[/~~X~~/,'<s>$1</s>'],
 		[/:"X":/,'<q>$1</q>'],
-		[/!\[X\]\(X\)/,(_,t,u)=>`<img src="${s(u)}" alt="${t}">`],
-		[/\[X\]\(X\)/,(_,t,u)=>`<a href="${s(u)}">${t}</a>`],
+		[/(!?)\[X\]\(X\)/,(_,q,t,u)=>q?`<img src="${s(u)}" alt="${t}">`:`<a href="${s(u)}">${t}</a>`],
 		[/\[X\](?:\[X\])?/,(w,t,n)=>(n=s(n||t),l[n]?`<a href="${l[n][0]}" title="${l[n][1]||''}">${t}</a>`:w)],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/,(w,m)=>/^<(\/|address|article|aside|blockquote|details|div|[dou]l|fieldset|fig(caption|ure)|footer|form|h\d|header|hgroup|hr|main|menu|nav|p|pre|(no)?script|search|section|style|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]
 	].map(([r,s])=>[RegExp(r.source.replace(/X/g,X),'g'),s])
