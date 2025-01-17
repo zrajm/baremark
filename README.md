@@ -9,16 +9,16 @@ first, which wasn’t previously possible.)
 
 *Baremark* is a minimal (but extendable) [Markdown] parser written in
 Javascript, originally inspired by Van Tigranyan’s Gist [Landmark], but with
-added bugfixes, optimizations, support for reference links, and a little more
-*CommonMark* compliance. (Note that Baremark never will be *fully* CommonMark
-compliant, as the intent of Baremark is source code brevity above
+added bugfixes, optimizations, support for reference links/images, and a little
+more *CommonMark* compliance. (Note that Baremark never will be *fully*
+CommonMark compliant, as the intent of Baremark is source code brevity above
 featurefulness.)
 
 * [Source code]
 * [Test suite]
 * [Github page]
 
-It is currently 1827 bytes in size *without minification!*
+It is currently 1894 bytes in size *without minification!*
 
 
 Usage
@@ -223,23 +223,36 @@ etc...
 4. ordered item 4
 ```
 
-- Reference links (`[text][ref]` or `[ref]`), and inline links (`[text](url)`)
-  are both supported. Spaces and single newlines (but not multiple consecutive
-  newlines) are allowed in both `text` and `url` but not between `](` and `][`.
-  Reference text (`ref`) is case sensitive. Any whitespace occurring inside
-  `url` is replaced by single spaces, and leading/trailing whitespace is
-  removed. (But you should not be putting whitespace in your URLs!)
+- Inline links/images. (Images begin with an exclamation point, links do not.)
+  For inline items, the link URL is specified in-place, within parentheses. For
+  images (`[text](image)`) the `text` specifies the alt-text to use in the
+  resulting `<img>` HTML tag (you may leave it empty).
 
 ```
-* This is an [inline link](http://example.com).
-* This is a [reference link].
-* And this is a reference link with [custom link text][reference link 2].
+A link to [Klingonska Akademien](http://klingonska.org).
 
-[reference link]: http://example.com
-[reference link 2]: http://example.com "Optional page title here"
+![A Picture](picture.jpg)
 ```
 
-- Images: `![alt text](http://example.com/flower.jpg)`
+- Reference links/images. (Images start with an exclamation point, links do
+  not.) *Reference* items uses a reference, given in brackets, which points to
+  a definition found elsewhere in the document. The reference is optional, and
+  if left out the text will be used as a reference. If no definition exists for
+  a reference, the markdown is left as-is in the outputted document. The
+  definitions may be put anywhere in the document, but are customarily put the
+  end of the file or the current section of text.
+
+```
+A link to [Klingonska Akademien][KA].
+A link to [KLI].
+
+![A Picture][pic]
+
+[KA]: http://klingonska.org
+[KLI]: http://kli.org "Optional page title here"
+[pic]: picture.jpg
+```
+
 - Horizontal rule: `***`, `---`, or `___` (three or more of either asterisk,
   dash or underscore on a line separated by blank lines).
 - Paragraphs: Just as in standard Markdown, any non-special text is put inside
@@ -260,8 +273,8 @@ preformatted blocks), in which case it will be escaped appropriately.
 History
 =======
 Baremark is based on based on VanTigranyan’s Gist [Landmark] (2060 bytes in
-size) but add several features (such as reference links) and fixes some bugs
-(see below).
+size) but add several features (such as reference links/images) and fixes some
+bugs (see below).
 
 It was shortened by:
 

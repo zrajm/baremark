@@ -1680,5 +1680,238 @@
     "NOTE": "Unsupported CommonMark feature; causes <tt>[ref]</tt> to be interpreted as link",
     "html": "<p>[text] <a href=\"url\" title=\"\">ref</a></p>",
     "title": "space between <tt>text</tt> and <tt>ref</tt>, not allowed"
+  },
+  "Reference images <tt>![alttext][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
+    "markdown": "![x][y]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "<tt>text</tt> and <tt>ref</tt> without space"
+  }, {
+    "markdown": "![x]\n\n[x]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "<tt>text</tt> without space, <tt>ref</tt> unspecified"
+  }, {
+    "markdown": "![ x][y]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\" x\"></p>",
+    "title": "<tt>text</tt> with leading space"
+  }, {
+    "markdown": "![x y][z]\n\n[z]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x y\"></p>",
+    "title": "<tt>text</tt> with middle space"
+  }, {
+    "markdown": "![x ][y]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x \"></p>",
+    "title": "<tt>text</tt> with trailing space"
+  }, {
+    "markdown": "![x][ y]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "<tt>ref</tt> with leading space"
+  }, {
+    "markdown": "![x][y z]\n\n[y z]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "<tt>ref</tt> with middle space"
+  }, {
+    "markdown": "![x][y ]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "<tt>ref</tt> with trailing space"
+  }, {
+    "markdown": "![ x]\n\n[x]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\" x\"></p>",
+    "title": "<tt>text</tt> with leading space, <tt>ref</tt> unspecified"
+  }, {
+    "markdown": "![x y]\n\n[x y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x y\"></p>",
+    "title": "<tt>text</tt> with middle space, <tt>ref</tt> unspecified"
+  }, {
+    "markdown": "![x ]\n\n[x]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x \"></p>",
+    "title": "<tt>text</tt> with trailing space, <tt>ref</tt> unspecified"
+  }, {
+    "markdown": "![x][y]\n\n[ y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>ref</tt> with leading space"
+  }, {
+    "markdown": "![x][y z]\n\n[y z]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>ref</tt> with middle space"
+  }, {
+    "markdown": "![x][y]\n\n[y ]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>ref</tt> with trailing space"
+  }, {
+    "markdown": "![x][y]\n\n[y]: < url>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with leading space"
+  }, {
+    "markdown": "![x][y z]\n\n[y z]: <u  r  l>",
+    "html": "<p><img src=\"u r l\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with middle space"
+  }, {
+    "markdown": "![x][y]\n\n[y]: <url >",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with trailing space"
+  }, {
+    "markdown": "![\nx][y]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"\nx\"></p>",
+    "title": "<tt>text</tt> with leading newline"
+  }, {
+    "markdown": "![x\ny][z]\n\n[z]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\ny\"></p>",
+    "title": "<tt>text</tt> with middle newline"
+  }, {
+    "markdown": "![x\n][y]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\n\"></p>",
+    "title": "<tt>text</tt> with trailing newline"
+  }, {
+    "markdown": "![x][\ny]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "<tt>ref</tt> with leading newline"
+  }, {
+    "markdown": "![x][y\nz]\n\n[y z]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "<tt>ref</tt> with middle newline"
+  }, {
+    "markdown": "![x][y\n]\n\n[y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "<tt>ref</tt> with trailing newline"
+  }, {
+    "markdown": "![\nx]\n\n[x]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"\nx\"></p>",
+    "title": "<tt>text</tt> with leading newline, <tt>ref</tt> unspecified"
+  }, {
+    "markdown": "![x\ny]\n\n[x y]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\ny\"></p>",
+    "title": "<tt>text</tt> with middle newline, <tt>ref</tt> unspecified"
+  }, {
+    "markdown": "![x\n]\n\n[x]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\n\"></p>",
+    "title": "<tt>text</tt> with trailing newline, <tt>ref</tt> unspecified"
+  }, {
+    "markdown": "![x][y]\n\n[\ny]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>ref</tt> with leading newline"
+  }, {
+    "markdown": "![x][y z]\n\n[y\nz]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>ref</tt> with middle newline"
+  }, {
+    "markdown": "![x][y]\n\n[y\n]: url",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>ref</tt> with trailing newline"
+  }, {
+    "markdown": "![x][y]\n\n[\ny]: <\nurl>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with leading newline"
+  }, {
+    "markdown": "![x][y z]\n\n[y\nz]: <u\nr\nl>",
+    "html": "<p><img src=\"u r l\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with middle newline"
+  }, {
+    "markdown": "![x][y]\n\n[y\n]: <url\n>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with trailing newline"
+  }, {
+    "markdown": "![\n\nx][y]\n\n[y]: url",
+    "NOTE": "Causes <tt>[ref]</tt> to be interpreted as link",
+    "html": "<p>![</p>\n\n<p>x]<a href=\"url\" title=\"\">y</a></p>",
+    "title": "<tt>text</tt> with leading blank line, not allowed"
+  }, {
+    "markdown": "![x\n\ny][z]\n\n[z]: url",
+    "NOTE": "Causes <tt>[ref]</tt> to be interpreted as link",
+    "html": "<p>![x</p>\n\n<p>y]<a href=\"url\" title=\"\">z</a></p>",
+    "title": "<tt>text</tt> with middle blank line, not allowed"
+  }, {
+    "markdown": "![x\n\n][y]\n\n[y]: url",
+    "NOTE": "Causes <tt>[ref]</tt> to be interpreted as link",
+    "html": "<p>![x</p>\n\n<p>]<a href=\"url\" title=\"\">y</a></p>",
+    "title": "<tt>text</tt> with trailing blank line, not allowed"
+  }, {
+    "markdown": "![x][\n\ny]\n\n[y]: url",
+    "html": "<p>![x][</p>\n\n<p>y]</p>",
+    "title": "<tt>ref</tt> with leading blank line, not allowed"
+  }, {
+    "markdown": "![x][y\n\nz]\n\n[y z]: url",
+    "html": "<p>![x][y</p>\n\n<p>z]</p>",
+    "title": "<tt>ref</tt> with middle blank line, not allowed"
+  }, {
+    "markdown": "![x][y\n\n]\n\n[y]: url",
+    "html": "<p>![x][y</p>\n\n<p>]</p>",
+    "title": "<tt>ref</tt> with trailing blank line, not allowed"
+  }, {
+    "markdown": "![\n\nx]\n\n[x]: url",
+    "html": "<p>![</p>\n\n<p>x]</p>",
+    "title": "<tt>text</tt> with leading blank line, <tt>ref</tt> unspecified, not allowed"
+  }, {
+    "markdown": "![x\n\ny]\n\n[x y]: url",
+    "html": "<p>![x</p>\n\n<p>y]</p>",
+    "title": "<tt>text</tt> with middle blank line, <tt>ref</tt> unspecified, not allowed"
+  }, {
+    "markdown": "![x\n\n]\n\n[x]: url",
+    "html": "<p>![x</p>\n\n<p>]</p>",
+    "title": "<tt>text</tt> with trailing blank line, <tt>ref</tt> unspecified, not allowed"
+  }, {
+    "markdown": "![x][y]\n\n[\n\ny]: url",
+    "html": "<p>![x][y]</p>\n\n<p>[</p>\n\n<p>y]: url</p>",
+    "title": "definition <tt>ref</tt> with leading blank line, not allowed"
+  }, {
+    "markdown": "![x][y z]\n\n[y\n\nz]: url",
+    "html": "<p>![x][y z]</p>\n\n<p>[y</p>\n\n<p>z]: url</p>",
+    "title": "definition <tt>ref</tt> with middle blank line, not allowed"
+  }, {
+    "markdown": "![x][y]\n\n[y\n\n]: url",
+    "html": "<p>![x][y]</p>\n\n<p>[y</p>\n\n<p>]: url</p>",
+    "title": "definition <tt>ref</tt> with trailing blank line, not allowed"
+  }, {
+    "markdown": "![x][y]\n\n[y]: <\n\nurl>",
+    "html": "<p>![x][y]</p>\n\n<p>[y]: <</p>\n\n<p>url></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with leading blank line, not allowed"
+  }, {
+    "markdown": "![x][y z]\n\n[yz]: <ur\n\nl>",
+    "html": "<p>![x][y z]</p>\n\n<p>[yz]: <ur</p>\n\n<p>l></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with middle blank line, not allowed"
+  }, {
+    "markdown": "![x][y]\n\n[y]: <url\n\n>",
+    "FIXME": "A bit weird?",
+    "html": "<p>![x][y]</p>\n\n<p>[y]: <url</p>\n\n\n<blockquote>\n\n\n\n</blockquote>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with trailing blank line, not allowed"
+  }, {
+    "markdown": "[foo]: /url 'title'\n\n![foo]\n",
+    "html": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
+    "title": "definition <tt>title</tt> single-quoted"
+  }, {
+    "markdown": "[foo]: /url \"title\"\n\n![foo]\n",
+    "html": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
+    "title": "definition <tt>title</tt> double-quoted"
+  }, {
+    "markdown": "[foo]: /url (title)\n\n![foo]\n",
+    "html": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
+    "title": "definition <tt>title</tt> with parentheses"
+  }, {
+    "markdown": "![*\\*][ref]\n\n[ref]: link \"title\"",
+    "html": "<p><img src=\"link\" title=\"title\" alt=\"*&#42;\"></p>",
+    "title": "<tt>text</tt> with backslash escape"
+  }, {
+    "markdown": "[text][*\\*]\n\n[**]: link \"title\"",
+    "NOTE": "Ref and definition must look exactly the same, including escapes",
+    "html": "<p>[text][*&#42;]</p>",
+    "title": "<tt>ref</tt> with backslash escape only, not allowed"
+  }, {
+    "markdown": "[text][**]\n\n[*\\*]: link \"title\"",
+    "NOTE": "Ref and definition must look exactly the same, including escapes",
+    "html": "<p>[text][**]</p>",
+    "title": "definition <tt>ref</tt> with backslash escape only, not allowed"
+  }, {
+    "markdown": "![text][*\\*]\n\n[*\\*]: link \"title\"",
+    "NOTE": "Ref and definition must look exactly the same, including escapes",
+    "html": "<p><img src=\"link\" title=\"title\" alt=\"text\"></p>",
+    "title": "<tt>ref</tt> and definition <tt>ref</tt> with backslash escape"
+  }, {
+    "markdown": "![text][ref]\n\n[ref]: link \"*\\*\"",
+    "html": "<p><img src=\"link\" title=\"*&#42;\" alt=\"text\"></p>",
+    "title": "definition <tt>title</tt> with backslash escape"
+  }, {
+    "markdown": "![text] [ref]\n\n[ref]: url",
+    "NOTE": "Unsupported CommonMark feature; causes <tt>[ref]</tt> to be interpreted as link",
+    "html": "<p>![text] <a href=\"url\" title=\"\">ref</a></p>",
+    "title": "space between <tt>text</tt> and <tt>ref</tt>, not allowed"
   }
 ]

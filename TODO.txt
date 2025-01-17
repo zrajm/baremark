@@ -19,7 +19,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/13] Features
+* [1/13] Features
 ** TODO Don't process markup in URLs
    This should be done my expanding all markup characters into '&#...;' so
    that, for example, `__...__` are not expanded into `<i>...</i>` inside URLs.
@@ -41,13 +41,13 @@
    two newlines', this (intentionally) allows for whitespace at the beginning
    and end of the string. This is useful when the string is surrounded by
    markup characters (e.g. inside '[...]' etc.) less so when markup isn't
-   surrounding the text (as with paragraphs, or in a [bullet or ordered] list
-   item, where there's no markup character to delineate the end).
+   surrounding the text (as with paragraphs, ATX headers `# ...`), or in a
+   [bullet or ordered] list items, where there's no markup character to
+   delineate the end).
 
    Would it be beneficial to be able to use 'Y' in the regexes to indicate a
    string that may not begin or end with a newline, but otherwise match the
    same as 'X'?
-** TODO Add '![text][ref]' image support
 ** TODO '  \n' should result in '<br>'
    Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
    interfere with backslash escapes).
@@ -82,7 +82,9 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [22/22] FINISHED
+* [23/23] FINISHED
+** DONE Add '![text][ref]' image support
+   CLOSED: [2025-01-18 Sat 00:30]
 ** DONE Improved insertion of <p> tags
    CLOSED: [2024-09-24 Tue 20:30]
    Will no longer insert <p> around the following HTML tags:
