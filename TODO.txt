@@ -4,14 +4,35 @@
 * [0/2] Webpage
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/1] Tests
+* [0/4] Tests
+** TODO Improve test names
+   Under 'Reference links' <tt>...</tt> is used to mark the variables set in
+   the tests, this improves readability. Use this for all tests.
+** TODO Combine 'Inline links' & 'Inline images'
+   Since this is the same function in the code, they should be tested together.
+   (Maybe the number of test cases can also be reduced?)
+** TODO Upgrade CommonMark tests to latest version
+   https://spec.commonmark.org/0.31.2/
 ** TODO Use passing CommonMark 0.30 tests as baseline
 * [0/2] Size
 ** TODO Remove optional trailing HTML tags
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/10] Features
+* [0/12] Features
+** TODO Optimize `[ref]: url "title"` code
+   I think this can benefit from more use of 'X'.
+** TODO Optimize use of preprocessing step
+   Currently 'X' is used in regexes to match 'any string that does not contain
+   two newlines', this (intentionally) allows for whitespace at the beginning
+   and end of the string. This is useful when the string is surrounded by
+   markup characters (e.g. inside '[...]' etc.) less so when markup isn't
+   surrounding the text (as with paragraphs, or in a [bullet or ordered] list
+   item, where there's no markup character to delineate the end).
+
+   Would it be beneficial to be able to use 'Y' in the regexes to indicate a
+   string that may not begin or end with a newline, but otherwise match the
+   same as 'X'?
 ** TODO Add '![text][ref]' image support
 ** TODO '  \n' should result in '<br>'
    Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't

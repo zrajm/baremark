@@ -1373,6 +1373,18 @@
     "html": "<p><a href=\"url\" title=\"\">x</a></p>",
     "title": "definition <tt>ref</tt> with trailing space"
   }, {
+    "markdown": "[x][y]\n\n[y]: < url>",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with leading space"
+  }, {
+    "markdown": "[x][y z]\n\n[y z]: <u  r  l>",
+    "html": "<p><a href=\"u r l\" title=\"\">x</a></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with middle space"
+  }, {
+    "markdown": "[x][y]\n\n[y]: <url >",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with trailing space"
+  }, {
     "markdown": "[\nx][y]\n\n[y]: url",
     "html": "<p><a href=\"url\" title=\"\">\nx</a></p>",
     "title": "<tt>text</tt> with leading newline"
@@ -1420,6 +1432,18 @@
     "markdown": "[x][y]\n\n[y\n]: url",
     "html": "<p><a href=\"url\" title=\"\">x</a></p>",
     "title": "definition <tt>ref</tt> with trailing newline"
+  }, {
+    "markdown": "[x][y]\n\n[\ny]: <\nurl>",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with leading newline"
+  }, {
+    "markdown": "[x][y z]\n\n[y\nz]: <u\nr\nl>",
+    "html": "<p><a href=\"u r l\" title=\"\">x</a></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with middle newline"
+  }, {
+    "markdown": "[x][y]\n\n[y\n]: <url\n>",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with trailing newline"
   }, {
     "markdown": "[\n\nx][y]\n\n[y]: url",
     "NOTE": "Causes <tt>[ref]</tt> to be interpreted as link",
@@ -1471,6 +1495,19 @@
     "markdown": "[x][y]\n\n[y\n\n]: url",
     "html": "<p>[x][y]</p>\n\n<p>[y</p>\n\n<p>]: url</p>",
     "title": "definition <tt>ref</tt> with trailing blank line, not allowed"
+  }, {
+    "markdown": "[x][y]\n\n[y]: <\n\nurl>",
+    "html": "<p>[x][y]</p>\n\n<p>[y]: <</p>\n\n<p>url></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with leading blank line, not allowed"
+  }, {
+    "markdown": "[x][y z]\n\n[yz]: <ur\n\nl>",
+    "html": "<p>[x][y z]</p>\n\n<p>[yz]: <ur</p>\n\n<p>l></p>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with middle blank line, not allowed"
+  }, {
+    "markdown": "[x][y]\n\n[y]: <url\n\n>",
+    "FIXME": "A bit weird?",
+    "html": "<p>[x][y]</p>\n\n<p>[y]: <url</p>\n\n\n<blockquote>\n\n\n\n</blockquote>",
+    "title": "definition <tt>url</tt> bracketed by greater & less than, with trailing blank line, not allowed"
   }, {
     "markdown": "[foo]: /url 'title'\n\n[foo]\n",
     "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
