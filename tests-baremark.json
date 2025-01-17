@@ -1312,201 +1312,201 @@
     "html": "<p>[x] (dest)</p>",
     "title": "space between end bracket and start parethesis, not allowed"
   },
-  "Reference links <tt>[text][ref]</tt> + <tt>[ref]: dest \"title\"</tt> (not supported by Landmark)", {
-    "markdown": "[x][y]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "no space in text or ref"
+  "Reference links <tt>[text][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
+    "markdown": "[x][y]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "<tt>text</tt> and <tt>ref</tt> without space"
   }, {
-    "markdown": "[x]\n\n[x]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "no space in text-as-ref"
+    "markdown": "[x]\n\n[x]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "<tt>text</tt> without space, <tt>ref</tt> unspecified"
   }, {
-    "markdown": "[ x][y]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\"> x</a></p>",
-    "title": "leading space in text"
+    "markdown": "[ x][y]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\"> x</a></p>",
+    "title": "<tt>text</tt> with leading space"
   }, {
-    "markdown": "[x y][z]\n\n[z]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x y</a></p>",
-    "title": "middle space in text"
+    "markdown": "[x y][z]\n\n[z]: url",
+    "html": "<p><a href=\"url\" title=\"\">x y</a></p>",
+    "title": "<tt>text</tt> with middle space"
   }, {
-    "markdown": "[x ][y]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x </a></p>",
-    "title": "trailing space in text"
+    "markdown": "[x ][y]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x </a></p>",
+    "title": "<tt>text</tt> with trailing space"
   }, {
-    "markdown": "[x][ y]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "leading space in ref"
+    "markdown": "[x][ y]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "<tt>ref</tt> with leading space"
   }, {
-    "markdown": "[x][y z]\n\n[y z]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "middle space in ref"
+    "markdown": "[x][y z]\n\n[y z]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "<tt>ref</tt> with middle space"
   }, {
-    "markdown": "[x][y ]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "trailing space in ref"
+    "markdown": "[x][y ]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "<tt>ref</tt> with trailing space"
   }, {
-    "markdown": "[ x]\n\n[x]: dest",
-    "html": "<p><a href=\"dest\" title=\"\"> x</a></p>",
-    "title": "leading space in text-as-ref"
+    "markdown": "[ x]\n\n[x]: url",
+    "html": "<p><a href=\"url\" title=\"\"> x</a></p>",
+    "title": "<tt>text</tt> with leading space, <tt>ref</tt> unspecified"
   }, {
-    "markdown": "[x y]\n\n[x y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x y</a></p>",
-    "title": "middle space in text-as-ref"
+    "markdown": "[x y]\n\n[x y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x y</a></p>",
+    "title": "<tt>text</tt> with middle space, <tt>ref</tt> unspecified"
   }, {
-    "markdown": "[x ]\n\n[x]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x </a></p>",
-    "title": "trailing space in text-as-ref"
+    "markdown": "[x ]\n\n[x]: url",
+    "html": "<p><a href=\"url\" title=\"\">x </a></p>",
+    "title": "<tt>text</tt> with trailing space, <tt>ref</tt> unspecified"
   }, {
-    "markdown": "[x][y]\n\n[ y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "leading space in definition"
+    "markdown": "[x][y]\n\n[ y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>ref</tt> with leading space"
   }, {
-    "markdown": "[x][y z]\n\n[y z]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "middle space in definition"
+    "markdown": "[x][y z]\n\n[y z]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>ref</tt> with middle space"
   }, {
-    "markdown": "[x][y]\n\n[y ]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "trailing space in definition"
+    "markdown": "[x][y]\n\n[y ]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>ref</tt> with trailing space"
   }, {
-    "markdown": "[\nx][y]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">\nx</a></p>",
-    "title": "leading newline in text"
+    "markdown": "[\nx][y]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\">\nx</a></p>",
+    "title": "<tt>text</tt> with leading newline"
   }, {
-    "markdown": "[x\ny][z]\n\n[z]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x\ny</a></p>",
-    "title": "middle newline in text"
+    "markdown": "[x\ny][z]\n\n[z]: url",
+    "html": "<p><a href=\"url\" title=\"\">x\ny</a></p>",
+    "title": "<tt>text</tt> with middle newline"
   }, {
-    "markdown": "[x\n][y]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x\n</a></p>",
-    "title": "trailing newline in text"
+    "markdown": "[x\n][y]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x\n</a></p>",
+    "title": "<tt>text</tt> with trailing newline"
   }, {
-    "markdown": "[x][\ny]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "leading newline in ref"
+    "markdown": "[x][\ny]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "<tt>ref</tt> with leading newline"
   }, {
-    "markdown": "[x][y\nz]\n\n[y z]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "middle newline in ref"
+    "markdown": "[x][y\nz]\n\n[y z]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "<tt>ref</tt> with middle newline"
   }, {
-    "markdown": "[x][y\n]\n\n[y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "trailing newline in ref"
+    "markdown": "[x][y\n]\n\n[y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "<tt>ref</tt> with trailing newline"
   }, {
-    "markdown": "[\nx]\n\n[x]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">\nx</a></p>",
-    "title": "leading newline in text-as-ref"
+    "markdown": "[\nx]\n\n[x]: url",
+    "html": "<p><a href=\"url\" title=\"\">\nx</a></p>",
+    "title": "<tt>text</tt> with leading newline, <tt>ref</tt> unspecified"
   }, {
-    "markdown": "[x\ny]\n\n[x y]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x\ny</a></p>",
-    "title": "middle newline in text-as-ref"
+    "markdown": "[x\ny]\n\n[x y]: url",
+    "html": "<p><a href=\"url\" title=\"\">x\ny</a></p>",
+    "title": "<tt>text</tt> with middle newline, <tt>ref</tt> unspecified"
   }, {
-    "markdown": "[x\n]\n\n[x]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x\n</a></p>",
-    "title": "trailing newline in text-as-ref"
+    "markdown": "[x\n]\n\n[x]: url",
+    "html": "<p><a href=\"url\" title=\"\">x\n</a></p>",
+    "title": "<tt>text</tt> with trailing newline, <tt>ref</tt> unspecified"
   }, {
-    "markdown": "[x][y]\n\n[\ny]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "leading newline in definition"
+    "markdown": "[x][y]\n\n[\ny]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>ref</tt> with leading newline"
   }, {
-    "markdown": "[x][y z]\n\n[y\nz]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "middle newline in definition"
+    "markdown": "[x][y z]\n\n[y\nz]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>ref</tt> with middle newline"
   }, {
-    "markdown": "[x][y]\n\n[y\n]: dest",
-    "html": "<p><a href=\"dest\" title=\"\">x</a></p>",
-    "title": "trailing newline in definition"
+    "markdown": "[x][y]\n\n[y\n]: url",
+    "html": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "title": "definition <tt>ref</tt> with trailing newline"
   }, {
-    "markdown": "[\n\nx][y]\n\n[y]: dest",
+    "markdown": "[\n\nx][y]\n\n[y]: url",
     "NOTE": "Causes <tt>[ref]</tt> to be interpreted as link",
-    "html": "<p>[</p>\n\n<p>x]<a href=\"dest\" title=\"\">y</a></p>",
-    "title": "leading blank line in text, not allowed"
+    "html": "<p>[</p>\n\n<p>x]<a href=\"url\" title=\"\">y</a></p>",
+    "title": "<tt>text</tt> with leading blank line, not allowed"
   }, {
-    "markdown": "[x\n\ny][z]\n\n[z]: dest",
+    "markdown": "[x\n\ny][z]\n\n[z]: url",
     "NOTE": "Causes <tt>[ref]</tt> to be interpreted as link",
-    "html": "<p>[x</p>\n\n<p>y]<a href=\"dest\" title=\"\">z</a></p>",
-    "title": "middle blank line in text, not allowed"
+    "html": "<p>[x</p>\n\n<p>y]<a href=\"url\" title=\"\">z</a></p>",
+    "title": "<tt>text</tt> with middle blank line, not allowed"
   }, {
-    "markdown": "[x\n\n][y]\n\n[y]: dest",
+    "markdown": "[x\n\n][y]\n\n[y]: url",
     "NOTE": "Causes <tt>[ref]</tt> to be interpreted as link",
-    "html": "<p>[x</p>\n\n<p>]<a href=\"dest\" title=\"\">y</a></p>",
-    "title": "trailing blank line in text, not allowed"
+    "html": "<p>[x</p>\n\n<p>]<a href=\"url\" title=\"\">y</a></p>",
+    "title": "<tt>text</tt> with trailing blank line, not allowed"
   }, {
-    "markdown": "[x][\n\ny]\n\n[y]: dest",
+    "markdown": "[x][\n\ny]\n\n[y]: url",
     "html": "<p>[x][</p>\n\n<p>y]</p>",
-    "title": "leading blank line in ref, not allowed"
+    "title": "<tt>ref</tt> with leading blank line, not allowed"
   }, {
-    "markdown": "[x][y\n\nz]\n\n[y z]: dest",
+    "markdown": "[x][y\n\nz]\n\n[y z]: url",
     "html": "<p>[x][y</p>\n\n<p>z]</p>",
-    "title": "middle blank line in ref, not allowed"
+    "title": "<tt>ref</tt> with middle blank line, not allowed"
   }, {
-    "markdown": "[x][y\n\n]\n\n[y]: dest",
+    "markdown": "[x][y\n\n]\n\n[y]: url",
     "html": "<p>[x][y</p>\n\n<p>]</p>",
-    "title": "trailing blank line in ref, not allowed"
+    "title": "<tt>ref</tt> with trailing blank line, not allowed"
   }, {
-    "markdown": "[\n\nx]\n\n[x]: dest",
+    "markdown": "[\n\nx]\n\n[x]: url",
     "html": "<p>[</p>\n\n<p>x]</p>",
-    "title": "leading blank line in text-as-ref, not allowed"
+    "title": "<tt>text</tt> with leading blank line, <tt>ref</tt> unspecified, not allowed"
   }, {
-    "markdown": "[x\n\ny]\n\n[x y]: dest",
+    "markdown": "[x\n\ny]\n\n[x y]: url",
     "html": "<p>[x</p>\n\n<p>y]</p>",
-    "title": "middle blank line in text-as-ref, not allowed"
+    "title": "<tt>text</tt> with middle blank line, <tt>ref</tt> unspecified, not allowed"
   }, {
-    "markdown": "[x\n\n]\n\n[x]: dest",
+    "markdown": "[x\n\n]\n\n[x]: url",
     "html": "<p>[x</p>\n\n<p>]</p>",
-    "title": "trailing blank line in text-as-ref, not allowed"
+    "title": "<tt>text</tt> with trailing blank line, <tt>ref</tt> unspecified, not allowed"
   }, {
-    "markdown": "[x][y]\n\n[\n\ny]: dest",
-    "html": "<p>[x][y]</p>\n\n<p>[</p>\n\n<p>y]: dest</p>",
-    "title": "leading blank line in definition, not allowed"
+    "markdown": "[x][y]\n\n[\n\ny]: url",
+    "html": "<p>[x][y]</p>\n\n<p>[</p>\n\n<p>y]: url</p>",
+    "title": "definition <tt>ref</tt> with leading blank line, not allowed"
   }, {
-    "markdown": "[x][y z]\n\n[y\n\nz]: dest",
-    "html": "<p>[x][y z]</p>\n\n<p>[y</p>\n\n<p>z]: dest</p>",
-    "title": "middle blank line in definition, not allowed"
+    "markdown": "[x][y z]\n\n[y\n\nz]: url",
+    "html": "<p>[x][y z]</p>\n\n<p>[y</p>\n\n<p>z]: url</p>",
+    "title": "definition <tt>ref</tt> with middle blank line, not allowed"
   }, {
-    "markdown": "[x][y]\n\n[y\n\n]: dest",
-    "html": "<p>[x][y]</p>\n\n<p>[y</p>\n\n<p>]: dest</p>",
-    "title": "trailing blank line in definition, not allowed"
+    "markdown": "[x][y]\n\n[y\n\n]: url",
+    "html": "<p>[x][y]</p>\n\n<p>[y</p>\n\n<p>]: url</p>",
+    "title": "definition <tt>ref</tt> with trailing blank line, not allowed"
   }, {
     "markdown": "[foo]: /url 'title'\n\n[foo]\n",
     "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "title": "single-quoted definition title"
+    "title": "definition <tt>title</tt> single-quoted"
   }, {
     "markdown": "[foo]: /url \"title\"\n\n[foo]\n",
     "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "title": "double-quoted definition title"
+    "title": "definition <tt>title</tt> double-quoted"
   }, {
     "markdown": "[foo]: /url (title)\n\n[foo]\n",
     "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "title": "parentheses around definition title"
+    "title": "definition <tt>title</tt> with parentheses"
   }, {
     "markdown": "[*\\*][ref]\n\n[ref]: link \"title\"",
     "html": "<p><a href=\"link\" title=\"title\">*&#42;</a></p>",
-    "title": "backslash escape in text"
+    "title": "<tt>text</tt> with backslash escape"
   }, {
     "markdown": "[text][*\\*]\n\n[**]: link \"title\"",
     "NOTE": "Ref and definition must look exactly the same, including escapes",
     "html": "<p>[text][*&#42;]</p>",
-    "title": "backslash escape only in ref, not allowed"
+    "title": "<tt>ref</tt> with backslash escape only, not allowed"
   }, {
     "markdown": "[text][**]\n\n[*\\*]: link \"title\"",
     "NOTE": "Ref and definition must look exactly the same, including escapes",
     "html": "<p>[text][**]</p>",
-    "title": "backslash escape only in definition, not allowed"
+    "title": "definition <tt>ref</tt> with backslash escape only, not allowed"
   }, {
     "markdown": "[text][*\\*]\n\n[*\\*]: link \"title\"",
     "NOTE": "Ref and definition must look exactly the same, including escapes",
     "html": "<p><a href=\"link\" title=\"title\">text</a></p>",
-    "title": "backslash escape in ref and definition"
+    "title": "<tt>ref</tt> and definition <tt>ref</tt> with backslash escape"
   }, {
     "markdown": "[text][ref]\n\n[ref]: link \"*\\*\"",
     "html": "<p><a href=\"link\" title=\"*&#42;\">text</a></p>",
-    "title": "backslash escape in definition title"
+    "title": "definition <tt>title</tt> with backslash escape"
   }, {
-    "markdown": "[text] [ref]\n\n[ref]: dest",
+    "markdown": "[text] [ref]\n\n[ref]: url",
     "NOTE": "Unsupported CommonMark feature; causes <tt>[ref]</tt> to be interpreted as link",
-    "html": "<p>[text] <a href=\"dest\" title=\"\">ref</a></p>",
-    "title": "space between text and ref, not allowed"
+    "html": "<p>[text] <a href=\"url\" title=\"\">ref</a></p>",
+    "title": "space between <tt>text</tt> and <tt>ref</tt>, not allowed"
   },
   "Images <tt>![text](url)</tt>", {
     "markdown": "![x](y)",
