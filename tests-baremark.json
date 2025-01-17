@@ -1209,6 +1209,10 @@
     "html": "<p><a href=\"y z\">x</a></p>",
     "title": "middle space in url"
   }, {
+    "markdown": "[x](y  z  a)",
+    "html": "<p><a href=\"y z a\">x</a></p>",
+    "title": "multiple middle spaces in url"
+  }, {
     "markdown": "[x](y )",
     "html": "<p><a href=\"y\">x</a></p>",
     "title": "trailing space in url"
