@@ -4,7 +4,9 @@
 * [0/2] Webpage
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/4] Tests
+* [0/6] Tests
+** TODO Add test summary (total number of failed/passed/ran tests)
+** TODO Add timing info (total + for each series of subtests)
 ** TODO Improve test names
    Under 'Reference links' <tt>...</tt> is used to mark the variables set in
    the tests, this improves readability. Use this for all tests.
