@@ -19,7 +19,7 @@
 		[/~~X~~/,'<s>$1</s>'],
 		[/:"X":/,'<q>$1</q>'],
 		[/(!?)\[X\]\(X\)/,(_,q,t,u)=>q?`<img src="${s(u)}" alt="${t}">`:`<a href="${s(u)}">${t}</a>`],
-		[/(!?)\[X\](?:\[X\])?/,(w,q,t,n)=>(n=s(n||t),l[n]?q?`<img src="${l[n][0]}" title="${l[n][1]||''}" alt="${t}">`:`<a href="${l[n][0]}" title="${l[n][1]||''}">${t}</a>`:w)],
+		[/(!?)\[X\](?:\[X\])?/,(w,q,t,r)=>(r=s(r||t),l[r]?q?`<img src="${l[r][0]}" title="${l[r][1]||''}" alt="${t}">`:`<a href="${l[r][0]}" title="${l[r][1]||''}">${t}</a>`:w)],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/,(w,m)=>/^<(\/|address|article|aside|blockquote|details|div|[dou]l|fieldset|fig(caption|ure)|footer|form|h\d|header|hgroup|hr|main|menu|nav|p|pre|(no)?script|search|section|style|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]
 	].map(([r,s])=>[RegExp(r.source.replace(/X/g,X),'g'),s])
 	w.baremark=x=>x===undefined?r:(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())
