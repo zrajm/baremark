@@ -1067,11 +1067,11 @@
   }, {
     "markdown": "_*xx_*",
     "html": "<p><i>*xx</i>*</p>",
-    "title": "mixing asterisks and underlines: shouldn't result in bold"
+    "title": "mixing asterisks and underlines: should not become bold"
   }, {
     "markdown": "_*xx*_",
     "html": "<p><i>*xx*</i></p>",
-    "title": "mixing asterisks and underlines: shouldn't result in bold"
+    "title": "mixing asterisks and underlines: should not become bold"
   },
   "Underline spans <tt>___text___</tt> (Landmark-specific)", {
     "markdown": "___xx___",
@@ -1216,6 +1216,58 @@
     "markdown": "[x](y )",
     "html": "<p><a href=\"y\">x</a></p>",
     "title": "trailing space in url"
+  }, {
+    "markdown": "[x](_y)",
+    "html": "<p><a href=\"&#95;y\">x</a></p>",
+    "title": "leading underline in url"
+  }, {
+    "markdown": "[x](y_)",
+    "html": "<p><a href=\"y&#95;\">x</a></p>",
+    "title": "trailing underline in url"
+  }, {
+    "markdown": "[x](_y_)",
+    "html": "<p><a href=\"&#95;y&#95;\">x</a></p>",
+    "title": "<tt>url</tt> with <tt>_…_</tt>: should not become italic"
+  }, {
+    "markdown": "[x](*y*)",
+    "html": "<p><a href=\"&#42;y&#42;\">x</a></p>",
+    "title": "<tt>url</tt> with <tt>*…*</tt>: should not become italic"
+  }, {
+    "markdown": "[text](url__url__url)",
+    "html": "<p><a href=\"url&#95;&#95;url&#95;&#95;url\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>__…__</tt>: should not become bold"
+  }, {
+    "markdown": "[text](url**url**url)",
+    "html": "<p><a href=\"url&#42;&#42;url&#42;&#42;url\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>**…**</tt>: should not become bold"
+  }, {
+    "markdown": "[text](url___url___url)",
+    "html": "<p><a href=\"url&#95;&#95;&#95;url&#95;&#95;&#95;url\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>___…___</tt>: should not become underline"
+  }, {
+    "markdown": "[text](url***url***url)",
+    "html": "<p><a href=\"url&#42;&#42;&#42;url&#42;&#42;&#42;url\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>***…***</tt>: should not become underline"
+  }, {
+    "markdown": "[text](url~~url~~url)",
+    "html": "<p><a href=\"url&#126;&#126;url&#126;&#126;url\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>~~…~~</tt>: should not become bold"
+  }, {
+    "markdown": "[text](url:\"url\":url)",
+    "html": "<p><a href=\"url&#58;&#34;url&#34;&#58;url\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>:\"…\":</tt>: should not become HTML quotes"
+  }, {
+    "markdown": "[text](url&url)",
+    "html": "<p><a href=\"url&url\">text</a></p>",
+    "title": "<tt>url</tt> with ampersand: should not be escaped"
+  }, {
+    "markdown": "[text](url#url)",
+    "html": "<p><a href=\"url#url\">text</a></p>",
+    "title": "<tt>url</tt> with pound sign: should not be escaped"
+  }, {
+    "markdown": "[text](url<div>url)",
+    "html": "<p><a href=\"url&#60;div&#62;url\">text</a></p>",
+    "title": "<tt>url</tt> with HTML tag: should be escaped"
   }, {
     "markdown": "[\nx](y)",
     "html": "<p><a href=\"y\">\nx</a></p>",
@@ -1504,6 +1556,50 @@
     "markdown": "[x][y]\n\n[y ]: url",
     "html": "<p><a href=\"url\" title=\"\">x</a></p>",
     "title": "definition <tt>ref</tt> with trailing space"
+  }, {
+    "markdown": "[x][y]\n\n[y]: _url_",
+    "html": "<p><a href=\"&#95;url&#95;\" title=\"\">x</a></p>",
+    "title": "definition <tt>url</tt> with <tt>_…_</tt>: should not become italic"
+  }, {
+    "markdown": "[x][y]\n\n[y]: /*url*",
+    "html": "<p><a href=\"/&#42;url&#42;\" title=\"\">x</a></p>",
+    "title": "definition <tt>url</tt> with <tt>*…*</tt>: should not become italic"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url__url__url",
+    "html": "<p><a href=\"url&#95;&#95;url&#95;&#95;url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>__…__</tt>: should not become bold"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url**url**url",
+    "html": "<p><a href=\"url&#42;&#42;url&#42;&#42;url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>**…**</tt>: should not become bold"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url___url___url",
+    "html": "<p><a href=\"url&#95;&#95;&#95;url&#95;&#95;&#95;url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>___…___</tt>: should not become underline"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url***url***url",
+    "html": "<p><a href=\"url&#42;&#42;&#42;url&#42;&#42;&#42;url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>***…***</tt>: should not become underline"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url~~url~~url",
+    "html": "<p><a href=\"url&#126;&#126;url&#126;&#126;url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>~~…~~</tt>: should not become bold"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url:\"url\":url",
+    "html": "<p><a href=\"url&#58;&#34;url&#34;&#58;url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with <tt>:\"…\":</tt>: should not become HTML quotes"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url&url",
+    "html": "<p><a href=\"url&url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with ampersand: should not be escaped"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url#url",
+    "html": "<p><a href=\"url#url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with pound sign: should not be escaped"
+  }, {
+    "markdown": "[text][ref]\n\n[ref]: url<div>url",
+    "html": "<p><a href=\"url&#60;div&#62;url\" title=\"\">text</a></p>",
+    "title": "<tt>url</tt> with HTML tag: should be escaped"
   }, {
     "markdown": "[x][y]\n\n[y]: < url>",
     "html": "<p><a href=\"url\" title=\"\">x</a></p>",

@@ -21,21 +21,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/12] Features
-** TODO Don't process markup in URLs
-   This should be done my expanding all markup characters into '&#...;' so
-   that, for example, `__...__` are not expanded into `<i>...</i>` inside URLs.
-
-   However, we can't just invoke `e()` (a.k.a. `baremark.escape()`) since that
-   will also escape `&` -- which the URLs may contain, since the backslash
-   expansion is one of the first rules to be applied -- meaning that any
-   previously expanded character will be expanded twice! (What was originally
-   `\a` in an URL, got expanded into `&#97;` by the backslash expansion rule,
-   would be turned into `&#38;#97;` by additional escaping.
-
-   Maybe something like the following could be used?
-
-   x.replace(/[*_~:"\\[\\]()]/g,m=>e(m))
+* [0/11] Features
 ** TODO Optimize `[ref]: url "title"` code
    I think this can benefit from more use of 'X'.
 ** TODO Optimize use of preprocessing step
@@ -84,7 +70,22 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [23/23] FINISHED
+* [24/24] FINISHED
+** DONE Don't process markup in URLs
+   CLOSED: [2025-01-19 Sun 18:38]
+   This should be done my expanding all markup characters into '&#...;' so
+   that, for example, `__...__` are not expanded into `<i>...</i>` inside URLs.
+
+   However, we can't just invoke `e()` (a.k.a. `baremark.escape()`) since that
+   will also escape `&` -- which the URLs may contain, since the backslash
+   expansion is one of the first rules to be applied -- meaning that any
+   previously expanded character will be expanded twice! (What was originally
+   `\a` in an URL, got expanded into `&#97;` by the backslash expansion rule,
+   would be turned into `&#38;#97;` by additional escaping.
+
+   Maybe something like the following could be used?
+
+   x.replace(/[*_~:"\\[\\]()]/g,m=>e(m))
 ** DONE Add '![text][ref]' image support
    CLOSED: [2025-01-18 Sat 00:30]
 ** DONE Improved insertion of <p> tags
