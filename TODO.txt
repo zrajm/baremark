@@ -1,7 +1,10 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/2] Webpage
+* [0/5] Webpage
+** TODO Web page should work for mobile
+** TODO Remember which <details> where opened on reload
+** TODO Dark mode
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
 * [0/6] Tests
@@ -70,7 +73,13 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [24/24] FINISHED
+* [25/25] FINISHED
+** DONE <details> should work like in org-mode
+   CLOSED: [2025-01-20 Mon 00:01]
+   Org-mode style opening of <details>. Clicking a <summary> cycles through:
+     + children = opens this <details> (but none of its children)
+     + subtree  = opens up all child <details> recursively
+     + folded   = closes this & all child <details>
 ** DONE Don't process markup in URLs
    CLOSED: [2025-01-19 Sun 18:38]
    This should be done my expanding all markup characters into '&#...;' so
