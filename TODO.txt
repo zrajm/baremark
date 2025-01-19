@@ -1,8 +1,7 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/5] Webpage
-** TODO Web page should work for mobile
+* [0/4] Webpage
 ** TODO Remember which <details> where opened on reload
 ** TODO Dark mode
 ** TODO Make sure README is up-to date
@@ -73,7 +72,9 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [25/25] FINISHED
+* [26/26] FINISHED
+** DONE Web page should work for mobile
+   CLOSED: [2025-01-20 Mon 00:16]
 ** DONE <details> should work like in org-mode
    CLOSED: [2025-01-20 Mon 00:01]
    Org-mode style opening of <details>. Clicking a <summary> cycles through:
