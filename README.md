@@ -18,7 +18,7 @@ featurefulness.)
 * [Test suite]
 * [Github page]
 
-It is currently 1894 bytes in size *without minification!*
+It is currently 1882 bytes in size *without minification!*
 
 
 Usage

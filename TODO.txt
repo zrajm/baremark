@@ -19,7 +19,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [1/13] Features
+* [0/12] Features
 ** TODO Don't process markup in URLs
    This should be done my expanding all markup characters into '&#...;' so
    that, for example, `__...__` are not expanded into `<i>...</i>` inside URLs.
