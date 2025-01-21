@@ -6,14 +6,68 @@ html { box-sizing: border-box; }
 
 /* Other. */
 body { margin: 1em; line-height: 1.75; }
+html {
+  color: #000; background: #fff;
+  @media (prefers-color-scheme: light) {
+    &:has(#invertmode:checked)       { color: #ddd; background: #000 } }
+  @media (prefers-color-scheme: dark) {
+    &:has(#invertmode:not(:checked)) { color: #ddd; background: #000 } }
+  transition: background-color .1s ease-in, color .1s ease-in;
+}
+input[type="checkbox"] {
+  opacity: .5;
+  transition: opacity ease-in-out .1s;
+  &:hover { opacity: 1 }
+  --unit: 25px;
+  --right-distance: calc(100% - var(--unit));
+  --on-distance: var(--right-distance);
+  --off-distance: 0;
+  @media (prefers-color-scheme: dark) {
+    --on-distance: 0;
+    --off-distance: var(--right-distance);
+  }
+  &:before, &:after { /* groove + knob */
+    content: '';
+    display: block;
+    position: absolute; inset: 0;
+    border-radius: var(--unit);
+    transition: left .05s ease-in;
+  }
+  &:before { /* groove */
+    background: #999;
+    box-shadow: inset 0 0 0 1px #0002;
+  }
+  &:after { /* knob */
+    width: var(--unit);
+    background: #fff; box-shadow: 0 1px 2px 0 #0008;
+    left: var(--off-distance)
+  }
+  &:checked:after { left: var(--on-distance) }
+  appearance: none;
+  display: inline-block; height: var(--unit); width: calc(var(--unit) * 1.75);
+  position: relative; vertical-align: middle; bottom: .1em;
+  cursor: pointer;
+  font-size: inherit;
+  &#invertmode {
+    position: absolute; top: 0; right: 0; margin: 1rem;
+    --sun: url('data:image/svg+xml,<svg width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="3.5"/><path d="M10 2.5V5m0 10v2.5m5.3-12.8-1.8 1.8m-7 7-1.8 1.8M17.5 10H15M5 10H2.5m2.2-5.3 1.8 1.8m7 7 1.8 1.8" stroke="%23000" stroke-width="1.5px"/></svg>');
+    --moon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20"><path d="M10 3a7 7 0 0 0-7 7 7 7 0 0 0 7 7 7 7 0 0 0 5.77-3.05A6 6 0 0 1 15 14a6 6 0 0 1-6-6 6 6 0 0 1 2.48-4.84A7 7 0 0 0 10 3z"/></svg>');
+    /* knob */
+    &:after { content: var(--sun) }
+    &:checked:after { content: var(--moon) }
+    @media (prefers-color-scheme: dark) {
+      &:after { content: var(--moon) }
+      &:checked:after { content: var(--sun) }
+    }
+  }
+}
+
 blockquote { border: 1px solid #000; }
 code, tt, pre {
-  background: #aaac;
   border-radius: .25em;
   padding: .125em .25em .1875em;
   outline: 1px solid #0003;
-  background: #0001;
-  position: relative;
+  background: #aaa5;
   bottom: .125em;
 }
 pre { margin: 1.5em; padding: .5em 1em; }
@@ -22,13 +76,25 @@ details, .error, .legend {
   border-radius: .25em;
   margin: 2px 0;
   padding: .125em .25em;
-  border: 1px solid #0008;
+  border: 1px solid #888a;
 }
-details.group.ignore, .legend.ignore { background: #777; }
-details.group.pass,   .legend.pass   { background: #4b4; }
-details.test.pass                    { background: #5d5; }
-details.group.fail,   .legend.fail   { background: #d44; }
-details.test.fail,    .error         { background: #e55; }
+details.group.ignore, .legend.ignore { background: #7d7d7d99; }
+details.group.pass,   .legend.pass   { background: #41b941aa; }
+details.test.pass                    { background: #aaffaa44; }
+details.group.fail,   .legend.fail   { background: #ff4444aa; }
+details.test.fail,    .error         { background: #ffaaaa44; }
+details.group.ignore, .legend.ignore,
+details.group.pass,   .legend.pass,
+details.test.pass,
+details.group.fail,   .legend.fail,
+details.test.fail,    .error {
+  color: #000;
+  border: 1px solid #0008;
+  code, tt, pre {
+    background: #0001;
+    outline: 1px solid #0003;
+  }
+}
 details.ignore > summary { text-decoration-line: line-through; }
 .group {
   padding-left: 1em;
@@ -56,9 +122,6 @@ td, th {
   vertical-align: baseline;
   font-family: sans;
 }
-th {
-  color: #000d;
-}
 tbody th { text-align: right; }
 td {
   border-radius: .25em;
@@ -70,6 +133,7 @@ td {
 li { margin-left: 1em; }
 p, h1, h2, footer { margin: 1em 0 .5em; }
 footer { text-align: center; }
-.fixme, .note { background: #ff0b; font-weight: bold; }
+.fixme, .note { background: #ff0a; font-weight: bold; border-radius: .25em; }
+h1, h2, h3, h4, h5, h6 { font-family: sans; }
 
 /*[eof]*/

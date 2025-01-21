@@ -1,9 +1,8 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/4] Webpage
+* [0/3] Webpage
 ** TODO Remember which <details> where opened on reload
-** TODO Dark mode
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
 * [0/6] Tests
@@ -72,7 +71,13 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [26/26] FINISHED
+* [27/27] FINISHED
+** DONE Webpage: Dark mode
+   CLOSED: [2025-01-21 Tue 18:03]
+   This is a CSS-only dark mode with an override switch. It defaults to using
+   whatever your browser is set to using the media query `@media
+   (prefers-color-scheme: dark)`, but allows the user to override with a toggle
+   switch in the top right corner.
 ** DONE Web page should work for mobile
    CLOSED: [2025-01-20 Mon 00:16]
 ** DONE <details> should work like in org-mode
