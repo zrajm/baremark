@@ -7,12 +7,20 @@ html { box-sizing: border-box; }
 /* Other. */
 body { margin: 1em; line-height: 1.75; }
 html {
-  color: #000; background: #fff;
-  @media (prefers-color-scheme: light) {
-    &:has(#invertmode:checked)       { color: #ddd; background: #000 } }
-  @media (prefers-color-scheme: dark) {
-    &:has(#invertmode:not(:checked)) { color: #ddd; background: #000 } }
+  --pass: #41b941aa;
+  --fail: #ff4444aa;
+  --none: #7d7d7d99;
+  --back: #fff;
+  --fore: #000;
+  --normal-pass: linear-gradient(var(--pass), var(--pass)), var(--back);
+  --normal-fail: linear-gradient(var(--fail), var(--fail)), var(--back);
+  --bright-pass: linear-gradient(#fff3, #fff3), linear-gradient(var(--pass), var(--pass)), var(--back);
+  --bright-fail: linear-gradient(#fff3, #fff3), linear-gradient(var(--fail), var(--fail)), var(--back);
+  @media(prefers-color-scheme:light){&:has(#invertmode:checked)      { --fore: #ddd; --back: #000 } }
+  @media(prefers-color-scheme:dark) {&:has(#invertmode:not(:checked)){ --fore: #ddd; --back: #000 } }
   transition: background-color .1s ease-in, color .1s ease-in;
+  color: var(--fore);
+  background: var(--back);
 }
 input[type="checkbox"] {
   opacity: .5;
@@ -61,8 +69,11 @@ input[type="checkbox"] {
     }
   }
 }
-
-blockquote { border: 1px solid #000; }
+a, a:visited { border-radius: 1px; color: #44c }
+a:hover { background: #66f4; outline: 2px solid #66f4 }
+a:focus { outline-offset: 1px; outline: 2px solid #44c }
+a:active {}
+blockquote { border: 1px solid #8888; }
 code, tt, pre {
   border-radius: .25em;
   padding: .125em .25em .1875em;
@@ -78,11 +89,11 @@ details, .error, .legend {
   padding: .125em .25em;
   border: 1px solid #888a;
 }
-details.group.ignore, .legend.ignore { background: #7d7d7d99; }
-details.group.pass,   .legend.pass   { background: #41b941aa; }
-details.test.pass                    { background: #aaffaa44; }
-details.group.fail,   .legend.fail   { background: #ff4444aa; }
-details.test.fail,    .error         { background: #ffaaaa44; }
+details.group.ignore, .legend.ignore { background: var(--none); }
+details.group.pass,   .legend.pass   { background: var(--normal-pass); }
+details.test.pass                    { background: var(--bright-pass); }
+details.group.fail,   .legend.fail   { background: var(--normal-fail); }
+details.test.fail,    .error         { background: var(--bright-fail); }
 details.group.ignore, .legend.ignore,
 details.group.pass,   .legend.pass,
 details.test.pass,

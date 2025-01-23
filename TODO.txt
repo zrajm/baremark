@@ -1,7 +1,9 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/4] Webpage
+* [0/5] Webpage
+** TODO Colored borders should be bright in dark mode?
+   Maybe use #8888, or #aaa4 or similar?
 ** TODO Webpage should become responsive quicker
    It takes a long while after loading for page to become responsive. While the
    tests are still running, the dark mode button, and opening/closing of
@@ -26,7 +28,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/11] Features
+* [0/12] Features
 ** TODO Optimize `[ref]: url "title"` code
    I think this can benefit from more use of 'X'.
 ** TODO Optimize use of preprocessing step
@@ -44,6 +46,25 @@
 ** TODO '  \n' should result in '<br>'
    Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
    interfere with backslash escapes).
+** TODO Support reference image inside inline links
+   That is, this should work:
+
+       [![alt][imgref]](url)
+
+       [imgref]: imgurl
+
+   Currently, the text is interpreted like this:
+
+       [![alt][imgref]](url)
+        ↑↑----alt-----↑↑url↑                       = image found
+       [<img src="url" title="" alt="alt][imgref]">
+       ↑----------text------------------↑↑imgref↑  = link found
+       <a href="imgurl" title=""><img src="url" title="" alt="alt</a>">
+
+   Another, slightly less insane than the current approach would be to escape
+   all values outputted into HTML attributes, so that, at least, the above
+   weird interpretation doesn't take place? This would cause the image to fail
+   in a slightly saner way, at least.
 ** TODO Add comments to code (and include a version stripped of comments)
    There should also exist a git hook to verify that these always are in sync.
 ** TODO Horizontal line should need only 3 chars
@@ -75,7 +96,17 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [27/27] FINISHED
+* [29/29] FINISHED
+** DONE Fix subtest background color
+   CLOSED: [2025-01-23 Thu 19:36]
+   The subtest background color shouldn't be transparent, as this will make any
+   passed subtests almost indistinguishable from failed subtests -- the
+   background color shines through enough that one failed subtest will make all
+   the passed subtests look (almost) failed too.
+
+   How can this be made to work with dark mode background colors?
+** DONE Link colors should look better in dark mode
+   CLOSED: [2025-01-23 Thu 19:35]
 ** DONE Webpage: Dark mode
    CLOSED: [2025-01-21 Tue 18:03]
    This is a CSS-only dark mode with an override switch. It defaults to using
