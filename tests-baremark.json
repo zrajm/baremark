@@ -1191,43 +1191,43 @@
   "Inline links <tt>[text](url)</tt> <span class=\"note\">(Unsupported CommonMark feature: Matching balanced brackets in <tt>text</tt>)</span>", {
     "markdown": "[x](y)",
     "html": "<p><a href=\"y\">x</a></p>",
-    "title": "no space in text or url"
+    "title": "<tt>text</tt> and <tt>url</tt> without space"
   }, {
     "markdown": "[ x](y)",
     "html": "<p><a href=\"y\"> x</a></p>",
-    "title": "leading space in text"
+    "title": "<tt>text</tt> with leading space"
   }, {
     "markdown": "[x y](z)",
     "html": "<p><a href=\"z\">x y</a></p>",
-    "title": "middle space in text"
+    "title": "<tt>text</tt> with middle space"
   }, {
     "markdown": "[x ](y)",
     "html": "<p><a href=\"y\">x </a></p>",
-    "title": "trailing space in text"
+    "title": "<tt>text</tt> with trailing space"
   }, {
     "markdown": "[x]( y)",
     "html": "<p><a href=\"y\">x</a></p>",
-    "title": "leading space in url"
+    "title": "<tt>url</tt> with leading space"
   }, {
     "markdown": "[x](y z)",
     "html": "<p><a href=\"y z\">x</a></p>",
-    "title": "middle space in url"
+    "title": "<tt>url</tt> with middle space"
   }, {
     "markdown": "[x](y  z  a)",
     "html": "<p><a href=\"y z a\">x</a></p>",
-    "title": "multiple middle spaces in url"
+    "title": "<tt>url</tt> with multiple middle spaces"
   }, {
     "markdown": "[x](y )",
     "html": "<p><a href=\"y\">x</a></p>",
-    "title": "trailing space in url"
+    "title": "<tt>url</tt> with trailing space"
   }, {
     "markdown": "[x](_y)",
     "html": "<p><a href=\"&#95;y\">x</a></p>",
-    "title": "leading underline in url"
+    "title": "<tt>url</tt> with leading underline"
   }, {
     "markdown": "[x](y_)",
     "html": "<p><a href=\"y&#95;\">x</a></p>",
-    "title": "trailing underline in url"
+    "title": "<tt>url</tt> with trailing underline"
   }, {
     "markdown": "[x](_y_)",
     "html": "<p><a href=\"&#95;y&#95;\">x</a></p>",
@@ -1275,234 +1275,234 @@
   }, {
     "markdown": "[\nx](y)",
     "html": "<p><a href=\"y\">\nx</a></p>",
-    "title": "leading newline in text"
+    "title": "<tt>text</tt> with leading newline"
   }, {
     "markdown": "[x\ny](z)",
     "html": "<p><a href=\"z\">x\ny</a></p>",
-    "title": "middle newline in text"
+    "title": "<tt>text</tt> with middle newline"
   }, {
     "markdown": "[x\n](y)",
     "html": "<p><a href=\"y\">x\n</a></p>",
-    "title": "trailing newline in text"
+    "title": "<tt>text</tt> with trailing newline"
   }, {
     "markdown": "[x](\ny)",
     "html": "<p><a href=\"y\">x</a></p>",
-    "title": "leading newline in url"
+    "title": "<tt>url</tt> with leading newline"
   }, {
     "markdown": "[x](y\nz)",
     "html": "<p><a href=\"y z\">x</a></p>",
-    "title": "middle newline in url"
+    "title": "<tt>url</tt> with middle newline"
   }, {
     "markdown": "[x](y\n)",
     "html": "<p><a href=\"y\">x</a></p>",
-    "title": "trailing newline in url"
+    "title": "<tt>url</tt> with trailing newline"
   }, {
     "markdown": "[x](  \n  y)",
     "html": "<p><a href=\"y\">x</a></p>",
-    "title": "leading spaces + newline + spaces in url"
+    "title": "<tt>url</tt> with leading spaces + newline + spaces"
   }, {
     "markdown": "[x](y  \n  )",
     "html": "<p><a href=\"y\">x</a></p>",
-    "title": "trailing spaces + newline + spaces in url"
+    "title": "<tt>url</tt> with trailing spaces + newline + spaces"
   }, {
     "markdown": "[\n\nx](y)",
     "html": "<p>[</p>\n\n<p>x](y)</p>",
-    "title": "leading blank line in text, not allowed"
+    "title": "<tt>text</tt> with leading blank line, not allowed"
   }, {
     "markdown": "[x\n\ny](z)",
     "html": "<p>[x</p>\n\n<p>y](z)</p>",
-    "title": "middle blank line in text, not allowed"
+    "title": "<tt>text</tt> with middle blank line, not allowed"
   }, {
     "markdown": "[x\n\n](y)",
     "html": "<p>[x</p>\n\n<p>](y)</p>",
-    "title": "trailing blank line in text, not allowed"
+    "title": "<tt>text</tt> with trailing blank line, not allowed"
   }, {
     "markdown": "[x](\n\ny)",
     "html": "<p>[x](</p>\n\n<p>y)</p>",
-    "title": "leading blank line in url, not allowed"
+    "title": "<tt>url</tt> with leading blank line, not allowed"
   }, {
     "markdown": "[x](y\n\nz)",
     "html": "<p>[x](y</p>\n\n<p>z)</p>",
-    "title": "middle blank line in url, not allowed"
+    "title": "<tt>url</tt> with middle blank line, not allowed"
   }, {
     "markdown": "[x](y\n\n)",
     "html": "<p>[x](y</p>\n\n<p>)</p>",
-    "title": "trailing blank line in url, not allowed"
+    "title": "<tt>url</tt> with trailing blank line, not allowed"
   }, {
     "markdown": "[x[a]y](z)",
     "html": "<p><a href=\"z\">x[a]y</a></p>",
-    "title": "brackets in text"
+    "title": "<tt>text</tt> with brackets"
   }, {
     "ignore": true,
     "markdown": "[x[a][b]y](z)\n\n[b]: dest",
     "NOTE": "Don't use, cause nested links",
     "html": "<p><a href=\"z\">x<a href=\"dest\" title=\"\">a</a>y</a></p>",
-    "title": "reference link in text"
+    "title": "<tt>text</tt> with reference link"
   }, {
     "markdown": "[x\\[a]\\[b]y](z)\n\n[b]: dest",
     "html": "<p><a href=\"z\">x&#91;a]&#91;b]y</a></p>",
-    "title": "escaped reference link in text"
+    "title": "<tt>text</tt> with escaped reference link"
   }, {
     "ignore": true,
     "markdown": "[x[a]y](z)\n\n[a]: dest",
     "NOTE": "Don't use, cause nested links",
     "html": "<p><a href=\"z\">x<a href=\"dest\" title=\"\">a</a>y</a></p>",
-    "title": "reference link with text-as-ref in text"
+    "title": "<tt>text</tt> with reference link with text-as-ref"
   }, {
     "markdown": "[x\\[a]y](z)\n\n[a]: dest",
     "html": "<p><a href=\"z\">x&#91;a]y</a></p>",
-    "title": "escaped reference link with text-as-ref in text"
+    "title": "<tt>text</tt> with escaped reference link with text-as-ref"
   }, {
     "ignore": true,
     "markdown": "[x[a](b)y](z)",
     "NOTE": "Don't use, cause nested links",
     "html": "<p><a href=\"y\">x[x]x</a></p>",
-    "title": "inline link in link text, not allowed"
+    "title": "<tt>text</tt> with inline link, not allowed"
   }, {
     "markdown": "[x\\[x\\]x](y)",
     "html": "<p><a href=\"y\">x&#91;x&#93;x</a></p>",
-    "title": "backslash escaped character in link text"
+    "title": "<tt>text</tt> with backslashed character"
   }, {
     "markdown": "[x](\\#top)",
     "html": "<p><a href=\"&#35;top\">x</a></p>",
-    "title": "backslash escaped character in link URL"
+    "title": "<tt>url</tt> with backslashed character"
   }, {
     "markdown": "[x] (dest)",
     "NOTE": "Unsupported CommonMark feature",
     "html": "<p>[x] (dest)</p>",
-    "title": "space between end bracket and start parethesis, not allowed"
+    "title": "space between <tt>](</tt>, not allowed"
   },
   "Inline images <tt>![text](url)</tt>", {
     "markdown": "![x](y)",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
-    "title": "no space in text or url"
+    "title": "<tt>text</tt> and <tt>url</tt> without space"
   }, {
     "markdown": "![](y)",
     "html": "<p><img src=\"y\" alt=\"\"></p>",
-    "title": "empty text"
+    "title": "<tt>text</tt> empty"
   }, {
     "markdown": "![ x](y)",
     "html": "<p><img src=\"y\" alt=\" x\"></p>",
-    "title": "leading space in text"
+    "title": "<tt>text</tt> with leading space"
   }, {
     "markdown": "![x y](z)",
     "html": "<p><img src=\"z\" alt=\"x y\"></p>",
-    "title": "middle space in text"
+    "title": "<tt>text</tt> with middle space"
   }, {
     "markdown": "![x ](y)",
     "html": "<p><img src=\"y\" alt=\"x \"></p>",
-    "title": "trailing space in text"
+    "title": "<tt>text</tt> with trailing space"
   }, {
     "markdown": "![x]( y)",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
-    "title": "leading space in url"
+    "title": "<tt>url</tt> with leading space"
   }, {
     "markdown": "![x](y z)",
     "html": "<p><img src=\"y z\" alt=\"x\"></p>",
-    "title": "middle space in url"
+    "title": "<tt>url</tt> with middle space"
   }, {
     "markdown": "![x](y )",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
-    "title": "trailing space in url"
+    "title": "<tt>url</tt> with trailing space"
   }, {
     "markdown": "![\nx](y)",
     "html": "<p><img src=\"y\" alt=\"\nx\"></p>",
-    "title": "leading newline in text"
+    "title": "<tt>text</tt> with leading newline"
   }, {
     "markdown": "![x\ny](z)",
     "html": "<p><img src=\"z\" alt=\"x\ny\"></p>",
-    "title": "middle newline in text"
+    "title": "<tt>text</tt> with middle newline"
   }, {
     "markdown": "![x\n](y)",
     "html": "<p><img src=\"y\" alt=\"x\n\"></p>",
-    "title": "trailing newline in text"
+    "title": "<tt>text</tt> with trailing newline"
   }, {
     "markdown": "![x](\ny)",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
-    "title": "leading newline in url"
+    "title": "<tt>url</tt> with leading newline"
   }, {
     "markdown": "![x](y\nz)",
     "html": "<p><img src=\"y z\" alt=\"x\"></p>",
-    "title": "middle newline in url"
+    "title": "<tt>url</tt> with middle newline"
   }, {
     "markdown": "![x](y\n)",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
-    "title": "trailing newline in url"
+    "title": "<tt>url</tt> with trailing newline"
   }, {
     "markdown": "![x](  \n  y)",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
-    "title": "leading spaces + newline + spaces in url"
+    "title": "<tt>url</tt> with leading spaces + newline + spaces"
   }, {
     "markdown": "![x](y  \n  )",
     "html": "<p><img src=\"y\" alt=\"x\"></p>",
-    "title": "trailing spaces + newline + spaces in url"
+    "title": "<tt>url</tt> with trailing spaces + newline + spaces"
   }, {
     "markdown": "![\n\nx](y)",
     "html": "<p>![</p>\n\n<p>x](y)</p>",
-    "title": "leading blank line in text, not allowed"
+    "title": "<tt>text</tt> with leading blank line, not allowed"
   }, {
     "markdown": "![x\n\ny](z)",
     "html": "<p>![x</p>\n\n<p>y](z)</p>",
-    "title": "middle blank line in text, not allowed"
+    "title": "<tt>text</tt> with middle blank line, not allowed"
   }, {
     "markdown": "![x\n\n](y)",
     "html": "<p>![x</p>\n\n<p>](y)</p>",
-    "title": "trailing blank line in text, not allowed"
+    "title": "<tt>text</tt> with trailing blank line, not allowed"
   }, {
     "markdown": "![x](\n\ny)",
     "html": "<p>![x](</p>\n\n<p>y)</p>",
-    "title": "leading blank line in url, not allowed"
+    "title": "<tt>url</tt> with leading blank line, not allowed"
   }, {
     "markdown": "![x](y\n\nz)",
     "html": "<p>![x](y</p>\n\n<p>z)</p>",
-    "title": "middle blank line in url, not allowed"
+    "title": "<tt>url</tt> with middle blank line, not allowed"
   }, {
     "markdown": "![x](y\n\n)",
     "html": "<p>![x](y</p>\n\n<p>)</p>",
-    "title": "trailing blank line in url, not allowed"
+    "title": "<tt>url</tt> with trailing blank line, not allowed"
   }, {
     "markdown": "![x[a]y](z)",
     "html": "<p><img src=\"z\" alt=\"x[a]y\"></p>",
-    "title": "brackets in text"
+    "title": "<tt>text</tt> with brackets"
   }, {
     "ignore": true,
     "markdown": "![x[a][b]y](z)\n\n[b]: dest",
     "NOTE": "Don't use, cause broken HTML",
     "html": "<p><img src=\"z\">x<img src=\"dest\" title=\"\" alt=\"a\">y</a></p>",
-    "title": "reference link in text"
+    "title": "<tt>text</tt> with reference link"
   }, {
     "markdown": "![x\\[a]\\[b]y](z)\n\n[b]: dest",
     "html": "<p><img src=\"z\" alt=\"x&#91;a]&#91;b]y\"></p>",
-    "title": "escaped reference link in text"
+    "title": "<tt>text</tt> with escaped reference link"
   }, {
     "ignore": true,
     "markdown": "![x[a]y](z)\n\n[a]: dest",
     "NOTE": "Don't use, cause broken HTML",
     "html": "<p><img src=\"z\">x<img src=\"dest\" title=\"\" alt=\"a\">y</a></p>",
-    "title": "reference link with text-as-ref in text"
+    "title": "<tt>text</tt> with reference link with text-as-ref"
   }, {
     "markdown": "![x\\[a]y](z)\n\n[a]: dest",
     "html": "<p><img src=\"z\" alt=\"x&#91;a]y\"></p>",
-    "title": "escaped reference link with text-as-ref in text"
+    "title": "<tt>text</tt> with escaped reference link with text-as-ref"
   }, {
     "ignore": true,
     "markdown": "![x[a](b)y](z)",
     "NOTE": "Don't use, cause broken HTML",
     "html": "<p><img src=\"y\" alt=\"x[x]x\"></p>",
-    "title": "inline link in link text, not allowed"
+    "title": "<tt>text</tt> with inline link, not allowed"
   }, {
     "markdown": "![x\\[x\\]x](y)",
     "html": "<p><img src=\"y\" alt=\"x&#91;x&#93;x\"></p>",
-    "title": "backslash escaped character in link text"
+    "title": "<tt>text</tt> with backslashed character"
   }, {
     "markdown": "![x](\\#top)",
     "html": "<p><img src=\"&#35;top\" alt=\"x\"></p>",
-    "title": "backslash escaped character in link URL"
+    "title": "<tt>url</tt> with backslashed character"
   }, {
     "markdown": "![x] (dest)",
     "NOTE": "Unsupported CommonMark feature",
     "html": "<p>![x] (dest)</p>",
-    "title": "space between end bracket and start parethesis, not allowed"
+    "title": "space between <tt>](</tt>, not allowed"
   },
   "Reference links <tt>[text][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
     "markdown": "[x][y]\n\n[y]: url",
@@ -1779,7 +1779,7 @@
     "markdown": "[text] [ref]\n\n[ref]: url",
     "NOTE": "Unsupported CommonMark feature; causes <tt>[ref]</tt> to be interpreted as link",
     "html": "<p>[text] <a href=\"url\" title=\"\">ref</a></p>",
-    "title": "space between <tt>text</tt> and <tt>ref</tt>, not allowed"
+    "title": "space between <tt>][</tt>, not allowed"
   },
   "Reference images <tt>![alttext][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
     "markdown": "![x][y]\n\n[y]: url",
@@ -2012,6 +2012,6 @@
     "markdown": "![text] [ref]\n\n[ref]: url",
     "NOTE": "Unsupported CommonMark feature; causes <tt>[ref]</tt> to be interpreted as link",
     "html": "<p>![text] <a href=\"url\" title=\"\">ref</a></p>",
-    "title": "space between <tt>text</tt> and <tt>ref</tt>, not allowed"
+    "title": "space between <tt>][</tt>, not allowed"
   }
 ]
