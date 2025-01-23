@@ -32,6 +32,10 @@
     "markdown": "xx\n\nyy",
     "html": "<p>xx</p>\n\n<p>yy</p>",
     "title": "two paragraphs"
+  }, {
+    "markdown": "xx\n\nyy\n\nzz",
+    "html": "<p>xx</p>\n\n<p>yy</p>\n\n<p>zz</p>",
+    "title": "three paragraphs"
   },
   "Fenced code blocks <tt>```code```</tt>", {
     "markdown": "```\nxx\n```",
