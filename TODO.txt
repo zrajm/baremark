@@ -1,7 +1,11 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/3] Webpage
+* [0/4] Webpage
+** TODO Webpage should become responsive quicker
+   It takes a long while after loading for page to become responsive. While the
+   tests are still running, the dark mode button, and opening/closing of
+   <details> are just laggy. Can this be fixed?
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
