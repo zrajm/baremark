@@ -148,7 +148,7 @@ look like on the page.</p>
             <summary>
               ${test.example ? `Test ${test.example}` : ''}${test.example && test.title ? ': ' : ''}
               ${test.title ? escapeAscii(test.title) : ''}
-              ${test.FIXME ? ` <span class=fixme>(FIXME: ${escapeAscii(test.FIXME)})</span>` : ''}
+              ${test.hasOwnProperty('FIXME') ? ` <span class=fixme>(FIXME${test.FIXME ? ': ' + escapeAscii(test.FIXME) : ''})</span>` : ''}
               ${test.NOTE ? ` <span class=note>(NOTE: ${escapeAscii(test.NOTE)})</span>` : ''}
             </summary>
             <table>
