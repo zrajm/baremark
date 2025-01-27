@@ -69,9 +69,9 @@ input[type="checkbox"] {
     }
   }
 }
-a, a:visited { border-radius: 1px; color: #44c }
-a:hover { background: #66f4; outline: 2px solid #66f4 }
-a:focus { outline-offset: 1px; outline: 2px solid #44c }
+a, a:visited { border-radius: 1px; color: #00d }
+a:hover { background: #22f5; outline: 2px solid #22f5 }
+:focus { outline-offset: 1px; outline: 2px solid #6668 }
 a:active {}
 blockquote { border: 1px solid #8888; }
 code, tt, pre {
