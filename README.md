@@ -157,13 +157,14 @@ These limitations might change in the future.
   end of lines with <tt>#</tt> and <tt>```</tt>) but Baremark instead interpret
   these spaces literally.
 
-* Somewhat simplistic insertion of `<p>` – Any piece of text separated from the
-  rest of the text by blank lines will be considered a paragraph, except if it
-  begins with one of the following block level HTML tags (or their
+* Any piece of text separated from the rest of the text by blank lines is
+  considered a paragraph (and `<p>…</p>` is placed around it), except if the
+  paragraph starts with one of the following paragraph-ending tags (or the
   corresponding end tags): `address`, `article`, `aside`, `blockquote`,
   `details`, `div`, `dl`, `fieldset`, `figcaption`, `figure`, `footer`, `form`,
   `h1…h6`, `header`, `hgroup`, `hr`, `main`, `menu`, `nav`, `noscript`, `ol`,
-  `p`, `pre`, `script`, `search`, `section`, `style`, `table`, `ul`.
+  `p`, `pre`, `script`, `search`, `section`, `style`, `table`, `ul`. ([MDN: The
+  `<p>` Element]).
 
 * Newline and whitespace (though not blank lines) is allowed inside the
   brackets and parentheses of the link tags, but not between `](`, `][` or
@@ -321,6 +322,7 @@ Bugfixes
 [Landmark]: https://gist.github.com/VanTigranyan/651b7c77cfc149cb858a044c2108acbb
 [Markdown]: https://daringfireball.net/projects/markdown/
 [MDN docs]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+[MDN: The `<p>` Element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p#technical_summary "MDN: The Paragraph Element: Technical summary"
 [Sitemark]: http://plugnburn.github.io/sitemark/
 [Source code]: https://zrajm.github.io/baremark/baremark.js
 [span elements]: https://daringfireball.net/projects/markdown/syntax#span
