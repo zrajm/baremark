@@ -104,6 +104,10 @@ details.test.fail,    .error {
   code, tt, pre {
     background: #0001;
     outline: 1px solid #0003;
+    & div.comment {
+      & * { background: #00000018 }
+      color: #0006;
+    }
   }
 }
 details.ignore > summary { text-decoration-line: line-through; }
@@ -147,4 +151,5 @@ footer { text-align: center; }
 .fixme, .note { background: #ff0a; font-weight: bold; border-radius: .25em; }
 h1, h2, h3, h4, h5, h6 { font-family: sans; }
 
+.nowrap { white-space: nowrap }
 /*[eof]*/

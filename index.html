@@ -93,6 +93,17 @@ look like on the page.</p>
         /["&<>]/g,
         x => `&${{ '"': 'quot', '&': 'amp', '<': 'lt', '>': 'gt' }[x]};`)
     }
+    function inputComment(x) {
+      if (typeof x === "string") { x = [x] }
+      return x.map(
+        x => '<div class="comment">'
+          + (escapeAscii(escapeHtml(x))
+             .replace(/\S+/g, '<span>$&</span>')
+             .replace(/\S.*/g, '<span>$&</span>')
+            )
+          + '</div>'
+      ).join('')
+    }
     // Escape any ASCII control characters with C escape sequences.
     function escapeAscii(x) {
       return x.replace(
@@ -149,14 +160,16 @@ look like on the page.</p>
               ${test.example ? `Test ${test.example}` : ''}${test.example && test.title ? ': ' : ''}
               ${test.title ? escapeAscii(test.title) : ''}
               ${test.hasOwnProperty('FIXME') ? ` <span class=fixme>(FIXME${test.FIXME ? ': ' + escapeAscii(test.FIXME) : ''})</span>` : ''}
-              ${test.NOTE ? ` <span class=note>(NOTE: ${escapeAscii(test.NOTE)})</span>` : ''}
+              ${test.hasOwnProperty('NOTE')  ? ` <span class=note >(NOTE${ test.NOTE  ? ': ' + escapeAscii(test.NOTE)  : ''})</span>` : ''}
+              ${test.comment                 ? '<div style="float:right;opacity:.5">#</div>'                                          : ''}
             </summary>
             <table>
               <thead><tr><th><th>Code<th>Appearance</thead>
-              <tr><th>Markdown
-                <td><pre>${escapeAscii(escapeHtml(test.markdown))}</pre>
+              <tr><th>Input
+                <td>
+                  <pre>${test.comment ? inputComment(test.comment) : ''}${escapeAscii(escapeHtml(test.markdown))}</pre>
                 <td><pre>${warn(test.markdown) || escapeHtml(test.markdown)}</pre>
-              <tr><th>Expected
+              <tr><th>Expect
                 <td><pre>${escapeAscii(escapeHtml(expect))}</pre>
                 <td>${warn(expect) || expect}
               <tr><th>Got

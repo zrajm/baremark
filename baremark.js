@@ -1,12 +1,12 @@
 (w=>{
-	let l,X='(\n?(?:.+\n)*?.*?)',s=x=>x.replace(/\s+/g,' ').trim(),e=(x,r='&#')=>x.replace(RegExp(`[${r}'\\\\<>\`*~_=:"![\\]()\n\t-]`,'g'),m=>`&#${m.charCodeAt()};`),r=[
+	let l,m={X:'(\n?(?:.+?\n)*?.*?)',Y:'(\n?(?:[^()[\\]\n]+\n)*[^()[\\]\n]*)'},s=x=>x.replace(/\s+/g,' ').trim(),e=(x,r='&#')=>x.replace(RegExp(`[${r}'\\\\<>\`*~_=:"![\\]()\n\t-]`,'g'),m=>`&#${m.charCodeAt()};`),h=(q,t,u,x='')=>(u=e(s(u),''),q?`<img src="${u}" title="${e(x,'')}" alt="${e(t,'')}">`:`<a href="${u}" title="${e(x,'')}">${t}</a>`),y=x=>(w,t,r,u)=>u?h(x,t,u):(r=l[s(r||t)],r?h(x,t,...r):w),r=[
 		[/\r\n?/,'\n'],
 		[/\n+```\n([^]*?)\n```\n*(?=\n)/,(_,m)=>`\n\n<pre>${e(m)}</pre>\n`],
 		[/([^\\])(?<!\\)(`+)(X([^`\n\\]|.\n))\2(?!`)/,(_,p,m,n)=>p+`<tt>${e(n.replace(/^(\s)(.*)\1$/,'$2'))}</tt>`],
 		[/\\[\x21-\x2f:;<=>?@[\\\]^_`{|}~\n]/,m=>m=='\\\n'?'<br>':`&#${m.charCodeAt(1)};`],
-		[/\n\[X\]: +(?:<X>|((?!<)\S+))(?: +(?:'X'|"([^"]*)"|\(([^)]*)\)|(\S+)))?(?=\n)/,(_,n,a,b,c,d,g,f)=>(l[s(n)]=[e(b??s(a),''),c||d||g||f],'')],
-		[/(!?)\[X\]\(X\)/,(_,q,t,u)=>(u=e(s(u),''),q?`<img src="${u}" alt="${t}">`:`<a href="${u}">${t}</a>`)],
-		[/(!?)\[X\](?:\[X\])?/,(w,q,t,r)=>(r=l[s(r||t)],r?q?`<img src="${r[0]}" title="${r[1]||''}" alt="${t}">`:`<a href="${r[0]}" title="${r[1]||''}">${t}</a>`:w)],
+		[/\n\[X\]: +(?:<X>|((?!<)\S+))(?: +(?:'X'|"([^"]*)"|\(([^)]*)\)|(\S+)))?(?=\n)/,(_,n,a,b,c,d,g,f)=>(l[s(n)]=[b??a,c||d||g||f],'')],
+		[/!\[Y\](?:\[Y\]|\(Y\))?/,y(1)],
+		[/\[Y\](?:\[Y\]|\(Y\))?/,y()],
 		[/\n\n([-_*]) *(\1 *){2,}(?=\n\n)/,'\n\n<hr>'],
 		[/\n\n(#{1,6}) +(\S.*?)( +#+)?(?=\n\n)/,(_,i,n)=>`\n\n<h${i=i.length}>${n}</h${i}>`],
 		[/\n(.+?(?:\n.+?)*?)\n(?:(=+)|-+)(?=\n)/,(_,x,i)=>`\n<h${i=i?1:2}>${x}</h${i}>\n`],
@@ -21,7 +21,7 @@
 		[/~~X~~/,'<s>$1</s>'],
 		[/:"X":/,'<q>$1</q>'],
 		[/\n\n(.+(\n.+)*)(?=\n\n)/,(w,m)=>/^<(\/|address|article|aside|blockquote|details|div|[dou]l|fieldset|fig(caption|ure)|footer|form|h\d|header|hgroup|hr|main|menu|nav|p|pre|(no)?script|search|section|style|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]
-	].map(([r,s])=>[RegExp(r.source.replace(/X/g,X),'g'),s])
+	].map(([r,s])=>[RegExp(r.source.replace(/[XY]/g,w=>m[w]),'g'),s])
 	w.baremark=x=>x===undefined?r:(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())
 	w.baremark.escape=e
 })(self)

@@ -18,7 +18,7 @@ featurefulness.)
 * [Test suite]
 * [Github page]
 
-It is currently 1922 bytes in size *before* minification and zipping!
+It is currently 1960 bytes in size *before* minification and zipping!
 
 
 Usage
@@ -224,24 +224,40 @@ etc...
 4. ordered item 4
 ```
 
-- Inline links/images. (Images begin with an exclamation point, links do not.)
-  For inline items, the link URL is specified in-place, within parentheses. For
-  images (`[text](image)`) the `text` specifies the alt-text to use in the
-  resulting `<img>` HTML tag (you may leave it empty).
+- Links. *Inline links* `[text](url)`, *reference links* `[text][ref]` and
+  *shortcut reference links* `[text]` are all implemented. (Though, for brevity
+  Baremark call them *inlinks, reflinks* and *shortlinks*). For inlinks the URL
+  is given within parentheses, directly after the link text, for reflinks and
+  shortlink the URL is instead given in a definition found elsewhere in the
+  document (this is usually way prettier, since long URLs inside the text can
+  look quite messy). If no definition exists for a reference, the markdown is
+  not interpreted as a link, but is left as-is in the outputted document. Link
+  (and image) definitions may be put anywhere in the document, but are
+  customarily put the end of the file or the current section of text.
+  Parentheses and brackets (if used) in `text` must be escaped.
 
 ```
-A link to [Klingonska Akademien](http://klingonska.org).
+An [inlink](http://example.com) and a [reflink][example] and a [shortlink]
+which all links to the same place.
 
-![A Picture](picture.jpg)
+[example]: http://example.com "The example page title"
+[shortlink]: http://example.com "The example page title"
 ```
 
-- Reference links/images. (Images start with an exclamation point, links do
-  not.) *Reference* items uses a reference, given in brackets, which points to
-  a definition found elsewhere in the document. The reference is optional, and
-  if left out the text will be used as a reference. If no definition exists for
-  a reference, the markdown is left as-is in the outputted document. The
-  definitions may be put anywhere in the document, but are customarily put the
-  end of the file or the current section of text.
+- Images. The markdown syntax for links and pictures is the same, except that
+  for a picture markup is preceded by `!`. Just like for links, there are three
+  kinds, *inpics* `![text](url)`, *refpics* `![text][ref]` and *shortpics*
+  `![text]`. The `text` is used in the image’s `alt` attribute, but markdown in
+  `text` is not expanded.
+
+```
+An [inpic](http://example.com) and a [refpic][example] and a [shortpic]
+which all pics to the same place.
+
+[example]: http://example.com "The example page title"
+[shortpic]: http://example.com "The example page title"
+```
+
 
 ```
 A link to [Klingonska Akademien][KA].

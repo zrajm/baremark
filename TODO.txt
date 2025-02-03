@@ -11,7 +11,19 @@
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/6] Tests
+* [0/8] Tests
+** TODO Consistently use 'inlink', 'reflink', 'shortlink' (and ditto for images)
+   These are what the CommonMark spec call 'inline link', 'full reference
+   link', and 'shortcut reference link'. https://spec.commonmark.org/0.31.2/
+
+   Rephrase the following wordings currently in the test case suite:
+   + Change titles '<tt>ref</tt> unspecified' = shortlink, but also 'text-as-ref'.
+   + 'Causes [ref] to be interpreted as link)' -> 'as shortlink'
+** TODO Test markdown inside `text` of links and images
+   In images (`![text][ref]`, `![text]` and `![text](url)`) markdown in `text`
+   should be left as-is as it is inserted into the `alt` attribute of the HTML
+   tag, but in links (`[text][ref]`, `[text]` and `[text](url)`) the markdown
+   should be processed as it is inserted as content into the <a...>...</a> tag.
 ** TODO Add test summary (total number of failed/passed/ran tests)
 ** TODO Add timing info (total + for each series of subtests)
 ** TODO Improve test names
@@ -28,7 +40,10 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/12] Features
+* [0/14] Features
+** TODO Implement 'collapsed reference links' i.e. `[text][]`
+   These are in the CommonMark spec as synonymous to shortlinks `[text]`. Make
+   sure this type of link and image works, and that there are test cases.
 ** TODO Optimize `[ref]: url "title"` code
    I think this can benefit from more use of 'X'.
 ** TODO Optimize use of preprocessing step
@@ -96,7 +111,16 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [29/29] FINISHED
+* [30/30] FINISHED
+** DONE Don't allow '[]()' in link & image `[text]`
+   CLOSED: [2025-02-03 Mon 10:12]
+   In order to use `[` or `]` in link and image texts, they should have to be
+   backslashed. -- Should both `[` AND `]` be disallowed? I strongly suspect
+   so. Make sure that there's test cases for both of them!
+*** DONE Add tests cases
+    CLOSED: [2025-02-03 Mon 09:50]
+*** DONE Rewrite README.md to reflect the changes
+    CLOSED: [2025-02-03 Mon 10:12]
 ** DONE Fix subtest background color
    CLOSED: [2025-01-23 Thu 19:36]
    The subtest background color shouldn't be transparent, as this will make any

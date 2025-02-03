@@ -1190,119 +1190,119 @@
   },
   "Inline links <tt>[text](url)</tt> <span class=\"note\">(Unsupported CommonMark feature: Matching balanced brackets in <tt>text</tt>)</span>", {
     "markdown": "[x](y)",
-    "html": "<p><a href=\"y\">x</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x</a></p>",
     "title": "<tt>text</tt> and <tt>url</tt> without space"
   }, {
     "markdown": "[ x](y)",
-    "html": "<p><a href=\"y\"> x</a></p>",
+    "html": "<p><a href=\"y\" title=\"\"> x</a></p>",
     "title": "<tt>text</tt> with leading space"
   }, {
     "markdown": "[x y](z)",
-    "html": "<p><a href=\"z\">x y</a></p>",
+    "html": "<p><a href=\"z\" title=\"\">x y</a></p>",
     "title": "<tt>text</tt> with middle space"
   }, {
     "markdown": "[x ](y)",
-    "html": "<p><a href=\"y\">x </a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x </a></p>",
     "title": "<tt>text</tt> with trailing space"
   }, {
     "markdown": "[x]( y)",
-    "html": "<p><a href=\"y\">x</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with leading space"
   }, {
     "markdown": "[x](y z)",
-    "html": "<p><a href=\"y z\">x</a></p>",
+    "html": "<p><a href=\"y z\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with middle space"
   }, {
     "markdown": "[x](y  z  a)",
-    "html": "<p><a href=\"y z a\">x</a></p>",
+    "html": "<p><a href=\"y z a\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with multiple middle spaces"
   }, {
     "markdown": "[x](y )",
-    "html": "<p><a href=\"y\">x</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with trailing space"
   }, {
     "markdown": "[x](_y)",
-    "html": "<p><a href=\"&#95;y\">x</a></p>",
+    "html": "<p><a href=\"&#95;y\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with leading underline"
   }, {
     "markdown": "[x](y_)",
-    "html": "<p><a href=\"y&#95;\">x</a></p>",
+    "html": "<p><a href=\"y&#95;\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with trailing underline"
   }, {
     "markdown": "[x](_y_)",
-    "html": "<p><a href=\"&#95;y&#95;\">x</a></p>",
+    "html": "<p><a href=\"&#95;y&#95;\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with <tt>_…_</tt>: should not become italic"
   }, {
     "markdown": "[x](*y*)",
-    "html": "<p><a href=\"&#42;y&#42;\">x</a></p>",
+    "html": "<p><a href=\"&#42;y&#42;\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with <tt>*…*</tt>: should not become italic"
   }, {
     "markdown": "[text](url__url__url)",
-    "html": "<p><a href=\"url&#95;&#95;url&#95;&#95;url\">text</a></p>",
+    "html": "<p><a href=\"url&#95;&#95;url&#95;&#95;url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with <tt>__…__</tt>: should not become bold"
   }, {
     "markdown": "[text](url**url**url)",
-    "html": "<p><a href=\"url&#42;&#42;url&#42;&#42;url\">text</a></p>",
+    "html": "<p><a href=\"url&#42;&#42;url&#42;&#42;url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with <tt>**…**</tt>: should not become bold"
   }, {
     "markdown": "[text](url___url___url)",
-    "html": "<p><a href=\"url&#95;&#95;&#95;url&#95;&#95;&#95;url\">text</a></p>",
+    "html": "<p><a href=\"url&#95;&#95;&#95;url&#95;&#95;&#95;url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with <tt>___…___</tt>: should not become underline"
   }, {
     "markdown": "[text](url***url***url)",
-    "html": "<p><a href=\"url&#42;&#42;&#42;url&#42;&#42;&#42;url\">text</a></p>",
+    "html": "<p><a href=\"url&#42;&#42;&#42;url&#42;&#42;&#42;url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with <tt>***…***</tt>: should not become underline"
   }, {
     "markdown": "[text](url~~url~~url)",
-    "html": "<p><a href=\"url&#126;&#126;url&#126;&#126;url\">text</a></p>",
+    "html": "<p><a href=\"url&#126;&#126;url&#126;&#126;url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with <tt>~~…~~</tt>: should not become bold"
   }, {
     "markdown": "[text](url:\"url\":url)",
-    "html": "<p><a href=\"url&#58;&#34;url&#34;&#58;url\">text</a></p>",
+    "html": "<p><a href=\"url&#58;&#34;url&#34;&#58;url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with <tt>:\"…\":</tt>: should not become HTML quotes"
   }, {
     "markdown": "[text](url&url)",
-    "html": "<p><a href=\"url&url\">text</a></p>",
+    "html": "<p><a href=\"url&url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with ampersand: should not be escaped"
   }, {
     "markdown": "[text](url#url)",
-    "html": "<p><a href=\"url#url\">text</a></p>",
+    "html": "<p><a href=\"url#url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with pound sign: should not be escaped"
   }, {
     "markdown": "[text](url<div>url)",
-    "html": "<p><a href=\"url&#60;div&#62;url\">text</a></p>",
+    "html": "<p><a href=\"url&#60;div&#62;url\" title=\"\">text</a></p>",
     "title": "<tt>url</tt> with HTML tag: should be escaped"
   }, {
     "markdown": "[\nx](y)",
-    "html": "<p><a href=\"y\">\nx</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">\nx</a></p>",
     "title": "<tt>text</tt> with leading newline"
   }, {
     "markdown": "[x\ny](z)",
-    "html": "<p><a href=\"z\">x\ny</a></p>",
+    "html": "<p><a href=\"z\" title=\"\">x\ny</a></p>",
     "title": "<tt>text</tt> with middle newline"
   }, {
     "markdown": "[x\n](y)",
-    "html": "<p><a href=\"y\">x\n</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x\n</a></p>",
     "title": "<tt>text</tt> with trailing newline"
   }, {
     "markdown": "[x](\ny)",
-    "html": "<p><a href=\"y\">x</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with leading newline"
   }, {
     "markdown": "[x](y\nz)",
-    "html": "<p><a href=\"y z\">x</a></p>",
+    "html": "<p><a href=\"y z\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with middle newline"
   }, {
     "markdown": "[x](y\n)",
-    "html": "<p><a href=\"y\">x</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with trailing newline"
   }, {
     "markdown": "[x](  \n  y)",
-    "html": "<p><a href=\"y\">x</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with leading spaces + newline + spaces"
   }, {
     "markdown": "[x](y  \n  )",
-    "html": "<p><a href=\"y\">x</a></p>",
+    "html": "<p><a href=\"y\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with trailing spaces + newline + spaces"
   }, {
     "markdown": "[\n\nx](y)",
@@ -1329,112 +1329,524 @@
     "html": "<p>[x](y</p>\n\n<p>)</p>",
     "title": "<tt>url</tt> with trailing blank line, not allowed"
   }, {
-    "markdown": "[x[a]y](z)",
-    "html": "<p><a href=\"z\">x[a]y</a></p>",
-    "title": "<tt>text</tt> with brackets"
-  }, {
-    "ignore": true,
-    "markdown": "[x[a][b]y](z)\n\n[b]: dest",
-    "NOTE": "Don't use, cause nested links",
-    "html": "<p><a href=\"z\">x<a href=\"dest\" title=\"\">a</a>y</a></p>",
-    "title": "<tt>text</tt> with reference link"
-  }, {
-    "markdown": "[x\\[a]\\[b]y](z)\n\n[b]: dest",
-    "html": "<p><a href=\"z\">x&#91;a]&#91;b]y</a></p>",
-    "title": "<tt>text</tt> with escaped reference link"
-  }, {
-    "ignore": true,
-    "markdown": "[x[a]y](z)\n\n[a]: dest",
-    "NOTE": "Don't use, cause nested links",
-    "html": "<p><a href=\"z\">x<a href=\"dest\" title=\"\">a</a>y</a></p>",
-    "title": "<tt>text</tt> with reference link with text-as-ref"
-  }, {
-    "markdown": "[x\\[a]y](z)\n\n[a]: dest",
-    "html": "<p><a href=\"z\">x&#91;a]y</a></p>",
-    "title": "<tt>text</tt> with escaped reference link with text-as-ref"
-  }, {
-    "ignore": true,
-    "markdown": "[x[a](b)y](z)",
-    "NOTE": "Don't use, cause nested links",
-    "html": "<p><a href=\"y\">x[x]x</a></p>",
-    "title": "<tt>text</tt> with inline link, not allowed"
-  }, {
-    "markdown": "[x\\[x\\]x](y)",
-    "html": "<p><a href=\"y\">x&#91;x&#93;x</a></p>",
-    "title": "<tt>text</tt> with backslashed character"
-  }, {
     "markdown": "[x](\\#top)",
-    "html": "<p><a href=\"&#35;top\">x</a></p>",
+    "html": "<p><a href=\"&#35;top\" title=\"\">x</a></p>",
     "title": "<tt>url</tt> with backslashed character"
   }, {
     "markdown": "[x] (dest)",
     "NOTE": "Unsupported CommonMark feature",
     "html": "<p>[x] (dest)</p>",
     "title": "space between <tt>](</tt>, not allowed"
+  },   {
+    "comment":  " [    ](    )",
+    "markdown": "[[AAAA](BBBB)](url)",
+    "html": "<p>[<a href=\"BBBB\" title=\"\">AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text](url)</tt> (unescaped), inner expanded"
+  }, {
+    "markdown": "[[AAAA](BBBB\\)](url)",
+    "html": "<p>[[AAAA](BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text](url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[[AAAA]\\(BBBB)](url)",
+    "html": "<p>[[AAAA]&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text]&#92;(url)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[[AAAA]\\(BBBB\\)](url)",
+    "html": "<p>[[AAAA]&#40;BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text]&#92;(url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[[AAAA\\](BBBB)](url)",
+    "html": "<p>[[AAAA&#93;(BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;](url)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[[AAAA\\](BBBB\\)](url)",
+    "html": "<p>[[AAAA&#93;(BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;](url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[[AAAA\\]\\(BBBB)](url)",
+    "html": "<p>[[AAAA&#93;&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;]&#92;(url)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  " [                 ](   )",
+    "markdown": "[[AAAA\\]\\(BBBB\\)](url)",
+    "html": "<p>[<a href=\"url\" title=\"\">AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;]&#92;(url&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "[       ](    )",
+    "markdown": "[\\[AAAA](BBBB)](url)",
+    "html": "<p><a href=\"BBBB\" title=\"\">&#91;AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text](url)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[\\[AAAA](BBBB\\)](url)",
+    "html": "<p>[&#91;AAAA](BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text](url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\[AAAA]\\(BBBB)](url)",
+    "html": "<p>[&#91;AAAA]&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text]&#92;(url)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\[AAAA]\\(BBBB\\)](url)",
+    "html": "<p>[&#91;AAAA]&#40;BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text]&#92;(url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\[AAAA\\](BBBB)](url)",
+    "html": "<p>[&#91;AAAA&#93;(BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;](url)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\[AAAA\\](BBBB\\)](url)",
+    "html": "<p>[&#91;AAAA&#93;(BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;](url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\[AAAA\\]\\(BBBB)](url)",
+    "html": "<p>[&#91;AAAA&#93;&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;]&#92;(url)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "[                    ](   )",
+    "markdown": "[\\[AAAA\\]\\(BBBB\\)](url)",
+    "html": "<p><a href=\"url\" title=\"\">&#91;AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;]&#92;(url&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": [" ![    ](    )",
+                "[             ](   )"],
+    "markdown": "[![AAAA](BBBB)](url)",
+    "html": "<p><a href=\"url\" title=\"\"><img src=\"BBBB\" title=\"\" alt=\"AAAA\"></a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt](imgurl)</tt> (unescaped), both expanded"
+  }, {
+    "markdown": "[![AAAA](BBBB\\)](url)",
+    "html": "<p>[![AAAA](BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[![AAAA]\\(BBBB)](url)",
+    "html": "<p>[![AAAA]&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[![AAAA]\\(BBBB\\)](url)",
+    "html": "<p>[![AAAA]&#40;BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt]&#92;(imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[![AAAA\\](BBBB)](url)",
+    "html": "<p>[![AAAA&#93;(BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;](imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[![AAAA\\](BBBB\\)](url)",
+    "html": "<p>[![AAAA&#93;(BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[![AAAA\\]\\(BBBB)](url)",
+    "html": "<p>[![AAAA&#93;&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  " ![                 ](   )",
+    "markdown": "[![AAAA\\]\\(BBBB\\)](url)",
+    "html": "<p>[<img src=\"url\" title=\"\" alt=\"AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;]&#92;(imgurl&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "[        ](    )",
+    "markdown": "[!\\[AAAA](BBBB)](url)",
+    "html": "<p><a href=\"BBBB\" title=\"\">!&#91;AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt](imgurl)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[!\\[AAAA](BBBB\\)](url)",
+    "html": "<p>[!&#91;AAAA](BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[!\\[AAAA]\\(BBBB)](url)",
+    "html": "<p>[!&#91;AAAA]&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[!\\[AAAA]\\(BBBB\\)](url)",
+    "html": "<p>[!&#91;AAAA]&#40;BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt]&#92;(imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[!\\[AAAA\\](BBBB)](url)",
+    "html": "<p>[!&#91;AAAA&#93;(BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;](imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[!\\[AAAA\\](BBBB\\)](url)",
+    "html": "<p>[!&#91;AAAA&#93;(BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[!\\[AAAA\\]\\(BBBB)](url)",
+    "html": "<p>[!&#91;AAAA&#93;&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "[                     ](   )",
+    "markdown": "[!\\[AAAA\\]\\(BBBB\\)](url)",
+    "html": "<p><a href=\"url\" title=\"\">!&#91;AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;]&#92;(imgurl&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment":  "    [    ](    )",
+    "markdown": "[\\![AAAA](BBBB)](url)",
+    "html": "<p>[&#33;<a href=\"BBBB\" title=\"\">AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt](imgurl)</tt> (partially escaped), inner expanded as inline link"
+  }, {
+    "markdown": "[\\![AAAA](BBBB\\)](url)",
+    "html": "<p>[&#33;[AAAA](BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\![AAAA]\\(BBBB)](url)",
+    "html": "<p>[&#33;[AAAA]&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\![AAAA]\\(BBBB\\)](url)",
+    "html": "<p>[&#33;[AAAA]&#40;BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt]&#92;(imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\![AAAA\\](BBBB)](url)",
+    "html": "<p>[&#33;[AAAA&#93;(BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;](imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\![AAAA\\](BBBB\\)](url)",
+    "html": "<p>[&#33;[AAAA&#93;(BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\![AAAA\\]\\(BBBB)](url)",
+    "html": "<p>[&#33;[AAAA&#93;&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "    [                 ](   )",
+    "markdown": "[\\![AAAA\\]\\(BBBB\\)](url)",
+    "html": "<p>[&#33;<a href=\"url\" title=\"\">AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;]&#92;(imgurl&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "[          ](    )",
+    "markdown": "[\\!\\[AAAA](BBBB)](url)",
+    "html": "<p><a href=\"BBBB\" title=\"\">&#33;&#91;AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt](imgurl)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[\\!\\[AAAA](BBBB\\)](url)",
+    "html": "<p>[&#33;&#91;AAAA](BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\!\\[AAAA]\\(BBBB)](url)",
+    "html": "<p>[&#33;&#91;AAAA]&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\!\\[AAAA]\\(BBBB\\)](url)",
+    "html": "<p>[&#33;&#91;AAAA]&#40;BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt]&#92;(imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\!\\[AAAA\\](BBBB)](url)",
+    "html": "<p>[&#33;&#91;AAAA&#93;(BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;](imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\!\\[AAAA\\](BBBB\\)](url)",
+    "html": "<p>[&#33;&#91;AAAA&#93;(BBBB&#41;](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\!\\[AAAA\\]\\(BBBB)](url)",
+    "html": "<p>[&#33;&#91;AAAA&#93;&#40;BBBB)](url)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "[                       ](   )",
+    "markdown": "[\\!\\[AAAA\\]\\(BBBB\\)](url)",
+    "html": "<p><a href=\"url\" title=\"\">&#33;&#91;AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;]&#92;(imgurl&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment":  " [    ][    ]",
+    "markdown": "[[AAAA][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[<a href=\"refurl\" title=\"\">AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text][ref]</tt> (unescaped), inner expanded"
+  }, {
+    "markdown": "[[AAAA][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[[AAAA][BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text][ref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[[AAAA]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[[AAAA]&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text]&#92;[ref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[[AAAA]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[[AAAA]&#91;BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text]&#92;[ref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "         [    ]",
+    "markdown": "[[AAAA\\][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[[AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;][ref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "         [       ](   )",
+    "markdown": "[[AAAA\\][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[[AAAA&#93;<a href=\"url\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;][ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[[AAAA\\]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[[AAAA&#93;&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;]&#92;[ref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  " [                 ](   )",
+    "markdown": "[[AAAA\\]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[<a href=\"url\" title=\"\">AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;]&#92;[ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "[       ][    ]",
+    "markdown": "[\\[AAAA][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p><a href=\"refurl\" title=\"\">&#91;AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text][ref]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[\\[AAAA][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#91;AAAA][BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text][ref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\[AAAA]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#91;AAAA]&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text]&#92;[ref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\[AAAA]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#91;AAAA]&#91;BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text]&#92;[ref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "           [    ]",
+    "markdown": "[\\[AAAA\\][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#91;AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;][ref]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "           [       ](   )",
+    "markdown": "[\\[AAAA\\][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#91;AAAA&#93;<a href=\"url\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;][ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[\\[AAAA\\]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#91;AAAA&#93;&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;]&#92;[ref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "[                    ](   )",
+    "markdown": "[\\[AAAA\\]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p><a href=\"url\" title=\"\">&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;]&#92;[ref&#92;]</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": [" ![    ][    ]",
+                "[             ](   )"],
+    "markdown": "[![AAAA][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p><a href=\"url\" title=\"\"><img src=\"refurl\" title=\"\" alt=\"AAAA\"></a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt][imgref]</tt> (unescaped), both expanded"
+  }, {
+    "markdown": "[![AAAA][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[![AAAA][BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt][imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[![AAAA]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[![AAAA]&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[![AAAA]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[![AAAA]&#91;BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt]&#92;[imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "          [    ]",
+    "markdown": "[![AAAA\\][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[![AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;][imgref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "          [       ](   )",
+    "markdown": "[![AAAA\\][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[![AAAA&#93;<a href=\"url\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[![AAAA\\]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[![AAAA&#93;&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  " ![                 ](   )",
+    "markdown": "[![AAAA\\]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[<img src=\"url\" title=\"\" alt=\"AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;]&#92;[imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "[        ][    ]",
+    "markdown": "[!\\[AAAA][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p><a href=\"refurl\" title=\"\">!&#91;AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt][imgref]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[!\\[AAAA][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[!&#91;AAAA][BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt][imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[!\\[AAAA]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[!&#91;AAAA]&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[!\\[AAAA]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[!&#91;AAAA]&#91;BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt]&#92;[imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "            [    ]",
+    "markdown": "[!\\[AAAA\\][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[!&#91;AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;][imgref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "            [       ](   )",
+    "markdown": "[!\\[AAAA\\][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[!&#91;AAAA&#93;<a href=\"url\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[!\\[AAAA\\]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[!&#91;AAAA&#93;&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "[                     ](   )",
+    "markdown": "[!\\[AAAA\\]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p><a href=\"url\" title=\"\">!&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
+  }, {
+    "comment":  "    [    ][    ]",
+    "markdown": "[\\![AAAA][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;<a href=\"refurl\" title=\"\">AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt][imgref]</tt> (partially escaped), inner expanded"
+  }, {
+    "markdown": "[\\![AAAA][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;[AAAA][BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt][imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\![AAAA]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;[AAAA]&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\![AAAA]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;[AAAA]&#91;BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt]&#92;[imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "            [    ]",
+    "markdown": "[\\![AAAA\\][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;[AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;][imgref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "            [       ](   )",
+    "markdown": "[\\![AAAA\\][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;[AAAA&#93;<a href=\"url\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[\\![AAAA\\]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;[AAAA&#93;&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "    [                 ](   )",
+    "markdown": "[\\![AAAA\\]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;<a href=\"url\" title=\"\">AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;]&#92;[imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "[          ][    ]",
+    "markdown": "[\\!\\[AAAA][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p><a href=\"refurl\" title=\"\">&#33;&#91;AAAA</a>](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt][imgref]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[\\!\\[AAAA][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;&#91;AAAA][BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt][imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\!\\[AAAA]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;&#91;AAAA]&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "[\\!\\[AAAA]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;&#91;AAAA]&#91;BBBB&#93;](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt]&#92;[imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "              [    ]",
+    "markdown": "[\\!\\[AAAA\\][BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;&#91;AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;][imgref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "              [       ](   )",
+    "markdown": "[\\!\\[AAAA\\][BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;&#91;AAAA&#93;<a href=\"url\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "[\\!\\[AAAA\\]\\[BBBB]](url)\n\n[BBBB]: refurl",
+    "html": "<p>[&#33;&#91;AAAA&#93;&#91;BBBB]](url)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "[                       ](   )",
+    "markdown": "[\\!\\[AAAA\\]\\[BBBB\\]](url)\n\n[BBBB]: refurl",
+    "html": "<p><a href=\"url\" title=\"\">&#33;&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
   },
   "Inline images <tt>![text](url)</tt>", {
     "markdown": "![x](y)",
-    "html": "<p><img src=\"y\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>text</tt> and <tt>url</tt> without space"
   }, {
     "markdown": "![](y)",
-    "html": "<p><img src=\"y\" alt=\"\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"\"></p>",
     "title": "<tt>text</tt> empty"
   }, {
     "markdown": "![ x](y)",
-    "html": "<p><img src=\"y\" alt=\" x\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\" x\"></p>",
     "title": "<tt>text</tt> with leading space"
   }, {
     "markdown": "![x y](z)",
-    "html": "<p><img src=\"z\" alt=\"x y\"></p>",
+    "html": "<p><img src=\"z\" title=\"\" alt=\"x y\"></p>",
     "title": "<tt>text</tt> with middle space"
   }, {
     "markdown": "![x ](y)",
-    "html": "<p><img src=\"y\" alt=\"x \"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x \"></p>",
     "title": "<tt>text</tt> with trailing space"
   }, {
     "markdown": "![x]( y)",
-    "html": "<p><img src=\"y\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with leading space"
   }, {
     "markdown": "![x](y z)",
-    "html": "<p><img src=\"y z\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y z\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with middle space"
   }, {
     "markdown": "![x](y )",
-    "html": "<p><img src=\"y\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with trailing space"
   }, {
     "markdown": "![\nx](y)",
-    "html": "<p><img src=\"y\" alt=\"\nx\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"&#10;x\"></p>",
     "title": "<tt>text</tt> with leading newline"
   }, {
     "markdown": "![x\ny](z)",
-    "html": "<p><img src=\"z\" alt=\"x\ny\"></p>",
+    "html": "<p><img src=\"z\" title=\"\" alt=\"x&#10;y\"></p>",
     "title": "<tt>text</tt> with middle newline"
   }, {
     "markdown": "![x\n](y)",
-    "html": "<p><img src=\"y\" alt=\"x\n\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x&#10;\"></p>",
     "title": "<tt>text</tt> with trailing newline"
   }, {
     "markdown": "![x](\ny)",
-    "html": "<p><img src=\"y\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with leading newline"
   }, {
     "markdown": "![x](y\nz)",
-    "html": "<p><img src=\"y z\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y z\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with middle newline"
   }, {
     "markdown": "![x](y\n)",
-    "html": "<p><img src=\"y\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with trailing newline"
   }, {
     "markdown": "![x](  \n  y)",
-    "html": "<p><img src=\"y\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with leading spaces + newline + spaces"
   }, {
     "markdown": "![x](y  \n  )",
-    "html": "<p><img src=\"y\" alt=\"x\"></p>",
+    "html": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with trailing spaces + newline + spaces"
   }, {
     "markdown": "![\n\nx](y)",
@@ -1461,48 +1873,462 @@
     "html": "<p>![x](y</p>\n\n<p>)</p>",
     "title": "<tt>url</tt> with trailing blank line, not allowed"
   }, {
-    "markdown": "![x[a]y](z)",
-    "html": "<p><img src=\"z\" alt=\"x[a]y\"></p>",
-    "title": "<tt>text</tt> with brackets"
-  }, {
-    "ignore": true,
-    "markdown": "![x[a][b]y](z)\n\n[b]: dest",
-    "NOTE": "Don't use, cause broken HTML",
-    "html": "<p><img src=\"z\">x<img src=\"dest\" title=\"\" alt=\"a\">y</a></p>",
-    "title": "<tt>text</tt> with reference link"
-  }, {
-    "markdown": "![x\\[a]\\[b]y](z)\n\n[b]: dest",
-    "html": "<p><img src=\"z\" alt=\"x&#91;a]&#91;b]y\"></p>",
-    "title": "<tt>text</tt> with escaped reference link"
-  }, {
-    "ignore": true,
-    "markdown": "![x[a]y](z)\n\n[a]: dest",
-    "NOTE": "Don't use, cause broken HTML",
-    "html": "<p><img src=\"z\">x<img src=\"dest\" title=\"\" alt=\"a\">y</a></p>",
-    "title": "<tt>text</tt> with reference link with text-as-ref"
-  }, {
-    "markdown": "![x\\[a]y](z)\n\n[a]: dest",
-    "html": "<p><img src=\"z\" alt=\"x&#91;a]y\"></p>",
-    "title": "<tt>text</tt> with escaped reference link with text-as-ref"
-  }, {
-    "ignore": true,
-    "markdown": "![x[a](b)y](z)",
-    "NOTE": "Don't use, cause broken HTML",
-    "html": "<p><img src=\"y\" alt=\"x[x]x\"></p>",
-    "title": "<tt>text</tt> with inline link, not allowed"
-  }, {
-    "markdown": "![x\\[x\\]x](y)",
-    "html": "<p><img src=\"y\" alt=\"x&#91;x&#93;x\"></p>",
-    "title": "<tt>text</tt> with backslashed character"
-  }, {
     "markdown": "![x](\\#top)",
-    "html": "<p><img src=\"&#35;top\" alt=\"x\"></p>",
+    "html": "<p><img src=\"&#35;top\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>url</tt> with backslashed character"
   }, {
     "markdown": "![x] (dest)",
     "NOTE": "Unsupported CommonMark feature",
     "html": "<p>![x] (dest)</p>",
     "title": "space between <tt>](</tt>, not allowed"
+  }, {
+    "comment":  "  [    ](    )",
+    "markdown": "![[AAAA](BBBB)](imgurl)",
+    "html": "<p>![<a href=\"BBBB\" title=\"\">AAAA</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text](url)</tt> (unescaped), inner expanded"
+  }, {
+    "markdown": "![[AAAA](BBBB\\)](imgurl)",
+    "html": "<p>![[AAAA](BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text](url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![[AAAA]\\(BBBB)](imgurl)",
+    "html": "<p>![[AAAA]&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text]&#92;(url)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![[AAAA]\\(BBBB\\)](imgurl)",
+    "html": "<p>![[AAAA]&#40;BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text]&#92;(url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![[AAAA\\](BBBB)](imgurl)",
+    "html": "<p>![[AAAA&#93;(BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;](url)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![[AAAA\\](BBBB\\)](imgurl)",
+    "html": "<p>![[AAAA&#93;(BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;](url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![[AAAA\\]\\(BBBB)](imgurl)",
+    "html": "<p>![[AAAA&#93;&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;]&#92;(url)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "  [                 ](      )",
+    "markdown": "![[AAAA\\]\\(BBBB\\)](imgurl)",
+    "html": "<p>![<a href=\"imgurl\" title=\"\">AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;]&#92;(url&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "![       ](    )",
+    "markdown": "![\\[AAAA](BBBB)](imgurl)",
+    "html": "<p><img src=\"BBBB\" title=\"\" alt=\"&#91;AAAA\">](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text](url)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![\\[AAAA](BBBB\\)](imgurl)",
+    "html": "<p>![&#91;AAAA](BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text](url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\[AAAA]\\(BBBB)](imgurl)",
+    "html": "<p>![&#91;AAAA]&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text]&#92;(url)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\[AAAA]\\(BBBB\\)](imgurl)",
+    "html": "<p>![&#91;AAAA]&#40;BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text]&#92;(url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\[AAAA\\](BBBB)](imgurl)",
+    "html": "<p>![&#91;AAAA&#93;(BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;](url)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\[AAAA\\](BBBB\\)](imgurl)",
+    "html": "<p>![&#91;AAAA&#93;(BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;](url&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\[AAAA\\]\\(BBBB)](imgurl)",
+    "html": "<p>![&#91;AAAA&#93;&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;]&#92;(url)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "![                    ](      )",
+    "markdown": "![\\[AAAA\\]\\(BBBB\\)](imgurl)",
+    "html": "<p><img src=\"imgurl\" title=\"\" alt=\"&#91;AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;]&#92;(url&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["  ![    ](    )",
+                " [             ](      )"],
+    "markdown": "![![AAAA](BBBB)](imgurl)",
+    "html": "<p>!<a href=\"imgurl\" title=\"\"><img src=\"BBBB\" title=\"\" alt=\"AAAA\"></a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt](imgurl)</tt> (unescaped), wonkily expanded",
+    "NOTE": "Outer <tt>![alt][imgurl]</tt> unexpectedly expanded as <tt>[text](url)</tt>."
+  }, {
+    "markdown": "![![AAAA](BBBB\\)](imgurl)",
+    "html": "<p>![![AAAA](BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![![AAAA]\\(BBBB)](imgurl)",
+    "html": "<p>![![AAAA]&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![![AAAA]\\(BBBB\\)](imgurl)",
+    "html": "<p>![![AAAA]&#40;BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt]&#92;(imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![![AAAA\\](BBBB)](imgurl)",
+    "html": "<p>![![AAAA&#93;(BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;](imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![![AAAA\\](BBBB\\)](imgurl)",
+    "html": "<p>![![AAAA&#93;(BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![![AAAA\\]\\(BBBB)](imgurl)",
+    "html": "<p>![![AAAA&#93;&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "  ![                 ](      )",
+    "markdown": "![![AAAA\\]\\(BBBB\\)](imgurl)",
+    "html": "<p>![<img src=\"imgurl\" title=\"\" alt=\"AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;]&#92;(imgurl&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "![        ](    )",
+    "markdown": "![!\\[AAAA](BBBB)](imgurl)",
+    "html": "<p><img src=\"BBBB\" title=\"\" alt=\"&#33;&#91;AAAA\">](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt](imgurl)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![!\\[AAAA](BBBB\\)](imgurl)",
+    "html": "<p>![!&#91;AAAA](BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![!\\[AAAA]\\(BBBB)](imgurl)",
+    "html": "<p>![!&#91;AAAA]&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![!\\[AAAA]\\(BBBB\\)](imgurl)",
+    "html": "<p>![!&#91;AAAA]&#40;BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt]&#92;(imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![!\\[AAAA\\](BBBB)](imgurl)",
+    "html": "<p>![!&#91;AAAA&#93;(BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;](imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![!\\[AAAA\\](BBBB\\)](imgurl)",
+    "html": "<p>![!&#91;AAAA&#93;(BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![!\\[AAAA\\]\\(BBBB)](imgurl)",
+    "html": "<p>![!&#91;AAAA&#93;&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "![                     ](      )",
+    "markdown": "![!\\[AAAA\\]\\(BBBB\\)](imgurl)",
+    "html": "<p><img src=\"imgurl\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;]&#92;(imgurl&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment":  "     [    ](    )",
+    "markdown": "![\\![AAAA](BBBB)](imgurl)",
+    "html": "<p>![&#33;<a href=\"BBBB\" title=\"\">AAAA</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt](imgurl)</tt> (partially escaped), inner expanded as inline link"
+  }, {
+    "markdown": "![\\![AAAA](BBBB\\)](imgurl)",
+    "html": "<p>![&#33;[AAAA](BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\![AAAA]\\(BBBB)](imgurl)",
+    "html": "<p>![&#33;[AAAA]&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\![AAAA]\\(BBBB\\)](imgurl)",
+    "html": "<p>![&#33;[AAAA]&#40;BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt]&#92;(imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\![AAAA\\](BBBB)](imgurl)",
+    "html": "<p>![&#33;[AAAA&#93;(BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;](imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\![AAAA\\](BBBB\\)](imgurl)",
+    "html": "<p>![&#33;[AAAA&#93;(BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\![AAAA\\]\\(BBBB)](imgurl)",
+    "html": "<p>![&#33;[AAAA&#93;&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "     [                 ](      )",
+    "markdown": "![\\![AAAA\\]\\(BBBB\\)](imgurl)",
+    "html": "<p>![&#33;<a href=\"imgurl\" title=\"\">AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;]&#92;(imgurl&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "![          ](    )",
+    "markdown": "![\\!\\[AAAA](BBBB)](imgurl)",
+    "html": "<p><img src=\"BBBB\" title=\"\" alt=\"&#33;&#91;AAAA\">](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt](imgurl)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![\\!\\[AAAA](BBBB\\)](imgurl)",
+    "html": "<p>![&#33;&#91;AAAA](BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\!\\[AAAA]\\(BBBB)](imgurl)",
+    "html": "<p>![&#33;&#91;AAAA]&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\!\\[AAAA]\\(BBBB\\)](imgurl)",
+    "html": "<p>![&#33;&#91;AAAA]&#40;BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt]&#92;(imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\!\\[AAAA\\](BBBB)](imgurl)",
+    "html": "<p>![&#33;&#91;AAAA&#93;(BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;](imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\!\\[AAAA\\](BBBB\\)](imgurl)",
+    "html": "<p>![&#33;&#91;AAAA&#93;(BBBB&#41;](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;](imgurl&#92;)</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\!\\[AAAA\\]\\(BBBB)](imgurl)",
+    "html": "<p>![&#33;&#91;AAAA&#93;&#40;BBBB)](imgurl)</p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;]&#92;(imgurl)</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "![                       ](      )",
+    "markdown": "![\\!\\[AAAA\\]\\(BBBB\\)](imgurl)",
+    "html": "<p><img src=\"imgurl\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;]&#92;(imgurl&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment":  "  [    ][    ]",
+    "markdown": "![[AAAA][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![<a href=\"refurl\" title=\"\">AAAA</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text][ref]</tt> (unescaped), inner expanded"
+  }, {
+    "markdown": "![[AAAA][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![[AAAA][BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text][ref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![[AAAA]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![[AAAA]&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text]&#92;[ref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![[AAAA]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![[AAAA]&#91;BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text]&#92;[ref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "          [    ]",
+    "markdown": "![[AAAA\\][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![[AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;][ref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "          [       ](      )",
+    "markdown": "![[AAAA\\][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![[AAAA&#93;<a href=\"imgurl\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;][ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![[AAAA\\]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![[AAAA&#93;&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;]&#92;[ref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "  [                 ](      )",
+    "markdown": "![[AAAA\\]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![<a href=\"imgurl\" title=\"\">AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;]&#92;[ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "![       ][    ]",
+    "markdown": "![\\[AAAA][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p><img src=\"refurl\" title=\"\" alt=\"&#91;AAAA\">](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text][ref]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![\\[AAAA][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#91;AAAA][BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text][ref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\[AAAA]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#91;AAAA]&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text]&#92;[ref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\[AAAA]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#91;AAAA]&#91;BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text]&#92;[ref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "            [    ]",
+    "markdown": "![\\[AAAA\\][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#91;AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;][ref]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "            [       ](      )",
+    "markdown": "![\\[AAAA\\][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#91;AAAA&#93;<a href=\"imgurl\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;][ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![\\[AAAA\\]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#91;AAAA&#93;&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;]&#92;[ref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "![                    ](      )",
+    "markdown": "![\\[AAAA\\]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p><img src=\"imgurl\" title=\"\" alt=\"&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;]&#92;[ref&#92;]</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["  ![    ][    ]",
+                " [             ](      )"],
+    "markdown": "![![AAAA][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>!<a href=\"imgurl\" title=\"\"><img src=\"refurl\" title=\"\" alt=\"AAAA\"></a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt][imgref]</tt> (unescaped), both expanded",
+    "NOTE": "Outer <tt>![alt][imgurl]</tt> unexpectedly expanded as <tt>[text](url)</tt>."
+  }, {
+    "markdown": "![![AAAA][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![![AAAA][BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt][imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![![AAAA]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![![AAAA]&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![![AAAA]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![![AAAA]&#91;BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt]&#92;[imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "           [    ]",
+    "markdown": "![![AAAA\\][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![![AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;][imgref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "           [       ](      )",
+    "markdown": "![![AAAA\\][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![![AAAA&#93;<a href=\"imgurl\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![![AAAA\\]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![![AAAA&#93;&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "  ![                 ](      )",
+    "markdown": "![![AAAA\\]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![<img src=\"imgurl\" title=\"\" alt=\"AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;]&#92;[imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "![        ][    ]",
+    "markdown": "![!\\[AAAA][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p><img src=\"refurl\" title=\"\" alt=\"&#33;&#91;AAAA\">](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt][imgref]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![!\\[AAAA][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![!&#91;AAAA][BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt][imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![!\\[AAAA]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![!&#91;AAAA]&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![!\\[AAAA]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![!&#91;AAAA]&#91;BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt]&#92;[imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "             [    ]",
+    "markdown": "![!\\[AAAA\\][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![!&#91;AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;][imgref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "             [       ](      )",
+    "markdown": "![!\\[AAAA\\][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![!&#91;AAAA&#93;<a href=\"imgurl\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![!\\[AAAA\\]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![!&#91;AAAA&#93;&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "![                     ](      )",
+    "markdown": "![!\\[AAAA\\]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p><img src=\"imgurl\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
+  }, {
+    "comment":  "     [    ][    ]",
+    "markdown": "![\\![AAAA][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;<a href=\"refurl\" title=\"\">AAAA</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt][imgref]</tt> (partially escaped), inner expanded"
+  }, {
+    "markdown": "![\\![AAAA][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;[AAAA][BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt][imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\![AAAA]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;[AAAA]&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\![AAAA]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;[AAAA]&#91;BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt]&#92;[imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "             [    ]",
+    "markdown": "![\\![AAAA\\][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;[AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;][imgref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "             [       ](      )",
+    "markdown": "![\\![AAAA\\][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;[AAAA&#93;<a href=\"imgurl\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![\\![AAAA\\]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;[AAAA&#93;&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "     [                 ](      )",
+    "markdown": "![\\![AAAA\\]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;<a href=\"imgurl\" title=\"\">AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;]&#92;[imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "![          ][    ]",
+    "markdown": "![\\!\\[AAAA][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p><img src=\"refurl\" title=\"\" alt=\"&#33;&#91;AAAA\">](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt][imgref]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![\\!\\[AAAA][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;&#91;AAAA][BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt][imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\!\\[AAAA]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;&#91;AAAA]&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "markdown": "![\\!\\[AAAA]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;&#91;AAAA]&#91;BBBB&#93;](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt]&#92;[imgref&#92;]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "               [    ]",
+    "markdown": "![\\!\\[AAAA\\][BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;&#91;AAAA&#93;<a href=\"refurl\" title=\"\">BBBB</a>](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;][imgref]</tt> (partially escaped), inner expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "               [       ](      )",
+    "markdown": "![\\!\\[AAAA\\][BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;&#91;AAAA&#93;<a href=\"imgurl\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "markdown": "![\\!\\[AAAA\\]\\[BBBB]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p>![&#33;&#91;AAAA&#93;&#91;BBBB]](imgurl)</p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref]</tt> (partially escaped), neither expanded"
+  }, {
+    "comment":  "![                       ](      )",
+    "markdown": "![\\!\\[AAAA\\]\\[BBBB\\]](imgurl)\n\n[BBBB]: refurl",
+    "html": "<p><img src=\"imgurl\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
   },
   "Reference links <tt>[text][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
     "markdown": "[x][y]\n\n[y]: url",
@@ -1773,15 +2599,537 @@
     "title": "<tt>ref</tt> and definition <tt>ref</tt> with backslash escape"
   }, {
     "markdown": "[text][ref]\n\n[ref]: link \"*\\*\"",
-    "html": "<p><a href=\"link\" title=\"*&#42;\">text</a></p>",
+    "html": "<p><a href=\"link\" title=\"&#42;&#42;\">text</a></p>",
     "title": "definition <tt>title</tt> with backslash escape"
   }, {
     "markdown": "[text] [ref]\n\n[ref]: url",
     "NOTE": "Unsupported CommonMark feature; causes <tt>[ref]</tt> to be interpreted as link",
     "html": "<p>[text] <a href=\"url\" title=\"\">ref</a></p>",
     "title": "space between <tt>][</tt>, not allowed"
+  }, {
+    "comment": [" [    ](    )",
+                "              [    ]"],
+    "markdown": "[[AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[<a href=\"BBBB\" title=\"\">AAAA</a>]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text](url)</tt> (unescaped), inner expanded & trailing expanded as shortlink"
+  }, {
+    "comment":  "                [    ]",
+    "markdown": "[[AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[[AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text](url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                [    ]",
+    "markdown": "[[AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[[AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text]&#92;(url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[[AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[[AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text]&#92;(url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                [    ]",
+    "markdown": "[[AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[[AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;](url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[[AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[[AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;](url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[[AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[[AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;]&#92;(url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  " [                 ][    ]",
+    "markdown": "[[AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[<a href=\"refurl\" title=\"\">AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;]&#92;(url&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["[       ](    )",
+                "                [    ]"],
+    "markdown": "[\\[AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><a href=\"BBBB\" title=\"\">&#91;AAAA</a>]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text](url)</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[\\[AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#91;AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text](url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[\\[AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#91;AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text]&#92;(url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "[\\[AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#91;AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text]&#92;(url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[\\[AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#91;AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;](url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "[\\[AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#91;AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;](url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "[\\[AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#91;AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;]&#92;(url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "[                    ][    ]",
+    "markdown": "[\\[AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><a href=\"refurl\" title=\"\">&#91;AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;]&#92;(url&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": [" ![    ](    )",
+                "[             ][    ]"],
+    "markdown": "[![AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><a href=\"refurl\" title=\"\"><img src=\"BBBB\" title=\"\" alt=\"AAAA\"></a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt](imgurl)</tt> (unescaped), both expanded"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "[![AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[![AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "[![AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[![AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt]&#92;(imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[![AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[![AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt]&#92;(imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "[![AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[![AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;](imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[![AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[![AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[![AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[![AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;]&#92;(imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  " ![                 ][    ]",
+    "markdown": "[![AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[<img src=\"refurl\" title=\"\" alt=\"AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;]&#92;(imgurl&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["[        ](    )",
+                "                 [    ]"],
+    "markdown": "[!\\[AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><a href=\"BBBB\" title=\"\">!&#91;AAAA</a>]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt](imgurl)</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[!\\[AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[!&#91;AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[!\\[AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[!&#91;AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt]&#92;(imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[!\\[AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[!&#91;AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt]&#92;(imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[!\\[AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[!&#91;AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;](imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[!\\[AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[!&#91;AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[!\\[AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[!&#91;AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;]&#92;(imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "[                     ][    ]",
+    "markdown": "[!\\[AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><a href=\"refurl\" title=\"\">!&#91;AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;]&#92;(imgurl&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["    [    ](    )",
+                "                 [    ]"],
+    "markdown": "[\\![AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;<a href=\"BBBB\" title=\"\">AAAA</a>]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt](imgurl)</tt> (partially escaped), inner expanded as inline link & trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[\\![AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;[AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[\\![AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;[AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt]&#92;(imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\![AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;[AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt]&#92;(imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[\\![AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;[AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;](imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\![AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;[AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\![AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;[AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;]&#92;(imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "    [                 ][    ]",
+    "markdown": "[\\![AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;<a href=\"refurl\" title=\"\">AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;]&#92;(imgurl&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["[          ](    )",
+                "                   [    ]"],
+    "markdown": "[\\!\\[AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><a href=\"BBBB\" title=\"\">&#33;&#91;AAAA</a>]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt](imgurl)</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\!\\[AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;&#91;AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\!\\[AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;&#91;AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt]&#92;(imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                       [    ]",
+    "markdown": "[\\!\\[AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;&#91;AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt]&#92;(imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\!\\[AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;&#91;AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;](imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                       [    ]",
+    "markdown": "[\\!\\[AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;&#91;AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                       [    ]",
+    "markdown": "[\\!\\[AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>[&#33;&#91;AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;]&#92;(imgurl)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "[                       ][    ]",
+    "markdown": "[\\!\\[AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><a href=\"refurl\" title=\"\">&#33;&#91;AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;]&#92;(imgurl&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": [" [    ][    ]",
+                "              [    ]"],
+    "markdown": "[[AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[<a href=\"refurl1\" title=\"\">AAAA</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text][ref]</tt> (unescaped), inner expanded & trailing expanded as shortlink"
+  }, {
+    "comment":  "                [    ]",
+    "markdown": "[[AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[[AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text][ref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                [    ]",
+    "markdown": "[[AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[[AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text]&#92;[ref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[[AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[[AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text]&#92;[ref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["         [    ]",
+                "                [    ]"],
+    "markdown": "[[AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[[AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;][ref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "         [       ][    ]",
+    "markdown": "[[AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[[AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;][ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[[AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[[AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;]&#92;[ref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  " [                 ][    ]",
+    "markdown": "[[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[<a href=\"refurl2\" title=\"\">AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;]&#92;[ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["[       ][    ]",
+                "                [    ]"],
+    "markdown": "[\\[AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><a href=\"refurl1\" title=\"\">&#91;AAAA</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text][ref]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[\\[AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#91;AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text][ref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "[\\[AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#91;AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text]&#92;[ref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "[\\[AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#91;AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text]&#92;[ref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["           [    ]",
+                "                  [    ]"],
+    "markdown": "[\\[AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#91;AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;][ref]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "           [       ][    ]",
+    "markdown": "[\\[AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#91;AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;][ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "[\\[AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#91;AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;]&#92;[ref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "[                    ][    ]",
+    "markdown": "[\\[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><a href=\"refurl2\" title=\"\">&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;]&#92;[ref&#92;]</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": [" ![    ][    ]",
+                "[             ][    ]"],
+    "markdown": "[![AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><a href=\"refurl2\" title=\"\"><img src=\"refurl1\" title=\"\" alt=\"AAAA\"></a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt][imgref]</tt> (unescaped), both expanded"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "[![AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[![AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt][imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "[![AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[![AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[![AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[![AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt]&#92;[imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["          [    ]",
+                "                 [    ]"],
+    "markdown": "[![AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[![AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;][imgref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "          [       ][    ]",
+    "markdown": "[![AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[![AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[![AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[![AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  " ![                 ][    ]",
+    "markdown": "[![AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[<img src=\"refurl2\" title=\"\" alt=\"AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;]&#92;[imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["[        ][    ]",
+                "                 [    ]"],
+    "markdown": "[!\\[AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><a href=\"refurl1\" title=\"\">!&#91;AAAA</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt][imgref]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[!\\[AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[!&#91;AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt][imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[!\\[AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[!&#91;AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[!\\[AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[!&#91;AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt]&#92;[imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["            [    ]",
+                "                   [    ]"],
+    "markdown": "[!\\[AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[!&#91;AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;][imgref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "            [       ][    ]",
+    "markdown": "[!\\[AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[!&#91;AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[!\\[AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[!&#91;AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "[                     ][    ]",
+    "markdown": "[!\\[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><a href=\"refurl2\" title=\"\">!&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["    [    ][    ]",
+                "                 [    ]"],
+    "markdown": "[\\![AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;<a href=\"refurl1\" title=\"\">AAAA</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt][imgref]</tt> (partially escaped), inner expanded & trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[\\![AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;[AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt][imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "[\\![AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;[AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\![AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;[AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt]&#92;[imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["            [    ]",
+                "                   [    ]"],
+    "markdown": "[\\![AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;[AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;][imgref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "            [       ][    ]",
+    "markdown": "[\\![AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;[AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\![AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;[AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "    [                 ][    ]",
+    "markdown": "[\\![AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;<a href=\"refurl2\" title=\"\">AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;]&#92;[imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["[          ][    ]",
+                "                   [    ]"],
+    "markdown": "[\\!\\[AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><a href=\"refurl1\" title=\"\">&#33;&#91;AAAA</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt][imgref]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\!\\[AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;&#91;AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt][imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "[\\!\\[AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;&#91;AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                       [    ]",
+    "markdown": "[\\!\\[AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;&#91;AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt]&#92;[imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["              [    ]",
+                "                     [    ]"],
+    "markdown": "[\\!\\[AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;&#91;AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;][imgref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "              [       ][    ]",
+    "markdown": "[\\!\\[AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;&#91;AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                       [    ]",
+    "markdown": "[\\!\\[AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>[&#33;&#91;AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "[                       ][    ]",
+    "markdown": "[\\!\\[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><a href=\"refurl2\" title=\"\">&#33;&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
   },
-  "Reference images <tt>![alttext][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
+  "Reference images <tt>![text][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
     "markdown": "![x][y]\n\n[y]: url",
     "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>text</tt> and <tt>ref</tt> without space"
@@ -1851,15 +3199,15 @@
     "title": "definition <tt>url</tt> bracketed by greater & less than, with trailing space"
   }, {
     "markdown": "![\nx][y]\n\n[y]: url",
-    "html": "<p><img src=\"url\" title=\"\" alt=\"\nx\"></p>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"&#10;x\"></p>",
     "title": "<tt>text</tt> with leading newline"
   }, {
     "markdown": "![x\ny][z]\n\n[z]: url",
-    "html": "<p><img src=\"url\" title=\"\" alt=\"x\ny\"></p>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x&#10;y\"></p>",
     "title": "<tt>text</tt> with middle newline"
   }, {
     "markdown": "![x\n][y]\n\n[y]: url",
-    "html": "<p><img src=\"url\" title=\"\" alt=\"x\n\"></p>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x&#10;\"></p>",
     "title": "<tt>text</tt> with trailing newline"
   }, {
     "markdown": "![x][\ny]\n\n[y]: url",
@@ -1875,15 +3223,15 @@
     "title": "<tt>ref</tt> with trailing newline"
   }, {
     "markdown": "![\nx]\n\n[x]: url",
-    "html": "<p><img src=\"url\" title=\"\" alt=\"\nx\"></p>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"&#10;x\"></p>",
     "title": "<tt>text</tt> with leading newline, <tt>ref</tt> unspecified"
   }, {
     "markdown": "![x\ny]\n\n[x y]: url",
-    "html": "<p><img src=\"url\" title=\"\" alt=\"x\ny\"></p>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x&#10;y\"></p>",
     "title": "<tt>text</tt> with middle newline, <tt>ref</tt> unspecified"
   }, {
     "markdown": "![x\n]\n\n[x]: url",
-    "html": "<p><img src=\"url\" title=\"\" alt=\"x\n\"></p>",
+    "html": "<p><img src=\"url\" title=\"\" alt=\"x&#10;\"></p>",
     "title": "<tt>text</tt> with trailing newline, <tt>ref</tt> unspecified"
   }, {
     "markdown": "![x][y]\n\n[\ny]: url",
@@ -1987,7 +3335,7 @@
     "title": "definition <tt>title</tt> with parentheses"
   }, {
     "markdown": "![*\\*][ref]\n\n[ref]: link \"title\"",
-    "html": "<p><img src=\"link\" title=\"title\" alt=\"*&#42;\"></p>",
+    "html": "<p><img src=\"link\" title=\"title\" alt=\"&#42;&#42;\"></p>",
     "title": "<tt>text</tt> with backslash escape"
   }, {
     "markdown": "[text][*\\*]\n\n[**]: link \"title\"",
@@ -2006,12 +3354,536 @@
     "title": "<tt>ref</tt> and definition <tt>ref</tt> with backslash escape"
   }, {
     "markdown": "![text][ref]\n\n[ref]: link \"*\\*\"",
-    "html": "<p><img src=\"link\" title=\"*&#42;\" alt=\"text\"></p>",
+    "html": "<p><img src=\"link\" title=\"&#42;&#42;\" alt=\"text\"></p>",
     "title": "definition <tt>title</tt> with backslash escape"
   }, {
     "markdown": "![text] [ref]\n\n[ref]: url",
     "NOTE": "Unsupported CommonMark feature; causes <tt>[ref]</tt> to be interpreted as link",
     "html": "<p>![text] <a href=\"url\" title=\"\">ref</a></p>",
     "title": "space between <tt>][</tt>, not allowed"
+  }, {
+    "comment": ["  [    ](    )",
+                "               [    ]"],
+    "markdown": "![[AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![<a href=\"BBBB\" title=\"\">AAAA</a>]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text](url)</tt> (unescaped), inner expanded & trailing expanded as shortlink"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "![[AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![[AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text](url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "![[AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![[AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text]&#92;(url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![[AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![[AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text]&#92;(url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "![[AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![[AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;](url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![[AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![[AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;](url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![[AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![[AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;]&#92;(url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "  [                 ][    ]",
+    "markdown": "![[AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![<a href=\"refurl\" title=\"\">AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>[text&#92;]&#92;(url&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["![       ](    )",
+                "                 [    ]"],
+    "markdown": "![\\[AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><img src=\"BBBB\" title=\"\" alt=\"&#91;AAAA\">]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text](url)</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![\\[AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#91;AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text](url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![\\[AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#91;AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text]&#92;(url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "![\\[AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#91;AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text]&#92;(url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![\\[AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#91;AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;](url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "![\\[AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#91;AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;](url&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "![\\[AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#91;AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;]&#92;(url)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "![                    ][    ]",
+    "markdown": "![\\[AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><img src=\"refurl\" title=\"\" alt=\"&#91;AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline link <tt>&#92;[text&#92;]&#92;(url&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["  ![    ](    )",
+                " [             ][    ]"],
+    "markdown": "![![AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>!<a href=\"refurl\" title=\"\"><img src=\"BBBB\" title=\"\" alt=\"AAAA\"></a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt][imgurl]</tt> (unescaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": "Outer <tt>![alt][imgurl]</tt> unexpectedly expanded as <tt>[text](url)</tt>."
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "![![AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![![AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "![![AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![![AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt]&#92;[imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![![AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![![AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt]&#92;(imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "![![AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![![AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;][imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![![AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![![AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![![AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![![AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;]&#92;[imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "  ![                 ][    ]",
+    "markdown": "![![AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![<img src=\"refurl\" title=\"\" alt=\"AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline image <tt>![alt&#92;]&#92;(imgurl&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["![        ](    )",
+                "                  [    ]"],
+    "markdown": "![!\\[AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><img src=\"BBBB\" title=\"\" alt=\"&#33;&#91;AAAA\">]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt][imgurl]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![!\\[AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![!&#91;AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![!\\[AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![!&#91;AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt]&#92;[imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![!\\[AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![!&#91;AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt]&#92;(imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![!\\[AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![!&#91;AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;][imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![!\\[AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![!&#91;AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![!\\[AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![!&#91;AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;]&#92;[imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "![                     ][    ]",
+    "markdown": "![!\\[AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><img src=\"refurl\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline image <tt>!&#92;[alt&#92;]&#92;(imgurl&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["     [    ](    )",
+                "                  [    ]"],
+    "markdown": "![\\![AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;<a href=\"BBBB\" title=\"\">AAAA</a>]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt][imgurl]</tt> (partially escaped), expanded inner as inline link & trailing as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![\\![AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;[AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![\\![AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;[AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt]&#92;[imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\![AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;[AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt]&#92;(imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![\\![AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;[AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;][imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\![AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;[AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\![AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;[AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;]&#92;[imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "     [                 ][    ]",
+    "markdown": "![\\![AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;<a href=\"refurl\" title=\"\">AAAA&#93;&#40;BBBB&#41;</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;![alt&#92;]&#92;(imgurl&#92;)</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["![          ](    )",
+                "                    [    ]"],
+    "markdown": "![\\!\\[AAAA](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><img src=\"BBBB\" title=\"\" alt=\"&#33;&#91;AAAA\">]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt][imgurl]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\!\\[AAAA](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;&#91;AAAA](BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\!\\[AAAA]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;&#91;AAAA]&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt]&#92;[imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                        [    ]",
+    "markdown": "![\\!\\[AAAA]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;&#91;AAAA]&#40;BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt]&#92;(imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\!\\[AAAA\\](BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;&#91;AAAA&#93;(BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;][imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                        [    ]",
+    "markdown": "![\\!\\[AAAA\\](BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;&#91;AAAA&#93;(BBBB&#41;]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;](imgurl&#92;)</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                        [    ]",
+    "markdown": "![\\!\\[AAAA\\]\\(BBBB)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p>![&#33;&#91;AAAA&#93;&#40;BBBB)]<a href=\"refurl\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;]&#92;[imgurl]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "![                       ][    ]",
+    "markdown": "![\\!\\[AAAA\\]\\(BBBB\\)][XXXX]\n\n[XXXX]: refurl",
+    "html": "<p><img src=\"refurl\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#40;BBBB&#41;\"></p>",
+    "title": "<tt>text</tt> with inline image <tt>&#92;!&#92;[alt&#92;]&#92;(imgurl&#92;)</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["  [    ][    ]",
+                "               [    ]"],
+    "markdown": "![[AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![<a href=\"refurl1\" title=\"\">AAAA</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text][ref]</tt> (unescaped), inner expanded & trailing expanded as shortlink"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "![[AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![[AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text][ref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                 [    ]",
+    "markdown": "![[AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![[AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text]&#92;[ref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![[AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![[AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text]&#92;[ref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["          [    ]",
+                "                 [    ]"],
+    "markdown": "![[AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![[AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;][ref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "          [       ][    ]",
+    "markdown": "![[AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![[AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;][ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![[AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![[AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;]&#92;[ref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "  [                 ][    ]",
+    "markdown": "![[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![<a href=\"refurl2\" title=\"\">AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>[text&#92;]&#92;[ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["![       ][    ]",
+                "                 [    ]"],
+    "markdown": "![\\[AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><img src=\"refurl1\" title=\"\" alt=\"&#91;AAAA\">]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text][ref]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![\\[AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#91;AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text][ref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                   [    ]",
+    "markdown": "![\\[AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#91;AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text]&#92;[ref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "![\\[AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#91;AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text]&#92;[ref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["            [    ]",
+                "                   [    ]"],
+    "markdown": "![\\[AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#91;AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;][ref]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "            [       ][    ]",
+    "markdown": "![\\[AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#91;AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;][ref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                     [    ]",
+    "markdown": "![\\[AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#91;AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;]&#92;[ref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "![                    ][    ]",
+    "markdown": "![\\[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><img src=\"refurl2\" title=\"\" alt=\"&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference link <tt>&#92;[text&#92;]&#92;[ref&#92;]</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["  ![    ][    ]",
+                " [             ](      )"],
+    "markdown": "![![AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>!<a href=\"refurl2\" title=\"\"><img src=\"refurl1\" title=\"\" alt=\"AAAA\"></a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt][imgref]</tt> (unescaped), both expanded",
+    "NOTE": "Outer <tt>![alt][imgurl]</tt> unexpectedly expanded as <tt>[text](url)</tt>."
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "![![AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![![AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt][imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                  [    ]",
+    "markdown": "![![AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![![AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![![AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![![AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt]&#92;[imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["           [    ]",
+                "                  [    ]"],
+    "markdown": "![![AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![![AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;][imgref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "           [       ][    ]",
+    "markdown": "![![AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![![AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![![AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![![AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "  ![                 ][    ]",
+    "markdown": "![![AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![<img src=\"refurl2\" title=\"\" alt=\"AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference image <tt>![alt&#92;]&#92;[imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["![        ][    ]",
+                "                  [    ]"],
+    "markdown": "![!\\[AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><img src=\"refurl1\" title=\"\" alt=\"&#33;&#91;AAAA\">]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt][imgref]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![!\\[AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![!&#91;AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt][imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![!\\[AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![!&#91;AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![!\\[AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![!&#91;AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt]&#92;[imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["             [    ]",
+                "                    [    ]"],
+    "markdown": "![!\\[AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![!&#91;AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;][imgref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "             [       ][    ]",
+    "markdown": "![!\\[AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![!&#91;AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![!\\[AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![!&#91;AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "![                     ][    ]",
+    "markdown": "![!\\[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><img src=\"refurl2\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference image <tt>!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
+  }, {
+    "comment": ["     [    ][    ]",
+                "                  [    ]"],
+    "markdown": "![\\![AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;<a href=\"refurl1\" title=\"\">AAAA</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt][imgref]</tt> (partially escaped), inner expanded & trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![\\![AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;[AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt][imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                    [    ]",
+    "markdown": "![\\![AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;[AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\![AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;[AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt]&#92;[imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["             [    ]",
+                "                    [    ]"],
+    "markdown": "![\\![AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;[AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;][imgref]</tt> (partially escaped), inner & trailing expanded as shortlinks",
+    "NOTE": ""
+  }, {
+    "comment":  "             [       ][    ]",
+    "markdown": "![\\![AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;[AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\![AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;[AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "     [                 ][    ]",
+    "markdown": "![\\![AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;<a href=\"refurl2\" title=\"\">AAAA&#93;&#91;BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;![alt&#92;]&#92;[imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment": ["![          ][    ]",
+                "                    [    ]"],
+    "markdown": "![\\!\\[AAAA][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><img src=\"refurl1\" title=\"\" alt=\"&#33;&#91;AAAA\">]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt][imgref]</tt> (partially escaped), wonkily expanded & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\!\\[AAAA][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;&#91;AAAA][BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt][imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                      [    ]",
+    "markdown": "![\\!\\[AAAA]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;&#91;AAAA]&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "                        [    ]",
+    "markdown": "![\\!\\[AAAA]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;&#91;AAAA]&#91;BBBB&#93;]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt]&#92;[imgref&#92;]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment": ["               [    ]",
+                "                      [    ]"],
+    "markdown": "![\\!\\[AAAA\\][BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;&#91;AAAA&#93;<a href=\"refurl1\" title=\"\">BBBB</a>]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;][imgref]</tt> (partially escaped), inner & trailing expanded as shortlink",
+    "NOTE": ""
+  }, {
+    "comment":  "               [       ][    ]",
+    "markdown": "![\\!\\[AAAA\\][BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;&#91;AAAA&#93;<a href=\"refurl2\" title=\"\">BBBB&#93;</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;][imgref&#92;]</tt> (partially escaped), wonkily expanded",
+    "NOTE": ""
+  }, {
+    "comment":  "                        [    ]",
+    "markdown": "![\\!\\[AAAA\\]\\[BBBB]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p>![&#33;&#91;AAAA&#93;&#91;BBBB]]<a href=\"refurl2\" title=\"\">XXXX</a></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref]</tt> (partially escaped), trailing expanded as shortlink"
+  }, {
+    "comment":  "![                       ][    ]",
+    "markdown": "![\\!\\[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
+    "html": "<p><img src=\"refurl2\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
+    "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
   }
 ]
