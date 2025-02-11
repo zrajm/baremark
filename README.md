@@ -71,7 +71,7 @@ extra method `get()` that can be used to return the metadata after invoking
 ```
 // Baremark rule for reading header style metadata. Processes first paragraph
 // as metadata if (and only if) it looks like an email headers (e.g. 'Author:
-// <name>'). After `baremark()` cal `baremarkHeaders.get()` to get object
+// <name>'). After `baremark()` call `baremarkHeaders.get()` to get object
 // with metadata values.
 const baremarkHeaders = (meta => Object.assign([
     /^(\n*)((\w+:.*\n)+)\n+/,
@@ -193,11 +193,11 @@ Heading level 2
 - Preformatted inline blocks: `` `inline code` ``
 - Preformatted multiline blocks:
 ```
-``` 
+``` 
 first line of preformatted text
 second line of preformatted text
 etc...
-``` 
+``` 
 ```
 - Block quotes:
 ```
