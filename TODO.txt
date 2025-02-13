@@ -1,7 +1,25 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/5] Webpage
+* [0/9] Web page
+** TODO Better Markdown description
+** TODO Something similar to CommonMark & Github Markdown spec
+   It should illustrate, and also provide test cases for the Markdown syntax
+   used.
+
+     + https://spec.commonmark.org/current/
+     + https://github.github.com/gfm/
+** [0/3] Future <toc> options
+*** TODO Option to exclude page title from toc
+    Ignore all headers before <toc> tag?
+*** TODO Option to make collapsible
+    I.e. wrap in <details class=toc>...</details>. Also have 'open' attribute
+    to allow for table to be initially opened?
+*** TODO Option to add a header to table-of-contents?
+    Add a <toc> header as attribute `title="..."` maybe?
+** TODO Add table-of-content to 'README.html'
+** TODO Add a extensions page
+   Should include download link, and also test cases for the extensions.
 ** TODO Colored borders should be bright in dark mode?
    Maybe use #8888, or #aaa4 or similar?
 ** TODO Webpage should become responsive quicker
@@ -11,14 +29,56 @@
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/8] Tests
-** TODO Consistently use 'inlink', 'reflink', 'shortlink' (and ditto for images)
-   These are what the CommonMark spec call 'inline link', 'full reference
-   link', and 'shortcut reference link'. https://spec.commonmark.org/0.31.2/
+* [0/13] Tests
+** TODO Add tests for nullinks/nulpics `[...][]`/`![...][]`
+** TODO Tags for test cases
+   The test cases usually test interactions of markup, meaning that a
+   hierarchical isn't actually the best. Could we instead tag each test case
+   with the relevant markup tested, and add a filter feature to the test
+   presentation?
+
+   For example, a link with italic in it `[some *text*](url)` would be tagged
+   `inlink` and `italic`.
+** TODO 'Thematic break' / 'horizontal rule' -> 'dinkus'
+** TODO Use consistent terms for image & link markup
+   The CommonMark terms for links and pictures are wee bit of a mouthful. (See
+   https://spec.commonmark.org/0.31.2/.) Baremark uses following, shorter,
+   words instead.
+
+   |-----------+--------------+---------------------------|
+   | My Term   | Markdown     | CommonMark Term           |
+   |-----------+--------------+---------------------------|
+   | inlink    | [text](url)  | inline link               |
+   | reflink   | [text][ref]  | full reference link       |
+   | nullink   | [text][]     | collapsed reference link  |
+   | shortlink | [text]       | shortcut reference link   |
+   | inpic     | ![text](url) | inline image              |
+   | refpic    | ![text][ref] | full reference image      |
+   | nulpic    | ![text][]    | collapsed reference image |
+   | shortpic  | ![text]      | shortcut reference image  |
+   |-----------+--------------+---------------------------|
 
    Rephrase the following wordings currently in the test case suite:
-   + Change titles '<tt>ref</tt> unspecified' = shortlink, but also 'text-as-ref'.
-   + 'Causes [ref] to be interpreted as link)' -> 'as shortlink'
+*** DONE Change titles '<tt>ref</tt> unspecified' = shortlink, but also 'text-as-ref'.
+    CLOSED: [2025-02-05 Wed 16:02]
+*** DONE 'reference link' -> 'reflink'
+*** DONE 'inline link' -> 'inlink'
+    CLOSED: [2025-02-05 Wed 16:08]
+*** DONE 'reference image' -> 'refpic'
+    CLOSED: [2025-02-05 Wed 16:12]
+*** DONE 'inline image' -> 'inpic'
+    CLOSED: [2025-02-06 Thu 09:33]
+*** DONE 'link reference' -> 'link/image definition'
+    CLOSED: [2025-02-06 Thu 10:08]
+*** DONE 'Causes [ref] to be interpreted as link)' -> 'as shortlink'
+    CLOSED: [2025-02-06 Thu 10:29]
+*** TODO Rephrase 'ignore Markdown, ...' ('Fenced Code Blocks')
+    'ignore Markdown, reference link' -> 'ignore reflink inside'
+    & multiple others
+** TODO Use consistent metasyntactical variables for images and links
+   Use: `[text](url)`, `[text][ref]` & `[text]`
+   And: `![text](url)`, `![text][ref]` & `![text]`?
+** TODO Test cases testing [![pic]](url),  [![pic]][ref]
 ** TODO Test markdown inside `text` of links and images
    In images (`![text][ref]`, `![text]` and `![text](url)`) markdown in `text`
    should be left as-is as it is inserted into the `alt` attribute of the HTML
@@ -40,7 +100,75 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/14] Features
+* [0/16] Features
+** TODO Remove extended Markdown syntax?
+   www.markdownguide.org separates syntax into Markdown into "Basic" and
+   "Extended" syntax.
+
+       https://www.markdownguide.org/cheat-sheet/#extended-syntax
+
+   Should Baremark perchance only support the basic syntax? With an additional
+   plugin for the extended stuff?
+
+   Basic is:
+   |-------------------------------|
+   | # heading (`## heading` etc)  |
+   | **bold**                      |
+   | *italic*                      |
+   | > blockquote                  |
+   | 1. ordered list               |
+   | - bullet list                 |
+   | `code`                        |
+   | --- (horisontal rule)         |
+   | [link](url) + [link][ref]     |
+   | ![image](url) + ![image][ref] |
+   |-------------------------------|
+
+   Extended is:
+   |----------------------|
+   | table                |
+   |----------------------|
+   | ```                  |
+   | fenced code block    |
+   | ```                  |
+   |----------------------|
+   | Footnotes.[^1]       |
+   |                      |
+   | [^1]: Footnote text. |
+   |----------------------|
+   | # heading {#id}      |
+   |----------------------|
+   | term                 |
+   | :definition list     |
+   |----------------------|
+   | ~~strikethrough~~    |
+   | - [ ] task list      |
+   | :emoji:              |
+   | ==hilite==           |
+   | H~2~O (subscript)    |
+   | x^2^  (superscript)  |
+   |----------------------|
+** TODO Reference ID should be case in-sensitive?
+** TODO Change backslash escapes?
+   Daring Fireball's backslash only escapes the following:
+   (https://daringfireball.net/projects/markdown/syntax#link)
+
+   |----+---------------------|
+   | \  | backslash           |
+   | `  | backtick            |
+   | *  | asterisk            |
+   | _  | underscore          |
+   | {} | curly braces        |
+   | [] | square brackets     |
+   | () | parentheses         |
+   | #  | hash mark           |
+   | +  | plus sign           |
+   | -  | minus sign (hyphen) |
+   | .  | dot                 |
+   | !  | exclamation mark    |
+   |----+---------------------|
+
+   Should Baremark's be more limited?
 ** TODO Implement 'collapsed reference links' i.e. `[text][]`
    These are in the CommonMark spec as synonymous to shortlinks `[text]`. Make
    sure this type of link and image works, and that there are test cases.
