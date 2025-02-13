@@ -1,5 +1,7 @@
 Baremark: A Tiny Markdown Engine
 ================================
+<toc>
+
 **22 September 2024 – Breaking changes.** Where previously `baremark.add(…)`
 was used to extend rules, now use `baremark().push([…])`. (*Note the added
 brackets!*) – This makes Baremark smaller *and* adds more flexibility! All
