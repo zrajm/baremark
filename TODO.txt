@@ -1,7 +1,7 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/9] Web page
+* [0/10] Web page
 ** TODO Better Markdown description
 ** TODO Something similar to CommonMark & Github Markdown spec
    It should illustrate, and also provide test cases for the Markdown syntax
@@ -20,6 +20,7 @@
 ** TODO Add table-of-content to 'README.html'
 ** TODO Add a extensions page
    Should include download link, and also test cases for the extensions.
+*** TODO Add `baremark-toc.js`
 ** TODO Colored borders should be bright in dark mode?
    Maybe use #8888, or #aaa4 or similar?
 ** TODO Webpage should become responsive quicker
