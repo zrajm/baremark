@@ -16,6 +16,7 @@ more *CommonMark* compliance. (Note that Baremark never will be *fully*
 CommonMark compliant, as the intent of Baremark is source code brevity above
 featurefulness.)
 
+* [README]
 * [Source code]
 * [Test suite]
 * [Github page]
@@ -343,6 +344,7 @@ Bugfixes
 [MDN: The `<p>` Element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p#technical_summary "MDN: The Paragraph Element: Technical summary"
 [Sitemark]: http://plugnburn.github.io/sitemark/
 [Source code]: https://zrajm.github.io/baremark/baremark.js
+[README]: https://zrajm.github.io/baremark/README.html
 [span elements]: https://daringfireball.net/projects/markdown/syntax#span
 [Test suite]: https://zrajm.github.io/baremark/
 
