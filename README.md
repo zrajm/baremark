@@ -233,11 +233,11 @@ etc...
   is given within parentheses, directly after the link text, for reflinks and
   shortlink the URL is instead given in a definition found elsewhere in the
   document (this is usually way prettier, since long URLs inside the text can
-  look quite messy). If no definition exists for a reference, the markdown is
-  not interpreted as a link, but is left as-is in the outputted document. Link
-  (and image) definitions may be put anywhere in the document, but are
-  customarily put the end of the file or the current section of text.
-  Parentheses and brackets (if used) in `text` must be escaped.
+  look quite messy). `ref` is case insensitive. If no definition exists for
+  `ref`, the markdown is not interpreted as a link, but is left as-is in the
+  outputted document. Link (and image) definitions may be put anywhere in the
+  document, but are customarily put the end of the file or the current section
+  of text. Parentheses and brackets (if used) in `text` must be escaped.
 
 ```
 An [inlink](http://example.com) and a [reflink][example] and a [shortlink]

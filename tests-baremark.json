@@ -2351,6 +2351,14 @@
     "html": "<p><a href=\"url\" title=\"\">x </a></p>",
     "title": "<tt>text</tt> with trailing space"
   }, {
+    "markdown": "[AAAA][bbbb]\n\n[BBBB]: url",
+    "html": "<p><a href=\"url\" title=\"\">AAAA</a></p>",
+    "title": "<tt>ref</tt> with different case in link & definition"
+  }, {
+    "markdown": "[AAAA][åäö]\n\n[ÅÄÖ]: url",
+    "html": "<p><a href=\"url\" title=\"\">AAAA</a></p>",
+    "title": "<tt>ref</tt> with different case in link & definition (Swedish chars)"
+  }, {
     "markdown": "[x][ y]\n\n[y]: url",
     "html": "<p><a href=\"url\" title=\"\">x</a></p>",
     "title": "<tt>ref</tt> with leading space"

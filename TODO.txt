@@ -101,7 +101,30 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/16] Features
+* [0/19] Features
+** TODO Allow single parenthesis in link/image?
+   This could be done by a rule that replaces '(...)', with its
+   '&#40;...&#41;', maybe? Would that be smart?
+** TODO Regex optimization
+   A: There's a macro for a regex matching 'any string which does not contain
+   two or more consecutive linefeeds'
+
+   B: Rewrite this as 'any string which does not begin or end with linefeed,
+   and which does not contain two or more consecutive linefeeds'.
+
+   With B we could then write A as /\n?B\n?/, which is pretty short. :)
+** TODO Allow newline 'label definition' space
+   The `[LABEL]: URL (TITLE)` thing should allow for a single newline the
+   spaces between LABEL and URL, and URL and TITLE.
+
+   NOTE: Also update README after this.
+** TODO `*` surrounded by `_` or spaces
+   The Gruber Markdown spec says: […] if you surround an `*` or `_` with
+   spaces, it’ll be treated as a literal asterisk or underscore.'
+
+   Make sure that this is true. Add test cases.
+
+   [https://daringfireball.net/projects/markdown/syntax#em]
 ** TODO Remove extended Markdown syntax?
    www.markdownguide.org separates syntax into Markdown into "Basic" and
    "Extended" syntax.
@@ -149,7 +172,6 @@
    | H~2~O (subscript)    |
    | x^2^  (superscript)  |
    |----------------------|
-** TODO Reference ID should be case in-sensitive?
 ** TODO Change backslash escapes?
    Daring Fireball's backslash only escapes the following:
    (https://daringfireball.net/projects/markdown/syntax#link)
@@ -240,7 +262,13 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [30/30] FINISHED
+* [31/31] FINISHED
+** DONE Make link/image labels case insensitive
+   CLOSED: [2025-02-24 Mon 23:39]
+   Currently they are spaces are trimmed and squeezed, but we should also
+   downcase. Would it work to add .toLowerCase() to the squeeze function?
+
+   Also update README to reflect that it's not case sensitive any more!
 ** DONE Don't allow '[]()' in link & image `[text]`
    CLOSED: [2025-02-03 Mon 10:12]
    In order to use `[` or `]` in link and image texts, they should have to be
