@@ -151,14 +151,14 @@ Limitations
 ===========
 These limitations might change in the future.
 
-* Indented code blocks are not supported, but <i>fenced</i> code blocks – with
-  leading and trailing `` ``` `` – can be used instead).
+* Indented code blocks are not supported, but *fenced* code blocks (with
+  leading and trailing ` ``` `) can be used instead.
 
 * Blockquotes (`> …`) are supported, but cannot be nested.
 
 * The *CommonMark* standard allow whitespace at the end of a line (e.g. at the
-  end of lines with <tt>#</tt> and <tt>```</tt>) but Baremark instead interpret
-  these spaces literally.
+  end of lines with `#` and ` ``` `) but Baremark instead interpret these
+  spaces literally.
 
 * Any piece of text separated from the rest of the text by blank lines is
   considered a paragraph (and `<p>…</p>` is placed around it), except if the
@@ -169,9 +169,9 @@ These limitations might change in the future.
   `p`, `pre`, `script`, `search`, `section`, `style`, `table`, `ul`. ([MDN: The
   `<p>` Element]).
 
-* Newline and whitespace (though not blank lines) is allowed inside the
-  brackets and parentheses of the link tags, but not between `](`, `][` or
-  inside URLs.
+* Whitespace (including single newlines, though not blank lines) is allowed
+  inside the brackets and parentheses of the link tags, but not between `](`,
+  `][` or in URLs.
 
 
 Markdown syntax
