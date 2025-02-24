@@ -1,5 +1,5 @@
 (w=>{
-	let l,m={X:'(\n?(?:.+?\n)*?.*?)',Y:'(\n?(?:[^()[\\]\n]+\n)*[^()[\\]\n]*)'},s=x=>x.replace(/\s+/g,' ').trim(),q=c=>`&#${c.charCodeAt()};`,e=(x,r='&#')=>x.replace(RegExp(`[${r}'\\\\<>\`*~_=:"![\\]()\n\t-]`,'g'),q),h=(q,t,u,x='')=>(u=e(s(u),''),q?`<img src="${u}" title="${e(x,'')}" alt="${e(t,'')}">`:`<a href="${u}" title="${e(x,'')}">${t}</a>`),y=x=>(w,t,r,u)=>u?h(x,t,u):(r=l[s(r||t)],r?h(x,t,...r):w),r=[
+	let l,m={X:'(\n?(?:.+?\n)*?.*?)',Y:'(\n?(?:[^()[\\]\n]+\n)*[^()[\\]\n]*)'},s=x=>x.trim().replace(/\s+/g,' '),q=c=>`&#${c.charCodeAt()};`,e=(x,r='&#')=>x.replace(RegExp(`[${r}'\\\\<>\`*~_=:"![\\]()\n\t-]`,'g'),q),h=(q,t,u,x='')=>(u=e(s(u),''),q?`<img src="${u}" title="${e(x,'')}" alt="${e(t,'')}">`:`<a href="${u}" title="${e(x,'')}">${t}</a>`),y=x=>(w,t,r,u)=>u?h(x,t,u):(r=l[s(r||t)],r?h(x,t,...r):w),r=[
 		[/\r\n?/,'\n'],
 		[/\n+```\n([^]*?)\n```\n*(?=\n)/,(_,m)=>`\n\n<pre>${e(m)}</pre>\n`],
 		[/([^\\])(?<!\\)(`+)(X([^`\n\\]|.\n))\2(?!`)/,(_,p,m,n)=>p+`<tt>${e(n.replace(/^(\s)(.*)\1$/,'$2'))}</tt>`],
