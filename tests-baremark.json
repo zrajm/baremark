@@ -37,7 +37,7 @@
     "html": "<p>xx</p>\n\n<p>yy</p>\n\n<p>zz</p>",
     "title": "three paragraphs"
   },
-  "Fenced code blocks <tt>```code```</tt>", {
+  "<tt class=multi>```<br>CODEBLOCK</br>```</tt>", {
     "markdown": "```\nxx\n```",
     "html": "<pre>xx</pre>",
     "title": "single paragraph"
@@ -217,7 +217,7 @@
     "html": "<pre>x&#126;x</pre>",
     "title": "interpret literally, tilde"
   },
-  "Backslash escapes <tt>\\X</tt>", {
+  "Backslash Escapes <tt>\\X</tt>", {
     "markdown": "\\\n",
     "html": "<p><br></p>",
     "title": "newline (hard newline)"
@@ -362,7 +362,7 @@
     "html": "<p>\\1</p>",
     "title": "number ‘1’"
   },
-  "Thematic breaks <tt>----------</tt>", {
+  "Dinkus <tt>---</tt> <tt>___</tt> <tt>***</tt>", {
     "markdown": "***",
     "html": "<hr>",
     "title": "three (or more) asterisks"
@@ -395,7 +395,7 @@
     "html": "<p>xx</p>\n\n<p>***\nyy</p>",
     "title": "cannot be followed by single newline"
   },
-  "ATX headings <tt># heading</tt>", {
+  "<tt># HEADING 1</tt> … <tt>###### HEADING 6</tt>", {
     "markdown": "# xx",
     "html": "<h1>xx</h1>",
     "title": "level 1"
@@ -472,7 +472,7 @@
     "html": "<h1>xx###</h1>",
     "title": "trailing ‘#’s must be preceded by space (CommonMark)"
   },
-  "Setext headings <tt>heading\\n=======</tt>", {
+  "<TT class=multi>HEADING 1<br>=========</TT> <TT class=multi>HEADING 2<br>---------</TT>", {
     "markdown": "xx\n==",
     "html": "<h1>xx</h1>",
     "title": "level 1 heading, single word"
@@ -599,7 +599,7 @@
     "html": "<p>xx\n== </p>",
     "title": "underlining has trailing space, not allowed"
   },
-  "Block quotes <tt>&gt; quote</tt>", {
+  "<tt>&gt; BLOCKQUOTE</tt>", {
     "markdown": "> xx",
     "html": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>",
     "title": "one line as separate paragraph (CommonMark)"
@@ -642,7 +642,7 @@
     "html": "<blockquote>\n\n\n<ul><li>xx</li><li>yy</li></ul>\n\n\n</blockquote>",
     "title": "bullet list inside blockquote (CommonMark)"
   },
-  "Bullet lists <tt>+ item</tt>", {
+  "<tt>* BULLET</tt> <tt>+ BULLET</tt> <tt>- BULLET</tt>", {
     "markdown": "* xx\n* yy",
     "html": "<ul><li>xx</li><li>yy</li></ul>",
     "title": "with ‘*’ (CommonMark)"
@@ -671,7 +671,7 @@
     "html": "<p>xx</p>\n\n<ul><li>xx</li><li>yy</li></ul>\n\n<p>zz</p>",
     "title": "paragraphs before AND after list, no blank lines between"
   },
-  "Ordered lists <tt>1. item</tt>", {
+  "<tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>", {
     "markdown": "1. xx\n2. yy",
     "html": "<ol><li>xx</li><li>yy</li></ol>",
     "title": "using period (CommonMark)"
@@ -696,7 +696,7 @@
     "html": "<p>xx</p>\n\n<ol><li>xx</li><li>yy</li></ol>\n\n<p>zz</p>",
     "title": "paragraphs before AND after list, no blank lines between"
   },
-  "Code spans <tt>`code`</tt>", {
+  "<tt>`CODE`</tt> <tt>`` CODE ``</tt>", {
     "markdown": "`xx`",
     "html": "<p><tt>xx</tt></p>",
     "title": "single word"
@@ -889,7 +889,7 @@
     "html": "<p><tt>x&#92;&#96;y</tt></p>",
     "title": "interpret literally, backslashed backtick"
   },
-  "Italic spans <tt>*text*</tt> <tt>_text_</tt>", {
+  "<tt>*ITALIC*</tt> <tt>_ITALIC_</tt>", {
     "markdown": "_xx_",
     "html": "<p><i>xx</i></p>",
     "title": "using underlines: single word"
@@ -962,7 +962,7 @@
     "html": "<p>*xx</p>\n\n<p>*</p>",
     "title": "using asterisks: not across blank line at end"
   },
-  "Bold spans <tt>**text**</tt> <tt>__text__</tt>", {
+  "<tt>**BOLD**</tt> <tt>__BOLD__</tt>", {
     "markdown": "__xx__",
     "html": "<p><b>xx</b></p>",
     "title": "using underlines: single word"
@@ -1088,7 +1088,7 @@
     "html": "<p><i>*xx*</i></p>",
     "title": "mixing asterisks and underlines: should not become bold"
   },
-  "Underline spans <tt>___text___</tt> (Landmark-specific)", {
+  "<tt>___UNDERLINE___</tt> <span class=note>(Landmark-specific)</span>", {
     "markdown": "___xx___",
     "html": "<p><u>xx</u></p>",
     "title": "single word"
@@ -1125,7 +1125,7 @@
     "html": "<p>___xx</p>\n\n<hr>",
     "title": "not across blank line at end"
   },
-  "Strikethrough spans <tt>~~text~~</tt> (Landmark-specific)", {
+  "<tt>~~STRIKETHROUGH~~</tt> <span class=note>(Landmark-specific)</span>", {
     "markdown": "~~xx~~",
     "html": "<p><s>xx</s></p>",
     "title": "single word"
@@ -1162,7 +1162,7 @@
     "html": "<p>~~xx</p>\n\n<p>~~</p>",
     "title": "not across blank line at end"
   },
-  "Quote spans <tt>:\"text\":</tt> (Landmark-specific)", {
+  "<tt>:\"QUOTE\":</tt> <span class=note>(Landmark-specific)</span>", {
     "markdown": ":\"xx\":",
     "html": "<p><q>xx</q></p>",
     "title": "single word"
@@ -1199,7 +1199,7 @@
     "html": "<p>:\"xx</p>\n\n<p>\":</p>",
     "title": "not across blank line at end"
   },
-  "Inline links <tt>[text](url)</tt> <span class=\"note\">(Unsupported CommonMark feature: Matching balanced brackets in <tt>text</tt>)</span>", {
+  "Inline Links <tt>[TEXT](URL)</tt> <span class=note>(Unsupported CommonMark feature: Matching balanced brackets in <tt>TEXT</tt>)</span>", {
     "markdown": "[x](y)",
     "html": "<p><a href=\"y\" title=\"\">x</a></p>",
     "title": "<tt>text</tt> and <tt>url</tt> without space"
@@ -1795,7 +1795,7 @@
     "html": "<p><a href=\"url\" title=\"\">&#33;&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
     "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
   },
-  "Inline images <tt>![text](url)</tt>", {
+  "Inline Images <tt>![TEXT](URL)</tt> <span class=note>(Unsupported CommonMark feature: Matching balanced brackets in <tt>TEXT</tt>)</span>", {
     "markdown": "![x](y)",
     "html": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>text</tt> and <tt>url</tt> without space"
@@ -2341,7 +2341,7 @@
     "html": "<p><img src=\"imgurl\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
     "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
   },
-  "Reference links <tt>[text][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
+  "Labeled Links <tt>[TEXT][LABEL]</tt> & Definition <tt>[LABEL]: URL \"TITLE\"</tt> (not supported by Landmark)", {
     "markdown": "[x][y]\n\n[y]: url",
     "html": "<p><a href=\"url\" title=\"\">x</a></p>",
     "title": "<tt>text</tt> and <tt>ref</tt> without space"
@@ -3148,7 +3148,7 @@
     "html": "<p><a href=\"refurl2\" title=\"\">&#33;&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
     "title": "<tt>text</tt> with reference image <tt>&#92;!&#92;[alt&#92;]&#92;[imgref&#92;]</tt> (fully escaped), outer expanded"
   },
-  "Reference images <tt>![text][ref]</tt> & definition <tt>[ref]: url \"title\"</tt> (not supported by Landmark)", {
+  "Labeled Images <tt>![TEXT][LABEL]</tt> & Definition <tt>[LABEL]: URL \"TITLE\"</tt> (not supported by Landmark)", {
     "markdown": "![x][y]\n\n[y]: url",
     "html": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
     "title": "<tt>text</tt> and <tt>ref</tt> without space"

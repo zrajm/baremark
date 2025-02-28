@@ -42,39 +42,29 @@
 ** TODO 'Thematic break' / 'horizontal rule' -> 'dinkus'
 ** TODO Use consistent terms for image & link markup
    The CommonMark terms for links and pictures are wee bit of a mouthful. (See
-   https://spec.commonmark.org/0.31.2/.) Baremark uses following, shorter,
-   words instead.
+   https://spec.commonmark.org/0.31.2/.) Baremark prefers being somewhat more
+   concise.
 
    |--------------------------+----------------+---------------------------|
    | My Term                  | Markdown       | CommonMark Term           |
    |--------------------------+----------------+---------------------------|
+   | dinkus                   | ***            | thematic break            |
    | inline link              | [TEXT](URL)    | inline link               |
    | labeled link             | [TEXT][LABEL]  | full reference link       |
-   | implicit (labeled) link  | [TEXT][]       | collapsed reference link  |
-   | short (labeled) link     | [TEXT]         | shortcut reference link   |
+   | implicit [labeled] link  | [TEXT][]       | collapsed reference link  |
+   | shortcut [labeled] link  | [TEXT]         | shortcut reference link   |
    | inline image             | ![TEXT](URL)   | inline image              |
    | labeled image            | ![TEXT][LABEL] | full reference image      |
-   | implicit [labeled]]image | ![TEXT][]      | collapsed reference image |
-   | short (labeled) image    | ![TEXT]        | shortcut reference image  |
+   | implicit [labeled] image | ![TEXT][]      | collapsed reference image |
+   | shortcut [labeled] image | ![TEXT]        | shortcut reference image  |
    |--------------------------+----------------+---------------------------|
-
-   Rephrase the following wordings currently in the test case suite:
-*** DONE Change titles '<tt>ref</tt> unspecified' = shortlink, but also 'text-as-ref'.
-    CLOSED: [2025-02-05 Wed 16:02]
-*** DONE 'reference link' -> 'reflink'
-*** DONE 'inline link' -> 'inlink'
-    CLOSED: [2025-02-05 Wed 16:08]
-*** DONE 'reference image' -> 'refpic'
-    CLOSED: [2025-02-05 Wed 16:12]
-*** DONE 'inline image' -> 'inpic'
-    CLOSED: [2025-02-06 Thu 09:33]
-*** DONE 'link reference' -> 'link/image definition'
-    CLOSED: [2025-02-06 Thu 10:08]
-*** DONE 'Causes [ref] to be interpreted as link)' -> 'as shortlink'
-    CLOSED: [2025-02-06 Thu 10:29]
-*** TODO Rephrase 'ignore Markdown, ...' ('Fenced Code Blocks')
-    'ignore Markdown, reference link' -> 'ignore reflink inside'
-    & multiple others
+*** DONE Use new terms
+    CLOSED: [2025-02-28 Fri 12:05]
+    'Dinkus' & 'labeled link/image'.
+*** DONE Update names of the sections
+    CLOSED: [2025-02-28 Fri 12:05]
+*** TODO Reorder sections to follow README order
+*** TODO Update each test description
 ** TODO Use consistent metasyntactical variables for images and links
    Use: `[text](url)`, `[text][ref]` & `[text]`
    And: `![text](url)`, `![text][ref]` & `![text]`?
