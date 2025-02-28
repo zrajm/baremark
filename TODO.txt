@@ -40,7 +40,7 @@
    For example, a link with italic in it `[some *text*](url)` would be tagged
    `inlink` and `italic`.
 ** TODO 'Thematic break' / 'horizontal rule' -> 'dinkus'
-** TODO Use consistent terms for image & link markup
+** [3/4] Use consistent terms for image & link markup
    The CommonMark terms for links and pictures are wee bit of a mouthful. (See
    https://spec.commonmark.org/0.31.2/.) Baremark prefers being somewhat more
    concise.
@@ -59,11 +59,12 @@
    | shortcut [labeled] image | ![TEXT]        | shortcut reference image  |
    |--------------------------+----------------+---------------------------|
 *** DONE Use new terms
-    CLOSED: [2025-02-28 Fri 12:05]
+    CLOSED: [2025-02-28 Fri 12:21]
     'Dinkus' & 'labeled link/image'.
 *** DONE Update names of the sections
-    CLOSED: [2025-02-28 Fri 12:05]
-*** TODO Reorder sections to follow README order
+    CLOSED: [2025-02-28 Fri 12:21]
+*** DONE Reorder sections to follow README order
+    CLOSED: [2025-02-28 Fri 12:30]
 *** TODO Update each test description
 ** TODO Use consistent metasyntactical variables for images and links
    Use: `[text](url)`, `[text][ref]` & `[text]`
