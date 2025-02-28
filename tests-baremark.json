@@ -621,6 +621,10 @@
     "html": "<blockquote>\n\n<p>xx</p>\n\n<p>yy</p>\n\n</blockquote>",
     "title": "two paragraphs inside blockquote (CommonMark)"
   }, {
+    "markdown": "> xx\n\n> yy",
+    "html": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>\n\n\n\n<blockquote>\n\n<p>yy</p>\n\n</blockquote>",
+    "title": "two blockquotes after each other"
+  }, {
     "ignore": true,
     "markdown": "> > xx\n> > yy",
     "FIXME": "Not supported",

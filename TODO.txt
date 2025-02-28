@@ -29,16 +29,7 @@
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/14] Tests
-** TODO Add tests for two block quotes
-   This thing (that there already is a test for)
-     > paragraph 1
-     >
-     > paragraph 2
-   Should be different than this thing (for which there is currently no test):
-     > paragraph 1
-
-     > paragraph 2
+* [0/13] Tests
 ** TODO Add tests for implicit links/images `[...][]`/`![...][]`
 ** TODO Tags for test cases
    The test cases usually test interactions of markup, meaning that a
@@ -279,6 +270,16 @@
 * Limitations
 ** Blockquotes can't be nested
 * [32/32] FINISHED
+** DONE Add tests for two block quotes
+   CLOSED: [2025-02-28 Fri 07:17]
+   This thing (that there already is a test for)
+     > paragraph 1
+     >
+     > paragraph 2
+   Should be different than this thing (for which there is currently no test):
+     > paragraph 1
+
+     > paragraph 2
 ** DONE Better Markdown description
    CLOSED: [2025-02-28 Fri 05:44]
 *** DONE Make sure all Markdown arguments are written in ALL CAPS

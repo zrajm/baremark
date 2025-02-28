@@ -76,7 +76,6 @@ a, a:visited { border-radius: 1px; color: #00d }
 a:hover { background: #22f5; outline: 2px solid #22f5 }
 :focus { outline-offset: 1px; outline: 2px solid #6668 }
 a:active {}
-blockquote { border: 1px solid #8888; }
 code, tt, pre {
   border-radius: .25em;
   padding: .125em .25em .1875em;
@@ -84,7 +83,15 @@ code, tt, pre {
   background: #aaa5;
   bottom: .125em;
 }
-pre { margin: 1.5em; padding: .5em 1em; }
+blockquote, pre { margin: 1.5em; padding: .5em 1em; }
+blockquote {
+  border-left: .5em solid #0003;
+  padding-left: .5em;
+  background: #0001;
+  outline: 0;
+  & > :first-child { margin-top: 0 }
+  & > :last-child { margin-bottom: 0 }
+}
 details, .error, .legend {
   line-height: 1.5;
   border-radius: .25em;
