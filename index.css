@@ -78,7 +78,7 @@ a:hover { background: #22f5; outline: 2px solid #22f5 }
 a:active {}
 code, tt, pre {
   border-radius: .25em;
-  padding: .125em .25em .1875em;
+  padding: .25em .25em .0625em;
   outline: 1px solid #0003;
   background: #aaa5;
   bottom: .125em;
@@ -99,6 +99,7 @@ details, .error, .legend {
   padding: .125em .25em;
   border: 1px solid #888a;
 }
+details.group tt.multi { display: inline-block; vertical-align: top; line-height: .9; }
 details.group.ignore, .legend.ignore { background: var(--none); }
 details.group.pass,   .legend.pass   { background: var(--normal-pass); }
 details.test.pass                    { background: var(--bright-pass); }
