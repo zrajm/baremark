@@ -11,8 +11,8 @@ first, which wasn’t previously possible.)
 
 *Baremark* is a minimal (but extendable) [Markdown] parser written in
 Javascript, originally inspired by Van Tigranyan’s Gist [Landmark], but with
-added bugfixes, optimizations, support for reference links/images, and a little
-more *CommonMark* compliance. (Note that Baremark never will be *fully*
+added bugfixes, optimizations, support for labeled links/images, and a little
+more [CommonMark] compliance. (Note that Baremark never will be *fully*
 CommonMark compliant, as the intent of Baremark is source code brevity above
 featurefulness.)
 
@@ -24,22 +24,22 @@ featurefulness.)
 It is currently 1973 bytes in size *before* minification and zipping!
 
 
+[Usage]: #usage
 Usage
 =====
 Baremark can be invoked in two ways.
 
-* `baremark(markdown)` – Process `markdown` and return HTML. (Most of the time,
-  this is the only function you need.)
-
+* `baremark(MARKDOWN)` – Expand `MARKDOWN` and return the resulting HTML. (Most
+  of the time, this is the only function you need.)
 * `baremark()` – Returns the list of rules used internally by Baremark. This is
   used to extend the Baremark rules (for supporting your own non-standard
   Markdown). See below.
-
-* `baremark.escape(string)` – Expands any characters in `string` that are
+* `baremark.escape(STRING)` – Expands any characters in `STRING` that are
   special in Markdown into HTML `&#…;` entities. This means that further
-  processing will not affect `string`. For example of use, see below.
+  processing will not affect `STRING`. For example use, see below.
 
 
+[Extending Baremark]: #extending-baremark
 Extending Baremark
 ------------------
 Baremark’s internals are very simple. It consists of a list of rules, which are
@@ -51,7 +51,7 @@ Let’s take an example. The below rule turns `[#text]` into `<a id="text"></a>`
 allowing you to use add fragment URL anchors to your text (so that you to put
 `#text` into your URL to scroll to that part of the page). – This rule is added
 to the end of the current ruleset using `baremark().push()` (meaning that it
-will be applied *after* the previously existing rules).
+will be applied *after* all the previously existing rules).
 
 ```
 // Fragment URL anchor: Turns `[#text]` into <a id="text"></a>.
@@ -67,7 +67,7 @@ so it is added using `baremark().unshift()`.
 
 First a small Javascript module called `baremarkHeaders` is created (this acts
 as a container for the returned metadata). It consists of an internal scope
-(with the private `meta` variable hidden in it), and a Javascript array with an
+(with the private variable `meta` hidden in it), and a Javascript array with an
 extra method `get()` that can be used to return the metadata after invoking
 `baremark()`.
 
@@ -114,11 +114,12 @@ Finally, since rules are passed exactly as-is to the Javascript string method
 `replace()`, so the [MDN docs] on the subject is recommended reading.
 
 
+[Common Gotchas]: #common-gotchas-when-extending-baremark
 Common Gotchas when Extending Baremark
 --------------------------------------
 **Forgetting the `[` and `]` around the rules.** – If you forget the brackets
 when adding rules (with `baremark().push([…])` or `baremark().unshift([…])`)
-you’ll get a very cryptic error message upon running `baremark(markdown)`.
+you’ll get a very cryptic error message upon running `baremark(MARKDOWN)`.
 
 ```
 Uncaught TypeError: r is not iterable
@@ -126,14 +127,14 @@ Uncaught TypeError: r is not iterable
 
 **Forgetting the `/g` flag on the regex.** – If you forget this flag, your
 regex will only be applied once. This is very seldom the right choice and can
-lead to some hand-to-find errors. (Though, for a counterexample look at the
-`baremarkHeaders` rule above.)
+lead to some hand-to-find errors. (Though, for a counterexample, look at the
+`baremarkHeaders` extension above.)
 
 **Each regex is applied to the *whole* of the Markdown source.** – Thus, for
-inline elements, you need to make *extra* sure that you allow exactly *one
-newline* to match inside your Markdown tag, but never *two newlines after each
-other* (or your tag will match across paragraph borders). The rule for
-`**bold**`, for example, look like this:
+inline elements, you need to make *sure* that you allow single newlines to
+match inside your Markdown element, but never *two newlines after each other*
+(or your element will match across paragraph borders). The rule for `**bold**`,
+for example, look like this:
 
 ```
 [/(\*\*|__)(\n?(.+\n)*?.*?)\1/g,'<b>$2</b>']
@@ -147,154 +148,510 @@ pretty elaborate way to say that `**…**` shouldn’t match if there are two
 newlines next to each other inside it.
 
 
+[Limitations]: #limitations
 Limitations
 ===========
 These limitations might change in the future.
 
-* Indented code blocks are not supported, but *fenced* code blocks (with
-  leading and trailing ` ``` `) can be used instead.
-
-* Blockquotes (`> …`) are supported, but cannot be nested.
-
-* The *CommonMark* standard allow whitespace at the end of a line (e.g. at the
-  end of lines with `#` and ` ``` `) but Baremark instead interpret these
-  spaces literally.
-
-* Any piece of text separated from the rest of the text by blank lines is
-  considered a paragraph (and `<p>…</p>` is placed around it), except if the
-  paragraph starts with one of the following paragraph-ending tags (or the
-  corresponding end tags): `address`, `article`, `aside`, `blockquote`,
-  `details`, `div`, `dl`, `fieldset`, `figcaption`, `figure`, `footer`, `form`,
-  `h1…h6`, `header`, `hgroup`, `hr`, `main`, `menu`, `nav`, `noscript`, `ol`,
-  `p`, `pre`, `script`, `search`, `section`, `style`, `table`, `ul`. ([MDN: The
-  `<p>` Element]).
-
-* Whitespace (including single newlines, though not blank lines) is allowed
-  inside the brackets and parentheses of the link tags, but not between `](`,
-  `][` or in URLs.
+* Indentation is ignored.
+* Only fenced [Code blocks] are supported (not indented ones).
+* [Blockquotes] cannot be nested.
+* [Lists] cannot be nested.
+* Autolinks `<URL>` is not supported.
+* Whitespace at end-of-line are not supported after ` ``` ` or `# … #`
+  headings. ([CommonMark] specifies that these should be ignored.)
+* Separating [HTML blocks] from [paragraphs] is somewhat simplistic.
+* Whitespace in not allowed between `](` or `][` in [links and images]. This
+  allowed in the [CommonMark] specification, but can lead to weird errors.
+  (Baremark allow space inside the brackets though, so your line wrapping
+  shouldn’t be too affected.)
 
 
-Markdown syntax
-===============
-Markdown syntax used in Baremark resembles both classical and GitHub-flavored
-Markdown versions, however it does not support some advanced features (such as
-tables). The following tags are supported:
+[Markdown]: #markdown
+Markdown
+========
+Even though much inspiration is taken from [CommonMark], Baremark sometimes go
+in a slightly different direction (usually to keep the code minimal), see
+[Limitations]. Most advanced Markdown features (such as tables) are not
+supported out-of-the-box, but you may use [extensions][extending baremark] to
+add missing functionality.
 
-- ATX style headings, single-line form: `# Heading level 1`, `## Heading level
-  2` etc.
-- Setext headings of levels 1 and 2:
+
+[Block Elements]: #block-elements
+Block Elements
+--------------
+Block elements are paragraph-level stuff, like lists, headings and the like.
+Most of them are separated from the surrounding blocks by blank lines, though
+some of them (like [blockquotes], [lists] and [label definitions]) do not
+require that.
+
+
+[Paragraph]: #paragraphs
+[Paragraphs]: #paragraphs
+### Paragraphs
+
+Paragraphs are any text that is surrounded by blank lines, which isn’t
+recognized as any other type of block. They are wrapped in a paragraph tag
+`<p>...</p>`, and any Markdown contained in the paragraph is also expanded.
+
+
+[HTML Block]: #html-blocks
+[HTML Blocks]: #html-blocks
+### HTML Blocks
+
+The only difference between *HTML blocks* and [paragraphs] is that paragraphs
+are outputted wrapped in paragraph tags `<p>...</p>`, while HTML blocks are
+not. (Markdown is expanded in both paragraphs and HTML blocks.)
+
+If one of the following HTML tags `<...>`, or their corresponding end tags
+`</...>` is found at the beginning of a paragraph, it is considered an HTML
+block: `address`, `article`, `aside`, `blockquote`, `details`, `div`, `dl`,
+`fieldset`, `figcaption`, `figure`, `footer`, `form`, `h1` … `h6`, `header`,
+`hgroup`, `hr`, `main`, `menu`, `nav`, `noscript`, `ol`, `p`, `pre`, `script`,
+`search`, `section`, `style`, `table` and `ul`. (These are the tags that close
+any currently open `<p>` tag. See also: [MDN: The `<p>` Element]).
+
+
+[Headings]: #headings
+### Headings
+
+There are two types of headings [Atx headings] (underscored with `=` or `-`)
+and [Setext headings] preceded (and optionally followed) by 1–6 `#`.
+
+
+[Atx Heading]: #-heading-1---heading-6
+[Atx Headings]: #-heading-1---heading-6
+#### `# HEADING 1` … `###### HEADING 6`
+
+This is an atx style heading, it starts with 1–6 `#` on a line of their own.
+They must be preceded and followed by a blank line. They are expanded into HTML
+tags `<h1>` to `<h6>`.
+
+A heading may also (optionally) be followed by (any number of) `#`.
+
 ```
-Heading level 1
-===============
+# Heading 1
 
-Heading level 2
----------------
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+ 
 ```
-- Inline formatting: `**bold**` or `__bold__`, `*italic*` or `_italic_`,
-  `~~strike~~`, `:"quote":` and even non-standard `___underline___` (triple
-  underscore) tag!
-- Preformatted inline blocks: `` `inline code` ``
-- Preformatted multiline blocks:
+
+[Setext Heading]: #heading-1-heading-2---------
+[Setext Headings]: #heading-1-heading-2---------
+#### `HEADING 1↲=========` `HEADING 2↲---------`
+
+This is a Setext heading, which consist of (one or more lines) of text,
+underlined by a line consisting of either `=` or `-` characters. If the
+underlining uses `=` the heading expands into `<h1>`, while if the underlining
+consists of `-` it expands into `<h2>`. The heading must be preceded by a blank
+line, no blank line is required after the underlining.
+
+```
+Heading 1
+=========
+Blabla...
+
+Heading 2
+---------
+Blabla...
+```
+
+
+[Blockquote]: #-blockquote
+[Blockquotes]: #-blockquote
+### `> BLOCKQUOTE`
+
+A blockquote is any paragraph where each lines start with `>`. Blockquotes
+cannot be nested, but they may contain [lists] and [span elements].
+
+```
+> Information is noise, unless it’s
+> the information you’re looking for.
+```
+
+[Lists]: #lists
+### Lists
+
+[Bullet]: #-bullet--bullet---bullet
+[Bullets]: #-bullet--bullet---bullet
+#### `* BULLET` `+ BULLET` `- BULLET`
+
+A bullet list item is any line that starts with `-`, `+` or `*` followed by a
+space. The different bullet characters may be mixed freely within the same
+list. If an item is longer than one line, then the subsequent lines must start
+with space character. (In this way lists items is the only instance where
+indentation matters in Baremark.)
+
+```
+- bullet one
++ bullet two, which also happens to be
+  a very long multi-line bullet item
+* bullet three
+```
+
+Bullet lists cannot be nested.
+
+
+[Numbered]: #1-numbered-2-numbered
+#### `1. NUMBERED` `2) NUMBERED`
+
+A numbered list item is any line that starts with a number, followed by `.` or
+`)` and then a space. Whether you use `.` or `)` may be mixed freely within the
+same list. If an item is longer than one line, then the subsequent lines must
+start with space character. (In this way lists items is the only instance where
+indentation matters in Baremark.)
+
+Like most Markdown parsers, Baremark ignores the actual numbers. (The outputted
+list will always be numbered from 1.)
+
+```
+1. numbered item 1
+2. numbered item 2
+3. numbered item 3
+4. numbered item 4
+```
+
+Numbered lists cannot be nested.
+
+
+[Code Block]: #codeblock
+[Code Blocks]: #codeblock
+### ` ```↲CODEBLOCK↲``` `
+
+Code blocks start and end with ` ``` ` on a line of its own. (Markdown’s
+indented code blocks are not supported by Baremark.) A code block may contain
+any kind of preformatted text (not just code).
+
 ```
 ``` 
-first line of preformatted text
-second line of preformatted text
+first line of code
+second line of code
 etc...
 ``` 
 ```
-- Block quotes:
-```
-> first line of quote
-> second line of quote
-> etc...
-```
-- Lists:
-```
-- unordered item 1
-- unordered item 2
 
-* another unordered item 1
-* another unordered item 2
-* another unordered item 3
 
-+ a third kind of unordered item 1
-+ a third kind of unordered item 2
-+ a third kind of unordered item 3
+[Dinkus]: #dinkus------
+### Dinkus `---` `___` `***`
 
-1. ordered item 1
-2. ordered item 2
-3. ordered item 3
-4. ordered item 4
-```
+A dinkus indicates a break in the text. It is sometimes used to mark the end of
+the chapter, or a scene change, or to separate stanzas in poetry. In HTML it
+marked by a horizontal ruler by default. (The [CommonMark] spec calls them
+“thematic breaks”.)
 
-- Links. *Inline links* `[text](url)`, *reference links* `[text][ref]` and
-  *shortcut reference links* `[text]` are all implemented. (Though, for brevity
-  Baremark call them *inlinks, reflinks* and *shortlinks*). For inlinks the URL
-  is given within parentheses, directly after the link text, for reflinks and
-  shortlink the URL is instead given in a definition found elsewhere in the
-  document (this is usually way prettier, since long URLs inside the text can
-  look quite messy). `ref` is case insensitive. If no definition exists for
-  `ref`, the markdown is not interpreted as a link, but is left as-is in the
-  outputted document. Link (and image) definitions may be put anywhere in the
-  document, but are customarily put the end of the file or the current section
-  of text. Parentheses and brackets (if used) in `text` must be escaped.
+A dinkus consist of three or more hyphens `-`, underlines `_` or asterisks `*`,
+optionally separated by spaces. It must be separated from the surrounding text
+with blank lines. Examples:
 
 ```
-An [inlink](http://example.com) and a [reflink][example] and a [shortlink]
-which all links to the same place.
+* * *
 
-[example]: http://example.com "The example page title"
-[shortlink]: http://example.com "The example page title"
-```
-
-- Images. The markdown syntax for links and pictures is the same, except that
-  for a picture markup is preceded by `!`. Just like for links, there are three
-  kinds, *inpics* `![text](url)`, *refpics* `![text][ref]` and *shortpics*
-  `![text]`. The `text` is used in the image’s `alt` attribute, but markdown in
-  `text` is not expanded.
-
-```
-An [inpic](http://example.com) and a [refpic][example] and a [shortpic]
-which all pics to the same place.
-
-[example]: http://example.com "The example page title"
-[shortpic]: http://example.com "The example page title"
+________________________________________
+ 
 ```
 
 
+[Span Elements]: #span-elements
+Span Elements
+-------------
+*Spans elements* are the markup used for formatting text and adding links
+within [block elements]. All of a span element must occur within the same block
+(otherwise you’ll see the literal markup characters in the output).
+
+[Span Elements Note]: #span-elements-note
+<a id=span-elements-note></a>**NOTE:** The Markdown [bold], [italic] and
+[underline] can be nested in, shall we say, *interesting* ways. For example
+`*italic **bold-italic* bold**` will generate HTML which is *technically
+non-standard,* since the resulting HTML tags `<i>` and `<b>` will be
+overlapping (`<i>italic <b>bold-italic</i> bold</b>` → “*italic **bold-italic*
+bold**”), and not neatly nested, in the way the HTML standard thinks is
+appropriate. In practice, however, I’ve never seen a browser which fails to
+render this correctly though.—When in doubt, I suggest you just avoid using
+this “feature”. :)
+
+
+[Backslash Escapes]: #backslash-escapes-x
+### Backslash Escapes `\X`
+
+Any ASCII punctuation character may be escaped by preceding it with a
+backslash. An escaped character is always interpreted literally. So if you want
+an actual asterisk in your text, you can use `\*` to indicate that this is an
+asterisk that is not part of a Markdown tag (like for example an `*italic*`
+tag). This is feature [CommonMark] compliant.
+
+The ASCII punctuation characters are:
+
 ```
-A link to [Klingonska Akademien][KA].
-A link to [KLI].
-
-![A Picture][pic]
-
-[KA]: http://klingonska.org
-[KLI]: http://kli.org "Optional page title here"
-[pic]: picture.jpg
+!"#$%&'()*+,-./:;<=>?@[\\\]^_`{|}~
 ```
 
-- Horizontal rule: `***`, `---`, or `___` (three or more of either asterisk,
-  dash or underscore on a line separated by blank lines).
-- Paragraphs: Just as in standard Markdown, any non-special text is put inside
-  `<p>` tags by default, just surround each paragraph with with blank lines.
-  Between a Setext heading an a paragraph a blank line isn’t required:
+**NOTE:** Unescaped brackets and parentheses are not allowed in the text of
+[links and images].
+
+
+[Links and Images]: #links--images
+### Links & Images
+
+Both links and images exists in two types: *[inline][inline links and images]*
+and *[labeled][labeled links and images]*. The *[inline form][inline links and
+images]* contain the URL *right there,* in the Markdown element itself, while
+the *[labeled form][labeled links and images]* and *[shortcut form][shortcut
+links and images]* hides away the URL in a separate *[label definition]*,
+placed elsewhere in the document, where the (often lengthy) URLs don’t wreak
+havoc with the line wrapping of your text. Links are expanded into the HTML tag
+`<a href="URL" title="TITLE">TEXT</a>` and images into `<img src="URL"
+alt="TEXT" title="TITLE">`. (Baremark only supports `TITLE` for [labeled links
+and images].)
+
+
+[Inline Links and Images]: #inline-links-texturl--images-texturl
+#### Inline Links `[TEXT](URL)` & Images `![TEXT](URL)`
+
+The Markdown for inline links and images look the same, except that a leading
+leading exclamation point `!` is added for the image form.
+
+**NOTE:** `TEXT` may not contain unescaped brackets `[]` or parentheses `()`.
+Put a backslash in front of these characters if you need them.
+
+* **Link** `TEXT` may contain Markdown [span elements] (including images, but
+  not links).
+* **Image** `TEXT` is a literal string. It is used for the `alt` attribute of
+  the outputted `<img>` tag, and browsers use it as a replacement for the image
+  itself (if it fails to load, or if text is read aloud, rather than
+  displayed). It should contain a brief description of the image (avoiding
+  phrasings like “Picture of …”).
+
+`URL` given may contain any valid URL. (You can use relative paths, URL
+fragments, or other protocols, like `mailto:` etc.) For images the URL should
+point to a valid image. This value is not further expanded (all characters,
+even backslash ` \ `, are interpreted literally).
 
 ```
-Heading
-=======
-Some text in a paragraph.
+Links:
+[Example link](http://example.com/)
+[Link with relative path](..)
+[Link with fragment URL](#top)
+
+Image:
+![Logo](logo.svg)
+
+Linked image:
+[![About us](logo.png)](../about.html)
 ```
 
-Of course, you can use plain old HTML in Markdown documents, and it will be
-passed through as-is, unless it’s enclosed in `` ` `` or `` ``` `` (multiline
-preformatted blocks), in which case it will be escaped appropriately.
+
+[Labeled Links and Images]: #labeled-links-textlabel--images-textlabel
+#### Labeled Links `[TEXT][LABEL]` & Images `![TEXT][LABEL]`
+
+It is often more convenient to use the labeled form of links and images, since
+this form allow you to move the (often very long) URLs out of the flow of the
+text, so as interfere reading, or mess up line wrapping.
+
+**NOTE:** `TEXT` and `LABEL` may not contain unescaped brackets `[]` or
+parentheses `()`. Put a backslash in front of these characters if you need
+them.
+
+* **Link** `TEXT` may contain Markdown [span elements] (including images, but
+  not links).
+* **Image** `TEXT` is a literal string. It is used for the `alt` attribute of
+  the outputted `<img>` tag, and browsers use it as a replacement for the image
+  itself (if it fails to load, or if text is read aloud, rather than
+  displayed). It should contain a brief description of the image (avoiding
+  phrasings like “Picture of …”).
+
+`LABEL` names a [label definition] which contains the link URL (and optionally
+title) of the link. `LABEL` is case insensitive and whitespace is normalized
+(so that a link label may be word wrapped without causing trouble).
+
+If `LABEL` is not defined in the document, then the link will not be expanded,
+but remain as-is in the output. Optionally, `LABEL` may be left empty (or
+dropped altogether), see [shortcut links and images].
+
+```
+Links:
+[Example link][example]
+[Link with relative path][up]
+[Link with fragment URL][top]
+
+Image:
+![Logotype][logo]
+
+Linked image:
+[![About us][logo]][about]
+
+[about]: ../about.html (About Page)
+[example]: http://example.com/ (An Example Page)
+[logo]: baremark.svg (Our Logo)
+[top]: #top
+[up]: .. (Go up one page)
+```
 
 
+[Shortcut links and images]: #shortcut-links-text--images-text
+#### Shortcut Links `[TEXT]` & Images `![TEXT]`
+
+When writing [labeled links and images], the `[LABEL]` part at the end of the
+link/image element can be left empty, `[TEXT][]` or `![TEXT][]`, or dropped
+completely, `[TEXT]` or `![TEXT]`. In these cases `TEXT` will be used as both
+link/image text *and* as `LABEL`.
+
+```
+Links:
+[About][] page.
+[About] page.
+
+Images:
+![Logo][]
+![Logo]
+
+[about]: ../about.html (About Page)
+[logo]: baremark.svg (Our Logo)
+```
+
+`TEXT` is used as-is for the link (or image) text, but when looking up the link
+URL it is normalized in the same way as `LABEL` (in [labeled links and
+images]).—This means that, in the above example, `[About]` and `![Logo]` will
+be capitalized in the output, while still using the URL and title defined in
+the lower case [label definitions] `[about]: …` and `[logo]: …`.
+
+
+[label definition]: #label-definitions-label-url-title
+[label definitions]: #label-definitions-label-url-title
+#### Label Definitions `[LABEL]: URL (TITLE)`
+
+A label definition associates a `LABEL` with a `URL` and (optionally) a
+`TITLE`. The label definitions themselves do not show up in the outputted HTML,
+but they are used when expanding [labeled links and images]. Label definitions
+can be placed anywhere in the document, but are usually placed either after the
+paragraph where they are used, or at the end of the document.
+
+A *label definition* are not required to be surrounded by blank lines, but its
+`[LABEL]:` part must be the first thing on the line (without indentation).
+Thereafter the URL is specified either in angle brackets `<URL>` or without
+`URL`. Finally, the optional `TITLE` may be given either in single quotes
+`'TITLE'`, double quotes `"TITLE"` or parentheses `(TITLE)`. They can look like
+this:
+
+```
+[about]: about.html
+[up]: .. (Go up one page)
+[example]: http://example.com/ (An Example Page)
+[logo page]: <../logo.html> "The History of Our Logo"
+[ch5]: #chapter-5 'About Ancient Anthologies'
+```
+
+`LABEL` cannot contain brackets `[]` or parentheses `()` unless they are
+[escaped by backslashes][backslash escapes]. The value is case insensitive, and
+whitespace normalized (so that it may be word wrapped without causing trouble).
+
+`URL` can be written either plainly, or bracketed by bigger than/less than
+`<>`.
+
+`TITLE` (which is optional) may be surrounded with either parentheses `(…)`,
+double quotes `"…"` or single quotes `'…'`. `TITLE` is a literal string (any
+Markdown inside it is not expanded), since this is outputted as an HTML
+attribute value. This value is typically used by browsers as a hover text for
+the link or image.
+
+
+[italic]: #italic-italic
+### `_ITALIC_` `*ITALIC*`
+
+Asterisks `*` or underlines `_` are used to mark *italic text.* These are
+expanded into HTML tags `<i>...</i>`. (See also [Note][Span Elements Note],
+under “[Span Elements]”, regarding nesting of [bold], [italic] and
+[underline].)
+
+```
+_italic_ or *italic*
+```
+
+
+[bold]: #bold-bold
+### `__BOLD__` `**BOLD**`
+
+Double asterisks `**` or underlines `__` are used to mark **bold text**. These
+are expanded into HTML tags `<b>...</b>`. (See also [Note][Span Elements Note],
+under “[Span Elements]”, regarding nesting of [bold], [italic] and
+[underline].)
+
+```
+__bold__ or **bold**
+```
+
+
+[underline]: #underline-extended
+### `___UNDERLINE___` (Extended)
+
+Triple underlines `___` (but not asterisks) are used to mark ___underlined
+text___. These are expanded into HTML tags `<u>…</u>`. (See also [Note][Span
+Elements Note], under “[Span Elements]”, regarding nesting of [bold], [italic]
+and [underline].)
+
+```
+___UNDERLINE___
+```
+
+
+[strikethrough]: #strikethrough-extended
+### `~~STRIKETHROUGH~~` (Extended)
+
+Double tildes `~~` is used to mark ~~strikethrough text~~. These are expanded
+into HTML tags `<s>...</s>`.
+
+```
+~~STRIKETHROUGH~~
+```
+
+[quote]: #quote-extended
+### `:"QUOTE":` (Extended)
+
+Colons `:` and straight quotes `"` are used to mark :"quoted text":. These are
+expanded into HTML tags `<q>...</q>`.
+
+```
+:"QUOTE":
+```
+
+**NOTE:** The quotes produced by most (all?) browsers by the HTML `<q>` tag
+cannot be copied and pasted, so I tend to stay away from using this Markdown
+element.
+
+
+[code]: #code--code-
+### `` `CODE` `` ``` `` CODE `` ```
+
+Backticks `` ` `` are used to mark `code`. `CODE` is literal string (Markdown
+inside it is not further processed, and HTML is escaped so that it shows up as
+text in the browser) before being wrapped in the HTML `<tt>...</tt>`.
+[Backslash escapes] cannot be used in `CODE` (they will simply show up as
+backslashes in the output).
+
+Any number of backticks may be used to start the tag, and the same number
+number of backticks is used to terminate it. If `CODE` both starts and ends
+with space, then exactly one space is stripped off of either end. All of which
+means, that to, for example, write a singe backtick as `CODE`, you can use ```
+`` ` `` ```.
+
+```
+`CODE`
+```
+
+
+[History]: #history
 History
 =======
-Baremark is based on based on VanTigranyan’s Gist [Landmark] (2060 bytes in
-size) but add several features (such as reference links/images) and fixes some
-bugs (see below).
+Baremark was originally based on based on VanTigranyan’s Gist [Landmark] (which
+is 2060 bytes in size) but it adds several features (such as labeled links &
+images) and fixes some bugs (see below).
 
 It was shortened by:
 
@@ -314,21 +671,25 @@ It was shortened by:
   since `.` won’t match newlines).
 * Use HTML `<b>` instead of `<strong>` and `<i>` instead of `<em>`.
 * Removing unneccesary spaces in source.
-* `escape` rewritten.
+* `escape()` rewritten.
 
 
-Added features
---------------
-* Exports the `escape` method (so you can use it when adding rules).
-* `<hr>` need only 3 chars, and may be either `_`, `-` or `*` (as Markdown standard says).
-* Supports Markdown escaping (using `` \ `` character).
+[Baremark vs. Landmark]: #baremark-vs-landmark
+Baremark vs. Landmark
+---------------------
+**Added Features:**
+* Exports `escape()` method (for use in extensions).
+* [CommonMark] compatible [dinkus] (uses 3 or more underscores `_`, hyphens `-`
+  or asterisks `*`, optionally separated by space, where Landmark requires 5 or
+  more asterisks `*`, and does not allow spaces between them).
+* Support for [backslash escapes] `\X` (CommonMark).
+* Support for [labeled links and images] `[TEXT][LABEL]` `![TEXT][LABEL]`
+  (CommonMark).
+* Support for [shortcut links and images] `[TEXT]` `![TEXT]` (CommonMark).
 
-
-Bugfixes
---------
-* ATX style headings (`# heading`) now work (they didn’t in the original
-  [Landmark]).
-* Bold, italics and inline code may span newlines (but never an empty line).
+**Bugfixes:**
+* Fixes atx style headings (`# heading` … `###### heading`).
+* Bold, italics and inline code may span newlines (but not empty lines).
 * Bullet lists now require space after `*` or `-` (avoids confusion with
   italics).
 * Blockquotes may contain lists.
@@ -336,16 +697,15 @@ Bugfixes
   blockquote.
 
 
-[block elements]: https://daringfireball.net/projects/markdown/syntax#block
+[CommonMark]: https://commonmark.org/
 [Github page]: https://github.com/zrajm/baremark/
 [Landmark]: https://gist.github.com/VanTigranyan/651b7c77cfc149cb858a044c2108acbb
 [Markdown]: https://daringfireball.net/projects/markdown/
 [MDN docs]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 [MDN: The `<p>` Element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p#technical_summary "MDN: The Paragraph Element: Technical summary"
+[README]: https://zrajm.github.io/baremark/README.html
 [Sitemark]: http://plugnburn.github.io/sitemark/
 [Source code]: https://zrajm.github.io/baremark/baremark.js
-[README]: https://zrajm.github.io/baremark/README.html
-[span elements]: https://daringfireball.net/projects/markdown/syntax#span
 [Test suite]: https://zrajm.github.io/baremark/
 
 <!--[eof]-->

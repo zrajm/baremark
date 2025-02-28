@@ -17,7 +17,7 @@
 
   let tocHtml = '', tocLvl = 0, idUniq = {}
   baremark().push([
-    /<h([1-6])\b([^<>]*)>(.*?)<\/h\1\b[^<>]*>|$/g, // Find <h#> header tags
+    /<h([1-6])\b([^<>]*)>(.*?)<\/h\1\b[^<>]*>|$/g, // Find <h#> heading tags
     (_, hLvl, attr, text, pos, fullStr) => {
       if (pos === fullStr.length) {            // DONE (matched `$`)
         tocHtml += '</ul>\n'.repeat(tocLvl)

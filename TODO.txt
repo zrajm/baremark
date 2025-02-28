@@ -1,8 +1,7 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/10] Web page
-** TODO Better Markdown description
+* [0/8] Web page
 ** TODO Something similar to CommonMark & Github Markdown spec
    It should illustrate, and also provide test cases for the Markdown syntax
    used.
@@ -11,12 +10,12 @@
      + https://github.github.com/gfm/
 ** [0/3] Future <toc> options
 *** TODO Option to exclude page title from toc
-    Ignore all headers before <toc> tag?
+    Ignore all headings before <toc> tag?
 *** TODO Option to make collapsible
     I.e. wrap in <details class=toc>...</details>. Also have 'open' attribute
     to allow for table to be initially opened?
-*** TODO Option to add a header to table-of-contents?
-    Add a <toc> header as attribute `title="..."` maybe?
+*** TODO Option to add a heading to table-of-contents?
+    Add a <toc> heading as attribute `title="..."` maybe?
 ** TODO Add table-of-content to 'README.html'
 ** TODO Add a extensions page
    Should include download link, and also test cases for the extensions.
@@ -30,8 +29,17 @@
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/13] Tests
-** TODO Add tests for nullinks/nulpics `[...][]`/`![...][]`
+* [0/14] Tests
+** TODO Add tests for two block quotes
+   This thing (that there already is a test for)
+     > paragraph 1
+     >
+     > paragraph 2
+   Should be different than this thing (for which there is currently no test):
+     > paragraph 1
+
+     > paragraph 2
+** TODO Add tests for implicit links/images `[...][]`/`![...][]`
 ** TODO Tags for test cases
    The test cases usually test interactions of markup, meaning that a
    hierarchical isn't actually the best. Could we instead tag each test case
@@ -46,18 +54,18 @@
    https://spec.commonmark.org/0.31.2/.) Baremark uses following, shorter,
    words instead.
 
-   |-----------+--------------+---------------------------|
-   | My Term   | Markdown     | CommonMark Term           |
-   |-----------+--------------+---------------------------|
-   | inlink    | [text](url)  | inline link               |
-   | reflink   | [text][ref]  | full reference link       |
-   | nullink   | [text][]     | collapsed reference link  |
-   | shortlink | [text]       | shortcut reference link   |
-   | inpic     | ![text](url) | inline image              |
-   | refpic    | ![text][ref] | full reference image      |
-   | nulpic    | ![text][]    | collapsed reference image |
-   | shortpic  | ![text]      | shortcut reference image  |
-   |-----------+--------------+---------------------------|
+   |--------------------------+----------------+---------------------------|
+   | My Term                  | Markdown       | CommonMark Term           |
+   |--------------------------+----------------+---------------------------|
+   | inline link              | [TEXT](URL)    | inline link               |
+   | labeled link             | [TEXT][LABEL]  | full reference link       |
+   | implicit (labeled) link  | [TEXT][]       | collapsed reference link  |
+   | short (labeled) link     | [TEXT]         | shortcut reference link   |
+   | inline image             | ![TEXT](URL)   | inline image              |
+   | labeled image            | ![TEXT][LABEL] | full reference image      |
+   | implicit [labeled]]image | ![TEXT][]      | collapsed reference image |
+   | short (labeled) image    | ![TEXT]        | shortcut reference image  |
+   |--------------------------+----------------+---------------------------|
 
    Rephrase the following wordings currently in the test case suite:
 *** DONE Change titles '<tt>ref</tt> unspecified' = shortlink, but also 'text-as-ref'.
@@ -101,7 +109,15 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/19] Features
+* [0/23] Features
+** TODO Support trailing whitespace
+   The line ending normalization rule just need an added `\s+` to completely
+   erase trailing whitespace!
+** TODO Don't insert `<p>...</p>` around the <toc> tag
+** TODO Add autolinks `<URL>`
+   Also update README mention of autolink.
+** TODO Add title support for inline links & images
+   Also update README on for this topic.
 ** TODO Allow single parenthesis in link/image?
    This could be done by a rule that replaces '(...)', with its
    '&#40;...&#41;', maybe? Would that be smart?
@@ -202,7 +218,7 @@
    two newlines', this (intentionally) allows for whitespace at the beginning
    and end of the string. This is useful when the string is surrounded by
    markup characters (e.g. inside '[...]' etc.) less so when markup isn't
-   surrounding the text (as with paragraphs, ATX headers `# ...`), or in a
+   surrounding the text (as with paragraphs, atx heading `# ...`), or in a
    [bullet or ordered] list items, where there's no markup character to
    delineate the end).
 
@@ -262,7 +278,69 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [31/31] FINISHED
+* [32/32] FINISHED
+** DONE Better Markdown description
+   CLOSED: [2025-02-28 Fri 05:44]
+*** DONE Make sure all Markdown arguments are written in ALL CAPS
+    CLOSED: [2025-02-28 Fri 05:43]
+    E.g. `[TEXT][LABEL]` *not* `[text][label]`.
+*** DONE Do not use `[LABEL]` (*not* `[ID]`) for labeled links and images
+    CLOSED: [2025-02-25 Tue 02:03]
+    `ID` is way to easy to confuse with the HTML attribute `id`
+*** DONE Terms to use
+    CLOSED: [2025-02-25 Tue 02:03]
+   |-----------+------------------------------------+----------------------------------------+--------------------------------|
+   |           | **Baremark**                       | **Gruber**                             | **CommonMark**                 |
+   |-----------+------------------------------------+----------------------------------------+--------------------------------|
+   |           |                                    | FIXME?                                 | container block                |
+   |           |                                    | FIXME?                                 | leaf block                     |
+   | ***       | dinkus                             | horizontal rules                       | thematic break                 |
+   | # …       | atx heading                        | atx-style header                       | ATX heading                    |
+   | …↲---     | Setext heading                     | Setext-style header                    | setext heading                 |
+   | ␣␣␣␣…     | —                                  | (preformatted) code block              | indented code block            |
+   | ```↲…↲``` | (fenced) code block                | —                                      | fenced code block              |
+   |           | HTML block                         | HTML block / block-level HTML (tags)   | HTML block                     |
+   | […]: …    | labeldef (image/link definition)   | link (label) definition                | link reference definition      |
+   | ↲↲…↲↲     | paragraph                          | paragraph                              | paragraph                      |
+   | ↲↲        | blank line                         | blank line                             | blank line                     |
+   | │…│…│     | —                                  | —                                      | table (GFM)                    |
+   | ↲> …      | blockquote                         | blockquote                             | block quote                    |
+   |           | list item                          | list item                              | list item                      |
+   | - [ ] …   | —                                  | —                                      | task list item (GFM)           |
+   | * …       | bullet list item                   | unordered (bulleted) list              | bullet list                    |
+   | 1. …      | numbered list item                 | ordered (numbered) list                | ordered list                   |
+   |           | list                               | list                                   | list                           |
+   | \X        | backslash escape                   | backslash escape                       | backslash escape               |
+   |           |                                    | span element                           | inline                         |
+   | `…`       | code span                          | code span                              | code span                      |
+   | *…*       | italic                             | (em) emphasis                          | emphasis                       |
+   | **…**     | bold                               | strong emphasis                        | strong emphasis                |
+   | ~~…~~     | strikethrough                      | —                                      | strikethrough (GFM)            |
+   | […](…)    | inline link                        | inline(-style) link                    | inline link                    |
+   | […][…]    | labeled link                       | reference(-style) link                 | reference link                 |
+   |           | [TEXT][LABEL]                      | [link text][id]                        | [link][ref]                    |
+   | […][]     | implicit [labeled] link            | implicit link name shortcut            | collapsed reference link       |
+   | […]       | short [labeled] link / shortlink   | —                                      | shortcut reference link        |
+   |           | link text                          | link text                              | link text                      |
+   |           | link label                         | link (name/label/identifier/reference) | link (reference/label)         |
+   |           | link title                         | link title                             | link title                     |
+   | ![…](…)   | inline image                       | inline(-style?) image                  | inline image                   |
+   | ![…][…]   | labeled image                      | reference(-style) image                | reference(-style) image        |
+   | ![…][]    | implicit [labeled] image           | implicit image name shortcut (implied) | collapsed reference image      |
+   | ![…]      | short [labeled] image / shortimage | —                                      | shortcut reference image       |
+   |           | ![TEXT][LABEL]                     | ![Alt text][id]                        | ![image?][ref]                 |
+   |           | image text                         | alt text                               | image description              |
+   |           | image title                        | image title                            | image title                    |
+   | <…>       | autolink                           | automatic link                         | (URI) autolink                 |
+   | www.…     |                                    |                                        | extended www autolink (GFM)    |
+   |           |                                    | span-level HTML (tags) / inline HTML   | raw HTML                       |
+   |           |                                    |                                        | disallowed raw HTML (GFM)      |
+   | \↲  ␣␣↲   |                                    |                                        | hard line break   (hardbreak?) |
+   | ↲         |                                    |                                        | soft line break / softbreak    |
+   |           |                                    |                                        | textual content                |
+   | ___…___   | underline                          |                                        |                                |
+   | :"…":     | (curly) quotes                     |                                        |                                |
+   |-----------+------------------------------------+----------------------------------------+--------------------------------|
 ** DONE Make link/image labels case insensitive
    CLOSED: [2025-02-24 Mon 23:39]
    Currently they are spaces are trimmed and squeezed, but we should also
