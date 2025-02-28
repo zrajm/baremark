@@ -107,12 +107,19 @@
     "title": "ignore Markdown, bold (using underlines)"
   }, {
     "markdown": "```\n___xx___\n```",
+    "NOTE": "Landmark-specific",
     "html": "<pre>&#95;&#95;&#95;xx&#95;&#95;&#95;</pre>",
     "title": "ignore Markdown, underline (using underlines)"
   }, {
     "markdown": "```\n~~xx~~\n```",
+    "NOTE": "Landmark-specific",
     "html": "<pre>&#126;&#126;xx&#126;&#126;</pre>",
     "title": "ignore Markdown, strikethrough"
+  }, {
+    "markdown": "```\n:\"xx\":\n```",
+    "NOTE": "Landmark-specific",
+    "html": "<pre>&#58;&#34;xx&#34;&#58;</pre>",
+    "title": "ignore Markdown, quotes</tt>"
   }, {
     "markdown": "```\n[x](y)\n```",
     "html": "<pre>&#91;x&#93;&#40;y&#41;</pre>",
