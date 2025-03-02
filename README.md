@@ -21,7 +21,7 @@ featurefulness.)
 * [Test suite]
 * [Github page]
 
-It is currently 1973 bytes in size *before* minification and zipping!
+It is currently 1984 bytes in size *before* minification and zipping!
 
 
 [Usage]: #usage
@@ -46,6 +46,13 @@ Baremark’s internals are very simple. It consists of a list of rules, which ar
 applied, in order, to the inputted Markdown text. Each rule is passed on
 *exactly as-is* to the Javascript `replace()` string method. Yet, from this
 simplicity come remarkable versatility.
+
+Line endings are normalized by the first builtin rule of Baremark.
+Normalization strips any trailing spaces and tabs, and make sure all lines end
+in `\n` (converting any found Windows `\r\n` and old Mac `\r` line endings).
+This means that your rules need not match trailing space, or, if you *want* to
+match trailing space, that your new rule have to be added *before* the builtin
+rules (using `baremark().unshift()`).
 
 Let’s take an example. The below rule turns `[#text]` into `<a id="text"></a>`,
 allowing you to use add fragment URL anchors to your text (so that you to put
@@ -158,10 +165,6 @@ These limitations might change in the future.
 * [Blockquotes] cannot be nested.
 * [Lists] cannot be nested.
 * Autolinks `<URL>` are not supported.
-* Whitespaces is not handled at end-of-line. In some cases, such as with code
-  blocks separators ` ``` `, or atx headings with trailing `#`, additional
-  space at end-of-line this results in Markdown elements not being recognized
-  at all. ([CommonMark] specifies space at end-of-line should be ignored.)
 * Determining what is a [paragraph] and what is a [HTML block] from is somewhat
   simplistic.
 * Whitespace in not allowed between `](` or `][` in [links and images]. This
@@ -178,6 +181,12 @@ in a slightly different direction (usually to keep the code minimal), see
 [Limitations]. Most advanced Markdown features (such as tables) are not
 supported out-of-the-box, but you may use [extensions][extending baremark] to
 add missing functionality.
+
+The first step of Markdown processing normalizes line endings. This is done by
+trimming off all trailing tabs and spaces, and converting the
+end-line-character to `\n` (both Windows `\r\n` and old Mac `\r` line endings
+are supported). This means that subsequent rules can be simplified, as they do
+not have to factor in line-ending space.
 
 
 [Block Elements]: #block-elements
@@ -680,8 +689,13 @@ It was shortened by:
 [Baremark vs. Landmark]: #baremark-vs-landmark
 Baremark vs. Landmark
 ---------------------
-**Added Features:**
+
+
+[Added Features]: #added-features
+### Added Features
+
 * Exports `escape()` method (for use in extensions).
+* Handles spaces & tabs at end-of-line a bit more consistently.
 * [CommonMark] compatible [dinkus] (uses 3 or more underscores `_`, hyphens `-`
   or asterisks `*`, optionally separated by space, where Landmark requires 5 or
   more asterisks `*`, and does not allow spaces between them).
@@ -690,8 +704,11 @@ Baremark vs. Landmark
   (CommonMark).
 * Support for [shortcut links and images] `[TEXT]` `![TEXT]` (CommonMark).
 
-**Bugfixes:**
-* Fixes atx style headings (`# heading` … `###### heading`).
+
+[Bugfixes]: #bugfixes
+### Bugfixes
+
+* Fixes atx style headings (`# HEADING` … `###### HEADING`).
 * Bold, italics and inline code may span newlines (but not empty lines).
 * Bullet lists now require space after `*` or `-` (avoids confusion with
   italics).

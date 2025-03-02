@@ -12,9 +12,21 @@
     "html": "<p>xx\nyy</p>",
     "title": "Windows newline <tt>\r\n</tt>"
   }, {
-    "markdown": "xx\r\nyy\r\nzz",
-    "html": "<p>xx\nyy\nzz</p>",
+    "markdown": "xx\r\n\r\nyy",
+    "html": "<p>xx</p>\n\n<p>yy</p>",
     "title": "multiple Windows newlines <tt>\r\n</tt>"
+  }, {
+    "markdown": "xx \nyy\t",
+    "html": "<p>xx\nyy</p>",
+    "title": "Linux newline <tt>\n</tt> + trailing space"
+  }, {
+    "markdown": "xx  \ryy\t\t",
+    "html": "<p>xx\nyy</p>",
+    "title": "old Mac newline <tt>\r</tt> + trailing spaces"
+  }, {
+    "markdown": "xx   \r\nyy\t\t\t",
+    "html": "<p>xx\nyy</p>",
+    "title": "Windows newline <tt>\r\n</tt> + trailing spaces"
   },
   "Paragraphs", {
     "markdown": "xx",
@@ -36,6 +48,18 @@
     "markdown": "xx\n\nyy\n\nzz",
     "html": "<p>xx</p>\n\n<p>yy</p>\n\n<p>zz</p>",
     "title": "three paragraphs"
+  }, {
+    "markdown": "xx   \nyy   ",
+    "html": "<p>xx\nyy</p>",
+    "title": "lines with trailing spaces"
+  }, {
+    "markdown": "xx\t\t\t\nyy\t\t\t",
+    "html": "<p>xx\nyy</p>",
+    "title": "lines with trailing tabs"
+  }, {
+    "markdown": "xx \t \t \t\nyy \t \t \t",
+    "html": "<p>xx\nyy</p>",
+    "title": "lines with trailing tabs and spaces"
   },
   "<tt># HEADING 1</tt> … <tt>###### HEADING 6</tt>", {
     "markdown": "# xx",
@@ -79,16 +103,6 @@
     "NOTE": "anti-CommonMark",
     "html": "<p>#</p>",
     "title": "don’t expand empty heading (<tt>#</tt> alone on a line)"
-  }, {
-    "markdown": "# ",
-    "NOTE": "anti-CommonMark",
-    "html": "<p># </p>",
-    "title": "don’t expand empty heading (<tt>#</tt> w/ single space after)"
-  }, {
-    "markdown": "#  ",
-    "NOTE": "anti-CommonMark",
-    "html": "<p>#  </p>",
-    "title": "don’t expand not allowed (<tt>#</tt> w/ multiple spaces after)"
   }, {
     "markdown": "\\## xx",
     "NOTE": "CommonMark",
@@ -259,8 +273,8 @@
   }, {
     "markdown": "xx\n== ",
     "NOTE": "Unsupported CommonMark feature",
-    "html": "<p>xx\n== </p>",
-    "title": "don’t expand if underline has trailing space"
+    "html": "<h1>xx</h1>",
+    "title": "underline with trailing space"
   },
   "<tt>&gt; BLOCKQUOTE</tt>", {
     "markdown": "> xx",
@@ -313,6 +327,11 @@
     "NOTE": "CommonMark",
     "html": "<blockquote>\n\n\n<ul><li>xx</li><li>yy</li></ul>\n\n\n</blockquote>",
     "title": "bullet list inside blockquote"
+  }, {
+    "markdown": "> xx \t",
+    "NOTE": "CommonMark",
+    "html": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>",
+    "title": "space/tab following a line of blockquote"
   },
   "<tt>* BULLET</tt> <tt>+ BULLET</tt> <tt>- BULLET</tt>", {
     "markdown": "* xx\n* yy",
@@ -347,6 +366,10 @@
     "markdown": "xx\n* xx\n* yy\nzz",
     "html": "<p>xx</p>\n\n<ul><li>xx</li><li>yy</li></ul>\n\n<p>zz</p>",
     "title": "paragraphs before AND after list, no blank lines between"
+  }, {
+    "markdown": "* xx \t\n* yy \t",
+    "html": "<ul><li>xx</li><li>yy</li></ul>",
+    "title": "space/tab following lines of bullet items"
   },
   "<tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>", {
     "markdown": "1. xx\n2. yy",
@@ -374,11 +397,19 @@
     "markdown": "xx\n1. xx\n2. yy\nzz",
     "html": "<p>xx</p>\n\n<ol><li>xx</li><li>yy</li></ol>\n\n<p>zz</p>",
     "title": "paragraphs before AND after list, no blank lines between"
+  }, {
+    "markdown": "1. xx \t\n2. yy \t",
+    "html": "<ol><li>xx</li><li>yy</li></ol>",
+    "title": "space/tab following lines of numbered items"
   },
   "<tt class=multi>```<br>CODEBLOCK</br>```</tt>", {
     "markdown": "```\nxx\n```",
     "html": "<pre>xx</pre>",
     "title": "single paragraph"
+  }, {
+    "markdown": "```  \nxx\n```\t",
+    "html": "<pre>xx</pre>",
+    "title": "spaces and/or tabs after the <tt>```</tt> separators"
   }, {
     "markdown": "xx\n\n```\nyy\n```",
     "html": "<p>xx</p>\n\n<pre>yy</pre>",
@@ -599,6 +630,10 @@
     "markdown": "xx\n\n***\nyy",
     "html": "<p>xx</p>\n\n<p>***\nyy</p>",
     "title": "don’t expand unless followed by blank line"
+  }, {
+    "markdown": "*** \t",
+    "html": "<hr>",
+    "title": "space/tab following the dinkus"
   },
   "Backslash Escapes <tt>\\X</tt>", {
     "markdown": "\\\n",

@@ -29,7 +29,9 @@
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/12] Tests
+* [0/13] Tests
+** TODO Tests for HTML blocks
+*** TODO Add test case for HTML block with lines followed by space
 ** TODO Test empty bullet list, numbered list, code block
    What should all the following result in?
 
@@ -82,7 +84,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/24] Features
+* [0/20] Features
 ** TODO Multiline atx headings
    # One should be able to
    # break a heading into multiple
@@ -95,12 +97,7 @@
 
    But frankly, I think the CommonMark definition is kinda insane. :)
    Especially in the light of allowing multi-line Setext headings.
-** TODO Support trailing whitespace
-   The line ending normalization rule just need an added `\s+` to completely
-   erase trailing whitespace!
 ** TODO Don't insert `<p>...</p>` around the <toc> tag
-** TODO Add autolinks `<URL>`
-   Also update README mention of autolink.
 ** TODO Add title support for inline links & images
    Also update README on for this topic.
 ** TODO Allow single parenthesis in link/image?
@@ -193,9 +190,6 @@
    |----+---------------------|
 
    Should Baremark's be more limited?
-** TODO Implement 'collapsed reference links' i.e. `[text][]`
-   These are in the CommonMark spec as synonymous to shortlinks `[text]`. Make
-   sure this type of link and image works, and that there are test cases.
 ** TODO Optimize `[ref]: url "title"` code
    I think this can benefit from more use of 'X'.
 ** TODO Optimize use of preprocessing step
@@ -239,9 +233,11 @@
 ** TODO Hanging indent lists
 ** TODO Indented code blocks
 ** TODO Autolink(?) without the <...>?
-** TODO Autolinked URLs <http://example.com?find=\\*>
-   Content need to be URL encoded. CommonMark example 20 illustrate this.
-** TODO Autolinked emails <me@email.com>
+** [0/3] Add autolinks `<URL>`
+*** TODO Also update README mention of autolink.
+*** TODO Autolinked URLs <http://example.com?find=\\*>
+    Content need to be URL encoded. CommonMark example 20 illustrate this.
+*** TODO Autolinked emails <me@email.com>
 ** TODO Nested lists
 * [0/7] Bugs
 ** TODO Disallow space around headline and code fence markup
@@ -262,6 +258,25 @@
                |
                HERE
 * [33/33] FINISHED
+** [8/8] Support trailing whitespace
+   The line ending normalization rule just need an added `\s+` to completely
+   erase trailing whitespace!
+*** DONE Update README with information about this
+    CLOSED: [2025-03-02 Sun 12:16]
+*** DONE Fix broken test cases
+    CLOSED: [2025-03-02 Sun 12:24]
+*** DONE Add test case for code block separator followed by space
+    CLOSED: [2025-03-02 Sun 12:26]
+*** DONE Add test case for dinkus followed by space
+    CLOSED: [2025-03-02 Sun 12:28]
+*** DONE Add test case for blockquote with lines followed by space
+    CLOSED: [2025-03-02 Sun 12:31]
+*** DONE Add test case for bullet item with lines followed by space
+    CLOSED: [2025-03-02 Sun 12:36]
+*** DONE Add test case for numbered item with lines followed by space
+    CLOSED: [2025-03-02 Sun 12:36]
+*** DONE Add test case for paragraph with lines followed by space
+    CLOSED: [2025-03-02 Sun 12:36]
 ** DONE Use consistent metasyntactical variables for images and links
    CLOSED: [2025-03-02 Sun 10:16]
    Use: `[text](url)`, `[text][ref]` & `[text]`
