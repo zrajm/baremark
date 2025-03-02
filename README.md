@@ -215,9 +215,9 @@ any currently open `<p>` tag. See also: [MDN: The `<p>` Element]).
 [Headings]: #headings
 ### Headings
 
-There are two types of headings [Atx headings] (underscored with `=` or `-`)
-and [Setext headings] preceded (and optionally followed) by 1–6 `#`.
-
+There are two types of headings: [Atx headings] which start with 1–6 hashtags
+`#` (optionally also followed by hashtags), and [Setext headings] which
+underlined with a line of equal signs `=` or hyphens `-`.
 
 [Atx Heading]: #-heading-1---heading-6
 [Atx Headings]: #-heading-1---heading-6
