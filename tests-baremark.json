@@ -572,6 +572,18 @@
     "html": "<hr>",
     "title": "three asterisks with space between them <tt>* * *</tt>"
   }, {
+    "markdown": "****",
+    "html": "<hr>",
+    "title": "four asterisks <tt>****</tt>"
+  }, {
+    "markdown": "----",
+    "html": "<hr>",
+    "title": "four hyphens <tt>----</tt>"
+  }, {
+    "markdown": "____",
+    "html": "<hr>",
+    "title": "four underlines <tt>___</tt>"
+  }, {
     "markdown": "**",
     "html": "<p>**</p>",
     "title": "don’t expand two asterisks <tt>**</tt>"
