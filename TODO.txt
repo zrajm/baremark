@@ -29,7 +29,7 @@
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/14] Tests
+* [0/12] Tests
 ** TODO Test empty bullet list, numbered list, code block
    What should all the following result in?
 
@@ -60,10 +60,6 @@
    one. (Note that for complex test cases, testing interactions between
    multiple elements, a test might be testing both positive AND negative at the
    same time.)
-** TODO 'Thematic break' / 'horizontal rule' -> 'dinkus'
-** TODO Use consistent metasyntactical variables for images and links
-   Use: `[text](url)`, `[text][ref]` & `[text]`
-   And: `![text](url)`, `![text][ref]` & `![text]`?
 ** TODO Test cases testing [![pic]](url),  [![pic]][ref]
 ** TODO Test markdown inside `text` of links and images
    In images (`![text][ref]`, `![text]` and `![text](url)`) markdown in `text`
@@ -265,10 +261,13 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* Limitations
-** Blockquotes can't be nested
 * [33/33] FINISHED
+** DONE Use consistent metasyntactical variables for images and links
+   CLOSED: [2025-03-02 Sun 10:16]
+   Use: `[text](url)`, `[text][ref]` & `[text]`
+   And: `![text](url)`, `![text][ref]` & `![text]`?
 ** [4/4] Use consistent terms for image & link markup
+   CLOSED: [2025-03-02 Sun 10:16]
    The CommonMark terms for links and pictures are wee bit of a mouthful. (See
    https://spec.commonmark.org/0.31.2/.) Baremark prefers being somewhat more
    concise.
@@ -327,6 +326,8 @@
      > paragraph 1
 
      > paragraph 2
+** DONE 'Thematic break' / 'horizontal rule' -> 'dinkus'
+   CLOSED: [2025-02-28 Fri 05:44]
 ** DONE Better Markdown description
    CLOSED: [2025-02-28 Fri 05:44]
 *** DONE Make sure all Markdown arguments are written in ALL CAPS

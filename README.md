@@ -154,13 +154,16 @@ Limitations
 These limitations might change in the future.
 
 * Indentation is ignored.
-* Only fenced [Code blocks] are supported (not indented ones).
+* Fenced [code blocks] are supported, but not indented ones.
 * [Blockquotes] cannot be nested.
 * [Lists] cannot be nested.
-* Autolinks `<URL>` is not supported.
-* Whitespace at end-of-line are not supported after ` ``` ` or `# … #`
-  headings. ([CommonMark] specifies that these should be ignored.)
-* Separating [HTML blocks] from [paragraphs] is somewhat simplistic.
+* Autolinks `<URL>` are not supported.
+* Whitespaces is not handled at end-of-line. In some cases, such as with code
+  blocks separators ` ``` `, or atx headings with trailing `#`, additional
+  space at end-of-line this results in Markdown elements not being recognized
+  at all. ([CommonMark] specifies space at end-of-line should be ignored.)
+* Determining what is a [paragraph] and what is a [HTML block] from is somewhat
+  simplistic.
 * Whitespace in not allowed between `](` or `][` in [links and images]. This
   allowed in the [CommonMark] specification, but can lead to weird errors.
   (Baremark allow space inside the brackets though, so your line wrapping
