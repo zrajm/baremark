@@ -29,7 +29,20 @@
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 ** TODO Test suite should have links to README and vice versa
-* [0/13] Tests
+* [0/14] Tests
+** TODO Test empty bullet list, numbered list, code block
+   What should all the following result in?
+
+   ```
+   ```
+
+   *
+
+   1)
+** TODO Multiple of each element after each other
+   Each thingy should be tested with two after each other. E.g. two *code
+   blocks* after each other. This will, for the blocks make sure that the
+   handling of the edges between each match is handled correctly.
 ** TODO Add tests for implicit links/images `[...][]`/`![...][]`
 ** TODO Tags for test cases
    The test cases usually test interactions of markup, meaning that a
@@ -39,33 +52,15 @@
 
    For example, a link with italic in it `[some *text*](url)` would be tagged
    `inlink` and `italic`.
-** TODO 'Thematic break' / 'horizontal rule' -> 'dinkus'
-** [3/4] Use consistent terms for image & link markup
-   The CommonMark terms for links and pictures are wee bit of a mouthful. (See
-   https://spec.commonmark.org/0.31.2/.) Baremark prefers being somewhat more
-   concise.
 
-   |--------------------------+----------------+---------------------------|
-   | My Term                  | Markdown       | CommonMark Term           |
-   |--------------------------+----------------+---------------------------|
-   | dinkus                   | ***            | thematic break            |
-   | inline link              | [TEXT](URL)    | inline link               |
-   | labeled link             | [TEXT][LABEL]  | full reference link       |
-   | implicit [labeled] link  | [TEXT][]       | collapsed reference link  |
-   | shortcut [labeled] link  | [TEXT]         | shortcut reference link   |
-   | inline image             | ![TEXT](URL)   | inline image              |
-   | labeled image            | ![TEXT][LABEL] | full reference image      |
-   | implicit [labeled] image | ![TEXT][]      | collapsed reference image |
-   | shortcut [labeled] image | ![TEXT]        | shortcut reference image  |
-   |--------------------------+----------------+---------------------------|
-*** DONE Use new terms
-    CLOSED: [2025-02-28 Fri 12:21]
-    'Dinkus' & 'labeled link/image'.
-*** DONE Update names of the sections
-    CLOSED: [2025-02-28 Fri 12:21]
-*** DONE Reorder sections to follow README order
-    CLOSED: [2025-02-28 Fri 12:30]
-*** TODO Update each test description
+   There should be tags for 'negative' test cases (testing that something isn't
+   expanded under some conditions) and 'positive' ones. E.g. a test case for
+   checking that a dinkus *doesn't* expand unless preceded by blank line is a
+   negative one, while one where the dinkus element is expanded is a positive
+   one. (Note that for complex test cases, testing interactions between
+   multiple elements, a test might be testing both positive AND negative at the
+   same time.)
+** TODO 'Thematic break' / 'horizontal rule' -> 'dinkus'
 ** TODO Use consistent metasyntactical variables for images and links
    Use: `[text](url)`, `[text][ref]` & `[text]`
    And: `![text](url)`, `![text][ref]` & `![text]`?
@@ -91,7 +86,19 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/23] Features
+* [0/24] Features
+** TODO Multiline atx headings
+   # One should be able to
+   # break a heading into multiple
+   # lines like this
+
+   This an anti-CommonMark feature, since CommonMark requires each atx heading
+   to be a single line, and interprets two subsequent '#'-lines as two headings
+   after each other (as atx headings need not be separated from other content
+   by blank lines).
+
+   But frankly, I think the CommonMark definition is kinda insane. :)
+   Especially in the light of allowing multi-line Setext headings.
 ** TODO Support trailing whitespace
    The line ending normalization rule just need an added `\s+` to completely
    erase trailing whitespace!
@@ -260,7 +267,56 @@
                HERE
 * Limitations
 ** Blockquotes can't be nested
-* [32/32] FINISHED
+* [33/33] FINISHED
+** [4/4] Use consistent terms for image & link markup
+   The CommonMark terms for links and pictures are wee bit of a mouthful. (See
+   https://spec.commonmark.org/0.31.2/.) Baremark prefers being somewhat more
+   concise.
+
+   |--------------------------+----------------+---------------------------|
+   | My Term                  | Markdown       | CommonMark Term           |
+   |--------------------------+----------------+---------------------------|
+   | dinkus                   | ***            | thematic break            |
+   | inline link              | [TEXT](URL)    | inline link               |
+   | labeled link             | [TEXT][LABEL]  | full reference link       |
+   | implicit [labeled] link  | [TEXT][]       | collapsed reference link  |
+   | shortcut [labeled] link  | [TEXT]         | shortcut reference link   |
+   | inline image             | ![TEXT](URL)   | inline image              |
+   | labeled image            | ![TEXT][LABEL] | full reference image      |
+   | implicit [labeled] image | ![TEXT][]      | collapsed reference image |
+   | shortcut [labeled] image | ![TEXT]        | shortcut reference image  |
+   |--------------------------+----------------+---------------------------|
+*** DONE Use new terms
+    CLOSED: [2025-02-28 Fri 12:21]
+    'Dinkus' & 'labeled link/image'.
+*** DONE Update names of the sections
+    CLOSED: [2025-02-28 Fri 12:21]
+*** DONE Reorder sections to follow README order
+    CLOSED: [2025-02-28 Fri 12:30]
+*** DONE Update each test description
+    CLOSED: [2025-03-02 Sun 10:16]
+**** DONE reflink -> labeled image
+     CLOSED: [2025-02-28 Fri 14:38]
+**** DONE refpic -> labeled image
+     CLOSED: [2025-02-28 Fri 14:38]
+**** DONE shortlink -> shortcut link
+     CLOSED: [2025-03-01 Sat 12:11]
+**** DONE shortpic -> shortcut image
+     CLOSED: [2025-03-01 Sat 12:12]
+     No occurrences found
+**** DONE inlink -> inline link
+     CLOSED: [2025-02-28 Fri 14:46]
+**** DONE inpic -> inline image
+     CLOSED: [2025-03-01 Sat 12:13]
+     No occurrences.
+**** DONE nullink
+     CLOSED: [2025-03-01 Sat 12:13]
+     No occurrences.
+**** DONE nulpic
+     CLOSED: [2025-03-01 Sat 12:13]
+     No occurrences.
+**** TODO `LABEL` not `ref` or `REF`
+**** TODO `TEXT` not `text` or `alt` or `ALT`
 ** DONE Add tests for two block quotes
    CLOSED: [2025-02-28 Fri 07:17]
    This thing (that there already is a test for)
@@ -281,58 +337,58 @@
     `ID` is way to easy to confuse with the HTML attribute `id`
 *** DONE Terms to use
     CLOSED: [2025-02-25 Tue 02:03]
-   |-----------+------------------------------------+----------------------------------------+--------------------------------|
-   |           | **Baremark**                       | **Gruber**                             | **CommonMark**                 |
-   |-----------+------------------------------------+----------------------------------------+--------------------------------|
-   |           |                                    | FIXME?                                 | container block                |
-   |           |                                    | FIXME?                                 | leaf block                     |
-   | ***       | dinkus                             | horizontal rules                       | thematic break                 |
-   | # …       | atx heading                        | atx-style header                       | ATX heading                    |
-   | …↲---     | Setext heading                     | Setext-style header                    | setext heading                 |
-   | ␣␣␣␣…     | —                                  | (preformatted) code block              | indented code block            |
-   | ```↲…↲``` | (fenced) code block                | —                                      | fenced code block              |
-   |           | HTML block                         | HTML block / block-level HTML (tags)   | HTML block                     |
-   | […]: …    | labeldef (image/link definition)   | link (label) definition                | link reference definition      |
-   | ↲↲…↲↲     | paragraph                          | paragraph                              | paragraph                      |
-   | ↲↲        | blank line                         | blank line                             | blank line                     |
-   | │…│…│     | —                                  | —                                      | table (GFM)                    |
-   | ↲> …      | blockquote                         | blockquote                             | block quote                    |
-   |           | list item                          | list item                              | list item                      |
-   | - [ ] …   | —                                  | —                                      | task list item (GFM)           |
-   | * …       | bullet list item                   | unordered (bulleted) list              | bullet list                    |
-   | 1. …      | numbered list item                 | ordered (numbered) list                | ordered list                   |
-   |           | list                               | list                                   | list                           |
-   | \X        | backslash escape                   | backslash escape                       | backslash escape               |
-   |           |                                    | span element                           | inline                         |
-   | `…`       | code span                          | code span                              | code span                      |
-   | *…*       | italic                             | (em) emphasis                          | emphasis                       |
-   | **…**     | bold                               | strong emphasis                        | strong emphasis                |
-   | ~~…~~     | strikethrough                      | —                                      | strikethrough (GFM)            |
-   | […](…)    | inline link                        | inline(-style) link                    | inline link                    |
-   | […][…]    | labeled link                       | reference(-style) link                 | reference link                 |
-   |           | [TEXT][LABEL]                      | [link text][id]                        | [link][ref]                    |
-   | […][]     | implicit [labeled] link            | implicit link name shortcut            | collapsed reference link       |
-   | […]       | short [labeled] link / shortlink   | —                                      | shortcut reference link        |
-   |           | link text                          | link text                              | link text                      |
-   |           | link label                         | link (name/label/identifier/reference) | link (reference/label)         |
-   |           | link title                         | link title                             | link title                     |
-   | ![…](…)   | inline image                       | inline(-style?) image                  | inline image                   |
-   | ![…][…]   | labeled image                      | reference(-style) image                | reference(-style) image        |
-   | ![…][]    | implicit [labeled] image           | implicit image name shortcut (implied) | collapsed reference image      |
-   | ![…]      | short [labeled] image / shortimage | —                                      | shortcut reference image       |
-   |           | ![TEXT][LABEL]                     | ![Alt text][id]                        | ![image?][ref]                 |
-   |           | image text                         | alt text                               | image description              |
-   |           | image title                        | image title                            | image title                    |
-   | <…>       | autolink                           | automatic link                         | (URI) autolink                 |
-   | www.…     |                                    |                                        | extended www autolink (GFM)    |
-   |           |                                    | span-level HTML (tags) / inline HTML   | raw HTML                       |
-   |           |                                    |                                        | disallowed raw HTML (GFM)      |
-   | \↲  ␣␣↲   |                                    |                                        | hard line break   (hardbreak?) |
-   | ↲         |                                    |                                        | soft line break / softbreak    |
-   |           |                                    |                                        | textual content                |
-   | ___…___   | underline                          |                                        |                                |
-   | :"…":     | (curly) quotes                     |                                        |                                |
-   |-----------+------------------------------------+----------------------------------------+--------------------------------|
+   |-----------+--------------------------+----------------------------------------+--------------------------------|
+   |           | **Baremark**             | **Gruber**                             | **CommonMark**                 |
+   |-----------+--------------------------+----------------------------------------+--------------------------------|
+   |           |                          | FIXME?                                 | container block                |
+   |           |                          | FIXME?                                 | leaf block                     |
+   | ***       | dinkus                   | horizontal rules                       | thematic break                 |
+   | # …       | atx heading              | atx-style header                       | ATX heading                    |
+   | …↲---     | Setext heading           | Setext-style header                    | setext heading                 |
+   | ␣␣␣␣…     | —                        | (preformatted) code block              | indented code block            |
+   | ```↲…↲``` | (fenced) code block      | —                                      | fenced code block              |
+   |           | HTML block               | HTML block / block-level HTML (tags)   | HTML block                     |
+   | […]: …    | label definition         | link (label) definition                | link reference definition      |
+   | ↲↲…↲↲     | paragraph                | paragraph                              | paragraph                      |
+   | ↲↲        | blank line               | blank line                             | blank line                     |
+   | │…│…│     | —                        | —                                      | table (GFM)                    |
+   | ↲> …      | blockquote               | blockquote                             | block quote                    |
+   |           | list item                | list item                              | list item                      |
+   | - [ ] …   | —                        | —                                      | task list item (GFM)           |
+   | * …       | bullet [list] item       | unordered (bulleted) list              | bullet list                    |
+   | 1. …      | numbered [list] item     | ordered (numbered) list                | ordered list                   |
+   |           | list                     | list                                   | list                           |
+   | \X        | backslash escape         | backslash escape                       | backslash escape               |
+   |           |                          | span element                           | inline                         |
+   | `…`       | code span                | code span                              | code span                      |
+   | *…*       | italic                   | (em) emphasis                          | emphasis                       |
+   | **…**     | bold                     | strong emphasis                        | strong emphasis                |
+   | ~~…~~     | strikethrough            | —                                      | strikethrough (GFM)            |
+   | […](…)    | inline link              | inline(-style) link                    | inline link                    |
+   | […][…]    | labeled link             | reference(-style) link                 | reference link                 |
+   |           | [TEXT][LABEL]            | [link text][id]                        | [link][ref]                    |
+   | […][]     | implicit [labeled] link  | implicit link name shortcut            | collapsed reference link       |
+   | […]       | shortcut [labeled] link  | —                                      | shortcut reference link        |
+   |           | link text                | link text                              | link text                      |
+   |           | link label               | link (name/label/identifier/reference) | link (reference/label)         |
+   |           | link title               | link title                             | link title                     |
+   | ![…](…)   | inline image             | inline(-style?) image                  | inline image                   |
+   | ![…][…]   | labeled image            | reference(-style) image                | reference(-style) image        |
+   | ![…][]    | implicit [labeled] image | implicit image name shortcut (implied) | collapsed reference image      |
+   | ![…]      | shortcut [labeled] image | —                                      | shortcut reference image       |
+   |           | ![TEXT][LABEL]           | ![Alt text][id]                        | ![image?][ref]                 |
+   |           | image text               | alt text                               | image description              |
+   |           | image title              | image title                            | image title                    |
+   | <…>       | autolink                 | automatic link                         | (URI) autolink                 |
+   | www.…     |                          |                                        | extended www autolink (GFM)    |
+   |           |                          | span-level HTML (tags) / inline HTML   | raw HTML                       |
+   |           |                          |                                        | disallowed raw HTML (GFM)      |
+   | \↲  ␣␣↲   |                          |                                        | hard line break   (hardbreak?) |
+   | ↲         |                          |                                        | soft line break / softbreak    |
+   |           |                          |                                        | textual content                |
+   | ___…___   | underline                |                                        |                                |
+   | :"…":     | (curly) quotes           |                                        |                                |
+   |-----------+--------------------------+----------------------------------------+--------------------------------|
 ** DONE Make link/image labels case insensitive
    CLOSED: [2025-02-24 Mon 23:39]
    Currently they are spaces are trimmed and squeezed, but we should also
