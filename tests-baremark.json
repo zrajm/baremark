@@ -70,6 +70,11 @@
     "html": "<h1>xx</h1>\n\n<h2>yy</h2>\n\n<h3>zz</h3>",
     "title": "multiple headings after each other"
   }, {
+    "markdown": "# yy\n# xx",
+    "NOTE": "anti-CommonMark",
+    "html": "<p># yy\n# xx</p>",
+    "title": "don’t expand headings after each other with no blank line between"
+  }, {
     "markdown": "#",
     "NOTE": "anti-CommonMark",
     "html": "<p>#</p>",
@@ -114,6 +119,11 @@
     "NOTE": "anti-CommonMark",
     "html": "<p>xx\n# yy</p>",
     "title": "don’t expand unless preceded by blank line"
+  }, {
+    "markdown": "# yy\nxx",
+    "NOTE": "anti-CommonMark",
+    "html": "<p># yy\nxx</p>",
+    "title": "don’t expand unless followed by blank line"
   }, {
     "markdown": "# xx  ###",
     "NOTE": "CommonMark",
