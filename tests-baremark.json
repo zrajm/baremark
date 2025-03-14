@@ -149,7 +149,7 @@
     "html": "<h1>xx###</h1>",
     "title": "<tt>#</tt>s at end-of-line must be preceded by space"
   },
-  "<TT class=multi>HEADING 1<br>=========</TT> <TT class=multi>HEADING 2<br>---------</TT>", {
+  "<tt class=multi>HEADING 1<br>=========</tt> <tt class=multi>HEADING 2<br>---------</tt>", {
     "markdown": "xx\n==",
     "html": "<h1>xx</h1>",
     "title": "level 1 heading, single word"
@@ -277,6 +277,11 @@
     "title": "underline with trailing space"
   },
   "<tt>&gt; BLOCKQUOTE</tt>", {
+    "markdown": "> xx \t",
+    "NOTE": "CommonMark",
+    "html": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>",
+    "title": "space/tab following a line of blockquote"
+  }, {
     "markdown": "> xx",
     "NOTE": "CommonMark",
     "html": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>",
@@ -323,15 +328,39 @@
     "html": "<blockquote><blockquote><p>xx</p>\n\n<p>zz</p></blockquote></blockquote>",
     "title": "nested blockquotes"
   }, {
+    "markdown": "> # xx",
+    "html": "<blockquote>\n\n<h1>xx</h1>\n\n</blockquote>",
+    "title": "<tt># HEADING</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "markdown": "> xx\n> ==",
+    "html": "<blockquote>\n\n<h1>xx</h1>\n\n\n</blockquote>",
+    "title": "<tt class=multi>HEADING<br>=======</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
     "markdown": "> * xx\n> * yy",
     "NOTE": "CommonMark",
     "html": "<blockquote>\n\n\n<ul><li>xx</li><li>yy</li></ul>\n\n\n</blockquote>",
-    "title": "bullet list inside blockquote"
+    "title": "<tt>* BULLET</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
   }, {
-    "markdown": "> xx \t",
-    "NOTE": "CommonMark",
-    "html": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>",
-    "title": "space/tab following a line of blockquote"
+    "markdown": "> 1. xx\n> 2. yy",
+    "html": "<blockquote>\n\n\n<ol><li>xx</li><li>yy</li></ol>\n\n\n</blockquote>",
+    "title": "<tt>1. NUMBERED</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "markdown": "> ```\n> xxx\n> ```",
+    "NOTE": "Not supported",
+    "html": "<blockquote>\n\n<p><tt>&#10;&#62; xxx&#10;&#62; </tt></p>\n\n</blockquote>",
+    "title": "<tt class=multi>```<br>CODEBLOCK<br>```</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "markdown": "> xx\n>\n> ---\n>\n> yy",
+    "html": "<blockquote>\n\n<p>xx</p>\n\n<hr>\n\n<p>yy</p>\n\n</blockquote>",
+    "title": "dinkus <tt>---</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "markdown": "> *xx*",
+    "html": "<blockquote>\n\n<p><i>xx</i></p>\n\n</blockquote>",
+    "title": "<tt>*italic*</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "markdown": "> **xx**",
+    "html": "<blockquote>\n\n<p><b>xx</b></p>\n\n</blockquote>",
+    "title": "<tt>**bold**</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
   },
   "<tt>* BULLET</tt> <tt>+ BULLET</tt> <tt>- BULLET</tt>", {
     "markdown": "* xx\n* yy",

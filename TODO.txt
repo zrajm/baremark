@@ -239,7 +239,7 @@
     Content need to be URL encoded. CommonMark example 20 illustrate this.
 *** TODO Autolinked emails <me@email.com>
 ** TODO Nested lists
-* [0/7] Bugs
+* [0/6] Bugs
 ** TODO Disallow space around headline and code fence markup
    Before `#`, `---` and `===` in headings, and before/after ```.
 ** TODO Fix `#` headings
@@ -248,7 +248,6 @@
    But never an empty line.
 ** TODO Bullet must have space after `*` or `-`
    To avoids confusion with italics.
-** TODO Blockquotes should be able to contain lists
 ** TODO Blank line in list/blockquote should start new list/blockquote
 ** TODO Link/image regex shortening
    Both link and image regex have a needless non-greedy regex.
@@ -257,7 +256,9 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [33/33] FINISHED
+* [36/36] FINISHED
+** DONE Blockquotes should be able to contain lists & heading etc.
+   CLOSED: [2025-03-14 Fri 15:28]
 ** [8/8] Support trailing whitespace
    The line ending normalization rule just need an added `\s+` to completely
    erase trailing whitespace!

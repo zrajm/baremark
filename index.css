@@ -99,7 +99,7 @@ details, .error, .legend {
   padding: .125em .25em;
   border: 1px solid #888a;
 }
-details.group tt.multi { display: inline-block; vertical-align: top; line-height: .9; }
+details.group tt.multi { display: inline-block; vertical-align: middle; line-height: .9; }
 details.group.ignore, .legend.ignore { background: var(--none); }
 details.group.pass,   .legend.pass   { background: var(--normal-pass); }
 details.test.pass                    { background: var(--bright-pass); }
