@@ -140,15 +140,6 @@ div.count > span.fail { color: #600; }
 textarea { width: 100%; overflow: visible; height: fit-content; background: #0000;}
 summary { cursor: pointer; }
 hr { margin: 2em; }
-.docs table {
-  margin: 1.5em;
-  border-collapse: collapse;
-}
-.docs td, .docs th {
-  border: 1px solid var(--fore);
-  padding: .125em .5em;
-  background: #0000;
-}
 table {
   border-spacing: .125em;
 }
@@ -163,6 +154,16 @@ td {
   font-weight: normal;
   text-align: left;
   padding: .125em .25em .1875em;
+}
+.docs table {
+  margin: 1.5em;
+  border-collapse: collapse;
+}
+.docs td, .docs th {
+  border: 1px solid var(--fore);
+  padding: .125em .5em;
+  background: #0000;
+  text-align: revert-layer !important;
 }
 li { margin-left: 1em; }
 p, h1, h2, footer { margin: 1em 0 .5em; }

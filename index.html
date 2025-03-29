@@ -10,20 +10,7 @@
 
 <h1 id=top>Baremark: A Tiny Markdown Engine</h1>
 
-<details>
-  <summary>README</summary>
-  <div id=readme>Loading… (Requires Javascript)</div>
-</details>
-<script type=module>
-  import('./addon/table.js')
-    .then(() => import('./addon/toc.js'))
-    .then(() => {
-      fetch('README.md')
-        .then(x => x.text())
-        .then(md => document.getElementById('readme').innerHTML =
-              `<div class=docs>${baremark(md)}</div>`)
-  })
-</script>
+<p><a href=README.html>README</a>
 
 
 <h2 id=baremark>Test Cases</h2>

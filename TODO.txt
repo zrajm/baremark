@@ -264,7 +264,12 @@
     'title', by specifying this when importing the module.
 *** TODO Id attribute of title should be captured too
 ** [0/0] `addon/sup.js`
-** [0/0] `addon/table.js`
+** [0/1] `addon/table.js`
+*** TODO Test case for use of `|`
+    Had to add `|` to the list of characters to escape with
+    `baremark.escape()`. It is not clear to me, however, if it should be in the
+    optional list invoked by `...`, or if it should always be escaped (added it
+    to the optional list in the meanwhile).
 ** [1/4] `addon/toc.js`
 *** TODO Make function for handling id? (see FIXME comment in code)
 *** TODO In anchorize(), should text be Unicode normalized?
