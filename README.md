@@ -118,6 +118,19 @@ depend on `uncomment.js` since that’s needed for them working correctly.)
 [Rolling Your Own]: #rolling-your-own
 ### Rolling Your Own
 
+When inserting new rules, you generally should avoid putting them first and
+last in the existing ruleset. This is because the first four rules, and the
+very last rule have very specific tasks.
+
+* The *first four rules* normalize whitespace and escape characters in
+  different ways (that is, protect them from additional processing, as is
+  expected with backslash escapes `\X`, ` ```CODEBLOCKS``` ` and `` `CODE` ``).
+  – In order to not mess with this, you should insert new rules *after* this.
+
+* The *last rule* wraps any remaining paragraph-like text chunks in HTML `<p>`
+  tags. – In order to not have to deal with spurious `<p>` tags in your input
+  you most likely want to put your rules before this.
+
 Line endings are normalized by the first builtin rule of Baremark.
 Normalization strips any trailing spaces and tabs, and make sure all lines end
 in `\n` (converting any found Windows `\r\n` and old Mac `\r` line endings).

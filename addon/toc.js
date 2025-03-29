@@ -3,32 +3,32 @@
 import './baremark.js'
 import './uncomment.js' // or commented headings will be in toc
 
+const i = baremark().findLastIndex(([re]) => /^\\n\\n/.test(re.source))
+
 let stack = [[]], idUniq = {}
-baremark().push(
-  // 1. Reset variables (rule always match but change nothing).
-  [/^/, () => (idUniq = {}, stack = [[]], '')],
+baremark().splice(i, 0,
+  // 1. Reset variables (rule match once, but change nothing).
+  [/^/, tocReset],
+  // 2. Make sure each <h#> has 'id' attr & add it to toc.
+  [/<h([1-6])\b([^<>]*)>(.*?)<\/h\1\b[^<>]*>/g, tocHeading],
+  // 3. Replace first '<toc>' with table-of-contents.
+  [/<toc\b([^<>]*)>/i, tocGenerate])
 
-  // 2. Add each <h#> to toc (also make sure it has 'id').
-  [/<h([1-6])\b([^<>]*)>(.*?)<\/h\1\b[^<>]*>/g, processHeading],
+function tocReset() {
+  idUniq = {}; stack = [[]]; return ''
+}
 
-  // 3. Replace '<toc>' with table-of-contents.
-  // (1st entry of stack contains full toc.)
-  [/<toc\b([^<>]*)>/gi, (_, attr) => {
-    let heading
-    attr = attr.replace(
-      /\s*\bheading=(?:'([^']*)'|"([^"]*)"|([^ \t'"]*))/,
-      (_, a, b, c) => ((heading = a ?? b ?? c ?? ''), ''))
-    return ((heading ?? '') && `<h1 id=toc>${heading}</h1>`)
-      + `<div class=toc${attr}>${ul(stack[0])}</div>`
-  }],
-)
+function tocGenerate(_, attr) {
+  let heading
+  attr = attr.replace(
+    /\s*\bheading=(?:'([^']*)'|"([^"]*)"|([^ \t'"]*))/,
+    (_, a, b, c) => ((heading = a ?? b ?? c ?? ''), ''))
+  // NB: 1st stack entry contains full TOC.
+  return ((heading ?? '') && `<h1 id=toc>${heading}</h1>`)
+    + `<div class=toc${attr}>${ul(stack[0])}</div>`
+}
 
-/******************************************************************************/
-
-// Process heading by:
-// 1) Making sure it has an 'id' (use existing, or create new).
-// 2) Putting it into the toc (<stack>).
-function processHeading(w, num, attr, text) {
+function tocHeading(w, num, attr, text) {
   // Modify or set 'id' attr, if needed (always match).
   let headingId
   // FIXME: handle id/name attributes with function? (used in 2 places)

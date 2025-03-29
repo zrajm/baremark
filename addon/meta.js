@@ -6,24 +6,29 @@ import './uncomment.js' // or top heading might not match
 let meta = {}
 baremark.meta = meta
 
+const i = baremark().findIndex    (([re]) =>   /^\\\\/.test(re.source)) + 1
+const j = baremark().findLastIndex(([re]) => /^\\n\\n/.test(re.source))
+
+baremark().splice(i, 0, [/^(\n*)(\w+:.*\n((\w+:|[\t ]).*\n)*)\n+/, metaHeader])
+baremark().splice(j, 0, [/^\n*<h(\d)\b([^<>]*)>(.*?)<\/h\1>/s,     metaTitle ])
+
 // Email-style metadata.
-baremark().unshift([
-  /^(\n*)(\w+:.*\n((\w+:|[\t ]).*\n)*)\n+/,
-  (_, nl, txt) => (txt.split(/\n(?=\w)/).forEach(x => {
+function metaHeader(_, nl, txt) {
+  txt.split(/\n(?=\w)/).forEach(x => {
     const [_, name, value] = /^(\w+):(.*)/s.exec(x)
     meta[name.toLowerCase()] = value.trim().replace(/\s+/, ' ')
-  }), nl)
-])
+  })
+  return nl
+}
 
 // Top heading of page.
-baremark().push([
-  /^\n*<h(\d)\b([^<>]*)>(.*?)<\/h\1>/s,
-  (w, _, attr, title) =>
-    meta.title ? w : (      // skip, already have 'title'
-      meta.title   = title,
-      meta.titleId = (      // if setting 'title', always set 'titleId'
-        attr.match(/id=(?:"([^<>"]*)"|'([^<>']*)'|([^<>"' \t]*))/) ?? []
-      ).splice(1).find(x => x) ?? 'top',
-      '')
-])
+function metaTitle(w, _, attr, title) {
+  if (meta.title) { return w }   // skip, already have 'title'
+  meta.title   = title
+  meta.titleId = (      // if setting 'title', always set 'titleId'
+    attr.match(/id=(?:"([^<>"]*)"|'([^<>']*)'|([^<>"' \t]*))/) ?? []
+  ).splice(1).find(x => x) ?? 'top'
+  return ''
+}
+
 //[eof]

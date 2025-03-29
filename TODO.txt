@@ -81,7 +81,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/19] Features
+* [0/18] Features
 ** TODO Multiline atx headings
    # One should be able to
    # break a heading into multiple
@@ -94,7 +94,6 @@
 
    But frankly, I think the CommonMark definition is kinda insane. :)
    Especially in the light of allowing multi-line Setext headings.
-** TODO Don't insert `<p>...</p>` around the <toc> tag
 ** TODO Add title support for inline links & images
    Also update README on for this topic.
 ** TODO Allow single parenthesis in link/image?
@@ -237,9 +236,8 @@
 *** TODO Autolinked emails <me@email.com>
 ** TODO Nested lists
 * [0/2] Addons
-** TODO How to add `.unshift()` new rules in addons?
-   Addons currently use `baremark().unshift()`, but this bypasses the
-   normalization step of Baremark. Is there a cleverer way of doing this?
+** TODO Create util addon for use with other addons
+   Basically I want methods for `.push()` and `.unshift()` equvalents.
 ** TODO Review module initialization -- is it consistent?
 ** [0/0] Create `addon/gfm.js` module
    Which is just a meta module that loads the relevant submodules required for
@@ -296,6 +294,12 @@
                |
                HERE
 * [47/47] FINISHED
+** DONE How to add `.unshift()` new rules in addons?
+   CLOSED: [2025-03-29 Sat 14:08]
+   Addons currently use `baremark().unshift()`, but this bypasses the
+   normalization step of Baremark. Is there a cleverer way of doing this?
+** DONE Don't insert `<p>...</p>` around the <toc> tag
+   CLOSED: [2025-03-29 Sat 14:07]
 ** DONE Scroll down to URL #hash (except on reload)
    CLOSED: [2025-03-29 Sat 10:00]
    Will scroll down only if at the top of the page.
