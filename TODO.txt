@@ -295,7 +295,10 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [46/46] FINISHED
+* [47/47] FINISHED
+** DONE Scroll down to URL #hash (except on reload)
+   CLOSED: [2025-03-29 Sat 10:00]
+   Will scroll down only if at the top of the page.
 ** DONE <toc>: Option to add a heading to table-of-contents?
    CLOSED: [2025-03-29 Sat 09:12]
    Add a `<toc>` heading as attribute `heading="..."` maybe? Adding it this way

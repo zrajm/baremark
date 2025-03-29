@@ -15,9 +15,19 @@
       const file    = query || 'README.md'
       const [addon] = query.split('/').slice(-1)
       document.title = `${addon || file} (Baremark${addon && ' Addon'} Docs)`
-      fetch(file).then(x => x.text()).then(
-        md => document.querySelector('main')
-          .innerHTML = `<div class=docs>${baremark(md)}</div>`)
+      fetch(file)
+        .then(x => x.text())
+        .then(md => {
+          document.querySelector('main')
+            .innerHTML = `<div class=docs>${baremark(md)}</div>`
+          // If page finished redrawing, and is at top of page (= user hasn't
+          // scrolled down), jump #hash fragment in URL (if there is one).
+          setTimeout(() => {
+            if (location.hash && scrollY === 0) {
+              location.href = location.hash
+            }
+          }, 0)
+        })
     })
 </script>
 <!--[eof]-->
