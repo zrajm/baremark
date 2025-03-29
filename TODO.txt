@@ -8,16 +8,12 @@
 
      + https://spec.commonmark.org/current/
      + https://github.github.com/gfm/
-** [0/5] Future <toc> options
+** [0/4] Future <toc> options
 *** TODO Option to exclude page title from toc
     Ignore all headings before <toc> tag?
 *** TODO Option to make collapsible
     I.e. wrap in <details class=toc>...</details>. Also have 'open' attribute
     to allow for table to be initially opened?
-*** TODO Option to add a heading to table-of-contents?
-    Add a <toc> heading as attribute `title="..."` maybe? Adding it this way
-    would mean that platforms that doesn't support Baremark `<toc>` tags
-    wouldn't display the heading.
 *** TODO Option to skip x number of headings
     E.g. `skip=2` to skip the two first headings (useful to skip any heading
     above the table-of-content, as well as a page title etc.)
@@ -299,7 +295,12 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [45/45] FINISHED
+* [46/46] FINISHED
+** DONE <toc>: Option to add a heading to table-of-contents?
+   CLOSED: [2025-03-29 Sat 09:12]
+   Add a `<toc>` heading as attribute `heading="..."` maybe? Adding it this way
+   would mean that platforms that doesn't support Baremark `<toc>` tags
+   wouldn't display the heading.
 ** DONE Use `...` instead of `…` inside backticks
    CLOSED: [2025-03-29 Sat 08:46]
 ** DONE Addon doc pages should link back to README

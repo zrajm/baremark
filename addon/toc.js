@@ -13,7 +13,14 @@ baremark().push(
 
   // 3. Replace '<toc>' with table-of-contents.
   // (1st entry of stack contains full toc.)
-  [/<toc\b([^<>]*)>/gi, (_, attr) => `<div class=toc${attr}>${ul(stack[0])}</div>`],
+  [/<toc\b([^<>]*)>/gi, (_, attr) => {
+    let heading
+    attr = attr.replace(
+      /\s*\bheading=(?:'([^']*)'|"([^"]*)"|([^ \t'"]*))/,
+      (_, a, b, c) => ((heading = a ?? b ?? c ?? ''), ''))
+    return ((heading ?? '') && `<h1 id=toc>${heading}</h1>`)
+      + `<div class=toc${attr}>${ul(stack[0])}</div>`
+  }],
 )
 
 /******************************************************************************/

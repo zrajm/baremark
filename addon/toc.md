@@ -32,6 +32,18 @@ headings).
 
 A heading that has `id="toc"` it is excluded from the table-of-contents.
 
+Any attributes specified to the `<toc>` attribute is copied to the `<div
+class=toc>` element used to wrap the table-of-contents. There is also one
+special attribute:
+
+* `heading`: If given, adds a heading to the table-of-content with the
+  specified text. For example, `<toc heading=Contents>` will generate a
+  table-of-contents heading `<h1 id=toc>Contents</h1>`. This allows a heading
+  to be specified which will only show up where the `<toc>` tag was actually
+  expanded into a table-of-content, while in other environment (e.g. on Github)
+  which do not expand `<toc>` into a table-of-contents the heading won’t be
+  displayed either.
+
 **NOTE:** For table-of-contents generation to work, HTML comments must be
 removed, so the `addon/uncomment.js` module is implicitly imported by this
 plugin. (Headings that are commented out would appear in the table-of-contents
