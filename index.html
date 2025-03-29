@@ -86,6 +86,27 @@ look like on the page.</p>
 <footer>© 2022–2025 by zrajm, Uppsala.</footer>
 <script src="jquery-3.6.0.slim.min.js"></script>
 <script type=module>
+  // Org-mode style opening of <details>. Clicking a <summary> cycles through:
+  // + children = opens this <details> (but none of its children)
+  // + subtree  = opens up all child <details> recursively
+  // + folded   = closes this & all child <details>
+  $(document).on('click', 'details > summary', e => {
+    e.preventDefault()
+    const $tag = $(e.currentTarget.parentElement) // get parent <details> tag
+    if ($tag.attr('open')) {
+      const $subtags = $tag.find('> details')
+      const $opened  = $subtags.filter((_,t)=>t.hasAttribute('open'))
+      if ($subtags.length && $opened.length === 0) {
+        $subtags.attr('open', 1)               // open subtags
+      } else {
+        $opened.add($tag).attr('open', null)   // close this & subtags
+      }
+    } else {
+      $tag.attr('open', 1)                     // open
+    }
+  })
+</script>
+<script type=module>
   import './baremark.js'
   $(()=>{
     // jQuery plugins.
@@ -221,27 +242,6 @@ look like on the page.</p>
         $(e),
         self[e.dataset.function]
       ))
-  })
-</script>
-<script type=module>
-  // Org-mode style opening of <details>. Clicking a <summary> cycles through:
-  // + children = opens this <details> (but none of its children)
-  // + subtree  = opens up all child <details> recursively
-  // + folded   = closes this & all child <details>
-  $(document).on('click', 'details > summary', e => {
-    e.preventDefault()
-    const $tag = $(e.currentTarget.parentElement) // get parent <details> tag
-    if ($tag.attr('open')) {
-      const $subtags = $tag.find('> details')
-      const $opened  = $subtags.filter((_,t)=>t.hasAttribute('open'))
-      if ($subtags.length && $opened.length === 0) {
-        $subtags.attr('open', 1)               // open subtags
-      } else {
-        $opened.add($tag).attr('open', null)   // close this & subtags
-      }
-    } else {
-      $tag.attr('open', 1)                     // open
-    }
   })
 </script>
 <!--[eof]-->
