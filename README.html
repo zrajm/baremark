@@ -14,7 +14,6 @@
       const query   = location.search.slice(1)
       const file    = query || 'README.md'
       const [addon] = query.split('/').slice(-1)
-      console.log(addon)
       document.title = `${addon || file} (Baremark${addon && ' Addon'} Docs)`
       fetch(file).then(x => x.text()).then(
         md => document.querySelector('main')
