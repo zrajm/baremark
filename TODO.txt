@@ -1,8 +1,7 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [1/11] Web page
-** TODO Addon doc pages should link back to README
+* [0/8] Web page
 ** TODO Use `...` instead of `…` inside backticks
 ** TODO Something similar to CommonMark & Github Markdown spec
    It should illustrate, and also provide test cases for the Markdown syntax
@@ -10,15 +9,19 @@
 
      + https://spec.commonmark.org/current/
      + https://github.github.com/gfm/
-** [0/3] Future <toc> options
+** [0/4] Future <toc> options
 *** TODO Option to exclude page title from toc
     Ignore all headings before <toc> tag?
 *** TODO Option to make collapsible
     I.e. wrap in <details class=toc>...</details>. Also have 'open' attribute
     to allow for table to be initially opened?
 *** TODO Option to add a heading to table-of-contents?
-    Add a <toc> heading as attribute `title="..."` maybe?
-** TODO Add table-of-content to 'README.html'
+    Add a <toc> heading as attribute `title="..."` maybe? Adding it this way
+    would mean that platforms that doesn't support Baremark `<toc>` tags
+    wouldn't display the heading.
+*** TODO Option to skip x number of headings
+    E.g. `skip=2` to skip the two first headings (useful to skip any heading
+    above the table-of-content, as well as a page title etc.)
 ** TODO Add page for addons
    Should include download links, and also test cases for the addons.
 *** TODO Add `addon/toc.js`
@@ -30,7 +33,6 @@
    <details> are just laggy. Can this be fixed?
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
-** TODO Test suite should have links to README and vice versa
 * [0/13] Tests
 ** TODO Tests for HTML blocks
 *** TODO Add test case for HTML block with lines followed by space
@@ -300,7 +302,9 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [40/40] FINISHED
+* [43/43] FINISHED
+** DONE Addon doc pages should link back to README
+   CLOSED: [2025-03-29 Sat 08:36]
 ** DONE Move README to main page, tests to subpage
    CLOSED: [2025-03-29 Sat 08:21]
    And `index.html` should load README, and all the addon docs, while test
@@ -470,6 +474,8 @@
    downcase. Would it work to add .toLowerCase() to the squeeze function?
 
    Also update README to reflect that it's not case sensitive any more!
+** DONE Add table-of-content to 'README.html'
+   CLOSED: [2025-02-13 Thu 17:51]
 ** DONE Don't allow '[]()' in link & image `[text]`
    CLOSED: [2025-02-03 Mon 10:12]
    In order to use `[` or `]` in link and image texts, they should have to be

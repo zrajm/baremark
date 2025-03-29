@@ -19,7 +19,7 @@ featurefulness.)
 * [Test suite]
 * [Github repo]
 
-It is currently 1984 bytes in size *before* minification and zipping!
+It is currently 1985 bytes in size *before* minification and zipping!
 
 Contents
 ========
@@ -60,7 +60,7 @@ In there is a directory called `addon/` in the repository, containing addons
 you can play with. These addons are, still a little bit of a work-in-progress,
 but they are perfectly usable.
 
-| See           | Description                              | Addon                          |
+| See           | Description                              | Source                         |
 |---------------|------------------------------------------|--------------------------------|
 |               | Turn plain URLs into links.              | [`autolink.js`][autolink.js]   |
 | [Docs][id]    | Use `[#id]` to create named HTML anchor. | [`id.js`][id.js]               |

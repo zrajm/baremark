@@ -1,3 +1,6 @@
+[« Back to Docs](./)
+
+
 # Baremark Addon: `toc.js`
 
 Source: [`addon/toc.js`](addon/toc.js)

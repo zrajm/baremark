@@ -1,3 +1,6 @@
+[« Back to Docs](./)
+
+
 # Baremark Addon: `meta.js`
 
 Source: [`addon/meta.js`](addon/meta.js)
