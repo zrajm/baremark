@@ -539,6 +539,14 @@
     "html": "<pre>x&#92;x</pre>",
     "title": "don’t expand backslash <tt>&#92;</tt>"
   }, {
+    "markdown": "```\nx\\\\x\n```",
+    "html": "<pre>x&#92;&#92;x</pre>",
+    "title": "don’t expand two backslashes <tt>&#92;&#92;</tt>"
+  }, {
+    "markdown": "```\nx|x\n```",
+    "html": "<pre>x&#124;x</pre>",
+    "title": "don’t expand pipe <tt>|</tt>"
+  }, {
     "markdown": "```\nx\tx\n```",
     "html": "<pre>x&#9;x</pre>",
     "title": "don’t expand tab <tt>⇥</tt>"
@@ -3929,6 +3937,10 @@
     "markdown": "`x\\\\x`",
     "html": "<p><tt>x&#92;&#92;x</tt></p>",
     "title": "don’t expand two backslashes <tt>&#92;&#92;</tt>"
+  }, {
+    "markdown": "`x|x`",
+    "html": "<p><tt>x&#124;x</tt></p>",
+    "title": "don’t expand pipe <tt>|</tt>"
   }, {
     "markdown": "`x\tx`",
     "html": "<p><tt>x&#9;x</tt></p>",
