@@ -1,14 +1,14 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/6] Web page
+* [0/5] Web page
 ** TODO Something similar to CommonMark & Github Markdown spec
    It should illustrate, and also provide test cases for the Markdown syntax
    used.
 
      + https://spec.commonmark.org/current/
      + https://github.github.com/gfm/
-** [0/4] Future <toc> options
+** [0/5] Future <toc> options
 *** TODO Option to exclude page title from toc
     Ignore all headings before <toc> tag?
 *** TODO Option to make collapsible
@@ -21,8 +21,6 @@
 *** TODO Option to skip x number of headings
     E.g. `skip=2` to skip the two first headings (useful to skip any heading
     above the table-of-content, as well as a page title etc.)
-** TODO Add page for addons
-   Should include download links, and also test cases for the addons.
 *** TODO Add `addon/toc.js`
 ** TODO Colored borders should be bright in dark mode?
    Maybe use #8888, or #aaa4 or similar?
@@ -301,7 +299,7 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [44/44] FINISHED
+* [45/45] FINISHED
 ** DONE Use `...` instead of `…` inside backticks
    CLOSED: [2025-03-29 Sat 08:46]
 ** DONE Addon doc pages should link back to README
@@ -318,6 +316,9 @@
    while page is loading.
 ** DONE Add HTML pages for addon docs
    CLOSED: [2025-03-29 Sat 05:34]
+** DONE Add documentation section which lists the addons
+   CLOSED: [2025-03-29 Sat 01:05]
+   Should include download links, and also test cases for the addons.
 ** DONE Moved addons to a separate directory
    CLOSED: [2025-03-29 Sat 00:18]
 ** DONE Blockquotes should be able to contain lists & heading etc.
