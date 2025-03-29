@@ -60,15 +60,15 @@ In there is a directory called `addon/` in the repository, containing addons
 you can play with. These addons are, still a little bit of a work-in-progress,
 but they are perfectly usable.
 
-| Addon                          | Description                              | See           |
-|--------------------------------|------------------------------------------|---------------|
-| [`autolink.js`][autolink.js]   | Turn plain URLs into links.              |               |
-| [`id.js`][id.js]               | Use `[#id]` to create named HTML anchor. | [Docs][id]    |
-| [`meta.js`][meta.js]           | Email-style metadata at beginning.       | [Docs][meta]  |
-| [`sup.js`][sup.js]             | Use `^sup^` for superscript.             |               |
-| [`table.js`][table.js]         | GFM-style tables.                        | [Docs][table] |
-| [`toc.js`][toc.js]             | Add table-of-contents.                   | [Docs][toc]   |
-| [`uncomment.js`][uncomment.js] | Remove HTML comments.                    |               |
+| See           | Description                              | Addon                          |
+|---------------|------------------------------------------|--------------------------------|
+|               | Turn plain URLs into links.              | [`autolink.js`][autolink.js]   |
+| [Docs][id]    | Use `[#id]` to create named HTML anchor. | [`id.js`][id.js]               |
+| [Docs][meta]  | Email-style metadata at beginning.       | [`meta.js`][meta.js]           |
+|               | Use `^sup^` for superscript.             | [`sup.js`][sup.js]             |
+| [Docs][table] | GFM-style tables.                        | [`table.js`][table.js]         |
+| [Docs][toc]   | Add table-of-contents.                   | [`toc.js`][toc.js]             |
+|               | Remove HTML comments.                    | [`uncomment.js`][uncomment.js] |
 
 [autolink.js]: addon/autolink.js
 [autolink]: ?addon/autolink.md
