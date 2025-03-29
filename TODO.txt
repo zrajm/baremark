@@ -2,8 +2,9 @@
 
 * TODO Bring this TODO up to speed with the project
 * [0/11] Web page
+** TODO Move tests to `test.html`
+   And `index.html` should load README.
 ** TODO Addon doc pages should link back to README
-** TODO Move all include files into separate `www` dir
 ** TODO Use `...` instead of `…` inside backticks
 ** TODO Something similar to CommonMark & Github Markdown spec
    It should illustrate, and also provide test cases for the Markdown syntax
@@ -301,7 +302,9 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [39/39] FINISHED
+* [40/40] FINISHED
+** DONE Move all include files into separate `www` dir
+   CLOSED: [2025-03-29 Sat 08:06]
 ** DONE Move click event script higher in `index.html`
    CLOSED: [2025-03-29 Sat 05:40]
    Should reduce sluggishness in opening/closing the README `<details>` section
