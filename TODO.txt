@@ -17,9 +17,9 @@
 *** TODO Option to add a heading to table-of-contents?
     Add a <toc> heading as attribute `title="..."` maybe?
 ** TODO Add table-of-content to 'README.html'
-** TODO Add a extensions page
-   Should include download link, and also test cases for the extensions.
-*** TODO Add `baremark-toc.js`
+** TODO Add page for addons
+   Should include download links, and also test cases for the addons.
+*** TODO Add `addon/toc.js`
 ** TODO Colored borders should be bright in dark mode?
    Maybe use #8888, or #aaa4 or similar?
 ** TODO Webpage should become responsive quicker
@@ -84,7 +84,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/20] Features
+* [0/19] Features
 ** TODO Multiline atx headings
    # One should be able to
    # break a heading into multiple
@@ -256,7 +256,9 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [36/36] FINISHED
+* [37/37] FINISHED
+** DONE Moved addons to a separate directory
+   CLOSED: [2025-03-29 Sat 00:18]
 ** DONE Blockquotes should be able to contain lists & heading etc.
    CLOSED: [2025-03-14 Fri 15:28]
 ** [8/8] Support trailing whitespace

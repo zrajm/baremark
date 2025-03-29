@@ -43,9 +43,21 @@ Baremark can be invoked in two ways.
 Extending Baremark
 ------------------
 Baremark’s internals are very simple. It consists of a list of rules, which are
-applied, in order, to the inputted Markdown text. Each rule is passed on
-*exactly as-is* to the Javascript `replace()` string method. Yet, from this
-simplicity come remarkable versatility.
+applied, in order, to the given Markdown text. Each rule is passed on *exactly
+as-is* to the Javascript `replace()` string method. Yet, from this simplicity
+come remarkable versatility.
+
+
+[Addons]: #addons
+### Addons
+
+In there is a directory called `addon/` in the repository, containing addons
+you can play with. These addons are, as of March 2025, still a little bit of a
+work-in-progress.
+
+
+[Rolling Your Own]: #rolling-your-own
+### Rolling Your Own
 
 Line endings are normalized by the first builtin rule of Baremark.
 Normalization strips any trailing spaces and tabs, and make sure all lines end
@@ -135,7 +147,7 @@ Uncaught TypeError: r is not iterable
 **Forgetting the `/g` flag on the regex.** – If you forget this flag, your
 regex will only be applied once. This is very seldom the right choice and can
 lead to some hand-to-find errors. (Though, for a counterexample, look at the
-`baremarkHeaders` extension above.)
+`baremarkHeaders` addon above.)
 
 **Each regex is applied to the *whole* of the Markdown source.** – Thus, for
 inline elements, you need to make *sure* that you allow single newlines to
