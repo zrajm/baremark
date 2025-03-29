@@ -56,12 +56,37 @@ and might change in the future.
 
 In there is a directory called `addon/` in the repository, containing addons
 you can play with. These addons are, still a little bit of a work-in-progress,
-but they are perfectly usable. Order (sometimes) matter when you import these,
-as they add rules to the end or the beginning of the Baremark ruleset, and the
-order in which the rules are run matters.
+but they are perfectly usable.
 
-It’s somewhat cumbersome, the loading of addons in order can be achieved using
-Javascript dynamic imports.
+| Addon                          | Description                              | See           |
+|--------------------------------|------------------------------------------|---------------|
+| [`autolink.js`][autolink.js]   | Turn plain URLs into links.              |               |
+| [`id.js`][id.js]               | Use `[#id]` to create named HTML anchor. | [Docs][id]    |
+| [`meta.js`][meta.js]           | Email-style metadata at beginning.       | [Docs][meta]  |
+| [`sup.js`][sup.js]             | Use `^sup^` for superscript.             |               |
+| [`table.js`][table.js]         | GFM-style tables.                        | [Docs][table] |
+| [`toc.js`][toc.js]             | Add table-of-contents.                   | [Docs][toc]   |
+| [`uncomment.js`][uncomment.js] | Remove HTML comments.                    |               |
+
+[autolink.js]: addon/autolink.js
+[autolink]: README.html?addon/autolink.md
+[id.js]: addon/id.js
+[id]: README.html?addon/id.md
+[meta.js]: addon/meta.js
+[meta]: README.html?addon/meta.md
+[sup.js]: addon/sup.js
+[sup]: README.html?addon/sup.md
+[table.js]: addon/table.js
+[table]: README.html?addon/table.md
+[toc.js]: addon/toc.js
+[toc]: README.html?addon/toc.md
+[uncomment.js]: addon/uncomment.js
+[uncomment]: README.html?addon/uncomment.md
+
+Order (sometimes) matter when you import these, as they add rules to the end or
+the beginning of the Baremark ruleset, and the order in which the rules are
+executed matters. Though it’s somewhat cumbersome, the loading of addons in a
+specific order can be achieved using Javascript dynamic imports.
 
 ```
 import('./addon/table.js')
@@ -77,7 +102,7 @@ Or, in HTML:
 ```
 <script src="./addon/table.js"></script>
 <script src="./addon/meta.js"></script>
-<script src="./addon/toc.js"></script>
+<script src="./addon/toc.js"></script><!-- toc likes to be last -->
 <script>
   ...baremark(MARKDOWN)...
 </script>
@@ -87,31 +112,6 @@ Plugins `import` their own dependencies, meaning that you don’t have to load
 Baremark itself, you can just import the addons you need, and those will make
 sure that base `baremark.js` is loaded. (Also, `meta.js` and `toc.js` both
 depend on `uncomment.js` since that’s needed for them working correctly.)
-
-| Addon                          | Description                              | See           |
-|--------------------------------|------------------------------------------|---------------|
-| [`autolink.js`][autolink.js]   | Turn plain URLs into links.              |               |
-| [`id.js`][id.js]               | Use `[#id]` to create named HTML anchor. | [Docs][id]    |
-| [`meta.js`][meta.js]           | Email-style metadata at beginning.       | [Docs][meta]  |
-| [`sup.js`][sup.js]             | Use `^sup^` for superscript.             |               |
-| [`table.js`][table.js]         | GFM-style tables.                        | [Docs][table] |
-| [`toc.js`][toc.js]             | Add table-of-contents.                   | [Docs][toc]   |
-| [`uncomment.js`][uncomment.js] | Remove HTML comments.                    |               |
-
-[autolink.js]: addon/autolink.js
-[autolink]: addon/autolink.md
-[id.js]: addon/id.js
-[id]: addon/id.md
-[meta.js]: addon/meta.js
-[meta]: addon/meta.md
-[sup.js]: addon/sup.js
-[sup]: addon/sup.md
-[table.js]: addon/table.js
-[table]: addon/table.md
-[toc.js]: addon/toc.js
-[toc]: addon/toc.md
-[uncomment.js]: addon/uncomment.js
-[uncomment]: addon/uncomment.md
 
 
 [Rolling Your Own]: #rolling-your-own

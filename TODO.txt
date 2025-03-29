@@ -1,8 +1,10 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/10] Web page
-** TODO Add HTML pages for addon docs
+* [0/12] Web page
+** TODO Addon doc pages should link back to README
+** TODO Move click event script higher in `index.html`
+** TODO Move all include files into separate `www` dir
 ** TODO Use `...` instead of `…` inside backticks
 ** TODO Something similar to CommonMark & Github Markdown spec
    It should illustrate, and also provide test cases for the Markdown syntax
@@ -295,7 +297,9 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [37/37] FINISHED
+* [38/38] FINISHED
+** DONE Add HTML pages for addon docs
+   CLOSED: [2025-03-29 Sat 05:34]
 ** DONE Moved addons to a separate directory
    CLOSED: [2025-03-29 Sat 00:18]
 ** DONE Blockquotes should be able to contain lists & heading etc.

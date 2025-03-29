@@ -15,11 +15,13 @@
   <div id=readme>Loading… (Requires Javascript)</div>
 </details>
 <script type=module>
-  import('./addon/toc.js').then(() => {
-    fetch('README.md')
-      .then(x => x.text())
-      .then(md => document.getElementById('readme').innerHTML =
-            `<div class=docs>${baremark(md)}</div>`)
+  import('./addon/table.js')
+    .then(() => import('./addon/toc.js'))
+    .then(() => {
+      fetch('README.md')
+        .then(x => x.text())
+        .then(md => document.getElementById('readme').innerHTML =
+              `<div class=docs>${baremark(md)}</div>`)
   })
 </script>
 
