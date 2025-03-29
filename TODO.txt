@@ -1,9 +1,7 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/11] Web page
-** TODO Move tests to `test.html`
-   And `index.html` should load README.
+* [1/11] Web page
 ** TODO Addon doc pages should link back to README
 ** TODO Use `...` instead of `…` inside backticks
 ** TODO Something similar to CommonMark & Github Markdown spec
@@ -303,6 +301,10 @@
                |
                HERE
 * [40/40] FINISHED
+** DONE Move README to main page, tests to subpage
+   CLOSED: [2025-03-29 Sat 08:21]
+   And `index.html` should load README, and all the addon docs, while test
+   should get its own placement.
 ** DONE Move all include files into separate `www` dir
    CLOSED: [2025-03-29 Sat 08:06]
 ** DONE Move click event script higher in `index.html`

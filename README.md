@@ -1,7 +1,5 @@
 Baremark: A Tiny Markdown Engine
 ================================
-<toc>
-
 **22 September 2024 – Breaking changes.** Where previously `baremark.add(…)`
 was used to extend rules, now use `baremark().push([…])`. (*Note the added
 brackets!*) – This makes Baremark smaller *and* adds more flexibility! All
@@ -19,9 +17,13 @@ featurefulness.)
 * [README]
 * [Source code]
 * [Test suite]
-* [Github page]
+* [Github repo]
 
 It is currently 1984 bytes in size *before* minification and zipping!
+
+Contents
+========
+<toc>
 
 
 [Usage]: #usage
@@ -69,19 +71,19 @@ but they are perfectly usable.
 | [`uncomment.js`][uncomment.js] | Remove HTML comments.                    |               |
 
 [autolink.js]: addon/autolink.js
-[autolink]: README.html?addon/autolink.md
+[autolink]: ?addon/autolink.md
 [id.js]: addon/id.js
-[id]: README.html?addon/id.md
+[id]: ?addon/id.md
 [meta.js]: addon/meta.js
-[meta]: README.html?addon/meta.md
+[meta]: ?addon/meta.md
 [sup.js]: addon/sup.js
-[sup]: README.html?addon/sup.md
+[sup]: ?addon/sup.md
 [table.js]: addon/table.js
-[table]: README.html?addon/table.md
+[table]: ?addon/table.md
 [toc.js]: addon/toc.js
-[toc]: README.html?addon/toc.md
+[toc]: ?addon/toc.md
 [uncomment.js]: addon/uncomment.js
-[uncomment]: README.html?addon/uncomment.md
+[uncomment]: ?addon/uncomment.md
 
 Order (sometimes) matter when you import these, as they add rules to the end or
 the beginning of the Baremark ruleset, and the order in which the rules are
@@ -753,14 +755,14 @@ Baremark vs. Landmark
 
 
 [CommonMark]: https://commonmark.org/
-[Github page]: https://github.com/zrajm/baremark/
+[Github repo]: https://github.com/zrajm/baremark/
 [Landmark]: https://gist.github.com/VanTigranyan/651b7c77cfc149cb858a044c2108acbb
 [Markdown]: https://daringfireball.net/projects/markdown/
 [MDN docs]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 [MDN: The `<p>` Element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p#technical_summary "MDN: The Paragraph Element: Technical summary"
-[README]: https://zrajm.github.io/baremark/README.html
+[README]: https://zrajm.github.io/baremark/
 [Sitemark]: http://plugnburn.github.io/sitemark/
 [Source code]: https://zrajm.github.io/baremark/baremark.js
-[Test suite]: https://zrajm.github.io/baremark/
+[Test suite]: https://zrajm.github.io/tests/
 
 <!--[eof]-->

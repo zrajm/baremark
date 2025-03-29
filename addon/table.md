@@ -32,8 +32,8 @@ Results in the following table:
 | aaaaaa | bbbbbb | cccccccccc | dddddddddd |
 | x      |      y |     x      | y          |
 
-[bullet]: README.html#-bullet--bullet---bullet
+[bullet]: ./#-bullet--bullet---bullet
 [delimiter row]: https://github.github.com/gfm/#delimiter-row "GFM Spec"
-[dinkus]: README.html#dinkus------
+[dinkus]: ./#dinkus------
 
 <!--[eof]-->
