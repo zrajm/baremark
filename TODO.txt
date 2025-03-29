@@ -1,7 +1,9 @@
 -*- org -*-
 
 * TODO Bring this TODO up to speed with the project
-* [0/8] Web page
+* [0/10] Web page
+** TODO Add HTML pages for addon docs
+** TODO Use `...` instead of `…` inside backticks
 ** TODO Something similar to CommonMark & Github Markdown spec
    It should illustrate, and also provide test cases for the Markdown syntax
    used.
@@ -239,6 +241,43 @@
     Content need to be URL encoded. CommonMark example 20 illustrate this.
 *** TODO Autolinked emails <me@email.com>
 ** TODO Nested lists
+* [0/2] Addons
+** TODO How to add `.unshift()` new rules in addons?
+   Addons currently use `baremark().unshift()`, but this bypasses the
+   normalization step of Baremark. Is there a cleverer way of doing this?
+** TODO Review module initialization -- is it consistent?
+** [0/0] Create `addon/gfm.js` module
+   Which is just a meta module that loads the relevant submodules required for
+   implementing all GFM features.
+** [0/1] `addon/autolink.js`
+*** TODO Cleanup
+** [0/0] `addon/id.js`
+*** Tests
+    There are three important cases:
+    + '<p>[#test]'          -> '<p id=test>'
+    + '<p id=hej>[#test]'   -> '<p id=hej><a id=test></a>'
+    + '<p>texttext[#test]'  -> <p>texttext<a id=test></a>'
+** [0/2] `addon/meta.js`
+*** TODO Can we pass args to when importing?
+    It'd be lovely to be able to turn off turning the first heading into
+    'title', by specifying this when importing the module.
+*** TODO Id attribute of title should be captured too
+** [0/0] `addon/sup.js`
+** [0/0] `addon/table.js`
+** [1/4] `addon/toc.js`
+*** TODO Make function for handling id? (see FIXME comment in code)
+*** TODO In anchorize(), should text be Unicode normalized?
+    Should the Unicode characters be normalized? Do what Github does.
+*** TODO Should not include heading before table-of-content
+    Currently a heading with the id 'toc' will be excluded from the contents,
+    but this should be smarter, and include the heading just before the
+    table-of-content.
+*** DONE Should import `./uncomment.js'`
+    CLOSED: [2025-03-27 Thu 22:24]
+** [0/1] `addon/uncomment.js`
+*** TODO Should remove additional comments?
+   Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
+   <?...>?
 * [0/6] Bugs
 ** TODO Disallow space around headline and code fence markup
    Before `#`, `---` and `===` in headings, and before/after ```.

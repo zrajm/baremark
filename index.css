@@ -23,7 +23,6 @@ html {
   background: var(--back);
   --indent: 1.5em;
   --border-width: 1px;
-  --border-color: #fff;
 }
 input[type="checkbox"] {
   opacity: .5;
@@ -141,6 +140,15 @@ div.count > span.fail { color: #600; }
 textarea { width: 100%; overflow: visible; height: fit-content; background: #0000;}
 summary { cursor: pointer; }
 hr { margin: 2em; }
+.docs table {
+  margin: 1.5em;
+  border-collapse: collapse;
+}
+.docs td, .docs th {
+  border: 1px solid var(--fore);
+  padding: .125em .5em;
+  background: #0000;
+}
 table {
   border-spacing: .125em;
 }
@@ -181,7 +189,7 @@ h1, h2, h3, h4, h5, h6 { font-family: sans; }
       position: absolute;
       height: .8em; width: 1em; top: 0; left: -1.2em;
       content: '';
-      border: solid var(--border-color);
+      border: solid var(--fore);
       border-width: 0 0 var(--border-width) var(--border-width);
       border-radius: 0 0 0 1em;
     }

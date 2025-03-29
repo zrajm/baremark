@@ -6,11 +6,14 @@
 <title>README (Baremark: A Tiny Markdown Engine)</title>
 <link rel=stylesheet href=index.css>
 <input id=invertmode type=checkbox>
-<script src=baremark.js></script>
-<script src=baremark-toc.js></script>
-<script>
-  fetch('README.md')
-    .then(x => x.text())
-    .then(md => document.body.insertAdjacentHTML('beforeend', baremark(md)))
+<script type=module>
+  import('./addon/toc.js')
+  .then(() => import('./addon/table.js'))
+  .then(() => {
+    fetch('README.md')
+      .then(x => x.text())
+      .then(md => document.body.insertAdjacentHTML(
+        'beforeend', `<div class=docs>${baremark(md)}</div>`))
+  })
 </script>
 <!--[eof]-->

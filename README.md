@@ -51,9 +51,67 @@ come remarkable versatility.
 [Addons]: #addons
 ### Addons
 
+**Note:** Please bear in mind that the addon system of Baremark is still new,
+and might change in the future.
+
 In there is a directory called `addon/` in the repository, containing addons
-you can play with. These addons are, as of March 2025, still a little bit of a
-work-in-progress.
+you can play with. These addons are, still a little bit of a work-in-progress,
+but they are perfectly usable. Order (sometimes) matter when you import these,
+as they add rules to the end or the beginning of the Baremark ruleset, and the
+order in which the rules are run matters.
+
+It’s somewhat cumbersome, the loading of addons in order can be achieved using
+Javascript dynamic imports.
+
+```
+import('./addon/table.js')
+  .then(() => import('./addon/meta.js'))
+  .then(() => import('./addon/toc.js'))   // toc likes to be last
+  .then(() => {
+    ...baremark(MARKDOWN)...
+  })
+```
+
+Or, in HTML:
+
+```
+<script src="./addon/table.js"></script>
+<script src="./addon/meta.js"></script>
+<script src="./addon/toc.js"></script>
+<script>
+  ...baremark(MARKDOWN)...
+</script>
+```
+
+Plugins `import` their own dependencies, meaning that you don’t have to load
+Baremark itself, you can just import the addons you need, and those will make
+sure that base `baremark.js` is loaded. (Also, `meta.js` and `toc.js` both
+depend on `uncomment.js` since that’s needed for them working correctly.)
+
+| Addon                          | Description                              | See           |
+|--------------------------------|------------------------------------------|---------------|
+| [`autolink.js`][autolink.js]   | Turn plain URLs into links.              |               |
+| [`id.js`][id.js]               | Use `[#id]` to create named HTML anchor. | [Docs][id]    |
+| [`meta.js`][meta.js]           | Email-style metadata at beginning.       | [Docs][meta]  |
+| [`sup.js`][sup.js]             | Use `^sup^` for superscript.             |               |
+| [`table.js`][table.js]         | GFM-style tables.                        | [Docs][table] |
+| [`toc.js`][toc.js]             | Add table-of-contents.                   | [Docs][toc]   |
+| [`uncomment.js`][uncomment.js] | Remove HTML comments.                    |               |
+
+[autolink.js]: addon/autolink.js
+[autolink]: addon/autolink.md
+[id.js]: addon/id.js
+[id]: addon/id.md
+[meta.js]: addon/meta.js
+[meta]: addon/meta.md
+[sup.js]: addon/sup.js
+[sup]: addon/sup.md
+[table.js]: addon/table.js
+[table]: addon/table.md
+[toc.js]: addon/toc.js
+[toc]: addon/toc.md
+[uncomment.js]: addon/uncomment.js
+[uncomment]: addon/uncomment.md
 
 
 [Rolling Your Own]: #rolling-your-own
@@ -62,59 +120,23 @@ work-in-progress.
 Line endings are normalized by the first builtin rule of Baremark.
 Normalization strips any trailing spaces and tabs, and make sure all lines end
 in `\n` (converting any found Windows `\r\n` and old Mac `\r` line endings).
-This means that your rules need not match trailing space, or, if you *want* to
-match trailing space, that your new rule have to be added *before* the builtin
-rules (using `baremark().unshift()`).
+This means that your rules need not match trailing space they should be added
+after that, or, if you *want* to match trailing space, that your new rule have
+to be added *before* the builtin rules (using `baremark().unshift()`).
 
-Let’s take an example. The below rule turns `[#text]` into `<a id="text"></a>`,
-allowing you to use add fragment URL anchors to your text (so that you to put
-`#text` into your URL to scroll to that part of the page). – This rule is added
-to the end of the current ruleset using `baremark().push()` (meaning that it
-will be applied *after* all the previously existing rules).
+Let’s take an example. The below rule turns `[#anchor]` into `<a
+id="anchor"></a>` (see also [`id.js`][id]), which allows you to add URL anchors
+to your document, which you can then link to (e.g. using `[link](#anchor)` or
+`[link](file#anchor)`).—This rule is here added to the end of the current
+Baremark ruleset using `baremark().push()` (meaning that it will be applied
+*after* all the previously existing rules).
 
 ```
 // Fragment URL anchor: Turns `[#text]` into <a id="text"></a>.
 baremark().push([/\[#([^.:\[\]\s]+)\][\t ]*/g, '<a id="$1"></a>'])
 ```
 
-Below’s is another, more involved, example of a Baremark rule. This one parses
-the first paragraph of the Markdown input as metadata if possible. (If the
-first paragraph *isn’t* formatted like an email or HTTP header then it is left
-untouched, otherwise it’s removed and the metadata is stored in a variable for
-later use.) This rule needs to be processed first, before any other rules, and
-so it is added using `baremark().unshift()`.
-
-First a small Javascript module called `baremarkHeaders` is created (this acts
-as a container for the returned metadata). It consists of an internal scope
-(with the private variable `meta` hidden in it), and a Javascript array with an
-extra method `get()` that can be used to return the metadata after invoking
-`baremark()`.
-
-```
-// Baremark rule for reading header style metadata. Processes first paragraph
-// as metadata if (and only if) it looks like an email headers (e.g. 'Author:
-// <name>'). After `baremark()` call `baremarkHeaders.get()` to get object
-// with metadata values.
-const baremarkHeaders = (meta => Object.assign([
-    /^(\n*)((\w+:.*\n)+)\n+/,
-    (_, nl, txt) => {
-        meta = {}
-        txt.split(/^/m).forEach(x => {
-            const [_, name, value] = /^(\w+):\s*(.*)\n/.exec(x)
-            meta[name.toLowerCase()] = value
-        })
-        return nl
-    }],
-    { get: () => meta })
-)()
-
-// Invoking it.
-baremark().unshift(baremarkHeaders)        // add rule
-const html = baremark(markdown)
-const meta = baremarkHeaders.get()         // get metadata
-```
-
-Also, multiple rules can be added at the same time:
+Multiple rules can be added at the same time:
 
 ```
 baremark().unshift(
@@ -125,9 +147,10 @@ baremark().unshift(
 ```
 
 Above we also use the `baremark.escape()` to prevent the autolinked URL from
-being further processed by Baremark. This stops Markdown characters (like `_`)
-which might occur in the URL from being expanded by later Baremark rules (which
-would result in HTML tags being inserted, breaking the link it).
+being further processed by Baremark. In this case it is used to stop any
+Markdown found in the URL from being further expanded. (We wouldn’t want for
+example `_..._` inside a filename to be replaced with `<i>...</i>`, now would
+we?)
 
 Finally, since rules are passed exactly as-is to the Javascript string method
 `replace()`, so the [MDN docs] on the subject is recommended reading.
@@ -146,10 +169,10 @@ Uncaught TypeError: r is not iterable
 
 **Forgetting the `/g` flag on the regex.** – If you forget this flag, your
 regex will only be applied once. This is very seldom the right choice and can
-lead to some hand-to-find errors. (Though, for a counterexample, look at the
-`baremarkHeaders` addon above.)
+lead to some hand-to-find errors. (Though, for a counterexample, have a look at
+source of the [`meta.js`][meta.js] addon.)
 
-**Each regex is applied to the *whole* of the Markdown source.** – Thus, for
+**Each regex is applied to the *entirety* of the Markdown source.** – Thus, for
 inline elements, you need to make *sure* that you allow single newlines to
 match inside your Markdown element, but never *two newlines after each other*
 (or your element will match across paragraph borders). The rule for `**bold**`,

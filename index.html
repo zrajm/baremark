@@ -14,12 +14,13 @@
   <summary>README</summary>
   <div id=readme>Loading… (Requires Javascript)</div>
 </details>
-<script src=baremark.js></script>
-<script src=baremark-toc.js></script>
-<script>
-  fetch('README.md')
-    .then(x => x.text())
-    .then(md => document.getElementById('readme').innerHTML = baremark(md))
+<script type=module>
+  import('./addon/toc.js').then(() => {
+    fetch('README.md')
+      .then(x => x.text())
+      .then(md => document.getElementById('readme').innerHTML =
+            `<div class=docs>${baremark(md)}</div>`)
+  })
 </script>
 
 
@@ -82,8 +83,8 @@ look like on the page.</p>
 
 <footer>© 2022–2025 by zrajm, Uppsala.</footer>
 <script src="jquery-3.6.0.slim.min.js"></script>
-<script src="baremark.js"></script>
-<script>
+<script type=module>
+  import './baremark.js'
   $(()=>{
     // jQuery plugins.
     jQuery.fn.forEach = [].forEach
@@ -220,7 +221,7 @@ look like on the page.</p>
       ))
   })
 </script>
-<script>
+<script type=module>
   // Org-mode style opening of <details>. Clicking a <summary> cycles through:
   // + children = opens this <details> (but none of its children)
   // + subtree  = opens up all child <details> recursively
