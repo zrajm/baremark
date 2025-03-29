@@ -1,11 +1,11 @@
 Baremark: A Tiny Markdown Engine
 ================================
-**22 September 2024 – Breaking changes.** Where previously `baremark.add(…)`
-was used to extend rules, now use `baremark().push([…])`. (*Note the added
+**22 September 2024 – Breaking changes.** Where previously `baremark.add(...)`
+was used to extend rules, now use `baremark().push([...])`. (*Note the added
 brackets!*) – This makes Baremark smaller *and* adds more flexibility! All
 Javascript array methods may now be used to work with the ruleset. (For
-example, one may now use `baremark().unshift([…])` to add a rule to be executed
-first, which wasn’t previously possible.)
+example, one may now use `baremark().unshift([...])` to add a rule to be
+executed first, which wasn’t previously possible.)
 
 *Baremark* is a minimal (but extendable) [Markdown] parser written in
 Javascript, originally inspired by Van Tigranyan’s Gist [Landmark], but with
@@ -37,7 +37,7 @@ Baremark can be invoked in two ways.
   used to extend the Baremark rules (for supporting your own non-standard
   Markdown). See below.
 * `baremark.escape(STRING)` – Expands any characters in `STRING` that are
-  special in Markdown into HTML `&#…;` entities. This means that further
+  special in Markdown into HTML `&#...;` entities. This means that further
   processing will not affect `STRING`. For example use, see below.
 
 
@@ -162,8 +162,9 @@ Finally, since rules are passed exactly as-is to the Javascript string method
 Common Gotchas when Extending Baremark
 --------------------------------------
 **Forgetting the `[` and `]` around the rules.** – If you forget the brackets
-when adding rules (with `baremark().push([…])` or `baremark().unshift([…])`)
-you’ll get a very cryptic error message upon running `baremark(MARKDOWN)`.
+when adding rules (with `baremark().push([...])` or
+`baremark().unshift([...])`) you’ll get a very cryptic error message upon
+running `baremark(MARKDOWN)`.
 
 ```
 Uncaught TypeError: r is not iterable
@@ -188,7 +189,7 @@ Notice the `(\n?(.+\n)*?.*?)` part in the middle? That matches, ‘one optional
 newline’ (`\n?`), followed by ‘as few as possible, optional, lines that has at
 least one non-newline character, and ends in newline’ (`(.+\n)*?`), followed by
 ‘as few as possible, optional, non-newline characters’ (`.*?`). – That’s a
-pretty elaborate way to say that `**…**` shouldn’t match if there are two
+pretty elaborate way to say that `**...**` shouldn’t match if there are two
 newlines next to each other inside it.
 
 
@@ -569,7 +570,7 @@ Images:
 URL it is normalized in the same way as `LABEL` (in [labeled links and
 images]).—This means that, in the above example, `[About]` and `![Logo]` will
 be capitalized in the output, while still using the URL and title defined in
-the lower case [label definitions] `[about]: …` and `[logo]: …`.
+the lower case [label definitions] `[about]: ...` and `[logo]: ...`.
 
 
 [label definition]: #label-definitions-label-url-title
@@ -604,9 +605,9 @@ whitespace normalized (so that it may be word wrapped without causing trouble).
 `URL` can be written either plainly, or bracketed by bigger than/less than
 `<>`.
 
-`TITLE` (which is optional) may be surrounded with either parentheses `(…)`,
-double quotes `"…"` or single quotes `'…'`. `TITLE` is a literal string (any
-Markdown inside it is not expanded), since this is outputted as an HTML
+`TITLE` (which is optional) may be surrounded with either parentheses `(...)`,
+double quotes `"..."` or single quotes `'...'`. `TITLE` is a literal string
+(any Markdown inside it is not expanded), since this is outputted as an HTML
 attribute value. This value is typically used by browsers as a hover text for
 the link or image.
 
@@ -641,7 +642,7 @@ __bold__ or **bold**
 ### `___UNDERLINE___` (Extended)
 
 Triple underlines `___` (but not asterisks) are used to mark ___underlined
-text___. These are expanded into HTML tags `<u>…</u>`. (See also [Note][Span
+text___. These are expanded into HTML tags `<u>...</u>`. (See also [Note][Span
 Elements Note], under “[Span Elements]”, regarding nesting of [bold], [italic]
 and [underline].)
 
@@ -713,7 +714,7 @@ It was shortened by:
 * Rules is a list-of-lists (instead of a list of objects).
 * Single letter groups in regexes changed to character classes (e.g. `(-|*)` to
   `[-*]`).
-* Using Javascript template strings (`` `…` ``).
+* Using Javascript template strings (`` `...` ``).
 * Not allowing space before `#`, `---` and `===` in headings, or before/after
   `` ``` ``.
 * Replaced unnecessary `.*?` with `.*` (greediness is fine if anchored by `\n`,
