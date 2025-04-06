@@ -3,11 +3,10 @@
 import './baremark.js'
 import './uncomment.js' // or commented headings will be in toc
 
-// Insert before last rule which matches '\n\n' at the start.
-const i = baremark().findLastIndex(([re]) => /^\\n\\n/.test(re.source))
-
 let stack = [[]], idUniq = {}
-baremark().splice(i, 0,
+
+// Insert after last rule.
+baremark().push(
   // 1. Reset variables (rule match once, but change nothing).
   [/^/, tocReset],
   // 2. Make sure each <h#> has 'id' attr & add it to toc.
