@@ -3,6 +3,7 @@
 import './baremark.js'
 import './uncomment.js' // or commented headings will be in toc
 
+// Insert before last rule which matches '\n\n' at the start.
 const i = baremark().findLastIndex(([re]) => /^\\n\\n/.test(re.source))
 
 let stack = [[]], idUniq = {}

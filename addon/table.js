@@ -2,6 +2,7 @@
 // Copyright 2025 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code).
 import './baremark.js'
 
+// Insert before last rule which matches '\n\n' at the start.
 const j = baremark().findLastIndex(([re]) => /^\\n\\n/.test(re.source))
 
 baremark().splice(j, 0, [/\n\n(.+(\n.+)*)(?=\n\n)/g, table])
