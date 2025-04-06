@@ -71,7 +71,7 @@ input[type="checkbox"] {
     }
   }
 }
-a, a:visited { border-radius: 1px; color: #00d }
+a { border-radius: 1px; color: #00d }
 a:hover { background: #22f5; outline: 2px solid #22f5 }
 :focus { outline-offset: 1px; outline: 2px solid #6668 }
 a:active {}
@@ -169,8 +169,22 @@ li { margin-left: 1em; }
 p, h1, h2, footer { margin: 1em 0 .5em; }
 footer { text-align: center; }
 .fixme, .note { background: #ff0a; font-weight: bold; border-radius: .25em; }
-h1, h2, h3, h4, h5, h6 { font-family: sans; }
-
+h1, h2, h3, h4, h5, h6 {
+  & a {
+    color: inherit;
+    text-decoration: none;
+    text-decoration-thickness: 2px;
+  }
+  & a:hover { text-decoration: underline }
+  & a[href^="#"]:hover:after {
+    display: inline-block;
+    content: " #";
+    color: #666;
+    width: 0em;
+    text-decoration: none;
+  }
+  font-family: sans;
+}
 .nowrap { white-space: nowrap }
 
 /**** Style for table-of-contents. ****/

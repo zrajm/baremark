@@ -73,7 +73,7 @@ with the `id.js` addon, `id.js` must be imported *before* `toc.js` (otherwise
 this plugin won’t pick up the `id` attributes set by `id.js`).
 
 
-## Note: Self-Links Appearance
+## Note: Self-Link Appearance
 
 The self-links inserted by this addon will turn your headings blue under the
 default stylesheet. Below is a decent starting point for your CSS if you want
