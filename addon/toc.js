@@ -24,7 +24,7 @@ function tocGenerate(_, attr) {
     /\s*\bheading=(?:'([^']*)'|"([^"]*)"|([^ \t'"]*))/,
     (_, a, b, c) => ((heading = a ?? b ?? c ?? ''), ''))
   // NB: 1st stack entry contains full TOC.
-  return ((heading ?? '') && `<h1 id=toc>${heading}</h1>`)
+  return ((heading ?? '') && `<h1 id=toc><a href="#toc">${heading}</a></h1>`)
     + `<div class=toc${attr}>${ul(stack[0])}</div>`
 }
 
@@ -56,9 +56,8 @@ function tocHeading(w, num, attr, text) {
         // FIXME: handle id/name attributes with function? (used in 2 places)
         `<${tag}${attr.replace(/\s*\b(id|name)=([^ \t]*|"[^"]*"|'[^']*'|)/g, '')}>`
       ))
-  stack[stack.length - 1].push(              // add to TOC
-    `<a href="#${headingId}">${text}</a>`)
-
+  text = `<a href="#${headingId}">${text}</a>`// add link
+  stack[stack.length - 1].push(text)         // add to TOC
   return `<h${num}${attr}>${text}</h${num}>` // update heading 'id' attr
 }
 
