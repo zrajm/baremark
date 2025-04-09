@@ -8,16 +8,6 @@
 
      + https://spec.commonmark.org/current/
      + https://github.github.com/gfm/
-** [0/4] Future <toc> options
-*** TODO Option to exclude page title from toc
-    Ignore all headings before <toc> tag?
-*** TODO Option to make collapsible
-    I.e. wrap in <details class=toc>...</details>. Also have 'open' attribute
-    to allow for table to be initially opened?
-*** TODO Option to skip x number of headings
-    E.g. `skip=2` to skip the two first headings (useful to skip any heading
-    above the table-of-content, as well as a page title etc.)
-*** TODO Add `addon/toc.js`
 ** TODO Colored borders should be bright in dark mode?
    Maybe use #8888, or #aaa4 or similar?
 ** TODO Webpage should become responsive quicker
@@ -262,7 +252,15 @@
     `baremark.escape()`. It is not clear to me, however, if it should be in the
     optional list invoked by `...`, or if it should always be escaped (added it
     to the optional list in the meanwhile).
-** [1/4] `addon/toc.js`
+** [1/7] `addon/toc.js`
+*** TODO `<toc>` option to exclude page title from toc
+    Ignore all headings before <toc> tag?
+*** TODO `<toc>` option to make collapsible
+    I.e. wrap in <details class=toc>...</details>. Also have 'open' attribute
+    to allow for table to be initially opened?
+*** TODO `<toc>` option to skip x number of headings
+    E.g. `skip=2` to skip the two first headings (useful to skip any heading
+    above the table-of-content, as well as a page title etc.)
 *** TODO Make function for handling id? (see FIXME comment in code)
 *** TODO In anchorize(), should text be Unicode normalized?
     Should the Unicode characters be normalized? Do what Github does.
@@ -293,7 +291,7 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [47/47] FINISHED
+* [49/49] FINISHED
 ** DONE How to add `.unshift()` new rules in addons?
    CLOSED: [2025-03-29 Sat 14:08]
    Addons currently use `baremark().unshift()`, but this bypasses the
