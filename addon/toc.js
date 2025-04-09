@@ -19,11 +19,11 @@ function tocReset() {
 }
 
 function tocGenerate(_, attr) {
-  let heading
+  let heading = ''
   attr = attr.replace(
     /\s*\bheading=(?:'([^']*)'|"([^"]*)"|([^ \t'"]*))/,
-    (_, a, b, c) => ((heading = a ?? b ?? c ?? ''), ''))
-  return ((heading ?? '') && `<h1 id=toc><a href="#toc">${heading}</a></h1>`)
+    (_, a, b, c) => ((heading = a ?? b ?? c), ''))
+  return (heading && `<h1 id=toc><a href="#toc">${heading}</a></h1>`)
     + ul(stack[0], attr) // 1st stack entry contains full ToC
 }
 
