@@ -23,9 +23,8 @@ function tocGenerate(_, attr) {
   attr = attr.replace(
     /\s*\bheading=(?:'([^']*)'|"([^"]*)"|([^ \t'"]*))/,
     (_, a, b, c) => ((heading = a ?? b ?? c ?? ''), ''))
-  // NB: 1st stack entry contains full TOC.
   return ((heading ?? '') && `<h1 id=toc><a href="#toc">${heading}</a></h1>`)
-    + `<div class=toc${attr}>${ul(stack[0])}</div>`
+    + ul(stack[0], attr) // 1st stack entry contains full ToC
 }
 
 function tocHeading(w, num, attr, text) {
@@ -38,7 +37,6 @@ function tocHeading(w, num, attr, text) {
     headingId = id + idUniq[id]
     return ` id="${headingId}"`
   })
-  if (headingId === 'toc') { return w }      // abort if 'id=toc'
   // Update stack.
   while (num > stack.length) {               // add subheadings
     const x = []
@@ -71,10 +69,10 @@ function decodeHTMLEntities(txt) {
 }
 
 // Turn list-of-lists into <ul> list.
-function ul(x) {
+function ul(x, attr = '') {
   return typeof x === 'string'
     ? `<li>${x}`
-    : `<ul>${x.map(x => ul(x)).join('')}</ul>`
+    : `<ul${attr && ' ' + attr}>${x.map(x => ul(x)).join('')}</ul>`
 }
 
 // Generate id attribute, try for Github compatibility. (Ugliness like

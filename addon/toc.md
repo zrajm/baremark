@@ -7,11 +7,11 @@ Source: [`addon/toc.js`](addon/toc.js)
 
 Adds a table-of-contents to a document. To do this, it first builds up a list
 of all the headings of the document, then replace any occurrences of the string
-`<toc>` in the Markdown with the generated table-of-contents. During
-table-of-content generation, headings are also modified to make sure that they
-each have an `id` attribute set (necessary for the links in the
-table-of-contents to work), and contain a self-link (a link linking back to the
-heading itself, meant to help the user find these links).
+`<toc>` in the Markdown with a table-of-contents generated from those headings.
+The headings of the document are also modified to make sure that they each have
+an `id` attribute set (necessary for the links in the table-of-contents to
+work), and contain a self-link (a link linking back to the heading itself,
+meant to help the user find these links).
 
 This means that a Markdown header that looks like this:
 
@@ -20,47 +20,57 @@ This means that a Markdown header that looks like this:
 ==================
 ```
 
-In the end will produce output like this:
+Will end up looking like this in the HTML output:
 
 ```
 <h1><a href="#1-chapter-heading">1. Chapter Heading</a></h1>
 ```
 
-And the table-of-contents it is part of might look like this:
+And it might be part of a table-of-contents that look like this:
 
 ```
-<div class=toc>
+<ul class="toc">
+  <li><a href="#1-chapter-heading">1. Chapter Heading</a>
   <ul>
-    <li><a href="#1-chapter-heading">1. Chapter Heading</a>
-    <ul>
-      <li><a href="#11-subheading">1.1. Subheading</a>
-      <li><a href="#12-subheading">1.2. Subheading</a>
-    </ul>
-    <li><a href="#2-chapter-heading">2. Chapter Heading</a>
+    <li><a href="#11-subheading">1.1. Subheading</a>
+    <li><a href="#12-subheading">1.2. Subheading</a>
   </ul>
-</div>
+  <li><a href="#2-chapter-heading">2. Chapter Heading</a>
+</ul>
 ```
-
-
-## Ignored Headings
-
-If there is a heading found in the document with the attribute `id="toc"`, it
-will be excluded from the table-of-contents.
 
 
 ## `<toc>` Arguments
 
-All attributes given in the `<toc>` tag are copied to the `<div class=toc>`
-element which surrounds the table-of-contents. There is also one special
-attribute:
+All attributes given in the `<toc>` tag are copied to the outmost `<ul>` tag of
+the table-of-content. There is also one special attribute:
 
 * `heading`: If given, adds a heading to the table-of-content with the
   specified text. For example, `<toc heading=Contents>` will generate a
   table-of-contents heading `<h1 id=toc>Contents</h1>`. This allows a heading
   to be specified which will only show up where the `<toc>` tag was actually
   expanded into a table-of-content, while in other environments (for example on
-  Github) which do not expand `<toc>` into a table-of-contents the heading
-  won’t be displayed either.
+  Github) which do not expand `<toc>` into a table-of-contents the heading will
+  not be created.
+
+I often use `<toc class=toc>`, and then style the table-of-contents using
+something like:
+
+```
+ul.toc {
+  list-style: none;
+  margin-left: 0;   /* don't indent base <ul> */
+  text-align: left;
+  columns: 15rem auto;
+  column-gap: 1.5rem;
+  /* column-rule: 1px solid currentcolor; */
+}
+ul.toc ul {
+  list-style: none;
+  margin-top: 0;
+  margin-left: 1.5rem;
+}
+```
 
 
 ## Note: Run Last
