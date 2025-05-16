@@ -19,12 +19,17 @@ function tocReset() {
 }
 
 function tocGenerate(_, attr) {
-  let heading = ''
-  attr = attr.replace(
-    /\s*\bheading=(?:'([^']*)'|"([^"]*)"|([^ \t'"]*))/,
-    (_, a, b, c) => ((heading = a ?? b ?? c), ''))
-  return (heading && `<h1 id=toc><a href="#toc">${heading}</a></h1>`)
-    + ul(stack[0], attr) // 1st stack entry contains full ToC
+  let heading = '', upto = 6, id = 'toc'
+  attr = attr
+    .replace(
+      /\s*\b(heading|id|upto)=(?:'([^']*)'|"([^"]*)"|([^ \t'"]*))/g,
+      (_, x, a, b, c) => ((
+        x === 'upto' ? upto    = parseInt(a ?? b ?? c, 10) || 6 :
+        x === 'id'   ? id      =          a ?? b ?? c           :
+                       heading =          a ?? b ?? c
+      ), ''))
+  return (heading && `<h1 id=${id}><a href="#${id}">${heading}</a></h1>`)
+    + ul(stack[0], {attr, upto}) // 1st stack entry contains full ToC
 }
 
 function tocHeading(w, num, attr, text) {
@@ -69,10 +74,11 @@ function decodeHTMLEntities(txt) {
 }
 
 // Turn list-of-lists into <ul> list.
-function ul(x, attr = '') {
+function ul(x, {attr = '', lvl = 0, upto = 6}) {
+  if (lvl > upto) { return '' }
   return typeof x === 'string'
     ? `<li>${x}`
-    : `<ul${attr && ' ' + attr}>${x.map(x => ul(x)).join('')}</ul>`
+    : `<ul${attr && ' ' + attr}>${x.map(x => ul(x, {lvl: lvl + 1, upto})).join('')}</ul>`
 }
 
 // Generate id attribute, try for Github compatibility. (Ugliness like

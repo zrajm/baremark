@@ -26,7 +26,7 @@ Will end up looking like this in the HTML output:
 <h1><a href="#1-chapter-heading">1. Chapter Heading</a></h1>
 ```
 
-And it might be part of a table-of-contents that look like this:
+And it might be part of a table-of-contents which looks like this:
 
 ```
 <ul class="toc">
@@ -52,6 +52,14 @@ the table-of-content. There is also one special attribute:
   expanded into a table-of-content, while in other environments (for example on
   Github) which do not expand `<toc>` into a table-of-contents the heading will
   not be created.
+
+* `id`: If given, specifies `id` attribute value to use for the `heading`
+  (default: 'toc').
+
+* `upto`: If given, specifies the number of the highest `<h#>` tag to include
+  (default: 6). This, for example, means that `<toc upto=2>` will include
+  `<h1>` and `<h2>` tags in the table of contents, but no subheadings below
+  that.
 
 I often use `<toc class=toc>`, and then style the table-of-contents using
 something like:
