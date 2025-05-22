@@ -168,8 +168,8 @@ look like on the page.</p>
         $section.append(
           `<details class="test ${test.skip ? 'skip' : ''} ${got === expect ? 'pass' : 'fail'}">
             <summary>
-              ${test.example ? `Test ${test.example}` : ''}${test.example && test.title ? ': ' : ''}
-              ${test.title ? escapeAscii(test.title) : ''}
+              ${test.example ? `Test ${test.example}` : ''}${test.example && test.name ? ': ' : ''}
+              ${test.name ? escapeAscii(test.name) : ''}
               ${test.hasOwnProperty('FIXME') ? ` <span class=fixme>(FIXME${test.FIXME ? ': ' + escapeAscii(test.FIXME) : ''})</span>` : ''}
               ${test.hasOwnProperty('NOTE')  ? ` <span class=note >(NOTE${ test.NOTE  ? ': ' + escapeAscii(test.NOTE)  : ''})</span>` : ''}
               ${typeof(test.skip)==='string' ? ` <span class=skipnote>(SKIPPED${ test.skip  ? ': ' + escapeAscii(test.skip)  : ''})</span>` : ''}
