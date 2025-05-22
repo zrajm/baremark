@@ -59,7 +59,7 @@ input[type="checkbox"] {
   cursor: pointer;
   font-size: inherit;
   &#invertmode {
-    position: absolute; top: 0; right: 0; margin: 1rem;
+    position: fixed; top: 0; right: 0; margin: 1rem;
     --sun: url('data:image/svg+xml,<svg width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="3.5"/><path d="M10 2.5V5m0 10v2.5m5.3-12.8-1.8 1.8m-7 7-1.8 1.8M17.5 10H15M5 10H2.5m2.2-5.3 1.8 1.8m7 7 1.8 1.8" stroke="%23000" stroke-width="1.5px"/></svg>');
     --moon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20"><path d="M10 3a7 7 0 0 0-7 7 7 7 0 0 0 7 7 7 7 0 0 0 5.77-3.05A6 6 0 0 1 15 14a6 6 0 0 1-6-6 6 6 0 0 1 2.48-4.84A7 7 0 0 0 10 3z"/></svg>');
     /* knob */
