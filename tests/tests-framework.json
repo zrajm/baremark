@@ -1,66 +1,66 @@
 [{
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xx</p>",
     "section": "No skipped tests, all passing (GREEN, no strikethrough)",
     "title": "Non-skipped, passed"
 },{
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xx</p>",
     "section": "No skipped tests, some failing (RED, no strikethrough)",
     "title": "Non-skipped, passed"
 },{
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xy</p>",
     "section": "No skipped tests, some failing (RED, no strikethrough)",
     "title": "Non-skipped, failed"
 },{
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xx</p>",
     "section": "Some skipped tests, all non-skipped passing (GREEN, with strikethrough)",
     "title": "Non-skipped, passed"
 },{
     "skip": "skip comment",
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xx</p>",
     "section": "Some skipped tests, all non-skipped passing (GREEN, with strikethrough)",
     "title": "Skipped, passed"
 },{
     "skip": "skip comment",
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xy</p>",
     "section": "Some skipped tests, all non-skipped passing (GREEN, with strikethrough)",
     "title": "Skipped, failed"
 },{
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xy</p>",
     "section": "Some skipped tests, some non-skipped failing (RED, with strikethrough)",
     "title": "Non-skipped, failed"
 },{
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xx</p>",
     "section": "Some skipped tests, some non-skipped failing (RED, with strikethrough)",
     "title": "Non-skipped, passed"
 },{
     "skip": true,
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xx</p>",
     "section": "Some skipped tests, some non-skipped failing (RED, with strikethrough)",
     "title": "Skipped, passed"
 },{
     "skip": true,
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xy</p>",
     "section": "Some skipped tests, some non-skipped failing (RED, with strikethrough)",
     "title": "Skipped, failed"
 },{
     "skip": true,
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xx</p>",
     "section": "Only skipped tests (GRAY, with strikethrough)",
     "title": "Skipped, passed"
 },{
     "skip": true,
-    "markdown": "xx",
+    "data": "xx",
     "html": "<p>xy</p>",
     "section": "Only skipped tests (GRAY, with strikethrough)",
     "title": "Skipped, failed"

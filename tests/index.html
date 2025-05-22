@@ -153,12 +153,12 @@ look like on the page.</p>
               <summary>${test.section}</summary>
              </details>`).appendTo($e)
         }
-        if (test.markdown === undefined) { return }
+        if (test.data === undefined) { return }
         // Count as pass, fail or skip.
         const expect = test.bare || test.html
         const got = (() => {
           try {
-            return cb(test.markdown)
+            return cb(test.data)
           } catch (e) {
             return `CAUGHT ERROR: ${e}`
           }
@@ -179,8 +179,8 @@ look like on the page.</p>
               <thead><tr><th><th>Code<th>Appearance</thead>
               <tr><th>Input
                 <td>
-                  <pre>${test.comment ? inputComment(test.comment) : ''}${escapeAscii(escapeHtml(test.markdown))}</pre>
-                <td><pre>${warn(test.markdown) || escapeHtml(test.markdown)}</pre>
+                  <pre>${test.comment ? inputComment(test.comment) : ''}${escapeAscii(escapeHtml(test.data))}</pre>
+                <td><pre>${warn(test.data) || escapeHtml(test.data)}</pre>
               <tr><th>Expect
                 <td><pre>${escapeAscii(escapeHtml(expect))}</pre>
                 <td>${warn(expect) || expect}
