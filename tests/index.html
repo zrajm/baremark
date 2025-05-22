@@ -230,12 +230,10 @@ look like on the page.</p>
           }
         })
     }
-    $('[data-testsuite]')
-      .forEach(e => testSuite(
-        e.dataset.testsuite,
-        $(e),
-        self[e.dataset.function]
-      ))
+    $('[data-testsuite]').forEach(t => {
+      const { function: funcName, testsuite } = t.dataset
+      testSuite(testsuite, $(t), self[funcName])
+    })
   })
 </script>
 <!--[eof]-->
