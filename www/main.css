@@ -99,16 +99,16 @@ details, .error, .legend {
   border: 1px solid #888a;
 }
 details.group tt.multi { display: inline-block; vertical-align: middle; line-height: .9; }
-details.group.ignore, .legend.ignore { background: var(--none); }
-details.group.pass,   .legend.pass   { background: var(--normal-pass); }
-details.test.pass                    { background: var(--bright-pass); }
-details.group.fail,   .legend.fail   { background: var(--normal-fail); }
-details.test.fail,    .error         { background: var(--bright-fail); }
-details.group.ignore, .legend.ignore,
-details.group.pass,   .legend.pass,
+details.group.skip, .legend.skip { background: var(--none); }
+details.group.pass, .legend.pass { background: var(--normal-pass); }
+details.test.pass                { background: var(--bright-pass); }
+details.group.fail, .legend.fail { background: var(--normal-fail); }
+details.test.fail,  .error       { background: var(--bright-fail); }
+details.group.skip, .legend.skip,
+details.group.pass, .legend.pass,
 details.test.pass,
-details.group.fail,   .legend.fail,
-details.test.fail,    .error {
+details.group.fail, .legend.fail,
+details.test.fail,  .error {
   color: #000;
   border: 1px solid #0008;
   code, tt, pre {
@@ -120,7 +120,7 @@ details.test.fail,    .error {
     }
   }
 }
-details.ignore > summary { text-decoration-line: line-through; }
+details.skip > summary { text-decoration-line: line-through; }
 .group {
   padding-left: 1em;
 }
@@ -129,7 +129,7 @@ details.ignore > summary { text-decoration-line: line-through; }
   margin-left: -.75em;
 }
 .group div.count { float: right; }
-div.count > span.pass, div.count > span.fail, div.count > span.ignore {
+div.count > span.pass, div.count > span.fail, div.count > span.skip {
   width: 1.5em;
   display: inline-block;
   text-align: right;
@@ -168,7 +168,7 @@ td {
 li { margin-left: 1em; }
 p, h1, h2, footer { margin: 1em 0 .5em; }
 footer { text-align: center; }
-.fixme, .note { background: #ff0a; font-weight: bold; border-radius: .25em; }
+.fixme, .note, .skipnote { background: #ff0a; font-weight: bold; border-radius: .25em; }
 h1, h2, h3, h4, h5, h6 {
   & a {
     color: inherit;

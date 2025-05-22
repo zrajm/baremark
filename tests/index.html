@@ -20,7 +20,7 @@ evolve as Baremark does so.
 <p><b>Legend:</b>
   <span class="legend pass">Passed</span>
   <span class="legend fail">Failed</span>
-  <span class="legend ignore"><s>All ignored</s></span></p>
+  <span class="legend skip"><s>All skipped</s></span></p>
 
 <div data-testsuite="tests-baremark.json" data-function="baremark"></div>
 
@@ -50,7 +50,7 @@ as <tt>&amp;#38;</tt>), rather than more commonly seen named entities
 <p><b>Legend:</b>
   <span class="legend pass">Passed</span>
   <span class="legend fail">Failed</span>
-  <span class="legend ignore"><s>All ignored</s></span></p>
+  <span class="legend skip"><s>All skipped</s></span></p>
 
 <div data-testsuite="tests-commonmark.json" data-function="baremark"></div>
 
@@ -65,7 +65,7 @@ look like on the page.</p>
 <p><b>Legend:</b>
   <span class="legend pass">Passed</span>
   <span class="legend fail">Failed</span>
-  <span class="legend ignore"><s>All ignored</s></span></p>
+  <span class="legend skip"><s>All skipped</s></span></p>
 
 <div data-testsuite="tests-framework.json" data-function="baremark"></div>
 
@@ -154,7 +154,7 @@ look like on the page.</p>
              </details>`).appendTo($e)
         }
         if (test.markdown === undefined) { return }
-        // Count as pass, fail or ignore.
+        // Count as pass, fail or skip.
         const expect = test.bare || test.html
         const got = (() => {
           try {
@@ -166,12 +166,13 @@ look like on the page.</p>
 
         // Add test result to current section.
         $section.append(
-          `<details class="test ${test.ignore ? 'ignore' : ''} ${got === expect ? 'pass' : 'fail'}">
+          `<details class="test ${test.skip ? 'skip' : ''} ${got === expect ? 'pass' : 'fail'}">
             <summary>
               ${test.example ? `Test ${test.example}` : ''}${test.example && test.title ? ': ' : ''}
               ${test.title ? escapeAscii(test.title) : ''}
               ${test.hasOwnProperty('FIXME') ? ` <span class=fixme>(FIXME${test.FIXME ? ': ' + escapeAscii(test.FIXME) : ''})</span>` : ''}
               ${test.hasOwnProperty('NOTE')  ? ` <span class=note >(NOTE${ test.NOTE  ? ': ' + escapeAscii(test.NOTE)  : ''})</span>` : ''}
+              ${typeof(test.skip)==='string' ? ` <span class=skipnote>(SKIPPED${ test.skip  ? ': ' + escapeAscii(test.skip)  : ''})</span>` : ''}
               ${test.comment                 ? '<div style="float:right;opacity:.5">#</div>'                                          : ''}
             </summary>
             <table>
@@ -195,18 +196,18 @@ look like on the page.</p>
         const $e = $(e)
         const counter = $e.find('> details.test').reduce((a, e) => {
           const $e = $(e)
-          a[$e.hasClass('ignore') ? 'ignore' : $e.hasClass('pass') ? 'pass' : 'fail'] += 1
+          a[$e.hasClass('skip') ? 'skip' : $e.hasClass('pass') ? 'pass' : 'fail'] += 1
           return a
-        }, { pass: 0, fail: 0, ignore: 0 })
+        }, { pass: 0, fail: 0, skip: 0 })
         $e.addClass(`
-          ${counter.fail   ? 'fail'   : ''}
-          ${counter.pass   ? 'pass'   : ''}
-          ${counter.ignore ? 'ignore' : ''}`)
+          ${counter.fail ? 'fail' : ''}
+          ${counter.pass ? 'pass' : ''}
+          ${counter.skip ? 'skip' : ''}`)
           .find('> summary').append(
             `<div class=count>
               <span class=fail>${counter.fail}</span>
               <span class=pass>${counter.pass}</span>
-              <span class=ignore>${counter.ignore}</span>
+              <span class=skip>${counter.skip}</span>
             </div>`)
       })
     }

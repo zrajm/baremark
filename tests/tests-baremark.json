@@ -321,7 +321,7 @@
     "html": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>\n\n\n\n<blockquote>\n\n<p>yy</p>\n\n</blockquote>",
     "title": "two blockquotes after each other"
   }, {
-    "ignore": true,
+    "skip": true,
     "markdown": "> > xx\n> > yy",
     "NOTE": "CommonMark",
     "FIXME": "Not supported",
