@@ -216,10 +216,16 @@ look like on the page.</p>
       window.fetch(jsonUrl)
         .then(response => response.text())
         .then(json => {
+          let data
           try {
-            return processTests(JSON.parse(json), $e, cb)
+            data = JSON.parse(json)
           } catch (e) {
-            $e.append(`<div class=error><b>Failed to load JSON file ‘${jsonUrl}’</b><br>${e}`)
+            $e.append(`<div class=error><b>Failed to parse JSON file ‘${jsonUrl}’</b><br>${e}`)
+          }
+          try {
+            return processTests(data, $e, cb)
+          } catch (e) {
+            $e.append(`<div class=error><b>Failed to run tests in ‘${jsonUrl}’</b><br>${e}`)
           }
         })
     }
