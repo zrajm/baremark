@@ -1,67 +1,67 @@
 [{
     "data": "xx",
-    "html": "<p>xx</p>",
+    "want": "<p>xx</p>",
     "section": "No skipped tests, all passing (GREEN, no strikethrough)",
     "title": "Non-skipped, passed"
 },{
     "data": "xx",
-    "html": "<p>xx</p>",
+    "want": "<p>xx</p>",
     "section": "No skipped tests, some failing (RED, no strikethrough)",
     "title": "Non-skipped, passed"
 },{
     "data": "xx",
-    "html": "<p>xy</p>",
+    "want": "<p>xy</p>",
     "section": "No skipped tests, some failing (RED, no strikethrough)",
     "title": "Non-skipped, failed"
 },{
     "data": "xx",
-    "html": "<p>xx</p>",
+    "want": "<p>xx</p>",
     "section": "Some skipped tests, all non-skipped passing (GREEN, with strikethrough)",
     "title": "Non-skipped, passed"
 },{
     "skip": "skip comment",
     "data": "xx",
-    "html": "<p>xx</p>",
+    "want": "<p>xx</p>",
     "section": "Some skipped tests, all non-skipped passing (GREEN, with strikethrough)",
     "title": "Skipped, passed"
 },{
     "skip": "skip comment",
     "data": "xx",
-    "html": "<p>xy</p>",
+    "want": "<p>xy</p>",
     "section": "Some skipped tests, all non-skipped passing (GREEN, with strikethrough)",
     "title": "Skipped, failed"
 },{
     "data": "xx",
-    "html": "<p>xy</p>",
+    "want": "<p>xy</p>",
     "section": "Some skipped tests, some non-skipped failing (RED, with strikethrough)",
     "title": "Non-skipped, failed"
 },{
     "data": "xx",
-    "html": "<p>xx</p>",
+    "want": "<p>xx</p>",
     "section": "Some skipped tests, some non-skipped failing (RED, with strikethrough)",
     "title": "Non-skipped, passed"
 },{
     "skip": true,
     "data": "xx",
-    "html": "<p>xx</p>",
+    "want": "<p>xx</p>",
     "section": "Some skipped tests, some non-skipped failing (RED, with strikethrough)",
     "title": "Skipped, passed"
 },{
     "skip": true,
     "data": "xx",
-    "html": "<p>xy</p>",
+    "want": "<p>xy</p>",
     "section": "Some skipped tests, some non-skipped failing (RED, with strikethrough)",
     "title": "Skipped, failed"
 },{
     "skip": true,
     "data": "xx",
-    "html": "<p>xx</p>",
+    "want": "<p>xx</p>",
     "section": "Only skipped tests (GRAY, with strikethrough)",
     "title": "Skipped, passed"
 },{
     "skip": true,
     "data": "xx",
-    "html": "<p>xy</p>",
+    "want": "<p>xy</p>",
     "section": "Only skipped tests (GRAY, with strikethrough)",
     "title": "Skipped, failed"
 }]

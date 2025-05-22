@@ -155,7 +155,7 @@ look like on the page.</p>
         }
         if (test.data === undefined) { return }
         // Count as pass, fail or skip.
-        const expect = test.bare || test.html
+        const expect = test.bare || test.want
         const got = (() => {
           try {
             return cb(test.data)
