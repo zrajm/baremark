@@ -140,17 +140,18 @@ look like on the page.</p>
         $e.html('[NONE YET]')
         return
       }
-      let sectionName, $section
+      let sectionName = null, $section
       tests.forEach((test) => {
         // If test is just a string (not object) turn it into section heading.
         if (typeof test === 'string') {
           test = { section: test }
         }
         // If section name as changed, append new section.
-        if (test.section !== undefined && sectionName !== test.section) {
+        if ((test.section === undefined && sectionName === null) ||
+            (test.section !== undefined && test.section !== sectionName)) {
           sectionName = test.section
           $section = $(`<details class=group>
-              <summary>${test.section}</summary>
+              <summary>${sectionName ?? 'NO SECTION NAME'}</summary>
              </details>`).appendTo($e)
         }
         if (test.data === undefined) { return }
