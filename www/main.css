@@ -22,7 +22,7 @@ html {
   color: var(--fore);
   background: var(--back);
   --indent: 1.5em;
-  --border-width: 1px;
+  --border-width: 2px;
 }
 input[type="checkbox"] {
   opacity: .5;
@@ -160,7 +160,7 @@ td {
   border-collapse: collapse;
 }
 .docs td, .docs th {
-  border: 1px solid var(--fore);
+  border: var(--border-width) solid #8888;
   padding: .125em .5em;
   background: #0000;
   text-align: revert-layer !important;
@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 .nowrap { white-space: nowrap }
 
 /**** Style for table-of-contents. ****/
-.toc ul {
+ul.toc, .toc ul {
   list-style: none;
   margin: 0;
   & a {
@@ -204,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
       position: absolute;
       height: .8em; width: 1em; top: 0; left: -1.2em;
       content: '';
-      border: solid var(--fore);
+      border: solid #8888;
       border-width: 0 0 var(--border-width) var(--border-width);
       border-radius: 0 0 0 1em;
     }

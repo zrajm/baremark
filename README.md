@@ -22,7 +22,7 @@ featurefulness.)
 It is currently 1985 bytes in size *before* minification and zipping!
 
 
-<toc heading=Contents>
+<toc heading=Contents class=toc>
 
 
 [Usage]: #usage
