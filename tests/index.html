@@ -156,7 +156,7 @@ look like on the page.</p>
         }
         if (test.data === undefined) { return }
         // Count as pass, fail or skip.
-        const expect = test.bare || test.want
+        const want = test.bare || test.want
         const got = (() => {
           try {
             return cb(test.data)
@@ -167,7 +167,7 @@ look like on the page.</p>
 
         // Add test result to current section.
         $section.append(
-          `<details class="test ${test.skip ? 'skip' : ''} ${got === expect ? 'pass' : 'fail'}">
+          `<details class="test ${test.skip ? 'skip' : ''} ${got === want ? 'pass' : 'fail'}">
             <summary>
               ${test.example ? `Test ${test.example}` : ''}${test.example && test.name ? ': ' : ''}
               ${test.name ? escapeAscii(test.name) : (test.example ? '' : escapeHtml(escapeAscii(test.data)) + '<br>→ ' + escapeHtml(escapeAscii(test.want)))}
@@ -178,13 +178,13 @@ look like on the page.</p>
             </summary>
             <table>
               <thead><tr><th><th>Code<th>Appearance</thead>
-              <tr><th>Input
+              <tr><th>Data
                 <td>
                   <pre>${test.comment ? inputComment(test.comment) : ''}${escapeAscii(escapeHtml(test.data))}</pre>
                 <td><pre>${warn(test.data) || escapeHtml(test.data)}</pre>
-              <tr><th>Expect
-                <td><pre>${escapeAscii(escapeHtml(expect))}</pre>
-                <td>${warn(expect) || expect}
+              <tr><th>Want
+                <td><pre>${escapeAscii(escapeHtml(want))}</pre>
+                <td>${warn(want) || want}
               <tr><th>Got
                 <td><pre>${escapeAscii(escapeHtml(got))}</pre>
                 <td>${warn(got) || got}
