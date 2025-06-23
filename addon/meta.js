@@ -30,7 +30,7 @@ function metaTitle(w, _, attr, title) {
   meta.title   = title
   meta.titleId = (      // if setting 'title', always set 'titleId'
     attr.match(/id=(?:"([^<>"]*)"|'([^<>']*)'|([^<>"' \t]*))/) ?? []
-  ).splice(1).find(x => x) ?? 'top'
+  ).splice(1).find(x => x) ?? undefined
   return ''
 }
 

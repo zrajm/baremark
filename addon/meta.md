@@ -32,9 +32,10 @@ Some metadata names are special:
   very top of the page (which is not preceded by any other content), then that
   heading will be removed form the document and used for the `title` value.
 
-* `titleId`: If `title` is gotten from an HTML heading at the top of the
-  document, then `titleId` will also be set, either to the `id` attribute of
-  that heading, or (if no `id` attribute could be found) it’s set to `top`.
+* `titleId`: If the `title` value was obtained from an HTML heading at the top
+  of the document, and that heading had an `id` attribute, then `titleId` will
+  be set to the value of that `id` attribute (if no `id` attribute was found,
+  `titleId` will be `undefined`)
 
 When invoking `baremark()` on your Markdown, this addon will set the property
 `baremark.meta` to an object with the name/value pairs that was found in your
