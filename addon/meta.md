@@ -49,7 +49,7 @@ first heading of the page (the page title) being included in the
 table-of-content.
 
 **NOTE2:** To avoid a problem where an HTML comment `<!--...-->` at the top of
-the page would stop the top heading from being fond, this module implicitly
+the page would stop the top heading from being found, this module implicitly
 imports `addon/uncomment.js`, which strips HTML comments.
 
 <!--[eof]-->
