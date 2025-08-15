@@ -1,5 +1,29 @@
 -*- org -*-
 
+* TODO Line-broken links don't work inside blockquote                   :BUG:
+  These two work just fine (given that there's a link reference 'Mallory 1886'
+  in the document too, of course).
+    ----------------------------------------
+    [1893][Mallery
+    1886]
+    ----------------------------------------
+
+    ----------------------------------------
+    [Mallery
+    1886]
+    ----------------------------------------
+
+While the following to does not work (they are instead included as literal text
+inside the blockquote):
+    ----------------------------------------
+    > [1893][Mallery
+    > 1886]
+    ----------------------------------------
+
+    ----------------------------------------
+    > [Mallery
+    > 1886]
+    ----------------------------------------
 * TODO Bring this TODO up to speed with the project
 * [0/5] Web page
 ** TODO Something similar to CommonMark & Github Markdown spec
