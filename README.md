@@ -776,6 +776,6 @@ Baremark vs. Landmark
 [README]: https://zrajm.github.io/baremark/
 [Sitemark]: http://plugnburn.github.io/sitemark/
 [Source code]: https://zrajm.github.io/baremark/baremark.js
-[Test suite]: https://zrajm.github.io/tests/
+[Test suite]: https://zrajm.github.io/baremark/tests/
 
 <!--[eof]-->

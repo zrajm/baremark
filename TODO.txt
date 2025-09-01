@@ -95,7 +95,76 @@ inside the blockquote):
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/18] Features
+* [0/20] Features
+** TODO Better handling of block elements (like `<div>`)                :BUG:
+   Will require:
+   + Better paragraph tests for various HTML tags.
+   + Some kinda decision on how to treat HTML tags.
+
+   Currently, any `<div>` tags used must be placed on a separate lines, like
+   this:
+   ----------------------------------------
+     <div>
+
+     Paragraph 1.
+
+     Paragraph 2.
+
+     </div>
+   ----------------------------------------
+   If one instead do not separate the `<div>`s and write it like this:
+   ----------------------------------------
+     <div>
+     Paragraph 1.
+
+     Paragraph 2.
+     </div>
+   ----------------------------------------
+   Baremark will naïvely wrap `<p>` tags around the paragraph that contains
+   `</div>`, resulting in the following output:
+   ----------------------------------------
+     <div>
+     Paragraph 1.
+
+     <p>Paragraph 2.
+     </div></p>
+   ----------------------------------------
+   Which will in turn will become even more messed up in the browser, because
+   the browser (correctly thinking that a `</div>` cannot exist inside a `<p>`
+   tag) will break up the `<p>` tag further.
+   ----------------------------------------
+     <div>
+     Paragraph 1.
+
+     <p>Paragraph 2.
+     </p></div><p></p>
+   ----------------------------------------
+   It's not super clear how to actually handle this case. Should `<div>` tags
+   be broken up and further parsed? How about other block tags (like
+   `<table>`)? What does the CommonMark standard have to say about this?
+
+   Should we append & prepend blank lines to all block tags while processing so
+   that these are correctly handled by the paragraph processing?
+** TODO Only use `<h1>` once on a page (for page title)
+   Hopefully, you’ve come away with these take-homes:
+
+  + Don’t use loads of `<h1>`s. Make `<h1>` the main heading of your page, then
+    use `<h2>`, `<h3>`, `<h4>`, etc. in a proper hierarchy without skipping
+    levels.
+  + `<section>` can be used with aria-label to signal to a screen reader user
+    where a particular sub-part of an article begins and ends. Otherwise,
+    forget about it, or use another element, such as `<aside aria-label="quick
+    summary">` or `<div role="region" aria-label="quick summary">`.
+  + `<main>`, `<header>`, `<footer>` and `<nav>` are very useful for screen
+    reader users, and entirely transparent to those who don’t use assistive
+    technology. So use them.
+  + `<article>` isn’t just for blog posts — it’s for any self-contained thing.
+    It also helps WatchOS display your content properly.
+    (https://www.smashingmagazine.com/2020/01/html5-article-section/#conclusion)
+
+   https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements#avoid_using_multiple_h1_elements_on_one_page
+   https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html
+   https://adrianroselli.com/2013/12/the-truth-about-truth-about-multiple-h1.html
 ** TODO Multiline atx headings
    # One should be able to
    # break a heading into multiple
