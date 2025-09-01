@@ -773,9 +773,9 @@ Baremark vs. Landmark
 [Markdown]: https://daringfireball.net/projects/markdown/
 [MDN docs]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 [MDN: The `<p>` Element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p#technical_summary "MDN: The Paragraph Element: Technical summary"
-[README]: https://zrajm.github.io/baremark/
+[README]: https://zrajm.org/baremark/
 [Sitemark]: http://plugnburn.github.io/sitemark/
-[Source code]: https://zrajm.github.io/baremark/baremark.js
-[Test suite]: https://zrajm.github.io/baremark/tests/
+[Source code]: https://zrajm.org/baremark/baremark.js
+[Test suite]: https://zrajm.org/baremark/tests/
 
 <!--[eof]-->
