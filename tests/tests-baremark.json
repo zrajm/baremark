@@ -354,6 +354,32 @@
     "want": "<blockquote>\n\n<p>xx</p>\n\n<hr>\n\n<p>yy</p>\n\n</blockquote>",
     "name": "dinkus <tt>---</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
   }, {
+    "data": "> [x](url)",
+    "want": "<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>",
+    "name": "Inline link <tt>[TEXT](URL)</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "data": "> ![x](url)",
+    "want": "<blockquote>\n\n<p><img src=\"url\" title=\"\" alt=\"x\"></p>\n\n</blockquote>",
+    "name": "Inline image <tt>![TEXT](URL)</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "data": "> [x][y z]\n\n[y z]: url",
+    "want": "<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>",
+    "name": "Labeled link <tt>[TEXT][LABEL]</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "skip": true,
+    "data": "> [x][y\nz]\n\n[y z]: url",
+    "FIXME": "BUG",
+    "want": "<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>",
+    "name": "Labeled link <tt>[TEXT][LABEL]</tt> with newline in <tt>TEXT</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "data": "> [x][y\n> z]\n\n[y z]: url",
+    "want": "<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>",
+    "name": "Labeled link <tt>[TEXT][LABEL]</tt> with newline in <tt>TEXT</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "data": "> ![x][y z]\n\n[y z]: url",
+    "want": "<blockquote>\n\n<p><img src=\"url\" title=\"\" alt=\"x\"></p>\n\n</blockquote>",
+    "name": "Labeled image <tt>![TEXT][LABEL]</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
     "data": "> *xx*",
     "want": "<blockquote>\n\n<p><i>xx</i></p>\n\n</blockquote>",
     "name": "<tt>*italic*</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
@@ -2137,8 +2163,8 @@
     "name": "definition <tt>URL</tt> bracketed by greater & less than, with middle newline"
   }, {
     "data": "[x][y]\n\n[y\n]: <url\n>",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "definition <tt>URL</tt> bracketed by greater & less than, with trailing newline"
+    "want":"<p>[x][y]</p>\n\n<p>[y\n]: <url</p>\n\n<blockquote>\n\n\n\n</blockquote>",
+    "name": "definition <tt>URL</tt> bracketed by greater & less than, with trailing newline, not allowed"
   }, {
     "data": "[\n\nx][y]\n\n[y]: url",
     "NOTE": "<tt>[LABEL]</tt> expanded as shortcut link",
@@ -2200,7 +2226,6 @@
     "name": "definition <tt>URL</tt> bracketed by greater & less than, with middle blank line, not allowed"
   }, {
     "data": "[x][y]\n\n[y]: <url\n\n>",
-    "FIXME": "A bit weird?",
     "want": "<p>[x][y]</p>\n\n<p>[y]: <url</p>\n\n\n<blockquote>\n\n\n\n</blockquote>",
     "name": "definition <tt>URL</tt> bracketed by greater & less than, with trailing blank line, not allowed"
   }, {
@@ -2892,8 +2917,9 @@
     "name": "definition <tt>URL</tt> bracketed by greater & less than, with middle newline"
   }, {
     "data": "![x][y]\n\n[y\n]: <url\n>",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "definition <tt>URL</tt> bracketed by greater & less than, with trailing newline"
+    "want":"<p>![x][y]</p>\n\n<p>[y\n]: <url</p>\n\n<blockquote>\n\n\n\n</blockquote>",
+    "wantOLD": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "definition <tt>URL</tt> bracketed by greater & less than, with trailing newline, not allowed"
   }, {
     "data": "![\n\nx][y]\n\n[y]: url",
     "NOTE": "<tt>[LABEL]</tt> expanded as shortcut link",
@@ -2955,7 +2981,6 @@
     "name": "definition <tt>URL</tt> bracketed by greater & less than, with middle blank line, not allowed"
   }, {
     "data": "![x][y]\n\n[y]: <url\n\n>",
-    "FIXME": "A bit weird?",
     "want": "<p>![x][y]</p>\n\n<p>[y]: <url</p>\n\n\n<blockquote>\n\n\n\n</blockquote>",
     "name": "definition <tt>URL</tt> bracketed by greater & less than, with trailing blank line, not allowed"
   }, {

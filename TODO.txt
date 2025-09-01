@@ -1,29 +1,40 @@
 -*- org -*-
 
-* TODO Line-broken links don't work inside blockquote                   :BUG:
-  These two work just fine (given that there's a link reference 'Mallory 1886'
-  in the document too, of course).
-    ----------------------------------------
-    [1893][Mallery
-    1886]
-    ----------------------------------------
+* TODO Change list of HTML tags?
+  https://spec.commonmark.org/0.31.2/
 
-    ----------------------------------------
-    [Mallery
-    1886]
-    ----------------------------------------
+  The CommonMark spec lists the following tags:
 
-While the following to does not work (they are instead included as literal text
-inside the blockquote):
+  > Start condition: line begins with the string < or </ followed by one of the
+  > strings (case-insensitive) address, article, aside, base, basefont,
+  > blockquote, body, caption, center, col, colgroup, dd, details, dialog, dir,
+  > div, dl, dt, fieldset, figcaption, figure, footer, form, frame, frameset,
+  > h1, h2, h3, h4, h5, h6, head, header, hr, html, iframe, legend, li, link,
+  > main, menu, menuitem, nav, noframes, ol, optgroup, option, p, param,
+  > search, section, summary, table, tbody, td, tfoot, th, thead, title, tr,
+  > track, ul, followed by a space, a tab, the end of the line, the string >,
+  > or the string />.
+* TODO Blockquotes should allow lazy continuation lines
+  There's a test case for this "Labeled link `[TEXT][LABEL]` with newline in
+  `TEXT` inside `> BLOCKQUOTE`", also marked `"FIXME": "BUG"` in the JSON.
+
+  Standard: https://spec.commonmark.org/0.31.2/#example-233
+
+  This now works:
+
     ----------------------------------------
     > [1893][Mallery
     > 1886]
     ----------------------------------------
 
+  But this should ALSO work!
+
     ----------------------------------------
-    > [Mallery
-    > 1886]
+    > [1893][Mallery
+    1886]
     ----------------------------------------
+
+  Which it would, if lazy continuation lines where allowed.
 * TODO Bring this TODO up to speed with the project
 * [0/5] Web page
 ** TODO Something similar to CommonMark & Github Markdown spec
@@ -384,7 +395,32 @@ inside the blockquote):
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [49/49] FINISHED
+* [50/50] FINISHED
+** DONE Line-broken links don't work inside blockquote                  :BUG:
+   CLOSED: [2025-09-01 Mon 19:15]
+   These two work just fine (given that there's a link reference 'Mallory 1886'
+   in the document too, of course).
+     ----------------------------------------
+     [1893][Mallery
+     1886]
+     ----------------------------------------
+
+     ----------------------------------------
+     [Mallery
+     1886]
+     ----------------------------------------
+
+ While the following to does not work (they are instead included as literal text
+ inside the blockquote):
+     ----------------------------------------
+     > [1893][Mallery
+     > 1886]
+     ----------------------------------------
+
+     ----------------------------------------
+     > [Mallery
+     > 1886]
+     ----------------------------------------
 ** DONE How to add `.unshift()` new rules in addons?
    CLOSED: [2025-03-29 Sat 14:08]
    Addons currently use `baremark().unshift()`, but this bypasses the
