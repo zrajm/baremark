@@ -289,8 +289,8 @@
   }, {
     "data": "xx\n> yy\nzz",
     "NOTE": "CommonMark",
-    "want": "<p>xx</p>\n\n<blockquote>\n\n<p>yy</p>\n\n</blockquote>\n\n<p>zz</p>",
-    "name": "one line inside other paragraph"
+    "want": "<p>xx</p>\n\n<blockquote>\n\n<p>yy\nzz</p>\n\n</blockquote>",
+    "name": "Inside paragraph, with lazy continuation line"
   }, {
     "data": "xx\n> yy",
     "NOTE": "CommonMark",
@@ -299,8 +299,8 @@
   }, {
     "data": "> yy\nzz",
     "NOTE": "CommonMark",
-    "want": "<blockquote>\n\n<p>yy</p>\n\n</blockquote>\n\n<p>zz</p>",
-    "name": "one line at beginning of paragraph"
+    "want": "<blockquote>\n\n<p>yy\nzz</p>\n\n</blockquote>",
+    "name": "At beginning of paragraph, with lazy continuation line"
   }, {
     "data": "> xx\n> yy",
     "NOTE": "CommonMark",
@@ -309,8 +309,8 @@
   }, {
     "data": "xx\n> yy\n> zz\naa",
     "NOTE": "CommonMark",
-    "want": "<p>xx</p>\n\n<blockquote>\n\n<p>yy\nzz</p>\n\n</blockquote>\n\n<p>aa</p>",
-    "name": "two lines inside other paragraph"
+    "want": "<p>xx</p>\n\n<blockquote>\n\n<p>yy\nzz\naa</p>\n\n</blockquote>",
+    "name": "Two lines inside paragraph, with lazy continuation line"
   }, {
     "data": "> xx\n>\n> yy",
     "NOTE": "CommonMark",
@@ -335,6 +335,22 @@
     "data": "> xx\n> ==",
     "want": "<blockquote>\n\n<h1>xx</h1>\n\n\n</blockquote>",
     "name": "<tt class=multi>HEADING<br>=======</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "data": "> xx\n==",
+    "want": "<blockquote>\n\n<h1>xx</h1>\n\n\n</blockquote>",
+    "name": "<tt class=multi>HEADING<br>=======</tt> inside <tt>&gt; BLOCKQUOTE</tt>, with lazy continuation line"
+  }, {
+    "data": "> ## xx",
+    "want": "<blockquote>\n\n<h2>xx</h2>\n\n</blockquote>",
+    "name": "<tt>## HEADING</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "data": "> xx\n> ---",
+    "want": "<blockquote>\n\n<h2>xx</h2>\n\n\n</blockquote>",
+    "name": "<tt class=multi>HEADING<br>-------</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+  }, {
+    "data": "> xx\n---",
+    "want": "<blockquote>\n\n<h2>xx</h2>\n\n\n</blockquote>",
+    "name": "<tt class=multi>HEADING<br>-------</tt> inside <tt>&gt; BLOCKQUOTE</tt>, with lazy continuation line"
   }, {
     "data": "> * xx\n> * yy",
     "NOTE": "CommonMark",
@@ -366,11 +382,9 @@
     "want": "<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>",
     "name": "Labeled link <tt>[TEXT][LABEL]</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
   }, {
-    "skip": true,
     "data": "> [x][y\nz]\n\n[y z]: url",
-    "FIXME": "BUG",
     "want": "<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>",
-    "name": "Labeled link <tt>[TEXT][LABEL]</tt> with newline in <tt>TEXT</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+    "name": "Labeled link <tt>[TEXT][LABEL]</tt> with newline in <tt>TEXT</tt> inside <tt>&gt; BLOCKQUOTE</tt>, with lazy continuation line"
   }, {
     "data": "> [x][y\n> z]\n\n[y z]: url",
     "want": "<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>",
