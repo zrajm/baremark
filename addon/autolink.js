@@ -18,7 +18,7 @@ function decodeHTMLEntities(txt) {
 
 function autolink(x) {
   const linkText = decodeHTMLEntities(x).split(
-    /([\p{S}\p{Z}\p{Pi}\p{Ps}\p{Pd}\p{Pc}\p{Po}]*(?:[\p{Lt}\p{Lu}]+\p{Ll}*|[\p{Lt}\p{Lu}]*\p{Ll}+|\p{N}+)[/\p{Pe}\p{Pf}]*)/u)
+    /([\p{S}\p{Z}\p{Pi}\p{Ps}\p{Pd}\p{Pc}\p{Po}]*(?:[\p{Lt}\p{Lu}]+\p{Ll}*|[\p{Lt}\p{Lu}]*\p{Ll}+|\p{N}+)[:/\p{Pe}\p{Pf}]*)/u)
         .filter(x => x)
         .map(x => baremark.escape(x))
         .join('<wbr>')
