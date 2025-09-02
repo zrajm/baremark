@@ -19,7 +19,7 @@ featurefulness.)
 * [Test suite]
 * [Github repo]
 
-It is currently 2002 bytes in size *before* minification and zipping!
+It is currently 1986 bytes in size *before* minification and zipping!
 
 
 <toc heading=Contents class=toc>
@@ -212,7 +212,6 @@ These limitations might change in the future.
 
 * Indentation is ignored.
 * Fenced [code blocks] are supported, but not indented ones.
-* [Blockquotes] cannot be nested.
 * [Lists] cannot be nested.
 * Autolinks `<URL>` are not supported.
 * Determining what is a [paragraph] and what is a [HTML block] from is somewhat
@@ -244,8 +243,7 @@ Block Elements
 --------------
 Block elements are paragraph-level stuff, like lists, headings and the like.
 Most of them are separated from the surrounding blocks by blank lines, though
-some of them (like [blockquotes], [lists] and [label definitions]) do not
-require that.
+some of them (like [lists] and [label definitions]) do not require that.
 
 
 [Paragraph]: #paragraphs
@@ -331,8 +329,11 @@ Blabla...
 [Blockquotes]: #-blockquote
 ### `> BLOCKQUOTE`
 
-A blockquote is any paragraph where each lines start with `>`. Blockquotes
-cannot be nested, but they may contain [lists] and [span elements].
+A blockquote is any paragraph which starts with `>` at the beginning of a line,
+and ends with a blank line. Lines following the first line may either start
+with `>`, or not. (Lines without a leading `>` are called lazy continuation
+lines in the CommonMark spec.) Blockquotes may be nested, and they may contain
+both [lists] and [span elements].
 
 ```
 > Information is noise, unless it’s
@@ -436,8 +437,8 @@ non-standard,* since the resulting HTML tags `<i>` and `<b>` will be
 overlapping (`<i>italic <b>bold-italic</i> bold</b>` → “*italic **bold-italic*
 bold**”), and not neatly nested, in the way the HTML standard thinks is
 appropriate. In practice, however, I’ve never seen a browser which fails to
-render this correctly though.—When in doubt, I suggest you just avoid using
-this “feature”. :)
+render this correctly.—When in doubt, I suggest you just avoid using this
+“feature”. :)
 
 
 [Backslash Escapes]: #backslash-escapes-x
@@ -753,6 +754,7 @@ Baremark vs. Landmark
 * Support for [labeled links and images] `[TEXT][LABEL]` `![TEXT][LABEL]`
   (CommonMark).
 * Support for [shortcut links and images] `[TEXT]` `![TEXT]` (CommonMark).
+* Support for nested [blockquotes] (CommonMark).
 
 
 [Bugfixes]: #bugfixes
