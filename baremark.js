@@ -19,7 +19,7 @@
 		[/([*_])(?!\1)X\1/,'<i>$2</i>'],
 		[/~~X~~/,'<s>$1</s>'],
 		[/:"X":/,'<q>$1</q>'],
-		[/\n\n(.+(\n.+)*)(?=\n\n)/,(w,m)=>/^<(\/|address|article|aside|blockquote|details|div|[dou]l|fieldset|fig(caption|ure)|footer|form|h\d|header|hgroup|hr|main|menu|nav|p|pre|(no)?script|search|section|style|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]
+		[/\n\n(.+(\n.+)*)(?=\n\n)/,(w,m)=>/^<(\/|address|article|aside|blockquote|details|div|[dou]l|fieldset|fig(caption|ure)|footer|form|h[1-6r]|header|hgroup|main|menu|nav|p|pre|(no)?script|search|section|style|table)\b/.test(m)?w:`\n\n<p>${m}</p>`]
 	].map(([r,s])=>[RegExp(r.source.replace(/[XY]/g,w=>m[w]),'g'),s])
 	w.baremark=b
 	w.baremark.escape=e
