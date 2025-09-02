@@ -374,6 +374,10 @@
     "want": "<blockquote>\n\n<p><tt>&#10;&#62; xxx&#10;&#62; </tt></p>\n\n</blockquote>",
     "name": "<tt class=multi>```<br>CODEBLOCK<br>```</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
   }, {
+    "data": "```\n> xxx\n```",
+    "want": "<pre>&#62; xxx</pre>",
+    "name": "<tt class=multi>```<br>CODEBLOCK<br>```</tt> contains <tt>&gt; BLOCKQUOTE</tt>, not allowed"
+  }, {
     "data": "> xx\n>\n> ---\n>\n> yy",
     "want": "<blockquote>\n\n<p>xx</p>\n\n<hr>\n\n<p>yy</p>\n\n</blockquote>",
     "name": "dinkus <tt>---</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
@@ -408,11 +412,43 @@
   }, {
     "data": "> *xx*",
     "want": "<blockquote>\n\n<p><i>xx</i></p>\n\n</blockquote>",
-    "name": "<tt>*italic*</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>*ITALIC*</tt>"
+  }, {
+    "data": "> *xx\n> yy*",
+    "want": "<blockquote>\n\n<p><i>xx\nyy</i></p>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>*ITALIC*</tt> with newline"
+  }, {
+    "data": "> *xx\nyy*",
+    "want": "<blockquote>\n\n<p><i>xx\nyy</i></p>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>*ITALIC*</tt> with newline on lazy contiuation line"
   }, {
     "data": "> **xx**",
     "want": "<blockquote>\n\n<p><b>xx</b></p>\n\n</blockquote>",
-    "name": "<tt>**bold**</tt> inside <tt>&gt; BLOCKQUOTE</tt>"
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>**BOLD**</tt>"
+  }, {
+    "data": "> **xx\n> yy**",
+    "want": "<blockquote>\n\n<p><b>xx\nyy</b></p>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>**BOLD**</tt> with newline"
+  }, {
+    "data": "> **xx\nyy**",
+    "want": "<blockquote>\n\n<p><b>xx\nyy</b></p>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>**BOLD**</tt> with newline on lazy continuation line"
+  }, {
+    "data": "> `xx`",
+    "want": "<blockquote>\n\n<p><tt>xx</tt></p>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>`CODE`</tt>"
+  }, {
+    "skip": true,
+    "data": "> `xx\n> yy`",
+    "FIXME": "Not supported",
+    "want": "<blockquote>\n\n<p><tt>xx\nyy</tt></p>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>`CODE`</tt> with newline"
+  }, {
+    "skip": true,
+    "data": "> `xx\nyy`",
+    "FIXME": "Not supported",
+    "want": "<blockquote>\n\n<p><tt>xx\nyy</tt></p>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>`CODE`</tt> with newline on lazy continuation line"
   },
   "<tt>* BULLET</tt> <tt>+ BULLET</tt> <tt>- BULLET</tt>", {
     "data": "* xx\n* yy",

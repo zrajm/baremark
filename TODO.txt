@@ -358,14 +358,6 @@
    Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
    <?...>?
 * [0/6] Bugs
-** TODO Disallow space around headline and code fence markup
-   Before `#`, `---` and `===` in headings, and before/after ```.
-** TODO Fix `#` headings
-   Are broken in Van Tigranyan's original gist.
-** TODO Bold, italics and inline code may span newlines
-   But never an empty line.
-** TODO Bullet must have space after `*` or `-`
-   To avoids confusion with italics.
 ** TODO Blank line in list/blockquote should start new list/blockquote
 ** TODO Link/image regex shortening
    Both link and image regex have a needless non-greedy regex.
