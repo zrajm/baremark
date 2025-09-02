@@ -19,7 +19,7 @@ featurefulness.)
 * [Test suite]
 * [Github repo]
 
-It is currently 1987 bytes in size *before* minification and zipping!
+It is currently 1989 bytes in size *before* minification and zipping!
 
 
 <toc heading=Contents class=toc>
@@ -408,16 +408,23 @@ Blabla...
 [Blockquotes]: #-blockquote
 ### `> BLOCKQUOTE`
 
-A blockquote is any paragraph which starts with `>` at the beginning of a line,
-and ends with a blank line. Lines following the first line may either start
-with `>`, or not. (Lines without a leading `>` are called lazy continuation
-lines in the CommonMark spec.) Blockquotes may be nested, and they may contain
-both [lists] and [span elements].
+A blockquote is any paragraph which starts with `>` (as the first character of
+the first line). The block quote ends with the first blank line. Lines
+following the first line may either start with `>`, or not. (Lines without a
+leading `>` are called lazy continuation lines in the CommonMark spec.)
+Blockquotes may be nested, and they may contain both [lists] and [span
+elements].
 
 ```
 > Information is noise, unless it’s
 > the information you’re looking for.
 ```
+
+A blockquote must start with a blank line. This is counter to the CommonMark
+spec, but is arguably better. :) It also allows for newline occurring inside
+the angle brackets (`<...>`) used for URLs, and allows for proper nesting of
+codeblocks and blockquotes.
+
 
 [Lists]: #lists
 ### Lists
