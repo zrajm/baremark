@@ -4080,5 +4080,31 @@
     "data": "`x\\`y`",
     "want": "<p><tt>x&#92;&#96;y</tt></p>",
     "name": "don’t expand backslashed backtick <tt>&#92;`</tt>"
+  },
+  "Raw HTML", {
+    "data": "aa\n\n<div>bb</div>\n\ncc",
+    "want": "<p>aa</p>\n\n<div>bb</div>\n\n<p>cc</p>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping a paragraph"
+  }, {
+    "data": "<div>\n\naa\n\nbb\n\n</div>",
+    "want": "<div>\n\n<p>aa</p>\n\n<p>bb</p>\n\n</div>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping multiple paragraphs, HTML in own paragraphs"
+  }, {
+    "data": "<div>aa\n\nbb</div>",
+    "want": "<div>aa\n\n<p>bb</div></p>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping multiple paragraphs, no blank line between, not allowed"
+  }, {
+    "data": "<b>aa</b>",
+    "want": "<p><b>aa</b></p>",
+    "name": "Literal <tt>&lt;b&gt;...&lt;/b&gt;</tt> in paragraph"
+  }, {
+    "data": "<p>**aa**",
+    "NOTE": "anti-CommonMark, Markdown expanded in HTML blocks too",
+    "want": "<p><b>aa</b>",
+    "name": "<tt>**BOLD**</tt> in HTML block"
+  }, {
+    "data": "<x>",
+    "want": "<p><x></p>",
+    "name": "Unknown tag <tt>&lt;x&gt;</tt>"
   }
 ]

@@ -259,17 +259,96 @@ recognized as any other type of block. They are wrapped in a paragraph tag
 [HTML Blocks]: #html-blocks
 ### HTML Blocks
 
+If a paragraph begins with one of the following HTML tags `<...>` or
+corresponding end tags `</...>`, then the whole paragraph is consider an HTML
+block. HTML blocks are *not* wrapped in `<p>...</p>` (like normal paragraphs)
+but apart from that there isn't much difference. Markdown is expanded inside
+HTML blocks too (unless escaped with `\X`, of course).
+
+HTML tags: `address`, `article`, `aside`, `blockquote`, `details`, `div`, `dl`,
+`fieldset`, `figcaption`, `figure`, `footer`, `form`, `h1` … `h6`, `header`,
+`hgroup`, `hr`, `main`, `menu`, `nav`, `noscript`, `ol`, `p`, `pre`, `script`,
+`search`, `section`, `style`, `table` and `ul`.
+
+(The list above consists of those HTML tags that acts to terminate any
+currently open HTML `<p>` element. See also: [MDN: The `<p>` Element]. It might
+be argued that it would be better to use the same list as “[CommonMark Spec:
+HTML blocks]”.)
+
+**Note:** HTML tags inside, or at the end of a paragraph (that is, not at the
+very beginning) does not turn a paragraph into an HTML block. This means that
+if you want to, for example, wrap a few paragraphs in a `<div>`, it is best to
+separate the HTML tags from the paragraphs with blank lines, like the in the
+following:
+
+<table style=caption-side:bottom><tr><th>Markdown input<th>HTML output<tr><td>
+
+```
+<div>
+
+paragraph 1
+
+paragraph 2
+
+</div>
+```
+
+<td>
+
+```
+<div>
+
+<p>paragraph 1</p>
+
+<p>paragraph 2</p>
+
+</div>
+```
+
+<caption>Do this.
+</table>
+
+If you, instead of the above, where to remove the blank lines between the
+`<div>` tags and the paragraphs, you'll see that *paragraph 1* is *not* wrapped
+in `<p>` tags (since the paragraph starts with `<div>`, it is considered an
+HTML block) while *paragraph 2* is wrapped in `<p>` tags, but the end tag is
+awkwardly placed after the `</div>` (since this paragraph doesn't *start* with
+an HTML tag, it is considered a normal paragraph, even though it ends with
+`</div>`).
+
+<table style=caption-side:bottom><tr><th>Markdown input<th>HTML output<tr><td>
+
+```
+<div>
+paragraph 1
+
+paragraph 2
+</div>
+```
+
+<td>
+
+```
+<div>
+paragraph 1
+
+<p>paragraph 2
+</div></p>
+```
+
+<caption>Do *not* do this.
+</table>
+
+
+
+
+That only a tag at the beginning of the paragraph, will result in it
+being considered an HTML block.
+
+
 The only difference between *HTML blocks* and [paragraphs] is that paragraphs
 are outputted wrapped in paragraph tags `<p>...</p>`, while HTML blocks are
 not. (Markdown is expanded in both paragraphs and HTML blocks.)
-
-If one of the following HTML tags `<...>`, or their corresponding end tags
-`</...>` is found at the beginning of a paragraph, it is considered an HTML
-block: `address`, `article`, `aside`, `blockquote`, `details`, `div`, `dl`,
-`fieldset`, `figcaption`, `figure`, `footer`, `form`, `h1` … `h6`, `header`,
-`hgroup`, `hr`, `main`, `menu`, `nav`, `noscript`, `ol`, `p`, `pre`, `script`,
-`search`, `section`, `style`, `table` and `ul`. (These are the tags that close
-any currently open `<p>` tag. See also: [MDN: The `<p>` Element]).
 
 
 [Headings]: #headings
@@ -770,6 +849,7 @@ Baremark vs. Landmark
 
 
 [CommonMark]: https://commonmark.org/
+[CommonMark Spec: HTML blocks]: https://spec.commonmark.org/0.31.2/#html-blocks
 [Github repo]: https://github.com/zrajm/baremark/
 [Landmark]: https://gist.github.com/VanTigranyan/651b7c77cfc149cb858a044c2108acbb
 [Markdown]: https://daringfireball.net/projects/markdown/
