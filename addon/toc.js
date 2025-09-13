@@ -12,7 +12,7 @@ baremark().push(
   // 2. Make sure each <h#> has 'id' attr & add it to toc.
   [/<h([1-6])\b([^<>]*)>(.*?)<\/h\1\b[^<>]*>/g, tocHeading],
   // 3. Replace first '<toc>' with table-of-contents.
-  [/<toc\b([^<>]*)>/i, tocGenerate])
+  [/(?:<p>)?<toc\b([^<>]*)>(<\/p>)?/i, tocGenerate])
 
 function tocReset() {
   idUniq = {}; stack = [[]]; return ''
