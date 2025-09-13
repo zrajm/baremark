@@ -19,7 +19,7 @@ featurefulness.)
 * [Test suite]
 * [Github repo]
 
-It is currently 1990 bytes in size *before* minification and zipping!
+It is currently 1989 bytes in size *before* minification and zipping!
 
 
 <toc heading=Contents class=toc>
@@ -259,7 +259,7 @@ recognized as any other type of block. They are wrapped in a paragraph tag
 [HTML Blocks]: #html-blocks
 ### HTML Blocks
 
-If a paragraph begins with one of the following HTML tags `<...>` or
+If a paragraph contains one (or more) of the following HTML tags `<...>` or
 corresponding end tags `</...>`, then the whole paragraph is consider an HTML
 block. HTML blocks are *not* wrapped in `<p>...</p>` (like normal paragraphs)
 but apart from that there isn't much difference. Markdown is expanded inside

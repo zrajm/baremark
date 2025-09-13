@@ -4118,15 +4118,19 @@
   "Raw HTML", {
     "data": "aa\n\n<div>bb</div>\n\ncc",
     "want": "<p>aa</p>\n\n<div>bb</div>\n\n<p>cc</p>",
-    "name": "<tt>&lt;div&gt;</tt> wrapping a paragraph"
+    "name": "<tt>&lt;div&gt;</tt> wrapping single paragraph"
   }, {
     "data": "<div>\n\naa\n\nbb\n\n</div>",
     "want": "<div>\n\n<p>aa</p>\n\n<p>bb</p>\n\n</div>",
-    "name": "<tt>&lt;div&gt;</tt> wrapping multiple paragraphs, HTML in own paragraphs"
+    "name": "<tt>&lt;div&gt;</tt> wrapping multiple paragraphs, <tt>&lt;div&gt;</tt> tags in separate paragraphs"
   }, {
     "data": "<div>aa\n\nbb</div>",
-    "want": "<div>aa\n\n<p>bb</div></p>",
-    "name": "<tt>&lt;div&gt;</tt> wrapping multiple paragraphs, no blank line between, not allowed"
+    "want": "<div>aa\n\nbb</div>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping two paragraphs"
+  }, {
+    "data": "<div>aa\n\nbb\n\ncc</div>",
+    "want": "<div>aa\n\n<p>bb</p>\n\ncc</div>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping three paragraphs, middle should be wrapped in <tt>&lt;p&gt;</tt>"
   }, {
     "data": "<b>aa</b>",
     "want": "<p><b>aa</b></p>",
