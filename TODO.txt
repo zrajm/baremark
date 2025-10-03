@@ -1,6 +1,7 @@
 -*- org -*-
 
-* TODO Linebroken bullet list inside blockquote                         :BUG:
+* TODO Lazy continuation of bullet point
+  Include a test for this inside a blockquote as well.
 * TODO Change list of HTML tags?
   https://spec.commonmark.org/0.31.2/
 
@@ -368,6 +369,8 @@
                |
                HERE
 * [52/52] FINISHED
+** DONE List item with continuation line should work inside blockquote  :BUG:
+   CLOSED: [2025-10-03 Fri 22:57]
 ** DONE Nested blockquotes
    CLOSED: [2025-09-02 Tue 02:49]
 ** DONE Blockquotes should allow lazy continuation lines

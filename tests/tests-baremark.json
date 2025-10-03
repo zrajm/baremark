@@ -365,9 +365,18 @@
     "want": "<blockquote>\n\n<ul><li>xx</li><li>yy</li></ul>\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>* BULLET</tt>"
   }, {
+    "data": "> * xx\n>   yy\n> * zz",
+    "NOTE": "CommonMark",
+    "want": "<blockquote>\n\n<ul><li>xx\n  yy</li><li>zz</li></ul>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>* BULLET</tt> with continuation line"
+  }, {
     "data": "> 1. xx\n> 2. yy",
     "want": "<blockquote>\n\n<ol><li>xx</li><li>yy</li></ol>\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>1. NUMBERED</tt>"
+  }, {
+    "data": "> 1. xx\n>    yy\n> 2. zz",
+    "want": "<blockquote>\n\n<ol><li>xx\n   yy</li><li>zz</li></ol>\n\n</blockquote>",
+    "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>1. NUMBERED</tt> with continuation line"
   }, {
     "data": "> ```\n> xxx\n> ```",
     "want": "<blockquote>\n\n<pre>xxx</pre>\n\n</blockquote>",
