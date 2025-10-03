@@ -88,193 +88,193 @@
   }, {
     "data": "####### xx",
     "want": "<p>####### xx</p>",
-    "name": "don’t expand if more than 7 <tt>#</tt>"
+    "name": "<tt>####### HEADING 7</tt>, don’t expand"
   }, {
     "data": "# xx\n\n## yy\n\n### zz",
     "want": "<h1>xx</h1>\n\n<h2>yy</h2>\n\n<h3>zz</h3>",
-    "name": "multiple headings after each other"
+    "name": "<tt># HEADING</tt> several separated by blank line"
   }, {
     "data": "# yy\n# xx",
     "NOTE": "anti-CommonMark",
     "want": "<p># yy\n# xx</p>",
-    "name": "don’t expand headings after each other with no blank line between"
+    "name": "<tt># HEADING</tt>s with no blank line between, don’t expand"
   }, {
     "data": "#",
     "NOTE": "anti-CommonMark",
     "want": "<p>#</p>",
-    "name": "don’t expand empty heading (<tt>#</tt> alone on a line)"
+    "name": "<tt># HEADING</tt> without text, don’t expand"
   }, {
     "data": "\\## xx",
     "NOTE": "CommonMark",
     "want": "<p>&#35;# xx</p>",
-    "name": "don’t expand if first <tt>#</tt> is escaped"
+    "name": "<tt># HEADING</tt> with first <tt>#</tt> escaped by <tt>&#92;X</tt>, don’t expand"
   }, {
     "data": "#\\# xx",
     "NOTE": "CommonMark",
     "want": "<p>#&#35; xx</p>",
-    "name": "don’t expand if a non-first <tt>#</tt> is escaped"
+    "name": "<tt># HEADING</tt> with non-first <tt>#</tt> escaped by <tt>&#92;X</tt>, don’t expand"
   }, {
     "data": "xx\n\n# yy",
     "NOTE": "anti-CommonMark",
     "want": "<p>xx</p>\n\n<h1>yy</h1>",
-    "name": "must be preceded by blank line"
+    "name": "<tt># HEADING</tt> with leading with blank line"
   }, {
     "data": "#xx",
     "NOTE": "CommonMark",
     "want": "<p>#xx</p>",
-    "name": "don’t expand unless <tt>#</tt>s are followed by space"
+    "name": "<tt># HEADING</tt> no space after <tt>#</tt>, don’t expand"
   }, {
     "data": " # xx",
     "NOTE": "anti-CommonMark",
     "want": "<p> # xx</p>",
-    "name": "don’t expand if indented"
+    "name": "<tt># HEADING</tt> indented, don’t expand"
   }, {
     "data": "xx\n# yy",
     "NOTE": "anti-CommonMark",
     "want": "<p>xx\n# yy</p>",
-    "name": "don’t expand unless preceded by blank line"
+    "name": "<tt># HEADING</tt> no leading blank line, don’t expand"
   }, {
     "data": "# yy\nxx",
     "NOTE": "anti-CommonMark",
     "want": "<p># yy\nxx</p>",
-    "name": "don’t expand unless followed by blank line"
+    "name": "<tt># HEADING</tt> no trailing blank line, don’t expand"
   }, {
     "data": "# xx  ###",
     "NOTE": "CommonMark",
     "want": "<h1>xx</h1>",
-    "name": "<tt>#</tt>s at end-of-line are allowed"
+    "name": "<tt># HEADING</tt> strip <tt>#</tt>s at end-of-line"
   }, {
     "data": "# xx###",
     "NOTE": "CommonMark",
     "want": "<h1>xx###</h1>",
-    "name": "<tt>#</tt>s at end-of-line must be preceded by space"
+    "name": "<tt># HEADING</tt> don’t strip <tt>#</tt>s at end-of-line with no preceding space"
   },
   "<tt class=multi>HEADING 1<br>=========</tt> <tt class=multi>HEADING 2<br>---------</tt>", {
     "data": "xx\n==",
     "want": "<h1>xx</h1>",
-    "name": "level 1 heading, single word"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> with single word"
   }, {
     "data": "xx\n=",
     "want": "<h1>xx</h1>",
-    "name": "level 1 heading, single character underlining"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> with single character as underline"
   }, {
     "data": "xx\n===",
     "want": "<h1>xx</h1>",
-    "name": "level 1 heading, underlining longer than heading"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> with underline longer than heading"
   }, {
     "data": "xx yy\n==",
     "want": "<h1>xx yy</h1>",
-    "name": "level 1 heading, containing space"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> containing space"
   }, {
     "data": "xx\nyy\n==",
     "want": "<h1>xx\nyy</h1>",
-    "name": "level 1 heading, containing newline"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> containing newline"
   }, {
     "data": "xx\n\nyy\n==",
     "want": "<p>xx</p>\n\n<h1>yy</h1>",
-    "name": "level 1 heading + paragraph before"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> paragraph before"
   }, {
     "data": "xx\n==\nyy",
     "want": "<h1>xx</h1>\n\n<p>yy</p>",
-    "name": "level 1 heading + paragraph after (separated by newline)"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> paragraph after, separated by newline"
   }, {
     "data": "xx\n==\n\nyy",
     "want": "<h1>xx</h1>\n\n\n<p>yy</p>",
-    "name": "level 1 heading + paragraph after (separated by blank line)"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> paragraph after, separated by blank line"
   }, {
     "data": "xx\n\nyy\n==\nzz",
     "want": "<p>xx</p>\n\n<h1>yy</h1>\n\n<p>zz</p>",
-    "name": "level 1 heading + paragraphs surrounding (separated by newline)"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> paragraphs before/after & trailing newline"
   }, {
     "data": "xx\n\nyy\n==\n\nzz",
     "want": "<p>xx</p>\n\n<h1>yy</h1>\n\n\n<p>zz</p>",
-    "name": "level 1 heading + paragraphs surrounding (separated by blank line)"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> paragraphs before/after & trailing blank line"
   }, {
     "data": "xx\n==\nyy\n==",
     "want": "<h1>xx</h1>\n\n<h1>yy</h1>",
-    "name": "level 1 headings, two in a row (separated by newline)"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> several separated by newline"
   }, {
     "data": "xx\n==\n\nyy\n==",
     "want": "<h1>xx</h1>\n\n\n<h1>yy</h1>",
-    "name": "level 1 headings, two in a row (separated by blank line)"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> several separated by blank line"
   }, {
     "data": "xx\n==\nyy\n--",
     "want": "<h1>xx</h1>\n\n<h2>yy</h2>",
-    "name": "level 1 heading + level 2 heading (separated by newline)"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> + <tt class=multi>HEADING 2<br>---------</tt> separated by newline"
   }, {
     "data": "xx\n==\n\nyy\n--",
     "want": "<h1>xx</h1>\n\n\n<h2>yy</h2>",
-    "name": "level 1 heading + level 2 heading (separated by blank line)"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> + <tt class=multi>HEADING 2<br>---------</tt> separated by blank line"
   }, {
     "data": "xx\n--",
     "want": "<h2>xx</h2>",
-    "name": "level 2 heading, single word"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> with single word"
   }, {
     "data": "xx\n-",
     "want": "<h2>xx</h2>",
-    "name": "level 2 heading, single character underlining"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> with single character as underline"
   }, {
     "data": "xx\n---",
     "want": "<h2>xx</h2>",
-    "name": "level 2 heading, underlining longer than heading"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> with underline longer than heading"
   }, {
     "data": "xx yy\n--",
     "want": "<h2>xx yy</h2>",
-    "name": "level 2 heading, containing space"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> containing space"
   }, {
     "data": "xx\nyy\n--",
     "want": "<h2>xx\nyy</h2>",
-    "name": "level 2 heading, containing newline"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> containing newline"
   }, {
     "data": "xx\n\nyy\n--",
     "want": "<p>xx</p>\n\n<h2>yy</h2>",
-    "name": "level 2 heading + paragraph before"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> paragraph before"
   }, {
     "data": "xx\n--\nyy",
     "want": "<h2>xx</h2>\n\n<p>yy</p>",
-    "name": "level 2 heading + paragraph after (separated by newline)"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> paragraph after, separated by newline"
   }, {
     "data": "xx\n--\n\nyy",
     "want": "<h2>xx</h2>\n\n\n<p>yy</p>",
-    "name": "level 2 heading + paragraph after (separated by blank line)"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> paragraph after, separated by blank line"
   }, {
     "data": "xx\n\nyy\n--\nzz",
     "want": "<p>xx</p>\n\n<h2>yy</h2>\n\n<p>zz</p>",
-    "name": "level 2 heading + paragraphs surrounding (separated by newline)"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> paragraphs before/after & trailing newline"
   }, {
     "data": "xx\n\nyy\n--\n\nzz",
     "want": "<p>xx</p>\n\n<h2>yy</h2>\n\n\n<p>zz</p>",
-    "name": "level 2 heading + paragraphs surrounding (separated by blank line)"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> paragraphs before/after & trailing blank line"
   }, {
     "data": "xx\n--\nyy\n--",
     "want": "<h2>xx</h2>\n\n<h2>yy</h2>",
-    "name": "level 2 headings, two in a row (separated by newline)"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> several separated by newline"
   }, {
     "data": "xx\n--\n\nyy\n--",
     "want": "<h2>xx</h2>\n\n\n<h2>yy</h2>",
-    "name": "level 2 headings, two in a row (separated by blank line)"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> several separated by blank line"
   }, {
     "data": "xx\n--\nyy\n==",
     "want": "<h2>xx</h2>\n\n<h1>yy</h1>",
-    "name": "level 2 heading + level 1 heading (separated by newline)"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> + <tt class=multi>HEADING 1<br>=========</tt> separated by newline"
   }, {
     "data": "xx\n--\n\nyy\n==",
     "want": "<h2>xx</h2>\n\n\n<h1>yy</h1>",
-    "name": "level 2 heading + level 1 heading (separated by blank line)"
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> + <tt class=multi>HEADING 1<br>=========</tt> separated by blank line"
   }, {
     "data": "xx\n=-",
     "want": "<p>xx\n=-</p>",
-    "name": "don’t expand if underline is mix of <tt>-</tt> and <tt>=</tt>"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> underline with mix of <tt>-</tt> and <tt>=</tt>, don’t expand"
   }, {
     "data": "xx\n ==",
     "NOTE": "Unsupported CommonMark feature",
     "want": "<p>xx\n ==</p>",
-    "name": "don’t expand if underline has leading space"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> underline with leading space, don’t expand"
   }, {
     "data": "xx\n== ",
     "NOTE": "Unsupported CommonMark feature",
     "want": "<h1>xx</h1>",
-    "name": "underline with trailing space"
+    "name": "<tt class=multi>HEADING 1<br>=========</tt> underline with trailing space"
   },
   "<tt>&gt; BLOCKQUOTE</tt>", {
     "data": "> xx \t",
@@ -462,70 +462,70 @@
     "data": "* xx\n* yy",
     "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
-    "name": "with <tt>*</tt>"
+    "name": "<tt>* BULLET</tt>"
   }, {
     "data": "+ xx\n+ yy",
     "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
-    "name": "with <tt>+</tt>"
+    "name": "<tt>+ BULLET</tt>"
   }, {
     "data": "- xx\n- yy",
     "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
-    "name": "with <tt>-</tt>"
+    "name": "<tt>- BULLET</tt>"
   }, {
-    "data": "* xx\n yy\n* zz",
-    "want": "<ul><li>xx\n yy</li><li>zz</li></ul>",
-    "name": "multiline item with indented continuation lines"
+    "data": "* xx\n  yy\n* zz",
+    "want": "<ul><li>xx\n  yy</li><li>zz</li></ul>",
+    "name": "<tt>* BULLET</tt> with indented continuation lines"
   }, {
     "data": "xx\n* yy\n* zz",
     "NOTE": "CommonMark",
     "want": "<p>xx</p>\n\n<ul><li>yy</li><li>zz</li></ul>",
-    "name": "paragraph followed by list, no blank line between"
+    "name": "<tt>* BULLET</tt> with no leading blank line"
   }, {
     "data": "* xx\n* yy\nzz",
     "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>\n\n<p>zz</p>",
-    "name": "list followed by paragraph, no blank line between"
+    "name": "<tt>* BULLET</tt> with no trailing blank line"
   }, {
     "data": "xx\n* xx\n* yy\nzz",
     "want": "<p>xx</p>\n\n<ul><li>xx</li><li>yy</li></ul>\n\n<p>zz</p>",
-    "name": "paragraphs before AND after list, no blank lines between"
+    "name": "<tt>* BULLET</tt> with no leading/trailing blank line"
   }, {
     "data": "* xx \t\n* yy \t",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
-    "name": "space/tab following lines of bullet items"
+    "name": "<tt>* BULLET</tt> space/tab at end-of-line"
   },
   "<tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>", {
     "data": "1. xx\n2. yy",
     "NOTE": "CommonMark",
     "want": "<ol><li>xx</li><li>yy</li></ol>",
-    "name": "using period"
+    "name": "<tt>1. NUMBERED</tt>"
   }, {
     "data": "1) xx\n2) yy",
     "NOTE": "CommonMark",
     "want": "<ol><li>xx</li><li>yy</li></ol>",
-    "name": "using end parenthesis"
+    "name": "<tt>1) NUMBERED</tt>"
   }, {
-    "data": "1. xx\n yy\n2. zz",
-    "want": "<ol><li>xx\n yy</li><li>zz</li></ol>",
-    "name": "multiline item with indented continuation lines"
+    "data": "1. xx\n  yy\n2. zz",
+    "want": "<ol><li>xx\n  yy</li><li>zz</li></ol>",
+    "name": "<tt>1. NUMBERED</tt> with indented continuation lines"
   }, {
     "data": "xx\n1. yy\n2. zz",
     "want": "<p>xx</p>\n\n<ol><li>yy</li><li>zz</li></ol>",
-    "name": "paragraph followed by list, no blank line between"
+    "name": "<tt>1. NUMBERED</tt> with no leading blank line"
   }, {
     "data": "1. xx\n2. yy\nzz",
     "want": "<ol><li>xx</li><li>yy</li></ol>\n\n<p>zz</p>",
-    "name": "list followed by paragraph, no blank line between"
+    "name": "<tt>1. NUMBERED</tt> with no trailing blank line"
   }, {
     "data": "xx\n1. xx\n2. yy\nzz",
     "want": "<p>xx</p>\n\n<ol><li>xx</li><li>yy</li></ol>\n\n<p>zz</p>",
-    "name": "paragraphs before AND after list, no blank lines between"
+    "name": "<tt>1. NUMBERED</tt> with no leading/trailing blank line"
   }, {
     "data": "1. xx \t\n2. yy \t",
     "want": "<ol><li>xx</li><li>yy</li></ol>",
-    "name": "space/tab following lines of numbered items"
+    "name": "<tt>1. NUMBERED</tt> space/tab at end-of-line"
   },
   "<tt class=multi>```<br>CODEBLOCK</br>```</tt>", {
     "data": "```\nxx\n```",
