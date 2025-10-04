@@ -2124,6 +2124,22 @@
     "want": "<p><a href=\"url\" title=\"\">x</a></p>",
     "name": "definition <tt>LABEL</tt> with trailing space"
   }, {
+    "data": "[x][\\[y\\]]\n\n[\\[y\\]]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "definition <tt>LABEL</tt> with escaped brackets"
+  }, {
+    "data": "[x][\\(y\\)]\n\n[\\(y\\)]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "definition <tt>LABEL</tt> with escaped parentheses"
+  }, {
+    "data": "[x][[y]]\n\n[[y]]: url",
+    "want": "<p>[x][[y]]</p>\n\n<p>[[y]]: url</p>",
+    "name": "definition <tt>LABEL</tt> with unescaped brackets, not allowed"
+  }, {
+    "data": "[x][(y)]\n\n[(y)]: url",
+    "want": "<p>[x][(y)]</p>\n\n<p>[(y)]: url</p>",
+    "name": "definition <tt>LABEL</tt> with unescaped parentheses, not allowed"
+  }, {
     "data": "[x][y]\n\n[y]: _url_",
     "want": "<p><a href=\"&#95;url&#95;\" title=\"\">x</a></p>",
     "name": "definition <tt>URL</tt> with <tt>_…_</tt>: should not become italic"

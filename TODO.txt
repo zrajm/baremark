@@ -363,7 +363,7 @@
 *** TODO Should remove additional comments?
    Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
    <?...>?
-* [0/6] Bugs
+* [0/2] Bugs
 ** TODO Blank line in list/blockquote should start new list/blockquote
 ** TODO Link/image regex shortening
    Both link and image regex have a needless non-greedy regex.
@@ -372,7 +372,7 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [52/52] FINISHED
+* [53/53] FINISHED
 ** DONE List item with continuation line should work inside blockquote  :BUG:
    CLOSED: [2025-10-03 Fri 22:57]
 ** DONE Nested blockquotes
