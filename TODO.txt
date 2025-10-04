@@ -1,7 +1,11 @@
 -*- org -*-
 
-* TODO Lazy continuation of bullet point
-  Include a test for this inside a blockquote as well.
+* TODO Lazy continuation of lists
+  + Include a test for this inside a blockquote as well.
+  If implemented, what does then terminate a list?
+  + Blank line
+  + New list item
+  + More?
 * TODO Change list of HTML tags?
   https://spec.commonmark.org/0.31.2/
 
