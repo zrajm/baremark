@@ -1,0 +1,19 @@
+#!/bin/dash
+
+FILE="baremark.js"
+SIZE="$(wc -c < "$FILE")"
+
+FOUND="$(grep -oEw "currently [0-9]+ bytes" README.md)"
+
+# We're good.
+case "$FOUND" in "currently $SIZE bytes") exit 0 ; esac
+
+# No, we're not.
+printf '%s\n' \
+       "README.md should contain $FILE filesize!" \
+       "    Currently says: '$FOUND'" \
+       "    But should say: 'currently $SIZE bytes'" >&2
+
+exit 1
+
+#[eof]
