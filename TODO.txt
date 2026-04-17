@@ -20,6 +20,9 @@
   > search, section, summary, table, tbody, td, tfoot, th, thead, title, tr,
   > track, ul, followed by a space, a tab, the end of the line, the string >,
   > or the string />.
+* TODO Get inspiration from VFMD
+  vfmd is a variant of Markdown with an unambiguous specification of its syntax.
+  https://web.archive.org/web/20160306050706/http://www.vfmd.org/differences/
 * TODO Bring this TODO up to speed with the project
 * [0/5] Web page
 ** TODO Something similar to CommonMark & Github Markdown spec
@@ -37,6 +40,8 @@
 ** TODO Remember which <details> where opened on reload
 ** TODO Make sure README is up-to date
 * [0/13] Tests
+  List of different Markdown test suites:
+  https://github.com/karlcow/markdown-testsuite
 ** TODO Tests for HTML blocks
 *** TODO Add test case for HTML block with lines followed by space
 ** TODO Test empty bullet list, numbered list, code block
