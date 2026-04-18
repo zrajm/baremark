@@ -19,7 +19,7 @@ featurefulness.)
 * [Test suite]
 * [Github repo]
 
-It is currently 1965 bytes in size *before* minification and zipping!
+It is currently 1959 bytes in size *before* minification and zipping!
 
 
 <toc heading=Contents class=toc>
@@ -43,10 +43,16 @@ Baremark can be invoked in two ways.
 [Extending Baremark]: #extending-baremark
 Extending Baremark
 ------------------
-Baremark’s internals are very simple. It consists of a list of rules, which are
-applied, in order, to the given Markdown text. Each rule is passed on *exactly
-as-is* to the Javascript `replace()` string method. Yet, from this simplicity
-come remarkable versatility.
+The key to Baremark’s smallness its very simple internals. It consists of a
+list of string-replacement rules, which are applied, in order, to the inputted
+Markdown.
+
+Each rule is consists of a regular expression, and a replacement (which is
+either a function or a string), and each of these are passed on *exactly as-is*
+to the Javascript `replace()` method. Each of the rule is applied to the
+entirety of the input text. Invoking `baremark()` (with either no argument, or
+the argument `null`) returns the list of rules. Adding new rules is done by
+inserting them into the returned array (see [Rolling Your Own]).
 
 
 [Addons]: #addons
