@@ -60,7 +60,7 @@
     "want": "<hr>",
     "name": "Test 11"
   },
-  "Backslash escapes",
+  "Backslash Escapes <tt>\\X</tt>",
   {
     "data": "\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\=\\>\\?\\@\\[\\\\\\]\\^\\_\\`\\{\\|\\}\\~\n",
     "want": "<p>&#33;&#34;&#35;&#36;&#37;&#38;&#39;&#40;&#41;&#42;&#43;&#44;&#45;&#46;&#47;&#58;&#59;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#96;&#123;&#124;&#125;&#126;</p>",
@@ -128,7 +128,7 @@
     "want": "<pre><tt class=\"language-foo+bar\">foo\n</tt></pre>",
     "name": "Test 24"
   },
-  "Entity and numeric character references",
+  "Entity and Numeric Character References <tt>&ENT;</tt> <tt>&#NUM;</tt>",
   {
     "data": "&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;\n",
     "want": "<p>  &amp; © Æ Ď\n¾ ℋ ⅆ\n∲ ≧̸</p>",
@@ -221,7 +221,7 @@
     "want": "<ul><li>`one</li>\n\n<li>two`</li></ul>",
     "name": "Test 42"
   },
-  "Thematic breaks",
+  "Dinkus <tt>---</tt> <tt>___</tt> <tt>***</tt>",
   {
     "data": "***\n---\n___\n",
     "want": "<hr>\n\n<hr>\n\n<hr>",
@@ -318,7 +318,7 @@
     "want": "<ul><li>Foo</li>\n\n<li>\n\n<hr>\n\n</li></ul>",
     "name": "Test 61"
   },
-  "ATX headings",
+  "<tt># HEADING 1</tt> … <tt>###### HEADING 6</tt>",
   {
     "data": "# foo\n## foo\n### foo\n#### foo\n##### foo\n###### foo\n",
     "want": "<h1>foo</h1>\n\n\n<h2>foo</h2>\n\n\n<h3>foo</h3>\n\n\n<h4>foo</h4>\n\n\n<h5>foo</h5>\n\n\n<h6>foo</h6>",
@@ -419,7 +419,7 @@
     "name": "Test 79",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt>, and need to contain text"
   },
-  "Setext headings",
+  "<tt class=multi>HEADING 1<br>=========</tt> <tt class=multi>HEADING 2<br>---------</tt>",
   {
     "data": "Foo *bar*\n=========\n\nFoo *bar*\n---------\n",
     "want": "<h1>Foo <i>bar</i></h1>\n\n\n<h2>Foo <i>bar</i></h2>",
@@ -560,7 +560,7 @@
     "want": "<p>Foo\nbar\n---\nbaz</p>",
     "name": "Test 106"
   },
-  "Indented code blocks",
+  "Indented Code Blocks",
   {
     "data": "    a simple\n      indented code block\n",
     "want": "<pre><tt>a simple\n  indented code block\n</tt></pre>",
@@ -628,7 +628,7 @@
     "name": "Test 118",
     "skip": "Baremark doesn't supported indented code blocks"
   },
-  "Fenced code blocks",
+  "<tt class=multi>```<br>CODEBLOCK<br>```</tt>",
   {
     "data": "```\n<\n >\n```\n",
     "want": "<pre><tt>&#60;\n &#62;\n</tt></pre>",
@@ -775,7 +775,7 @@
     "want": "<pre><tt>``` aaa\n</tt></pre>",
     "name": "Test 147"
   },
-  "HTML blocks",
+  "Raw HTML Blocks",
   {
     "data": "<table><tr><td>\n<pre>\n**Hello**,\n\n_world_.\n</pre>\n</td></tr></table>\n",
     "want": "<table><tr><td>\n\n<pre>\n**Hello**,\n<p><i>world</i>.\n</pre></p>\n\n</td></tr></table>",
@@ -996,7 +996,7 @@
     "want": "<table>\n  <tr>\n\n<pre><tt>&#60;td&#62;\n  Hi\n&#60;/td&#62;\n</tt></pre>\n  </tr>\n\n</table>",
     "name": "Test 191"
   },
-  "Link reference definitions",
+  "Labeled Links <tt>[TEXT][LABEL]</tt> & Definition <tt>[LABEL]: URL \"TITLE\"</tt> (not supported by Landmark)",
   {
     "data": "[foo]: /url \"title\"\n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
@@ -1176,13 +1176,13 @@
     "name": "Test 226",
     "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
-  "Blank lines",
+  "Blank Lines",
   {
     "data": "  \n\naaa\n  \n\n# aaa\n\n  \n",
     "want": "<p>aaa</p>\n\n<h1>aaa</h1>",
     "name": "Test 227"
   },
-  "Block quotes",
+  "<tt>&gt; BLOCKQUOTE</tt>",
   {
     "data": "> # Foo\n> bar\n> baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
@@ -1313,7 +1313,7 @@
     "name": "Test 252",
     "skip": "Baremark doesn't supported indented code blocks"
   },
-  "List items",
+  "List Items",
   {
     "data": "A paragraph\nwith two lines.\n\n    indented code\n\n> A block quote.\n",
     "want": "<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>",
@@ -1556,7 +1556,7 @@
     "want": "<ul><li>\n\n<h1>Foo</h1>\n\n</li>\n\n<li>\n\n<h2>Bar</h2>\nbaz</li></ul>",
     "name": "Test 300"
   },
-  "Lists",
+  "<tt>* BULLET</tt> <tt>+ BULLET</tt> <tt>- BULLET</tt> / <tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>",
   {
     "data": "- foo\n- bar\n+ baz\n",
     "want": "<ul><li>foo</li>\n\n<li>bar</li></ul>\n\n<ul><li>baz</li></ul>",
@@ -1693,7 +1693,7 @@
     "want": "<p><tt>hi</tt>lo`</p>",
     "name": "Test 327"
   },
-  "Code spans",
+  "<tt>`CODE`</tt> <tt>`` CODE ``</tt>",
   {
     "data": "`foo`\n",
     "want": "<p><tt>foo</tt></p>",
@@ -1805,7 +1805,7 @@
     "want": "<p>`foo<tt>bar</tt></p>",
     "name": "Test 349"
   },
-  "Emphasis and strong emphasis",
+  "<tt>*ITALIC*</tt> <tt>_ITALIC_</tt> / <tt>**BOLD**</tt> <tt>__BOLD__</tt>",
   {
     "data": "*foo bar*\n",
     "want": "<p><i>foo bar</i></p>",
@@ -2466,7 +2466,7 @@
     "want": "<p>__a<a href=\"https://foo.bar/?q=__\">https://foo.bar/?q=__</a></p>",
     "name": "Test 481"
   },
-  "Links",
+  "Inline Links <tt>[TEXT](URL)</tt>",
   {
     "data": "[link](/uri \"title\")\n",
     "want": "<p><a href=\"/uri\" title=\"title\">link</a></p>",
@@ -2927,7 +2927,7 @@
     "want": "<p>[foo]<a href=\"/url1\" title=\"\">bar</a></p>",
     "name": "Test 571"
   },
-  "Images",
+  "Inline Images <tt>![TEXT](URL)</tt>",
   {
     "data": "![foo](/url \"title\")\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
@@ -3149,7 +3149,7 @@
     "want": "<p>foo@bar.example.com</p>",
     "name": "Test 612"
   },
-  "Raw HTML",
+  "Raw HTML (Inline)",
   {
     "data": "<a><bab><c2c>\n",
     "want": "<p><a><bab><c2c></p>",
@@ -3250,7 +3250,7 @@
     "want": "<p>&#60;a href=&quot;&quot;&quot;&#62;</p>",
     "name": "Test 632"
   },
-  "Hard line breaks",
+  "Hard Line Breaks",
   {
     "data": "foo  \nbaz\n",
     "want": "<p>foo<br>baz</p>",
@@ -3330,7 +3330,7 @@
     "want": "<h3>foo</h3>",
     "name": "Test 647"
   },
-  "Soft line breaks",
+  "Soft Line Breaks",
   {
     "data": "foo\nbaz\n",
     "want": "<p>foo\nbaz</p>",
@@ -3341,7 +3341,7 @@
     "want": "<p>foo\nbaz</p>",
     "name": "Test 649"
   },
-  "Textual content",
+  "Textual Content",
   {
     "data": "hello $.;'there\n",
     "want": "<p>hello $.;'there</p>",
