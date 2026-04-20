@@ -3,3358 +3,3358 @@
   {
     "data": "\tfoo\tbaz\t\tbim\n",
     "want": "<pre><tt>foo\tbaz\t\tbim\n</tt></pre>",
-    "name": "Test 1",
+    "name": "Test 1: <tt>⭲foo⭲baz⭲⭲bim↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "  \tfoo\tbaz\t\tbim\n",
     "want": "<pre><tt>foo\tbaz\t\tbim\n</tt></pre>",
-    "name": "Test 2",
+    "name": "Test 2: <tt>␣␣⭲foo⭲baz⭲⭲bim↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "    a\ta\n    ὐ\ta\n",
     "want": "<pre><tt>a\ta\nὐ\ta\n</tt></pre>",
-    "name": "Test 3",
+    "name": "Test 3: <tt>␣␣␣␣a⭲a↲␣␣␣␣ὐ⭲a↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "  - foo\n\n\tbar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 4"
+    "name": "Test 4: <tt>␣␣- foo↲↲⭲bar↲</tt>"
   },
   {
     "data": "- foo\n\n\t\tbar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<pre><tt>  bar\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 5",
+    "name": "Test 5: <tt>- foo↲↲⭲⭲bar↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": ">\t\tfoo\n",
     "want": "<blockquote>\n\n<pre><tt>  foo\n</tt></pre>\n\n</blockquote>",
-    "name": "Test 6"
+    "name": "Test 6: <tt>&gt;⭲⭲foo↲</tt>"
   },
   {
     "data": "-\t\tfoo\n",
     "want": "<ul><li>\n\n<pre><tt>  foo\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 7"
+    "name": "Test 7: <tt>-⭲⭲foo↲</tt>"
   },
   {
     "data": "    foo\n\tbar\n",
     "want": "<pre><tt>foo\nbar\n</tt></pre>",
-    "name": "Test 8",
+    "name": "Test 8: <tt>␣␣␣␣foo↲⭲bar↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": " - foo\n   - bar\n\t - baz\n",
     "want": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz</li></ul>\n\n</li></ul>\n\n</li></ul>",
-    "name": "Test 9"
+    "name": "Test 9: <tt>␣- foo↲␣␣␣- bar↲⭲␣- baz↲</tt>"
   },
   {
     "data": "#\tFoo\n",
     "want": "<h1>Foo</h1>",
-    "name": "Test 10"
+    "name": "Test 10: <tt>#⭲Foo↲</tt>"
   },
   {
     "data": "*\t*\t*\t\n",
     "want": "<hr>",
-    "name": "Test 11"
+    "name": "Test 11: <tt>*⭲*⭲*⭲↲</tt>"
   },
   "Backslash Escapes <tt>\\X</tt>",
   {
     "data": "\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\=\\>\\?\\@\\[\\\\\\]\\^\\_\\`\\{\\|\\}\\~\n",
     "want": "<p>&#33;&#34;&#35;&#36;&#37;&#38;&#39;&#40;&#41;&#42;&#43;&#44;&#45;&#46;&#47;&#58;&#59;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#96;&#123;&#124;&#125;&#126;</p>",
-    "name": "Test 12"
+    "name": "Test 12: <tt>&#92;!&#92;\"&#92;#&#92;$&#92;%&#92;&amp;&#92;'&#92;(&#92;)&#92;*&#92;+&#92;,&#92;-&#92;.&#92;/&#92;:&#92;;&#92;&lt;&#92;=&#92;&gt;&#92;?&#92;@&#92;[&#92;&#92;&#92;]&#92;^&#92;_&#92;`&#92;{&#92;|&#92;}&#92;~↲</tt>"
   },
   {
     "data": "\\\t\\A\\a\\ \\3\\φ\\«\n",
     "want": "<p>\\\t\\A\\a\\ \\3\\φ\\«</p>",
-    "name": "Test 13"
+    "name": "Test 13: <tt>&#92;⭲&#92;A&#92;a&#92; &#92;3&#92;φ&#92;«↲</tt>"
   },
   {
     "data": "\\*not emphasized*\n\\<br/> not a tag\n\\[not a link](/foo)\n\\`not code`\n1\\. not a list\n\\* not a list\n\\# not a heading\n\\[foo]: /url \"not a reference\"\n\\&ouml; not a character entity\n",
     "want": "<p>*not emphasized*\n&#60;br/&#62; not a tag\n[not a link](/foo)\n`not code`\n1. not a list\n* not a list\n# not a heading\n[foo]: /url \"not a reference\"\n&amp;ouml; not a character entity</p>",
-    "name": "Test 14"
+    "name": "Test 14: <tt>&#92;*not emphasized*↲&#92;&lt;br/&gt; not a tag↲&#92;[not a link](/foo)↲&#92;`not code`↲1&#92;. not a list↲&#92;* not a list↲&#92;# not a heading↲&#92;[foo]: /url \"not a reference\"↲&#92;&ouml; not a character entity↲</tt>"
   },
   {
     "data": "\\\\*emphasis*\n",
     "want": "<p>&#92;<i>emphasis</i></p>",
-    "name": "Test 15"
+    "name": "Test 15: <tt>&#92;&#92;*emphasis*↲</tt>"
   },
   {
     "data": "foo\\\nbar\n",
     "want": "<p>foo<br>bar</p>",
-    "name": "Test 16"
+    "name": "Test 16: <tt>foo&#92;↲bar↲</tt>"
   },
   {
     "data": "`` \\[\\` ``\n",
     "want": "<p><tt>&#92;&#91;&#92;&#96;</tt></p>",
-    "name": "Test 17"
+    "name": "Test 17: <tt>`` &#92;[&#92;` ``↲</tt>"
   },
   {
     "data": "    \\[\\]\n",
     "want": "<pre><tt>\\[\\]\n</tt></pre>",
-    "name": "Test 18",
+    "name": "Test 18: <tt>␣␣␣␣&#92;[&#92;]↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "~~~\n\\[\\]\n~~~\n",
     "want": "<pre><tt>\\[\\]\n</tt></pre>",
-    "name": "Test 19"
+    "name": "Test 19: <tt>~~~↲&#92;[&#92;]↲~~~↲</tt>"
   },
   {
     "data": "<https://example.com?find=\\*>\n",
     "want": "<p><a href=\"https://example.com?find=%5C*\">https://example.com?find=\\*</a></p>",
-    "name": "Test 20",
+    "name": "Test 20: <tt>&lt;https://example.com?find=&#92;*&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<a href=\"/bar\\/)\">\n",
     "want": "<a href=\"/bar\\/)\">",
-    "name": "Test 21"
+    "name": "Test 21: <tt>&lt;a href=\"/bar&#92;/)\"&gt;↲</tt>"
   },
   {
     "data": "[foo](/bar\\* \"ti\\*tle\")\n",
     "want": "<p><a href=\"/bar*\" title=\"ti*tle\">foo</a></p>",
-    "name": "Test 22"
+    "name": "Test 22: <tt>[foo](/bar&#92;* \"ti&#92;*tle\")↲</tt>"
   },
   {
     "data": "[foo]\n\n[foo]: /bar\\* \"ti\\*tle\"\n",
     "want": "<p><a href=\"/bar&#42;\" title=\"ti&#42;tle\">foo</a></p>",
-    "name": "Test 23"
+    "name": "Test 23: <tt>[foo]↲↲[foo]: /bar&#92;* \"ti&#92;*tle\"↲</tt>"
   },
   {
     "data": "``` foo\\+bar\nfoo\n```\n",
     "want": "<pre><tt class=\"language-foo+bar\">foo\n</tt></pre>",
-    "name": "Test 24"
+    "name": "Test 24: <tt>``` foo&#92;+bar↲foo↲```↲</tt>"
   },
   "Entity and Numeric Character References <tt>&ENT;</tt> <tt>&#NUM;</tt>",
   {
     "data": "&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;\n",
     "want": "<p>  &amp; © Æ Ď\n¾ ℋ ⅆ\n∲ ≧̸</p>",
-    "name": "Test 25"
+    "name": "Test 25: <tt>&amp;nbsp; &amp;amp; &amp;copy; &amp;AElig; &amp;Dcaron;↲&amp;frac34; &amp;HilbertSpace; &amp;DifferentialD;↲&amp;ClockwiseContourIntegral; &amp;ngE;↲</tt>"
   },
   {
     "data": "&#35; &#1234; &#992; &#0;\n",
     "want": "<p># Ӓ Ϡ �</p>",
-    "name": "Test 26"
+    "name": "Test 26: <tt>&amp;#35; &amp;#1234; &amp;#992; &amp;#0;↲</tt>"
   },
   {
     "data": "&#X22; &#XD06; &#xcab;\n",
     "want": "<p>&quot; ആ ಫ</p>",
-    "name": "Test 27"
+    "name": "Test 27: <tt>&amp;#X22; &amp;#XD06; &amp;#xcab;↲</tt>"
   },
   {
     "data": "&nbsp &x; &#; &#x;\n&#87654321;\n&#abcdef0;\n&ThisIsNotDefined; &hi?;\n",
     "want": "<p>&amp;nbsp &amp;x; &amp;#; &amp;#x;\n&amp;#87654321;\n&amp;#abcdef0;\n&amp;ThisIsNotDefined; &amp;hi?;</p>",
-    "name": "Test 28"
+    "name": "Test 28: <tt>&amp;nbsp &amp;x; &amp;#; &amp;#x;↲&amp;#87654321;↲&amp;#abcdef0;↲&amp;ThisIsNotDefined; &amp;hi?;↲</tt>"
   },
   {
     "data": "&copy\n",
     "want": "<p>&amp;copy</p>",
-    "name": "Test 29"
+    "name": "Test 29: <tt>&amp;copy↲</tt>"
   },
   {
     "data": "&MadeUpEntity;\n",
     "want": "<p>&amp;MadeUpEntity;</p>",
-    "name": "Test 30"
+    "name": "Test 30: <tt>&amp;MadeUpEntity;↲</tt>"
   },
   {
     "data": "<a href=\"&ouml;&ouml;.html\">\n",
     "want": "<a href=\"&ouml;&ouml;.html\">",
-    "name": "Test 31"
+    "name": "Test 31: <tt>&lt;a href=\"&amp;ouml;&amp;ouml;.html\"&gt;↲</tt>"
   },
   {
     "data": "[foo](/f&ouml;&ouml; \"f&ouml;&ouml;\")\n",
     "want": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>",
-    "name": "Test 32"
+    "name": "Test 32: <tt>[foo](/f&amp;ouml;&amp;ouml; \"f&amp;ouml;&amp;ouml;\")↲</tt>"
   },
   {
     "data": "[foo]\n\n[foo]: /f&ouml;&ouml; \"f&ouml;&ouml;\"\n",
     "want": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>",
-    "name": "Test 33"
+    "name": "Test 33: <tt>[foo]↲↲[foo]: /f&amp;ouml;&amp;ouml; \"f&amp;ouml;&amp;ouml;\"↲</tt>"
   },
   {
     "data": "``` f&ouml;&ouml;\nfoo\n```\n",
     "want": "<pre><tt class=\"language-föö\">foo\n</tt></pre>",
-    "name": "Test 34"
+    "name": "Test 34: <tt>``` f&amp;ouml;&amp;ouml;↲foo↲```↲</tt>"
   },
   {
     "data": "`f&ouml;&ouml;`\n",
     "want": "<p><tt>f&amp;ouml;&amp;ouml;</tt></p>",
-    "name": "Test 35"
+    "name": "Test 35: <tt>`f&amp;ouml;&amp;ouml;`↲</tt>"
   },
   {
     "data": "    f&ouml;f&ouml;\n",
     "want": "<pre><tt>f&amp;ouml;f&amp;ouml;\n</tt></pre>",
-    "name": "Test 36",
+    "name": "Test 36: <tt>␣␣␣␣f&amp;ouml;f&amp;ouml;↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "&#42;foo&#42;\n*foo*\n",
     "want": "<p>*foo*\n<i>foo</i></p>",
-    "name": "Test 37"
+    "name": "Test 37: <tt>&amp;#42;foo&amp;#42;↲*foo*↲</tt>"
   },
   {
     "data": "&#42; foo\n\n* foo\n",
     "want": "<p>* foo</p>\n\n<ul><li>foo</li></ul>",
-    "name": "Test 38"
+    "name": "Test 38: <tt>&amp;#42; foo↲↲* foo↲</tt>"
   },
   {
     "data": "foo&#10;&#10;bar\n",
     "want": "<p>foo\n\nbar</p>",
-    "name": "Test 39"
+    "name": "Test 39: <tt>foo&amp;#10;&amp;#10;bar↲</tt>"
   },
   {
     "data": "&#9;foo\n",
     "want": "<p>\tfoo</p>",
-    "name": "Test 40"
+    "name": "Test 40: <tt>&amp;#9;foo↲</tt>"
   },
   {
     "data": "[a](url &quot;tit&quot;)\n",
     "want": "<p>[a](url &quot;tit&quot;)</p>",
-    "name": "Test 41"
+    "name": "Test 41: <tt>[a](url &amp;quot;tit&amp;quot;)↲</tt>"
   },
   "Precedence",
   {
     "data": "- `one\n- two`\n",
     "want": "<ul><li>`one</li>\n\n<li>two`</li></ul>",
-    "name": "Test 42"
+    "name": "Test 42: <tt>- `one↲- two`↲</tt>"
   },
   "Dinkus <tt>---</tt> <tt>___</tt> <tt>***</tt>",
   {
     "data": "***\n---\n___\n",
     "want": "<hr>\n\n<hr>\n\n<hr>",
-    "name": "Test 43"
+    "name": "Test 43: <tt>***↲---↲___↲</tt>"
   },
   {
     "data": "+++\n",
     "want": "<p>+++</p>",
-    "name": "Test 44"
+    "name": "Test 44: <tt>+++↲</tt>"
   },
   {
     "data": "===\n",
     "want": "<p>===</p>",
-    "name": "Test 45"
+    "name": "Test 45: <tt>===↲</tt>"
   },
   {
     "data": "--\n**\n__\n",
     "want": "<p>--\n**\n__</p>",
-    "name": "Test 46"
+    "name": "Test 46: <tt>--↲**↲__↲</tt>"
   },
   {
     "data": " ***\n  ***\n   ***\n",
     "want": "<hr>\n\n<hr>\n\n<hr>",
-    "name": "Test 47"
+    "name": "Test 47: <tt>␣***↲␣␣***↲␣␣␣***↲</tt>"
   },
   {
     "data": "    ***\n",
     "want": "<pre><tt>***\n</tt></pre>",
-    "name": "Test 48",
+    "name": "Test 48: <tt>␣␣␣␣***↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "Foo\n    ***\n",
     "want": "<p>Foo\n***</p>",
-    "name": "Test 49"
+    "name": "Test 49: <tt>Foo↲␣␣␣␣***↲</tt>"
   },
   {
     "data": "_____________________________________\n",
     "want": "<hr>",
-    "name": "Test 50"
+    "name": "Test 50: <tt>_____________________________________↲</tt>"
   },
   {
     "data": " - - -\n",
     "want": "<hr>",
-    "name": "Test 51"
+    "name": "Test 51: <tt>␣- - -↲</tt>"
   },
   {
     "data": " **  * ** * ** * **\n",
     "want": "<hr>",
-    "name": "Test 52"
+    "name": "Test 52: <tt>␣**␣␣* ** * ** * **↲</tt>"
   },
   {
     "data": "-     -      -      -\n",
     "want": "<hr>",
-    "name": "Test 53"
+    "name": "Test 53: <tt>-␣␣␣␣␣-␣␣␣␣␣␣-␣␣␣␣␣␣-↲</tt>"
   },
   {
     "data": "- - - -    \n",
     "want": "<hr>",
-    "name": "Test 54"
+    "name": "Test 54: <tt>- - - -␣␣␣␣↲</tt>"
   },
   {
     "data": "_ _ _ _ a\n\na------\n\n---a---\n",
     "want": "<p>_ _ _ _ a</p>\n\n<p>a------</p>\n\n<p>---a---</p>",
-    "name": "Test 55"
+    "name": "Test 55: <tt>_ _ _ _ a↲↲a------↲↲---a---↲</tt>"
   },
   {
     "data": " *-*\n",
     "want": "<p><i>-</i></p>",
-    "name": "Test 56"
+    "name": "Test 56: <tt>␣*-*↲</tt>"
   },
   {
     "data": "- foo\n***\n- bar\n",
     "want": "<ul><li>foo</li></ul>\n\n<hr>\n\n<ul><li>bar</li></ul>",
-    "name": "Test 57"
+    "name": "Test 57: <tt>- foo↲***↲- bar↲</tt>"
   },
   {
     "data": "Foo\n***\nbar\n",
     "want": "<p>Foo</p>\n\n<hr>\n\n<p>bar</p>",
-    "name": "Test 58"
+    "name": "Test 58: <tt>Foo↲***↲bar↲</tt>"
   },
   {
     "data": "Foo\n---\nbar\n",
     "want": "<h2>Foo</h2>\n\n<p>bar</p>",
-    "name": "Test 59"
+    "name": "Test 59: <tt>Foo↲---↲bar↲</tt>"
   },
   {
     "data": "* Foo\n* * *\n* Bar\n",
     "want": "<ul><li>Foo</li></ul>\n\n<hr>\n\n<ul><li>Bar</li></ul>",
-    "name": "Test 60"
+    "name": "Test 60: <tt>* Foo↲* * *↲* Bar↲</tt>"
   },
   {
     "data": "- Foo\n- * * *\n",
     "want": "<ul><li>Foo</li>\n\n<li>\n\n<hr>\n\n</li></ul>",
-    "name": "Test 61"
+    "name": "Test 61: <tt>- Foo↲- * * *↲</tt>"
   },
   "<tt># HEADING 1</tt> … <tt>###### HEADING 6</tt>",
   {
     "data": "# foo\n## foo\n### foo\n#### foo\n##### foo\n###### foo\n",
     "want": "<h1>foo</h1>\n\n\n<h2>foo</h2>\n\n\n<h3>foo</h3>\n\n\n<h4>foo</h4>\n\n\n<h5>foo</h5>\n\n\n<h6>foo</h6>",
-    "name": "Test 62",
+    "name": "Test 62: <tt># foo↲## foo↲### foo↲#### foo↲##### foo↲###### foo↲</tt>",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "####### foo\n",
     "want": "<p>####### foo</p>",
-    "name": "Test 63"
+    "name": "Test 63: <tt>####### foo↲</tt>"
   },
   {
     "data": "#5 bolt\n\n#hashtag\n",
     "want": "<p>#5 bolt</p>\n\n<p>#hashtag</p>",
-    "name": "Test 64"
+    "name": "Test 64: <tt>#5 bolt↲↲#hashtag↲</tt>"
   },
   {
     "data": "\\## foo\n",
     "want": "<p>&#35;# foo</p>",
-    "name": "Test 65"
+    "name": "Test 65: <tt>&#92;## foo↲</tt>"
   },
   {
     "data": "# foo *bar* \\*baz\\*\n",
     "want": "<h1>foo <i>bar</i> &#42;baz&#42;</h1>",
-    "name": "Test 66"
+    "name": "Test 66: <tt># foo *bar* &#92;*baz&#92;*↲</tt>"
   },
   {
     "data": "#                  foo                     \n",
     "want": "<h1>foo</h1>",
-    "name": "Test 67"
+    "name": "Test 67: <tt>#␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣foo␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣↲</tt>"
   },
   {
     "data": " ### foo\n  ## foo\n   # foo\n",
     "want": "<h3>foo</h3>\n\n\n<h2>foo</h2>\n\n\n<h1>foo</h1>",
-    "name": "Test 68",
+    "name": "Test 68: <tt>␣### foo↲␣␣## foo↲␣␣␣# foo↲</tt>",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "    # foo\n",
     "want": "<pre><tt># foo\n</tt></pre>",
-    "name": "Test 69",
+    "name": "Test 69: <tt>␣␣␣␣# foo↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "foo\n    # bar\n",
     "want": "<p>foo\n# bar</p>",
-    "name": "Test 70",
+    "name": "Test 70: <tt>foo↲␣␣␣␣# bar↲</tt>",
     "skip": "Baremark doesn't modify horizontal whitespace"
   },
   {
     "data": "## foo ##\n  ###   bar    ###\n",
     "want": "<h2>foo</h2>\n\n\n<h3>bar</h3>",
-    "name": "Test 71",
+    "name": "Test 71: <tt>## foo ##↲␣␣###␣␣␣bar␣␣␣␣###↲</tt>",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "# foo ##################################\n##### foo ##\n",
     "want": "<h1>foo</h1>\n\n\n<h5>foo</h5>",
-    "name": "Test 72",
+    "name": "Test 72: <tt># foo ##################################↲##### foo ##↲</tt>",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "### foo ###     \n",
     "want": "<h3>foo</h3>",
-    "name": "Test 73"
+    "name": "Test 73: <tt>### foo ###␣␣␣␣␣↲</tt>"
   },
   {
     "data": "### foo ### b\n",
     "want": "<h3>foo ### b</h3>",
-    "name": "Test 74"
+    "name": "Test 74: <tt>### foo ### b↲</tt>"
   },
   {
     "data": "# foo#\n",
     "want": "<h1>foo#</h1>",
-    "name": "Test 75"
+    "name": "Test 75: <tt># foo#↲</tt>"
   },
   {
     "data": "### foo \\###\n## foo #\\##\n# foo \\#\n",
     "want": "<h3>foo ###</h3>\n\n\n<h2>foo ###</h2>\n\n\n<h1>foo #</h1>",
-    "name": "Test 76",
+    "name": "Test 76: <tt>### foo &#92;###↲## foo #&#92;##↲# foo &#92;#↲</tt>",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "****\n## foo\n****\n",
     "want": "<hr>\n\n<h2>foo</h2>\n\n<hr>",
-    "name": "Test 77",
+    "name": "Test 77: <tt>****↲## foo↲****↲</tt>",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt> and dinkus <tt>***</tt>"
   },
   {
     "data": "Foo bar\n# baz\nBar foo\n",
     "want": "<p>Foo bar</p>\n\n<h1>baz</h1>\n\n<p>Bar foo</p>",
-    "name": "Test 78",
+    "name": "Test 78: <tt>Foo bar↲# baz↲Bar foo↲</tt>",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "## \n#\n### ###\n",
     "want": "<h2></h2>\n\n\n<h1></h1>\n\n\n<h3></h3>",
-    "name": "Test 79",
+    "name": "Test 79: <tt>##␣↲#↲### ###↲</tt>",
     "skip": "Baremark need blank lines before/after <tt># HEADING</tt>, and need to contain text"
   },
   "<tt class=multi>HEADING 1<br>=========</tt> <tt class=multi>HEADING 2<br>---------</tt>",
   {
     "data": "Foo *bar*\n=========\n\nFoo *bar*\n---------\n",
     "want": "<h1>Foo <i>bar</i></h1>\n\n\n<h2>Foo <i>bar</i></h2>",
-    "name": "Test 80"
+    "name": "Test 80: <tt>Foo *bar*↲=========↲↲Foo *bar*↲---------↲</tt>"
   },
   {
     "data": "Foo *bar\nbaz*\n====\n",
     "want": "<h1>Foo <i>bar\nbaz</i></h1>",
-    "name": "Test 81"
+    "name": "Test 81: <tt>Foo *bar↲baz*↲====↲</tt>"
   },
   {
     "data": "  Foo *bar\nbaz*\t\n====\n",
     "want": "<h1>Foo <i>bar\nbaz</i></h1>",
-    "name": "Test 82"
+    "name": "Test 82: <tt>␣␣Foo *bar↲baz*⭲↲====↲</tt>"
   },
   {
     "data": "Foo\n-------------------------\n\nFoo\n=\n",
     "want": "<h2>Foo</h2>\n\n\n<h1>Foo</h1>",
-    "name": "Test 83"
+    "name": "Test 83: <tt>Foo↲-------------------------↲↲Foo↲=↲</tt>"
   },
   {
     "data": "   Foo\n---\n\n  Foo\n-----\n\n  Foo\n  ===\n",
     "want": "<h2>Foo</h2>\n\n\n<h2>Foo</h2>\n\n\n<h1>Foo</h1>",
-    "name": "Test 84",
+    "name": "Test 84: <tt>␣␣␣Foo↲---↲↲␣␣Foo↲-----↲↲␣␣Foo↲␣␣===↲</tt>",
     "skip": "Baremark <tt class=multi>HEADING 1<br>=========</tt> underline must not be indented."
   },
   {
     "data": "    Foo\n    ---\n\n    Foo\n---\n",
     "want": "<pre><tt>Foo\n---\n\nFoo\n</tt></pre>\n\n<hr>",
-    "name": "Test 85",
+    "name": "Test 85: <tt>␣␣␣␣Foo↲␣␣␣␣---↲↲␣␣␣␣Foo↲---↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "Foo\n   ----      \n",
     "want": "<h2>Foo</h2>",
-    "name": "Test 86",
+    "name": "Test 86: <tt>Foo↲␣␣␣----␣␣␣␣␣␣↲</tt>",
     "skip": "Baremark <tt class=multi>HEADING 2<br>---------</tt> underline must not be indented."
   },
   {
     "data": "Foo\n    ---\n",
     "want": "<p>Foo\n---</p>",
-    "name": "Test 87",
+    "name": "Test 87: <tt>Foo↲␣␣␣␣---↲</tt>",
     "skip": "Baremark <tt class=multi>HEADING 2<br>---------</tt> underline must not be indented."
   },
   {
     "data": "Foo\n= =\n\nFoo\n--- -\n",
     "want": "<p>Foo\n= =</p>\n\n<p>Foo</p>\n\n<hr>",
-    "name": "Test 88"
+    "name": "Test 88: <tt>Foo↲= =↲↲Foo↲--- -↲</tt>"
   },
   {
     "data": "Foo  \n-----\n",
     "want": "<h2>Foo</h2>",
-    "name": "Test 89"
+    "name": "Test 89: <tt>Foo␣␣↲-----↲</tt>"
   },
   {
     "data": "Foo\\\n----\n",
     "want": "<h2>Foo\\</h2>",
-    "name": "Test 90"
+    "name": "Test 90: <tt>Foo&#92;↲----↲</tt>"
   },
   {
     "data": "`Foo\n----\n`\n\n<a title=\"a lot\n---\nof dashes\"/>\n",
     "want": "<h2>`Foo</h2>\n\n<p>`</p>\n\n<h2>&#60;a title=&quot;a lot</h2>\n\n<p>of dashes&quot;/&#62;</p>",
-    "name": "Test 91"
+    "name": "Test 91: <tt>`Foo↲----↲`↲↲&lt;a title=\"a lot↲---↲of dashes\"/&gt;↲</tt>"
   },
   {
     "data": "> Foo\n---\n",
     "want": "<blockquote>\n\n<p>Foo</p>\n\n</blockquote>\n\n\n<hr>",
-    "name": "Test 92"
+    "name": "Test 92: <tt>&gt; Foo↲---↲</tt>"
   },
   {
     "data": "> foo\nbar\n===\n",
     "want": "<blockquote>\n\n<p>foo\nbar\n===</p>\n\n</blockquote>",
-    "name": "Test 93"
+    "name": "Test 93: <tt>&gt; foo↲bar↲===↲</tt>"
   },
   {
     "data": "- Foo\n---\n",
     "want": "<ul><li>Foo</li></ul>\n\n<hr>",
-    "name": "Test 94"
+    "name": "Test 94: <tt>- Foo↲---↲</tt>"
   },
   {
     "data": "Foo\nBar\n---\n",
     "want": "<h2>Foo\nBar</h2>",
-    "name": "Test 95"
+    "name": "Test 95: <tt>Foo↲Bar↲---↲</tt>"
   },
   {
     "data": "---\nFoo\n---\nBar\n---\nBaz\n",
     "want": "<hr>\n\n<h2>Foo</h2>\n\n\n<h2>Bar</h2>\n\n<p>Baz</p>",
-    "name": "Test 96"
+    "name": "Test 96: <tt>---↲Foo↲---↲Bar↲---↲Baz↲</tt>"
   },
   {
     "data": "\n====\n",
     "want": "<p>====</p>",
-    "name": "Test 97"
+    "name": "Test 97: <tt>↲====↲</tt>"
   },
   {
     "data": "---\n---\n",
     "want": "<hr>\n\n<hr>",
-    "name": "Test 98"
+    "name": "Test 98: <tt>---↲---↲</tt>"
   },
   {
     "data": "- foo\n-----\n",
     "want": "<ul><li>foo</li></ul>\n\n<hr>",
-    "name": "Test 99"
+    "name": "Test 99: <tt>- foo↲-----↲</tt>"
   },
   {
     "data": "    foo\n---\n",
     "want": "<pre><tt>foo\n</tt></pre>\n\n<hr>",
-    "name": "Test 100",
+    "name": "Test 100: <tt>␣␣␣␣foo↲---↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "> foo\n-----\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>\n\n\n<hr>",
-    "name": "Test 101"
+    "name": "Test 101: <tt>&gt; foo↲-----↲</tt>"
   },
   {
     "data": "\\> foo\n------\n",
     "want": "<h2>&#62; foo</h2>",
-    "name": "Test 102"
+    "name": "Test 102: <tt>&#92;&gt; foo↲------↲</tt>"
   },
   {
     "data": "Foo\n\nbar\n---\nbaz\n",
     "want": "<p>Foo</p>\n\n<h2>bar</h2>\n\n<p>baz</p>",
-    "name": "Test 103"
+    "name": "Test 103: <tt>Foo↲↲bar↲---↲baz↲</tt>"
   },
   {
     "data": "Foo\nbar\n\n---\n\nbaz\n",
     "want": "<p>Foo\nbar</p>\n\n<hr>\n\n<p>baz</p>",
-    "name": "Test 104"
+    "name": "Test 104: <tt>Foo↲bar↲↲---↲↲baz↲</tt>"
   },
   {
     "data": "Foo\nbar\n* * *\nbaz\n",
     "want": "<p>Foo\nbar</p>\n\n<hr>\n\n<p>baz</p>",
-    "name": "Test 105"
+    "name": "Test 105: <tt>Foo↲bar↲* * *↲baz↲</tt>"
   },
   {
     "data": "Foo\nbar\n\\---\nbaz\n",
     "want": "<p>Foo\nbar\n---\nbaz</p>",
-    "name": "Test 106"
+    "name": "Test 106: <tt>Foo↲bar↲&#92;---↲baz↲</tt>"
   },
   "Indented Code Blocks",
   {
     "data": "    a simple\n      indented code block\n",
     "want": "<pre><tt>a simple\n  indented code block\n</tt></pre>",
-    "name": "Test 107",
+    "name": "Test 107: <tt>␣␣␣␣a simple↲␣␣␣␣␣␣indented code block↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "  - foo\n\n    bar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 108"
+    "name": "Test 108: <tt>␣␣- foo↲↲␣␣␣␣bar↲</tt>"
   },
   {
     "data": "1.  foo\n\n    - bar\n",
     "want": "<ol><li>\n\n<p>foo</p>\n\n<ul><li>bar</li></ul>\n\n</li></ol>",
-    "name": "Test 109"
+    "name": "Test 109: <tt>1.␣␣foo↲↲␣␣␣␣- bar↲</tt>"
   },
   {
     "data": "    <a/>\n    *hi*\n\n    - one\n",
     "want": "<pre><tt>&#60;a/&#62;\n*hi*\n\n- one\n</tt></pre>",
-    "name": "Test 110",
+    "name": "Test 110: <tt>␣␣␣␣&lt;a/&gt;↲␣␣␣␣*hi*↲↲␣␣␣␣- one↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "    chunk1\n\n    chunk2\n  \n \n \n    chunk3\n",
     "want": "<pre><tt>chunk1\n\nchunk2\n\n\n\nchunk3\n</tt></pre>",
-    "name": "Test 111",
+    "name": "Test 111: <tt>␣␣␣␣chunk1↲↲␣␣␣␣chunk2↲␣␣↲␣↲␣↲␣␣␣␣chunk3↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "    chunk1\n      \n      chunk2\n",
     "want": "<pre><tt>chunk1\n  \n  chunk2\n</tt></pre>",
-    "name": "Test 112",
+    "name": "Test 112: <tt>␣␣␣␣chunk1↲␣␣␣␣␣␣↲␣␣␣␣␣␣chunk2↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "Foo\n    bar\n\n",
     "want": "<p>Foo\nbar</p>",
-    "name": "Test 113"
+    "name": "Test 113: <tt>Foo↲␣␣␣␣bar↲↲</tt>"
   },
   {
     "data": "    foo\nbar\n",
     "want": "<pre><tt>foo\n</tt></pre>\n\n<p>bar</p>",
-    "name": "Test 114",
+    "name": "Test 114: <tt>␣␣␣␣foo↲bar↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "# Heading\n    foo\nHeading\n------\n    foo\n----\n",
     "want": "<h1>Heading</h1>\n\n<pre><tt>foo\n</tt></pre>\n\n<h2>Heading</h2>\n\n<pre><tt>foo\n</tt></pre>\n\n<hr>",
-    "name": "Test 115"
+    "name": "Test 115: <tt># Heading↲␣␣␣␣foo↲Heading↲------↲␣␣␣␣foo↲----↲</tt>"
   },
   {
     "data": "        foo\n    bar\n",
     "want": "<pre><tt>    foo\nbar\n</tt></pre>",
-    "name": "Test 116",
+    "name": "Test 116: <tt>␣␣␣␣␣␣␣␣foo↲␣␣␣␣bar↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "\n    \n    foo\n    \n\n",
     "want": "<pre><tt>foo\n</tt></pre>",
-    "name": "Test 117"
+    "name": "Test 117: <tt>↲␣␣␣␣↲␣␣␣␣foo↲␣␣␣␣↲↲</tt>"
   },
   {
     "data": "    foo  \n",
     "want": "<pre><tt>foo  \n</tt></pre>",
-    "name": "Test 118",
+    "name": "Test 118: <tt>␣␣␣␣foo␣␣↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   "<tt class=multi>```<br>CODEBLOCK<br>```</tt>",
   {
     "data": "```\n<\n >\n```\n",
     "want": "<pre><tt>&#60;\n &#62;\n</tt></pre>",
-    "name": "Test 119"
+    "name": "Test 119: <tt>```↲&lt;↲␣&gt;↲```↲</tt>"
   },
   {
     "data": "~~~\n<\n >\n~~~\n",
     "want": "<pre><tt>&#60;\n &#62;\n</tt></pre>",
-    "name": "Test 120"
+    "name": "Test 120: <tt>~~~↲&lt;↲␣&gt;↲~~~↲</tt>"
   },
   {
     "data": "``\nfoo\n``\n",
     "want": "<p><tt>foo</tt></p>",
-    "name": "Test 121"
+    "name": "Test 121: <tt>``↲foo↲``↲</tt>"
   },
   {
     "data": "```\naaa\n~~~\n```\n",
     "want": "<pre><tt>aaa\n~~~\n</tt></pre>",
-    "name": "Test 122"
+    "name": "Test 122: <tt>```↲aaa↲~~~↲```↲</tt>"
   },
   {
     "data": "~~~\naaa\n```\n~~~\n",
     "want": "<pre><tt>aaa\n```\n</tt></pre>",
-    "name": "Test 123"
+    "name": "Test 123: <tt>~~~↲aaa↲```↲~~~↲</tt>"
   },
   {
     "data": "````\naaa\n```\n``````\n",
     "want": "<pre><tt>aaa\n```\n</tt></pre>",
-    "name": "Test 124"
+    "name": "Test 124: <tt>````↲aaa↲```↲``````↲</tt>"
   },
   {
     "data": "~~~~\naaa\n~~~\n~~~~\n",
     "want": "<pre><tt>aaa\n~~~\n</tt></pre>",
-    "name": "Test 125"
+    "name": "Test 125: <tt>~~~~↲aaa↲~~~↲~~~~↲</tt>"
   },
   {
     "data": "```\n",
     "want": "<pre><tt></tt></pre>",
-    "name": "Test 126"
+    "name": "Test 126: <tt>```↲</tt>"
   },
   {
     "data": "`````\n\n```\naaa\n",
     "want": "<pre><tt>\n```\naaa\n</tt></pre>",
-    "name": "Test 127"
+    "name": "Test 127: <tt>`````↲↲```↲aaa↲</tt>"
   },
   {
     "data": "> ```\n> aaa\n\nbbb\n",
     "want": "<blockquote>\n\n<pre><tt>aaa\n</tt></pre>\n\n</blockquote>\n\n\n<p>bbb</p>",
-    "name": "Test 128"
+    "name": "Test 128: <tt>&gt; ```↲&gt; aaa↲↲bbb↲</tt>"
   },
   {
     "data": "```\n\n  \n```\n",
     "want": "<pre><tt>\n  \n</tt></pre>",
-    "name": "Test 129"
+    "name": "Test 129: <tt>```↲↲␣␣↲```↲</tt>"
   },
   {
     "data": "```\n```\n",
     "want": "<pre><tt></tt></pre>",
-    "name": "Test 130"
+    "name": "Test 130: <tt>```↲```↲</tt>"
   },
   {
     "data": " ```\n aaa\naaa\n```\n",
     "want": "<pre><tt>aaa\naaa\n</tt></pre>",
-    "name": "Test 131"
+    "name": "Test 131: <tt>␣```↲␣aaa↲aaa↲```↲</tt>"
   },
   {
     "data": "  ```\naaa\n  aaa\naaa\n  ```\n",
     "want": "<pre><tt>aaa\naaa\naaa\n</tt></pre>",
-    "name": "Test 132"
+    "name": "Test 132: <tt>␣␣```↲aaa↲␣␣aaa↲aaa↲␣␣```↲</tt>"
   },
   {
     "data": "   ```\n   aaa\n    aaa\n  aaa\n   ```\n",
     "want": "<pre><tt>aaa\n aaa\naaa\n</tt></pre>",
-    "name": "Test 133"
+    "name": "Test 133: <tt>␣␣␣```↲␣␣␣aaa↲␣␣␣␣aaa↲␣␣aaa↲␣␣␣```↲</tt>"
   },
   {
     "data": "    ```\n    aaa\n    ```\n",
     "want": "<pre><tt>```\naaa\n```\n</tt></pre>",
-    "name": "Test 134",
+    "name": "Test 134: <tt>␣␣␣␣```↲␣␣␣␣aaa↲␣␣␣␣```↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "```\naaa\n  ```\n",
     "want": "<pre><tt>aaa\n</tt></pre>",
-    "name": "Test 135"
+    "name": "Test 135: <tt>```↲aaa↲␣␣```↲</tt>"
   },
   {
     "data": "   ```\naaa\n  ```\n",
     "want": "<pre><tt>aaa\n</tt></pre>",
-    "name": "Test 136"
+    "name": "Test 136: <tt>␣␣␣```↲aaa↲␣␣```↲</tt>"
   },
   {
     "data": "```\naaa\n    ```\n",
     "want": "<pre><tt>aaa\n    ```\n</tt></pre>",
-    "name": "Test 137"
+    "name": "Test 137: <tt>```↲aaa↲␣␣␣␣```↲</tt>"
   },
   {
     "data": "``` ```\naaa\n",
     "want": "<p><tt> </tt>\naaa</p>",
-    "name": "Test 138"
+    "name": "Test 138: <tt>``` ```↲aaa↲</tt>"
   },
   {
     "data": "~~~~~~\naaa\n~~~ ~~\n",
     "want": "<pre><tt>aaa\n~~~ ~~\n</tt></pre>",
-    "name": "Test 139"
+    "name": "Test 139: <tt>~~~~~~↲aaa↲~~~ ~~↲</tt>"
   },
   {
     "data": "foo\n```\nbar\n```\nbaz\n",
     "want": "<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n<p>baz</p>",
-    "name": "Test 140"
+    "name": "Test 140: <tt>foo↲```↲bar↲```↲baz↲</tt>"
   },
   {
     "data": "foo\n---\n~~~\nbar\n~~~\n# baz\n",
     "want": "<h2>foo</h2>\n\n<pre><tt>bar\n</tt></pre>\n\n<h1>baz</h1>",
-    "name": "Test 141"
+    "name": "Test 141: <tt>foo↲---↲~~~↲bar↲~~~↲# baz↲</tt>"
   },
   {
     "data": "```ruby\ndef foo(x)\n  return 3\nend\n```\n",
     "want": "<pre><tt class=\"language-ruby\">def foo(x)\n  return 3\nend\n</tt></pre>",
-    "name": "Test 142"
+    "name": "Test 142: <tt>```ruby↲def foo(x)↲␣␣return 3↲end↲```↲</tt>"
   },
   {
     "data": "~~~~    ruby startline=3 $%@#$\ndef foo(x)\n  return 3\nend\n~~~~~~~\n",
     "want": "<pre><tt class=\"language-ruby\">def foo(x)\n  return 3\nend\n</tt></pre>",
-    "name": "Test 143"
+    "name": "Test 143: <tt>~~~~␣␣␣␣ruby startline=3 $%@#$↲def foo(x)↲␣␣return 3↲end↲~~~~~~~↲</tt>"
   },
   {
     "data": "````;\n````\n",
     "want": "<pre><tt class=\"language-;\"></tt></pre>",
-    "name": "Test 144"
+    "name": "Test 144: <tt>````;↲````↲</tt>"
   },
   {
     "data": "``` aa ```\nfoo\n",
     "want": "<p><tt>aa</tt>\nfoo</p>",
-    "name": "Test 145"
+    "name": "Test 145: <tt>``` aa ```↲foo↲</tt>"
   },
   {
     "data": "~~~ aa ``` ~~~\nfoo\n~~~\n",
     "want": "<pre><tt class=\"language-aa\">foo\n</tt></pre>",
-    "name": "Test 146"
+    "name": "Test 146: <tt>~~~ aa ``` ~~~↲foo↲~~~↲</tt>"
   },
   {
     "data": "```\n``` aaa\n```\n",
     "want": "<pre><tt>``` aaa\n</tt></pre>",
-    "name": "Test 147"
+    "name": "Test 147: <tt>```↲``` aaa↲```↲</tt>"
   },
   "Raw HTML Blocks",
   {
     "data": "<table><tr><td>\n<pre>\n**Hello**,\n\n_world_.\n</pre>\n</td></tr></table>\n",
     "want": "<table><tr><td>\n\n<pre>\n**Hello**,\n<p><i>world</i>.\n</pre></p>\n\n</td></tr></table>",
-    "name": "Test 148"
+    "name": "Test 148: <tt>&lt;table&gt;&lt;tr&gt;&lt;td&gt;↲&lt;pre&gt;↲**Hello**,↲↲_world_.↲&lt;/pre&gt;↲&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;↲</tt>"
   },
   {
     "data": "<table>\n  <tr>\n    <td>\n           hi\n    </td>\n  </tr>\n</table>\n\nokay.\n",
     "want": "<table>\n  <tr>\n    <td>\n           hi\n    </td>\n  </tr>\n\n</table>\n\n<p>okay.</p>",
-    "name": "Test 149"
+    "name": "Test 149: <tt>&lt;table&gt;↲␣␣&lt;tr&gt;↲␣␣␣␣&lt;td&gt;↲␣␣␣␣␣␣␣␣␣␣␣hi↲␣␣␣␣&lt;/td&gt;↲␣␣&lt;/tr&gt;↲&lt;/table&gt;↲↲okay.↲</tt>"
   },
   {
     "data": " <div>\n  *hello*\n         <foo><a>\n",
     "want": " <div>\n  *hello*\n         <foo><a>",
-    "name": "Test 150"
+    "name": "Test 150: <tt>␣&lt;div&gt;↲␣␣*hello*↲␣␣␣␣␣␣␣␣␣&lt;foo&gt;&lt;a&gt;↲</tt>"
   },
   {
     "data": "</div>\n*foo*\n",
     "want": "</div>\n*foo*",
-    "name": "Test 151"
+    "name": "Test 151: <tt>&lt;/div&gt;↲*foo*↲</tt>"
   },
   {
     "data": "<DIV CLASS=\"foo\">\n\n*Markdown*\n\n</DIV>\n",
     "want": "<DIV CLASS=\"foo\">\n\n<p><i>Markdown</i></p>\n\n</DIV>",
-    "name": "Test 152"
+    "name": "Test 152: <tt>&lt;DIV CLASS=\"foo\"&gt;↲↲*Markdown*↲↲&lt;/DIV&gt;↲</tt>"
   },
   {
     "data": "<div id=\"foo\"\n  class=\"bar\">\n</div>\n",
     "want": "<div id=\"foo\"\n  class=\"bar\">\n\n</div>",
-    "name": "Test 153"
+    "name": "Test 153: <tt>&lt;div id=\"foo\"↲␣␣class=\"bar\"&gt;↲&lt;/div&gt;↲</tt>"
   },
   {
     "data": "<div id=\"foo\" class=\"bar\n  baz\">\n</div>\n",
     "want": "<div id=\"foo\" class=\"bar\n  baz\">\n\n</div>",
-    "name": "Test 154"
+    "name": "Test 154: <tt>&lt;div id=\"foo\" class=\"bar↲␣␣baz\"&gt;↲&lt;/div&gt;↲</tt>"
   },
   {
     "data": "<div>\n*foo*\n\n*bar*\n",
     "want": "<div>\n*foo*\n<p><i>bar</i></p>",
-    "name": "Test 155"
+    "name": "Test 155: <tt>&lt;div&gt;↲*foo*↲↲*bar*↲</tt>"
   },
   {
     "data": "<div id=\"foo\"\n*hi*\n",
     "want": "<div id=\"foo\"\n*hi*",
-    "name": "Test 156"
+    "name": "Test 156: <tt>&lt;div id=\"foo\"↲*hi*↲</tt>"
   },
   {
     "data": "<div class\nfoo\n",
     "want": "<div class\nfoo",
-    "name": "Test 157"
+    "name": "Test 157: <tt>&lt;div class↲foo↲</tt>"
   },
   {
     "data": "<div *???-&&&-<---\n*foo*\n",
     "want": "<div *???-&&&-<---\n*foo*",
-    "name": "Test 158"
+    "name": "Test 158: <tt>&lt;div *???-&&&-&lt;---↲*foo*↲</tt>"
   },
   {
     "data": "<div><a href=\"bar\">*foo*</a></div>\n",
     "want": "<div><a href=\"bar\">*foo*</a></div>",
-    "name": "Test 159"
+    "name": "Test 159: <tt>&lt;div&gt;&lt;a href=\"bar\"&gt;*foo*&lt;/a&gt;&lt;/div&gt;↲</tt>"
   },
   {
     "data": "<table><tr><td>\nfoo\n</td></tr></table>\n",
     "want": "<table><tr><td>\nfoo\n</td></tr></table>",
-    "name": "Test 160"
+    "name": "Test 160: <tt>&lt;table&gt;&lt;tr&gt;&lt;td&gt;↲foo↲&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;↲</tt>"
   },
   {
     "data": "<div></div>\n``` c\nint x = 33;\n```\n",
     "want": "<div></div>\n``` c\nint x = 33;\n```",
-    "name": "Test 161"
+    "name": "Test 161: <tt>&lt;div&gt;&lt;/div&gt;↲``` c↲int x = 33;↲```↲</tt>"
   },
   {
     "data": "<a href=\"foo\">\n*bar*\n</a>\n",
     "want": "<a href=\"foo\">\n*bar*\n</a>",
-    "name": "Test 162"
+    "name": "Test 162: <tt>&lt;a href=\"foo\"&gt;↲*bar*↲&lt;/a&gt;↲</tt>"
   },
   {
     "data": "<Warning>\n*bar*\n</Warning>\n",
     "want": "<Warning>\n*bar*\n</Warning>",
-    "name": "Test 163"
+    "name": "Test 163: <tt>&lt;Warning&gt;↲*bar*↲&lt;/Warning&gt;↲</tt>"
   },
   {
     "data": "<i class=\"foo\">\n*bar*\n</i>\n",
     "want": "<i class=\"foo\">\n*bar*\n</i>",
-    "name": "Test 164"
+    "name": "Test 164: <tt>&lt;i class=\"foo\"&gt;↲*bar*↲&lt;/i&gt;↲</tt>"
   },
   {
     "data": "</ins>\n*bar*\n",
     "want": "</ins>\n*bar*",
-    "name": "Test 165"
+    "name": "Test 165: <tt>&lt;/ins&gt;↲*bar*↲</tt>"
   },
   {
     "data": "<del>\n*foo*\n</del>\n",
     "want": "<del>\n*foo*\n</del>",
-    "name": "Test 166"
+    "name": "Test 166: <tt>&lt;del&gt;↲*foo*↲&lt;/del&gt;↲</tt>"
   },
   {
     "data": "<del>\n\n*foo*\n\n</del>\n",
     "want": "<del>\n\n<p><i>foo</i></p>\n\n</del>",
-    "name": "Test 167"
+    "name": "Test 167: <tt>&lt;del&gt;↲↲*foo*↲↲&lt;/del&gt;↲</tt>"
   },
   {
     "data": "<del>*foo*</del>\n",
     "want": "<p><del><i>foo</i></del></p>",
-    "name": "Test 168"
+    "name": "Test 168: <tt>&lt;del&gt;*foo*&lt;/del&gt;↲</tt>"
   },
   {
     "data": "<pre language=\"haskell\"><code>\nimport Text.HTML.TagSoup\n\nmain :: IO ()\nmain = print $ parseTags tags\n</code></pre>\nokay\n",
     "want": "<pre language=\"haskell\"><tt>\nimport Text.HTML.TagSoup\n\nmain :: IO ()\nmain = print $ parseTags tags\n</tt></pre>\n\n<p>okay</p>",
-    "name": "Test 169"
+    "name": "Test 169: <tt>&lt;pre language=\"haskell\"&gt;&lt;code&gt;↲import Text.HTML.TagSoup↲↲main :: IO ()↲main = print $ parseTags tags↲&lt;/code&gt;&lt;/pre&gt;↲okay↲</tt>"
   },
   {
     "data": "<script type=\"text/javascript\">\n// JavaScript example\n\ndocument.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";\n</script>\nokay\n",
     "want": "<script type=\"text/javascript\">\n// JavaScript example\n\ndocument.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";\n</script>\n\n<p>okay</p>",
-    "name": "Test 170"
+    "name": "Test 170: <tt>&lt;script type=\"text/javascript\"&gt;↲// JavaScript example↲↲document.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";↲&lt;/script&gt;↲okay↲</tt>"
   },
   {
     "data": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>\n",
     "want": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>",
-    "name": "Test 171"
+    "name": "Test 171: <tt>&lt;textarea&gt;↲↲*foo*↲↲_bar_↲↲&lt;/textarea&gt;↲</tt>"
   },
   {
     "data": "<style\n  type=\"text/css\">\nh1 {color:red;}\n\np {color:blue;}\n</style>\nokay\n",
     "want": "<style\n  type=\"text/css\">\nh1 {color:red;}\n\np {color:blue;}\n</style>\n\n<p>okay</p>",
-    "name": "Test 172"
+    "name": "Test 172: <tt>&lt;style↲␣␣type=\"text/css\"&gt;↲h1 {color:red;}↲↲p {color:blue;}↲&lt;/style&gt;↲okay↲</tt>"
   },
   {
     "data": "<style\n  type=\"text/css\">\n\nfoo\n",
     "want": "<style\n  type=\"text/css\">\n\nfoo",
-    "name": "Test 173"
+    "name": "Test 173: <tt>&lt;style↲␣␣type=\"text/css\"&gt;↲↲foo↲</tt>"
   },
   {
     "data": "> <div>\n> foo\n\nbar\n",
     "want": "<blockquote>\n\n<div>\nfoo\n</blockquote>\n\n\n<p>bar</p>",
-    "name": "Test 174"
+    "name": "Test 174: <tt>&gt; &lt;div&gt;↲&gt; foo↲↲bar↲</tt>"
   },
   {
     "data": "- <div>\n- foo\n",
     "want": "<ul><li>\n\n<div>\n\n</li>\n\n<li>foo</li></ul>",
-    "name": "Test 175"
+    "name": "Test 175: <tt>- &lt;div&gt;↲- foo↲</tt>"
   },
   {
     "data": "<style>p{color:red;}</style>\n*foo*\n",
     "want": "<style>p{color:red;}</style>\n\n<p><i>foo</i></p>",
-    "name": "Test 176"
+    "name": "Test 176: <tt>&lt;style&gt;p{color:red;}&lt;/style&gt;↲*foo*↲</tt>"
   },
   {
     "data": "<!-- foo -->*bar*\n*baz*\n",
     "want": "<!-- foo -->*bar*\n<p><i>baz</i></p>",
-    "name": "Test 177"
+    "name": "Test 177: <tt>&lt;!-- foo --&gt;*bar*↲*baz*↲</tt>"
   },
   {
     "data": "<script>\nfoo\n</script>1. *bar*\n",
     "want": "<script>\nfoo\n</script>1. *bar*",
-    "name": "Test 178"
+    "name": "Test 178: <tt>&lt;script&gt;↲foo↲&lt;/script&gt;1. *bar*↲</tt>"
   },
   {
     "data": "<!-- Foo\n\nbar\n   baz -->\nokay\n",
     "want": "<!-- Foo\n\nbar\n   baz -->\n\n<p>okay</p>",
-    "name": "Test 179"
+    "name": "Test 179: <tt>&lt;!-- Foo↲↲bar↲␣␣␣baz --&gt;↲okay↲</tt>"
   },
   {
     "data": "<?php\n\n  echo '>';\n\n?>\nokay\n",
     "want": "<?php\n\n  echo '>';\n\n?>\n\n<p>okay</p>",
-    "name": "Test 180"
+    "name": "Test 180: <tt>&lt;?php↲↲␣␣echo '&gt;';↲↲?&gt;↲okay↲</tt>"
   },
   {
     "data": "<!DOCTYPE html>\n",
     "want": "<!DOCTYPE html>",
-    "name": "Test 181"
+    "name": "Test 181: <tt>&lt;!DOCTYPE html&gt;↲</tt>"
   },
   {
     "data": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\nokay\n",
     "want": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\n\n<p>okay</p>",
-    "name": "Test 182"
+    "name": "Test 182: <tt>&lt;![CDATA[↲function matchwo(a,b)↲{↲␣␣if (a &lt; b && a &lt; 0) then {↲␣␣␣␣return 1;↲↲␣␣} else {↲↲␣␣␣␣return 0;↲␣␣}\n}\n]]&gt;\nokay\n</tt>"
   },
   {
     "data": "  <!-- foo -->\n\n    <!-- foo -->\n",
     "want": "  <!-- foo -->\n\n<pre><tt>&#60;!-- foo --&#62;\n</tt></pre>",
-    "name": "Test 183"
+    "name": "Test 183: <tt>␣␣&lt;!-- foo --&gt;↲↲␣␣␣␣&lt;!-- foo --&gt;↲</tt>"
   },
   {
     "data": "  <div>\n\n    <div>\n",
     "want": "  <div>\n\n<pre><tt>&#60;div&#62;\n</tt></pre>",
-    "name": "Test 184"
+    "name": "Test 184: <tt>␣␣&lt;div&gt;↲↲␣␣␣␣&lt;div&gt;↲</tt>"
   },
   {
     "data": "Foo\n<div>\nbar\n</div>\n",
     "want": "<p>Foo</p>\n\n<div>\nbar\n</div>",
-    "name": "Test 185"
+    "name": "Test 185: <tt>Foo↲&lt;div&gt;↲bar↲&lt;/div&gt;↲</tt>"
   },
   {
     "data": "<div>\nbar\n</div>\n*foo*\n",
     "want": "<div>\nbar\n</div>\n*foo*",
-    "name": "Test 186"
+    "name": "Test 186: <tt>&lt;div&gt;↲bar↲&lt;/div&gt;↲*foo*↲</tt>"
   },
   {
     "data": "Foo\n<a href=\"bar\">\nbaz\n",
     "want": "<p>Foo\n<a href=\"bar\">\nbaz</p>",
-    "name": "Test 187"
+    "name": "Test 187: <tt>Foo↲&lt;a href=\"bar\"&gt;↲baz↲</tt>"
   },
   {
     "data": "<div>\n\n*Emphasized* text.\n\n</div>\n",
     "want": "<div>\n\n<p><i>Emphasized</i> text.</p>\n\n</div>",
-    "name": "Test 188"
+    "name": "Test 188: <tt>&lt;div&gt;↲↲*Emphasized* text.↲↲&lt;/div&gt;↲</tt>"
   },
   {
     "data": "<div>\n*Emphasized* text.\n</div>\n",
     "want": "<div>\n*Emphasized* text.\n</div>",
-    "name": "Test 189"
+    "name": "Test 189: <tt>&lt;div&gt;↲*Emphasized* text.↲&lt;/div&gt;↲</tt>"
   },
   {
     "data": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>\n",
     "want": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>",
-    "name": "Test 190"
+    "name": "Test 190: <tt>&lt;table&gt;↲↲&lt;tr&gt;↲↲&lt;td&gt;↲Hi↲&lt;/td&gt;↲↲&lt;/tr&gt;↲\n&lt;/table&gt;\n</tt>"
   },
   {
     "data": "<table>\n\n  <tr>\n\n    <td>\n      Hi\n    </td>\n\n  </tr>\n\n</table>\n",
     "want": "<table>\n  <tr>\n\n<pre><tt>&#60;td&#62;\n  Hi\n&#60;/td&#62;\n</tt></pre>\n  </tr>\n\n</table>",
-    "name": "Test 191"
+    "name": "Test 191: <tt>&lt;table&gt;↲↲␣␣&lt;tr&gt;↲↲␣␣␣␣&lt;td&gt;↲␣␣␣␣␣␣Hi↲␣␣␣␣&lt;/td&gt;↲↲␣␣&lt;/tr&gt;↲\n&lt;/table&gt;\n</tt>"
   },
   "Labeled Links <tt>[TEXT][LABEL]</tt> & Definition <tt>[LABEL]: URL \"TITLE\"</tt> (not supported by Landmark)",
   {
     "data": "[foo]: /url \"title\"\n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 192"
+    "name": "Test 192: <tt>[foo]: /url \"title\"↲↲[foo]↲</tt>"
   },
   {
     "data": "   [foo]: \n      /url  \n           'the title'  \n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"the title\">foo</a></p>",
-    "name": "Test 193"
+    "name": "Test 193: <tt>␣␣␣[foo]:␣↲␣␣␣␣␣␣/url␣␣↲␣␣␣␣␣␣␣␣␣␣␣'the title'␣␣↲↲[foo]↲</tt>"
   },
   {
     "data": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]\n",
     "want": "<p><a href=\"my_(url)\" title=\"title (with parens)\">Foo*bar]</a></p>",
-    "name": "Test 194"
+    "name": "Test 194: <tt>[Foo*bar&#92;]]:my_(url) 'title (with parens)'↲↲[Foo*bar&#92;]]↲</tt>"
   },
   {
     "data": "[Foo bar]:\n<my url>\n'title'\n\n[Foo bar]\n",
     "want": "<p><a href=\"my%20url\" title=\"title\">Foo bar</a></p>",
-    "name": "Test 195"
+    "name": "Test 195: <tt>[Foo bar]:↲&lt;my url&gt;↲'title'↲↲[Foo bar]↲</tt>"
   },
   {
     "data": "[foo]: /url '\ntitle\nline1\nline2\n'\n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"\ntitle\nline1\nline2\n\">foo</a></p>",
-    "name": "Test 196"
+    "name": "Test 196: <tt>[foo]: /url '↲title↲line1↲line2↲'↲↲[foo]↲</tt>"
   },
   {
     "data": "[foo]: /url 'title\n\nwith blank line'\n\n[foo]\n",
     "want": "<p>[foo]: /url 'title</p>\n\n<p>with blank line'</p>\n\n<p>[foo]</p>",
-    "name": "Test 197"
+    "name": "Test 197: <tt>[foo]: /url 'title↲↲with blank line'↲↲[foo]↲</tt>"
   },
   {
     "data": "[foo]:\n/url\n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"\">foo</a></p>",
-    "name": "Test 198"
+    "name": "Test 198: <tt>[foo]:↲/url↲↲[foo]↲</tt>"
   },
   {
     "data": "[foo]:\n\n[foo]\n",
     "want": "<p>[foo]:</p>\n\n<p>[foo]</p>",
-    "name": "Test 199"
+    "name": "Test 199: <tt>[foo]:↲↲[foo]↲</tt>"
   },
   {
     "data": "[foo]: <>\n\n[foo]\n",
     "want": "<p><a href=\"\" title=\"\">foo</a></p>",
-    "name": "Test 200"
+    "name": "Test 200: <tt>[foo]: &lt;&gt;↲↲[foo]↲</tt>"
   },
   {
     "data": "[foo]: <bar>(baz)\n\n[foo]\n",
     "want": "<p>[foo]: <bar>(baz)</p>\n\n<p>[foo]</p>",
-    "name": "Test 201"
+    "name": "Test 201: <tt>[foo]: &lt;bar&gt;(baz)↲↲[foo]↲</tt>"
   },
   {
     "data": "[foo]: /url\\bar\\*baz \"foo\\\"bar\\baz\"\n\n[foo]\n",
     "want": "<p><a href=\"/url%5Cbar*baz\" title=\"foo&quot;bar\\baz\">foo</a></p>",
-    "name": "Test 202"
+    "name": "Test 202: <tt>[foo]: /url&#92;bar&#92;*baz \"foo&#92;\"bar&#92;baz\"↲↲[foo]↲</tt>"
   },
   {
     "data": "[foo]\n\n[foo]: url\n",
     "want": "<p><a href=\"url\" title=\"\">foo</a></p>",
-    "name": "Test 203"
+    "name": "Test 203: <tt>[foo]↲↲[foo]: url↲</tt>"
   },
   {
     "data": "[foo]\n\n[foo]: first\n[foo]: second\n",
     "want": "<p><a href=\"first\" title=\"\">foo</a></p>",
-    "name": "Test 204"
+    "name": "Test 204: <tt>[foo]↲↲[foo]: first↲[foo]: second↲</tt>"
   },
   {
     "data": "[FOO]: /url\n\n[Foo]\n",
     "want": "<p><a href=\"/url\" title=\"\">Foo</a></p>",
-    "name": "Test 205"
+    "name": "Test 205: <tt>[FOO]: /url↲↲[Foo]↲</tt>"
   },
   {
     "data": "[ΑΓΩ]: /φου\n\n[αγω]\n",
     "want": "<p><a href=\"/%CF%86%CE%BF%CF%85\" title=\"\">αγω</a></p>",
-    "name": "Test 206"
+    "name": "Test 206: <tt>[ΑΓΩ]: /φου↲↲[αγω]↲</tt>"
   },
   {
     "data": "[foo]: /url\n",
     "want": "",
-    "name": "Test 207"
+    "name": "Test 207: <tt>[foo]: /url↲</tt>"
   },
   {
     "data": "[\nfoo\n]: /url\nbar\n",
     "want": "<p>bar</p>",
-    "name": "Test 208"
+    "name": "Test 208: <tt>[↲foo↲]: /url↲bar↲</tt>"
   },
   {
     "data": "[foo]: /url \"title\" ok\n",
     "want": "<p>[foo]: /url &quot;title&quot; ok</p>",
-    "name": "Test 209"
+    "name": "Test 209: <tt>[foo]: /url \"title\" ok↲</tt>"
   },
   {
     "data": "[foo]: /url\n\"title\" ok\n",
     "want": "<p>&quot;title&quot; ok</p>",
-    "name": "Test 210"
+    "name": "Test 210: <tt>[foo]: /url↲\"title\" ok↲</tt>"
   },
   {
     "data": "    [foo]: /url \"title\"\n\n[foo]\n",
     "want": "<pre><tt>[foo]: /url &quot;title&quot;\n</tt></pre>\n\n<p>[foo]</p>",
-    "name": "Test 211",
+    "name": "Test 211: <tt>␣␣␣␣[foo]: /url \"title\"↲↲[foo]↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "```\n[foo]: /url\n```\n\n[foo]\n",
     "want": "<pre><tt>[foo]: /url\n</tt></pre>\n\n<p>[foo]</p>",
-    "name": "Test 212"
+    "name": "Test 212: <tt>```↲[foo]: /url↲```↲↲[foo]↲</tt>"
   },
   {
     "data": "Foo\n[bar]: /baz\n\n[bar]\n",
     "want": "<p>Foo\n[bar]: /baz</p>\n\n<p>[bar]</p>",
-    "name": "Test 213"
+    "name": "Test 213: <tt>Foo↲[bar]: /baz↲↲[bar]↲</tt>"
   },
   {
     "data": "# [Foo]\n[foo]: /url\n> bar\n",
     "want": "<h1><a href=\"/url\" title=\"\">Foo</a></h1>\n\n<blockquote>\n\n<p>bar</p>\n\n</blockquote>",
-    "name": "Test 214"
+    "name": "Test 214: <tt># [Foo]↲[foo]: /url↲&gt; bar↲</tt>"
   },
   {
     "data": "[foo]: /url\nbar\n===\n[foo]\n",
     "want": "<h1>bar</h1>\n\n<p><a href=\"/url\" title=\"\">foo</a></p>",
-    "name": "Test 215"
+    "name": "Test 215: <tt>[foo]: /url↲bar↲===↲[foo]↲</tt>"
   },
   {
     "data": "[foo]: /url\n===\n[foo]\n",
     "want": "<p>===\n<a href=\"/url\" title=\"\">foo</a></p>",
-    "name": "Test 216"
+    "name": "Test 216: <tt>[foo]: /url↲===↲[foo]↲</tt>"
   },
   {
     "data": "[foo]: /foo-url \"foo\"\n[bar]: /bar-url\n  \"bar\"\n[baz]: /baz-url\n\n[foo],\n[bar],\n[baz]\n",
     "want": "<p><a href=\"/foo-url\" title=\"foo\">foo</a>,\n<a href=\"/bar-url\" title=\"bar\">bar</a>,\n<a href=\"/baz-url\">baz</a></p>",
-    "name": "Test 217"
+    "name": "Test 217: <tt>[foo]: /foo-url \"foo\"↲[bar]: /bar-url↲␣␣\"bar\"↲[baz]: /baz-url↲↲[foo],↲[bar],↲[baz]↲</tt>"
   },
   {
     "data": "[foo]\n\n> [foo]: /url\n",
     "want": "<p><a href=\"/url\" title=\"\">foo</a></p>\n\n<blockquote>\n\n</blockquote>",
-    "name": "Test 218"
+    "name": "Test 218: <tt>[foo]↲↲&gt; [foo]: /url↲</tt>"
   },
   "Paragraphs",
   {
     "data": "aaa\n\nbbb\n",
     "want": "<p>aaa</p>\n\n<p>bbb</p>",
-    "name": "Test 219"
+    "name": "Test 219: <tt>aaa↲↲bbb↲</tt>"
   },
   {
     "data": "aaa\nbbb\n\nccc\nddd\n",
     "want": "<p>aaa\nbbb</p>\n\n<p>ccc\nddd</p>",
-    "name": "Test 220"
+    "name": "Test 220: <tt>aaa↲bbb↲↲ccc↲ddd↲</tt>"
   },
   {
     "data": "aaa\n\n\nbbb\n",
     "want": "<p>aaa</p>\n\n<p>bbb</p>",
-    "name": "Test 221"
+    "name": "Test 221: <tt>aaa↲↲↲bbb↲</tt>"
   },
   {
     "data": "  aaa\n bbb\n",
     "want": "<p>aaa\nbbb</p>",
-    "name": "Test 222"
+    "name": "Test 222: <tt>␣␣aaa↲␣bbb↲</tt>"
   },
   {
     "data": "aaa\n             bbb\n                                       ccc\n",
     "want": "<p>aaa\nbbb\nccc</p>",
-    "name": "Test 223"
+    "name": "Test 223: <tt>aaa↲␣␣␣␣␣␣␣␣␣␣␣␣␣bbb↲␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣ccc↲</tt>"
   },
   {
     "data": "   aaa\nbbb\n",
     "want": "<p>aaa\nbbb</p>",
-    "name": "Test 224"
+    "name": "Test 224: <tt>␣␣␣aaa↲bbb↲</tt>"
   },
   {
     "data": "    aaa\nbbb\n",
     "want": "<pre><tt>aaa\n</tt></pre>\n\n<p>bbb</p>",
-    "name": "Test 225",
+    "name": "Test 225: <tt>␣␣␣␣aaa↲bbb↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "aaa     \nbbb     \n",
     "want": "<p>aaa<br>bbb</p>",
-    "name": "Test 226",
+    "name": "Test 226: <tt>aaa␣␣␣␣␣↲bbb␣␣␣␣␣↲</tt>",
     "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   "Blank Lines",
   {
     "data": "  \n\naaa\n  \n\n# aaa\n\n  \n",
     "want": "<p>aaa</p>\n\n<h1>aaa</h1>",
-    "name": "Test 227"
+    "name": "Test 227: <tt>␣␣↲↲aaa↲␣␣↲↲# aaa↲↲␣␣↲</tt>"
   },
   "<tt>&gt; BLOCKQUOTE</tt>",
   {
     "data": "> # Foo\n> bar\n> baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 228"
+    "name": "Test 228: <tt>&gt; # Foo↲&gt; bar↲&gt; baz↲</tt>"
   },
   {
     "data": "># Foo\n>bar\n> baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 229"
+    "name": "Test 229: <tt>&gt;# Foo↲&gt;bar↲&gt; baz↲</tt>"
   },
   {
     "data": "   > # Foo\n   > bar\n > baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 230"
+    "name": "Test 230: <tt>␣␣␣&gt; # Foo↲␣␣␣&gt; bar↲␣&gt; baz↲</tt>"
   },
   {
     "data": "    > # Foo\n    > bar\n    > baz\n",
     "want": "<pre><tt>&#62; # Foo\n&#62; bar\n&#62; baz\n</tt></pre>",
-    "name": "Test 231",
+    "name": "Test 231: <tt>␣␣␣␣&gt; # Foo↲␣␣␣␣&gt; bar↲␣␣␣␣&gt; baz↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "> # Foo\n> bar\nbaz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 232"
+    "name": "Test 232: <tt>&gt; # Foo↲&gt; bar↲baz↲</tt>"
   },
   {
     "data": "> bar\nbaz\n> foo\n",
     "want": "<blockquote>\n\n<p>bar\nbaz\nfoo</p>\n\n</blockquote>",
-    "name": "Test 233"
+    "name": "Test 233: <tt>&gt; bar↲baz↲&gt; foo↲</tt>"
   },
   {
     "data": "> foo\n---\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>\n\n\n<hr>",
-    "name": "Test 234"
+    "name": "Test 234: <tt>&gt; foo↲---↲</tt>"
   },
   {
     "data": "> - foo\n- bar\n",
     "want": "<blockquote>\n\n<ul><li>foo</li></ul>\n\n</blockquote>\n\n\n<ul><li>bar</li></ul>",
-    "name": "Test 235"
+    "name": "Test 235: <tt>&gt; - foo↲- bar↲</tt>"
   },
   {
     "data": ">     foo\n    bar\n",
     "want": "<blockquote>\n\n<pre><tt>foo\n</tt></pre>\n\n</blockquote>\n\n\n<pre><tt>bar\n</tt></pre>",
-    "name": "Test 236"
+    "name": "Test 236: <tt>&gt;␣␣␣␣␣foo↲␣␣␣␣bar↲</tt>"
   },
   {
     "data": "> ```\nfoo\n```\n",
     "want": "<blockquote>\n\n<pre><tt></tt></pre>\n\n</blockquote>\n\n\n<p>foo</p>\n\n<pre><tt></tt></pre>",
-    "name": "Test 237"
+    "name": "Test 237: <tt>&gt; ```↲foo↲```↲</tt>"
   },
   {
     "data": "> foo\n    - bar\n",
     "want": "<blockquote>\n\n<p>foo\n- bar</p>\n\n</blockquote>",
-    "name": "Test 238"
+    "name": "Test 238: <tt>&gt; foo↲␣␣␣␣- bar↲</tt>"
   },
   {
     "data": ">\n",
     "want": "<blockquote>\n\n</blockquote>",
-    "name": "Test 239"
+    "name": "Test 239: <tt>&gt;↲</tt>"
   },
   {
     "data": ">\n>  \n> \n",
     "want": "<blockquote>\n\n</blockquote>",
-    "name": "Test 240"
+    "name": "Test 240: <tt>&gt;↲&gt;␣␣↲&gt;␣↲</tt>"
   },
   {
     "data": ">\n> foo\n>  \n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>",
-    "name": "Test 241"
+    "name": "Test 241: <tt>&gt;↲&gt; foo↲&gt;␣␣↲</tt>"
   },
   {
     "data": "> foo\n\n> bar\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>bar</p>\n\n</blockquote>",
-    "name": "Test 242"
+    "name": "Test 242: <tt>&gt; foo↲↲&gt; bar↲</tt>"
   },
   {
     "data": "> foo\n> bar\n",
     "want": "<blockquote>\n\n<p>foo\nbar</p>\n\n</blockquote>",
-    "name": "Test 243"
+    "name": "Test 243: <tt>&gt; foo↲&gt; bar↲</tt>"
   },
   {
     "data": "> foo\n>\n> bar\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</blockquote>",
-    "name": "Test 244"
+    "name": "Test 244: <tt>&gt; foo↲&gt;↲&gt; bar↲</tt>"
   },
   {
     "data": "foo\n> bar\n",
     "want": "<p>foo</p>\n\n<blockquote>\n\n<p>bar</p>\n\n</blockquote>",
-    "name": "Test 245",
+    "name": "Test 245: <tt>foo↲&gt; bar↲</tt>",
     "skip": "Baremark <tt>&#62; BLOCKQUOTE</tt> must have leading blank line"
   },
   {
     "data": "> aaa\n***\n> bbb\n",
     "want": "<blockquote>\n\n<p>aaa</p>\n\n</blockquote>\n\n\n<hr>\n\n<blockquote>\n\n<p>bbb</p>\n\n</blockquote>",
-    "name": "Test 246",
+    "name": "Test 246: <tt>&gt; aaa↲***↲&gt; bbb↲</tt>",
     "skip": "Baremark dinkus <tt>---</tt> must be separated by blank lines"
   },
   {
     "data": "> bar\nbaz\n",
     "want": "<blockquote>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 247"
+    "name": "Test 247: <tt>&gt; bar↲baz↲</tt>"
   },
   {
     "data": "> bar\n\nbaz\n",
     "want": "<blockquote>\n\n<p>bar</p>\n\n</blockquote>\n\n\n<p>baz</p>",
-    "name": "Test 248"
+    "name": "Test 248: <tt>&gt; bar↲↲baz↲</tt>"
   },
   {
     "data": "> bar\n>\nbaz\n",
     "want": "<blockquote>\n\n<p>bar</p>\n\n</blockquote>\n\n\n<p>baz</p>",
-    "name": "Test 249",
+    "name": "Test 249: <tt>&gt; bar↲&gt;↲baz↲</tt>",
     "skip": "Baremark <tt>&#62; BLOCKQUOTE</tt> lazy continuation line"
   },
   {
     "data": "> > > foo\nbar\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<blockquote>\n\n<p>foo\nbar</p>\n\n</blockquote>\n\n</blockquote>\n\n</blockquote>",
-    "name": "Test 250"
+    "name": "Test 250: <tt>&gt; &gt; &gt; foo↲bar↲</tt>"
   },
   {
     "data": ">>> foo\n> bar\n>>baz\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<blockquote>\n\n<p>foo\nbar\nbaz</p>\n\n</blockquote>\n\n</blockquote>\n\n</blockquote>",
-    "name": "Test 251"
+    "name": "Test 251: <tt>&gt;&gt;&gt; foo↲&gt; bar↲&gt;&gt;baz↲</tt>"
   },
   {
     "data": ">     code\n\n>    not code\n",
     "want": "<blockquote>\n\n<pre><tt>code\n</tt></pre>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>not code</p>\n\n</blockquote>",
-    "name": "Test 252",
+    "name": "Test 252: <tt>&gt;␣␣␣␣␣code↲↲&gt;␣␣␣␣not code↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   "List Items",
   {
     "data": "A paragraph\nwith two lines.\n\n    indented code\n\n> A block quote.\n",
     "want": "<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>",
-    "name": "Test 253"
+    "name": "Test 253: <tt>A paragraph↲with two lines.↲↲␣␣␣␣indented code↲↲&gt; A block quote.↲</tt>"
   },
   {
     "data": "1.  A paragraph\n    with two lines.\n\n        indented code\n\n    > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 254"
+    "name": "Test 254: <tt>1.␣␣A paragraph↲␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣&gt; A block quote.↲</tt>"
   },
   {
     "data": "- one\n\n two\n",
     "want": "<ul><li>one</li></ul>\n\n<p>two</p>",
-    "name": "Test 255"
+    "name": "Test 255: <tt>- one↲↲␣two↲</tt>"
   },
   {
     "data": "- one\n\n  two\n",
     "want": "<ul><li>\n\n<p>one</p>\n\n<p>two</p>\n\n</li></ul>",
-    "name": "Test 256"
+    "name": "Test 256: <tt>- one↲↲␣␣two↲</tt>"
   },
   {
     "data": " -    one\n\n     two\n",
     "want": "<ul><li>one</li></ul>\n\n<pre><tt> two\n</tt></pre>",
-    "name": "Test 257"
+    "name": "Test 257: <tt>␣-␣␣␣␣one↲↲␣␣␣␣␣two↲</tt>"
   },
   {
     "data": " -    one\n\n      two\n",
     "want": "<ul><li>\n\n<p>one</p>\n\n<p>two</p>\n\n</li></ul>",
-    "name": "Test 258"
+    "name": "Test 258: <tt>␣-␣␣␣␣one↲↲␣␣␣␣␣␣two↲</tt>"
   },
   {
     "data": "   > > 1.  one\n>>\n>>     two\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<ol><li>\n\n<p>one</p>\n\n<p>two</p>\n\n</li></ol>\n\n</blockquote>\n\n</blockquote>",
-    "name": "Test 259"
+    "name": "Test 259: <tt>␣␣␣&gt; &gt; 1.␣␣one↲&gt;&gt;↲&gt;&gt;␣␣␣␣␣two↲</tt>"
   },
   {
     "data": ">>- one\n>>\n  >  > two\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<ul><li>one</li></ul>\n\n<p>two</p>\n\n</blockquote>\n\n</blockquote>",
-    "name": "Test 260"
+    "name": "Test 260: <tt>&gt;&gt;- one↲&gt;&gt;↲␣␣&gt;␣␣&gt; two↲</tt>"
   },
   {
     "data": "-one\n\n2.two\n",
     "want": "<p>-one</p>\n\n<p>2.two</p>",
-    "name": "Test 261"
+    "name": "Test 261: <tt>-one↲↲2.two↲</tt>"
   },
   {
     "data": "- foo\n\n\n  bar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 262"
+    "name": "Test 262: <tt>- foo↲↲↲␣␣bar↲</tt>"
   },
   {
     "data": "1.  foo\n\n    ```\n    bar\n    ```\n\n    baz\n\n    > bam\n",
     "want": "<ol><li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n<p>baz</p>\n\n<blockquote>\n\n<p>bam</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 263"
+    "name": "Test 263: <tt>1.␣␣foo↲↲␣␣␣␣```↲␣␣␣␣bar↲␣␣␣␣```↲↲␣␣␣␣baz↲↲␣␣␣␣&gt; bam↲</tt>"
   },
   {
     "data": "- Foo\n\n      bar\n\n\n      baz\n",
     "want": "<ul><li>\n\n<p>Foo</p>\n\n<pre><tt>bar\n\n\nbaz\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 264"
+    "name": "Test 264: <tt>- Foo↲↲␣␣␣␣␣␣bar↲↲↲␣␣␣␣␣␣baz↲</tt>"
   },
   {
     "data": "123456789. ok\n",
     "want": "<ol start=\"123456789\">\n\n<li>ok</li></ol>",
-    "name": "Test 265"
+    "name": "Test 265: <tt>123456789. ok↲</tt>"
   },
   {
     "data": "1234567890. not ok\n",
     "want": "<p>1234567890. not ok</p>",
-    "name": "Test 266"
+    "name": "Test 266: <tt>1234567890. not ok↲</tt>"
   },
   {
     "data": "0. ok\n",
     "want": "<ol start=\"0\">\n\n<li>ok</li></ol>",
-    "name": "Test 267"
+    "name": "Test 267: <tt>0. ok↲</tt>"
   },
   {
     "data": "003. ok\n",
     "want": "<ol start=\"3\">\n\n<li>ok</li></ol>",
-    "name": "Test 268"
+    "name": "Test 268: <tt>003. ok↲</tt>"
   },
   {
     "data": "-1. not ok\n",
     "want": "<p>-1. not ok</p>",
-    "name": "Test 269"
+    "name": "Test 269: <tt>-1. not ok↲</tt>"
   },
   {
     "data": "- foo\n\n      bar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 270"
+    "name": "Test 270: <tt>- foo↲↲␣␣␣␣␣␣bar↲</tt>"
   },
   {
     "data": "  10.  foo\n\n           bar\n",
     "want": "<ol start=\"10\">\n\n<li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n</li></ol>",
-    "name": "Test 271"
+    "name": "Test 271: <tt>␣␣10.␣␣foo↲↲␣␣␣␣␣␣␣␣␣␣␣bar↲</tt>"
   },
   {
     "data": "    indented code\n\nparagraph\n\n    more code\n",
     "want": "<pre><tt>indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>",
-    "name": "Test 272",
+    "name": "Test 272: <tt>␣␣␣␣indented code↲↲paragraph↲↲␣␣␣␣more code↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "1.     indented code\n\n   paragraph\n\n       more code\n",
     "want": "<ol><li>\n\n<pre><tt>indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>\n\n</li></ol>",
-    "name": "Test 273"
+    "name": "Test 273: <tt>1.␣␣␣␣␣indented code↲↲␣␣␣paragraph↲↲␣␣␣␣␣␣␣more code↲</tt>"
   },
   {
     "data": "1.      indented code\n\n   paragraph\n\n       more code\n",
     "want": "<ol><li>\n\n<pre><tt> indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>\n\n</li></ol>",
-    "name": "Test 274"
+    "name": "Test 274: <tt>1.␣␣␣␣␣␣indented code↲↲␣␣␣paragraph↲↲␣␣␣␣␣␣␣more code↲</tt>"
   },
   {
     "data": "   foo\n\nbar\n",
     "want": "<p>foo</p>\n\n<p>bar</p>",
-    "name": "Test 275"
+    "name": "Test 275: <tt>␣␣␣foo↲↲bar↲</tt>"
   },
   {
     "data": "-    foo\n\n  bar\n",
     "want": "<ul><li>foo</li></ul>\n\n<p>bar</p>",
-    "name": "Test 276"
+    "name": "Test 276: <tt>-␣␣␣␣foo↲↲␣␣bar↲</tt>"
   },
   {
     "data": "-  foo\n\n   bar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 277"
+    "name": "Test 277: <tt>-␣␣foo↲↲␣␣␣bar↲</tt>"
   },
   {
     "data": "-\n  foo\n-\n  ```\n  bar\n  ```\n-\n      baz\n",
     "want": "<ul><li>foo</li>\n\n<li>\n\n<pre><tt>bar\n</tt></pre>\n\n</li>\n\n<li>\n\n<pre><tt>baz\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 278"
+    "name": "Test 278: <tt>-↲␣␣foo↲-↲␣␣```↲␣␣bar↲␣␣```↲-↲␣␣␣␣␣␣baz↲</tt>"
   },
   {
     "data": "-   \n  foo\n",
     "want": "<ul><li>foo</li></ul>",
-    "name": "Test 279"
+    "name": "Test 279: <tt>-␣␣␣↲␣␣foo↲</tt>"
   },
   {
     "data": "-\n\n  foo\n",
     "want": "<ul><li></li></ul>\n\n<p>foo</p>",
-    "name": "Test 280"
+    "name": "Test 280: <tt>-↲↲␣␣foo↲</tt>"
   },
   {
     "data": "- foo\n-\n- bar\n",
     "want": "<ul><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ul>",
-    "name": "Test 281"
+    "name": "Test 281: <tt>- foo↲-↲- bar↲</tt>"
   },
   {
     "data": "- foo\n-   \n- bar\n",
     "want": "<ul><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ul>",
-    "name": "Test 282"
+    "name": "Test 282: <tt>- foo↲-␣␣␣↲- bar↲</tt>"
   },
   {
     "data": "1. foo\n2.\n3. bar\n",
     "want": "<ol><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ol>",
-    "name": "Test 283"
+    "name": "Test 283: <tt>1. foo↲2.↲3. bar↲</tt>"
   },
   {
     "data": "*\n",
     "want": "<ul><li></li></ul>",
-    "name": "Test 284"
+    "name": "Test 284: <tt>*↲</tt>"
   },
   {
     "data": "foo\n*\n\nfoo\n1.\n",
     "want": "<p>foo\n*</p>\n\n<p>foo\n1.</p>",
-    "name": "Test 285"
+    "name": "Test 285: <tt>foo↲*↲↲foo↲1.↲</tt>"
   },
   {
     "data": " 1.  A paragraph\n     with two lines.\n\n         indented code\n\n     > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 286"
+    "name": "Test 286: <tt>␣1.␣␣A paragraph↲␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣&gt; A block quote.↲</tt>"
   },
   {
     "data": "  1.  A paragraph\n      with two lines.\n\n          indented code\n\n      > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 287"
+    "name": "Test 287: <tt>␣␣1.␣␣A paragraph↲␣␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣&gt; A block quote.↲</tt>"
   },
   {
     "data": "   1.  A paragraph\n       with two lines.\n\n           indented code\n\n       > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 288"
+    "name": "Test 288: <tt>␣␣␣1.␣␣A paragraph↲␣␣␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣␣&gt; A block quote.↲</tt>"
   },
   {
     "data": "    1.  A paragraph\n        with two lines.\n\n            indented code\n\n        > A block quote.\n",
     "want": "<pre><tt>1.  A paragraph\n    with two lines.\n\n        indented code\n\n    &#62; A block quote.\n</tt></pre>",
-    "name": "Test 289",
+    "name": "Test 289: <tt>␣␣␣␣1.␣␣A paragraph↲␣␣␣␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣␣␣&gt; A block quote.↲</tt>",
     "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "  1.  A paragraph\nwith two lines.\n\n          indented code\n\n      > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 290"
+    "name": "Test 290: <tt>␣␣1.␣␣A paragraph↲with two lines.↲↲␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣&gt; A block quote.↲</tt>"
   },
   {
     "data": "  1.  A paragraph\n    with two lines.\n",
     "want": "<ol><li>A paragraph\nwith two lines.</li></ol>",
-    "name": "Test 291"
+    "name": "Test 291: <tt>␣␣1.␣␣A paragraph↲␣␣␣␣with two lines.↲</tt>"
   },
   {
     "data": "> 1. > Blockquote\ncontinued here.\n",
     "want": "<blockquote>\n\n<ol><li>\n\n<blockquote>\n\n<p>Blockquote\ncontinued here.</p>\n\n</blockquote>\n\n\n</li></ol>\n\n</blockquote>",
-    "name": "Test 292"
+    "name": "Test 292: <tt>&gt; 1. &gt; Blockquote↲continued here.↲</tt>"
   },
   {
     "data": "> 1. > Blockquote\n> continued here.\n",
     "want": "<blockquote>\n\n<ol><li>\n\n<blockquote>\n\n<p>Blockquote\ncontinued here.</p>\n\n</blockquote>\n\n\n</li></ol>\n\n</blockquote>",
-    "name": "Test 293"
+    "name": "Test 293: <tt>&gt; 1. &gt; Blockquote↲&gt; continued here.↲</tt>"
   },
   {
     "data": "- foo\n  - bar\n    - baz\n      - boo\n",
     "want": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz\n<ul><li>boo</li></ul>\n\n</li></ul>\n\n</li></ul>\n\n</li></ul>",
-    "name": "Test 294"
+    "name": "Test 294: <tt>- foo↲␣␣- bar↲␣␣␣␣- baz↲␣␣␣␣␣␣- boo↲</tt>"
   },
   {
     "data": "- foo\n - bar\n  - baz\n   - boo\n",
     "want": "<ul><li>foo</li>\n\n<li>bar</li>\n\n<li>baz</li>\n\n<li>boo</li></ul>",
-    "name": "Test 295"
+    "name": "Test 295: <tt>- foo↲␣- bar↲␣␣- baz↲␣␣␣- boo↲</tt>"
   },
   {
     "data": "10) foo\n    - bar\n",
     "want": "<ol start=\"10\">\n\n<li>foo\n<ul><li>bar</li></ul>\n\n</li></ol>",
-    "name": "Test 296"
+    "name": "Test 296: <tt>10) foo↲␣␣␣␣- bar↲</tt>"
   },
   {
     "data": "10) foo\n   - bar\n",
     "want": "<ol start=\"10\">\n\n<li>foo</li></ol>\n\n<ul><li>bar</li></ul>",
-    "name": "Test 297"
+    "name": "Test 297: <tt>10) foo↲␣␣␣- bar↲</tt>"
   },
   {
     "data": "- - foo\n",
     "want": "<ul><li>\n\n<ul><li>foo</li></ul>\n\n</li></ul>",
-    "name": "Test 298"
+    "name": "Test 298: <tt>- - foo↲</tt>"
   },
   {
     "data": "1. - 2. foo\n",
     "want": "<ol><li>\n\n<ul><li>\n\n<ol start=\"2\">\n\n<li>foo</li></ol>\n\n</li></ul>\n\n</li></ol>",
-    "name": "Test 299"
+    "name": "Test 299: <tt>1. - 2. foo↲</tt>"
   },
   {
     "data": "- # Foo\n- Bar\n  ---\n  baz\n",
     "want": "<ul><li>\n\n<h1>Foo</h1>\n\n</li>\n\n<li>\n\n<h2>Bar</h2>\nbaz</li></ul>",
-    "name": "Test 300"
+    "name": "Test 300: <tt>- # Foo↲- Bar↲␣␣---↲␣␣baz↲</tt>"
   },
   "<tt>* BULLET</tt> <tt>+ BULLET</tt> <tt>- BULLET</tt> / <tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>",
   {
     "data": "- foo\n- bar\n+ baz\n",
     "want": "<ul><li>foo</li>\n\n<li>bar</li></ul>\n\n<ul><li>baz</li></ul>",
-    "name": "Test 301"
+    "name": "Test 301: <tt>- foo↲- bar↲+ baz↲</tt>"
   },
   {
     "data": "1. foo\n2. bar\n3) baz\n",
     "want": "<ol><li>foo</li>\n\n<li>bar</li></ol>\n\n<ol start=\"3\">\n\n<li>baz</li></ol>",
-    "name": "Test 302"
+    "name": "Test 302: <tt>1. foo↲2. bar↲3) baz↲</tt>"
   },
   {
     "data": "Foo\n- bar\n- baz\n",
     "want": "<p>Foo</p>\n\n<ul><li>bar</li>\n\n<li>baz</li></ul>",
-    "name": "Test 303"
+    "name": "Test 303: <tt>Foo↲- bar↲- baz↲</tt>"
   },
   {
     "data": "The number of windows in my house is\n14.  The number of doors is 6.\n",
     "want": "<p>The number of windows in my house is\n14.  The number of doors is 6.</p>",
-    "name": "Test 304"
+    "name": "Test 304: <tt>The number of windows in my house is↲14.␣␣The number of doors is 6.↲</tt>"
   },
   {
     "data": "The number of windows in my house is\n1.  The number of doors is 6.\n",
     "want": "<p>The number of windows in my house is</p>\n\n<ol><li>The number of doors is 6.</li></ol>",
-    "name": "Test 305"
+    "name": "Test 305: <tt>The number of windows in my house is↲1.␣␣The number of doors is 6.↲</tt>"
   },
   {
     "data": "- foo\n\n- bar\n\n\n- baz\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n</li>\n\n<li>\n\n<p>bar</p>\n\n</li>\n\n<li>\n\n<p>baz</p>\n\n</li></ul>",
-    "name": "Test 306"
+    "name": "Test 306: <tt>- foo↲↲- bar↲↲↲- baz↲</tt>"
   },
   {
     "data": "- foo\n  - bar\n    - baz\n\n\n      bim\n",
     "want": "<ul><li>foo\n<ul><li>bar\n<ul><li>\n\n<p>baz</p>\n\n<p>bim</p>\n\n</li></ul>\n\n</li></ul>\n\n</li></ul>",
-    "name": "Test 307"
+    "name": "Test 307: <tt>- foo↲␣␣- bar↲␣␣␣␣- baz↲↲↲␣␣␣␣␣␣bim↲</tt>"
   },
   {
     "data": "- foo\n- bar\n\n<!-- -->\n\n- baz\n- bim\n",
     "want": "<ul><li>foo</li>\n\n<li>bar</li></ul>\n\n<!-- -->\n\n<ul><li>baz</li>\n\n<li>bim</li></ul>",
-    "name": "Test 308"
+    "name": "Test 308: <tt>- foo↲- bar↲↲&lt;!-- --&gt;↲↲- baz↲- bim↲</tt>"
   },
   {
     "data": "-   foo\n\n    notcode\n\n-   foo\n\n<!-- -->\n\n    code\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>notcode</p>\n\n</li>\n\n<li>\n\n<p>foo</p>\n\n</li></ul>\n\n<!-- -->\n\n<pre><tt>code\n</tt></pre>",
-    "name": "Test 309"
+    "name": "Test 309: <tt>-␣␣␣foo↲↲␣␣␣␣notcode↲↲-␣␣␣foo↲↲&lt;!-- --&gt;↲↲␣␣␣␣code↲</tt>"
   },
   {
     "data": "- a\n - b\n  - c\n   - d\n  - e\n - f\n- g\n",
     "want": "<ul><li>a</li>\n\n<li>b</li>\n\n<li>c</li>\n\n<li>d</li>\n\n<li>e</li>\n\n<li>f</li>\n\n<li>g</li></ul>",
-    "name": "Test 310"
+    "name": "Test 310: <tt>- a↲␣- b↲␣␣- c↲␣␣␣- d↲␣␣- e↲␣- f↲- g↲</tt>"
   },
   {
     "data": "1. a\n\n  2. b\n\n   3. c\n",
     "want": "<ol><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>c</p>\n\n</li></ol>",
-    "name": "Test 311"
+    "name": "Test 311: <tt>1. a↲↲␣␣2. b↲↲␣␣␣3. c↲</tt>"
   },
   {
     "data": "- a\n - b\n  - c\n   - d\n    - e\n",
     "want": "<ul><li>a</li>\n\n<li>b</li>\n\n<li>c</li>\n\n<li>d\n- e</li></ul>",
-    "name": "Test 312"
+    "name": "Test 312: <tt>- a↲␣- b↲␣␣- c↲␣␣␣- d↲␣␣␣␣- e↲</tt>"
   },
   {
     "data": "1. a\n\n  2. b\n\n    3. c\n",
     "want": "<ol><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li></ol>\n\n<pre><tt>3. c\n</tt></pre>",
-    "name": "Test 313"
+    "name": "Test 313: <tt>1. a↲↲␣␣2. b↲↲␣␣␣␣3. c↲</tt>"
   },
   {
     "data": "- a\n- b\n\n- c\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>c</p>\n\n</li></ul>",
-    "name": "Test 314"
+    "name": "Test 314: <tt>- a↲- b↲↲- c↲</tt>"
   },
   {
     "data": "* a\n*\n\n* c\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li></li>\n\n<li>\n\n<p>c</p>\n\n</li></ul>",
-    "name": "Test 315"
+    "name": "Test 315: <tt>* a↲*↲↲* c↲</tt>"
   },
   {
     "data": "- a\n- b\n\n  c\n- d\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n<p>c</p>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n</li></ul>",
-    "name": "Test 316"
+    "name": "Test 316: <tt>- a↲- b↲↲␣␣c↲- d↲</tt>"
   },
   {
     "data": "- a\n- b\n\n  [ref]: /url\n- d\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n</li></ul>",
-    "name": "Test 317"
+    "name": "Test 317: <tt>- a↲- b↲↲␣␣[ref]: /url↲- d↲</tt>"
   },
   {
     "data": "- a\n- ```\n  b\n\n\n  ```\n- c\n",
     "want": "<ul><li>a</li>\n\n<li>\n\n<pre><tt>b\n\n\n</tt></pre>\n\n</li>\n\n<li>c</li></ul>",
-    "name": "Test 318"
+    "name": "Test 318: <tt>- a↲- ```↲␣␣b↲↲↲␣␣```↲- c↲</tt>"
   },
   {
     "data": "- a\n  - b\n\n    c\n- d\n",
     "want": "<ul><li>a\n<ul><li>\n\n<p>b</p>\n\n<p>c</p>\n\n</li></ul>\n\n</li>\n\n<li>d</li></ul>",
-    "name": "Test 319"
+    "name": "Test 319: <tt>- a↲␣␣- b↲↲␣␣␣␣c↲- d↲</tt>"
   },
   {
     "data": "* a\n  > b\n  >\n* c\n",
     "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n</li>\n\n<li>c</li></ul>",
-    "name": "Test 320"
+    "name": "Test 320: <tt>* a↲␣␣&gt; b↲␣␣&gt;↲* c↲</tt>"
   },
   {
     "data": "- a\n  > b\n  ```\n  c\n  ```\n- d\n",
     "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n<pre><tt>c\n</tt></pre>\n\n</li>\n\n<li>d</li></ul>",
-    "name": "Test 321"
+    "name": "Test 321: <tt>- a↲␣␣&gt; b↲␣␣```↲␣␣c↲␣␣```↲- d↲</tt>"
   },
   {
     "data": "- a\n",
     "want": "<ul><li>a</li></ul>",
-    "name": "Test 322"
+    "name": "Test 322: <tt>- a↲</tt>"
   },
   {
     "data": "- a\n  - b\n",
     "want": "<ul><li>a\n<ul><li>b</li></ul>\n\n</li></ul>",
-    "name": "Test 323"
+    "name": "Test 323: <tt>- a↲␣␣- b↲</tt>"
   },
   {
     "data": "1. ```\n   foo\n   ```\n\n   bar\n",
     "want": "<ol><li>\n\n<pre><tt>foo\n</tt></pre>\n\n<p>bar</p>\n\n</li></ol>",
-    "name": "Test 324"
+    "name": "Test 324: <tt>1. ```↲␣␣␣foo↲␣␣␣```↲↲␣␣␣bar↲</tt>"
   },
   {
     "data": "* foo\n  * bar\n\n  baz\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<ul><li>bar</li></ul>\n\n<p>baz</p>\n\n</li></ul>",
-    "name": "Test 325"
+    "name": "Test 325: <tt>* foo↲␣␣* bar↲↲␣␣baz↲</tt>"
   },
   {
     "data": "- a\n  - b\n  - c\n\n- d\n  - e\n  - f\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n<ul><li>b</li>\n\n<li>c</li></ul>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n<ul><li>e</li>\n\n<li>f</li></ul>\n\n</li></ul>",
-    "name": "Test 326"
+    "name": "Test 326: <tt>- a↲␣␣- b↲␣␣- c↲↲- d↲␣␣- e↲␣␣- f↲</tt>"
   },
   "Inlines",
   {
     "data": "`hi`lo`\n",
     "want": "<p><tt>hi</tt>lo`</p>",
-    "name": "Test 327"
+    "name": "Test 327: <tt>`hi`lo`↲</tt>"
   },
   "<tt>`CODE`</tt> <tt>`` CODE ``</tt>",
   {
     "data": "`foo`\n",
     "want": "<p><tt>foo</tt></p>",
-    "name": "Test 328"
+    "name": "Test 328: <tt>`foo`↲</tt>"
   },
   {
     "data": "`` foo ` bar ``\n",
     "want": "<p><tt>foo ` bar</tt></p>",
-    "name": "Test 329"
+    "name": "Test 329: <tt>`` foo ` bar ``↲</tt>"
   },
   {
     "data": "` `` `\n",
     "want": "<p><tt>``</tt></p>",
-    "name": "Test 330"
+    "name": "Test 330: <tt>` `` `↲</tt>"
   },
   {
     "data": "`  ``  `\n",
     "want": "<p><tt> `` </tt></p>",
-    "name": "Test 331"
+    "name": "Test 331: <tt>`␣␣``␣␣`↲</tt>"
   },
   {
     "data": "` a`\n",
     "want": "<p><tt> a</tt></p>",
-    "name": "Test 332"
+    "name": "Test 332: <tt>` a`↲</tt>"
   },
   {
     "data": "` b `\n",
     "want": "<p><tt> b </tt></p>",
-    "name": "Test 333"
+    "name": "Test 333: <tt>` b `↲</tt>"
   },
   {
     "data": "` `\n`  `\n",
     "want": "<p><tt> </tt>\n\n<tt>  </tt></p>",
-    "name": "Test 334"
+    "name": "Test 334: <tt>` `↲`␣␣`↲</tt>"
   },
   {
     "data": "``\nfoo\nbar  \nbaz\n``\n",
     "want": "<p><tt>foo bar   baz</tt></p>",
-    "name": "Test 335"
+    "name": "Test 335: <tt>``↲foo↲bar␣␣↲baz↲``↲</tt>"
   },
   {
     "data": "``\nfoo \n``\n",
     "want": "<p><tt>foo </tt></p>",
-    "name": "Test 336"
+    "name": "Test 336: <tt>``↲foo␣↲``↲</tt>"
   },
   {
     "data": "`foo   bar \nbaz`\n",
     "want": "<p><tt>foo   bar  baz</tt></p>",
-    "name": "Test 337"
+    "name": "Test 337: <tt>`foo␣␣␣bar␣↲baz`↲</tt>"
   },
   {
     "data": "`foo\\`bar`\n",
     "want": "<p><tt>foo\\</tt>bar`</p>",
-    "name": "Test 338"
+    "name": "Test 338: <tt>`foo&#92;`bar`↲</tt>"
   },
   {
     "data": "``foo`bar``\n",
     "want": "<p><tt>foo`bar</tt></p>",
-    "name": "Test 339"
+    "name": "Test 339: <tt>``foo`bar``↲</tt>"
   },
   {
     "data": "` foo `` bar `\n",
     "want": "<p><tt>foo `` bar</tt></p>",
-    "name": "Test 340"
+    "name": "Test 340: <tt>` foo `` bar `↲</tt>"
   },
   {
     "data": "*foo`*`\n",
     "want": "<p>*foo<tt>*</tt></p>",
-    "name": "Test 341"
+    "name": "Test 341: <tt>*foo`*`↲</tt>"
   },
   {
     "data": "[not a `link](/foo`)\n",
     "want": "<p>[not a <tt>link](/foo</tt>)</p>",
-    "name": "Test 342"
+    "name": "Test 342: <tt>[not a `link](/foo`)↲</tt>"
   },
   {
     "data": "`<a href=\"`\">`\n",
     "want": "<p><tt>&#60;a href=&quot;</tt>&quot;&#62;`</p>",
-    "name": "Test 343"
+    "name": "Test 343: <tt>`&lt;a href=\"`\"&gt;`↲</tt>"
   },
   {
     "data": "<a href=\"`\">`\n",
     "want": "<p><a href=\"`\">`</p>",
-    "name": "Test 344"
+    "name": "Test 344: <tt>&lt;a href=\"`\"&gt;`↲</tt>"
   },
   {
     "data": "`<https://foo.bar.`baz>`\n",
     "want": "<p><tt>&#60;https://foo.bar.</tt>baz&#62;`</p>",
-    "name": "Test 345"
+    "name": "Test 345: <tt>`&lt;https://foo.bar.`baz&gt;`↲</tt>"
   },
   {
     "data": "<https://foo.bar.`baz>`\n",
     "want": "<p><a href=\"https://foo.bar.%60baz\">https://foo.bar.`baz</a>`</p>",
-    "name": "Test 346",
+    "name": "Test 346: <tt>&lt;https://foo.bar.`baz&gt;`↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "```foo``\n",
     "want": "<p>```foo``</p>",
-    "name": "Test 347"
+    "name": "Test 347: <tt>```foo``↲</tt>"
   },
   {
     "data": "`foo\n",
     "want": "<p>`foo</p>",
-    "name": "Test 348"
+    "name": "Test 348: <tt>`foo↲</tt>"
   },
   {
     "data": "`foo``bar``\n",
     "want": "<p>`foo<tt>bar</tt></p>",
-    "name": "Test 349"
+    "name": "Test 349: <tt>`foo``bar``↲</tt>"
   },
   "<tt>*ITALIC*</tt> <tt>_ITALIC_</tt> / <tt>**BOLD**</tt> <tt>__BOLD__</tt>",
   {
     "data": "*foo bar*\n",
     "want": "<p><i>foo bar</i></p>",
-    "name": "Test 350"
+    "name": "Test 350: <tt>*foo bar*↲</tt>"
   },
   {
     "data": "a * foo bar*\n",
     "want": "<p>a * foo bar*</p>",
-    "name": "Test 351"
+    "name": "Test 351: <tt>a * foo bar*↲</tt>"
   },
   {
     "data": "a*\"foo\"*\n",
     "want": "<p>a*&quot;foo&quot;*</p>",
-    "name": "Test 352"
+    "name": "Test 352: <tt>a*\"foo\"*↲</tt>"
   },
   {
     "data": "* a *\n",
     "want": "<p>* a *</p>",
-    "name": "Test 353"
+    "name": "Test 353: <tt>* a *↲</tt>"
   },
   {
     "data": "*$*alpha.\n\n*£*bravo.\n\n*€*charlie.\n",
     "want": "<p>*$*alpha.</p>\n\n<p>*£*bravo.</p>\n\n<p>*€*charlie.</p>",
-    "name": "Test 354"
+    "name": "Test 354: <tt>*$*alpha.↲↲*£*bravo.↲↲*€*charlie.↲</tt>"
   },
   {
     "data": "foo*bar*\n",
     "want": "<p>foo<i>bar</i></p>",
-    "name": "Test 355"
+    "name": "Test 355: <tt>foo*bar*↲</tt>"
   },
   {
     "data": "5*6*78\n",
     "want": "<p>5<i>6</i>78</p>",
-    "name": "Test 356"
+    "name": "Test 356: <tt>5*6*78↲</tt>"
   },
   {
     "data": "_foo bar_\n",
     "want": "<p><i>foo bar</i></p>",
-    "name": "Test 357"
+    "name": "Test 357: <tt>_foo bar_↲</tt>"
   },
   {
     "data": "_ foo bar_\n",
     "want": "<p>_ foo bar_</p>",
-    "name": "Test 358"
+    "name": "Test 358: <tt>_ foo bar_↲</tt>"
   },
   {
     "data": "a_\"foo\"_\n",
     "want": "<p>a_&quot;foo&quot;_</p>",
-    "name": "Test 359"
+    "name": "Test 359: <tt>a_\"foo\"_↲</tt>"
   },
   {
     "data": "foo_bar_\n",
     "want": "<p>foo_bar_</p>",
-    "name": "Test 360"
+    "name": "Test 360: <tt>foo_bar_↲</tt>"
   },
   {
     "data": "5_6_78\n",
     "want": "<p>5_6_78</p>",
-    "name": "Test 361"
+    "name": "Test 361: <tt>5_6_78↲</tt>"
   },
   {
     "data": "пристаням_стремятся_\n",
     "want": "<p>пристаням_стремятся_</p>",
-    "name": "Test 362"
+    "name": "Test 362: <tt>пристаням_стремятся_↲</tt>"
   },
   {
     "data": "aa_\"bb\"_cc\n",
     "want": "<p>aa_&quot;bb&quot;_cc</p>",
-    "name": "Test 363"
+    "name": "Test 363: <tt>aa_\"bb\"_cc↲</tt>"
   },
   {
     "data": "foo-_(bar)_\n",
     "want": "<p>foo-<i>(bar)</i></p>",
-    "name": "Test 364"
+    "name": "Test 364: <tt>foo-_(bar)_↲</tt>"
   },
   {
     "data": "_foo*\n",
     "want": "<p>_foo*</p>",
-    "name": "Test 365"
+    "name": "Test 365: <tt>_foo*↲</tt>"
   },
   {
     "data": "*foo bar *\n",
     "want": "<p>*foo bar *</p>",
-    "name": "Test 366"
+    "name": "Test 366: <tt>*foo bar *↲</tt>"
   },
   {
     "data": "*foo bar\n*\n",
     "want": "<p>*foo bar\n*</p>",
-    "name": "Test 367"
+    "name": "Test 367: <tt>*foo bar↲*↲</tt>"
   },
   {
     "data": "*(*foo)\n",
     "want": "<p>*(*foo)</p>",
-    "name": "Test 368"
+    "name": "Test 368: <tt>*(*foo)↲</tt>"
   },
   {
     "data": "*(*foo*)*\n",
     "want": "<p><i>(<i>foo</i>)</i></p>",
-    "name": "Test 369"
+    "name": "Test 369: <tt>*(*foo*)*↲</tt>"
   },
   {
     "data": "*foo*bar\n",
     "want": "<p><i>foo</i>bar</p>",
-    "name": "Test 370"
+    "name": "Test 370: <tt>*foo*bar↲</tt>"
   },
   {
     "data": "_foo bar _\n",
     "want": "<p>_foo bar _</p>",
-    "name": "Test 371"
+    "name": "Test 371: <tt>_foo bar _↲</tt>"
   },
   {
     "data": "_(_foo)\n",
     "want": "<p>_(_foo)</p>",
-    "name": "Test 372"
+    "name": "Test 372: <tt>_(_foo)↲</tt>"
   },
   {
     "data": "_(_foo_)_\n",
     "want": "<p><i>(<i>foo</i>)</i></p>",
-    "name": "Test 373"
+    "name": "Test 373: <tt>_(_foo_)_↲</tt>"
   },
   {
     "data": "_foo_bar\n",
     "want": "<p>_foo_bar</p>",
-    "name": "Test 374"
+    "name": "Test 374: <tt>_foo_bar↲</tt>"
   },
   {
     "data": "_пристаням_стремятся\n",
     "want": "<p>_пристаням_стремятся</p>",
-    "name": "Test 375"
+    "name": "Test 375: <tt>_пристаням_стремятся↲</tt>"
   },
   {
     "data": "_foo_bar_baz_\n",
     "want": "<p><i>foo_bar_baz</i></p>",
-    "name": "Test 376"
+    "name": "Test 376: <tt>_foo_bar_baz_↲</tt>"
   },
   {
     "data": "_(bar)_.\n",
     "want": "<p><i>(bar)</i>.</p>",
-    "name": "Test 377"
+    "name": "Test 377: <tt>_(bar)_.↲</tt>"
   },
   {
     "data": "**foo bar**\n",
     "want": "<p><b>foo bar</b></p>",
-    "name": "Test 378"
+    "name": "Test 378: <tt>**foo bar**↲</tt>"
   },
   {
     "data": "** foo bar**\n",
     "want": "<p>** foo bar**</p>",
-    "name": "Test 379"
+    "name": "Test 379: <tt>** foo bar**↲</tt>"
   },
   {
     "data": "a**\"foo\"**\n",
     "want": "<p>a**&quot;foo&quot;**</p>",
-    "name": "Test 380"
+    "name": "Test 380: <tt>a**\"foo\"**↲</tt>"
   },
   {
     "data": "foo**bar**\n",
     "want": "<p>foo<b>bar</b></p>",
-    "name": "Test 381"
+    "name": "Test 381: <tt>foo**bar**↲</tt>"
   },
   {
     "data": "__foo bar__\n",
     "want": "<p><b>foo bar</b></p>",
-    "name": "Test 382"
+    "name": "Test 382: <tt>__foo bar__↲</tt>"
   },
   {
     "data": "__ foo bar__\n",
     "want": "<p>__ foo bar__</p>",
-    "name": "Test 383"
+    "name": "Test 383: <tt>__ foo bar__↲</tt>"
   },
   {
     "data": "__\nfoo bar__\n",
     "want": "<p>__\nfoo bar__</p>",
-    "name": "Test 384"
+    "name": "Test 384: <tt>__↲foo bar__↲</tt>"
   },
   {
     "data": "a__\"foo\"__\n",
     "want": "<p>a__&quot;foo&quot;__</p>",
-    "name": "Test 385"
+    "name": "Test 385: <tt>a__\"foo\"__↲</tt>"
   },
   {
     "data": "foo__bar__\n",
     "want": "<p>foo__bar__</p>",
-    "name": "Test 386"
+    "name": "Test 386: <tt>foo__bar__↲</tt>"
   },
   {
     "data": "5__6__78\n",
     "want": "<p>5__6__78</p>",
-    "name": "Test 387"
+    "name": "Test 387: <tt>5__6__78↲</tt>"
   },
   {
     "data": "пристаням__стремятся__\n",
     "want": "<p>пристаням__стремятся__</p>",
-    "name": "Test 388"
+    "name": "Test 388: <tt>пристаням__стремятся__↲</tt>"
   },
   {
     "data": "__foo, __bar__, baz__\n",
     "want": "<p><b>foo, <b>bar</b>, baz</b></p>",
-    "name": "Test 389"
+    "name": "Test 389: <tt>__foo, __bar__, baz__↲</tt>"
   },
   {
     "data": "foo-__(bar)__\n",
     "want": "<p>foo-<b>(bar)</b></p>",
-    "name": "Test 390"
+    "name": "Test 390: <tt>foo-__(bar)__↲</tt>"
   },
   {
     "data": "**foo bar **\n",
     "want": "<p>**foo bar **</p>",
-    "name": "Test 391"
+    "name": "Test 391: <tt>**foo bar **↲</tt>"
   },
   {
     "data": "**(**foo)\n",
     "want": "<p>**(**foo)</p>",
-    "name": "Test 392"
+    "name": "Test 392: <tt>**(**foo)↲</tt>"
   },
   {
     "data": "*(**foo**)*\n",
     "want": "<p><i>(<b>foo</b>)</i></p>",
-    "name": "Test 393"
+    "name": "Test 393: <tt>*(**foo**)*↲</tt>"
   },
   {
     "data": "**Gomphocarpus (*Gomphocarpus physocarpus*, syn.\n*Asclepias physocarpa*)**\n",
     "want": "<p><b>Gomphocarpus (<i>Gomphocarpus physocarpus</i>, syn.\n<i>Asclepias physocarpa</i>)</b></p>",
-    "name": "Test 394"
+    "name": "Test 394: <tt>**Gomphocarpus (*Gomphocarpus physocarpus*, syn.↲*Asclepias physocarpa*)**↲</tt>"
   },
   {
     "data": "**foo \"*bar*\" foo**\n",
     "want": "<p><b>foo &quot;<i>bar</i>&quot; foo</b></p>",
-    "name": "Test 395"
+    "name": "Test 395: <tt>**foo \"*bar*\" foo**↲</tt>"
   },
   {
     "data": "**foo**bar\n",
     "want": "<p><b>foo</b>bar</p>",
-    "name": "Test 396"
+    "name": "Test 396: <tt>**foo**bar↲</tt>"
   },
   {
     "data": "__foo bar __\n",
     "want": "<p>__foo bar __</p>",
-    "name": "Test 397"
+    "name": "Test 397: <tt>__foo bar __↲</tt>"
   },
   {
     "data": "__(__foo)\n",
     "want": "<p>__(__foo)</p>",
-    "name": "Test 398"
+    "name": "Test 398: <tt>__(__foo)↲</tt>"
   },
   {
     "data": "_(__foo__)_\n",
     "want": "<p><i>(<b>foo</b>)</i></p>",
-    "name": "Test 399"
+    "name": "Test 399: <tt>_(__foo__)_↲</tt>"
   },
   {
     "data": "__foo__bar\n",
     "want": "<p>__foo__bar</p>",
-    "name": "Test 400"
+    "name": "Test 400: <tt>__foo__bar↲</tt>"
   },
   {
     "data": "__пристаням__стремятся\n",
     "want": "<p>__пристаням__стремятся</p>",
-    "name": "Test 401"
+    "name": "Test 401: <tt>__пристаням__стремятся↲</tt>"
   },
   {
     "data": "__foo__bar__baz__\n",
     "want": "<p><b>foo__bar__baz</b></p>",
-    "name": "Test 402"
+    "name": "Test 402: <tt>__foo__bar__baz__↲</tt>"
   },
   {
     "data": "__(bar)__.\n",
     "want": "<p><b>(bar)</b>.</p>",
-    "name": "Test 403"
+    "name": "Test 403: <tt>__(bar)__.↲</tt>"
   },
   {
     "data": "*foo [bar](/url)*\n",
     "want": "<p><i>foo <a href=\"/url\" title=\"\">bar</a></i></p>",
-    "name": "Test 404"
+    "name": "Test 404: <tt>*foo [bar](/url)*↲</tt>"
   },
   {
     "data": "*foo\nbar*\n",
     "want": "<p><i>foo\nbar</i></p>",
-    "name": "Test 405"
+    "name": "Test 405: <tt>*foo↲bar*↲</tt>"
   },
   {
     "data": "_foo __bar__ baz_\n",
     "want": "<p><i>foo <b>bar</b> baz</i></p>",
-    "name": "Test 406"
+    "name": "Test 406: <tt>_foo __bar__ baz_↲</tt>"
   },
   {
     "data": "_foo _bar_ baz_\n",
     "want": "<p><i>foo <i>bar</i> baz</i></p>",
-    "name": "Test 407"
+    "name": "Test 407: <tt>_foo _bar_ baz_↲</tt>"
   },
   {
     "data": "__foo_ bar_\n",
     "want": "<p><i><i>foo</i> bar</i></p>",
-    "name": "Test 408"
+    "name": "Test 408: <tt>__foo_ bar_↲</tt>"
   },
   {
     "data": "*foo *bar**\n",
     "want": "<p><i>foo <i>bar</i></i></p>",
-    "name": "Test 409"
+    "name": "Test 409: <tt>*foo *bar**↲</tt>"
   },
   {
     "data": "*foo **bar** baz*\n",
     "want": "<p><i>foo <b>bar</b> baz</i></p>",
-    "name": "Test 410"
+    "name": "Test 410: <tt>*foo **bar** baz*↲</tt>"
   },
   {
     "data": "*foo**bar**baz*\n",
     "want": "<p><i>foo<b>bar</b>baz</i></p>",
-    "name": "Test 411"
+    "name": "Test 411: <tt>*foo**bar**baz*↲</tt>"
   },
   {
     "data": "*foo**bar*\n",
     "want": "<p><i>foo**bar</i></p>",
-    "name": "Test 412"
+    "name": "Test 412: <tt>*foo**bar*↲</tt>"
   },
   {
     "data": "***foo** bar*\n",
     "want": "<p><i><b>foo</b> bar</i></p>",
-    "name": "Test 413"
+    "name": "Test 413: <tt>***foo** bar*↲</tt>"
   },
   {
     "data": "*foo **bar***\n",
     "want": "<p><i>foo <b>bar</b></i></p>",
-    "name": "Test 414"
+    "name": "Test 414: <tt>*foo **bar***↲</tt>"
   },
   {
     "data": "*foo**bar***\n",
     "want": "<p><i>foo<b>bar</b></i></p>",
-    "name": "Test 415"
+    "name": "Test 415: <tt>*foo**bar***↲</tt>"
   },
   {
     "data": "foo***bar***baz\n",
     "want": "<p>foo<i><b>bar</b></i>baz</p>",
-    "name": "Test 416"
+    "name": "Test 416: <tt>foo***bar***baz↲</tt>"
   },
   {
     "data": "foo******bar*********baz\n",
     "want": "<p>foo<b><b><b>bar</b></b></b>***baz</p>",
-    "name": "Test 417"
+    "name": "Test 417: <tt>foo******bar*********baz↲</tt>"
   },
   {
     "data": "*foo **bar *baz* bim** bop*\n",
     "want": "<p><i>foo <b>bar <i>baz</i> bim</b> bop</i></p>",
-    "name": "Test 418"
+    "name": "Test 418: <tt>*foo **bar *baz* bim** bop*↲</tt>"
   },
   {
     "data": "*foo [*bar*](/url)*\n",
     "want": "<p><i>foo <a href=\"/url\" title=\"\"><i>bar</i></a></i></p>",
-    "name": "Test 419"
+    "name": "Test 419: <tt>*foo [*bar*](/url)*↲</tt>"
   },
   {
     "data": "** is not an empty emphasis\n",
     "want": "<p>** is not an empty emphasis</p>",
-    "name": "Test 420"
+    "name": "Test 420: <tt>** is not an empty emphasis↲</tt>"
   },
   {
     "data": "**** is not an empty strong emphasis\n",
     "want": "<p>**** is not an empty strong emphasis</p>",
-    "name": "Test 421"
+    "name": "Test 421: <tt>**** is not an empty strong emphasis↲</tt>"
   },
   {
     "data": "**foo [bar](/url)**\n",
     "want": "<p><b>foo <a href=\"/url\" title=\"\">bar</a></b></p>",
-    "name": "Test 422"
+    "name": "Test 422: <tt>**foo [bar](/url)**↲</tt>"
   },
   {
     "data": "**foo\nbar**\n",
     "want": "<p><b>foo\nbar</b></p>",
-    "name": "Test 423"
+    "name": "Test 423: <tt>**foo↲bar**↲</tt>"
   },
   {
     "data": "__foo _bar_ baz__\n",
     "want": "<p><b>foo <i>bar</i> baz</b></p>",
-    "name": "Test 424"
+    "name": "Test 424: <tt>__foo _bar_ baz__↲</tt>"
   },
   {
     "data": "__foo __bar__ baz__\n",
     "want": "<p><b>foo <b>bar</b> baz</b></p>",
-    "name": "Test 425"
+    "name": "Test 425: <tt>__foo __bar__ baz__↲</tt>"
   },
   {
     "data": "____foo__ bar__\n",
     "want": "<p><b><b>foo</b> bar</b></p>",
-    "name": "Test 426"
+    "name": "Test 426: <tt>____foo__ bar__↲</tt>"
   },
   {
     "data": "**foo **bar****\n",
     "want": "<p><b>foo <b>bar</b></b></p>",
-    "name": "Test 427"
+    "name": "Test 427: <tt>**foo **bar****↲</tt>"
   },
   {
     "data": "**foo *bar* baz**\n",
     "want": "<p><b>foo <i>bar</i> baz</b></p>",
-    "name": "Test 428"
+    "name": "Test 428: <tt>**foo *bar* baz**↲</tt>"
   },
   {
     "data": "**foo*bar*baz**\n",
     "want": "<p><b>foo<i>bar</i>baz</b></p>",
-    "name": "Test 429"
+    "name": "Test 429: <tt>**foo*bar*baz**↲</tt>"
   },
   {
     "data": "***foo* bar**\n",
     "want": "<p><b><i>foo</i> bar</b></p>",
-    "name": "Test 430"
+    "name": "Test 430: <tt>***foo* bar**↲</tt>"
   },
   {
     "data": "**foo *bar***\n",
     "want": "<p><b>foo <i>bar</i></b></p>",
-    "name": "Test 431"
+    "name": "Test 431: <tt>**foo *bar***↲</tt>"
   },
   {
     "data": "**foo *bar **baz**\nbim* bop**\n",
     "want": "<p><b>foo <i>bar <b>baz</b>\nbim</i> bop</b></p>",
-    "name": "Test 432"
+    "name": "Test 432: <tt>**foo *bar **baz**↲bim* bop**↲</tt>"
   },
   {
     "data": "**foo [*bar*](/url)**\n",
     "want": "<p><b>foo <a href=\"/url\" title=\"\"><i>bar</i></a></b></p>",
-    "name": "Test 433"
+    "name": "Test 433: <tt>**foo [*bar*](/url)**↲</tt>"
   },
   {
     "data": "__ is not an empty emphasis\n",
     "want": "<p>__ is not an empty emphasis</p>",
-    "name": "Test 434"
+    "name": "Test 434: <tt>__ is not an empty emphasis↲</tt>"
   },
   {
     "data": "____ is not an empty strong emphasis\n",
     "want": "<p>____ is not an empty strong emphasis</p>",
-    "name": "Test 435"
+    "name": "Test 435: <tt>____ is not an empty strong emphasis↲</tt>"
   },
   {
     "data": "foo ***\n",
     "want": "<p>foo ***</p>",
-    "name": "Test 436"
+    "name": "Test 436: <tt>foo ***↲</tt>"
   },
   {
     "data": "foo *\\**\n",
     "want": "<p>foo <i>*</i></p>",
-    "name": "Test 437"
+    "name": "Test 437: <tt>foo *&#92;**↲</tt>"
   },
   {
     "data": "foo *_*\n",
     "want": "<p>foo <i>_</i></p>",
-    "name": "Test 438"
+    "name": "Test 438: <tt>foo *_*↲</tt>"
   },
   {
     "data": "foo *****\n",
     "want": "<p>foo *****</p>",
-    "name": "Test 439"
+    "name": "Test 439: <tt>foo *****↲</tt>"
   },
   {
     "data": "foo **\\***\n",
     "want": "<p>foo <b>*</b></p>",
-    "name": "Test 440"
+    "name": "Test 440: <tt>foo **&#92;***↲</tt>"
   },
   {
     "data": "foo **_**\n",
     "want": "<p>foo <b>_</b></p>",
-    "name": "Test 441"
+    "name": "Test 441: <tt>foo **_**↲</tt>"
   },
   {
     "data": "**foo*\n",
     "want": "<p>*<i>foo</i></p>",
-    "name": "Test 442"
+    "name": "Test 442: <tt>**foo*↲</tt>"
   },
   {
     "data": "*foo**\n",
     "want": "<p><i>foo</i>*</p>",
-    "name": "Test 443"
+    "name": "Test 443: <tt>*foo**↲</tt>"
   },
   {
     "data": "***foo**\n",
     "want": "<p>*<b>foo</b></p>",
-    "name": "Test 444"
+    "name": "Test 444: <tt>***foo**↲</tt>"
   },
   {
     "data": "****foo*\n",
     "want": "<p>***<i>foo</i></p>",
-    "name": "Test 445"
+    "name": "Test 445: <tt>****foo*↲</tt>"
   },
   {
     "data": "**foo***\n",
     "want": "<p><b>foo</b>*</p>",
-    "name": "Test 446"
+    "name": "Test 446: <tt>**foo***↲</tt>"
   },
   {
     "data": "*foo****\n",
     "want": "<p><i>foo</i>***</p>",
-    "name": "Test 447"
+    "name": "Test 447: <tt>*foo****↲</tt>"
   },
   {
     "data": "foo ___\n",
     "want": "<p>foo ___</p>",
-    "name": "Test 448"
+    "name": "Test 448: <tt>foo ___↲</tt>"
   },
   {
     "data": "foo _\\__\n",
     "want": "<p>foo <i>_</i></p>",
-    "name": "Test 449"
+    "name": "Test 449: <tt>foo _&#92;__↲</tt>"
   },
   {
     "data": "foo _*_\n",
     "want": "<p>foo <i>*</i></p>",
-    "name": "Test 450"
+    "name": "Test 450: <tt>foo _*_↲</tt>"
   },
   {
     "data": "foo _____\n",
     "want": "<p>foo _____</p>",
-    "name": "Test 451"
+    "name": "Test 451: <tt>foo _____↲</tt>"
   },
   {
     "data": "foo __\\___\n",
     "want": "<p>foo <b>_</b></p>",
-    "name": "Test 452"
+    "name": "Test 452: <tt>foo __&#92;___↲</tt>"
   },
   {
     "data": "foo __*__\n",
     "want": "<p>foo <b>*</b></p>",
-    "name": "Test 453"
+    "name": "Test 453: <tt>foo __*__↲</tt>"
   },
   {
     "data": "__foo_\n",
     "want": "<p>_<i>foo</i></p>",
-    "name": "Test 454"
+    "name": "Test 454: <tt>__foo_↲</tt>"
   },
   {
     "data": "_foo__\n",
     "want": "<p><i>foo</i>_</p>",
-    "name": "Test 455"
+    "name": "Test 455: <tt>_foo__↲</tt>"
   },
   {
     "data": "___foo__\n",
     "want": "<p>_<b>foo</b></p>",
-    "name": "Test 456"
+    "name": "Test 456: <tt>___foo__↲</tt>"
   },
   {
     "data": "____foo_\n",
     "want": "<p>___<i>foo</i></p>",
-    "name": "Test 457"
+    "name": "Test 457: <tt>____foo_↲</tt>"
   },
   {
     "data": "__foo___\n",
     "want": "<p><b>foo</b>_</p>",
-    "name": "Test 458"
+    "name": "Test 458: <tt>__foo___↲</tt>"
   },
   {
     "data": "_foo____\n",
     "want": "<p><i>foo</i>___</p>",
-    "name": "Test 459"
+    "name": "Test 459: <tt>_foo____↲</tt>"
   },
   {
     "data": "**foo**\n",
     "want": "<p><b>foo</b></p>",
-    "name": "Test 460"
+    "name": "Test 460: <tt>**foo**↲</tt>"
   },
   {
     "data": "*_foo_*\n",
     "want": "<p><i><i>foo</i></i></p>",
-    "name": "Test 461"
+    "name": "Test 461: <tt>*_foo_*↲</tt>"
   },
   {
     "data": "__foo__\n",
     "want": "<p><b>foo</b></p>",
-    "name": "Test 462"
+    "name": "Test 462: <tt>__foo__↲</tt>"
   },
   {
     "data": "_*foo*_\n",
     "want": "<p><i><i>foo</i></i></p>",
-    "name": "Test 463"
+    "name": "Test 463: <tt>_*foo*_↲</tt>"
   },
   {
     "data": "****foo****\n",
     "want": "<p><b><b>foo</b></b></p>",
-    "name": "Test 464"
+    "name": "Test 464: <tt>****foo****↲</tt>"
   },
   {
     "data": "____foo____\n",
     "want": "<p><b><b>foo</b></b></p>",
-    "name": "Test 465"
+    "name": "Test 465: <tt>____foo____↲</tt>"
   },
   {
     "data": "******foo******\n",
     "want": "<p><b><b><b>foo</b></b></b></p>",
-    "name": "Test 466"
+    "name": "Test 466: <tt>******foo******↲</tt>"
   },
   {
     "data": "***foo***\n",
     "want": "<p><i><b>foo</b></i></p>",
-    "name": "Test 467"
+    "name": "Test 467: <tt>***foo***↲</tt>"
   },
   {
     "data": "_____foo_____\n",
     "want": "<p><i><b><b>foo</b></b></i></p>",
-    "name": "Test 468"
+    "name": "Test 468: <tt>_____foo_____↲</tt>"
   },
   {
     "data": "*foo _bar* baz_\n",
     "want": "<p><i>foo _bar</i> baz_</p>",
-    "name": "Test 469"
+    "name": "Test 469: <tt>*foo _bar* baz_↲</tt>"
   },
   {
     "data": "*foo __bar *baz bim__ bam*\n",
     "want": "<p><i>foo <b>bar *baz bim</b> bam</i></p>",
-    "name": "Test 470"
+    "name": "Test 470: <tt>*foo __bar *baz bim__ bam*↲</tt>"
   },
   {
     "data": "**foo **bar baz**\n",
     "want": "<p>**foo <b>bar baz</b></p>",
-    "name": "Test 471"
+    "name": "Test 471: <tt>**foo **bar baz**↲</tt>"
   },
   {
     "data": "*foo *bar baz*\n",
     "want": "<p>*foo <i>bar baz</i></p>",
-    "name": "Test 472"
+    "name": "Test 472: <tt>*foo *bar baz*↲</tt>"
   },
   {
     "data": "*[bar*](/url)\n",
     "want": "<p>*<a href=\"/url\" title=\"\">bar*</a></p>",
-    "name": "Test 473"
+    "name": "Test 473: <tt>*[bar*](/url)↲</tt>"
   },
   {
     "data": "_foo [bar_](/url)\n",
     "want": "<p>_foo <a href=\"/url\" title=\"\">bar_</a></p>",
-    "name": "Test 474"
+    "name": "Test 474: <tt>_foo [bar_](/url)↲</tt>"
   },
   {
     "data": "*<img src=\"foo\" title=\"*\"/>\n",
     "want": "<p>*<img src=\"foo\" title=\"*\"/></p>",
-    "name": "Test 475"
+    "name": "Test 475: <tt>*&lt;img src=\"foo\" title=\"*\"/&gt;↲</tt>"
   },
   {
     "data": "**<a href=\"**\">\n",
     "want": "<p>**<a href=\"**\" title=\"\"></p>",
-    "name": "Test 476"
+    "name": "Test 476: <tt>**&lt;a href=\"**\"&gt;↲</tt>"
   },
   {
     "data": "__<a href=\"__\">\n",
     "want": "<p>__<a href=\"__\"></p>",
-    "name": "Test 477"
+    "name": "Test 477: <tt>__&lt;a href=\"__\"&gt;↲</tt>"
   },
   {
     "data": "*a `*`*\n",
     "want": "<p><i>a <tt>*</tt></i></p>",
-    "name": "Test 478"
+    "name": "Test 478: <tt>*a `*`*↲</tt>"
   },
   {
     "data": "_a `_`_\n",
     "want": "<p><i>a <tt>_</tt></i></p>",
-    "name": "Test 479"
+    "name": "Test 479: <tt>_a `_`_↲</tt>"
   },
   {
     "data": "**a<https://foo.bar/?q=**>\n",
     "want": "<p>**a<a href=\"https://foo.bar/?q=**\">https://foo.bar/?q=**</a></p>",
-    "name": "Test 480"
+    "name": "Test 480: <tt>**a&lt;https://foo.bar/?q=**&gt;↲</tt>"
   },
   {
     "data": "__a<https://foo.bar/?q=__>\n",
     "want": "<p>__a<a href=\"https://foo.bar/?q=__\">https://foo.bar/?q=__</a></p>",
-    "name": "Test 481"
+    "name": "Test 481: <tt>__a&lt;https://foo.bar/?q=__&gt;↲</tt>"
   },
   "Inline Links <tt>[TEXT](URL)</tt>",
   {
     "data": "[link](/uri \"title\")\n",
     "want": "<p><a href=\"/uri\" title=\"title\">link</a></p>",
-    "name": "Test 482",
+    "name": "Test 482: <tt>[link](/uri \"title\")↲</tt>",
     "FIXME": "Add support for <tt>TITLE</tt> in <tt>[TEXT](URL \"TITLE\")</tt>"
   },
   {
     "data": "[link](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\">link</a></p>",
-    "name": "Test 483"
+    "name": "Test 483: <tt>[link](/uri)↲</tt>"
   },
   {
     "data": "[](./target.md)\n",
     "want": "<p><a href=\"./target.md\" title=\"\"></a></p>",
-    "name": "Test 484"
+    "name": "Test 484: <tt>[](./target.md)↲</tt>"
   },
   {
     "data": "[link]()\n",
     "want": "<p><a href=\"\" title=\"\">link</a></p>",
-    "name": "Test 485"
+    "name": "Test 485: <tt>[link]()↲</tt>"
   },
   {
     "data": "[link](<>)\n",
     "want": "<p><a href=\"\" title=\"\">link</a></p>",
-    "name": "Test 486"
+    "name": "Test 486: <tt>[link](&lt;&gt;)↲</tt>"
   },
   {
     "data": "[]()\n",
     "want": "<p><a href=\"\" title=\"\"></a></p>",
-    "name": "Test 487"
+    "name": "Test 487: <tt>[]()↲</tt>"
   },
   {
     "data": "[link](/my uri)\n",
     "want": "<p>[link](/my uri)</p>",
-    "name": "Test 488"
+    "name": "Test 488: <tt>[link](/my uri)↲</tt>"
   },
   {
     "data": "[link](</my uri>)\n",
     "want": "<p><a href=\"/my%20uri\" title=\"\">link</a></p>",
-    "name": "Test 489"
+    "name": "Test 489: <tt>[link](&lt;/my uri&gt;)↲</tt>"
   },
   {
     "data": "[link](foo\nbar)\n",
     "want": "<p>[link](foo\nbar)</p>",
-    "name": "Test 490"
+    "name": "Test 490: <tt>[link](foo↲bar)↲</tt>"
   },
   {
     "data": "[link](<foo\nbar>)\n",
     "want": "<p>[link](<foo\nbar>)</p>",
-    "name": "Test 491"
+    "name": "Test 491: <tt>[link](&lt;foo↲bar&gt;)↲</tt>"
   },
   {
     "data": "[a](<b)c>)\n",
     "want": "<p><a href=\"b)c\" title=\"\">a</a></p>",
-    "name": "Test 492"
+    "name": "Test 492: <tt>[a](&lt;b)c&gt;)↲</tt>"
   },
   {
     "data": "[link](<foo\\>)\n",
     "want": "<p>[link](&#60;foo&#62;)</p>",
-    "name": "Test 493"
+    "name": "Test 493: <tt>[link](&lt;foo&#92;&gt;)↲</tt>"
   },
   {
     "data": "[a](<b)c\n[a](<b)c>\n[a](<b>c)\n",
     "want": "<p>[a](&#60;b)c\n[a](&#60;b)c&#62;\n[a](<b>c)</p>",
-    "name": "Test 494"
+    "name": "Test 494: <tt>[a](&lt;b)c↲[a](&lt;b)c&gt;↲[a](&lt;b&gt;c)↲</tt>"
   },
   {
     "data": "[link](\\(foo\\))\n",
     "want": "<p><a href=\"(foo)\" title=\"\">link</a></p>",
-    "name": "Test 495"
+    "name": "Test 495: <tt>[link](&#92;(foo&#92;))↲</tt>"
   },
   {
     "data": "[link](foo(and(bar)))\n",
     "want": "<p><a href=\"foo(and(bar))\" title=\"\">link</a></p>",
-    "name": "Test 496"
+    "name": "Test 496: <tt>[link](foo(and(bar)))↲</tt>"
   },
   {
     "data": "[link](foo(and(bar))\n",
     "want": "<p>[link](foo(and(bar))</p>",
-    "name": "Test 497"
+    "name": "Test 497: <tt>[link](foo(and(bar))↲</tt>"
   },
   {
     "data": "[link](foo\\(and\\(bar\\))\n",
     "want": "<p><a href=\"foo(and(bar)\" title=\"\">link</a></p>",
-    "name": "Test 498"
+    "name": "Test 498: <tt>[link](foo&#92;(and&#92;(bar&#92;))↲</tt>"
   },
   {
     "data": "[link](<foo(and(bar)>)\n",
     "want": "<p><a href=\"foo(and(bar)\" title=\"\">link</a></p>",
-    "name": "Test 499",
+    "name": "Test 499: <tt>[link](&lt;foo(and(bar)&gt;)↲</tt>",
     "skip": "Baremark does not support unescaped brackets in <tt>URL</tt> of <tt>[TEXT](URL)</tt>"
   },
   {
     "data": "[link](<foo\\(and\\(bar\\)>)\n",
     "want": "<p><a href=\"foo(and(bar)\" title=\"\">link</a></p>",
-    "name": "Test 499x",
+    "name": "Test 499x: <tt>[link](<foo\\(and\\(bar\\)>)↲</tt>",
     "FIXME": "Maybe add support for <tt>&#60;...&#62;</tt> in <tt>URL</tt> of <tt>[TEXT](URL)</tt>?"
   },
   {
     "data": "[link](foo\\)\\:)\n",
     "want": "<p><a href=\"foo&#41;&#58;\" title=\"\">link</a></p>",
-    "name": "Test 500"
+    "name": "Test 500: <tt>[link](foo&#92;)&#92;:)↲</tt>"
   },
   {
     "data": "[link](#fragment)\n\n[link](https://example.com#fragment)\n\n[link](https://example.com?foo=3#frag)\n",
     "want": "<p><a href=\"#fragment\" title=\"\">link</a></p>\n\n<p><a href=\"https&#58;//example.com#fragment\" title=\"\">link</a></p>\n\n<p><a href=\"https&#58;//example.com?foo&#61;3#frag\" title=\"\">link</a></p>",
-    "name": "Test 501"
+    "name": "Test 501: <tt>[link](#fragment)↲↲[link](https://example.com#fragment)↲↲[link](https://example.com?foo=3#frag)↲</tt>"
   },
   {
     "data": "[link](foo\\bar)\n",
     "want": "<p><a href=\"foo%5Cbar\" title=\"\">link</a></p>",
-    "name": "Test 502",
+    "name": "Test 502: <tt>[link](foo&#92;bar)↲</tt>",
     "FIXME": "Maybe add support for URL encoding in <tt>URL</tt> of <tt>[TEXT](URL)</tt>?"
   },
   {
     "data": "[link](foo%20b&auml;)\n",
     "want": "<p><a href=\"foo%20b%C3%A4\" title=\"\">link</a></p>",
-    "name": "Test 503"
+    "name": "Test 503: <tt>[link](foo%20b&auml;)↲</tt>"
   },
   {
     "data": "[link](\"title\")\n",
     "want": "<p><a href=\"&#34;title&#34;\" title=\"\">link</a></p>",
-    "name": "Test 504"
+    "name": "Test 504: <tt>[link](\"title\")↲</tt>"
   },
   {
     "data": "[link](/url \"title\")\n[link](/url 'title')\n[link](/url (title))\n",
     "want": "<p><a href=\"/url\" title=\"title\">link</a>\n\n<a href=\"/url\" title=\"title\">link</a>\n\n<a href=\"/url\" title=\"title\">link</a></p>",
-    "name": "Test 505",
+    "name": "Test 505: <tt>[link](/url \"title\")↲[link](/url 'title')↲[link](/url (title))↲</tt>",
     "FIXME": "Add support for <tt>TITLE</tt> in <tt>[TEXT](URL \"TITLE\")</tt>"
   },
   {
     "data": "[link](/url \"title \\\"&quot;\")\n",
     "want": "<p><a href=\"/url\" title=\"title &quot;&quot;\">link</a></p>",
-    "name": "Test 506"
+    "name": "Test 506: <tt>[link](/url \"title &#92;\"&quot;\")↲</tt>"
   },
   {
     "data": "[link](/url \"title\")\n",
     "want": "<p><a href=\"/url%C2%A0%22title%22\" title=\"\">link</a></p>",
-    "name": "Test 507"
+    "name": "Test 507: <tt>[link](/url \"title\")↲</tt>"
   },
   {
     "data": "[link](/url \"title \"and\" title\")\n",
     "want": "<p>[link](/url &quot;title &quot;and&quot; title&quot;)</p>",
-    "name": "Test 508"
+    "name": "Test 508: <tt>[link](/url \"title \"and\" title\")↲</tt>"
   },
   {
     "data": "[link](/url 'title \"and\" title')\n",
     "want": "<p><a href=\"/url\" title=\"title &quot;and&quot; title\">link</a></p>",
-    "name": "Test 509"
+    "name": "Test 509: <tt>[link](/url 'title \"and\" title')↲</tt>"
   },
   {
     "data": "[link](   /uri\n  \"title\"  )\n",
     "want": "<p><a href=\"/uri\" title=\"title\">link</a></p>",
-    "name": "Test 510"
+    "name": "Test 510: <tt>[link](␣␣␣/uri↲␣␣\"title\"␣␣)↲</tt>"
   },
   {
     "data": "[link] (/uri)\n",
     "want": "<p>[link] (/uri)</p>",
-    "name": "Test 511"
+    "name": "Test 511: <tt>[link] (/uri)↲</tt>"
   },
   {
     "data": "[link [foo [bar]]](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\">link [foo [bar]]</a></p>",
-    "name": "Test 512"
+    "name": "Test 512: <tt>[link [foo [bar]]](/uri)↲</tt>"
   },
   {
     "data": "[link] bar](/uri)\n",
     "want": "<p>[link] bar](/uri)</p>",
-    "name": "Test 513"
+    "name": "Test 513: <tt>[link] bar](/uri)↲</tt>"
   },
   {
     "data": "[link [bar](/uri)\n",
     "want": "<p>[link <a href=\"/uri\" title=\"\">bar</a></p>",
-    "name": "Test 514"
+    "name": "Test 514: <tt>[link [bar](/uri)↲</tt>"
   },
   {
     "data": "[link \\[bar](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\">link [bar</a></p>",
-    "name": "Test 515"
+    "name": "Test 515: <tt>[link &#92;[bar](/uri)↲</tt>"
   },
   {
     "data": "[link *foo **bar** `#`*](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\">link <i>foo <b>bar</b> <tt>#</tt></i></a></p>",
-    "name": "Test 516"
+    "name": "Test 516: <tt>[link *foo **bar** `#`*](/uri)↲</tt>"
   },
   {
     "data": "[![moon](moon.jpg)](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\"><img src=\"moon.jpg\" alt=\"moon\"></a></p>",
-    "name": "Test 517"
+    "name": "Test 517: <tt>[![moon](moon.jpg)](/uri)↲</tt>"
   },
   {
     "data": "[foo [bar](/uri)](/uri)\n",
     "want": "<p>[foo <a href=\"/uri\" title=\"\">bar</a>](/uri)</p>",
-    "name": "Test 518"
+    "name": "Test 518: <tt>[foo [bar](/uri)](/uri)↲</tt>"
   },
   {
     "data": "[foo *[bar [baz](/uri)](/uri)*](/uri)\n",
     "want": "<p>[foo <i>[bar <a href=\"/uri\" title=\"\">baz</a>](/uri)</i>](/uri)</p>",
-    "name": "Test 519"
+    "name": "Test 519: <tt>[foo *[bar [baz](/uri)](/uri)*](/uri)↲</tt>"
   },
   {
     "data": "![[[foo](uri1)](uri2)](uri3)\n",
     "want": "<p><img src=\"uri3\" alt=\"[foo](uri2)\"></p>",
-    "name": "Test 520"
+    "name": "Test 520: <tt>![[[foo](uri1)](uri2)](uri3)↲</tt>"
   },
   {
     "data": "*[foo*](/uri)\n",
     "want": "<p>*<a href=\"/uri\" title=\"\">foo*</a></p>",
-    "name": "Test 521"
+    "name": "Test 521: <tt>*[foo*](/uri)↲</tt>"
   },
   {
     "data": "[foo *bar](baz*)\n",
     "want": "<p><a href=\"baz*\" title=\"\">foo *bar</a></p>",
-    "name": "Test 522"
+    "name": "Test 522: <tt>[foo *bar](baz*)↲</tt>"
   },
   {
     "data": "*foo [bar* baz]\n",
     "want": "<p><i>foo [bar</i> baz]</p>",
-    "name": "Test 523"
+    "name": "Test 523: <tt>*foo [bar* baz]↲</tt>"
   },
   {
     "data": "[foo <bar attr=\"](baz)\">\n",
     "want": "<p>[foo <bar attr=\"](baz)\"></p>",
-    "name": "Test 524"
+    "name": "Test 524: <tt>[foo &lt;bar attr=\"](baz)\"&gt;↲</tt>"
   },
   {
     "data": "[foo`](/uri)`\n",
     "want": "<p>[foo<tt>](/uri)</tt></p>",
-    "name": "Test 525"
+    "name": "Test 525: <tt>[foo`](/uri)`↲</tt>"
   },
   {
     "data": "[foo<https://example.com/?search=](uri)>\n",
     "want": "<p>[foo<a href=\"https://example.com/?search=%5D(uri)\" title=\"\">https://example.com/?search=](uri)</a></p>",
-    "name": "Test 526"
+    "name": "Test 526: <tt>[foo&lt;https://example.com/?search=](uri)&gt;↲</tt>"
   },
   {
     "data": "[foo][bar]\n\n[bar]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 527"
+    "name": "Test 527: <tt>[foo][bar]↲↲[bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "[link [foo [bar]]][ref]\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">link [foo [bar]]</a></p>",
-    "name": "Test 528"
+    "name": "Test 528: <tt>[link [foo [bar]]][ref]↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[link \\[bar][ref]\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">link [bar</a></p>",
-    "name": "Test 529"
+    "name": "Test 529: <tt>[link &#92;[bar][ref]↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[link *foo **bar** `#`*][ref]\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">link <i>foo <b>bar</b> <tt>#</tt></i></a></p>",
-    "name": "Test 530"
+    "name": "Test 530: <tt>[link *foo **bar** `#`*][ref]↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[![moon](moon.jpg)][ref]\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\"><img src=\"moon.jpg\" alt=\"moon\"></a></p>",
-    "name": "Test 531"
+    "name": "Test 531: <tt>[![moon](moon.jpg)][ref]↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[foo [bar](/uri)][ref]\n\n[ref]: /uri\n",
     "want": "<p>[foo <a href=\"/uri\" title=\"\">bar</a>]<a href=\"/uri\">ref</a></p>",
-    "name": "Test 532"
+    "name": "Test 532: <tt>[foo [bar](/uri)][ref]↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[foo *bar [baz][ref]*][ref]\n\n[ref]: /uri\n",
     "want": "<p>[foo <i>bar <a href=\"/uri\" title=\"\">baz</a></i>]<a href=\"/uri\">ref</a></p>",
-    "name": "Test 533"
+    "name": "Test 533: <tt>[foo *bar [baz][ref]*][ref]↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "*[foo*][ref]\n\n[ref]: /uri\n",
     "want": "<p>*<a href=\"/uri\" title=\"\">foo*</a></p>",
-    "name": "Test 534"
+    "name": "Test 534: <tt>*[foo*][ref]↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[foo *bar][ref]*\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">foo *bar</a>*</p>",
-    "name": "Test 535"
+    "name": "Test 535: <tt>[foo *bar][ref]*↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[foo <bar attr=\"][ref]\">\n\n[ref]: /uri\n",
     "want": "<p>[foo <bar attr=\"][ref]\"></p>",
-    "name": "Test 536"
+    "name": "Test 536: <tt>[foo &lt;bar attr=\"][ref]\"&gt;↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[foo`][ref]`\n\n[ref]: /uri\n",
     "want": "<p>[foo<tt>][ref]</tt></p>",
-    "name": "Test 537"
+    "name": "Test 537: <tt>[foo`][ref]`↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[foo<https://example.com/?search=][ref]>\n\n[ref]: /uri\n",
     "want": "<p>[foo<a href=\"https://example.com/?search=%5D%5Bref%5D\">https://example.com/?search=][ref]</a></p>",
-    "name": "Test 538"
+    "name": "Test 538: <tt>[foo&lt;https://example.com/?search=][ref]&gt;↲↲[ref]: /uri↲</tt>"
   },
   {
     "data": "[foo][BaR]\n\n[bar]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 539"
+    "name": "Test 539: <tt>[foo][BaR]↲↲[bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "[ẞ]\n\n[SS]: /url\n",
     "want": "<p><a href=\"/url\" title=\"\">ẞ</a></p>",
-    "name": "Test 540"
+    "name": "Test 540: <tt>[ẞ]↲↲[SS]: /url↲</tt>"
   },
   {
     "data": "[Foo\n  bar]: /url\n\n[Baz][Foo bar]\n",
     "want": "<p><a href=\"/url\" title=\"\">Baz</a></p>",
-    "name": "Test 541"
+    "name": "Test 541: <tt>[Foo↲␣␣bar]: /url↲↲[Baz][Foo bar]↲</tt>"
   },
   {
     "data": "[foo] [bar]\n\n[bar]: /url \"title\"\n",
     "want": "<p>[foo] <a href=\"/url\" title=\"title\">bar</a></p>",
-    "name": "Test 542"
+    "name": "Test 542: <tt>[foo] [bar]↲↲[bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "[foo]\n[bar]\n\n[bar]: /url \"title\"\n",
     "want": "<p>[foo]\n<a href=\"/url\" title=\"title\">bar</a></p>",
-    "name": "Test 543"
+    "name": "Test 543: <tt>[foo]↲[bar]↲↲[bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "[foo]: /url1\n\n[foo]: /url2\n\n[bar][foo]\n",
     "want": "<p><a href=\"/url1\" title=\"\">bar</a></p>",
-    "name": "Test 544"
+    "name": "Test 544: <tt>[foo]: /url1↲↲[foo]: /url2↲↲[bar][foo]↲</tt>"
   },
   {
     "data": "[bar][foo\\!]\n\n[foo!]: /url\n",
     "want": "<p>[bar][foo&#33;]</p>",
-    "name": "Test 545"
+    "name": "Test 545: <tt>[bar][foo&#92;!]↲↲[foo!]: /url↲</tt>"
   },
   {
     "data": "[foo][ref[]\n\n[ref[]: /uri\n",
     "want": "<p>[foo][ref[]</p>\n\n<p>[ref[]: /uri</p>",
-    "name": "Test 546"
+    "name": "Test 546: <tt>[foo][ref[]↲↲[ref[]: /uri↲</tt>"
   },
   {
     "data": "[foo][ref[bar]]\n\n[ref[bar]]: /uri\n",
     "want": "<p>[foo][ref[bar]]</p>\n\n<p>[ref[bar]]: /uri</p>",
-    "name": "Test 547"
+    "name": "Test 547: <tt>[foo][ref[bar]]↲↲[ref[bar]]: /uri↲</tt>"
   },
   {
     "data": "[[[foo]]]\n\n[[[foo]]]: /url\n",
     "want": "<p>[[[foo]]]</p>\n\n<p>[[[foo]]]: /url</p>",
-    "name": "Test 548"
+    "name": "Test 548: <tt>[[[foo]]]↲↲[[[foo]]]: /url↲</tt>"
   },
   {
     "data": "[foo][ref\\[]\n\n[ref\\[]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">foo</a></p>",
-    "name": "Test 549"
+    "name": "Test 549: <tt>[foo][ref&#92;[]↲↲[ref&#92;[]: /uri↲</tt>"
   },
   {
     "data": "[bar\\\\]: /uri\n\n[bar\\\\]\n",
     "want": "<p><a href=\"/uri\" title=\"\">bar\\</a></p>",
-    "name": "Test 550"
+    "name": "Test 550: <tt>[bar&#92;&#92;]: /uri↲↲[bar&#92;&#92;]↲</tt>"
   },
   {
     "data": "[]\n\n[]: /uri\n",
     "want": "<p>[]</p>\n\n<p>[]: /uri</p>",
-    "name": "Test 551"
+    "name": "Test 551: <tt>[]↲↲[]: /uri↲</tt>"
   },
   {
     "data": "[\n ]\n\n[\n ]: /uri\n",
     "want": "<p>[\n]</p>\n\n<p>[\n]: /uri</p>",
-    "name": "Test 552"
+    "name": "Test 552: <tt>[↲␣]↲↲[↲␣]: /uri↲</tt>"
   },
   {
     "data": "[foo][]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 553"
+    "name": "Test 553: <tt>[foo][]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "[*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\"><i>foo</i> bar</a></p>",
-    "name": "Test 554"
+    "name": "Test 554: <tt>[*foo* bar][]↲↲[*foo* bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "[Foo][]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">Foo</a></p>",
-    "name": "Test 555"
+    "name": "Test 555: <tt>[Foo][]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "[foo] \n[]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a>\n[]</p>",
-    "name": "Test 556"
+    "name": "Test 556: <tt>[foo]␣↲[]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "[foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 557"
+    "name": "Test 557: <tt>[foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "[*foo* bar]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\"><i>foo</i> bar</a></p>",
-    "name": "Test 558"
+    "name": "Test 558: <tt>[*foo* bar]↲↲[*foo* bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "[[*foo* bar]]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p>[<a href=\"/url\" title=\"title\"><i>foo</i> bar</a>]</p>",
-    "name": "Test 559"
+    "name": "Test 559: <tt>[[*foo* bar]]↲↲[*foo* bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "[[bar [foo]\n\n[foo]: /url\n",
     "want": "<p>[[bar <a href=\"/url\" title=\"\">foo</a></p>",
-    "name": "Test 560"
+    "name": "Test 560: <tt>[[bar [foo]↲↲[foo]: /url↲</tt>"
   },
   {
     "data": "[Foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">Foo</a></p>",
-    "name": "Test 561"
+    "name": "Test 561: <tt>[Foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "[foo] bar\n\n[foo]: /url\n",
     "want": "<p><a href=\"/url\" title=\"\">foo</a> bar</p>",
-    "name": "Test 562"
+    "name": "Test 562: <tt>[foo] bar↲↲[foo]: /url↲</tt>"
   },
   {
     "data": "\\[foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p>[foo]</p>",
-    "name": "Test 563"
+    "name": "Test 563: <tt>&#92;[foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "[foo*]: /url\n\n*[foo*]\n",
     "want": "<p>*<a href=\"/url\" title=\"\">foo*</a></p>",
-    "name": "Test 564"
+    "name": "Test 564: <tt>[foo*]: /url↲↲*[foo*]↲</tt>"
   },
   {
     "data": "[foo][bar]\n\n[foo]: /url1\n[bar]: /url2\n",
     "want": "<p><a href=\"/url2\" title=\"\">foo</a></p>",
-    "name": "Test 565"
+    "name": "Test 565: <tt>[foo][bar]↲↲[foo]: /url1↲[bar]: /url2↲</tt>"
   },
   {
     "data": "[foo][]\n\n[foo]: /url1\n",
     "want": "<p><a href=\"/url1\" title=\"\">foo</a></p>",
-    "name": "Test 566"
+    "name": "Test 566: <tt>[foo][]↲↲[foo]: /url1↲</tt>"
   },
   {
     "data": "[foo]()\n\n[foo]: /url1\n",
     "want": "<p><a href=\"\" title=\"\">foo</a></p>",
-    "name": "Test 567"
+    "name": "Test 567: <tt>[foo]()↲↲[foo]: /url1↲</tt>"
   },
   {
     "data": "[foo](not a link)\n\n[foo]: /url1\n",
     "want": "<p><a href=\"/url1\" title=\"\">foo</a>(not a link)</p>",
-    "name": "Test 568"
+    "name": "Test 568: <tt>[foo](not a link)↲↲[foo]: /url1↲</tt>"
   },
   {
     "data": "[foo][bar][baz]\n\n[baz]: /url\n",
     "want": "<p>[foo]<a href=\"/url\" title=\"\">bar</a></p>",
-    "name": "Test 569"
+    "name": "Test 569: <tt>[foo][bar][baz]↲↲[baz]: /url↲</tt>"
   },
   {
     "data": "[foo][bar][baz]\n\n[baz]: /url1\n[bar]: /url2\n",
     "want": "<p><a href=\"/url2\" title=\"\">foo</a><a href=\"/url1\">baz</a></p>",
-    "name": "Test 570"
+    "name": "Test 570: <tt>[foo][bar][baz]↲↲[baz]: /url1↲[bar]: /url2↲</tt>"
   },
   {
     "data": "[foo][bar][baz]\n\n[baz]: /url1\n[foo]: /url2\n",
     "want": "<p>[foo]<a href=\"/url1\" title=\"\">bar</a></p>",
-    "name": "Test 571"
+    "name": "Test 571: <tt>[foo][bar][baz]↲↲[baz]: /url1↲[foo]: /url2↲</tt>"
   },
   "Inline Images <tt>![TEXT](URL)</tt>",
   {
     "data": "![foo](/url \"title\")\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "Test 572"
+    "name": "Test 572: <tt>![foo](/url \"title\")↲</tt>"
   },
   {
     "data": "![foo *bar*]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 573"
+    "name": "Test 573: <tt>![foo *bar*]↲↲[foo *bar*]: train.jpg \"train & tracks\"↲</tt>"
   },
   {
     "data": "![foo ![bar](/url)](/url2)\n",
     "want": "<p><img src=\"/url2\" alt=\"foo bar\"></p>",
-    "name": "Test 574"
+    "name": "Test 574: <tt>![foo ![bar](/url)](/url2)↲</tt>"
   },
   {
     "data": "![foo [bar](/url)](/url2)\n",
     "want": "<p><img src=\"/url2\" alt=\"foo bar\"></p>",
-    "name": "Test 575"
+    "name": "Test 575: <tt>![foo [bar](/url)](/url2)↲</tt>"
   },
   {
     "data": "![foo *bar*][]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 576"
+    "name": "Test 576: <tt>![foo *bar*][]↲↲[foo *bar*]: train.jpg \"train & tracks\"↲</tt>"
   },
   {
     "data": "![foo *bar*][foobar]\n\n[FOOBAR]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 577"
+    "name": "Test 577: <tt>![foo *bar*][foobar]↲↲[FOOBAR]: train.jpg \"train & tracks\"↲</tt>"
   },
   {
     "data": "![foo](train.jpg)\n",
     "want": "<p><img src=\"train.jpg\" alt=\"foo\"></p>",
-    "name": "Test 578"
+    "name": "Test 578: <tt>![foo](train.jpg)↲</tt>"
   },
   {
     "data": "My ![foo bar](/path/to/train.jpg  \"title\"   )\n",
     "want": "<p>My <img src=\"/path/to/train.jpg\" title=\"title\" alt=\"foo bar\"></p>",
-    "name": "Test 579"
+    "name": "Test 579: <tt>My ![foo bar](/path/to/train.jpg␣␣\"title\"␣␣␣)↲</tt>"
   },
   {
     "data": "![foo](<url>)\n",
     "want": "<p><img src=\"url\" alt=\"foo\"></p>",
-    "name": "Test 580"
+    "name": "Test 580: <tt>![foo](&lt;url&gt;)↲</tt>"
   },
   {
     "data": "![](/url)\n",
     "want": "<p><img src=\"/url\" alt=\"\"></p>",
-    "name": "Test 581"
+    "name": "Test 581: <tt>![](/url)↲</tt>"
   },
   {
     "data": "![foo][bar]\n\n[bar]: /url\n",
     "want": "<p><img src=\"/url\" alt=\"foo\"></p>",
-    "name": "Test 582"
+    "name": "Test 582: <tt>![foo][bar]↲↲[bar]: /url↲</tt>"
   },
   {
     "data": "![foo][bar]\n\n[BAR]: /url\n",
     "want": "<p><img src=\"/url\" alt=\"foo\"></p>",
-    "name": "Test 583"
+    "name": "Test 583: <tt>![foo][bar]↲↲[BAR]: /url↲</tt>"
   },
   {
     "data": "![foo][]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "Test 584"
+    "name": "Test 584: <tt>![foo][]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "![*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo bar\"></p>",
-    "name": "Test 585"
+    "name": "Test 585: <tt>![*foo* bar][]↲↲[*foo* bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "![Foo][]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"Foo\"></p>",
-    "name": "Test 586"
+    "name": "Test 586: <tt>![Foo][]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "![foo] \n[]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\">\n[]</p>",
-    "name": "Test 587"
+    "name": "Test 587: <tt>![foo]␣↲[]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "![foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "Test 588"
+    "name": "Test 588: <tt>![foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "![*foo* bar]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo bar\"></p>",
-    "name": "Test 589"
+    "name": "Test 589: <tt>![*foo* bar]↲↲[*foo* bar]: /url \"title\"↲</tt>"
   },
   {
     "data": "![[foo]]\n\n[[foo]]: /url \"title\"\n",
     "want": "<p>![[foo]]</p>\n\n<p>[[foo]]: /url &quot;title&quot;</p>",
-    "name": "Test 590",
+    "name": "Test 590: <tt>![[foo]]↲↲[[foo]]: /url \"title\"↲</tt>",
     "skip": "Baremark strips all label definitions, even unused ones."
   },
   {
     "data": "![Foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"Foo\"></p>",
-    "name": "Test 591"
+    "name": "Test 591: <tt>![Foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "!\\[foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p>![foo]</p>",
-    "name": "Test 592"
+    "name": "Test 592: <tt>!&#92;[foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "\\![foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p>!<a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 593"
+    "name": "Test 593: <tt>&#92;![foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
   "Autolinks",
   {
     "data": "<http://foo.bar.baz>\n",
     "want": "<p><a href=\"http://foo.bar.baz\">http://foo.bar.baz</a></p>",
-    "name": "Test 594",
+    "name": "Test 594: <tt>&lt;http://foo.bar.baz&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<https://foo.bar.baz/test?q=hello&id=22&boolean>\n",
     "want": "<p><a href=\"https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean\">https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean</a></p>",
-    "name": "Test 595",
+    "name": "Test 595: <tt>&lt;https://foo.bar.baz/test?q=hello&id=22&boolean&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<irc://foo.bar:2233/baz>\n",
     "want": "<p><a href=\"irc://foo.bar:2233/baz\">irc://foo.bar:2233/baz</a></p>",
-    "name": "Test 596",
+    "name": "Test 596: <tt>&lt;irc://foo.bar:2233/baz&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<MAILTO:FOO@BAR.BAZ>\n",
     "want": "<p><a href=\"MAILTO:FOO@BAR.BAZ\">MAILTO:FOO@BAR.BAZ</a></p>",
-    "name": "Test 597",
+    "name": "Test 597: <tt>&lt;MAILTO:FOO@BAR.BAZ&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<a+b+c:d>\n",
     "want": "<p><a href=\"a+b+c:d\">a+b+c:d</a></p>",
-    "name": "Test 598",
+    "name": "Test 598: <tt>&lt;a+b+c:d&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<made-up-scheme://foo,bar>\n",
     "want": "<p><a href=\"made-up-scheme://foo,bar\">made-up-scheme://foo,bar</a></p>",
-    "name": "Test 599",
+    "name": "Test 599: <tt>&lt;made-up-scheme://foo,bar&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<https://../>\n",
     "want": "<p><a href=\"https://../\">https://../</a></p>",
-    "name": "Test 600",
+    "name": "Test 600: <tt>&lt;https://../&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<localhost:5001/foo>\n",
     "want": "<p><a href=\"localhost:5001/foo\">localhost:5001/foo</a></p>",
-    "name": "Test 601",
+    "name": "Test 601: <tt>&lt;localhost:5001/foo&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<https://foo.bar/baz bim>\n",
     "want": "<p>&#60;https://foo.bar/baz bim&#62;</p>",
-    "name": "Test 602",
+    "name": "Test 602: <tt>&lt;https://foo.bar/baz bim&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<https://example.com/\\[\\>\n",
     "want": "<p><a href=\"https://example.com/%5C%5B%5C\">https://example.com/\\[\\</a></p>",
-    "name": "Test 603",
+    "name": "Test 603: <tt>&lt;https://example.com/&#92;[&#92;&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<foo@bar.example.com>\n",
     "want": "<p><a href=\"mailto:foo@bar.example.com\">foo@bar.example.com</a></p>",
-    "name": "Test 604",
+    "name": "Test 604: <tt>&lt;foo@bar.example.com&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<foo+special@Bar.baz-bar0.com>\n",
     "want": "<p><a href=\"mailto:foo+special@Bar.baz-bar0.com\">foo+special@Bar.baz-bar0.com</a></p>",
-    "name": "Test 605",
+    "name": "Test 605: <tt>&lt;foo+special@Bar.baz-bar0.com&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<foo\\+@bar.example.com>\n",
     "want": "<p>&#60;foo+@bar.example.com&#62;</p>",
-    "name": "Test 606",
+    "name": "Test 606: <tt>&lt;foo&#92;+@bar.example.com&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<>\n",
     "want": "<p>&#60;&#62;</p>",
-    "name": "Test 607"
+    "name": "Test 607: <tt>&lt;&gt;↲</tt>"
   },
   {
     "data": "< https://foo.bar >\n",
     "want": "<p>&#60; https://foo.bar &#62;</p>",
-    "name": "Test 608",
+    "name": "Test 608: <tt>&lt; https://foo.bar &gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
     "data": "<m:abc>\n",
     "want": "<p>&#60;m:abc&#62;</p>",
-    "name": "Test 609"
+    "name": "Test 609: <tt>&lt;m:abc&gt;↲</tt>"
   },
   {
     "data": "<foo.bar.baz>\n",
     "want": "<p>&#60;foo.bar.baz&#62;</p>",
-    "name": "Test 610"
+    "name": "Test 610: <tt>&lt;foo.bar.baz&gt;↲</tt>"
   },
   {
     "data": "https://example.com\n",
     "want": "<p>https://example.com</p>",
-    "name": "Test 611"
+    "name": "Test 611: <tt>https://example.com↲</tt>"
   },
   {
     "data": "foo@bar.example.com\n",
     "want": "<p>foo@bar.example.com</p>",
-    "name": "Test 612"
+    "name": "Test 612: <tt>foo@bar.example.com↲</tt>"
   },
   "Raw HTML (Inline)",
   {
     "data": "<a><bab><c2c>\n",
     "want": "<p><a><bab><c2c></p>",
-    "name": "Test 613"
+    "name": "Test 613: <tt>&lt;a&gt;&lt;bab&gt;&lt;c2c&gt;↲</tt>"
   },
   {
     "data": "<a/><b2/>\n",
     "want": "<p><a/><b2/></p>",
-    "name": "Test 614"
+    "name": "Test 614: <tt>&lt;a/&gt;&lt;b2/&gt;↲</tt>"
   },
   {
     "data": "<a  /><b2\ndata=\"foo\" >\n",
     "want": "<p><a  /><b2\ndata=\"foo\" ></p>",
-    "name": "Test 615"
+    "name": "Test 615: <tt>&lt;a␣␣/&gt;&lt;b2↲data=\"foo\" &gt;↲</tt>"
   },
   {
     "data": "<a foo=\"bar\" bam = 'baz <em>\"</em>'\n_boolean zoop:33=zoop:33 />\n",
     "want": "<p><a foo=\"bar\" bam = 'baz <em>\"</em>'\n_boolean zoop:33=zoop:33 /></p>",
-    "name": "Test 616"
+    "name": "Test 616: <tt>&lt;a foo=\"bar\" bam = 'baz &lt;em&gt;\"&lt;/em&gt;'↲_boolean zoop:33=zoop:33 /&gt;↲</tt>"
   },
   {
     "data": "Foo <responsive-image src=\"foo.jpg\" />\n",
     "want": "<p>Foo <responsive-image src=\"foo.jpg\" /></p>",
-    "name": "Test 617"
+    "name": "Test 617: <tt>Foo &lt;responsive-image src=\"foo.jpg\" /&gt;↲</tt>"
   },
   {
     "data": "<33> <__>\n",
     "want": "<p>&#60;33&#62; &#60;__&#62;</p>",
-    "name": "Test 618"
+    "name": "Test 618: <tt>&lt;33&gt; &lt;__&gt;↲</tt>"
   },
   {
     "data": "<a h*#ref=\"hi\">\n",
     "want": "<p>&#60;a h*#ref=&quot;hi&quot;&#62;</p>",
-    "name": "Test 619"
+    "name": "Test 619: <tt>&lt;a h*#ref=\"hi\"&gt;↲</tt>"
   },
   {
     "data": "<a href=\"hi'> <a href=hi'>\n",
     "want": "<p>&#60;a href=&quot;hi'&#62; &#60;a href=hi'&#62;</p>",
-    "name": "Test 620"
+    "name": "Test 620: <tt>&lt;a href=\"hi'&gt; &lt;a href=hi'&gt;↲</tt>"
   },
   {
     "data": "< a><\nfoo><bar/ >\n<foo bar=baz\nbim!bop />\n",
     "want": "<p>&#60; a&#62;&#60;\nfoo&#62;&#60;bar/ &#62;\n&#60;foo bar=baz\nbim!bop /&#62;</p>",
-    "name": "Test 621"
+    "name": "Test 621: <tt>&lt; a&gt;&lt;↲foo&gt;&lt;bar/ &gt;↲&lt;foo bar=baz↲bim!bop /&gt;↲</tt>"
   },
   {
     "data": "<a href='bar'title=title>\n",
     "want": "<p>&#60;a href='bar'title=title&#62;</p>",
-    "name": "Test 622"
+    "name": "Test 622: <tt>&lt;a href='bar'title=title&gt;↲</tt>"
   },
   {
     "data": "</a></foo >\n",
     "want": "<p></a></foo ></p>",
-    "name": "Test 623"
+    "name": "Test 623: <tt>&lt;/a&gt;&lt;/foo &gt;↲</tt>"
   },
   {
     "data": "</a href=\"foo\">\n",
     "want": "<p>&#60;/a href=&quot;foo&quot;&#62;</p>",
-    "name": "Test 624"
+    "name": "Test 624: <tt>&lt;/a href=\"foo\"&gt;↲</tt>"
   },
   {
     "data": "foo <!-- this is a --\ncomment - with hyphens -->\n",
     "want": "<p>foo <!-- this is a --\ncomment - with hyphens --></p>",
-    "name": "Test 625"
+    "name": "Test 625: <tt>foo &lt;!-- this is a --↲comment - with hyphens --&gt;↲</tt>"
   },
   {
     "data": "foo <!--> foo -->\n\nfoo <!---> foo -->\n",
     "want": "<p>foo <!--> foo --&#62;</p>\n\n<p>foo <!---> foo --&#62;</p>",
-    "name": "Test 626"
+    "name": "Test 626: <tt>foo &lt;!--&gt; foo --&gt;↲↲foo &lt;!---&gt; foo --&gt;↲</tt>"
   },
   {
     "data": "foo <?php echo $a; ?>\n",
     "want": "<p>foo <?php echo $a; ?></p>",
-    "name": "Test 627"
+    "name": "Test 627: <tt>foo &lt;?php echo $a; ?&gt;↲</tt>"
   },
   {
     "data": "foo <!ELEMENT br EMPTY>\n",
     "want": "<p>foo <!ELEMENT br EMPTY></p>",
-    "name": "Test 628"
+    "name": "Test 628: <tt>foo &lt;!ELEMENT br EMPTY&gt;↲</tt>"
   },
   {
     "data": "foo <![CDATA[>&<]]>\n",
     "want": "<p>foo <![CDATA[>&<]]></p>",
-    "name": "Test 629"
+    "name": "Test 629: <tt>foo &lt;![CDATA[&gt;&&lt;]]&gt;↲</tt>"
   },
   {
     "data": "foo <a href=\"&ouml;\">\n",
     "want": "<p>foo <a href=\"&ouml;\"></p>",
-    "name": "Test 630"
+    "name": "Test 630: <tt>foo &lt;a href=\"&ouml;\"&gt;↲</tt>"
   },
   {
     "data": "foo <a href=\"\\*\">\n",
     "want": "<p>foo <a href=\"\\*\"></p>",
-    "name": "Test 631"
+    "name": "Test 631: <tt>foo &lt;a href=\"&#92;*\"&gt;↲</tt>"
   },
   {
     "data": "<a href=\"\\\"\">\n",
     "want": "<p>&#60;a href=&quot;&quot;&quot;&#62;</p>",
-    "name": "Test 632"
+    "name": "Test 632: <tt>&lt;a href=\"&#92;\"\"&gt;↲</tt>"
   },
   "Hard Line Breaks",
   {
     "data": "foo  \nbaz\n",
     "want": "<p>foo<br>baz</p>",
-    "name": "Test 633",
+    "name": "Test 633: <tt>foo␣␣↲baz↲</tt>",
     "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   {
     "data": "foo\\\nbaz\n",
     "want": "<p>foo<br>baz</p>",
-    "name": "Test 634"
+    "name": "Test 634: <tt>foo&#92;↲baz↲</tt>"
   },
   {
     "data": "foo       \nbaz\n",
     "want": "<p>foo<br>baz</p>",
-    "name": "Test 635",
+    "name": "Test 635: <tt>foo␣␣␣␣␣␣␣↲baz↲</tt>",
     "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   {
     "data": "foo  \n     bar\n",
     "want": "<p>foo<br>bar</p>",
-    "name": "Test 636",
+    "name": "Test 636: <tt>foo␣␣↲␣␣␣␣␣bar↲</tt>",
     "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   {
     "data": "foo\\\n     bar\n",
     "want": "<p>foo<br>bar</p>",
-    "name": "Test 637"
+    "name": "Test 637: <tt>foo&#92;↲␣␣␣␣␣bar↲</tt>"
   },
   {
     "data": "*foo  \nbar*\n",
     "want": "<p><i>foo<br>bar</i></p>",
-    "name": "Test 638",
+    "name": "Test 638: <tt>*foo␣␣↲bar*↲</tt>",
     "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   {
     "data": "*foo\\\nbar*\n",
     "want": "<p><i>foo<br>bar</i></p>",
-    "name": "Test 639"
+    "name": "Test 639: <tt>*foo&#92;↲bar*↲</tt>"
   },
   {
     "data": "`code  \nspan`\n",
     "want": "<p><tt>code   span</tt></p>",
-    "name": "Test 640"
+    "name": "Test 640: <tt>`code␣␣↲span`↲</tt>"
   },
   {
     "data": "`code\\\nspan`\n",
     "want": "<p><tt>code\\ span</tt></p>",
-    "name": "Test 641"
+    "name": "Test 641: <tt>`code&#92;↲span`↲</tt>"
   },
   {
     "data": "<a href=\"foo  \nbar\">\n",
     "want": "<p><a href=\"foo  \nbar\"></p>",
-    "name": "Test 642"
+    "name": "Test 642: <tt>&lt;a href=\"foo␣␣↲bar\"&gt;↲</tt>"
   },
   {
     "data": "<a href=\"foo\\\nbar\">\n",
     "want": "<p><a href=\"foo\\\nbar\"></p>",
-    "name": "Test 643"
+    "name": "Test 643: <tt>&lt;a href=\"foo&#92;↲bar\"&gt;↲</tt>"
   },
   {
     "data": "foo\\\n",
     "want": "<p>foo\\</p>",
-    "name": "Test 644"
+    "name": "Test 644: <tt>foo&#92;↲</tt>"
   },
   {
     "data": "foo  \n",
     "want": "<p>foo</p>",
-    "name": "Test 645"
+    "name": "Test 645: <tt>foo␣␣↲</tt>"
   },
   {
     "data": "### foo\\\n",
     "want": "<h3>foo\\</h3>",
-    "name": "Test 646"
+    "name": "Test 646: <tt>### foo&#92;↲</tt>"
   },
   {
     "data": "### foo  \n",
     "want": "<h3>foo</h3>",
-    "name": "Test 647"
+    "name": "Test 647: <tt>### foo␣␣↲</tt>"
   },
   "Soft Line Breaks",
   {
     "data": "foo\nbaz\n",
     "want": "<p>foo\nbaz</p>",
-    "name": "Test 648"
+    "name": "Test 648: <tt>foo↲baz↲</tt>"
   },
   {
     "data": "foo \n baz\n",
     "want": "<p>foo\nbaz</p>",
-    "name": "Test 649"
+    "name": "Test 649: <tt>foo␣↲␣baz↲</tt>"
   },
   "Textual Content",
   {
     "data": "hello $.;'there\n",
     "want": "<p>hello $.;'there</p>",
-    "name": "Test 650"
+    "name": "Test 650: <tt>hello $.;'there↲</tt>"
   },
   {
     "data": "Foo χρῆν\n",
     "want": "<p>Foo χρῆν</p>",
-    "name": "Test 651"
+    "name": "Test 651: <tt>Foo χρῆν↲</tt>"
   },
   {
     "data": "Multiple     spaces\n",
     "want": "<p>Multiple     spaces</p>",
-    "name": "Test 652"
+    "name": "Test 652: <tt>Multiple␣␣␣␣␣spaces↲</tt>"
   }
 ]
