@@ -1,5293 +1,3360 @@
 [
+  "Tabs",
   {
     "data": "\tfoo\tbaz\t\tbim\n",
     "want": "<pre><tt>foo\tbaz\t\tbim\n</tt></pre>",
     "name": "Test 1",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 355,
-    "end_line": 360,
-    "section": "Tabs"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "  \tfoo\tbaz\t\tbim\n",
     "want": "<pre><tt>foo\tbaz\t\tbim\n</tt></pre>",
     "name": "Test 2",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 362,
-    "end_line": 367,
-    "section": "Tabs"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "    a\ta\n    ὐ\ta\n",
     "want": "<pre><tt>a\ta\nὐ\ta\n</tt></pre>",
     "name": "Test 3",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 369,
-    "end_line": 376,
-    "section": "Tabs"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "  - foo\n\n\tbar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 4",
-    "start_line": 382,
-    "end_line": 393,
-    "section": "Tabs"
+    "name": "Test 4"
   },
   {
     "data": "- foo\n\n\t\tbar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<pre><tt>  bar\n</tt></pre>\n\n</li></ul>",
     "name": "Test 5",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 395,
-    "end_line": 407,
-    "section": "Tabs"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": ">\t\tfoo\n",
     "want": "<blockquote>\n\n<pre><tt>  foo\n</tt></pre>\n\n</blockquote>",
-    "name": "Test 6",
-    "start_line": 418,
-    "end_line": 425,
-    "section": "Tabs"
+    "name": "Test 6"
   },
   {
     "data": "-\t\tfoo\n",
     "want": "<ul><li>\n\n<pre><tt>  foo\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 7",
-    "start_line": 427,
-    "end_line": 436,
-    "section": "Tabs"
+    "name": "Test 7"
   },
   {
     "data": "    foo\n\tbar\n",
     "want": "<pre><tt>foo\nbar\n</tt></pre>",
     "name": "Test 8",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 439,
-    "end_line": 446,
-    "section": "Tabs"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": " - foo\n   - bar\n\t - baz\n",
     "want": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz</li></ul>\n\n</li></ul>\n\n</li></ul>",
-    "name": "Test 9",
-    "start_line": 448,
-    "end_line": 464,
-    "section": "Tabs"
+    "name": "Test 9"
   },
   {
     "data": "#\tFoo\n",
     "want": "<h1>Foo</h1>",
-    "name": "Test 10",
-    "start_line": 466,
-    "end_line": 470,
-    "section": "Tabs"
+    "name": "Test 10"
   },
   {
     "data": "*\t*\t*\t\n",
     "want": "<hr>",
-    "name": "Test 11",
-    "start_line": 472,
-    "end_line": 476,
-    "section": "Tabs"
+    "name": "Test 11"
   },
+  "Backslash escapes",
   {
     "data": "\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\=\\>\\?\\@\\[\\\\\\]\\^\\_\\`\\{\\|\\}\\~\n",
     "want": "<p>&#33;&#34;&#35;&#36;&#37;&#38;&#39;&#40;&#41;&#42;&#43;&#44;&#45;&#46;&#47;&#58;&#59;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#96;&#123;&#124;&#125;&#126;</p>",
-    "name": "Test 12",
-    "start_line": 489,
-    "end_line": 493,
-    "section": "Backslash escapes"
+    "name": "Test 12"
   },
   {
     "data": "\\\t\\A\\a\\ \\3\\φ\\«\n",
     "want": "<p>\\\t\\A\\a\\ \\3\\φ\\«</p>",
-    "name": "Test 13",
-    "start_line": 499,
-    "end_line": 503,
-    "section": "Backslash escapes"
+    "name": "Test 13"
   },
   {
     "data": "\\*not emphasized*\n\\<br/> not a tag\n\\[not a link](/foo)\n\\`not code`\n1\\. not a list\n\\* not a list\n\\# not a heading\n\\[foo]: /url \"not a reference\"\n\\&ouml; not a character entity\n",
     "want": "<p>*not emphasized*\n&#60;br/&#62; not a tag\n[not a link](/foo)\n`not code`\n1. not a list\n* not a list\n# not a heading\n[foo]: /url \"not a reference\"\n&amp;ouml; not a character entity</p>",
-    "name": "Test 14",
-    "start_line": 509,
-    "end_line": 529,
-    "section": "Backslash escapes"
+    "name": "Test 14"
   },
   {
     "data": "\\\\*emphasis*\n",
     "want": "<p>&#92;<i>emphasis</i></p>",
-    "name": "Test 15",
-    "start_line": 534,
-    "end_line": 538,
-    "section": "Backslash escapes"
+    "name": "Test 15"
   },
   {
     "data": "foo\\\nbar\n",
     "want": "<p>foo<br>bar</p>",
-    "name": "Test 16",
-    "start_line": 543,
-    "end_line": 549,
-    "section": "Backslash escapes"
+    "name": "Test 16"
   },
   {
     "data": "`` \\[\\` ``\n",
     "want": "<p><tt>&#92;&#91;&#92;&#96;</tt></p>",
-    "name": "Test 17",
-    "start_line": 555,
-    "end_line": 559,
-    "section": "Backslash escapes"
+    "name": "Test 17"
   },
   {
     "data": "    \\[\\]\n",
     "want": "<pre><tt>\\[\\]\n</tt></pre>",
     "name": "Test 18",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 562,
-    "end_line": 567,
-    "section": "Backslash escapes"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "~~~\n\\[\\]\n~~~\n",
     "want": "<pre><tt>\\[\\]\n</tt></pre>",
-    "name": "Test 19",
-    "start_line": 570,
-    "end_line": 577,
-    "section": "Backslash escapes"
+    "name": "Test 19"
   },
   {
     "data": "<https://example.com?find=\\*>\n",
     "want": "<p><a href=\"https://example.com?find=%5C*\">https://example.com?find=\\*</a></p>",
     "name": "Test 20",
-    "FIXME": "autolinking",
-    "start_line": 580,
-    "end_line": 584,
-    "section": "Backslash escapes"
+    "FIXME": "autolinking"
   },
   {
     "data": "<a href=\"/bar\\/)\">\n",
     "want": "<a href=\"/bar\\/)\">",
-    "name": "Test 21",
-    "start_line": 587,
-    "end_line": 591,
-    "section": "Backslash escapes"
+    "name": "Test 21"
   },
   {
     "data": "[foo](/bar\\* \"ti\\*tle\")\n",
     "want": "<p><a href=\"/bar*\" title=\"ti*tle\">foo</a></p>",
-    "name": "Test 22",
-    "start_line": 597,
-    "end_line": 601,
-    "section": "Backslash escapes"
+    "name": "Test 22"
   },
   {
     "data": "[foo]\n\n[foo]: /bar\\* \"ti\\*tle\"\n",
     "want": "<p><a href=\"/bar&#42;\" title=\"ti&#42;tle\">foo</a></p>",
-    "name": "Test 23",
-    "start_line": 604,
-    "end_line": 610,
-    "section": "Backslash escapes"
+    "name": "Test 23"
   },
   {
     "data": "``` foo\\+bar\nfoo\n```\n",
     "want": "<pre><tt class=\"language-foo+bar\">foo\n</tt></pre>",
-    "name": "Test 24",
-    "start_line": 613,
-    "end_line": 620,
-    "section": "Backslash escapes"
+    "name": "Test 24"
   },
+  "Entity and numeric character references",
   {
     "data": "&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;\n",
     "want": "<p>  &amp; © Æ Ď\n¾ ℋ ⅆ\n∲ ≧̸</p>",
-    "name": "Test 25",
-    "start_line": 649,
-    "end_line": 657,
-    "section": "Entity and numeric character references"
+    "name": "Test 25"
   },
   {
     "data": "&#35; &#1234; &#992; &#0;\n",
     "want": "<p># Ӓ Ϡ �</p>",
-    "name": "Test 26",
-    "start_line": 668,
-    "end_line": 672,
-    "section": "Entity and numeric character references"
+    "name": "Test 26"
   },
   {
     "data": "&#X22; &#XD06; &#xcab;\n",
     "want": "<p>&quot; ആ ಫ</p>",
-    "name": "Test 27",
-    "start_line": 681,
-    "end_line": 685,
-    "section": "Entity and numeric character references"
+    "name": "Test 27"
   },
   {
     "data": "&nbsp &x; &#; &#x;\n&#87654321;\n&#abcdef0;\n&ThisIsNotDefined; &hi?;\n",
     "want": "<p>&amp;nbsp &amp;x; &amp;#; &amp;#x;\n&amp;#87654321;\n&amp;#abcdef0;\n&amp;ThisIsNotDefined; &amp;hi?;</p>",
-    "name": "Test 28",
-    "start_line": 690,
-    "end_line": 700,
-    "section": "Entity and numeric character references"
+    "name": "Test 28"
   },
   {
     "data": "&copy\n",
     "want": "<p>&amp;copy</p>",
-    "name": "Test 29",
-    "start_line": 707,
-    "end_line": 711,
-    "section": "Entity and numeric character references"
+    "name": "Test 29"
   },
   {
     "data": "&MadeUpEntity;\n",
     "want": "<p>&amp;MadeUpEntity;</p>",
-    "name": "Test 30",
-    "start_line": 717,
-    "end_line": 721,
-    "section": "Entity and numeric character references"
+    "name": "Test 30"
   },
   {
     "data": "<a href=\"&ouml;&ouml;.html\">\n",
     "want": "<a href=\"&ouml;&ouml;.html\">",
-    "name": "Test 31",
-    "start_line": 728,
-    "end_line": 732,
-    "section": "Entity and numeric character references"
+    "name": "Test 31"
   },
   {
     "data": "[foo](/f&ouml;&ouml; \"f&ouml;&ouml;\")\n",
     "want": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>",
-    "name": "Test 32",
-    "start_line": 735,
-    "end_line": 739,
-    "section": "Entity and numeric character references"
+    "name": "Test 32"
   },
   {
     "data": "[foo]\n\n[foo]: /f&ouml;&ouml; \"f&ouml;&ouml;\"\n",
     "want": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>",
-    "name": "Test 33",
-    "start_line": 742,
-    "end_line": 748,
-    "section": "Entity and numeric character references"
+    "name": "Test 33"
   },
   {
     "data": "``` f&ouml;&ouml;\nfoo\n```\n",
     "want": "<pre><tt class=\"language-föö\">foo\n</tt></pre>",
-    "name": "Test 34",
-    "start_line": 751,
-    "end_line": 758,
-    "section": "Entity and numeric character references"
+    "name": "Test 34"
   },
   {
     "data": "`f&ouml;&ouml;`\n",
     "want": "<p><tt>f&amp;ouml;&amp;ouml;</tt></p>",
-    "name": "Test 35",
-    "start_line": 764,
-    "end_line": 768,
-    "section": "Entity and numeric character references"
+    "name": "Test 35"
   },
   {
     "data": "    f&ouml;f&ouml;\n",
     "want": "<pre><tt>f&amp;ouml;f&amp;ouml;\n</tt></pre>",
     "name": "Test 36",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 771,
-    "end_line": 776,
-    "section": "Entity and numeric character references"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "&#42;foo&#42;\n*foo*\n",
     "want": "<p>*foo*\n<i>foo</i></p>",
-    "name": "Test 37",
-    "start_line": 783,
-    "end_line": 789,
-    "section": "Entity and numeric character references"
+    "name": "Test 37"
   },
   {
     "data": "&#42; foo\n\n* foo\n",
     "want": "<p>* foo</p>\n\n<ul><li>foo</li></ul>",
-    "name": "Test 38",
-    "start_line": 791,
-    "end_line": 800,
-    "section": "Entity and numeric character references"
+    "name": "Test 38"
   },
   {
     "data": "foo&#10;&#10;bar\n",
     "want": "<p>foo\n\nbar</p>",
-    "name": "Test 39",
-    "start_line": 802,
-    "end_line": 808,
-    "section": "Entity and numeric character references"
+    "name": "Test 39"
   },
   {
     "data": "&#9;foo\n",
     "want": "<p>\tfoo</p>",
-    "name": "Test 40",
-    "start_line": 810,
-    "end_line": 814,
-    "section": "Entity and numeric character references"
+    "name": "Test 40"
   },
   {
     "data": "[a](url &quot;tit&quot;)\n",
     "want": "<p>[a](url &quot;tit&quot;)</p>",
-    "name": "Test 41",
-    "start_line": 817,
-    "end_line": 821,
-    "section": "Entity and numeric character references"
+    "name": "Test 41"
   },
+  "Precedence",
   {
     "data": "- `one\n- two`\n",
     "want": "<ul><li>`one</li>\n\n<li>two`</li></ul>",
-    "name": "Test 42",
-    "start_line": 840,
-    "end_line": 848,
-    "section": "Precedence"
+    "name": "Test 42"
   },
+  "Thematic breaks",
   {
     "data": "***\n---\n___\n",
     "want": "<hr>\n\n<hr>\n\n<hr>",
-    "name": "Test 43",
-    "start_line": 879,
-    "end_line": 887,
-    "section": "Thematic breaks"
+    "name": "Test 43"
   },
   {
     "data": "+++\n",
     "want": "<p>+++</p>",
-    "name": "Test 44",
-    "start_line": 892,
-    "end_line": 896,
-    "section": "Thematic breaks"
+    "name": "Test 44"
   },
   {
     "data": "===\n",
     "want": "<p>===</p>",
-    "name": "Test 45",
-    "start_line": 899,
-    "end_line": 903,
-    "section": "Thematic breaks"
+    "name": "Test 45"
   },
   {
     "data": "--\n**\n__\n",
     "want": "<p>--\n**\n__</p>",
-    "name": "Test 46",
-    "start_line": 908,
-    "end_line": 916,
-    "section": "Thematic breaks"
+    "name": "Test 46"
   },
   {
     "data": " ***\n  ***\n   ***\n",
     "want": "<hr>\n\n<hr>\n\n<hr>",
-    "name": "Test 47",
-    "start_line": 921,
-    "end_line": 929,
-    "section": "Thematic breaks"
+    "name": "Test 47"
   },
   {
     "data": "    ***\n",
     "want": "<pre><tt>***\n</tt></pre>",
     "name": "Test 48",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 934,
-    "end_line": 939,
-    "section": "Thematic breaks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "Foo\n    ***\n",
     "want": "<p>Foo\n***</p>",
-    "name": "Test 49",
-    "start_line": 942,
-    "end_line": 948,
-    "section": "Thematic breaks"
+    "name": "Test 49"
   },
   {
     "data": "_____________________________________\n",
     "want": "<hr>",
-    "name": "Test 50",
-    "start_line": 953,
-    "end_line": 957,
-    "section": "Thematic breaks"
+    "name": "Test 50"
   },
   {
     "data": " - - -\n",
     "want": "<hr>",
-    "name": "Test 51",
-    "start_line": 962,
-    "end_line": 966,
-    "section": "Thematic breaks"
+    "name": "Test 51"
   },
   {
     "data": " **  * ** * ** * **\n",
     "want": "<hr>",
-    "name": "Test 52",
-    "start_line": 969,
-    "end_line": 973,
-    "section": "Thematic breaks"
+    "name": "Test 52"
   },
   {
     "data": "-     -      -      -\n",
     "want": "<hr>",
-    "name": "Test 53",
-    "start_line": 976,
-    "end_line": 980,
-    "section": "Thematic breaks"
+    "name": "Test 53"
   },
   {
     "data": "- - - -    \n",
     "want": "<hr>",
-    "name": "Test 54",
-    "start_line": 985,
-    "end_line": 989,
-    "section": "Thematic breaks"
+    "name": "Test 54"
   },
   {
     "data": "_ _ _ _ a\n\na------\n\n---a---\n",
     "want": "<p>_ _ _ _ a</p>\n\n<p>a------</p>\n\n<p>---a---</p>",
-    "name": "Test 55",
-    "start_line": 994,
-    "end_line": 1004,
-    "section": "Thematic breaks"
+    "name": "Test 55"
   },
   {
     "data": " *-*\n",
     "want": "<p><i>-</i></p>",
-    "name": "Test 56",
-    "start_line": 1010,
-    "end_line": 1014,
-    "section": "Thematic breaks"
+    "name": "Test 56"
   },
   {
     "data": "- foo\n***\n- bar\n",
     "want": "<ul><li>foo</li></ul>\n\n<hr>\n\n<ul><li>bar</li></ul>",
-    "name": "Test 57",
-    "start_line": 1019,
-    "end_line": 1031,
-    "section": "Thematic breaks"
+    "name": "Test 57"
   },
   {
     "data": "Foo\n***\nbar\n",
     "want": "<p>Foo</p>\n\n<hr>\n\n<p>bar</p>",
-    "name": "Test 58",
-    "start_line": 1036,
-    "end_line": 1044,
-    "section": "Thematic breaks"
+    "name": "Test 58"
   },
   {
     "data": "Foo\n---\nbar\n",
     "want": "<h2>Foo</h2>\n\n<p>bar</p>",
-    "name": "Test 59",
-    "start_line": 1053,
-    "end_line": 1060,
-    "section": "Thematic breaks"
+    "name": "Test 59"
   },
   {
     "data": "* Foo\n* * *\n* Bar\n",
     "want": "<ul><li>Foo</li></ul>\n\n<hr>\n\n<ul><li>Bar</li></ul>",
-    "name": "Test 60",
-    "start_line": 1066,
-    "end_line": 1078,
-    "section": "Thematic breaks"
+    "name": "Test 60"
   },
   {
     "data": "- Foo\n- * * *\n",
     "want": "<ul><li>Foo</li>\n\n<li>\n\n<hr>\n\n</li></ul>",
-    "name": "Test 61",
-    "start_line": 1083,
-    "end_line": 1093,
-    "section": "Thematic breaks"
+    "name": "Test 61"
   },
+  "ATX headings",
   {
     "data": "# foo\n## foo\n### foo\n#### foo\n##### foo\n###### foo\n",
     "want": "<h1>foo</h1>\n\n\n<h2>foo</h2>\n\n\n<h3>foo</h3>\n\n\n<h4>foo</h4>\n\n\n<h5>foo</h5>\n\n\n<h6>foo</h6>",
     "name": "Test 62",
-    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>",
-    "start_line": 1112,
-    "end_line": 1126,
-    "section": "ATX headings"
+    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "####### foo\n",
     "want": "<p>####### foo</p>",
-    "name": "Test 63",
-    "start_line": 1131,
-    "end_line": 1135,
-    "section": "ATX headings"
+    "name": "Test 63"
   },
   {
     "data": "#5 bolt\n\n#hashtag\n",
     "want": "<p>#5 bolt</p>\n\n<p>#hashtag</p>",
-    "name": "Test 64",
-    "start_line": 1146,
-    "end_line": 1153,
-    "section": "ATX headings"
+    "name": "Test 64"
   },
   {
     "data": "\\## foo\n",
     "want": "<p>&#35;# foo</p>",
-    "name": "Test 65",
-    "start_line": 1158,
-    "end_line": 1162,
-    "section": "ATX headings"
+    "name": "Test 65"
   },
   {
     "data": "# foo *bar* \\*baz\\*\n",
     "want": "<h1>foo <i>bar</i> &#42;baz&#42;</h1>",
-    "name": "Test 66",
-    "start_line": 1167,
-    "end_line": 1171,
-    "section": "ATX headings"
+    "name": "Test 66"
   },
   {
     "data": "#                  foo                     \n",
     "want": "<h1>foo</h1>",
-    "name": "Test 67",
-    "start_line": 1176,
-    "end_line": 1180,
-    "section": "ATX headings"
+    "name": "Test 67"
   },
   {
     "data": " ### foo\n  ## foo\n   # foo\n",
     "want": "<h3>foo</h3>\n\n\n<h2>foo</h2>\n\n\n<h1>foo</h1>",
     "name": "Test 68",
-    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>",
-    "start_line": 1185,
-    "end_line": 1193,
-    "section": "ATX headings"
+    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "    # foo\n",
     "want": "<pre><tt># foo\n</tt></pre>",
     "name": "Test 69",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1198,
-    "end_line": 1203,
-    "section": "ATX headings"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "foo\n    # bar\n",
     "want": "<p>foo\n# bar</p>",
     "name": "Test 70",
-    "skip": "Baremark doesn't modify horizontal whitespace",
-    "start_line": 1206,
-    "end_line": 1212,
-    "section": "ATX headings"
+    "skip": "Baremark doesn't modify horizontal whitespace"
   },
   {
     "data": "## foo ##\n  ###   bar    ###\n",
     "want": "<h2>foo</h2>\n\n\n<h3>bar</h3>",
     "name": "Test 71",
-    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>",
-    "start_line": 1217,
-    "end_line": 1223,
-    "section": "ATX headings"
+    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "# foo ##################################\n##### foo ##\n",
     "want": "<h1>foo</h1>\n\n\n<h5>foo</h5>",
     "name": "Test 72",
-    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>",
-    "start_line": 1228,
-    "end_line": 1234,
-    "section": "ATX headings"
+    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "### foo ###     \n",
     "want": "<h3>foo</h3>",
-    "name": "Test 73",
-    "start_line": 1239,
-    "end_line": 1243,
-    "section": "ATX headings"
+    "name": "Test 73"
   },
   {
     "data": "### foo ### b\n",
     "want": "<h3>foo ### b</h3>",
-    "name": "Test 74",
-    "start_line": 1250,
-    "end_line": 1254,
-    "section": "ATX headings"
+    "name": "Test 74"
   },
   {
     "data": "# foo#\n",
     "want": "<h1>foo#</h1>",
-    "name": "Test 75",
-    "start_line": 1259,
-    "end_line": 1263,
-    "section": "ATX headings"
+    "name": "Test 75"
   },
   {
     "data": "### foo \\###\n## foo #\\##\n# foo \\#\n",
     "want": "<h3>foo ###</h3>\n\n\n<h2>foo ###</h2>\n\n\n<h1>foo #</h1>",
     "name": "Test 76",
-    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>",
-    "start_line": 1269,
-    "end_line": 1277,
-    "section": "ATX headings"
+    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "****\n## foo\n****\n",
     "want": "<hr>\n\n<h2>foo</h2>\n\n<hr>",
     "name": "Test 77",
-    "skip": "Baremark need blank lines before/after <tt># HEADING</tt> and dinkus <tt>***</tt>",
-    "start_line": 1283,
-    "end_line": 1291,
-    "section": "ATX headings"
+    "skip": "Baremark need blank lines before/after <tt># HEADING</tt> and dinkus <tt>***</tt>"
   },
   {
     "data": "Foo bar\n# baz\nBar foo\n",
     "want": "<p>Foo bar</p>\n\n<h1>baz</h1>\n\n<p>Bar foo</p>",
     "name": "Test 78",
-    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>",
-    "start_line": 1294,
-    "end_line": 1302,
-    "section": "ATX headings"
+    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>"
   },
   {
     "data": "## \n#\n### ###\n",
     "want": "<h2></h2>\n\n\n<h1></h1>\n\n\n<h3></h3>",
     "name": "Test 79",
-    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>, and need to contain text",
-    "start_line": 1307,
-    "end_line": 1315,
-    "section": "ATX headings"
+    "skip": "Baremark need blank lines before/after <tt># HEADING</tt>, and need to contain text"
   },
+  "Setext headings",
   {
     "data": "Foo *bar*\n=========\n\nFoo *bar*\n---------\n",
     "want": "<h1>Foo <i>bar</i></h1>\n\n\n<h2>Foo <i>bar</i></h2>",
-    "name": "Test 80",
-    "start_line": 1347,
-    "end_line": 1356,
-    "section": "Setext headings"
+    "name": "Test 80"
   },
   {
     "data": "Foo *bar\nbaz*\n====\n",
     "want": "<h1>Foo <i>bar\nbaz</i></h1>",
-    "name": "Test 81",
-    "start_line": 1361,
-    "end_line": 1368,
-    "section": "Setext headings"
+    "name": "Test 81"
   },
   {
     "data": "  Foo *bar\nbaz*\t\n====\n",
     "want": "<h1>Foo <i>bar\nbaz</i></h1>",
-    "name": "Test 82",
-    "start_line": 1375,
-    "end_line": 1382,
-    "section": "Setext headings"
+    "name": "Test 82"
   },
   {
     "data": "Foo\n-------------------------\n\nFoo\n=\n",
     "want": "<h2>Foo</h2>\n\n\n<h1>Foo</h1>",
-    "name": "Test 83",
-    "start_line": 1387,
-    "end_line": 1396,
-    "section": "Setext headings"
+    "name": "Test 83"
   },
   {
     "data": "   Foo\n---\n\n  Foo\n-----\n\n  Foo\n  ===\n",
     "want": "<h2>Foo</h2>\n\n\n<h2>Foo</h2>\n\n\n<h1>Foo</h1>",
     "name": "Test 84",
-    "skip": "Baremark <tt class=multi>HEADING 1<br>=========</tt> underline must not be indented.",
-    "start_line": 1402,
-    "end_line": 1415,
-    "section": "Setext headings"
+    "skip": "Baremark <tt class=multi>HEADING 1<br>=========</tt> underline must not be indented."
   },
   {
     "data": "    Foo\n    ---\n\n    Foo\n---\n",
     "want": "<pre><tt>Foo\n---\n\nFoo\n</tt></pre>\n\n<hr>",
     "name": "Test 85",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1420,
-    "end_line": 1433,
-    "section": "Setext headings"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "Foo\n   ----      \n",
     "want": "<h2>Foo</h2>",
     "name": "Test 86",
-    "skip": "Baremark <tt class=multi>HEADING 2<br>---------</tt> underline must not be indented.",
-    "start_line": 1439,
-    "end_line": 1444,
-    "section": "Setext headings"
+    "skip": "Baremark <tt class=multi>HEADING 2<br>---------</tt> underline must not be indented."
   },
   {
     "data": "Foo\n    ---\n",
     "want": "<p>Foo\n---</p>",
     "name": "Test 87",
-    "skip": "Baremark <tt class=multi>HEADING 2<br>---------</tt> underline must not be indented.",
-    "start_line": 1449,
-    "end_line": 1455,
-    "section": "Setext headings"
+    "skip": "Baremark <tt class=multi>HEADING 2<br>---------</tt> underline must not be indented."
   },
   {
     "data": "Foo\n= =\n\nFoo\n--- -\n",
     "want": "<p>Foo\n= =</p>\n\n<p>Foo</p>\n\n<hr>",
-    "name": "Test 88",
-    "start_line": 1460,
-    "end_line": 1471,
-    "section": "Setext headings"
+    "name": "Test 88"
   },
   {
     "data": "Foo  \n-----\n",
     "want": "<h2>Foo</h2>",
-    "name": "Test 89",
-    "start_line": 1476,
-    "end_line": 1481,
-    "section": "Setext headings"
+    "name": "Test 89"
   },
   {
     "data": "Foo\\\n----\n",
     "want": "<h2>Foo\\</h2>",
-    "name": "Test 90",
-    "start_line": 1486,
-    "end_line": 1491,
-    "section": "Setext headings"
+    "name": "Test 90"
   },
   {
     "data": "`Foo\n----\n`\n\n<a title=\"a lot\n---\nof dashes\"/>\n",
     "want": "<h2>`Foo</h2>\n\n<p>`</p>\n\n<h2>&#60;a title=&quot;a lot</h2>\n\n<p>of dashes&quot;/&#62;</p>",
-    "name": "Test 91",
-    "start_line": 1497,
-    "end_line": 1510,
-    "section": "Setext headings"
+    "name": "Test 91"
   },
   {
     "data": "> Foo\n---\n",
     "want": "<blockquote>\n\n<p>Foo</p>\n\n</blockquote>\n\n\n<hr>",
-    "name": "Test 92",
-    "start_line": 1516,
-    "end_line": 1524,
-    "section": "Setext headings"
+    "name": "Test 92"
   },
   {
     "data": "> foo\nbar\n===\n",
     "want": "<blockquote>\n\n<p>foo\nbar\n===</p>\n\n</blockquote>",
-    "name": "Test 93",
-    "start_line": 1527,
-    "end_line": 1537,
-    "section": "Setext headings"
+    "name": "Test 93"
   },
   {
     "data": "- Foo\n---\n",
     "want": "<ul><li>Foo</li></ul>\n\n<hr>",
-    "name": "Test 94",
-    "start_line": 1540,
-    "end_line": 1548,
-    "section": "Setext headings"
+    "name": "Test 94"
   },
   {
     "data": "Foo\nBar\n---\n",
     "want": "<h2>Foo\nBar</h2>",
-    "name": "Test 95",
-    "start_line": 1555,
-    "end_line": 1562,
-    "section": "Setext headings"
+    "name": "Test 95"
   },
   {
     "data": "---\nFoo\n---\nBar\n---\nBaz\n",
     "want": "<hr>\n\n<h2>Foo</h2>\n\n\n<h2>Bar</h2>\n\n<p>Baz</p>",
-    "name": "Test 96",
-    "start_line": 1568,
-    "end_line": 1580,
-    "section": "Setext headings"
+    "name": "Test 96"
   },
   {
     "data": "\n====\n",
     "want": "<p>====</p>",
-    "name": "Test 97",
-    "start_line": 1585,
-    "end_line": 1590,
-    "section": "Setext headings"
+    "name": "Test 97"
   },
   {
     "data": "---\n---\n",
     "want": "<hr>\n\n<hr>",
-    "name": "Test 98",
-    "start_line": 1597,
-    "end_line": 1603,
-    "section": "Setext headings"
+    "name": "Test 98"
   },
   {
     "data": "- foo\n-----\n",
     "want": "<ul><li>foo</li></ul>\n\n<hr>",
-    "name": "Test 99",
-    "start_line": 1606,
-    "end_line": 1614,
-    "section": "Setext headings"
+    "name": "Test 99"
   },
   {
     "data": "    foo\n---\n",
     "want": "<pre><tt>foo\n</tt></pre>\n\n<hr>",
     "name": "Test 100",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1617,
-    "end_line": 1624,
-    "section": "Setext headings"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "> foo\n-----\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>\n\n\n<hr>",
-    "name": "Test 101",
-    "start_line": 1627,
-    "end_line": 1635,
-    "section": "Setext headings"
+    "name": "Test 101"
   },
   {
     "data": "\\> foo\n------\n",
     "want": "<h2>&#62; foo</h2>",
-    "name": "Test 102",
-    "start_line": 1641,
-    "end_line": 1646,
-    "section": "Setext headings"
+    "name": "Test 102"
   },
   {
     "data": "Foo\n\nbar\n---\nbaz\n",
     "want": "<p>Foo</p>\n\n<h2>bar</h2>\n\n<p>baz</p>",
-    "name": "Test 103",
-    "start_line": 1672,
-    "end_line": 1682,
-    "section": "Setext headings"
+    "name": "Test 103"
   },
   {
     "data": "Foo\nbar\n\n---\n\nbaz\n",
     "want": "<p>Foo\nbar</p>\n\n<hr>\n\n<p>baz</p>",
-    "name": "Test 104",
-    "start_line": 1688,
-    "end_line": 1700,
-    "section": "Setext headings"
+    "name": "Test 104"
   },
   {
     "data": "Foo\nbar\n* * *\nbaz\n",
     "want": "<p>Foo\nbar</p>\n\n<hr>\n\n<p>baz</p>",
-    "name": "Test 105",
-    "start_line": 1706,
-    "end_line": 1716,
-    "section": "Setext headings"
+    "name": "Test 105"
   },
   {
     "data": "Foo\nbar\n\\---\nbaz\n",
     "want": "<p>Foo\nbar\n---\nbaz</p>",
-    "name": "Test 106",
-    "start_line": 1721,
-    "end_line": 1731,
-    "section": "Setext headings"
+    "name": "Test 106"
   },
+  "Indented code blocks",
   {
     "data": "    a simple\n      indented code block\n",
     "want": "<pre><tt>a simple\n  indented code block\n</tt></pre>",
     "name": "Test 107",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1749,
-    "end_line": 1756,
-    "section": "Indented code blocks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "  - foo\n\n    bar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 108",
-    "start_line": 1763,
-    "end_line": 1774,
-    "section": "Indented code blocks"
+    "name": "Test 108"
   },
   {
     "data": "1.  foo\n\n    - bar\n",
     "want": "<ol><li>\n\n<p>foo</p>\n\n<ul><li>bar</li></ul>\n\n</li></ol>",
-    "name": "Test 109",
-    "start_line": 1777,
-    "end_line": 1790,
-    "section": "Indented code blocks"
+    "name": "Test 109"
   },
   {
     "data": "    <a/>\n    *hi*\n\n    - one\n",
     "want": "<pre><tt>&#60;a/&#62;\n*hi*\n\n- one\n</tt></pre>",
     "name": "Test 110",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1797,
-    "end_line": 1808,
-    "section": "Indented code blocks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "    chunk1\n\n    chunk2\n  \n \n \n    chunk3\n",
     "want": "<pre><tt>chunk1\n\nchunk2\n\n\n\nchunk3\n</tt></pre>",
     "name": "Test 111",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1813,
-    "end_line": 1830,
-    "section": "Indented code blocks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "    chunk1\n      \n      chunk2\n",
     "want": "<pre><tt>chunk1\n  \n  chunk2\n</tt></pre>",
     "name": "Test 112",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1836,
-    "end_line": 1845,
-    "section": "Indented code blocks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "Foo\n    bar\n\n",
     "want": "<p>Foo\nbar</p>",
-    "name": "Test 113",
-    "start_line": 1851,
-    "end_line": 1858,
-    "section": "Indented code blocks"
+    "name": "Test 113"
   },
   {
     "data": "    foo\nbar\n",
     "want": "<pre><tt>foo\n</tt></pre>\n\n<p>bar</p>",
     "name": "Test 114",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1865,
-    "end_line": 1872,
-    "section": "Indented code blocks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "# Heading\n    foo\nHeading\n------\n    foo\n----\n",
     "want": "<h1>Heading</h1>\n\n<pre><tt>foo\n</tt></pre>\n\n<h2>Heading</h2>\n\n<pre><tt>foo\n</tt></pre>\n\n<hr>",
-    "name": "Test 115",
-    "start_line": 1878,
-    "end_line": 1893,
-    "section": "Indented code blocks"
+    "name": "Test 115"
   },
   {
     "data": "        foo\n    bar\n",
     "want": "<pre><tt>    foo\nbar\n</tt></pre>",
     "name": "Test 116",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1898,
-    "end_line": 1905,
-    "section": "Indented code blocks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "\n    \n    foo\n    \n\n",
     "want": "<pre><tt>foo\n</tt></pre>",
-    "name": "Test 117",
-    "start_line": 1911,
-    "end_line": 1920,
-    "section": "Indented code blocks"
+    "name": "Test 117"
   },
   {
     "data": "    foo  \n",
     "want": "<pre><tt>foo  \n</tt></pre>",
     "name": "Test 118",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 1925,
-    "end_line": 1930,
-    "section": "Indented code blocks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
+  "Fenced code blocks",
   {
     "data": "```\n<\n >\n```\n",
     "want": "<pre><tt>&#60;\n &#62;\n</tt></pre>",
-    "name": "Test 119",
-    "start_line": 1980,
-    "end_line": 1989,
-    "section": "Fenced code blocks"
+    "name": "Test 119"
   },
   {
     "data": "~~~\n<\n >\n~~~\n",
     "want": "<pre><tt>&#60;\n &#62;\n</tt></pre>",
-    "name": "Test 120",
-    "start_line": 1994,
-    "end_line": 2003,
-    "section": "Fenced code blocks"
+    "name": "Test 120"
   },
   {
     "data": "``\nfoo\n``\n",
     "want": "<p><tt>foo</tt></p>",
-    "name": "Test 121",
-    "start_line": 2007,
-    "end_line": 2013,
-    "section": "Fenced code blocks"
+    "name": "Test 121"
   },
   {
     "data": "```\naaa\n~~~\n```\n",
     "want": "<pre><tt>aaa\n~~~\n</tt></pre>",
-    "name": "Test 122",
-    "start_line": 2018,
-    "end_line": 2027,
-    "section": "Fenced code blocks"
+    "name": "Test 122"
   },
   {
     "data": "~~~\naaa\n```\n~~~\n",
     "want": "<pre><tt>aaa\n```\n</tt></pre>",
-    "name": "Test 123",
-    "start_line": 2030,
-    "end_line": 2039,
-    "section": "Fenced code blocks"
+    "name": "Test 123"
   },
   {
     "data": "````\naaa\n```\n``````\n",
     "want": "<pre><tt>aaa\n```\n</tt></pre>",
-    "name": "Test 124",
-    "start_line": 2044,
-    "end_line": 2053,
-    "section": "Fenced code blocks"
+    "name": "Test 124"
   },
   {
     "data": "~~~~\naaa\n~~~\n~~~~\n",
     "want": "<pre><tt>aaa\n~~~\n</tt></pre>",
-    "name": "Test 125",
-    "start_line": 2056,
-    "end_line": 2065,
-    "section": "Fenced code blocks"
+    "name": "Test 125"
   },
   {
     "data": "```\n",
     "want": "<pre><tt></tt></pre>",
-    "name": "Test 126",
-    "start_line": 2071,
-    "end_line": 2075,
-    "section": "Fenced code blocks"
+    "name": "Test 126"
   },
   {
     "data": "`````\n\n```\naaa\n",
     "want": "<pre><tt>\n```\naaa\n</tt></pre>",
-    "name": "Test 127",
-    "start_line": 2078,
-    "end_line": 2088,
-    "section": "Fenced code blocks"
+    "name": "Test 127"
   },
   {
     "data": "> ```\n> aaa\n\nbbb\n",
     "want": "<blockquote>\n\n<pre><tt>aaa\n</tt></pre>\n\n</blockquote>\n\n\n<p>bbb</p>",
-    "name": "Test 128",
-    "start_line": 2091,
-    "end_line": 2102,
-    "section": "Fenced code blocks"
+    "name": "Test 128"
   },
   {
     "data": "```\n\n  \n```\n",
     "want": "<pre><tt>\n  \n</tt></pre>",
-    "name": "Test 129",
-    "start_line": 2107,
-    "end_line": 2116,
-    "section": "Fenced code blocks"
+    "name": "Test 129"
   },
   {
     "data": "```\n```\n",
     "want": "<pre><tt></tt></pre>",
-    "name": "Test 130",
-    "start_line": 2121,
-    "end_line": 2126,
-    "section": "Fenced code blocks"
+    "name": "Test 130"
   },
   {
     "data": " ```\n aaa\naaa\n```\n",
     "want": "<pre><tt>aaa\naaa\n</tt></pre>",
-    "name": "Test 131",
-    "start_line": 2133,
-    "end_line": 2142,
-    "section": "Fenced code blocks"
+    "name": "Test 131"
   },
   {
     "data": "  ```\naaa\n  aaa\naaa\n  ```\n",
     "want": "<pre><tt>aaa\naaa\naaa\n</tt></pre>",
-    "name": "Test 132",
-    "start_line": 2145,
-    "end_line": 2156,
-    "section": "Fenced code blocks"
+    "name": "Test 132"
   },
   {
     "data": "   ```\n   aaa\n    aaa\n  aaa\n   ```\n",
     "want": "<pre><tt>aaa\n aaa\naaa\n</tt></pre>",
-    "name": "Test 133",
-    "start_line": 2159,
-    "end_line": 2170,
-    "section": "Fenced code blocks"
+    "name": "Test 133"
   },
   {
     "data": "    ```\n    aaa\n    ```\n",
     "want": "<pre><tt>```\naaa\n```\n</tt></pre>",
     "name": "Test 134",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 2175,
-    "end_line": 2184,
-    "section": "Fenced code blocks"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "```\naaa\n  ```\n",
     "want": "<pre><tt>aaa\n</tt></pre>",
-    "name": "Test 135",
-    "start_line": 2190,
-    "end_line": 2197,
-    "section": "Fenced code blocks"
+    "name": "Test 135"
   },
   {
     "data": "   ```\naaa\n  ```\n",
     "want": "<pre><tt>aaa\n</tt></pre>",
-    "name": "Test 136",
-    "start_line": 2200,
-    "end_line": 2207,
-    "section": "Fenced code blocks"
+    "name": "Test 136"
   },
   {
     "data": "```\naaa\n    ```\n",
     "want": "<pre><tt>aaa\n    ```\n</tt></pre>",
-    "name": "Test 137",
-    "start_line": 2212,
-    "end_line": 2220,
-    "section": "Fenced code blocks"
+    "name": "Test 137"
   },
   {
     "data": "``` ```\naaa\n",
     "want": "<p><tt> </tt>\naaa</p>",
-    "name": "Test 138",
-    "start_line": 2226,
-    "end_line": 2232,
-    "section": "Fenced code blocks"
+    "name": "Test 138"
   },
   {
     "data": "~~~~~~\naaa\n~~~ ~~\n",
     "want": "<pre><tt>aaa\n~~~ ~~\n</tt></pre>",
-    "name": "Test 139",
-    "start_line": 2235,
-    "end_line": 2243,
-    "section": "Fenced code blocks"
+    "name": "Test 139"
   },
   {
     "data": "foo\n```\nbar\n```\nbaz\n",
     "want": "<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n<p>baz</p>",
-    "name": "Test 140",
-    "start_line": 2249,
-    "end_line": 2260,
-    "section": "Fenced code blocks"
+    "name": "Test 140"
   },
   {
     "data": "foo\n---\n~~~\nbar\n~~~\n# baz\n",
     "want": "<h2>foo</h2>\n\n<pre><tt>bar\n</tt></pre>\n\n<h1>baz</h1>",
-    "name": "Test 141",
-    "start_line": 2266,
-    "end_line": 2278,
-    "section": "Fenced code blocks"
+    "name": "Test 141"
   },
   {
     "data": "```ruby\ndef foo(x)\n  return 3\nend\n```\n",
     "want": "<pre><tt class=\"language-ruby\">def foo(x)\n  return 3\nend\n</tt></pre>",
-    "name": "Test 142",
-    "start_line": 2288,
-    "end_line": 2299,
-    "section": "Fenced code blocks"
+    "name": "Test 142"
   },
   {
     "data": "~~~~    ruby startline=3 $%@#$\ndef foo(x)\n  return 3\nend\n~~~~~~~\n",
     "want": "<pre><tt class=\"language-ruby\">def foo(x)\n  return 3\nend\n</tt></pre>",
-    "name": "Test 143",
-    "start_line": 2302,
-    "end_line": 2313,
-    "section": "Fenced code blocks"
+    "name": "Test 143"
   },
   {
     "data": "````;\n````\n",
     "want": "<pre><tt class=\"language-;\"></tt></pre>",
-    "name": "Test 144",
-    "start_line": 2316,
-    "end_line": 2321,
-    "section": "Fenced code blocks"
+    "name": "Test 144"
   },
   {
     "data": "``` aa ```\nfoo\n",
     "want": "<p><tt>aa</tt>\nfoo</p>",
-    "name": "Test 145",
-    "start_line": 2326,
-    "end_line": 2332,
-    "section": "Fenced code blocks"
+    "name": "Test 145"
   },
   {
     "data": "~~~ aa ``` ~~~\nfoo\n~~~\n",
     "want": "<pre><tt class=\"language-aa\">foo\n</tt></pre>",
-    "name": "Test 146",
-    "start_line": 2337,
-    "end_line": 2344,
-    "section": "Fenced code blocks"
+    "name": "Test 146"
   },
   {
     "data": "```\n``` aaa\n```\n",
     "want": "<pre><tt>``` aaa\n</tt></pre>",
-    "name": "Test 147",
-    "start_line": 2349,
-    "end_line": 2356,
-    "section": "Fenced code blocks"
+    "name": "Test 147"
   },
+  "HTML blocks",
   {
     "data": "<table><tr><td>\n<pre>\n**Hello**,\n\n_world_.\n</pre>\n</td></tr></table>\n",
     "want": "<table><tr><td>\n\n<pre>\n**Hello**,\n<p><i>world</i>.\n</pre></p>\n\n</td></tr></table>",
-    "name": "Test 148",
-    "start_line": 2428,
-    "end_line": 2443,
-    "section": "HTML blocks"
+    "name": "Test 148"
   },
   {
     "data": "<table>\n  <tr>\n    <td>\n           hi\n    </td>\n  </tr>\n</table>\n\nokay.\n",
     "want": "<table>\n  <tr>\n    <td>\n           hi\n    </td>\n  </tr>\n\n</table>\n\n<p>okay.</p>",
-    "name": "Test 149",
-    "start_line": 2457,
-    "end_line": 2476,
-    "section": "HTML blocks"
+    "name": "Test 149"
   },
   {
     "data": " <div>\n  *hello*\n         <foo><a>\n",
     "want": " <div>\n  *hello*\n         <foo><a>",
-    "name": "Test 150",
-    "start_line": 2479,
-    "end_line": 2487,
-    "section": "HTML blocks"
+    "name": "Test 150"
   },
   {
     "data": "</div>\n*foo*\n",
     "want": "</div>\n*foo*",
-    "name": "Test 151",
-    "start_line": 2492,
-    "end_line": 2498,
-    "section": "HTML blocks"
+    "name": "Test 151"
   },
   {
     "data": "<DIV CLASS=\"foo\">\n\n*Markdown*\n\n</DIV>\n",
     "want": "<DIV CLASS=\"foo\">\n\n<p><i>Markdown</i></p>\n\n</DIV>",
-    "name": "Test 152",
-    "start_line": 2503,
-    "end_line": 2513,
-    "section": "HTML blocks"
+    "name": "Test 152"
   },
   {
     "data": "<div id=\"foo\"\n  class=\"bar\">\n</div>\n",
     "want": "<div id=\"foo\"\n  class=\"bar\">\n\n</div>",
-    "name": "Test 153",
-    "start_line": 2519,
-    "end_line": 2527,
-    "section": "HTML blocks"
+    "name": "Test 153"
   },
   {
     "data": "<div id=\"foo\" class=\"bar\n  baz\">\n</div>\n",
     "want": "<div id=\"foo\" class=\"bar\n  baz\">\n\n</div>",
-    "name": "Test 154",
-    "start_line": 2530,
-    "end_line": 2538,
-    "section": "HTML blocks"
+    "name": "Test 154"
   },
   {
     "data": "<div>\n*foo*\n\n*bar*\n",
     "want": "<div>\n*foo*\n<p><i>bar</i></p>",
-    "name": "Test 155",
-    "start_line": 2542,
-    "end_line": 2551,
-    "section": "HTML blocks"
+    "name": "Test 155"
   },
   {
     "data": "<div id=\"foo\"\n*hi*\n",
     "want": "<div id=\"foo\"\n*hi*",
-    "name": "Test 156",
-    "start_line": 2558,
-    "end_line": 2564,
-    "section": "HTML blocks"
+    "name": "Test 156"
   },
   {
     "data": "<div class\nfoo\n",
     "want": "<div class\nfoo",
-    "name": "Test 157",
-    "start_line": 2567,
-    "end_line": 2573,
-    "section": "HTML blocks"
+    "name": "Test 157"
   },
   {
     "data": "<div *???-&&&-<---\n*foo*\n",
     "want": "<div *???-&&&-<---\n*foo*",
-    "name": "Test 158",
-    "start_line": 2579,
-    "end_line": 2585,
-    "section": "HTML blocks"
+    "name": "Test 158"
   },
   {
     "data": "<div><a href=\"bar\">*foo*</a></div>\n",
     "want": "<div><a href=\"bar\">*foo*</a></div>",
-    "name": "Test 159",
-    "start_line": 2591,
-    "end_line": 2595,
-    "section": "HTML blocks"
+    "name": "Test 159"
   },
   {
     "data": "<table><tr><td>\nfoo\n</td></tr></table>\n",
     "want": "<table><tr><td>\nfoo\n</td></tr></table>",
-    "name": "Test 160",
-    "start_line": 2598,
-    "end_line": 2606,
-    "section": "HTML blocks"
+    "name": "Test 160"
   },
   {
     "data": "<div></div>\n``` c\nint x = 33;\n```\n",
     "want": "<div></div>\n``` c\nint x = 33;\n```",
-    "name": "Test 161",
-    "start_line": 2615,
-    "end_line": 2625,
-    "section": "HTML blocks"
+    "name": "Test 161"
   },
   {
     "data": "<a href=\"foo\">\n*bar*\n</a>\n",
     "want": "<a href=\"foo\">\n*bar*\n</a>",
-    "name": "Test 162",
-    "start_line": 2632,
-    "end_line": 2640,
-    "section": "HTML blocks"
+    "name": "Test 162"
   },
   {
     "data": "<Warning>\n*bar*\n</Warning>\n",
     "want": "<Warning>\n*bar*\n</Warning>",
-    "name": "Test 163",
-    "start_line": 2645,
-    "end_line": 2653,
-    "section": "HTML blocks"
+    "name": "Test 163"
   },
   {
     "data": "<i class=\"foo\">\n*bar*\n</i>\n",
     "want": "<i class=\"foo\">\n*bar*\n</i>",
-    "name": "Test 164",
-    "start_line": 2656,
-    "end_line": 2664,
-    "section": "HTML blocks"
+    "name": "Test 164"
   },
   {
     "data": "</ins>\n*bar*\n",
     "want": "</ins>\n*bar*",
-    "name": "Test 165",
-    "start_line": 2667,
-    "end_line": 2673,
-    "section": "HTML blocks"
+    "name": "Test 165"
   },
   {
     "data": "<del>\n*foo*\n</del>\n",
     "want": "<del>\n*foo*\n</del>",
-    "name": "Test 166",
-    "start_line": 2682,
-    "end_line": 2690,
-    "section": "HTML blocks"
+    "name": "Test 166"
   },
   {
     "data": "<del>\n\n*foo*\n\n</del>\n",
     "want": "<del>\n\n<p><i>foo</i></p>\n\n</del>",
-    "name": "Test 167",
-    "start_line": 2697,
-    "end_line": 2707,
-    "section": "HTML blocks"
+    "name": "Test 167"
   },
   {
     "data": "<del>*foo*</del>\n",
     "want": "<p><del><i>foo</i></del></p>",
-    "name": "Test 168",
-    "start_line": 2715,
-    "end_line": 2719,
-    "section": "HTML blocks"
+    "name": "Test 168"
   },
   {
     "data": "<pre language=\"haskell\"><code>\nimport Text.HTML.TagSoup\n\nmain :: IO ()\nmain = print $ parseTags tags\n</code></pre>\nokay\n",
     "want": "<pre language=\"haskell\"><tt>\nimport Text.HTML.TagSoup\n\nmain :: IO ()\nmain = print $ parseTags tags\n</tt></pre>\n\n<p>okay</p>",
-    "name": "Test 169",
-    "start_line": 2731,
-    "end_line": 2747,
-    "section": "HTML blocks"
+    "name": "Test 169"
   },
   {
     "data": "<script type=\"text/javascript\">\n// JavaScript example\n\ndocument.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";\n</script>\nokay\n",
     "want": "<script type=\"text/javascript\">\n// JavaScript example\n\ndocument.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";\n</script>\n\n<p>okay</p>",
-    "name": "Test 170",
-    "start_line": 2752,
-    "end_line": 2766,
-    "section": "HTML blocks"
+    "name": "Test 170"
   },
   {
     "data": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>\n",
     "want": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>",
-    "name": "Test 171",
-    "start_line": 2771,
-    "end_line": 2787,
-    "section": "HTML blocks"
+    "name": "Test 171"
   },
   {
     "data": "<style\n  type=\"text/css\">\nh1 {color:red;}\n\np {color:blue;}\n</style>\nokay\n",
     "want": "<style\n  type=\"text/css\">\nh1 {color:red;}\n\np {color:blue;}\n</style>\n\n<p>okay</p>",
-    "name": "Test 172",
-    "start_line": 2791,
-    "end_line": 2807,
-    "section": "HTML blocks"
+    "name": "Test 172"
   },
   {
     "data": "<style\n  type=\"text/css\">\n\nfoo\n",
     "want": "<style\n  type=\"text/css\">\n\nfoo",
-    "name": "Test 173",
-    "start_line": 2814,
-    "end_line": 2824,
-    "section": "HTML blocks"
+    "name": "Test 173"
   },
   {
     "data": "> <div>\n> foo\n\nbar\n",
     "want": "<blockquote>\n\n<div>\nfoo\n</blockquote>\n\n\n<p>bar</p>",
-    "name": "Test 174",
-    "start_line": 2827,
-    "end_line": 2838,
-    "section": "HTML blocks"
+    "name": "Test 174"
   },
   {
     "data": "- <div>\n- foo\n",
     "want": "<ul><li>\n\n<div>\n\n</li>\n\n<li>foo</li></ul>",
-    "name": "Test 175",
-    "start_line": 2841,
-    "end_line": 2851,
-    "section": "HTML blocks"
+    "name": "Test 175"
   },
   {
     "data": "<style>p{color:red;}</style>\n*foo*\n",
     "want": "<style>p{color:red;}</style>\n\n<p><i>foo</i></p>",
-    "name": "Test 176",
-    "start_line": 2856,
-    "end_line": 2862,
-    "section": "HTML blocks"
+    "name": "Test 176"
   },
   {
     "data": "<!-- foo -->*bar*\n*baz*\n",
     "want": "<!-- foo -->*bar*\n<p><i>baz</i></p>",
-    "name": "Test 177",
-    "start_line": 2865,
-    "end_line": 2871,
-    "section": "HTML blocks"
+    "name": "Test 177"
   },
   {
     "data": "<script>\nfoo\n</script>1. *bar*\n",
     "want": "<script>\nfoo\n</script>1. *bar*",
-    "name": "Test 178",
-    "start_line": 2877,
-    "end_line": 2885,
-    "section": "HTML blocks"
+    "name": "Test 178"
   },
   {
     "data": "<!-- Foo\n\nbar\n   baz -->\nokay\n",
     "want": "<!-- Foo\n\nbar\n   baz -->\n\n<p>okay</p>",
-    "name": "Test 179",
-    "start_line": 2890,
-    "end_line": 2902,
-    "section": "HTML blocks"
+    "name": "Test 179"
   },
   {
     "data": "<?php\n\n  echo '>';\n\n?>\nokay\n",
     "want": "<?php\n\n  echo '>';\n\n?>\n\n<p>okay</p>",
-    "name": "Test 180",
-    "start_line": 2908,
-    "end_line": 2922,
-    "section": "HTML blocks"
+    "name": "Test 180"
   },
   {
     "data": "<!DOCTYPE html>\n",
     "want": "<!DOCTYPE html>",
-    "name": "Test 181",
-    "start_line": 2927,
-    "end_line": 2931,
-    "section": "HTML blocks"
+    "name": "Test 181"
   },
   {
     "data": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\nokay\n",
     "want": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\n\n<p>okay</p>",
-    "name": "Test 182",
-    "start_line": 2936,
-    "end_line": 2964,
-    "section": "HTML blocks"
+    "name": "Test 182"
   },
   {
     "data": "  <!-- foo -->\n\n    <!-- foo -->\n",
     "want": "  <!-- foo -->\n\n<pre><tt>&#60;!-- foo --&#62;\n</tt></pre>",
-    "name": "Test 183",
-    "start_line": 2970,
-    "end_line": 2978,
-    "section": "HTML blocks"
+    "name": "Test 183"
   },
   {
     "data": "  <div>\n\n    <div>\n",
     "want": "  <div>\n\n<pre><tt>&#60;div&#62;\n</tt></pre>",
-    "name": "Test 184",
-    "start_line": 2981,
-    "end_line": 2989,
-    "section": "HTML blocks"
+    "name": "Test 184"
   },
   {
     "data": "Foo\n<div>\nbar\n</div>\n",
     "want": "<p>Foo</p>\n\n<div>\nbar\n</div>",
-    "name": "Test 185",
-    "start_line": 2995,
-    "end_line": 3005,
-    "section": "HTML blocks"
+    "name": "Test 185"
   },
   {
     "data": "<div>\nbar\n</div>\n*foo*\n",
     "want": "<div>\nbar\n</div>\n*foo*",
-    "name": "Test 186",
-    "start_line": 3012,
-    "end_line": 3022,
-    "section": "HTML blocks"
+    "name": "Test 186"
   },
   {
     "data": "Foo\n<a href=\"bar\">\nbaz\n",
     "want": "<p>Foo\n<a href=\"bar\">\nbaz</p>",
-    "name": "Test 187",
-    "start_line": 3027,
-    "end_line": 3035,
-    "section": "HTML blocks"
+    "name": "Test 187"
   },
   {
     "data": "<div>\n\n*Emphasized* text.\n\n</div>\n",
     "want": "<div>\n\n<p><i>Emphasized</i> text.</p>\n\n</div>",
-    "name": "Test 188",
-    "start_line": 3068,
-    "end_line": 3078,
-    "section": "HTML blocks"
+    "name": "Test 188"
   },
   {
     "data": "<div>\n*Emphasized* text.\n</div>\n",
     "want": "<div>\n*Emphasized* text.\n</div>",
-    "name": "Test 189",
-    "start_line": 3081,
-    "end_line": 3089,
-    "section": "HTML blocks"
+    "name": "Test 189"
   },
   {
     "data": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>\n",
     "want": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>",
-    "name": "Test 190",
-    "start_line": 3103,
-    "end_line": 3123,
-    "section": "HTML blocks"
+    "name": "Test 190"
   },
   {
     "data": "<table>\n\n  <tr>\n\n    <td>\n      Hi\n    </td>\n\n  </tr>\n\n</table>\n",
     "want": "<table>\n  <tr>\n\n<pre><tt>&#60;td&#62;\n  Hi\n&#60;/td&#62;\n</tt></pre>\n  </tr>\n\n</table>",
-    "name": "Test 191",
-    "start_line": 3130,
-    "end_line": 3151,
-    "section": "HTML blocks"
+    "name": "Test 191"
   },
+  "Link reference definitions",
   {
     "data": "[foo]: /url \"title\"\n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 192",
-    "start_line": 3179,
-    "end_line": 3185,
-    "section": "Link reference definitions"
+    "name": "Test 192"
   },
   {
     "data": "   [foo]: \n      /url  \n           'the title'  \n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"the title\">foo</a></p>",
-    "name": "Test 193",
-    "start_line": 3188,
-    "end_line": 3196,
-    "section": "Link reference definitions"
+    "name": "Test 193"
   },
   {
     "data": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]\n",
     "want": "<p><a href=\"my_(url)\" title=\"title (with parens)\">Foo*bar]</a></p>",
-    "name": "Test 194",
-    "start_line": 3199,
-    "end_line": 3205,
-    "section": "Link reference definitions"
+    "name": "Test 194"
   },
   {
     "data": "[Foo bar]:\n<my url>\n'title'\n\n[Foo bar]\n",
     "want": "<p><a href=\"my%20url\" title=\"title\">Foo bar</a></p>",
-    "name": "Test 195",
-    "start_line": 3208,
-    "end_line": 3216,
-    "section": "Link reference definitions"
+    "name": "Test 195"
   },
   {
     "data": "[foo]: /url '\ntitle\nline1\nline2\n'\n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"\ntitle\nline1\nline2\n\">foo</a></p>",
-    "name": "Test 196",
-    "start_line": 3221,
-    "end_line": 3235,
-    "section": "Link reference definitions"
+    "name": "Test 196"
   },
   {
     "data": "[foo]: /url 'title\n\nwith blank line'\n\n[foo]\n",
     "want": "<p>[foo]: /url 'title</p>\n\n<p>with blank line'</p>\n\n<p>[foo]</p>",
-    "name": "Test 197",
-    "start_line": 3240,
-    "end_line": 3250,
-    "section": "Link reference definitions"
+    "name": "Test 197"
   },
   {
     "data": "[foo]:\n/url\n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"\">foo</a></p>",
-    "name": "Test 198",
-    "start_line": 3255,
-    "end_line": 3262,
-    "section": "Link reference definitions"
+    "name": "Test 198"
   },
   {
     "data": "[foo]:\n\n[foo]\n",
     "want": "<p>[foo]:</p>\n\n<p>[foo]</p>",
-    "name": "Test 199",
-    "start_line": 3267,
-    "end_line": 3274,
-    "section": "Link reference definitions"
+    "name": "Test 199"
   },
   {
     "data": "[foo]: <>\n\n[foo]\n",
     "want": "<p><a href=\"\" title=\"\">foo</a></p>",
-    "name": "Test 200",
-    "start_line": 3279,
-    "end_line": 3285,
-    "section": "Link reference definitions"
+    "name": "Test 200"
   },
   {
     "data": "[foo]: <bar>(baz)\n\n[foo]\n",
     "want": "<p>[foo]: <bar>(baz)</p>\n\n<p>[foo]</p>",
-    "name": "Test 201",
-    "start_line": 3290,
-    "end_line": 3297,
-    "section": "Link reference definitions"
+    "name": "Test 201"
   },
   {
     "data": "[foo]: /url\\bar\\*baz \"foo\\\"bar\\baz\"\n\n[foo]\n",
     "want": "<p><a href=\"/url%5Cbar*baz\" title=\"foo&quot;bar\\baz\">foo</a></p>",
-    "name": "Test 202",
-    "start_line": 3303,
-    "end_line": 3309,
-    "section": "Link reference definitions"
+    "name": "Test 202"
   },
   {
     "data": "[foo]\n\n[foo]: url\n",
     "want": "<p><a href=\"url\" title=\"\">foo</a></p>",
-    "name": "Test 203",
-    "start_line": 3314,
-    "end_line": 3320,
-    "section": "Link reference definitions"
+    "name": "Test 203"
   },
   {
     "data": "[foo]\n\n[foo]: first\n[foo]: second\n",
     "want": "<p><a href=\"first\" title=\"\">foo</a></p>",
-    "name": "Test 204",
-    "start_line": 3326,
-    "end_line": 3333,
-    "section": "Link reference definitions"
+    "name": "Test 204"
   },
   {
     "data": "[FOO]: /url\n\n[Foo]\n",
     "want": "<p><a href=\"/url\" title=\"\">Foo</a></p>",
-    "name": "Test 205",
-    "start_line": 3339,
-    "end_line": 3345,
-    "section": "Link reference definitions"
+    "name": "Test 205"
   },
   {
     "data": "[ΑΓΩ]: /φου\n\n[αγω]\n",
     "want": "<p><a href=\"/%CF%86%CE%BF%CF%85\" title=\"\">αγω</a></p>",
-    "name": "Test 206",
-    "start_line": 3348,
-    "end_line": 3354,
-    "section": "Link reference definitions"
+    "name": "Test 206"
   },
   {
     "data": "[foo]: /url\n",
     "want": "",
-    "name": "Test 207",
-    "start_line": 3363,
-    "end_line": 3366,
-    "section": "Link reference definitions"
+    "name": "Test 207"
   },
   {
     "data": "[\nfoo\n]: /url\nbar\n",
     "want": "<p>bar</p>",
-    "name": "Test 208",
-    "start_line": 3371,
-    "end_line": 3378,
-    "section": "Link reference definitions"
+    "name": "Test 208"
   },
   {
     "data": "[foo]: /url \"title\" ok\n",
     "want": "<p>[foo]: /url &quot;title&quot; ok</p>",
-    "name": "Test 209",
-    "start_line": 3384,
-    "end_line": 3388,
-    "section": "Link reference definitions"
+    "name": "Test 209"
   },
   {
     "data": "[foo]: /url\n\"title\" ok\n",
     "want": "<p>&quot;title&quot; ok</p>",
-    "name": "Test 210",
-    "start_line": 3393,
-    "end_line": 3398,
-    "section": "Link reference definitions"
+    "name": "Test 210"
   },
   {
     "data": "    [foo]: /url \"title\"\n\n[foo]\n",
     "want": "<pre><tt>[foo]: /url &quot;title&quot;\n</tt></pre>\n\n<p>[foo]</p>",
     "name": "Test 211",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 3404,
-    "end_line": 3412,
-    "section": "Link reference definitions"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "```\n[foo]: /url\n```\n\n[foo]\n",
     "want": "<pre><tt>[foo]: /url\n</tt></pre>\n\n<p>[foo]</p>",
-    "name": "Test 212",
-    "start_line": 3418,
-    "end_line": 3428,
-    "section": "Link reference definitions"
+    "name": "Test 212"
   },
   {
     "data": "Foo\n[bar]: /baz\n\n[bar]\n",
     "want": "<p>Foo\n[bar]: /baz</p>\n\n<p>[bar]</p>",
-    "name": "Test 213",
-    "start_line": 3433,
-    "end_line": 3442,
-    "section": "Link reference definitions"
+    "name": "Test 213"
   },
   {
     "data": "# [Foo]\n[foo]: /url\n> bar\n",
     "want": "<h1><a href=\"/url\" title=\"\">Foo</a></h1>\n\n<blockquote>\n\n<p>bar</p>\n\n</blockquote>",
-    "name": "Test 214",
-    "start_line": 3448,
-    "end_line": 3457,
-    "section": "Link reference definitions"
+    "name": "Test 214"
   },
   {
     "data": "[foo]: /url\nbar\n===\n[foo]\n",
     "want": "<h1>bar</h1>\n\n<p><a href=\"/url\" title=\"\">foo</a></p>",
-    "name": "Test 215",
-    "start_line": 3459,
-    "end_line": 3467,
-    "section": "Link reference definitions"
+    "name": "Test 215"
   },
   {
     "data": "[foo]: /url\n===\n[foo]\n",
     "want": "<p>===\n<a href=\"/url\" title=\"\">foo</a></p>",
-    "name": "Test 216",
-    "start_line": 3469,
-    "end_line": 3476,
-    "section": "Link reference definitions"
+    "name": "Test 216"
   },
   {
     "data": "[foo]: /foo-url \"foo\"\n[bar]: /bar-url\n  \"bar\"\n[baz]: /baz-url\n\n[foo],\n[bar],\n[baz]\n",
     "want": "<p><a href=\"/foo-url\" title=\"foo\">foo</a>,\n<a href=\"/bar-url\" title=\"bar\">bar</a>,\n<a href=\"/baz-url\">baz</a></p>",
-    "name": "Test 217",
-    "start_line": 3482,
-    "end_line": 3495,
-    "section": "Link reference definitions"
+    "name": "Test 217"
   },
   {
     "data": "[foo]\n\n> [foo]: /url\n",
     "want": "<p><a href=\"/url\" title=\"\">foo</a></p>\n\n<blockquote>\n\n</blockquote>",
-    "name": "Test 218",
-    "start_line": 3503,
-    "end_line": 3511,
-    "section": "Link reference definitions"
+    "name": "Test 218"
   },
+  "Paragraphs",
   {
     "data": "aaa\n\nbbb\n",
     "want": "<p>aaa</p>\n\n<p>bbb</p>",
-    "name": "Test 219",
-    "start_line": 3525,
-    "end_line": 3532,
-    "section": "Paragraphs"
+    "name": "Test 219"
   },
   {
     "data": "aaa\nbbb\n\nccc\nddd\n",
     "want": "<p>aaa\nbbb</p>\n\n<p>ccc\nddd</p>",
-    "name": "Test 220",
-    "start_line": 3537,
-    "end_line": 3548,
-    "section": "Paragraphs"
+    "name": "Test 220"
   },
   {
     "data": "aaa\n\n\nbbb\n",
     "want": "<p>aaa</p>\n\n<p>bbb</p>",
-    "name": "Test 221",
-    "start_line": 3553,
-    "end_line": 3561,
-    "section": "Paragraphs"
+    "name": "Test 221"
   },
   {
     "data": "  aaa\n bbb\n",
     "want": "<p>aaa\nbbb</p>",
-    "name": "Test 222",
-    "start_line": 3566,
-    "end_line": 3572,
-    "section": "Paragraphs"
+    "name": "Test 222"
   },
   {
     "data": "aaa\n             bbb\n                                       ccc\n",
     "want": "<p>aaa\nbbb\nccc</p>",
-    "name": "Test 223",
-    "start_line": 3578,
-    "end_line": 3586,
-    "section": "Paragraphs"
+    "name": "Test 223"
   },
   {
     "data": "   aaa\nbbb\n",
     "want": "<p>aaa\nbbb</p>",
-    "name": "Test 224",
-    "start_line": 3592,
-    "end_line": 3598,
-    "section": "Paragraphs"
+    "name": "Test 224"
   },
   {
     "data": "    aaa\nbbb\n",
     "want": "<pre><tt>aaa\n</tt></pre>\n\n<p>bbb</p>",
     "name": "Test 225",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 3601,
-    "end_line": 3608,
-    "section": "Paragraphs"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "aaa     \nbbb     \n",
     "want": "<p>aaa<br>bbb</p>",
     "name": "Test 226",
-    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>",
-    "start_line": 3615,
-    "end_line": 3621,
-    "section": "Paragraphs"
+    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
+  "Blank lines",
   {
     "data": "  \n\naaa\n  \n\n# aaa\n\n  \n",
     "want": "<p>aaa</p>\n\n<h1>aaa</h1>",
-    "name": "Test 227",
-    "start_line": 3632,
-    "end_line": 3644,
-    "section": "Blank lines"
+    "name": "Test 227"
   },
+  "Block quotes",
   {
     "data": "> # Foo\n> bar\n> baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 228",
-    "start_line": 3700,
-    "end_line": 3710,
-    "section": "Block quotes"
+    "name": "Test 228"
   },
   {
     "data": "># Foo\n>bar\n> baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 229",
-    "start_line": 3715,
-    "end_line": 3725,
-    "section": "Block quotes"
+    "name": "Test 229"
   },
   {
     "data": "   > # Foo\n   > bar\n > baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 230",
-    "start_line": 3730,
-    "end_line": 3740,
-    "section": "Block quotes"
+    "name": "Test 230"
   },
   {
     "data": "    > # Foo\n    > bar\n    > baz\n",
     "want": "<pre><tt>&#62; # Foo\n&#62; bar\n&#62; baz\n</tt></pre>",
     "name": "Test 231",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 3745,
-    "end_line": 3754,
-    "section": "Block quotes"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "> # Foo\n> bar\nbaz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 232",
-    "start_line": 3760,
-    "end_line": 3770,
-    "section": "Block quotes"
+    "name": "Test 232"
   },
   {
     "data": "> bar\nbaz\n> foo\n",
     "want": "<blockquote>\n\n<p>bar\nbaz\nfoo</p>\n\n</blockquote>",
-    "name": "Test 233",
-    "start_line": 3776,
-    "end_line": 3786,
-    "section": "Block quotes"
+    "name": "Test 233"
   },
   {
     "data": "> foo\n---\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>\n\n\n<hr>",
-    "name": "Test 234",
-    "start_line": 3800,
-    "end_line": 3808,
-    "section": "Block quotes"
+    "name": "Test 234"
   },
   {
     "data": "> - foo\n- bar\n",
     "want": "<blockquote>\n\n<ul><li>foo</li></ul>\n\n</blockquote>\n\n\n<ul><li>bar</li></ul>",
-    "name": "Test 235",
-    "start_line": 3820,
-    "end_line": 3832,
-    "section": "Block quotes"
+    "name": "Test 235"
   },
   {
     "data": ">     foo\n    bar\n",
     "want": "<blockquote>\n\n<pre><tt>foo\n</tt></pre>\n\n</blockquote>\n\n\n<pre><tt>bar\n</tt></pre>",
-    "name": "Test 236",
-    "start_line": 3838,
-    "end_line": 3848,
-    "section": "Block quotes"
+    "name": "Test 236"
   },
   {
     "data": "> ```\nfoo\n```\n",
     "want": "<blockquote>\n\n<pre><tt></tt></pre>\n\n</blockquote>\n\n\n<p>foo</p>\n\n<pre><tt></tt></pre>",
-    "name": "Test 237",
-    "start_line": 3851,
-    "end_line": 3861,
-    "section": "Block quotes"
+    "name": "Test 237"
   },
   {
     "data": "> foo\n    - bar\n",
     "want": "<blockquote>\n\n<p>foo\n- bar</p>\n\n</blockquote>",
-    "name": "Test 238",
-    "start_line": 3867,
-    "end_line": 3875,
-    "section": "Block quotes"
+    "name": "Test 238"
   },
   {
     "data": ">\n",
     "want": "<blockquote>\n\n</blockquote>",
-    "name": "Test 239",
-    "start_line": 3891,
-    "end_line": 3896,
-    "section": "Block quotes"
+    "name": "Test 239"
   },
   {
     "data": ">\n>  \n> \n",
     "want": "<blockquote>\n\n</blockquote>",
-    "name": "Test 240",
-    "start_line": 3899,
-    "end_line": 3906,
-    "section": "Block quotes"
+    "name": "Test 240"
   },
   {
     "data": ">\n> foo\n>  \n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>",
-    "name": "Test 241",
-    "start_line": 3911,
-    "end_line": 3919,
-    "section": "Block quotes"
+    "name": "Test 241"
   },
   {
     "data": "> foo\n\n> bar\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>bar</p>\n\n</blockquote>",
-    "name": "Test 242",
-    "start_line": 3924,
-    "end_line": 3935,
-    "section": "Block quotes"
+    "name": "Test 242"
   },
   {
     "data": "> foo\n> bar\n",
     "want": "<blockquote>\n\n<p>foo\nbar</p>\n\n</blockquote>",
-    "name": "Test 243",
-    "start_line": 3946,
-    "end_line": 3954,
-    "section": "Block quotes"
+    "name": "Test 243"
   },
   {
     "data": "> foo\n>\n> bar\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</blockquote>",
-    "name": "Test 244",
-    "start_line": 3959,
-    "end_line": 3968,
-    "section": "Block quotes"
+    "name": "Test 244"
   },
   {
     "data": "foo\n> bar\n",
     "want": "<p>foo</p>\n\n<blockquote>\n\n<p>bar</p>\n\n</blockquote>",
     "name": "Test 245",
-    "skip": "Baremark <tt>&#62; BLOCKQUOTE</tt> must have leading blank line",
-    "start_line": 3973,
-    "end_line": 3981,
-    "section": "Block quotes"
+    "skip": "Baremark <tt>&#62; BLOCKQUOTE</tt> must have leading blank line"
   },
   {
     "data": "> aaa\n***\n> bbb\n",
     "want": "<blockquote>\n\n<p>aaa</p>\n\n</blockquote>\n\n\n<hr>\n\n<blockquote>\n\n<p>bbb</p>\n\n</blockquote>",
     "name": "Test 246",
-    "skip": "Baremark dinkus <tt>---</tt> must be separated by blank lines",
-    "start_line": 3987,
-    "end_line": 3999,
-    "section": "Block quotes"
+    "skip": "Baremark dinkus <tt>---</tt> must be separated by blank lines"
   },
   {
     "data": "> bar\nbaz\n",
     "want": "<blockquote>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
-    "name": "Test 247",
-    "start_line": 4005,
-    "end_line": 4013,
-    "section": "Block quotes"
+    "name": "Test 247"
   },
   {
     "data": "> bar\n\nbaz\n",
     "want": "<blockquote>\n\n<p>bar</p>\n\n</blockquote>\n\n\n<p>baz</p>",
-    "name": "Test 248",
-    "start_line": 4016,
-    "end_line": 4025,
-    "section": "Block quotes"
+    "name": "Test 248"
   },
   {
     "data": "> bar\n>\nbaz\n",
     "want": "<blockquote>\n\n<p>bar</p>\n\n</blockquote>\n\n\n<p>baz</p>",
     "name": "Test 249",
-    "skip": "Baremark <tt>&#62; BLOCKQUOTE</tt> lazy continuation line",
-    "start_line": 4028,
-    "end_line": 4037,
-    "section": "Block quotes"
+    "skip": "Baremark <tt>&#62; BLOCKQUOTE</tt> lazy continuation line"
   },
   {
     "data": "> > > foo\nbar\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<blockquote>\n\n<p>foo\nbar</p>\n\n</blockquote>\n\n</blockquote>\n\n</blockquote>",
-    "name": "Test 250",
-    "start_line": 4044,
-    "end_line": 4056,
-    "section": "Block quotes"
+    "name": "Test 250"
   },
   {
     "data": ">>> foo\n> bar\n>>baz\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<blockquote>\n\n<p>foo\nbar\nbaz</p>\n\n</blockquote>\n\n</blockquote>\n\n</blockquote>",
-    "name": "Test 251",
-    "start_line": 4059,
-    "end_line": 4073,
-    "section": "Block quotes"
+    "name": "Test 251"
   },
   {
     "data": ">     code\n\n>    not code\n",
     "want": "<blockquote>\n\n<pre><tt>code\n</tt></pre>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>not code</p>\n\n</blockquote>",
     "name": "Test 252",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 4081,
-    "end_line": 4093,
-    "section": "Block quotes"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
+  "List items",
   {
     "data": "A paragraph\nwith two lines.\n\n    indented code\n\n> A block quote.\n",
     "want": "<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>",
-    "name": "Test 253",
-    "start_line": 4135,
-    "end_line": 4150,
-    "section": "List items"
+    "name": "Test 253"
   },
   {
     "data": "1.  A paragraph\n    with two lines.\n\n        indented code\n\n    > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 254",
-    "start_line": 4157,
-    "end_line": 4176,
-    "section": "List items"
+    "name": "Test 254"
   },
   {
     "data": "- one\n\n two\n",
     "want": "<ul><li>one</li></ul>\n\n<p>two</p>",
-    "name": "Test 255",
-    "start_line": 4190,
-    "end_line": 4199,
-    "section": "List items"
+    "name": "Test 255"
   },
   {
     "data": "- one\n\n  two\n",
     "want": "<ul><li>\n\n<p>one</p>\n\n<p>two</p>\n\n</li></ul>",
-    "name": "Test 256",
-    "start_line": 4202,
-    "end_line": 4213,
-    "section": "List items"
+    "name": "Test 256"
   },
   {
     "data": " -    one\n\n     two\n",
     "want": "<ul><li>one</li></ul>\n\n<pre><tt> two\n</tt></pre>",
-    "name": "Test 257",
-    "start_line": 4216,
-    "end_line": 4226,
-    "section": "List items"
+    "name": "Test 257"
   },
   {
     "data": " -    one\n\n      two\n",
     "want": "<ul><li>\n\n<p>one</p>\n\n<p>two</p>\n\n</li></ul>",
-    "name": "Test 258",
-    "start_line": 4229,
-    "end_line": 4240,
-    "section": "List items"
+    "name": "Test 258"
   },
   {
     "data": "   > > 1.  one\n>>\n>>     two\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<ol><li>\n\n<p>one</p>\n\n<p>two</p>\n\n</li></ol>\n\n</blockquote>\n\n</blockquote>",
-    "name": "Test 259",
-    "start_line": 4251,
-    "end_line": 4266,
-    "section": "List items"
+    "name": "Test 259"
   },
   {
     "data": ">>- one\n>>\n  >  > two\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<ul><li>one</li></ul>\n\n<p>two</p>\n\n</blockquote>\n\n</blockquote>",
-    "name": "Test 260",
-    "start_line": 4278,
-    "end_line": 4291,
-    "section": "List items"
+    "name": "Test 260"
   },
   {
     "data": "-one\n\n2.two\n",
     "want": "<p>-one</p>\n\n<p>2.two</p>",
-    "name": "Test 261",
-    "start_line": 4297,
-    "end_line": 4304,
-    "section": "List items"
+    "name": "Test 261"
   },
   {
     "data": "- foo\n\n\n  bar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 262",
-    "start_line": 4310,
-    "end_line": 4322,
-    "section": "List items"
+    "name": "Test 262"
   },
   {
     "data": "1.  foo\n\n    ```\n    bar\n    ```\n\n    baz\n\n    > bam\n",
     "want": "<ol><li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n<p>baz</p>\n\n<blockquote>\n\n<p>bam</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 263",
-    "start_line": 4327,
-    "end_line": 4349,
-    "section": "List items"
+    "name": "Test 263"
   },
   {
     "data": "- Foo\n\n      bar\n\n\n      baz\n",
     "want": "<ul><li>\n\n<p>Foo</p>\n\n<pre><tt>bar\n\n\nbaz\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 264",
-    "start_line": 4355,
-    "end_line": 4373,
-    "section": "List items"
+    "name": "Test 264"
   },
   {
     "data": "123456789. ok\n",
     "want": "<ol start=\"123456789\">\n\n<li>ok</li></ol>",
-    "name": "Test 265",
-    "start_line": 4377,
-    "end_line": 4383,
-    "section": "List items"
+    "name": "Test 265"
   },
   {
     "data": "1234567890. not ok\n",
     "want": "<p>1234567890. not ok</p>",
-    "name": "Test 266",
-    "start_line": 4386,
-    "end_line": 4390,
-    "section": "List items"
+    "name": "Test 266"
   },
   {
     "data": "0. ok\n",
     "want": "<ol start=\"0\">\n\n<li>ok</li></ol>",
-    "name": "Test 267",
-    "start_line": 4395,
-    "end_line": 4401,
-    "section": "List items"
+    "name": "Test 267"
   },
   {
     "data": "003. ok\n",
     "want": "<ol start=\"3\">\n\n<li>ok</li></ol>",
-    "name": "Test 268",
-    "start_line": 4404,
-    "end_line": 4410,
-    "section": "List items"
+    "name": "Test 268"
   },
   {
     "data": "-1. not ok\n",
     "want": "<p>-1. not ok</p>",
-    "name": "Test 269",
-    "start_line": 4415,
-    "end_line": 4419,
-    "section": "List items"
+    "name": "Test 269"
   },
   {
     "data": "- foo\n\n      bar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 270",
-    "start_line": 4438,
-    "end_line": 4450,
-    "section": "List items"
+    "name": "Test 270"
   },
   {
     "data": "  10.  foo\n\n           bar\n",
     "want": "<ol start=\"10\">\n\n<li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n</li></ol>",
-    "name": "Test 271",
-    "start_line": 4455,
-    "end_line": 4467,
-    "section": "List items"
+    "name": "Test 271"
   },
   {
     "data": "    indented code\n\nparagraph\n\n    more code\n",
     "want": "<pre><tt>indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>",
     "name": "Test 272",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 4474,
-    "end_line": 4486,
-    "section": "List items"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "1.     indented code\n\n   paragraph\n\n       more code\n",
     "want": "<ol><li>\n\n<pre><tt>indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>\n\n</li></ol>",
-    "name": "Test 273",
-    "start_line": 4489,
-    "end_line": 4505,
-    "section": "List items"
+    "name": "Test 273"
   },
   {
     "data": "1.      indented code\n\n   paragraph\n\n       more code\n",
     "want": "<ol><li>\n\n<pre><tt> indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>\n\n</li></ol>",
-    "name": "Test 274",
-    "start_line": 4511,
-    "end_line": 4527,
-    "section": "List items"
+    "name": "Test 274"
   },
   {
     "data": "   foo\n\nbar\n",
     "want": "<p>foo</p>\n\n<p>bar</p>",
-    "name": "Test 275",
-    "start_line": 4538,
-    "end_line": 4545,
-    "section": "List items"
+    "name": "Test 275"
   },
   {
     "data": "-    foo\n\n  bar\n",
     "want": "<ul><li>foo</li></ul>\n\n<p>bar</p>",
-    "name": "Test 276",
-    "start_line": 4548,
-    "end_line": 4557,
-    "section": "List items"
+    "name": "Test 276"
   },
   {
     "data": "-  foo\n\n   bar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 277",
-    "start_line": 4565,
-    "end_line": 4576,
-    "section": "List items"
+    "name": "Test 277"
   },
   {
     "data": "-\n  foo\n-\n  ```\n  bar\n  ```\n-\n      baz\n",
     "want": "<ul><li>foo</li>\n\n<li>\n\n<pre><tt>bar\n</tt></pre>\n\n</li>\n\n<li>\n\n<pre><tt>baz\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 278",
-    "start_line": 4592,
-    "end_line": 4613,
-    "section": "List items"
+    "name": "Test 278"
   },
   {
     "data": "-   \n  foo\n",
     "want": "<ul><li>foo</li></ul>",
-    "name": "Test 279",
-    "start_line": 4618,
-    "end_line": 4625,
-    "section": "List items"
+    "name": "Test 279"
   },
   {
     "data": "-\n\n  foo\n",
     "want": "<ul><li></li></ul>\n\n<p>foo</p>",
-    "name": "Test 280",
-    "start_line": 4632,
-    "end_line": 4641,
-    "section": "List items"
+    "name": "Test 280"
   },
   {
     "data": "- foo\n-\n- bar\n",
     "want": "<ul><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ul>",
-    "name": "Test 281",
-    "start_line": 4646,
-    "end_line": 4656,
-    "section": "List items"
+    "name": "Test 281"
   },
   {
     "data": "- foo\n-   \n- bar\n",
     "want": "<ul><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ul>",
-    "name": "Test 282",
-    "start_line": 4661,
-    "end_line": 4671,
-    "section": "List items"
+    "name": "Test 282"
   },
   {
     "data": "1. foo\n2.\n3. bar\n",
     "want": "<ol><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ol>",
-    "name": "Test 283",
-    "start_line": 4676,
-    "end_line": 4686,
-    "section": "List items"
+    "name": "Test 283"
   },
   {
     "data": "*\n",
     "want": "<ul><li></li></ul>",
-    "name": "Test 284",
-    "start_line": 4691,
-    "end_line": 4697,
-    "section": "List items"
+    "name": "Test 284"
   },
   {
     "data": "foo\n*\n\nfoo\n1.\n",
     "want": "<p>foo\n*</p>\n\n<p>foo\n1.</p>",
-    "name": "Test 285",
-    "start_line": 4701,
-    "end_line": 4712,
-    "section": "List items"
+    "name": "Test 285"
   },
   {
     "data": " 1.  A paragraph\n     with two lines.\n\n         indented code\n\n     > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 286",
-    "start_line": 4723,
-    "end_line": 4742,
-    "section": "List items"
+    "name": "Test 286"
   },
   {
     "data": "  1.  A paragraph\n      with two lines.\n\n          indented code\n\n      > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 287",
-    "start_line": 4747,
-    "end_line": 4766,
-    "section": "List items"
+    "name": "Test 287"
   },
   {
     "data": "   1.  A paragraph\n       with two lines.\n\n           indented code\n\n       > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 288",
-    "start_line": 4771,
-    "end_line": 4790,
-    "section": "List items"
+    "name": "Test 288"
   },
   {
     "data": "    1.  A paragraph\n        with two lines.\n\n            indented code\n\n        > A block quote.\n",
     "want": "<pre><tt>1.  A paragraph\n    with two lines.\n\n        indented code\n\n    &#62; A block quote.\n</tt></pre>",
     "name": "Test 289",
-    "skip": "Baremark doesn't supported indented code blocks",
-    "start_line": 4795,
-    "end_line": 4810,
-    "section": "List items"
+    "skip": "Baremark doesn't supported indented code blocks"
   },
   {
     "data": "  1.  A paragraph\nwith two lines.\n\n          indented code\n\n      > A block quote.\n",
     "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
-    "name": "Test 290",
-    "start_line": 4825,
-    "end_line": 4844,
-    "section": "List items"
+    "name": "Test 290"
   },
   {
     "data": "  1.  A paragraph\n    with two lines.\n",
     "want": "<ol><li>A paragraph\nwith two lines.</li></ol>",
-    "name": "Test 291",
-    "start_line": 4849,
-    "end_line": 4857,
-    "section": "List items"
+    "name": "Test 291"
   },
   {
     "data": "> 1. > Blockquote\ncontinued here.\n",
     "want": "<blockquote>\n\n<ol><li>\n\n<blockquote>\n\n<p>Blockquote\ncontinued here.</p>\n\n</blockquote>\n\n\n</li></ol>\n\n</blockquote>",
-    "name": "Test 292",
-    "start_line": 4862,
-    "end_line": 4876,
-    "section": "List items"
+    "name": "Test 292"
   },
   {
     "data": "> 1. > Blockquote\n> continued here.\n",
     "want": "<blockquote>\n\n<ol><li>\n\n<blockquote>\n\n<p>Blockquote\ncontinued here.</p>\n\n</blockquote>\n\n\n</li></ol>\n\n</blockquote>",
-    "name": "Test 293",
-    "start_line": 4879,
-    "end_line": 4893,
-    "section": "List items"
+    "name": "Test 293"
   },
   {
     "data": "- foo\n  - bar\n    - baz\n      - boo\n",
     "want": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz\n<ul><li>boo</li></ul>\n\n</li></ul>\n\n</li></ul>\n\n</li></ul>",
-    "name": "Test 294",
-    "start_line": 4907,
-    "end_line": 4928,
-    "section": "List items"
+    "name": "Test 294"
   },
   {
     "data": "- foo\n - bar\n  - baz\n   - boo\n",
     "want": "<ul><li>foo</li>\n\n<li>bar</li>\n\n<li>baz</li>\n\n<li>boo</li></ul>",
-    "name": "Test 295",
-    "start_line": 4933,
-    "end_line": 4945,
-    "section": "List items"
+    "name": "Test 295"
   },
   {
     "data": "10) foo\n    - bar\n",
     "want": "<ol start=\"10\">\n\n<li>foo\n<ul><li>bar</li></ul>\n\n</li></ol>",
-    "name": "Test 296",
-    "start_line": 4950,
-    "end_line": 4961,
-    "section": "List items"
+    "name": "Test 296"
   },
   {
     "data": "10) foo\n   - bar\n",
     "want": "<ol start=\"10\">\n\n<li>foo</li></ol>\n\n<ul><li>bar</li></ul>",
-    "name": "Test 297",
-    "start_line": 4966,
-    "end_line": 4976,
-    "section": "List items"
+    "name": "Test 297"
   },
   {
     "data": "- - foo\n",
     "want": "<ul><li>\n\n<ul><li>foo</li></ul>\n\n</li></ul>",
-    "name": "Test 298",
-    "start_line": 4981,
-    "end_line": 4991,
-    "section": "List items"
+    "name": "Test 298"
   },
   {
     "data": "1. - 2. foo\n",
     "want": "<ol><li>\n\n<ul><li>\n\n<ol start=\"2\">\n\n<li>foo</li></ol>\n\n</li></ul>\n\n</li></ol>",
-    "name": "Test 299",
-    "start_line": 4994,
-    "end_line": 5008,
-    "section": "List items"
+    "name": "Test 299"
   },
   {
     "data": "- # Foo\n- Bar\n  ---\n  baz\n",
     "want": "<ul><li>\n\n<h1>Foo</h1>\n\n</li>\n\n<li>\n\n<h2>Bar</h2>\nbaz</li></ul>",
-    "name": "Test 300",
-    "start_line": 5013,
-    "end_line": 5027,
-    "section": "List items"
+    "name": "Test 300"
   },
+  "Lists",
   {
     "data": "- foo\n- bar\n+ baz\n",
     "want": "<ul><li>foo</li>\n\n<li>bar</li></ul>\n\n<ul><li>baz</li></ul>",
-    "name": "Test 301",
-    "start_line": 5249,
-    "end_line": 5261,
-    "section": "Lists"
+    "name": "Test 301"
   },
   {
     "data": "1. foo\n2. bar\n3) baz\n",
     "want": "<ol><li>foo</li>\n\n<li>bar</li></ol>\n\n<ol start=\"3\">\n\n<li>baz</li></ol>",
-    "name": "Test 302",
-    "start_line": 5264,
-    "end_line": 5276,
-    "section": "Lists"
+    "name": "Test 302"
   },
   {
     "data": "Foo\n- bar\n- baz\n",
     "want": "<p>Foo</p>\n\n<ul><li>bar</li>\n\n<li>baz</li></ul>",
-    "name": "Test 303",
-    "start_line": 5283,
-    "end_line": 5293,
-    "section": "Lists"
+    "name": "Test 303"
   },
   {
     "data": "The number of windows in my house is\n14.  The number of doors is 6.\n",
     "want": "<p>The number of windows in my house is\n14.  The number of doors is 6.</p>",
-    "name": "Test 304",
-    "start_line": 5360,
-    "end_line": 5366,
-    "section": "Lists"
+    "name": "Test 304"
   },
   {
     "data": "The number of windows in my house is\n1.  The number of doors is 6.\n",
     "want": "<p>The number of windows in my house is</p>\n\n<ol><li>The number of doors is 6.</li></ol>",
-    "name": "Test 305",
-    "start_line": 5370,
-    "end_line": 5378,
-    "section": "Lists"
+    "name": "Test 305"
   },
   {
     "data": "- foo\n\n- bar\n\n\n- baz\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n</li>\n\n<li>\n\n<p>bar</p>\n\n</li>\n\n<li>\n\n<p>baz</p>\n\n</li></ul>",
-    "name": "Test 306",
-    "start_line": 5384,
-    "end_line": 5403,
-    "section": "Lists"
+    "name": "Test 306"
   },
   {
     "data": "- foo\n  - bar\n    - baz\n\n\n      bim\n",
     "want": "<ul><li>foo\n<ul><li>bar\n<ul><li>\n\n<p>baz</p>\n\n<p>bim</p>\n\n</li></ul>\n\n</li></ul>\n\n</li></ul>",
-    "name": "Test 307",
-    "start_line": 5405,
-    "end_line": 5427,
-    "section": "Lists"
+    "name": "Test 307"
   },
   {
     "data": "- foo\n- bar\n\n<!-- -->\n\n- baz\n- bim\n",
     "want": "<ul><li>foo</li>\n\n<li>bar</li></ul>\n\n<!-- -->\n\n<ul><li>baz</li>\n\n<li>bim</li></ul>",
-    "name": "Test 308",
-    "start_line": 5435,
-    "end_line": 5453,
-    "section": "Lists"
+    "name": "Test 308"
   },
   {
     "data": "-   foo\n\n    notcode\n\n-   foo\n\n<!-- -->\n\n    code\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>notcode</p>\n\n</li>\n\n<li>\n\n<p>foo</p>\n\n</li></ul>\n\n<!-- -->\n\n<pre><tt>code\n</tt></pre>",
-    "name": "Test 309",
-    "start_line": 5456,
-    "end_line": 5479,
-    "section": "Lists"
+    "name": "Test 309"
   },
   {
     "data": "- a\n - b\n  - c\n   - d\n  - e\n - f\n- g\n",
     "want": "<ul><li>a</li>\n\n<li>b</li>\n\n<li>c</li>\n\n<li>d</li>\n\n<li>e</li>\n\n<li>f</li>\n\n<li>g</li></ul>",
-    "name": "Test 310",
-    "start_line": 5487,
-    "end_line": 5505,
-    "section": "Lists"
+    "name": "Test 310"
   },
   {
     "data": "1. a\n\n  2. b\n\n   3. c\n",
     "want": "<ol><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>c</p>\n\n</li></ol>",
-    "name": "Test 311",
-    "start_line": 5508,
-    "end_line": 5526,
-    "section": "Lists"
+    "name": "Test 311"
   },
   {
     "data": "- a\n - b\n  - c\n   - d\n    - e\n",
     "want": "<ul><li>a</li>\n\n<li>b</li>\n\n<li>c</li>\n\n<li>d\n- e</li></ul>",
-    "name": "Test 312",
-    "start_line": 5532,
-    "end_line": 5546,
-    "section": "Lists"
+    "name": "Test 312"
   },
   {
     "data": "1. a\n\n  2. b\n\n    3. c\n",
     "want": "<ol><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li></ol>\n\n<pre><tt>3. c\n</tt></pre>",
-    "name": "Test 313",
-    "start_line": 5552,
-    "end_line": 5569,
-    "section": "Lists"
+    "name": "Test 313"
   },
   {
     "data": "- a\n- b\n\n- c\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>c</p>\n\n</li></ul>",
-    "name": "Test 314",
-    "start_line": 5575,
-    "end_line": 5592,
-    "section": "Lists"
+    "name": "Test 314"
   },
   {
     "data": "* a\n*\n\n* c\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li></li>\n\n<li>\n\n<p>c</p>\n\n</li></ul>",
-    "name": "Test 315",
-    "start_line": 5597,
-    "end_line": 5612,
-    "section": "Lists"
+    "name": "Test 315"
   },
   {
     "data": "- a\n- b\n\n  c\n- d\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n<p>c</p>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n</li></ul>",
-    "name": "Test 316",
-    "start_line": 5619,
-    "end_line": 5638,
-    "section": "Lists"
+    "name": "Test 316"
   },
   {
     "data": "- a\n- b\n\n  [ref]: /url\n- d\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n</li></ul>",
-    "name": "Test 317",
-    "start_line": 5641,
-    "end_line": 5659,
-    "section": "Lists"
+    "name": "Test 317"
   },
   {
     "data": "- a\n- ```\n  b\n\n\n  ```\n- c\n",
     "want": "<ul><li>a</li>\n\n<li>\n\n<pre><tt>b\n\n\n</tt></pre>\n\n</li>\n\n<li>c</li></ul>",
-    "name": "Test 318",
-    "start_line": 5664,
-    "end_line": 5683,
-    "section": "Lists"
+    "name": "Test 318"
   },
   {
     "data": "- a\n  - b\n\n    c\n- d\n",
     "want": "<ul><li>a\n<ul><li>\n\n<p>b</p>\n\n<p>c</p>\n\n</li></ul>\n\n</li>\n\n<li>d</li></ul>",
-    "name": "Test 319",
-    "start_line": 5690,
-    "end_line": 5708,
-    "section": "Lists"
+    "name": "Test 319"
   },
   {
     "data": "* a\n  > b\n  >\n* c\n",
     "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n</li>\n\n<li>c</li></ul>",
-    "name": "Test 320",
-    "start_line": 5714,
-    "end_line": 5728,
-    "section": "Lists"
+    "name": "Test 320"
   },
   {
     "data": "- a\n  > b\n  ```\n  c\n  ```\n- d\n",
     "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n<pre><tt>c\n</tt></pre>\n\n</li>\n\n<li>d</li></ul>",
-    "name": "Test 321",
-    "start_line": 5734,
-    "end_line": 5752,
-    "section": "Lists"
+    "name": "Test 321"
   },
   {
     "data": "- a\n",
     "want": "<ul><li>a</li></ul>",
-    "name": "Test 322",
-    "start_line": 5757,
-    "end_line": 5763,
-    "section": "Lists"
+    "name": "Test 322"
   },
   {
     "data": "- a\n  - b\n",
     "want": "<ul><li>a\n<ul><li>b</li></ul>\n\n</li></ul>",
-    "name": "Test 323",
-    "start_line": 5766,
-    "end_line": 5777,
-    "section": "Lists"
+    "name": "Test 323"
   },
   {
     "data": "1. ```\n   foo\n   ```\n\n   bar\n",
     "want": "<ol><li>\n\n<pre><tt>foo\n</tt></pre>\n\n<p>bar</p>\n\n</li></ol>",
-    "name": "Test 324",
-    "start_line": 5783,
-    "end_line": 5797,
-    "section": "Lists"
+    "name": "Test 324"
   },
   {
     "data": "* foo\n  * bar\n\n  baz\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<ul><li>bar</li></ul>\n\n<p>baz</p>\n\n</li></ul>",
-    "name": "Test 325",
-    "start_line": 5802,
-    "end_line": 5817,
-    "section": "Lists"
+    "name": "Test 325"
   },
   {
     "data": "- a\n  - b\n  - c\n\n- d\n  - e\n  - f\n",
     "want": "<ul><li>\n\n<p>a</p>\n\n<ul><li>b</li>\n\n<li>c</li></ul>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n<ul><li>e</li>\n\n<li>f</li></ul>\n\n</li></ul>",
-    "name": "Test 326",
-    "start_line": 5820,
-    "end_line": 5845,
-    "section": "Lists"
+    "name": "Test 326"
   },
+  "Inlines",
   {
     "data": "`hi`lo`\n",
     "want": "<p><tt>hi</tt>lo`</p>",
-    "name": "Test 327",
-    "start_line": 5854,
-    "end_line": 5858,
-    "section": "Inlines"
+    "name": "Test 327"
   },
+  "Code spans",
   {
     "data": "`foo`\n",
     "want": "<p><tt>foo</tt></p>",
-    "name": "Test 328",
-    "start_line": 5886,
-    "end_line": 5890,
-    "section": "Code spans"
+    "name": "Test 328"
   },
   {
     "data": "`` foo ` bar ``\n",
     "want": "<p><tt>foo ` bar</tt></p>",
-    "name": "Test 329",
-    "start_line": 5897,
-    "end_line": 5901,
-    "section": "Code spans"
+    "name": "Test 329"
   },
   {
     "data": "` `` `\n",
     "want": "<p><tt>``</tt></p>",
-    "name": "Test 330",
-    "start_line": 5907,
-    "end_line": 5911,
-    "section": "Code spans"
+    "name": "Test 330"
   },
   {
     "data": "`  ``  `\n",
     "want": "<p><tt> `` </tt></p>",
-    "name": "Test 331",
-    "start_line": 5915,
-    "end_line": 5919,
-    "section": "Code spans"
+    "name": "Test 331"
   },
   {
     "data": "` a`\n",
     "want": "<p><tt> a</tt></p>",
-    "name": "Test 332",
-    "start_line": 5924,
-    "end_line": 5928,
-    "section": "Code spans"
+    "name": "Test 332"
   },
   {
     "data": "` b `\n",
     "want": "<p><tt> b </tt></p>",
-    "name": "Test 333",
-    "start_line": 5933,
-    "end_line": 5937,
-    "section": "Code spans"
+    "name": "Test 333"
   },
   {
     "data": "` `\n`  `\n",
     "want": "<p><tt> </tt>\n\n<tt>  </tt></p>",
-    "name": "Test 334",
-    "start_line": 5941,
-    "end_line": 5947,
-    "section": "Code spans"
+    "name": "Test 334"
   },
   {
     "data": "``\nfoo\nbar  \nbaz\n``\n",
     "want": "<p><tt>foo bar   baz</tt></p>",
-    "name": "Test 335",
-    "start_line": 5952,
-    "end_line": 5960,
-    "section": "Code spans"
+    "name": "Test 335"
   },
   {
     "data": "``\nfoo \n``\n",
     "want": "<p><tt>foo </tt></p>",
-    "name": "Test 336",
-    "start_line": 5962,
-    "end_line": 5968,
-    "section": "Code spans"
+    "name": "Test 336"
   },
   {
     "data": "`foo   bar \nbaz`\n",
     "want": "<p><tt>foo   bar  baz</tt></p>",
-    "name": "Test 337",
-    "start_line": 5973,
-    "end_line": 5978,
-    "section": "Code spans"
+    "name": "Test 337"
   },
   {
     "data": "`foo\\`bar`\n",
     "want": "<p><tt>foo\\</tt>bar`</p>",
-    "name": "Test 338",
-    "start_line": 5990,
-    "end_line": 5994,
-    "section": "Code spans"
+    "name": "Test 338"
   },
   {
     "data": "``foo`bar``\n",
     "want": "<p><tt>foo`bar</tt></p>",
-    "name": "Test 339",
-    "start_line": 6001,
-    "end_line": 6005,
-    "section": "Code spans"
+    "name": "Test 339"
   },
   {
     "data": "` foo `` bar `\n",
     "want": "<p><tt>foo `` bar</tt></p>",
-    "name": "Test 340",
-    "start_line": 6007,
-    "end_line": 6011,
-    "section": "Code spans"
+    "name": "Test 340"
   },
   {
     "data": "*foo`*`\n",
     "want": "<p>*foo<tt>*</tt></p>",
-    "name": "Test 341",
-    "start_line": 6019,
-    "end_line": 6023,
-    "section": "Code spans"
+    "name": "Test 341"
   },
   {
     "data": "[not a `link](/foo`)\n",
     "want": "<p>[not a <tt>link](/foo</tt>)</p>",
-    "name": "Test 342",
-    "start_line": 6028,
-    "end_line": 6032,
-    "section": "Code spans"
+    "name": "Test 342"
   },
   {
     "data": "`<a href=\"`\">`\n",
     "want": "<p><tt>&#60;a href=&quot;</tt>&quot;&#62;`</p>",
-    "name": "Test 343",
-    "start_line": 6038,
-    "end_line": 6042,
-    "section": "Code spans"
+    "name": "Test 343"
   },
   {
     "data": "<a href=\"`\">`\n",
     "want": "<p><a href=\"`\">`</p>",
-    "name": "Test 344",
-    "start_line": 6047,
-    "end_line": 6051,
-    "section": "Code spans"
+    "name": "Test 344"
   },
   {
     "data": "`<https://foo.bar.`baz>`\n",
     "want": "<p><tt>&#60;https://foo.bar.</tt>baz&#62;`</p>",
-    "name": "Test 345",
-    "start_line": 6056,
-    "end_line": 6060,
-    "section": "Code spans"
+    "name": "Test 345"
   },
   {
     "data": "<https://foo.bar.`baz>`\n",
     "want": "<p><a href=\"https://foo.bar.%60baz\">https://foo.bar.`baz</a>`</p>",
     "name": "Test 346",
-    "FIXME": "autolinking",
-    "start_line": 6065,
-    "end_line": 6069,
-    "section": "Code spans"
+    "FIXME": "autolinking"
   },
   {
     "data": "```foo``\n",
     "want": "<p>```foo``</p>",
-    "name": "Test 347",
-    "start_line": 6075,
-    "end_line": 6079,
-    "section": "Code spans"
+    "name": "Test 347"
   },
   {
     "data": "`foo\n",
     "want": "<p>`foo</p>",
-    "name": "Test 348",
-    "start_line": 6082,
-    "end_line": 6086,
-    "section": "Code spans"
+    "name": "Test 348"
   },
   {
     "data": "`foo``bar``\n",
     "want": "<p>`foo<tt>bar</tt></p>",
-    "name": "Test 349",
-    "start_line": 6091,
-    "end_line": 6095,
-    "section": "Code spans"
+    "name": "Test 349"
   },
+  "Emphasis and strong emphasis",
   {
     "data": "*foo bar*\n",
     "want": "<p><i>foo bar</i></p>",
-    "name": "Test 350",
-    "start_line": 6308,
-    "end_line": 6312,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 350"
   },
   {
     "data": "a * foo bar*\n",
     "want": "<p>a * foo bar*</p>",
-    "name": "Test 351",
-    "start_line": 6318,
-    "end_line": 6322,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 351"
   },
   {
     "data": "a*\"foo\"*\n",
     "want": "<p>a*&quot;foo&quot;*</p>",
-    "name": "Test 352",
-    "start_line": 6329,
-    "end_line": 6333,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 352"
   },
   {
     "data": "* a *\n",
     "want": "<p>* a *</p>",
-    "name": "Test 353",
-    "start_line": 6338,
-    "end_line": 6342,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 353"
   },
   {
     "data": "*$*alpha.\n\n*£*bravo.\n\n*€*charlie.\n",
     "want": "<p>*$*alpha.</p>\n\n<p>*£*bravo.</p>\n\n<p>*€*charlie.</p>",
-    "name": "Test 354",
-    "start_line": 6347,
-    "end_line": 6357,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 354"
   },
   {
     "data": "foo*bar*\n",
     "want": "<p>foo<i>bar</i></p>",
-    "name": "Test 355",
-    "start_line": 6362,
-    "end_line": 6366,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 355"
   },
   {
     "data": "5*6*78\n",
     "want": "<p>5<i>6</i>78</p>",
-    "name": "Test 356",
-    "start_line": 6369,
-    "end_line": 6373,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 356"
   },
   {
     "data": "_foo bar_\n",
     "want": "<p><i>foo bar</i></p>",
-    "name": "Test 357",
-    "start_line": 6378,
-    "end_line": 6382,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 357"
   },
   {
     "data": "_ foo bar_\n",
     "want": "<p>_ foo bar_</p>",
-    "name": "Test 358",
-    "start_line": 6388,
-    "end_line": 6392,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 358"
   },
   {
     "data": "a_\"foo\"_\n",
     "want": "<p>a_&quot;foo&quot;_</p>",
-    "name": "Test 359",
-    "start_line": 6398,
-    "end_line": 6402,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 359"
   },
   {
     "data": "foo_bar_\n",
     "want": "<p>foo_bar_</p>",
-    "name": "Test 360",
-    "start_line": 6407,
-    "end_line": 6411,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 360"
   },
   {
     "data": "5_6_78\n",
     "want": "<p>5_6_78</p>",
-    "name": "Test 361",
-    "start_line": 6414,
-    "end_line": 6418,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 361"
   },
   {
     "data": "пристаням_стремятся_\n",
     "want": "<p>пристаням_стремятся_</p>",
-    "name": "Test 362",
-    "start_line": 6421,
-    "end_line": 6425,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 362"
   },
   {
     "data": "aa_\"bb\"_cc\n",
     "want": "<p>aa_&quot;bb&quot;_cc</p>",
-    "name": "Test 363",
-    "start_line": 6431,
-    "end_line": 6435,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 363"
   },
   {
     "data": "foo-_(bar)_\n",
     "want": "<p>foo-<i>(bar)</i></p>",
-    "name": "Test 364",
-    "start_line": 6442,
-    "end_line": 6446,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 364"
   },
   {
     "data": "_foo*\n",
     "want": "<p>_foo*</p>",
-    "name": "Test 365",
-    "start_line": 6454,
-    "end_line": 6458,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 365"
   },
   {
     "data": "*foo bar *\n",
     "want": "<p>*foo bar *</p>",
-    "name": "Test 366",
-    "start_line": 6464,
-    "end_line": 6468,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 366"
   },
   {
     "data": "*foo bar\n*\n",
     "want": "<p>*foo bar\n*</p>",
-    "name": "Test 367",
-    "start_line": 6473,
-    "end_line": 6479,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 367"
   },
   {
     "data": "*(*foo)\n",
     "want": "<p>*(*foo)</p>",
-    "name": "Test 368",
-    "start_line": 6486,
-    "end_line": 6490,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 368"
   },
   {
     "data": "*(*foo*)*\n",
     "want": "<p><i>(<i>foo</i>)</i></p>",
-    "name": "Test 369",
-    "start_line": 6496,
-    "end_line": 6500,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 369"
   },
   {
     "data": "*foo*bar\n",
     "want": "<p><i>foo</i>bar</p>",
-    "name": "Test 370",
-    "start_line": 6505,
-    "end_line": 6509,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 370"
   },
   {
     "data": "_foo bar _\n",
     "want": "<p>_foo bar _</p>",
-    "name": "Test 371",
-    "start_line": 6518,
-    "end_line": 6522,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 371"
   },
   {
     "data": "_(_foo)\n",
     "want": "<p>_(_foo)</p>",
-    "name": "Test 372",
-    "start_line": 6528,
-    "end_line": 6532,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 372"
   },
   {
     "data": "_(_foo_)_\n",
     "want": "<p><i>(<i>foo</i>)</i></p>",
-    "name": "Test 373",
-    "start_line": 6537,
-    "end_line": 6541,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 373"
   },
   {
     "data": "_foo_bar\n",
     "want": "<p>_foo_bar</p>",
-    "name": "Test 374",
-    "start_line": 6546,
-    "end_line": 6550,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 374"
   },
   {
     "data": "_пристаням_стремятся\n",
     "want": "<p>_пристаням_стремятся</p>",
-    "name": "Test 375",
-    "start_line": 6553,
-    "end_line": 6557,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 375"
   },
   {
     "data": "_foo_bar_baz_\n",
     "want": "<p><i>foo_bar_baz</i></p>",
-    "name": "Test 376",
-    "start_line": 6560,
-    "end_line": 6564,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 376"
   },
   {
     "data": "_(bar)_.\n",
     "want": "<p><i>(bar)</i>.</p>",
-    "name": "Test 377",
-    "start_line": 6571,
-    "end_line": 6575,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 377"
   },
   {
     "data": "**foo bar**\n",
     "want": "<p><b>foo bar</b></p>",
-    "name": "Test 378",
-    "start_line": 6580,
-    "end_line": 6584,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 378"
   },
   {
     "data": "** foo bar**\n",
     "want": "<p>** foo bar**</p>",
-    "name": "Test 379",
-    "start_line": 6590,
-    "end_line": 6594,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 379"
   },
   {
     "data": "a**\"foo\"**\n",
     "want": "<p>a**&quot;foo&quot;**</p>",
-    "name": "Test 380",
-    "start_line": 6601,
-    "end_line": 6605,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 380"
   },
   {
     "data": "foo**bar**\n",
     "want": "<p>foo<b>bar</b></p>",
-    "name": "Test 381",
-    "start_line": 6610,
-    "end_line": 6614,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 381"
   },
   {
     "data": "__foo bar__\n",
     "want": "<p><b>foo bar</b></p>",
-    "name": "Test 382",
-    "start_line": 6619,
-    "end_line": 6623,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 382"
   },
   {
     "data": "__ foo bar__\n",
     "want": "<p>__ foo bar__</p>",
-    "name": "Test 383",
-    "start_line": 6629,
-    "end_line": 6633,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 383"
   },
   {
     "data": "__\nfoo bar__\n",
     "want": "<p>__\nfoo bar__</p>",
-    "name": "Test 384",
-    "start_line": 6637,
-    "end_line": 6643,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 384"
   },
   {
     "data": "a__\"foo\"__\n",
     "want": "<p>a__&quot;foo&quot;__</p>",
-    "name": "Test 385",
-    "start_line": 6649,
-    "end_line": 6653,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 385"
   },
   {
     "data": "foo__bar__\n",
     "want": "<p>foo__bar__</p>",
-    "name": "Test 386",
-    "start_line": 6658,
-    "end_line": 6662,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 386"
   },
   {
     "data": "5__6__78\n",
     "want": "<p>5__6__78</p>",
-    "name": "Test 387",
-    "start_line": 6665,
-    "end_line": 6669,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 387"
   },
   {
     "data": "пристаням__стремятся__\n",
     "want": "<p>пристаням__стремятся__</p>",
-    "name": "Test 388",
-    "start_line": 6672,
-    "end_line": 6676,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 388"
   },
   {
     "data": "__foo, __bar__, baz__\n",
     "want": "<p><b>foo, <b>bar</b>, baz</b></p>",
-    "name": "Test 389",
-    "start_line": 6679,
-    "end_line": 6683,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 389"
   },
   {
     "data": "foo-__(bar)__\n",
     "want": "<p>foo-<b>(bar)</b></p>",
-    "name": "Test 390",
-    "start_line": 6690,
-    "end_line": 6694,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 390"
   },
   {
     "data": "**foo bar **\n",
     "want": "<p>**foo bar **</p>",
-    "name": "Test 391",
-    "start_line": 6703,
-    "end_line": 6707,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 391"
   },
   {
     "data": "**(**foo)\n",
     "want": "<p>**(**foo)</p>",
-    "name": "Test 392",
-    "start_line": 6716,
-    "end_line": 6720,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 392"
   },
   {
     "data": "*(**foo**)*\n",
     "want": "<p><i>(<b>foo</b>)</i></p>",
-    "name": "Test 393",
-    "start_line": 6726,
-    "end_line": 6730,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 393"
   },
   {
     "data": "**Gomphocarpus (*Gomphocarpus physocarpus*, syn.\n*Asclepias physocarpa*)**\n",
     "want": "<p><b>Gomphocarpus (<i>Gomphocarpus physocarpus</i>, syn.\n<i>Asclepias physocarpa</i>)</b></p>",
-    "name": "Test 394",
-    "start_line": 6733,
-    "end_line": 6739,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 394"
   },
   {
     "data": "**foo \"*bar*\" foo**\n",
     "want": "<p><b>foo &quot;<i>bar</i>&quot; foo</b></p>",
-    "name": "Test 395",
-    "start_line": 6742,
-    "end_line": 6746,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 395"
   },
   {
     "data": "**foo**bar\n",
     "want": "<p><b>foo</b>bar</p>",
-    "name": "Test 396",
-    "start_line": 6751,
-    "end_line": 6755,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 396"
   },
   {
     "data": "__foo bar __\n",
     "want": "<p>__foo bar __</p>",
-    "name": "Test 397",
-    "start_line": 6763,
-    "end_line": 6767,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 397"
   },
   {
     "data": "__(__foo)\n",
     "want": "<p>__(__foo)</p>",
-    "name": "Test 398",
-    "start_line": 6773,
-    "end_line": 6777,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 398"
   },
   {
     "data": "_(__foo__)_\n",
     "want": "<p><i>(<b>foo</b>)</i></p>",
-    "name": "Test 399",
-    "start_line": 6783,
-    "end_line": 6787,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 399"
   },
   {
     "data": "__foo__bar\n",
     "want": "<p>__foo__bar</p>",
-    "name": "Test 400",
-    "start_line": 6792,
-    "end_line": 6796,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 400"
   },
   {
     "data": "__пристаням__стремятся\n",
     "want": "<p>__пристаням__стремятся</p>",
-    "name": "Test 401",
-    "start_line": 6799,
-    "end_line": 6803,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 401"
   },
   {
     "data": "__foo__bar__baz__\n",
     "want": "<p><b>foo__bar__baz</b></p>",
-    "name": "Test 402",
-    "start_line": 6806,
-    "end_line": 6810,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 402"
   },
   {
     "data": "__(bar)__.\n",
     "want": "<p><b>(bar)</b>.</p>",
-    "name": "Test 403",
-    "start_line": 6817,
-    "end_line": 6821,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 403"
   },
   {
     "data": "*foo [bar](/url)*\n",
     "want": "<p><i>foo <a href=\"/url\" title=\"\">bar</a></i></p>",
-    "name": "Test 404",
-    "start_line": 6829,
-    "end_line": 6833,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 404"
   },
   {
     "data": "*foo\nbar*\n",
     "want": "<p><i>foo\nbar</i></p>",
-    "name": "Test 405",
-    "start_line": 6836,
-    "end_line": 6842,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 405"
   },
   {
     "data": "_foo __bar__ baz_\n",
     "want": "<p><i>foo <b>bar</b> baz</i></p>",
-    "name": "Test 406",
-    "start_line": 6848,
-    "end_line": 6852,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 406"
   },
   {
     "data": "_foo _bar_ baz_\n",
     "want": "<p><i>foo <i>bar</i> baz</i></p>",
-    "name": "Test 407",
-    "start_line": 6855,
-    "end_line": 6859,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 407"
   },
   {
     "data": "__foo_ bar_\n",
     "want": "<p><i><i>foo</i> bar</i></p>",
-    "name": "Test 408",
-    "start_line": 6862,
-    "end_line": 6866,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 408"
   },
   {
     "data": "*foo *bar**\n",
     "want": "<p><i>foo <i>bar</i></i></p>",
-    "name": "Test 409",
-    "start_line": 6869,
-    "end_line": 6873,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 409"
   },
   {
     "data": "*foo **bar** baz*\n",
     "want": "<p><i>foo <b>bar</b> baz</i></p>",
-    "name": "Test 410",
-    "start_line": 6876,
-    "end_line": 6880,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 410"
   },
   {
     "data": "*foo**bar**baz*\n",
     "want": "<p><i>foo<b>bar</b>baz</i></p>",
-    "name": "Test 411",
-    "start_line": 6882,
-    "end_line": 6886,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 411"
   },
   {
     "data": "*foo**bar*\n",
     "want": "<p><i>foo**bar</i></p>",
-    "name": "Test 412",
-    "start_line": 6906,
-    "end_line": 6910,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 412"
   },
   {
     "data": "***foo** bar*\n",
     "want": "<p><i><b>foo</b> bar</i></p>",
-    "name": "Test 413",
-    "start_line": 6919,
-    "end_line": 6923,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 413"
   },
   {
     "data": "*foo **bar***\n",
     "want": "<p><i>foo <b>bar</b></i></p>",
-    "name": "Test 414",
-    "start_line": 6926,
-    "end_line": 6930,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 414"
   },
   {
     "data": "*foo**bar***\n",
     "want": "<p><i>foo<b>bar</b></i></p>",
-    "name": "Test 415",
-    "start_line": 6933,
-    "end_line": 6937,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 415"
   },
   {
     "data": "foo***bar***baz\n",
     "want": "<p>foo<i><b>bar</b></i>baz</p>",
-    "name": "Test 416",
-    "start_line": 6944,
-    "end_line": 6948,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 416"
   },
   {
     "data": "foo******bar*********baz\n",
     "want": "<p>foo<b><b><b>bar</b></b></b>***baz</p>",
-    "name": "Test 417",
-    "start_line": 6950,
-    "end_line": 6954,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 417"
   },
   {
     "data": "*foo **bar *baz* bim** bop*\n",
     "want": "<p><i>foo <b>bar <i>baz</i> bim</b> bop</i></p>",
-    "name": "Test 418",
-    "start_line": 6959,
-    "end_line": 6963,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 418"
   },
   {
     "data": "*foo [*bar*](/url)*\n",
     "want": "<p><i>foo <a href=\"/url\" title=\"\"><i>bar</i></a></i></p>",
-    "name": "Test 419",
-    "start_line": 6966,
-    "end_line": 6970,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 419"
   },
   {
     "data": "** is not an empty emphasis\n",
     "want": "<p>** is not an empty emphasis</p>",
-    "name": "Test 420",
-    "start_line": 6975,
-    "end_line": 6979,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 420"
   },
   {
     "data": "**** is not an empty strong emphasis\n",
     "want": "<p>**** is not an empty strong emphasis</p>",
-    "name": "Test 421",
-    "start_line": 6982,
-    "end_line": 6986,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 421"
   },
   {
     "data": "**foo [bar](/url)**\n",
     "want": "<p><b>foo <a href=\"/url\" title=\"\">bar</a></b></p>",
-    "name": "Test 422",
-    "start_line": 6995,
-    "end_line": 6999,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 422"
   },
   {
     "data": "**foo\nbar**\n",
     "want": "<p><b>foo\nbar</b></p>",
-    "name": "Test 423",
-    "start_line": 7002,
-    "end_line": 7008,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 423"
   },
   {
     "data": "__foo _bar_ baz__\n",
     "want": "<p><b>foo <i>bar</i> baz</b></p>",
-    "name": "Test 424",
-    "start_line": 7014,
-    "end_line": 7018,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 424"
   },
   {
     "data": "__foo __bar__ baz__\n",
     "want": "<p><b>foo <b>bar</b> baz</b></p>",
-    "name": "Test 425",
-    "start_line": 7021,
-    "end_line": 7025,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 425"
   },
   {
     "data": "____foo__ bar__\n",
     "want": "<p><b><b>foo</b> bar</b></p>",
-    "name": "Test 426",
-    "start_line": 7028,
-    "end_line": 7032,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 426"
   },
   {
     "data": "**foo **bar****\n",
     "want": "<p><b>foo <b>bar</b></b></p>",
-    "name": "Test 427",
-    "start_line": 7035,
-    "end_line": 7039,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 427"
   },
   {
     "data": "**foo *bar* baz**\n",
     "want": "<p><b>foo <i>bar</i> baz</b></p>",
-    "name": "Test 428",
-    "start_line": 7042,
-    "end_line": 7046,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 428"
   },
   {
     "data": "**foo*bar*baz**\n",
     "want": "<p><b>foo<i>bar</i>baz</b></p>",
-    "name": "Test 429",
-    "start_line": 7049,
-    "end_line": 7053,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 429"
   },
   {
     "data": "***foo* bar**\n",
     "want": "<p><b><i>foo</i> bar</b></p>",
-    "name": "Test 430",
-    "start_line": 7056,
-    "end_line": 7060,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 430"
   },
   {
     "data": "**foo *bar***\n",
     "want": "<p><b>foo <i>bar</i></b></p>",
-    "name": "Test 431",
-    "start_line": 7063,
-    "end_line": 7067,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 431"
   },
   {
     "data": "**foo *bar **baz**\nbim* bop**\n",
     "want": "<p><b>foo <i>bar <b>baz</b>\nbim</i> bop</b></p>",
-    "name": "Test 432",
-    "start_line": 7072,
-    "end_line": 7078,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 432"
   },
   {
     "data": "**foo [*bar*](/url)**\n",
     "want": "<p><b>foo <a href=\"/url\" title=\"\"><i>bar</i></a></b></p>",
-    "name": "Test 433",
-    "start_line": 7081,
-    "end_line": 7085,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 433"
   },
   {
     "data": "__ is not an empty emphasis\n",
     "want": "<p>__ is not an empty emphasis</p>",
-    "name": "Test 434",
-    "start_line": 7090,
-    "end_line": 7094,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 434"
   },
   {
     "data": "____ is not an empty strong emphasis\n",
     "want": "<p>____ is not an empty strong emphasis</p>",
-    "name": "Test 435",
-    "start_line": 7097,
-    "end_line": 7101,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 435"
   },
   {
     "data": "foo ***\n",
     "want": "<p>foo ***</p>",
-    "name": "Test 436",
-    "start_line": 7107,
-    "end_line": 7111,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 436"
   },
   {
     "data": "foo *\\**\n",
     "want": "<p>foo <i>*</i></p>",
-    "name": "Test 437",
-    "start_line": 7114,
-    "end_line": 7118,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 437"
   },
   {
     "data": "foo *_*\n",
     "want": "<p>foo <i>_</i></p>",
-    "name": "Test 438",
-    "start_line": 7121,
-    "end_line": 7125,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 438"
   },
   {
     "data": "foo *****\n",
     "want": "<p>foo *****</p>",
-    "name": "Test 439",
-    "start_line": 7128,
-    "end_line": 7132,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 439"
   },
   {
     "data": "foo **\\***\n",
     "want": "<p>foo <b>*</b></p>",
-    "name": "Test 440",
-    "start_line": 7135,
-    "end_line": 7139,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 440"
   },
   {
     "data": "foo **_**\n",
     "want": "<p>foo <b>_</b></p>",
-    "name": "Test 441",
-    "start_line": 7142,
-    "end_line": 7146,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 441"
   },
   {
     "data": "**foo*\n",
     "want": "<p>*<i>foo</i></p>",
-    "name": "Test 442",
-    "start_line": 7153,
-    "end_line": 7157,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 442"
   },
   {
     "data": "*foo**\n",
     "want": "<p><i>foo</i>*</p>",
-    "name": "Test 443",
-    "start_line": 7160,
-    "end_line": 7164,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 443"
   },
   {
     "data": "***foo**\n",
     "want": "<p>*<b>foo</b></p>",
-    "name": "Test 444",
-    "start_line": 7167,
-    "end_line": 7171,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 444"
   },
   {
     "data": "****foo*\n",
     "want": "<p>***<i>foo</i></p>",
-    "name": "Test 445",
-    "start_line": 7174,
-    "end_line": 7178,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 445"
   },
   {
     "data": "**foo***\n",
     "want": "<p><b>foo</b>*</p>",
-    "name": "Test 446",
-    "start_line": 7181,
-    "end_line": 7185,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 446"
   },
   {
     "data": "*foo****\n",
     "want": "<p><i>foo</i>***</p>",
-    "name": "Test 447",
-    "start_line": 7188,
-    "end_line": 7192,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 447"
   },
   {
     "data": "foo ___\n",
     "want": "<p>foo ___</p>",
-    "name": "Test 448",
-    "start_line": 7198,
-    "end_line": 7202,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 448"
   },
   {
     "data": "foo _\\__\n",
     "want": "<p>foo <i>_</i></p>",
-    "name": "Test 449",
-    "start_line": 7205,
-    "end_line": 7209,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 449"
   },
   {
     "data": "foo _*_\n",
     "want": "<p>foo <i>*</i></p>",
-    "name": "Test 450",
-    "start_line": 7212,
-    "end_line": 7216,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 450"
   },
   {
     "data": "foo _____\n",
     "want": "<p>foo _____</p>",
-    "name": "Test 451",
-    "start_line": 7219,
-    "end_line": 7223,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 451"
   },
   {
     "data": "foo __\\___\n",
     "want": "<p>foo <b>_</b></p>",
-    "name": "Test 452",
-    "start_line": 7226,
-    "end_line": 7230,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 452"
   },
   {
     "data": "foo __*__\n",
     "want": "<p>foo <b>*</b></p>",
-    "name": "Test 453",
-    "start_line": 7233,
-    "end_line": 7237,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 453"
   },
   {
     "data": "__foo_\n",
     "want": "<p>_<i>foo</i></p>",
-    "name": "Test 454",
-    "start_line": 7240,
-    "end_line": 7244,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 454"
   },
   {
     "data": "_foo__\n",
     "want": "<p><i>foo</i>_</p>",
-    "name": "Test 455",
-    "start_line": 7251,
-    "end_line": 7255,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 455"
   },
   {
     "data": "___foo__\n",
     "want": "<p>_<b>foo</b></p>",
-    "name": "Test 456",
-    "start_line": 7258,
-    "end_line": 7262,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 456"
   },
   {
     "data": "____foo_\n",
     "want": "<p>___<i>foo</i></p>",
-    "name": "Test 457",
-    "start_line": 7265,
-    "end_line": 7269,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 457"
   },
   {
     "data": "__foo___\n",
     "want": "<p><b>foo</b>_</p>",
-    "name": "Test 458",
-    "start_line": 7272,
-    "end_line": 7276,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 458"
   },
   {
     "data": "_foo____\n",
     "want": "<p><i>foo</i>___</p>",
-    "name": "Test 459",
-    "start_line": 7279,
-    "end_line": 7283,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 459"
   },
   {
     "data": "**foo**\n",
     "want": "<p><b>foo</b></p>",
-    "name": "Test 460",
-    "start_line": 7289,
-    "end_line": 7293,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 460"
   },
   {
     "data": "*_foo_*\n",
     "want": "<p><i><i>foo</i></i></p>",
-    "name": "Test 461",
-    "start_line": 7296,
-    "end_line": 7300,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 461"
   },
   {
     "data": "__foo__\n",
     "want": "<p><b>foo</b></p>",
-    "name": "Test 462",
-    "start_line": 7303,
-    "end_line": 7307,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 462"
   },
   {
     "data": "_*foo*_\n",
     "want": "<p><i><i>foo</i></i></p>",
-    "name": "Test 463",
-    "start_line": 7310,
-    "end_line": 7314,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 463"
   },
   {
     "data": "****foo****\n",
     "want": "<p><b><b>foo</b></b></p>",
-    "name": "Test 464",
-    "start_line": 7320,
-    "end_line": 7324,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 464"
   },
   {
     "data": "____foo____\n",
     "want": "<p><b><b>foo</b></b></p>",
-    "name": "Test 465",
-    "start_line": 7327,
-    "end_line": 7331,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 465"
   },
   {
     "data": "******foo******\n",
     "want": "<p><b><b><b>foo</b></b></b></p>",
-    "name": "Test 466",
-    "start_line": 7338,
-    "end_line": 7342,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 466"
   },
   {
     "data": "***foo***\n",
     "want": "<p><i><b>foo</b></i></p>",
-    "name": "Test 467",
-    "start_line": 7347,
-    "end_line": 7351,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 467"
   },
   {
     "data": "_____foo_____\n",
     "want": "<p><i><b><b>foo</b></b></i></p>",
-    "name": "Test 468",
-    "start_line": 7354,
-    "end_line": 7358,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 468"
   },
   {
     "data": "*foo _bar* baz_\n",
     "want": "<p><i>foo _bar</i> baz_</p>",
-    "name": "Test 469",
-    "start_line": 7363,
-    "end_line": 7367,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 469"
   },
   {
     "data": "*foo __bar *baz bim__ bam*\n",
     "want": "<p><i>foo <b>bar *baz bim</b> bam</i></p>",
-    "name": "Test 470",
-    "start_line": 7370,
-    "end_line": 7374,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 470"
   },
   {
     "data": "**foo **bar baz**\n",
     "want": "<p>**foo <b>bar baz</b></p>",
-    "name": "Test 471",
-    "start_line": 7379,
-    "end_line": 7383,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 471"
   },
   {
     "data": "*foo *bar baz*\n",
     "want": "<p>*foo <i>bar baz</i></p>",
-    "name": "Test 472",
-    "start_line": 7386,
-    "end_line": 7390,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 472"
   },
   {
     "data": "*[bar*](/url)\n",
     "want": "<p>*<a href=\"/url\" title=\"\">bar*</a></p>",
-    "name": "Test 473",
-    "start_line": 7395,
-    "end_line": 7399,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 473"
   },
   {
     "data": "_foo [bar_](/url)\n",
     "want": "<p>_foo <a href=\"/url\" title=\"\">bar_</a></p>",
-    "name": "Test 474",
-    "start_line": 7402,
-    "end_line": 7406,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 474"
   },
   {
     "data": "*<img src=\"foo\" title=\"*\"/>\n",
     "want": "<p>*<img src=\"foo\" title=\"*\"/></p>",
-    "name": "Test 475",
-    "start_line": 7409,
-    "end_line": 7413,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 475"
   },
   {
     "data": "**<a href=\"**\">\n",
     "want": "<p>**<a href=\"**\" title=\"\"></p>",
-    "name": "Test 476",
-    "start_line": 7416,
-    "end_line": 7420,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 476"
   },
   {
     "data": "__<a href=\"__\">\n",
     "want": "<p>__<a href=\"__\"></p>",
-    "name": "Test 477",
-    "start_line": 7423,
-    "end_line": 7427,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 477"
   },
   {
     "data": "*a `*`*\n",
     "want": "<p><i>a <tt>*</tt></i></p>",
-    "name": "Test 478",
-    "start_line": 7430,
-    "end_line": 7434,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 478"
   },
   {
     "data": "_a `_`_\n",
     "want": "<p><i>a <tt>_</tt></i></p>",
-    "name": "Test 479",
-    "start_line": 7437,
-    "end_line": 7441,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 479"
   },
   {
     "data": "**a<https://foo.bar/?q=**>\n",
     "want": "<p>**a<a href=\"https://foo.bar/?q=**\">https://foo.bar/?q=**</a></p>",
-    "name": "Test 480",
-    "start_line": 7444,
-    "end_line": 7448,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 480"
   },
   {
     "data": "__a<https://foo.bar/?q=__>\n",
     "want": "<p>__a<a href=\"https://foo.bar/?q=__\">https://foo.bar/?q=__</a></p>",
-    "name": "Test 481",
-    "start_line": 7451,
-    "end_line": 7455,
-    "section": "Emphasis and strong emphasis"
+    "name": "Test 481"
   },
+  "Links",
   {
     "data": "[link](/uri \"title\")\n",
     "want": "<p><a href=\"/uri\" title=\"title\">link</a></p>",
     "name": "Test 482",
-    "FIXME": "Add support for <tt>TITLE</tt> in <tt>[TEXT](URL \"TITLE\")</tt>",
-    "start_line": 7539,
-    "end_line": 7543,
-    "section": "Links"
+    "FIXME": "Add support for <tt>TITLE</tt> in <tt>[TEXT](URL \"TITLE\")</tt>"
   },
   {
     "data": "[link](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\">link</a></p>",
-    "name": "Test 483",
-    "start_line": 7549,
-    "end_line": 7553,
-    "section": "Links"
+    "name": "Test 483"
   },
   {
     "data": "[](./target.md)\n",
     "want": "<p><a href=\"./target.md\" title=\"\"></a></p>",
-    "name": "Test 484",
-    "start_line": 7555,
-    "end_line": 7559,
-    "section": "Links"
+    "name": "Test 484"
   },
   {
     "data": "[link]()\n",
     "want": "<p><a href=\"\" title=\"\">link</a></p>",
-    "name": "Test 485",
-    "start_line": 7562,
-    "end_line": 7566,
-    "section": "Links"
+    "name": "Test 485"
   },
   {
     "data": "[link](<>)\n",
     "want": "<p><a href=\"\" title=\"\">link</a></p>",
-    "name": "Test 486",
-    "start_line": 7569,
-    "end_line": 7573,
-    "section": "Links"
+    "name": "Test 486"
   },
   {
     "data": "[]()\n",
     "want": "<p><a href=\"\" title=\"\"></a></p>",
-    "name": "Test 487",
-    "start_line": 7576,
-    "end_line": 7580,
-    "section": "Links"
+    "name": "Test 487"
   },
   {
     "data": "[link](/my uri)\n",
     "want": "<p>[link](/my uri)</p>",
-    "name": "Test 488",
-    "start_line": 7585,
-    "end_line": 7589,
-    "section": "Links"
+    "name": "Test 488"
   },
   {
     "data": "[link](</my uri>)\n",
     "want": "<p><a href=\"/my%20uri\" title=\"\">link</a></p>",
-    "name": "Test 489",
-    "start_line": 7591,
-    "end_line": 7595,
-    "section": "Links"
+    "name": "Test 489"
   },
   {
     "data": "[link](foo\nbar)\n",
     "want": "<p>[link](foo\nbar)</p>",
-    "name": "Test 490",
-    "start_line": 7600,
-    "end_line": 7606,
-    "section": "Links"
+    "name": "Test 490"
   },
   {
     "data": "[link](<foo\nbar>)\n",
     "want": "<p>[link](<foo\nbar>)</p>",
-    "name": "Test 491",
-    "start_line": 7608,
-    "end_line": 7614,
-    "section": "Links"
+    "name": "Test 491"
   },
   {
     "data": "[a](<b)c>)\n",
     "want": "<p><a href=\"b)c\" title=\"\">a</a></p>",
-    "name": "Test 492",
-    "start_line": 7619,
-    "end_line": 7623,
-    "section": "Links"
+    "name": "Test 492"
   },
   {
     "data": "[link](<foo\\>)\n",
     "want": "<p>[link](&#60;foo&#62;)</p>",
-    "name": "Test 493",
-    "start_line": 7627,
-    "end_line": 7631,
-    "section": "Links"
+    "name": "Test 493"
   },
   {
     "data": "[a](<b)c\n[a](<b)c>\n[a](<b>c)\n",
     "want": "<p>[a](&#60;b)c\n[a](&#60;b)c&#62;\n[a](<b>c)</p>",
-    "name": "Test 494",
-    "start_line": 7636,
-    "end_line": 7644,
-    "section": "Links"
+    "name": "Test 494"
   },
   {
     "data": "[link](\\(foo\\))\n",
     "want": "<p><a href=\"(foo)\" title=\"\">link</a></p>",
-    "name": "Test 495",
-    "start_line": 7648,
-    "end_line": 7652,
-    "section": "Links"
+    "name": "Test 495"
   },
   {
     "data": "[link](foo(and(bar)))\n",
     "want": "<p><a href=\"foo(and(bar))\" title=\"\">link</a></p>",
-    "name": "Test 496",
-    "start_line": 7657,
-    "end_line": 7661,
-    "section": "Links"
+    "name": "Test 496"
   },
   {
     "data": "[link](foo(and(bar))\n",
     "want": "<p>[link](foo(and(bar))</p>",
-    "name": "Test 497",
-    "start_line": 7666,
-    "end_line": 7670,
-    "section": "Links"
+    "name": "Test 497"
   },
   {
     "data": "[link](foo\\(and\\(bar\\))\n",
     "want": "<p><a href=\"foo(and(bar)\" title=\"\">link</a></p>",
-    "name": "Test 498",
-    "start_line": 7673,
-    "end_line": 7677,
-    "section": "Links"
+    "name": "Test 498"
   },
   {
     "data": "[link](<foo(and(bar)>)\n",
     "want": "<p><a href=\"foo(and(bar)\" title=\"\">link</a></p>",
     "name": "Test 499",
-    "skip": "Baremark does not support unescaped brackets in <tt>URL</tt> of <tt>[TEXT](URL)</tt>",
-    "start_line": 7680,
-    "end_line": 7684,
-    "section": "Links"
+    "skip": "Baremark does not support unescaped brackets in <tt>URL</tt> of <tt>[TEXT](URL)</tt>"
   },
   {
     "data": "[link](<foo\\(and\\(bar\\)>)\n",
     "want": "<p><a href=\"foo(and(bar)\" title=\"\">link</a></p>",
     "name": "Test 499x",
-    "FIXME": "Maybe add support for <tt>&#60;...&#62;</tt> in <tt>URL</tt> of <tt>[TEXT](URL)</tt>?",
-    "start_line": 7680,
-    "end_line": 7684,
-    "section": "Links"
+    "FIXME": "Maybe add support for <tt>&#60;...&#62;</tt> in <tt>URL</tt> of <tt>[TEXT](URL)</tt>?"
   },
   {
     "data": "[link](foo\\)\\:)\n",
     "want": "<p><a href=\"foo&#41;&#58;\" title=\"\">link</a></p>",
-    "name": "Test 500",
-    "start_line": 7690,
-    "end_line": 7694,
-    "section": "Links"
+    "name": "Test 500"
   },
   {
     "data": "[link](#fragment)\n\n[link](https://example.com#fragment)\n\n[link](https://example.com?foo=3#frag)\n",
     "want": "<p><a href=\"#fragment\" title=\"\">link</a></p>\n\n<p><a href=\"https&#58;//example.com#fragment\" title=\"\">link</a></p>\n\n<p><a href=\"https&#58;//example.com?foo&#61;3#frag\" title=\"\">link</a></p>",
-    "name": "Test 501",
-    "start_line": 7699,
-    "end_line": 7709,
-    "section": "Links"
+    "name": "Test 501"
   },
   {
     "data": "[link](foo\\bar)\n",
     "want": "<p><a href=\"foo%5Cbar\" title=\"\">link</a></p>",
     "name": "Test 502",
-    "FIXME": "Maybe add support for URL encoding in <tt>URL</tt> of <tt>[TEXT](URL)</tt>?",
-    "start_line": 7715,
-    "end_line": 7719,
-    "section": "Links"
+    "FIXME": "Maybe add support for URL encoding in <tt>URL</tt> of <tt>[TEXT](URL)</tt>?"
   },
   {
     "data": "[link](foo%20b&auml;)\n",
     "want": "<p><a href=\"foo%20b%C3%A4\" title=\"\">link</a></p>",
-    "name": "Test 503",
-    "start_line": 7731,
-    "end_line": 7735,
-    "section": "Links"
+    "name": "Test 503"
   },
   {
     "data": "[link](\"title\")\n",
     "want": "<p><a href=\"&#34;title&#34;\" title=\"\">link</a></p>",
-    "name": "Test 504",
-    "start_line": 7742,
-    "end_line": 7746,
-    "section": "Links"
+    "name": "Test 504"
   },
   {
     "data": "[link](/url \"title\")\n[link](/url 'title')\n[link](/url (title))\n",
     "want": "<p><a href=\"/url\" title=\"title\">link</a>\n\n<a href=\"/url\" title=\"title\">link</a>\n\n<a href=\"/url\" title=\"title\">link</a></p>",
     "name": "Test 505",
-    "FIXME": "Add support for <tt>TITLE</tt> in <tt>[TEXT](URL \"TITLE\")</tt>",
-    "start_line": 7751,
-    "end_line": 7759,
-    "section": "Links"
+    "FIXME": "Add support for <tt>TITLE</tt> in <tt>[TEXT](URL \"TITLE\")</tt>"
   },
   {
     "data": "[link](/url \"title \\\"&quot;\")\n",
     "want": "<p><a href=\"/url\" title=\"title &quot;&quot;\">link</a></p>",
-    "name": "Test 506",
-    "start_line": 7765,
-    "end_line": 7769,
-    "section": "Links"
+    "name": "Test 506"
   },
   {
     "data": "[link](/url \"title\")\n",
     "want": "<p><a href=\"/url%C2%A0%22title%22\" title=\"\">link</a></p>",
-    "name": "Test 507",
-    "start_line": 7776,
-    "end_line": 7780,
-    "section": "Links"
+    "name": "Test 507"
   },
   {
     "data": "[link](/url \"title \"and\" title\")\n",
     "want": "<p>[link](/url &quot;title &quot;and&quot; title&quot;)</p>",
-    "name": "Test 508",
-    "start_line": 7785,
-    "end_line": 7789,
-    "section": "Links"
+    "name": "Test 508"
   },
   {
     "data": "[link](/url 'title \"and\" title')\n",
     "want": "<p><a href=\"/url\" title=\"title &quot;and&quot; title\">link</a></p>",
-    "name": "Test 509",
-    "start_line": 7794,
-    "end_line": 7798,
-    "section": "Links"
+    "name": "Test 509"
   },
   {
     "data": "[link](   /uri\n  \"title\"  )\n",
     "want": "<p><a href=\"/uri\" title=\"title\">link</a></p>",
-    "name": "Test 510",
-    "start_line": 7819,
-    "end_line": 7824,
-    "section": "Links"
+    "name": "Test 510"
   },
   {
     "data": "[link] (/uri)\n",
     "want": "<p>[link] (/uri)</p>",
-    "name": "Test 511",
-    "start_line": 7830,
-    "end_line": 7834,
-    "section": "Links"
+    "name": "Test 511"
   },
   {
     "data": "[link [foo [bar]]](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\">link [foo [bar]]</a></p>",
-    "name": "Test 512",
-    "start_line": 7840,
-    "end_line": 7844,
-    "section": "Links"
+    "name": "Test 512"
   },
   {
     "data": "[link] bar](/uri)\n",
     "want": "<p>[link] bar](/uri)</p>",
-    "name": "Test 513",
-    "start_line": 7847,
-    "end_line": 7851,
-    "section": "Links"
+    "name": "Test 513"
   },
   {
     "data": "[link [bar](/uri)\n",
     "want": "<p>[link <a href=\"/uri\" title=\"\">bar</a></p>",
-    "name": "Test 514",
-    "start_line": 7854,
-    "end_line": 7858,
-    "section": "Links"
+    "name": "Test 514"
   },
   {
     "data": "[link \\[bar](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\">link [bar</a></p>",
-    "name": "Test 515",
-    "start_line": 7861,
-    "end_line": 7865,
-    "section": "Links"
+    "name": "Test 515"
   },
   {
     "data": "[link *foo **bar** `#`*](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\">link <i>foo <b>bar</b> <tt>#</tt></i></a></p>",
-    "name": "Test 516",
-    "start_line": 7870,
-    "end_line": 7874,
-    "section": "Links"
+    "name": "Test 516"
   },
   {
     "data": "[![moon](moon.jpg)](/uri)\n",
     "want": "<p><a href=\"/uri\" title=\"\"><img src=\"moon.jpg\" alt=\"moon\"></a></p>",
-    "name": "Test 517",
-    "start_line": 7877,
-    "end_line": 7881,
-    "section": "Links"
+    "name": "Test 517"
   },
   {
     "data": "[foo [bar](/uri)](/uri)\n",
     "want": "<p>[foo <a href=\"/uri\" title=\"\">bar</a>](/uri)</p>",
-    "name": "Test 518",
-    "start_line": 7886,
-    "end_line": 7890,
-    "section": "Links"
+    "name": "Test 518"
   },
   {
     "data": "[foo *[bar [baz](/uri)](/uri)*](/uri)\n",
     "want": "<p>[foo <i>[bar <a href=\"/uri\" title=\"\">baz</a>](/uri)</i>](/uri)</p>",
-    "name": "Test 519",
-    "start_line": 7893,
-    "end_line": 7897,
-    "section": "Links"
+    "name": "Test 519"
   },
   {
     "data": "![[[foo](uri1)](uri2)](uri3)\n",
     "want": "<p><img src=\"uri3\" alt=\"[foo](uri2)\"></p>",
-    "name": "Test 520",
-    "start_line": 7900,
-    "end_line": 7904,
-    "section": "Links"
+    "name": "Test 520"
   },
   {
     "data": "*[foo*](/uri)\n",
     "want": "<p>*<a href=\"/uri\" title=\"\">foo*</a></p>",
-    "name": "Test 521",
-    "start_line": 7910,
-    "end_line": 7914,
-    "section": "Links"
+    "name": "Test 521"
   },
   {
     "data": "[foo *bar](baz*)\n",
     "want": "<p><a href=\"baz*\" title=\"\">foo *bar</a></p>",
-    "name": "Test 522",
-    "start_line": 7917,
-    "end_line": 7921,
-    "section": "Links"
+    "name": "Test 522"
   },
   {
     "data": "*foo [bar* baz]\n",
     "want": "<p><i>foo [bar</i> baz]</p>",
-    "name": "Test 523",
-    "start_line": 7927,
-    "end_line": 7931,
-    "section": "Links"
+    "name": "Test 523"
   },
   {
     "data": "[foo <bar attr=\"](baz)\">\n",
     "want": "<p>[foo <bar attr=\"](baz)\"></p>",
-    "name": "Test 524",
-    "start_line": 7937,
-    "end_line": 7941,
-    "section": "Links"
+    "name": "Test 524"
   },
   {
     "data": "[foo`](/uri)`\n",
     "want": "<p>[foo<tt>](/uri)</tt></p>",
-    "name": "Test 525",
-    "start_line": 7944,
-    "end_line": 7948,
-    "section": "Links"
+    "name": "Test 525"
   },
   {
     "data": "[foo<https://example.com/?search=](uri)>\n",
     "want": "<p>[foo<a href=\"https://example.com/?search=%5D(uri)\" title=\"\">https://example.com/?search=](uri)</a></p>",
-    "name": "Test 526",
-    "start_line": 7951,
-    "end_line": 7955,
-    "section": "Links"
+    "name": "Test 526"
   },
   {
     "data": "[foo][bar]\n\n[bar]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 527",
-    "start_line": 7989,
-    "end_line": 7995,
-    "section": "Links"
+    "name": "Test 527"
   },
   {
     "data": "[link [foo [bar]]][ref]\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">link [foo [bar]]</a></p>",
-    "name": "Test 528",
-    "start_line": 8004,
-    "end_line": 8010,
-    "section": "Links"
+    "name": "Test 528"
   },
   {
     "data": "[link \\[bar][ref]\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">link [bar</a></p>",
-    "name": "Test 529",
-    "start_line": 8013,
-    "end_line": 8019,
-    "section": "Links"
+    "name": "Test 529"
   },
   {
     "data": "[link *foo **bar** `#`*][ref]\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">link <i>foo <b>bar</b> <tt>#</tt></i></a></p>",
-    "name": "Test 530",
-    "start_line": 8024,
-    "end_line": 8030,
-    "section": "Links"
+    "name": "Test 530"
   },
   {
     "data": "[![moon](moon.jpg)][ref]\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\"><img src=\"moon.jpg\" alt=\"moon\"></a></p>",
-    "name": "Test 531",
-    "start_line": 8033,
-    "end_line": 8039,
-    "section": "Links"
+    "name": "Test 531"
   },
   {
     "data": "[foo [bar](/uri)][ref]\n\n[ref]: /uri\n",
     "want": "<p>[foo <a href=\"/uri\" title=\"\">bar</a>]<a href=\"/uri\">ref</a></p>",
-    "name": "Test 532",
-    "start_line": 8044,
-    "end_line": 8050,
-    "section": "Links"
+    "name": "Test 532"
   },
   {
     "data": "[foo *bar [baz][ref]*][ref]\n\n[ref]: /uri\n",
     "want": "<p>[foo <i>bar <a href=\"/uri\" title=\"\">baz</a></i>]<a href=\"/uri\">ref</a></p>",
-    "name": "Test 533",
-    "start_line": 8053,
-    "end_line": 8059,
-    "section": "Links"
+    "name": "Test 533"
   },
   {
     "data": "*[foo*][ref]\n\n[ref]: /uri\n",
     "want": "<p>*<a href=\"/uri\" title=\"\">foo*</a></p>",
-    "name": "Test 534",
-    "start_line": 8068,
-    "end_line": 8074,
-    "section": "Links"
+    "name": "Test 534"
   },
   {
     "data": "[foo *bar][ref]*\n\n[ref]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">foo *bar</a>*</p>",
-    "name": "Test 535",
-    "start_line": 8077,
-    "end_line": 8083,
-    "section": "Links"
+    "name": "Test 535"
   },
   {
     "data": "[foo <bar attr=\"][ref]\">\n\n[ref]: /uri\n",
     "want": "<p>[foo <bar attr=\"][ref]\"></p>",
-    "name": "Test 536",
-    "start_line": 8089,
-    "end_line": 8095,
-    "section": "Links"
+    "name": "Test 536"
   },
   {
     "data": "[foo`][ref]`\n\n[ref]: /uri\n",
     "want": "<p>[foo<tt>][ref]</tt></p>",
-    "name": "Test 537",
-    "start_line": 8098,
-    "end_line": 8104,
-    "section": "Links"
+    "name": "Test 537"
   },
   {
     "data": "[foo<https://example.com/?search=][ref]>\n\n[ref]: /uri\n",
     "want": "<p>[foo<a href=\"https://example.com/?search=%5D%5Bref%5D\">https://example.com/?search=][ref]</a></p>",
-    "name": "Test 538",
-    "start_line": 8107,
-    "end_line": 8113,
-    "section": "Links"
+    "name": "Test 538"
   },
   {
     "data": "[foo][BaR]\n\n[bar]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 539",
-    "start_line": 8118,
-    "end_line": 8124,
-    "section": "Links"
+    "name": "Test 539"
   },
   {
     "data": "[ẞ]\n\n[SS]: /url\n",
     "want": "<p><a href=\"/url\" title=\"\">ẞ</a></p>",
-    "name": "Test 540",
-    "start_line": 8129,
-    "end_line": 8135,
-    "section": "Links"
+    "name": "Test 540"
   },
   {
     "data": "[Foo\n  bar]: /url\n\n[Baz][Foo bar]\n",
     "want": "<p><a href=\"/url\" title=\"\">Baz</a></p>",
-    "name": "Test 541",
-    "start_line": 8141,
-    "end_line": 8148,
-    "section": "Links"
+    "name": "Test 541"
   },
   {
     "data": "[foo] [bar]\n\n[bar]: /url \"title\"\n",
     "want": "<p>[foo] <a href=\"/url\" title=\"title\">bar</a></p>",
-    "name": "Test 542",
-    "start_line": 8154,
-    "end_line": 8160,
-    "section": "Links"
+    "name": "Test 542"
   },
   {
     "data": "[foo]\n[bar]\n\n[bar]: /url \"title\"\n",
     "want": "<p>[foo]\n<a href=\"/url\" title=\"title\">bar</a></p>",
-    "name": "Test 543",
-    "start_line": 8163,
-    "end_line": 8171,
-    "section": "Links"
+    "name": "Test 543"
   },
   {
     "data": "[foo]: /url1\n\n[foo]: /url2\n\n[bar][foo]\n",
     "want": "<p><a href=\"/url1\" title=\"\">bar</a></p>",
-    "name": "Test 544",
-    "start_line": 8204,
-    "end_line": 8212,
-    "section": "Links"
+    "name": "Test 544"
   },
   {
     "data": "[bar][foo\\!]\n\n[foo!]: /url\n",
     "want": "<p>[bar][foo&#33;]</p>",
-    "name": "Test 545",
-    "start_line": 8219,
-    "end_line": 8225,
-    "section": "Links"
+    "name": "Test 545"
   },
   {
     "data": "[foo][ref[]\n\n[ref[]: /uri\n",
     "want": "<p>[foo][ref[]</p>\n\n<p>[ref[]: /uri</p>",
-    "name": "Test 546",
-    "start_line": 8231,
-    "end_line": 8238,
-    "section": "Links"
+    "name": "Test 546"
   },
   {
     "data": "[foo][ref[bar]]\n\n[ref[bar]]: /uri\n",
     "want": "<p>[foo][ref[bar]]</p>\n\n<p>[ref[bar]]: /uri</p>",
-    "name": "Test 547",
-    "start_line": 8241,
-    "end_line": 8248,
-    "section": "Links"
+    "name": "Test 547"
   },
   {
     "data": "[[[foo]]]\n\n[[[foo]]]: /url\n",
     "want": "<p>[[[foo]]]</p>\n\n<p>[[[foo]]]: /url</p>",
-    "name": "Test 548",
-    "start_line": 8251,
-    "end_line": 8258,
-    "section": "Links"
+    "name": "Test 548"
   },
   {
     "data": "[foo][ref\\[]\n\n[ref\\[]: /uri\n",
     "want": "<p><a href=\"/uri\" title=\"\">foo</a></p>",
-    "name": "Test 549",
-    "start_line": 8261,
-    "end_line": 8267,
-    "section": "Links"
+    "name": "Test 549"
   },
   {
     "data": "[bar\\\\]: /uri\n\n[bar\\\\]\n",
     "want": "<p><a href=\"/uri\" title=\"\">bar\\</a></p>",
-    "name": "Test 550",
-    "start_line": 8272,
-    "end_line": 8278,
-    "section": "Links"
+    "name": "Test 550"
   },
   {
     "data": "[]\n\n[]: /uri\n",
     "want": "<p>[]</p>\n\n<p>[]: /uri</p>",
-    "name": "Test 551",
-    "start_line": 8284,
-    "end_line": 8291,
-    "section": "Links"
+    "name": "Test 551"
   },
   {
     "data": "[\n ]\n\n[\n ]: /uri\n",
     "want": "<p>[\n]</p>\n\n<p>[\n]: /uri</p>",
-    "name": "Test 552",
-    "start_line": 8294,
-    "end_line": 8305,
-    "section": "Links"
+    "name": "Test 552"
   },
   {
     "data": "[foo][]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 553",
-    "start_line": 8317,
-    "end_line": 8323,
-    "section": "Links"
+    "name": "Test 553"
   },
   {
     "data": "[*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\"><i>foo</i> bar</a></p>",
-    "name": "Test 554",
-    "start_line": 8326,
-    "end_line": 8332,
-    "section": "Links"
+    "name": "Test 554"
   },
   {
     "data": "[Foo][]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">Foo</a></p>",
-    "name": "Test 555",
-    "start_line": 8337,
-    "end_line": 8343,
-    "section": "Links"
+    "name": "Test 555"
   },
   {
     "data": "[foo] \n[]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a>\n[]</p>",
-    "name": "Test 556",
-    "start_line": 8350,
-    "end_line": 8358,
-    "section": "Links"
+    "name": "Test 556"
   },
   {
     "data": "[foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 557",
-    "start_line": 8370,
-    "end_line": 8376,
-    "section": "Links"
+    "name": "Test 557"
   },
   {
     "data": "[*foo* bar]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\"><i>foo</i> bar</a></p>",
-    "name": "Test 558",
-    "start_line": 8379,
-    "end_line": 8385,
-    "section": "Links"
+    "name": "Test 558"
   },
   {
     "data": "[[*foo* bar]]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p>[<a href=\"/url\" title=\"title\"><i>foo</i> bar</a>]</p>",
-    "name": "Test 559",
-    "start_line": 8388,
-    "end_line": 8394,
-    "section": "Links"
+    "name": "Test 559"
   },
   {
     "data": "[[bar [foo]\n\n[foo]: /url\n",
     "want": "<p>[[bar <a href=\"/url\" title=\"\">foo</a></p>",
-    "name": "Test 560",
-    "start_line": 8397,
-    "end_line": 8403,
-    "section": "Links"
+    "name": "Test 560"
   },
   {
     "data": "[Foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p><a href=\"/url\" title=\"title\">Foo</a></p>",
-    "name": "Test 561",
-    "start_line": 8408,
-    "end_line": 8414,
-    "section": "Links"
+    "name": "Test 561"
   },
   {
     "data": "[foo] bar\n\n[foo]: /url\n",
     "want": "<p><a href=\"/url\" title=\"\">foo</a> bar</p>",
-    "name": "Test 562",
-    "start_line": 8419,
-    "end_line": 8425,
-    "section": "Links"
+    "name": "Test 562"
   },
   {
     "data": "\\[foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p>[foo]</p>",
-    "name": "Test 563",
-    "start_line": 8431,
-    "end_line": 8437,
-    "section": "Links"
+    "name": "Test 563"
   },
   {
     "data": "[foo*]: /url\n\n*[foo*]\n",
     "want": "<p>*<a href=\"/url\" title=\"\">foo*</a></p>",
-    "name": "Test 564",
-    "start_line": 8443,
-    "end_line": 8449,
-    "section": "Links"
+    "name": "Test 564"
   },
   {
     "data": "[foo][bar]\n\n[foo]: /url1\n[bar]: /url2\n",
     "want": "<p><a href=\"/url2\" title=\"\">foo</a></p>",
-    "name": "Test 565",
-    "start_line": 8455,
-    "end_line": 8462,
-    "section": "Links"
+    "name": "Test 565"
   },
   {
     "data": "[foo][]\n\n[foo]: /url1\n",
     "want": "<p><a href=\"/url1\" title=\"\">foo</a></p>",
-    "name": "Test 566",
-    "start_line": 8464,
-    "end_line": 8470,
-    "section": "Links"
+    "name": "Test 566"
   },
   {
     "data": "[foo]()\n\n[foo]: /url1\n",
     "want": "<p><a href=\"\" title=\"\">foo</a></p>",
-    "name": "Test 567",
-    "start_line": 8474,
-    "end_line": 8480,
-    "section": "Links"
+    "name": "Test 567"
   },
   {
     "data": "[foo](not a link)\n\n[foo]: /url1\n",
     "want": "<p><a href=\"/url1\" title=\"\">foo</a>(not a link)</p>",
-    "name": "Test 568",
-    "start_line": 8482,
-    "end_line": 8488,
-    "section": "Links"
+    "name": "Test 568"
   },
   {
     "data": "[foo][bar][baz]\n\n[baz]: /url\n",
     "want": "<p>[foo]<a href=\"/url\" title=\"\">bar</a></p>",
-    "name": "Test 569",
-    "start_line": 8493,
-    "end_line": 8499,
-    "section": "Links"
+    "name": "Test 569"
   },
   {
     "data": "[foo][bar][baz]\n\n[baz]: /url1\n[bar]: /url2\n",
     "want": "<p><a href=\"/url2\" title=\"\">foo</a><a href=\"/url1\">baz</a></p>",
-    "name": "Test 570",
-    "start_line": 8505,
-    "end_line": 8512,
-    "section": "Links"
+    "name": "Test 570"
   },
   {
     "data": "[foo][bar][baz]\n\n[baz]: /url1\n[foo]: /url2\n",
     "want": "<p>[foo]<a href=\"/url1\" title=\"\">bar</a></p>",
-    "name": "Test 571",
-    "start_line": 8518,
-    "end_line": 8525,
-    "section": "Links"
+    "name": "Test 571"
   },
+  "Images",
   {
     "data": "![foo](/url \"title\")\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "Test 572",
-    "start_line": 8541,
-    "end_line": 8545,
-    "section": "Images"
+    "name": "Test 572"
   },
   {
     "data": "![foo *bar*]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 573",
-    "start_line": 8548,
-    "end_line": 8554,
-    "section": "Images"
+    "name": "Test 573"
   },
   {
     "data": "![foo ![bar](/url)](/url2)\n",
     "want": "<p><img src=\"/url2\" alt=\"foo bar\"></p>",
-    "name": "Test 574",
-    "start_line": 8557,
-    "end_line": 8561,
-    "section": "Images"
+    "name": "Test 574"
   },
   {
     "data": "![foo [bar](/url)](/url2)\n",
     "want": "<p><img src=\"/url2\" alt=\"foo bar\"></p>",
-    "name": "Test 575",
-    "start_line": 8564,
-    "end_line": 8568,
-    "section": "Images"
+    "name": "Test 575"
   },
   {
     "data": "![foo *bar*][]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 576",
-    "start_line": 8578,
-    "end_line": 8584,
-    "section": "Images"
+    "name": "Test 576"
   },
   {
     "data": "![foo *bar*][foobar]\n\n[FOOBAR]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 577",
-    "start_line": 8587,
-    "end_line": 8593,
-    "section": "Images"
+    "name": "Test 577"
   },
   {
     "data": "![foo](train.jpg)\n",
     "want": "<p><img src=\"train.jpg\" alt=\"foo\"></p>",
-    "name": "Test 578",
-    "start_line": 8596,
-    "end_line": 8600,
-    "section": "Images"
+    "name": "Test 578"
   },
   {
     "data": "My ![foo bar](/path/to/train.jpg  \"title\"   )\n",
     "want": "<p>My <img src=\"/path/to/train.jpg\" title=\"title\" alt=\"foo bar\"></p>",
-    "name": "Test 579",
-    "start_line": 8603,
-    "end_line": 8607,
-    "section": "Images"
+    "name": "Test 579"
   },
   {
     "data": "![foo](<url>)\n",
     "want": "<p><img src=\"url\" alt=\"foo\"></p>",
-    "name": "Test 580",
-    "start_line": 8610,
-    "end_line": 8614,
-    "section": "Images"
+    "name": "Test 580"
   },
   {
     "data": "![](/url)\n",
     "want": "<p><img src=\"/url\" alt=\"\"></p>",
-    "name": "Test 581",
-    "start_line": 8617,
-    "end_line": 8621,
-    "section": "Images"
+    "name": "Test 581"
   },
   {
     "data": "![foo][bar]\n\n[bar]: /url\n",
     "want": "<p><img src=\"/url\" alt=\"foo\"></p>",
-    "name": "Test 582",
-    "start_line": 8626,
-    "end_line": 8632,
-    "section": "Images"
+    "name": "Test 582"
   },
   {
     "data": "![foo][bar]\n\n[BAR]: /url\n",
     "want": "<p><img src=\"/url\" alt=\"foo\"></p>",
-    "name": "Test 583",
-    "start_line": 8635,
-    "end_line": 8641,
-    "section": "Images"
+    "name": "Test 583"
   },
   {
     "data": "![foo][]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "Test 584",
-    "start_line": 8646,
-    "end_line": 8652,
-    "section": "Images"
+    "name": "Test 584"
   },
   {
     "data": "![*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo bar\"></p>",
-    "name": "Test 585",
-    "start_line": 8655,
-    "end_line": 8661,
-    "section": "Images"
+    "name": "Test 585"
   },
   {
     "data": "![Foo][]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"Foo\"></p>",
-    "name": "Test 586",
-    "start_line": 8666,
-    "end_line": 8672,
-    "section": "Images"
+    "name": "Test 586"
   },
   {
     "data": "![foo] \n[]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\">\n[]</p>",
-    "name": "Test 587",
-    "start_line": 8678,
-    "end_line": 8686,
-    "section": "Images"
+    "name": "Test 587"
   },
   {
     "data": "![foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "Test 588",
-    "start_line": 8691,
-    "end_line": 8697,
-    "section": "Images"
+    "name": "Test 588"
   },
   {
     "data": "![*foo* bar]\n\n[*foo* bar]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo bar\"></p>",
-    "name": "Test 589",
-    "start_line": 8700,
-    "end_line": 8706,
-    "section": "Images"
+    "name": "Test 589"
   },
   {
     "data": "![[foo]]\n\n[[foo]]: /url \"title\"\n",
     "want": "<p>![[foo]]</p>\n\n<p>[[foo]]: /url &quot;title&quot;</p>",
     "name": "Test 590",
-    "skip": "Baremark strips all label definitions, even unused ones.",
-    "start_line": 8711,
-    "end_line": 8718,
-    "section": "Images"
+    "skip": "Baremark strips all label definitions, even unused ones."
   },
   {
     "data": "![Foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"Foo\"></p>",
-    "name": "Test 591",
-    "start_line": 8723,
-    "end_line": 8729,
-    "section": "Images"
+    "name": "Test 591"
   },
   {
     "data": "!\\[foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p>![foo]</p>",
-    "name": "Test 592",
-    "start_line": 8735,
-    "end_line": 8741,
-    "section": "Images"
+    "name": "Test 592"
   },
   {
     "data": "\\![foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p>!<a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "Test 593",
-    "start_line": 8747,
-    "end_line": 8753,
-    "section": "Images"
+    "name": "Test 593"
   },
+  "Autolinks",
   {
     "data": "<http://foo.bar.baz>\n",
     "want": "<p><a href=\"http://foo.bar.baz\">http://foo.bar.baz</a></p>",
     "name": "Test 594",
-    "FIXME": "autolinking",
-    "start_line": 8780,
-    "end_line": 8784,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<https://foo.bar.baz/test?q=hello&id=22&boolean>\n",
     "want": "<p><a href=\"https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean\">https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean</a></p>",
     "name": "Test 595",
-    "FIXME": "autolinking",
-    "start_line": 8787,
-    "end_line": 8791,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<irc://foo.bar:2233/baz>\n",
     "want": "<p><a href=\"irc://foo.bar:2233/baz\">irc://foo.bar:2233/baz</a></p>",
     "name": "Test 596",
-    "FIXME": "autolinking",
-    "start_line": 8794,
-    "end_line": 8798,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<MAILTO:FOO@BAR.BAZ>\n",
     "want": "<p><a href=\"MAILTO:FOO@BAR.BAZ\">MAILTO:FOO@BAR.BAZ</a></p>",
     "name": "Test 597",
-    "FIXME": "autolinking",
-    "start_line": 8803,
-    "end_line": 8807,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<a+b+c:d>\n",
     "want": "<p><a href=\"a+b+c:d\">a+b+c:d</a></p>",
     "name": "Test 598",
-    "FIXME": "autolinking",
-    "start_line": 8815,
-    "end_line": 8819,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<made-up-scheme://foo,bar>\n",
     "want": "<p><a href=\"made-up-scheme://foo,bar\">made-up-scheme://foo,bar</a></p>",
     "name": "Test 599",
-    "FIXME": "autolinking",
-    "start_line": 8822,
-    "end_line": 8826,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<https://../>\n",
     "want": "<p><a href=\"https://../\">https://../</a></p>",
     "name": "Test 600",
-    "FIXME": "autolinking",
-    "start_line": 8829,
-    "end_line": 8833,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<localhost:5001/foo>\n",
     "want": "<p><a href=\"localhost:5001/foo\">localhost:5001/foo</a></p>",
     "name": "Test 601",
-    "FIXME": "autolinking",
-    "start_line": 8836,
-    "end_line": 8840,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<https://foo.bar/baz bim>\n",
     "want": "<p>&#60;https://foo.bar/baz bim&#62;</p>",
     "name": "Test 602",
-    "FIXME": "autolinking",
-    "start_line": 8845,
-    "end_line": 8849,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<https://example.com/\\[\\>\n",
     "want": "<p><a href=\"https://example.com/%5C%5B%5C\">https://example.com/\\[\\</a></p>",
     "name": "Test 603",
-    "FIXME": "autolinking",
-    "start_line": 8854,
-    "end_line": 8858,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<foo@bar.example.com>\n",
     "want": "<p><a href=\"mailto:foo@bar.example.com\">foo@bar.example.com</a></p>",
     "name": "Test 604",
-    "FIXME": "autolinking",
-    "start_line": 8876,
-    "end_line": 8880,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<foo+special@Bar.baz-bar0.com>\n",
     "want": "<p><a href=\"mailto:foo+special@Bar.baz-bar0.com\">foo+special@Bar.baz-bar0.com</a></p>",
     "name": "Test 605",
-    "FIXME": "autolinking",
-    "start_line": 8883,
-    "end_line": 8887,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<foo\\+@bar.example.com>\n",
     "want": "<p>&#60;foo+@bar.example.com&#62;</p>",
     "name": "Test 606",
-    "FIXME": "autolinking",
-    "start_line": 8892,
-    "end_line": 8896,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<>\n",
     "want": "<p>&#60;&#62;</p>",
-    "name": "Test 607",
-    "start_line": 8901,
-    "end_line": 8905,
-    "section": "Autolinks"
+    "name": "Test 607"
   },
   {
     "data": "< https://foo.bar >\n",
     "want": "<p>&#60; https://foo.bar &#62;</p>",
     "name": "Test 608",
-    "FIXME": "autolinking",
-    "start_line": 8908,
-    "end_line": 8912,
-    "section": "Autolinks"
+    "FIXME": "autolinking"
   },
   {
     "data": "<m:abc>\n",
     "want": "<p>&#60;m:abc&#62;</p>",
-    "name": "Test 609",
-    "start_line": 8915,
-    "end_line": 8919,
-    "section": "Autolinks"
+    "name": "Test 609"
   },
   {
     "data": "<foo.bar.baz>\n",
     "want": "<p>&#60;foo.bar.baz&#62;</p>",
-    "name": "Test 610",
-    "start_line": 8922,
-    "end_line": 8926,
-    "section": "Autolinks"
+    "name": "Test 610"
   },
   {
     "data": "https://example.com\n",
     "want": "<p>https://example.com</p>",
-    "name": "Test 611",
-    "start_line": 8929,
-    "end_line": 8933,
-    "section": "Autolinks"
+    "name": "Test 611"
   },
   {
     "data": "foo@bar.example.com\n",
     "want": "<p>foo@bar.example.com</p>",
-    "name": "Test 612",
-    "start_line": 8936,
-    "end_line": 8940,
-    "section": "Autolinks"
+    "name": "Test 612"
   },
+  "Raw HTML",
   {
     "data": "<a><bab><c2c>\n",
     "want": "<p><a><bab><c2c></p>",
-    "name": "Test 613",
-    "start_line": 9016,
-    "end_line": 9020,
-    "section": "Raw HTML"
+    "name": "Test 613"
   },
   {
     "data": "<a/><b2/>\n",
     "want": "<p><a/><b2/></p>",
-    "name": "Test 614",
-    "start_line": 9025,
-    "end_line": 9029,
-    "section": "Raw HTML"
+    "name": "Test 614"
   },
   {
     "data": "<a  /><b2\ndata=\"foo\" >\n",
     "want": "<p><a  /><b2\ndata=\"foo\" ></p>",
-    "name": "Test 615",
-    "start_line": 9034,
-    "end_line": 9040,
-    "section": "Raw HTML"
+    "name": "Test 615"
   },
   {
     "data": "<a foo=\"bar\" bam = 'baz <em>\"</em>'\n_boolean zoop:33=zoop:33 />\n",
     "want": "<p><a foo=\"bar\" bam = 'baz <em>\"</em>'\n_boolean zoop:33=zoop:33 /></p>",
-    "name": "Test 616",
-    "start_line": 9045,
-    "end_line": 9051,
-    "section": "Raw HTML"
+    "name": "Test 616"
   },
   {
     "data": "Foo <responsive-image src=\"foo.jpg\" />\n",
     "want": "<p>Foo <responsive-image src=\"foo.jpg\" /></p>",
-    "name": "Test 617",
-    "start_line": 9056,
-    "end_line": 9060,
-    "section": "Raw HTML"
+    "name": "Test 617"
   },
   {
     "data": "<33> <__>\n",
     "want": "<p>&#60;33&#62; &#60;__&#62;</p>",
-    "name": "Test 618",
-    "start_line": 9065,
-    "end_line": 9069,
-    "section": "Raw HTML"
+    "name": "Test 618"
   },
   {
     "data": "<a h*#ref=\"hi\">\n",
     "want": "<p>&#60;a h*#ref=&quot;hi&quot;&#62;</p>",
-    "name": "Test 619",
-    "start_line": 9074,
-    "end_line": 9078,
-    "section": "Raw HTML"
+    "name": "Test 619"
   },
   {
     "data": "<a href=\"hi'> <a href=hi'>\n",
     "want": "<p>&#60;a href=&quot;hi'&#62; &#60;a href=hi'&#62;</p>",
-    "name": "Test 620",
-    "start_line": 9083,
-    "end_line": 9087,
-    "section": "Raw HTML"
+    "name": "Test 620"
   },
   {
     "data": "< a><\nfoo><bar/ >\n<foo bar=baz\nbim!bop />\n",
     "want": "<p>&#60; a&#62;&#60;\nfoo&#62;&#60;bar/ &#62;\n&#60;foo bar=baz\nbim!bop /&#62;</p>",
-    "name": "Test 621",
-    "start_line": 9092,
-    "end_line": 9102,
-    "section": "Raw HTML"
+    "name": "Test 621"
   },
   {
     "data": "<a href='bar'title=title>\n",
     "want": "<p>&#60;a href='bar'title=title&#62;</p>",
-    "name": "Test 622",
-    "start_line": 9107,
-    "end_line": 9111,
-    "section": "Raw HTML"
+    "name": "Test 622"
   },
   {
     "data": "</a></foo >\n",
     "want": "<p></a></foo ></p>",
-    "name": "Test 623",
-    "start_line": 9116,
-    "end_line": 9120,
-    "section": "Raw HTML"
+    "name": "Test 623"
   },
   {
     "data": "</a href=\"foo\">\n",
     "want": "<p>&#60;/a href=&quot;foo&quot;&#62;</p>",
-    "name": "Test 624",
-    "start_line": 9125,
-    "end_line": 9129,
-    "section": "Raw HTML"
+    "name": "Test 624"
   },
   {
     "data": "foo <!-- this is a --\ncomment - with hyphens -->\n",
     "want": "<p>foo <!-- this is a --\ncomment - with hyphens --></p>",
-    "name": "Test 625",
-    "start_line": 9134,
-    "end_line": 9140,
-    "section": "Raw HTML"
+    "name": "Test 625"
   },
   {
     "data": "foo <!--> foo -->\n\nfoo <!---> foo -->\n",
     "want": "<p>foo <!--> foo --&#62;</p>\n\n<p>foo <!---> foo --&#62;</p>",
-    "name": "Test 626",
-    "start_line": 9142,
-    "end_line": 9149,
-    "section": "Raw HTML"
+    "name": "Test 626"
   },
   {
     "data": "foo <?php echo $a; ?>\n",
     "want": "<p>foo <?php echo $a; ?></p>",
-    "name": "Test 627",
-    "start_line": 9154,
-    "end_line": 9158,
-    "section": "Raw HTML"
+    "name": "Test 627"
   },
   {
     "data": "foo <!ELEMENT br EMPTY>\n",
     "want": "<p>foo <!ELEMENT br EMPTY></p>",
-    "name": "Test 628",
-    "start_line": 9163,
-    "end_line": 9167,
-    "section": "Raw HTML"
+    "name": "Test 628"
   },
   {
     "data": "foo <![CDATA[>&<]]>\n",
     "want": "<p>foo <![CDATA[>&<]]></p>",
-    "name": "Test 629",
-    "start_line": 9172,
-    "end_line": 9176,
-    "section": "Raw HTML"
+    "name": "Test 629"
   },
   {
     "data": "foo <a href=\"&ouml;\">\n",
     "want": "<p>foo <a href=\"&ouml;\"></p>",
-    "name": "Test 630",
-    "start_line": 9182,
-    "end_line": 9186,
-    "section": "Raw HTML"
+    "name": "Test 630"
   },
   {
     "data": "foo <a href=\"\\*\">\n",
     "want": "<p>foo <a href=\"\\*\"></p>",
-    "name": "Test 631",
-    "start_line": 9191,
-    "end_line": 9195,
-    "section": "Raw HTML"
+    "name": "Test 631"
   },
   {
     "data": "<a href=\"\\\"\">\n",
     "want": "<p>&#60;a href=&quot;&quot;&quot;&#62;</p>",
-    "name": "Test 632",
-    "start_line": 9198,
-    "end_line": 9202,
-    "section": "Raw HTML"
+    "name": "Test 632"
   },
+  "Hard line breaks",
   {
     "data": "foo  \nbaz\n",
     "want": "<p>foo<br>baz</p>",
     "name": "Test 633",
-    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>",
-    "start_line": 9212,
-    "end_line": 9218,
-    "section": "Hard line breaks"
+    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   {
     "data": "foo\\\nbaz\n",
     "want": "<p>foo<br>baz</p>",
-    "name": "Test 634",
-    "start_line": 9224,
-    "end_line": 9230,
-    "section": "Hard line breaks"
+    "name": "Test 634"
   },
   {
     "data": "foo       \nbaz\n",
     "want": "<p>foo<br>baz</p>",
     "name": "Test 635",
-    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>",
-    "start_line": 9235,
-    "end_line": 9241,
-    "section": "Hard line breaks"
+    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   {
     "data": "foo  \n     bar\n",
     "want": "<p>foo<br>bar</p>",
     "name": "Test 636",
-    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>",
-    "start_line": 9246,
-    "end_line": 9252,
-    "section": "Hard line breaks"
+    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   {
     "data": "foo\\\n     bar\n",
     "want": "<p>foo<br>bar</p>",
-    "name": "Test 637",
-    "start_line": 9255,
-    "end_line": 9261,
-    "section": "Hard line breaks"
+    "name": "Test 637"
   },
   {
     "data": "*foo  \nbar*\n",
     "want": "<p><i>foo<br>bar</i></p>",
     "name": "Test 638",
-    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>",
-    "start_line": 9267,
-    "end_line": 9273,
-    "section": "Hard line breaks"
+    "skip": "Baremark doesn't support eof double-space for <tt>&#60;br&#62;</tt>"
   },
   {
     "data": "*foo\\\nbar*\n",
     "want": "<p><i>foo<br>bar</i></p>",
-    "name": "Test 639",
-    "start_line": 9276,
-    "end_line": 9282,
-    "section": "Hard line breaks"
+    "name": "Test 639"
   },
   {
     "data": "`code  \nspan`\n",
     "want": "<p><tt>code   span</tt></p>",
-    "name": "Test 640",
-    "start_line": 9287,
-    "end_line": 9292,
-    "section": "Hard line breaks"
+    "name": "Test 640"
   },
   {
     "data": "`code\\\nspan`\n",
     "want": "<p><tt>code\\ span</tt></p>",
-    "name": "Test 641",
-    "start_line": 9295,
-    "end_line": 9300,
-    "section": "Hard line breaks"
+    "name": "Test 641"
   },
   {
     "data": "<a href=\"foo  \nbar\">\n",
     "want": "<p><a href=\"foo  \nbar\"></p>",
-    "name": "Test 642",
-    "start_line": 9305,
-    "end_line": 9311,
-    "section": "Hard line breaks"
+    "name": "Test 642"
   },
   {
     "data": "<a href=\"foo\\\nbar\">\n",
     "want": "<p><a href=\"foo\\\nbar\"></p>",
-    "name": "Test 643",
-    "start_line": 9314,
-    "end_line": 9320,
-    "section": "Hard line breaks"
+    "name": "Test 643"
   },
   {
     "data": "foo\\\n",
     "want": "<p>foo\\</p>",
-    "name": "Test 644",
-    "start_line": 9327,
-    "end_line": 9331,
-    "section": "Hard line breaks"
+    "name": "Test 644"
   },
   {
     "data": "foo  \n",
     "want": "<p>foo</p>",
-    "name": "Test 645",
-    "start_line": 9334,
-    "end_line": 9338,
-    "section": "Hard line breaks"
+    "name": "Test 645"
   },
   {
     "data": "### foo\\\n",
     "want": "<h3>foo\\</h3>",
-    "name": "Test 646",
-    "start_line": 9341,
-    "end_line": 9345,
-    "section": "Hard line breaks"
+    "name": "Test 646"
   },
   {
     "data": "### foo  \n",
     "want": "<h3>foo</h3>",
-    "name": "Test 647",
-    "start_line": 9348,
-    "end_line": 9352,
-    "section": "Hard line breaks"
+    "name": "Test 647"
   },
+  "Soft line breaks",
   {
     "data": "foo\nbaz\n",
     "want": "<p>foo\nbaz</p>",
-    "name": "Test 648",
-    "start_line": 9363,
-    "end_line": 9369,
-    "section": "Soft line breaks"
+    "name": "Test 648"
   },
   {
     "data": "foo \n baz\n",
     "want": "<p>foo\nbaz</p>",
-    "name": "Test 649",
-    "start_line": 9375,
-    "end_line": 9381,
-    "section": "Soft line breaks"
+    "name": "Test 649"
   },
+  "Textual content",
   {
     "data": "hello $.;'there\n",
     "want": "<p>hello $.;'there</p>",
-    "name": "Test 650",
-    "start_line": 9395,
-    "end_line": 9399,
-    "section": "Textual content"
+    "name": "Test 650"
   },
   {
     "data": "Foo χρῆν\n",
     "want": "<p>Foo χρῆν</p>",
-    "name": "Test 651",
-    "start_line": 9402,
-    "end_line": 9406,
-    "section": "Textual content"
+    "name": "Test 651"
   },
   {
     "data": "Multiple     spaces\n",
     "want": "<p>Multiple     spaces</p>",
-    "name": "Test 652",
-    "start_line": 9411,
-    "end_line": 9415,
-    "section": "Textual content"
+    "name": "Test 652"
   }
 ]
