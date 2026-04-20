@@ -216,13 +216,14 @@ Limitations
 ===========
 These limitations might change in the future.
 
-* Indentation is ignored.
-* Fenced [code blocks] are supported, but not indented ones.
+* Indentation and tabs are ignored (what goes in comes out, except that all
+  whitespace at end-of-line is stripped).
+* Fenced [code blocks] are supported, but not indented code blocks.
 * [Lists] cannot be nested.
 * Autolinks `<URL>` are not supported.
 * Determining what is a [paragraph] and what is a [HTML block] from is somewhat
   simplistic.
-* Whitespace in not allowed between `](` or `][` in [links and images]. This
+* Whitespace in *not* allowed between `](` or `][` in [links and images]. This
   allowed in the [CommonMark] specification, but can lead to weird errors.
   (Baremark allow space inside the brackets though, so your line wrapping
   shouldn’t be too affected.)
