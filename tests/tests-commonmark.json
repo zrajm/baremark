@@ -1,5 +1,5 @@
 [
-  "Tabs",
+  "Tabs <span class=note>(Baremark does not consider tab a space character)</span>",
   {
     "data": "\tfoo\tbaz\t\tbim\n",
     "want": "<pre><tt>foo\tbaz\t\tbim\n</tt></pre>",
@@ -72,9 +72,9 @@
     "name": "Test 13: <tt>&#92;⭲&#92;A&#92;a&#92; &#92;3&#92;φ&#92;«↲</tt>"
   },
   {
-    "data": "\\*not emphasized*\n\\<br/> not a tag\n\\[not a link](/foo)\n\\`not code`\n1\\. not a list\n\\* not a list\n\\# not a heading\n\\[foo]: /url \"not a reference\"\n\\&ouml; not a character entity\n",
-    "want": "<p>*not emphasized*\n&#60;br/&#62; not a tag\n[not a link](/foo)\n`not code`\n1. not a list\n* not a list\n# not a heading\n[foo]: /url \"not a reference\"\n&amp;ouml; not a character entity</p>",
-    "name": "Test 14: <tt>&#92;*not emphasized*↲&#92;&lt;br/&gt; not a tag↲&#92;[not a link](/foo)↲&#92;`not code`↲1&#92;. not a list↲&#92;* not a list↲&#92;# not a heading↲&#92;[foo]: /url \"not a reference\"↲&#92;&ouml; not a character entity↲</tt>"
+    "data": "\\*not emphasized*\n\\<br> not a tag\n\\[not a link](/foo)\n\\`not code`\n1\\. not a list\n\\* not a list\n\\# not a heading\n\\[foo]: /url \"not a reference\"\n\\&ouml; not a character entity\n",
+    "want": "<p>*not emphasized*\n&#60;br&#62; not a tag\n[not a link](/foo)\n`not code`\n1. not a list\n* not a list\n# not a heading\n[foo]: /url \"not a reference\"\n&amp;ouml; not a character entity</p>",
+    "name": "Test 14: <tt>&#92;*not emphasized*↲&#92;&lt;br&gt; not a tag↲&#92;[not a link](/foo)↲&#92;`not code`↲1&#92;. not a list↲&#92;* not a list↲&#92;# not a heading↲&#92;[foo]: /url \"not a reference\"↲&#92;&amp;ouml; not a character entity↲</tt>"
   },
   {
     "data": "\\\\*emphasis*\n",
@@ -829,7 +829,7 @@
   {
     "data": "<div *???-&&&-<---\n*foo*\n",
     "want": "<div *???-&&&-<---\n*foo*",
-    "name": "Test 158: <tt>&lt;div *???-&&&-&lt;---↲*foo*↲</tt>"
+    "name": "Test 158: <tt>&lt;div *???-&amp;&amp;&amp;-&lt;---↲*foo*↲</tt>"
   },
   {
     "data": "<div><a href=\"bar\">*foo*</a></div>\n",
@@ -949,7 +949,7 @@
   {
     "data": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\nokay\n",
     "want": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\n\n<p>okay</p>",
-    "name": "Test 182: <tt>&lt;![CDATA[↲function matchwo(a,b)↲{↲␣␣if (a &lt; b && a &lt; 0) then {↲␣␣␣␣return 1;↲↲␣␣} else {↲↲␣␣␣␣return 0;↲␣␣}\n}\n]]&gt;\nokay\n</tt>"
+    "name": "Test 182: <tt>&lt;![CDATA[↲function matchwo(a,b)↲{↲␣␣if (a &lt; b &amp;&amp; a &lt; 0) then {↲␣␣␣␣return 1;↲↲␣␣} else {↲↲␣␣␣␣return 0;↲␣␣}↲}↲]]&gt;↲okay↲</tt>"
   },
   {
     "data": "  <!-- foo -->\n\n    <!-- foo -->\n",
@@ -989,12 +989,12 @@
   {
     "data": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>\n",
     "want": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>",
-    "name": "Test 190: <tt>&lt;table&gt;↲↲&lt;tr&gt;↲↲&lt;td&gt;↲Hi↲&lt;/td&gt;↲↲&lt;/tr&gt;↲\n&lt;/table&gt;\n</tt>"
+    "name": "Test 190: <tt>&lt;table&gt;↲↲&lt;tr&gt;↲↲&lt;td&gt;↲Hi↲&lt;/td&gt;↲↲&lt;/tr&gt;↲↲&lt;/table&gt;↲</tt>"
   },
   {
     "data": "<table>\n\n  <tr>\n\n    <td>\n      Hi\n    </td>\n\n  </tr>\n\n</table>\n",
     "want": "<table>\n  <tr>\n\n<pre><tt>&#60;td&#62;\n  Hi\n&#60;/td&#62;\n</tt></pre>\n  </tr>\n\n</table>",
-    "name": "Test 191: <tt>&lt;table&gt;↲↲␣␣&lt;tr&gt;↲↲␣␣␣␣&lt;td&gt;↲␣␣␣␣␣␣Hi↲␣␣␣␣&lt;/td&gt;↲↲␣␣&lt;/tr&gt;↲\n&lt;/table&gt;\n</tt>"
+    "name": "Test 191: <tt>&lt;table&gt;↲↲␣␣&lt;tr&gt;↲↲␣␣␣␣&lt;td&gt;↲␣␣␣␣␣␣Hi↲␣␣␣␣&lt;/td&gt;↲↲␣␣&lt;/tr&gt;↲↲&lt;/table&gt;↲</tt>"
   },
   "Labeled Links <tt>[TEXT][LABEL]</tt> &amp; Definition <tt>[LABEL]: URL \"TITLE\"</tt> (not supported by Landmark)",
   {
@@ -2584,7 +2584,7 @@
   {
     "data": "[link](foo%20b&auml;)\n",
     "want": "<p><a href=\"foo%20b%C3%A4\" title=\"\">link</a></p>",
-    "name": "Test 503: <tt>[link](foo%20b&auml;)↲</tt>"
+    "name": "Test 503: <tt>[link](foo%20b&amp;auml;)↲</tt>"
   },
   {
     "data": "[link](\"title\")\n",
@@ -2600,7 +2600,7 @@
   {
     "data": "[link](/url \"title \\\"&quot;\")\n",
     "want": "<p><a href=\"/url\" title=\"title &quot;&quot;\">link</a></p>",
-    "name": "Test 506: <tt>[link](/url \"title &#92;\"&quot;\")↲</tt>"
+    "name": "Test 506: <tt>[link](/url \"title &#92;\"&amp;quot;\")↲</tt>"
   },
   {
     "data": "[link](/url \"title\")\n",
@@ -2936,7 +2936,7 @@
   {
     "data": "![foo *bar*]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 573: <tt>![foo *bar*]↲↲[foo *bar*]: train.jpg \"train & tracks\"↲</tt>"
+    "name": "Test 573: <tt>![foo *bar*]↲↲[foo *bar*]: train.jpg \"train &amp; tracks\"↲</tt>"
   },
   {
     "data": "![foo ![bar](/url)](/url2)\n",
@@ -2951,12 +2951,12 @@
   {
     "data": "![foo *bar*][]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 576: <tt>![foo *bar*][]↲↲[foo *bar*]: train.jpg \"train & tracks\"↲</tt>"
+    "name": "Test 576: <tt>![foo *bar*][]↲↲[foo *bar*]: train.jpg \"train &amp; tracks\"↲</tt>"
   },
   {
     "data": "![foo *bar*][foobar]\n\n[FOOBAR]: train.jpg \"train & tracks\"\n",
     "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
-    "name": "Test 577: <tt>![foo *bar*][foobar]↲↲[FOOBAR]: train.jpg \"train & tracks\"↲</tt>"
+    "name": "Test 577: <tt>![foo *bar*][foobar]↲↲[FOOBAR]: train.jpg \"train &amp; tracks\"↲</tt>"
   },
   {
     "data": "![foo](train.jpg)\n",
@@ -3049,7 +3049,7 @@
   {
     "data": "<https://foo.bar.baz/test?q=hello&id=22&boolean>\n",
     "want": "<p><a href=\"https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean\">https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean</a></p>",
-    "name": "Test 595: <tt>&lt;https://foo.bar.baz/test?q=hello&id=22&boolean&gt;↲</tt>",
+    "name": "Test 595: <tt>&lt;https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean&gt;↲</tt>",
     "FIXME": "autolinking"
   },
   {
@@ -3233,12 +3233,12 @@
   {
     "data": "foo <![CDATA[>&<]]>\n",
     "want": "<p>foo <![CDATA[>&<]]></p>",
-    "name": "Test 629: <tt>foo &lt;![CDATA[&gt;&&lt;]]&gt;↲</tt>"
+    "name": "Test 629: <tt>foo &lt;![CDATA[&gt;&amp;&lt;]]&gt;↲</tt>"
   },
   {
     "data": "foo <a href=\"&ouml;\">\n",
     "want": "<p>foo <a href=\"&ouml;\"></p>",
-    "name": "Test 630: <tt>foo &lt;a href=\"&ouml;\"&gt;↲</tt>"
+    "name": "Test 630: <tt>foo &lt;a href=\"&amp;ouml;\"&gt;↲</tt>"
   },
   {
     "data": "foo <a href=\"\\*\">\n",

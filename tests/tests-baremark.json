@@ -3836,7 +3836,7 @@
     "want": "<p><i>*xx*</i></p>",
     "name": "mixing asterisks and underlines: should not become bold"
   },
-  "<tt>___UNDERLINE___</tt> <span class=note>(Landmark-specific)</span>", {
+  "<tt>___UNDERLINE___</tt> <span class=note>(Landmark extension)</span>", {
     "data": "___xx___",
     "want": "<p><u>xx</u></p>",
     "name": "single word"
@@ -3873,7 +3873,7 @@
     "want": "<p>___xx</p>\n\n<hr>",
     "name": "not across blank line at end"
   },
-  "<tt>~~STRIKETHROUGH~~</tt> <span class=note>(Landmark-specific)</span>", {
+  "<tt>~~STRIKETHROUGH~~</tt> <span class=note>(Landmark extension)</span>", {
     "data": "~~xx~~",
     "want": "<p><s>xx</s></p>",
     "name": "single word"
@@ -3910,7 +3910,7 @@
     "want": "<p>~~xx</p>\n\n<p>~~</p>",
     "name": "not across blank line at end"
   },
-  "<tt>:\"QUOTE\":</tt> <span class=note>(Landmark-specific)</span>", {
+  "<tt>:\"QUOTE\":</tt> <span class=note>(Landmark extension)</span>", {
     "data": ":\"xx\":",
     "want": "<p><q>xx</q></p>",
     "name": "single word"

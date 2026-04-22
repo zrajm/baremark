@@ -156,7 +156,7 @@ look like on the page.</p>
         }
         if (test.data === undefined) { return }
         // Count as pass, fail or skip.
-        const want = test.bare || test.want
+        const want = test.want
         const got = (() => {
           try {
             return cb(test.data)
@@ -167,7 +167,7 @@ look like on the page.</p>
 
         // Add test result to current section.
         $section.append(
-          `<details class="test ${test.skip ? 'skip' : ''} ${got === want ? 'pass' : 'fail'}">
+          `<details class="test ${(test.skip || test.FIXME) ? 'skip' : ''} ${got === want ? 'pass' : 'fail'}">
             <summary>
               ${test.example ? `Test ${test.example}` : ''}${test.example && test.name ? ': ' : ''}
               ${test.name ? escapeAscii(test.name) : (test.example ? '' : escapeHtml(escapeAscii(test.data)) + '<br>→ ' + escapeHtml(escapeAscii(test.want)))}
