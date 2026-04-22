@@ -19,7 +19,7 @@ featurefulness.)
 * [Test suite]
 * [Github repo]
 
-It is currently 1928 bytes in size *before* minification and zipping!
+It is currently 1924 bytes in size *before* minification and zipping!
 
 
 <toc heading=Contents class=toc>
