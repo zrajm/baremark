@@ -96,7 +96,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/20] Features
+* [0/23] Features
 ** TODO Better handling of block elements (like `<div>`)                :BUG:
    Will require:
    + Better paragraph tests for various HTML tags.
@@ -146,6 +146,11 @@
 
    Should we append & prepend blank lines to all block tags while processing so
    that these are correctly handled by the paragraph processing?
+** TODO Support fenced code blocks with `~~~`
+   https://spec.commonmark.org/0.31.2/#code-fence
+   https://spec.commonmark.org/0.31.2/#example-120
+** TODO Support info string for fenced code blocks
+   https://spec.commonmark.org/0.31.2/#info-string
 ** TODO Only use `<h1>` once on a page (for page title)
    Hopefully, you’ve come away with these take-homes:
 
@@ -179,7 +184,7 @@
    But frankly, I think the CommonMark definition is kinda insane. :)
    Especially in the light of allowing multi-line Setext headings.
 ** TODO Add title support for inline links & images
-   Also update README on for this topic.
+   Also update README on this topic.
 ** TODO Allow single parenthesis in link/image?
    This could be done by a rule that replaces '(...)', with its
    '&#40;...&#41;', maybe? Would that be smart?

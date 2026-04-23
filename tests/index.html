@@ -48,10 +48,39 @@ specs). For source brevity Baremark uses HTML character code entities (such
 as <tt>&amp;#38;</tt>), rather than more commonly seen named entities
 (<tt>&amp;amp;</tt>).</p>
 
+<p>CommonMark / Baremark differences:
+<ul>
+  <li>Tabs and spaces stripped off of the end of newlines during newline
+    normalization. Except for this tabs not even considered spaces, and cannot
+    be used for separating Markdown components.
+
+  <li>HTML entities, <tt>&ENT;</tt> are not normalized in any way, but are left
+    exactly as-is. Backslash escapes <tt>\X</tt>, and <tt>`CODE`</tt>
+    and <tt>```↲CODEBLOCK↲```</tt> also escape characters from additional
+    processing by turning them into numeric entities <tt>&#NUM;</tt> (so that
+    they are ignored by later rules).
+
+  <li>Baremark does have a concept of “block” or “inline” tags (which
+    admittedly might be a failure). This helps in keeping the Baremark source
+    short, but also means that one needs to write Baremark rules <i>very</i>
+    carefully for them not to step on each others toes.
+</ul>
+
+<p>The below CommonMark tests have been (slightly) reworked, so that whenever
+Baremark gives the <i>equivalent</i> output, it is considered a passing test.
+(E.g., if Baremark outputs HTML entities where CommonMark specify a normal
+character, or use <tt>&lt;tt&gt;</tt> instead of <tt>&lt;code&gt;</tt> etc
+that’s still considered passing.) If however, the Markdown tags span a
+different part of the text, or interpreted differently in other ways, that is
+considered a fail.
+
 <p><b>Legend:</b>
   <span class="legend pass">Passed</span>
   <span class="legend fail">Failed</span>
   <span class="legend skip"><s>All skipped</s></span></p>
+
+<p>Symbols used in the test names below are: <tt>␣</tt> space (where needed for
+clarity), <tt>↲</tt> enter, <tt>⭲</tt> tab, and <tt>⍽</tt> no-break-space.
 
 <div data-testsuite="tests-commonmark.json" data-function="baremark"></div>
 
@@ -168,7 +197,7 @@ look like on the page.</p>
 
         // Add test result to current section.
         $section.append(
-          `<details class="test ${(test.skip || test.FIXME) ? 'skip' : ''} ${got === want ? 'pass' : 'fail'}">
+          `<details class="test ${(typeof(test.skip)==='string' || typeof(test.FIXME)==='string') ? 'skip' : ''} ${got === want ? 'pass' : 'fail'}">
             <summary>
               ${test.example ? `Test ${test.example}` : ''}${test.example && test.name ? ': ' : ''}
               ${test.name ? escapeAscii(test.name) : (test.example ? '' : escapeHtml(escapeAscii(test.data)) + '<br>→ ' + escapeHtml(escapeAscii(test.want)))}

@@ -21,7 +21,8 @@
   {
     "data": "  - foo\n\n\tbar\n",
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
-    "name": "Test 4: <tt>␣␣- foo↲↲⭲bar↲</tt>"
+    "name": "Test 4: <tt>␣␣- foo↲↲⭲bar↲</tt>",
+    "skip": "Baremark lists must be unindented"
   },
   {
     "data": "- foo\n\n\t\tbar\n",
@@ -32,12 +33,14 @@
   {
     "data": ">\t\tfoo\n",
     "want": "<blockquote>\n\n<pre><tt>  foo\n</tt></pre>\n\n</blockquote>",
-    "name": "Test 6: <tt>&gt;⭲⭲foo↲</tt>"
+    "name": "Test 6: <tt>&gt;⭲⭲foo↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "-\t\tfoo\n",
     "want": "<ul><li>\n\n<pre><tt>  foo\n</tt></pre>\n\n</li></ul>",
-    "name": "Test 7: <tt>-⭲⭲foo↲</tt>"
+    "name": "Test 7: <tt>-⭲⭲foo↲</tt>",
+    "skip": "Baremark tabs cannot be used as space"
   },
   {
     "data": "    foo\n\tbar\n",
@@ -48,17 +51,20 @@
   {
     "data": " - foo\n   - bar\n\t - baz\n",
     "want": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz</li></ul>\n\n</li></ul>\n\n</li></ul>",
-    "name": "Test 9: <tt>␣- foo↲␣␣␣- bar↲⭲␣- baz↲</tt>"
+    "name": "Test 9: <tt>␣- foo↲␣␣␣- bar↲⭲␣- baz↲</tt>",
+    "skip": "Baremark lists must be unindented"
   },
   {
     "data": "#\tFoo\n",
     "want": "<h1>Foo</h1>",
-    "name": "Test 10: <tt>#⭲Foo↲</tt>"
+    "name": "Test 10: <tt>#⭲Foo↲</tt>",
+    "skip": "Baremark tabs cannot be used as space"
   },
   {
     "data": "*\t*\t*\t\n",
     "want": "<hr>",
-    "name": "Test 11: <tt>*⭲*⭲*⭲↲</tt>"
+    "name": "Test 11: <tt>*⭲*⭲*⭲↲</tt>",
+    "skip": "Baremark tabs cannot be used as space"
   },
   "Backslash Escapes <tt>\\X</tt>",
   {
@@ -73,7 +79,7 @@
   },
   {
     "data": "\\*not emphasized*\n\\<br> not a tag\n\\[not a link](/foo)\n\\`not code`\n1\\. not a list\n\\* not a list\n\\# not a heading\n\\[foo]: /url \"not a reference\"\n\\&ouml; not a character entity\n",
-    "want": "<p>*not emphasized*\n&#60;br&#62; not a tag\n[not a link](/foo)\n`not code`\n1. not a list\n* not a list\n# not a heading\n[foo]: /url \"not a reference\"\n&amp;ouml; not a character entity</p>",
+    "want": "<p>&#42;not emphasized*\n&#60;br> not a tag\n&#91;not a link](/foo)\n&#96;not code`\n1&#46; not a list\n&#42; not a list\n&#35; not a heading\n&#91;foo]: /url \"not a reference\"\n&#38;ouml; not a character entity</p>",
     "name": "Test 14: <tt>&#92;*not emphasized*↲&#92;&lt;br&gt; not a tag↲&#92;[not a link](/foo)↲&#92;`not code`↲1&#92;. not a list↲&#92;* not a list↲&#92;# not a heading↲&#92;[foo]: /url \"not a reference\"↲&#92;&amp;ouml; not a character entity↲</tt>"
   },
   {
@@ -93,14 +99,20 @@
   },
   {
     "data": "    \\[\\]\n",
-    "want": "<pre><tt>\\[\\]\n</tt></pre>",
+    "want": "<pre>\\[\\]\n</pre>",
     "name": "Test 18: <tt>␣␣␣␣&#92;[&#92;]↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
+    "data": "```\n\\[\\]\n```\n",
+    "want": "<pre>&#92;&#91;&#92;&#93;</pre>",
+    "name": "Test 18x: <tt>```↲&#92;[&#92;]↲```↲</tt>"
+  },
+  {
     "data": "~~~\n\\[\\]\n~~~\n",
     "want": "<pre><tt>\\[\\]\n</tt></pre>",
-    "name": "Test 19: <tt>~~~↲&#92;[&#92;]↲~~~↲</tt>"
+    "name": "Test 19: <tt>~~~↲&#92;[&#92;]↲~~~↲</tt>",
+    "FIXME": "Add fenced code blocks with <tt>~~~</tt>"
   },
   {
     "data": "<https://example.com?find=\\*>\n",
@@ -110,13 +122,14 @@
   },
   {
     "data": "<a href=\"/bar\\/)\">\n",
-    "want": "<a href=\"/bar\\/)\">",
+    "want": "<p><a href=\"/bar&#47;)\"></p>",
     "name": "Test 21: <tt>&lt;a href=\"/bar&#92;/)\"&gt;↲</tt>"
   },
   {
     "data": "[foo](/bar\\* \"ti\\*tle\")\n",
-    "want": "<p><a href=\"/bar*\" title=\"ti*tle\">foo</a></p>",
-    "name": "Test 22: <tt>[foo](/bar&#92;* \"ti&#92;*tle\")↲</tt>"
+    "want": "<p><a href=\"/bar&#42;\" title=\"ti&#42;tle\">foo</a></p>",
+    "name": "Test 22: <tt>[foo](/bar&#92;* \"ti&#92;*tle\")↲</tt>",
+    "FIXME": "Add title support for inline links &amp; images"
   },
   {
     "data": "[foo]\n\n[foo]: /bar\\* \"ti\\*tle\"\n",
@@ -125,107 +138,118 @@
   },
   {
     "data": "``` foo\\+bar\nfoo\n```\n",
-    "want": "<pre><tt class=\"language-foo+bar\">foo\n</tt></pre>",
-    "name": "Test 24: <tt>``` foo&#92;+bar↲foo↲```↲</tt>"
+    "want": "<pre class=\"language-foo&#43;bar\">foo</pre>",
+    "name": "Test 24: <tt>``` foo&#92;+bar↲foo↲```↲</tt>",
+    "FIXME": "Add info string support for fenced code blocks"
   },
   "Entity and Numeric Character References <tt>&ENT;</tt> <tt>&#NUM;</tt>",
   {
     "data": "&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;\n",
-    "want": "<p>  &amp; © Æ Ď\n¾ ℋ ⅆ\n∲ ≧̸</p>",
+    "want": "<p>&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;</p>",
     "name": "Test 25: <tt>&amp;nbsp; &amp;amp; &amp;copy; &amp;AElig; &amp;Dcaron;↲&amp;frac34; &amp;HilbertSpace; &amp;DifferentialD;↲&amp;ClockwiseContourIntegral; &amp;ngE;↲</tt>"
   },
   {
     "data": "&#35; &#1234; &#992; &#0;\n",
-    "want": "<p># Ӓ Ϡ �</p>",
+    "want": "<p>&#35; &#1234; &#992; &#0;</p>",
     "name": "Test 26: <tt>&amp;#35; &amp;#1234; &amp;#992; &amp;#0;↲</tt>"
   },
   {
     "data": "&#X22; &#XD06; &#xcab;\n",
-    "want": "<p>&quot; ആ ಫ</p>",
+    "want": "<p>&#X22; &#XD06; &#xcab;</p>",
     "name": "Test 27: <tt>&amp;#X22; &amp;#XD06; &amp;#xcab;↲</tt>"
   },
   {
     "data": "&nbsp &x; &#; &#x;\n&#87654321;\n&#abcdef0;\n&ThisIsNotDefined; &hi?;\n",
-    "want": "<p>&amp;nbsp &amp;x; &amp;#; &amp;#x;\n&amp;#87654321;\n&amp;#abcdef0;\n&amp;ThisIsNotDefined; &amp;hi?;</p>",
+    "want": "<p>&nbsp &x; &#; &#x;\n&#87654321;\n&#abcdef0;\n&ThisIsNotDefined; &hi?;</p>",
     "name": "Test 28: <tt>&amp;nbsp &amp;x; &amp;#; &amp;#x;↲&amp;#87654321;↲&amp;#abcdef0;↲&amp;ThisIsNotDefined; &amp;hi?;↲</tt>"
   },
   {
     "data": "&copy\n",
-    "want": "<p>&amp;copy</p>",
+    "want": "<p>&copy</p>",
     "name": "Test 29: <tt>&amp;copy↲</tt>"
   },
   {
     "data": "&MadeUpEntity;\n",
-    "want": "<p>&amp;MadeUpEntity;</p>",
+    "want": "<p>&MadeUpEntity;</p>",
     "name": "Test 30: <tt>&amp;MadeUpEntity;↲</tt>"
   },
   {
     "data": "<a href=\"&ouml;&ouml;.html\">\n",
-    "want": "<a href=\"&ouml;&ouml;.html\">",
+    "want": "<p><a href=\"&ouml;&ouml;.html\"></p>",
     "name": "Test 31: <tt>&lt;a href=\"&amp;ouml;&amp;ouml;.html\"&gt;↲</tt>"
   },
   {
     "data": "[foo](/f&ouml;&ouml; \"f&ouml;&ouml;\")\n",
-    "want": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>",
-    "name": "Test 32: <tt>[foo](/f&amp;ouml;&amp;ouml; \"f&amp;ouml;&amp;ouml;\")↲</tt>"
+    "want": "<p><a href=\"/f&ouml;&ouml;\" title=\"f&ouml;&ouml;\">foo</a></p>",
+    "name": "Test 32: <tt>[foo](/f&amp;ouml;&amp;ouml; \"f&amp;ouml;&amp;ouml;\")↲</tt>",
+    "FIXME": "Add title support for inline links &amp; images"
   },
   {
     "data": "[foo]\n\n[foo]: /f&ouml;&ouml; \"f&ouml;&ouml;\"\n",
-    "want": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>",
+    "want": "<p><a href=\"/f&ouml;&ouml;\" title=\"f&ouml;&ouml;\">foo</a></p>",
     "name": "Test 33: <tt>[foo]↲↲[foo]: /f&amp;ouml;&amp;ouml; \"f&amp;ouml;&amp;ouml;\"↲</tt>"
   },
   {
     "data": "``` f&ouml;&ouml;\nfoo\n```\n",
-    "want": "<pre><tt class=\"language-föö\">foo\n</tt></pre>",
-    "name": "Test 34: <tt>``` f&amp;ouml;&amp;ouml;↲foo↲```↲</tt>"
+    "want": "<pre class=\"language-f&ouml;&ouml;\">foo</pre>",
+    "name": "Test 34: <tt>``` f&amp;ouml;&amp;ouml;↲foo↲```↲</tt>",
+    "FIXME": "Add info string support for fenced code blocks"
   },
   {
     "data": "`f&ouml;&ouml;`\n",
-    "want": "<p><tt>f&amp;ouml;&amp;ouml;</tt></p>",
+    "want": "<p><tt>f&#38;ouml;&#38;ouml;</tt></p>",
     "name": "Test 35: <tt>`f&amp;ouml;&amp;ouml;`↲</tt>"
   },
   {
     "data": "    f&ouml;f&ouml;\n",
-    "want": "<pre><tt>f&amp;ouml;f&amp;ouml;\n</tt></pre>",
+    "want": "<pre>f&#38;ouml;f&#38;ouml;</pre>",
     "name": "Test 36: <tt>␣␣␣␣f&amp;ouml;f&amp;ouml;↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "&#42;foo&#42;\n*foo*\n",
-    "want": "<p>*foo*\n<i>foo</i></p>",
+    "want": "<p>&#42;foo&#42;\n<i>foo</i></p>",
     "name": "Test 37: <tt>&amp;#42;foo&amp;#42;↲*foo*↲</tt>"
   },
   {
     "data": "&#42; foo\n\n* foo\n",
-    "want": "<p>* foo</p>\n\n<ul><li>foo</li></ul>",
+    "want": "<p>&#42; foo</p>\n\n\n<ul><li>foo</li></ul>",
     "name": "Test 38: <tt>&amp;#42; foo↲↲* foo↲</tt>"
   },
   {
     "data": "foo&#10;&#10;bar\n",
-    "want": "<p>foo\n\nbar</p>",
+    "want": "<p>foo&#10;&#10;bar</p>",
     "name": "Test 39: <tt>foo&amp;#10;&amp;#10;bar↲</tt>"
   },
   {
     "data": "&#9;foo\n",
-    "want": "<p>\tfoo</p>",
+    "want": "<p>&#9;foo</p>",
     "name": "Test 40: <tt>&amp;#9;foo↲</tt>"
   },
   {
     "data": "[a](url &quot;tit&quot;)\n",
     "want": "<p>[a](url &quot;tit&quot;)</p>",
-    "name": "Test 41: <tt>[a](url &amp;quot;tit&amp;quot;)↲</tt>"
+    "name": "Test 41: <tt>[a](url &amp;quot;tit&amp;quot;)↲</tt>",
+    "FIXME": "Add title support for inline links &amp; images"
   },
-  "Precedence",
+  "Precedence <span class=note>(Baremark doesn’t support block/inline tag distinction)</span>",
   {
     "data": "- `one\n- two`\n",
-    "want": "<ul><li>`one</li>\n\n<li>two`</li></ul>",
-    "name": "Test 42: <tt>- `one↲- two`↲</tt>"
+    "want": "<ul><li>`one</li><li>two`</li></ul>",
+    "name": "Test 42: <tt>- `one↲- two`↲</tt>",
+    "skip": "Baremark does not support block/inline tag distinction"
   },
   "Dinkus <tt>---</tt> <tt>___</tt> <tt>***</tt>",
   {
     "data": "***\n---\n___\n",
     "want": "<hr>\n\n<hr>\n\n<hr>",
-    "name": "Test 43: <tt>***↲---↲___↲</tt>"
+    "name": "Test 43: <tt>***↲---↲___↲</tt>",
+    "skip": "Baremark requires blank lines around dinkuses"
+  },
+  {
+    "data": "***\n\n---\n\n___\n",
+    "want": "<hr>\n\n<hr>\n\n<hr>",
+    "name": "Test 43x: <tt>***↲↲---↲↲___↲</tt>"
   },
   {
     "data": "+++\n",
@@ -245,7 +269,14 @@
   {
     "data": " ***\n  ***\n   ***\n",
     "want": "<hr>\n\n<hr>\n\n<hr>",
-    "name": "Test 47: <tt>␣***↲␣␣***↲␣␣␣***↲</tt>"
+    "name": "Test 47: <tt>␣***↲␣␣***↲␣␣␣***↲</tt>",
+    "skip": "Baremark requires blank lines around dinkuses"
+  },
+  {
+    "data": " ***\n\n  ***\n\n   ***\n",
+    "want": "<hr>\n\n<hr>\n\n<hr>",
+    "name": "Test 47x: <tt>␣***↲↲␣␣***↲↲␣␣␣***↲</tt>",
+    "skip": "Baremark doesn’t support indented dinkus"
   },
   {
     "data": "    ***\n",
@@ -255,7 +286,7 @@
   },
   {
     "data": "Foo\n    ***\n",
-    "want": "<p>Foo\n***</p>",
+    "want": "<p>Foo\n    ***</p>",
     "name": "Test 49: <tt>Foo↲␣␣␣␣***↲</tt>"
   },
   {
@@ -266,12 +297,24 @@
   {
     "data": " - - -\n",
     "want": "<hr>",
-    "name": "Test 51: <tt>␣- - -↲</tt>"
+    "name": "Test 51: <tt>␣- - -↲</tt>",
+    "skip": "Baremark doesn’t support indented dinkus"
+  },
+  {
+    "data": "- - -\n",
+    "want": "<hr>",
+    "name": "Test 51x: <tt>- - -↲</tt>"
   },
   {
     "data": " **  * ** * ** * **\n",
     "want": "<hr>",
-    "name": "Test 52: <tt>␣**␣␣* ** * ** * **↲</tt>"
+    "name": "Test 52: <tt>␣**␣␣* ** * ** * **↲</tt>",
+    "skip": "Baremark doesn’t support indented dinkus"
+  },
+  {
+    "data": "**  * ** * ** * **\n",
+    "want": "<hr>",
+    "name": "Test 52x: <tt>**␣␣* ** * ** * **↲</tt>"
   },
   {
     "data": "-     -      -      -\n",
@@ -286,22 +329,41 @@
   {
     "data": "_ _ _ _ a\n\na------\n\n---a---\n",
     "want": "<p>_ _ _ _ a</p>\n\n<p>a------</p>\n\n<p>---a---</p>",
-    "name": "Test 55: <tt>_ _ _ _ a↲↲a------↲↲---a---↲</tt>"
+    "name": "Test 55: <tt>_ _ _ _ a↲↲a------↲↲---a---↲</tt>",
+    "FIXME": "Some <tt>_..._</tt> interpreted as <tt>_ITALIC_</tt>"
   },
   {
     "data": " *-*\n",
     "want": "<p><i>-</i></p>",
-    "name": "Test 56: <tt>␣*-*↲</tt>"
+    "name": "Test 56: <tt>␣*-*↲</tt>",
+    "skip": "Baremark doesn’t support indented dinkus"
+  },
+  {
+    "data": "*-*\n",
+    "want": "<p><i>-</i></p>",
+    "name": "Test 56x: <tt>*-*↲</tt>"
   },
   {
     "data": "- foo\n***\n- bar\n",
     "want": "<ul><li>foo</li></ul>\n\n<hr>\n\n<ul><li>bar</li></ul>",
-    "name": "Test 57: <tt>- foo↲***↲- bar↲</tt>"
+    "name": "Test 57: <tt>- foo↲***↲- bar↲</tt>",
+    "skip": "Baremark requires blank lines around dinkuses"
+  },
+  {
+    "data": "- foo\n\n***\n\n- bar\n",
+    "want": "<ul><li>foo</li></ul>\n\n\n<hr>\n\n\n<ul><li>bar</li></ul>",
+    "name": "Test 57x: <tt>- foo↲↲***↲↲- bar↲</tt>"
   },
   {
     "data": "Foo\n***\nbar\n",
     "want": "<p>Foo</p>\n\n<hr>\n\n<p>bar</p>",
-    "name": "Test 58: <tt>Foo↲***↲bar↲</tt>"
+    "name": "Test 58: <tt>Foo↲***↲bar↲</tt>",
+    "skip": "Baremark requires blank lines around dinkuses"
+  },
+  {
+    "data": "Foo\n\n***\n\nbar\n",
+    "want": "<p>Foo</p>\n\n<hr>\n\n<p>bar</p>",
+    "name": "Test 58x: <tt>Foo↲↲***↲↲bar↲</tt>"
   },
   {
     "data": "Foo\n---\nbar\n",
@@ -311,12 +373,25 @@
   {
     "data": "* Foo\n* * *\n* Bar\n",
     "want": "<ul><li>Foo</li></ul>\n\n<hr>\n\n<ul><li>Bar</li></ul>",
-    "name": "Test 60: <tt>* Foo↲* * *↲* Bar↲</tt>"
+    "name": "Test 60: <tt>* Foo↲* * *↲* Bar↲</tt>",
+    "skip": "Baremark requires blank lines around dinkuses"
+  },
+  {
+    "data": "* Foo\n\n* * *\n\n* Bar\n",
+    "want": "<ul><li>Foo</li></ul>\n\n\n<hr>\n\n\n<ul><li>Bar</li></ul>",
+    "name": "Test 60x: <tt>* Foo↲↲* * *↲↲* Bar↲</tt>"
   },
   {
     "data": "- Foo\n- * * *\n",
-    "want": "<ul><li>Foo</li>\n\n<li>\n\n<hr>\n\n</li></ul>",
-    "name": "Test 61: <tt>- Foo↲- * * *↲</tt>"
+    "want": "<ul><li>Foo</li><li>\n\n<hr>\n\n</li></ul>",
+    "name": "Test 61: <tt>- Foo↲- * * *↲</tt>",
+    "skip": "Baremark requires blank lines around dinkuses"
+  },
+  {
+    "data": "- Foo\n\n- * * *\n",
+    "want": "<ul><li>Foo</li><li>\n\n<hr>\n\n</li></ul>",
+    "name": "Test 61x: <tt>- Foo↲↲- * * *↲↲</tt>",
+    "skip": "Baremark doesn’t support bullet item with dinkus inside"
   },
   "<tt># HEADING 1</tt> … <tt>###### HEADING 6</tt>",
   {
@@ -913,7 +988,7 @@
   },
   {
     "data": "- <div>\n- foo\n",
-    "want": "<ul><li>\n\n<div>\n\n</li>\n\n<li>foo</li></ul>",
+    "want": "<ul><li>\n\n<div>\n\n</li><li>foo</li></ul>",
     "name": "Test 175: <tt>- &lt;div&gt;↲- foo↲</tt>"
   },
   {
@@ -1442,7 +1517,7 @@
   },
   {
     "data": "-\n  foo\n-\n  ```\n  bar\n  ```\n-\n      baz\n",
-    "want": "<ul><li>foo</li>\n\n<li>\n\n<pre><tt>bar\n</tt></pre>\n\n</li>\n\n<li>\n\n<pre><tt>baz\n</tt></pre>\n\n</li></ul>",
+    "want": "<ul><li>foo</li><li>\n\n<pre><tt>bar\n</tt></pre>\n\n</li><li>\n\n<pre><tt>baz\n</tt></pre>\n\n</li></ul>",
     "name": "Test 278: <tt>-↲␣␣foo↲-↲␣␣```↲␣␣bar↲␣␣```↲-↲␣␣␣␣␣␣baz↲</tt>"
   },
   {
@@ -1457,17 +1532,17 @@
   },
   {
     "data": "- foo\n-\n- bar\n",
-    "want": "<ul><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ul>",
+    "want": "<ul><li>foo</li><li></li><li>bar</li></ul>",
     "name": "Test 281: <tt>- foo↲-↲- bar↲</tt>"
   },
   {
     "data": "- foo\n-   \n- bar\n",
-    "want": "<ul><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ul>",
+    "want": "<ul><li>foo</li><li></li><li>bar</li></ul>",
     "name": "Test 282: <tt>- foo↲-␣␣␣↲- bar↲</tt>"
   },
   {
     "data": "1. foo\n2.\n3. bar\n",
-    "want": "<ol><li>foo</li>\n\n<li></li>\n\n<li>bar</li></ol>",
+    "want": "<ol><li>foo</li><li></li><li>bar</li></ol>",
     "name": "Test 283: <tt>1. foo↲2.↲3. bar↲</tt>"
   },
   {
@@ -1528,7 +1603,7 @@
   },
   {
     "data": "- foo\n - bar\n  - baz\n   - boo\n",
-    "want": "<ul><li>foo</li>\n\n<li>bar</li>\n\n<li>baz</li>\n\n<li>boo</li></ul>",
+    "want": "<ul><li>foo</li><li>bar</li><li>baz</li><li>boo</li></ul>",
     "name": "Test 295: <tt>- foo↲␣- bar↲␣␣- baz↲␣␣␣- boo↲</tt>"
   },
   {
@@ -1553,23 +1628,23 @@
   },
   {
     "data": "- # Foo\n- Bar\n  ---\n  baz\n",
-    "want": "<ul><li>\n\n<h1>Foo</h1>\n\n</li>\n\n<li>\n\n<h2>Bar</h2>\nbaz</li></ul>",
+    "want": "<ul><li>\n\n<h1>Foo</h1>\n\n</li><li>\n\n<h2>Bar</h2>\nbaz</li></ul>",
     "name": "Test 300: <tt>- # Foo↲- Bar↲␣␣---↲␣␣baz↲</tt>"
   },
   "<tt>* BULLET</tt> <tt>+ BULLET</tt> <tt>- BULLET</tt> / <tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>",
   {
     "data": "- foo\n- bar\n+ baz\n",
-    "want": "<ul><li>foo</li>\n\n<li>bar</li></ul>\n\n<ul><li>baz</li></ul>",
+    "want": "<ul><li>foo</li><li>bar</li></ul>\n\n<ul><li>baz</li></ul>",
     "name": "Test 301: <tt>- foo↲- bar↲+ baz↲</tt>"
   },
   {
     "data": "1. foo\n2. bar\n3) baz\n",
-    "want": "<ol><li>foo</li>\n\n<li>bar</li></ol>\n\n<ol start=\"3\">\n\n<li>baz</li></ol>",
+    "want": "<ol><li>foo</li><li>bar</li></ol>\n\n<ol start=\"3\">\n\n<li>baz</li></ol>",
     "name": "Test 302: <tt>1. foo↲2. bar↲3) baz↲</tt>"
   },
   {
     "data": "Foo\n- bar\n- baz\n",
-    "want": "<p>Foo</p>\n\n<ul><li>bar</li>\n\n<li>baz</li></ul>",
+    "want": "<p>Foo</p>\n\n<ul><li>bar</li><li>baz</li></ul>",
     "name": "Test 303: <tt>Foo↲- bar↲- baz↲</tt>"
   },
   {
@@ -1584,7 +1659,7 @@
   },
   {
     "data": "- foo\n\n- bar\n\n\n- baz\n",
-    "want": "<ul><li>\n\n<p>foo</p>\n\n</li>\n\n<li>\n\n<p>bar</p>\n\n</li>\n\n<li>\n\n<p>baz</p>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>foo</p>\n\n</li><li>\n\n<p>bar</p>\n\n</li><li>\n\n<p>baz</p>\n\n</li></ul>",
     "name": "Test 306: <tt>- foo↲↲- bar↲↲↲- baz↲</tt>"
   },
   {
@@ -1594,72 +1669,72 @@
   },
   {
     "data": "- foo\n- bar\n\n<!-- -->\n\n- baz\n- bim\n",
-    "want": "<ul><li>foo</li>\n\n<li>bar</li></ul>\n\n<!-- -->\n\n<ul><li>baz</li>\n\n<li>bim</li></ul>",
+    "want": "<ul><li>foo</li><li>bar</li></ul>\n\n<!-- -->\n\n<ul><li>baz</li><li>bim</li></ul>",
     "name": "Test 308: <tt>- foo↲- bar↲↲&lt;!-- --&gt;↲↲- baz↲- bim↲</tt>"
   },
   {
     "data": "-   foo\n\n    notcode\n\n-   foo\n\n<!-- -->\n\n    code\n",
-    "want": "<ul><li>\n\n<p>foo</p>\n\n<p>notcode</p>\n\n</li>\n\n<li>\n\n<p>foo</p>\n\n</li></ul>\n\n<!-- -->\n\n<pre><tt>code\n</tt></pre>",
+    "want": "<ul><li>\n\n<p>foo</p>\n\n<p>notcode</p>\n\n</li><li>\n\n<p>foo</p>\n\n</li></ul>\n\n<!-- -->\n\n<pre><tt>code\n</tt></pre>",
     "name": "Test 309: <tt>-␣␣␣foo↲↲␣␣␣␣notcode↲↲-␣␣␣foo↲↲&lt;!-- --&gt;↲↲␣␣␣␣code↲</tt>"
   },
   {
     "data": "- a\n - b\n  - c\n   - d\n  - e\n - f\n- g\n",
-    "want": "<ul><li>a</li>\n\n<li>b</li>\n\n<li>c</li>\n\n<li>d</li>\n\n<li>e</li>\n\n<li>f</li>\n\n<li>g</li></ul>",
+    "want": "<ul><li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li><li>g</li></ul>",
     "name": "Test 310: <tt>- a↲␣- b↲␣␣- c↲␣␣␣- d↲␣␣- e↲␣- f↲- g↲</tt>"
   },
   {
     "data": "1. a\n\n  2. b\n\n   3. c\n",
-    "want": "<ol><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>c</p>\n\n</li></ol>",
+    "want": "<ol><li>\n\n<p>a</p>\n\n</li><li>\n\n<p>b</p>\n\n</li><li>\n\n<p>c</p>\n\n</li></ol>",
     "name": "Test 311: <tt>1. a↲↲␣␣2. b↲↲␣␣␣3. c↲</tt>"
   },
   {
     "data": "- a\n - b\n  - c\n   - d\n    - e\n",
-    "want": "<ul><li>a</li>\n\n<li>b</li>\n\n<li>c</li>\n\n<li>d\n- e</li></ul>",
+    "want": "<ul><li>a</li><li>b</li><li>c</li><li>d\n- e</li></ul>",
     "name": "Test 312: <tt>- a↲␣- b↲␣␣- c↲␣␣␣- d↲␣␣␣␣- e↲</tt>"
   },
   {
     "data": "1. a\n\n  2. b\n\n    3. c\n",
-    "want": "<ol><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li></ol>\n\n<pre><tt>3. c\n</tt></pre>",
+    "want": "<ol><li>\n\n<p>a</p>\n\n</li><li>\n\n<p>b</p>\n\n</li></ol>\n\n<pre><tt>3. c\n</tt></pre>",
     "name": "Test 313: <tt>1. a↲↲␣␣2. b↲↲␣␣␣␣3. c↲</tt>"
   },
   {
     "data": "- a\n- b\n\n- c\n",
-    "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>c</p>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>a</p>\n\n</li><li>\n\n<p>b</p>\n\n</li><li>\n\n<p>c</p>\n\n</li></ul>",
     "name": "Test 314: <tt>- a↲- b↲↲- c↲</tt>"
   },
   {
     "data": "* a\n*\n\n* c\n",
-    "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li></li>\n\n<li>\n\n<p>c</p>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>a</p>\n\n</li><li></li><li>\n\n<p>c</p>\n\n</li></ul>",
     "name": "Test 315: <tt>* a↲*↲↲* c↲</tt>"
   },
   {
     "data": "- a\n- b\n\n  c\n- d\n",
-    "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n<p>c</p>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>a</p>\n\n</li><li>\n\n<p>b</p>\n\n<p>c</p>\n\n</li><li>\n\n<p>d</p>\n\n</li></ul>",
     "name": "Test 316: <tt>- a↲- b↲↲␣␣c↲- d↲</tt>"
   },
   {
     "data": "- a\n- b\n\n  [ref]: /url\n- d\n",
-    "want": "<ul><li>\n\n<p>a</p>\n\n</li>\n\n<li>\n\n<p>b</p>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>a</p>\n\n</li><li>\n\n<p>b</p>\n\n</li><li>\n\n<p>d</p>\n\n</li></ul>",
     "name": "Test 317: <tt>- a↲- b↲↲␣␣[ref]: /url↲- d↲</tt>"
   },
   {
     "data": "- a\n- ```\n  b\n\n\n  ```\n- c\n",
-    "want": "<ul><li>a</li>\n\n<li>\n\n<pre><tt>b\n\n\n</tt></pre>\n\n</li>\n\n<li>c</li></ul>",
+    "want": "<ul><li>a</li><li>\n\n<pre><tt>b\n\n\n</tt></pre>\n\n</li><li>c</li></ul>",
     "name": "Test 318: <tt>- a↲- ```↲␣␣b↲↲↲␣␣```↲- c↲</tt>"
   },
   {
     "data": "- a\n  - b\n\n    c\n- d\n",
-    "want": "<ul><li>a\n<ul><li>\n\n<p>b</p>\n\n<p>c</p>\n\n</li></ul>\n\n</li>\n\n<li>d</li></ul>",
+    "want": "<ul><li>a\n<ul><li>\n\n<p>b</p>\n\n<p>c</p>\n\n</li></ul>\n\n</li><li>d</li></ul>",
     "name": "Test 319: <tt>- a↲␣␣- b↲↲␣␣␣␣c↲- d↲</tt>"
   },
   {
     "data": "* a\n  > b\n  >\n* c\n",
-    "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n</li>\n\n<li>c</li></ul>",
+    "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n</li><li>c</li></ul>",
     "name": "Test 320: <tt>* a↲␣␣&gt; b↲␣␣&gt;↲* c↲</tt>"
   },
   {
     "data": "- a\n  > b\n  ```\n  c\n  ```\n- d\n",
-    "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n<pre><tt>c\n</tt></pre>\n\n</li>\n\n<li>d</li></ul>",
+    "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n<pre><tt>c\n</tt></pre>\n\n</li><li>d</li></ul>",
     "name": "Test 321: <tt>- a↲␣␣&gt; b↲␣␣```↲␣␣c↲␣␣```↲- d↲</tt>"
   },
   {
@@ -1684,7 +1759,7 @@
   },
   {
     "data": "- a\n  - b\n  - c\n\n- d\n  - e\n  - f\n",
-    "want": "<ul><li>\n\n<p>a</p>\n\n<ul><li>b</li>\n\n<li>c</li></ul>\n\n</li>\n\n<li>\n\n<p>d</p>\n\n<ul><li>e</li>\n\n<li>f</li></ul>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>a</p>\n\n<ul><li>b</li><li>c</li></ul>\n\n</li><li>\n\n<p>d</p>\n\n<ul><li>e</li><li>f</li></ul>\n\n</li></ul>",
     "name": "Test 326: <tt>- a↲␣␣- b↲␣␣- c↲↲- d↲␣␣- e↲␣␣- f↲</tt>"
   },
   "Inlines",
@@ -1701,17 +1776,17 @@
   },
   {
     "data": "`` foo ` bar ``\n",
-    "want": "<p><tt>foo ` bar</tt></p>",
+    "want": "<p><tt>foo &#96; bar</tt></p>",
     "name": "Test 329: <tt>`` foo ` bar ``↲</tt>"
   },
   {
     "data": "` `` `\n",
-    "want": "<p><tt>``</tt></p>",
+    "want": "<p><tt>&#96;&#96;</tt></p>",
     "name": "Test 330: <tt>` `` `↲</tt>"
   },
   {
     "data": "`  ``  `\n",
-    "want": "<p><tt> `` </tt></p>",
+    "want": "<p><tt> &#96;&#96; </tt></p>",
     "name": "Test 331: <tt>`␣␣``␣␣`↲</tt>"
   },
   {
@@ -1722,66 +1797,81 @@
   {
     "data": "` b `\n",
     "want": "<p><tt> b </tt></p>",
-    "name": "Test 333: <tt>` b `↲</tt>"
+    "name": "Test 333: <tt>`⍽b⍽`↲</tt>"
   },
   {
     "data": "` `\n`  `\n",
-    "want": "<p><tt> </tt>\n\n<tt>  </tt></p>",
-    "name": "Test 334: <tt>` `↲`␣␣`↲</tt>"
+    "want": "<p><tt> </tt>\n<tt>  </tt></p>",
+    "name": "Test 334: <tt>`⍽`↲`␣␣`↲</tt>"
+  },
+  {
+    "data": "`   `\n",
+    "want": "<p><tt> </tt></p>",
+    "name": "Test 334x: <tt>`␣␣␣`↲</tt>",
+    "NOTE": "Single space trimmed on each side, even if <tt>`CODE`</tt> contains only space"
   },
   {
     "data": "``\nfoo\nbar  \nbaz\n``\n",
-    "want": "<p><tt>foo bar   baz</tt></p>",
-    "name": "Test 335: <tt>``↲foo↲bar␣␣↲baz↲``↲</tt>"
+    "want": "<p><tt>&#10;foo&#10;bar  &#10;baz&#10;</tt></p>",
+    "name": "Test 335: <tt>``↲foo↲bar␣␣↲baz↲``↲</tt>",
+    "skip": "Baremark trims space before EOL"
   },
   {
     "data": "``\nfoo \n``\n",
-    "want": "<p><tt>foo </tt></p>",
-    "name": "Test 336: <tt>``↲foo␣↲``↲</tt>"
+    "want": "<p><tt>&#10;foo &#10;</tt></p>",
+    "name": "Test 336: <tt>``↲foo␣↲``↲</tt>",
+    "skip": "Baremark trims space before EOL"
   },
   {
     "data": "`foo   bar \nbaz`\n",
-    "want": "<p><tt>foo   bar  baz</tt></p>",
+    "want": "<p><tt>foo   bar&#10;baz</tt></p>",
     "name": "Test 337: <tt>`foo␣␣␣bar␣↲baz`↲</tt>"
   },
   {
     "data": "`foo\\`bar`\n",
-    "want": "<p><tt>foo\\</tt>bar`</p>",
-    "name": "Test 338: <tt>`foo&#92;`bar`↲</tt>"
+    "want": "<p><tt>foo&#92;</tt>bar`</p>",
+    "name": "Test 338: <tt>`foo&#92;`bar`↲</tt>",
+    "skip": "Baremark <tt>`CODE`</tt> may contain <tt>`</tt>"
+  },
+  {
+    "data": "`foo\\bar`\n",
+    "want": "<p><tt>foo&#92;bar</tt></p>",
+    "name": "Test 338x: <tt>`foo&#92;bar`↲</tt>"
   },
   {
     "data": "``foo`bar``\n",
-    "want": "<p><tt>foo`bar</tt></p>",
+    "want": "<p><tt>foo&#96;bar</tt></p>",
     "name": "Test 339: <tt>``foo`bar``↲</tt>"
   },
   {
     "data": "` foo `` bar `\n",
-    "want": "<p><tt>foo `` bar</tt></p>",
+    "want": "<p><tt>foo &#96;&#96; bar</tt></p>",
     "name": "Test 340: <tt>` foo `` bar `↲</tt>"
   },
   {
     "data": "*foo`*`\n",
-    "want": "<p>*foo<tt>*</tt></p>",
+    "want": "<p>*foo<tt>&#42;</tt></p>",
     "name": "Test 341: <tt>*foo`*`↲</tt>"
   },
   {
     "data": "[not a `link](/foo`)\n",
-    "want": "<p>[not a <tt>link](/foo</tt>)</p>",
+    "want": "<p>[not a <tt>link&#93;&#40;/foo</tt>)</p>",
     "name": "Test 342: <tt>[not a `link](/foo`)↲</tt>"
   },
   {
     "data": "`<a href=\"`\">`\n",
-    "want": "<p><tt>&#60;a href=&quot;</tt>&quot;&#62;`</p>",
+    "want": "<p><tt>&#60;a href&#61;&#34;</tt>\">`</p>",
     "name": "Test 343: <tt>`&lt;a href=\"`\"&gt;`↲</tt>"
   },
   {
     "data": "<a href=\"`\">`\n",
     "want": "<p><a href=\"`\">`</p>",
-    "name": "Test 344: <tt>&lt;a href=\"`\"&gt;`↲</tt>"
+    "name": "Test 344: <tt>&lt;a href=\"`\"&gt;`↲</tt>",
+    "skip": "Baremark finds <tt>`CODE`</tt> even inside HTML tags"
   },
   {
     "data": "`<https://foo.bar.`baz>`\n",
-    "want": "<p><tt>&#60;https://foo.bar.</tt>baz&#62;`</p>",
+    "want": "<p><tt>&#60;https&#58;//foo.bar.</tt>baz>`</p>",
     "name": "Test 345: <tt>`&lt;https://foo.bar.`baz&gt;`↲</tt>"
   },
   {
@@ -1793,7 +1883,8 @@
   {
     "data": "```foo``\n",
     "want": "<p>```foo``</p>",
-    "name": "Test 347: <tt>```foo``↲</tt>"
+    "name": "Test 347: <tt>```foo``↲</tt>",
+    "skip": ""
   },
   {
     "data": "`foo\n",
@@ -1824,7 +1915,7 @@
   {
     "data": "* a *\n",
     "want": "<p>* a *</p>",
-    "name": "Test 353: <tt>* a *↲</tt>"
+    "name": "Test 353: <tt>*⍽a⍽*↲</tt>"
   },
   {
     "data": "*$*alpha.\n\n*£*bravo.\n\n*€*charlie.\n",
@@ -2605,7 +2696,7 @@
   {
     "data": "[link](/url \"title\")\n",
     "want": "<p><a href=\"/url%C2%A0%22title%22\" title=\"\">link</a></p>",
-    "name": "Test 507: <tt>[link](/url \"title\")↲</tt>"
+    "name": "Test 507: <tt>[link](/url⍽\"title\")↲</tt>"
   },
   {
     "data": "[link](/url \"title \"and\" title\")\n",
