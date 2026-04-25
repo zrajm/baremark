@@ -1,5 +1,8 @@
 -*- org -*-
 
+DO NEXT
+> copy 'skip', 'FIXME' etc fields to the .NEW tests
+
 * TODO Lazy continuation of lists
   + Include a test for this inside a blockquote as well.
   If implemented, what does then terminate a list?
@@ -96,7 +99,29 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/23] Features
+* [0/2] Features
+** TODO `*ITALIC*` and bullet `* BULLET`                                :BUG:
+   When a bullet list is written in condensed form, `*ITALIC*` will sometimes
+   mess with the bullet.
+
+   The following:
+   ----------------------------------------
+   * XXX *
+   * III *ZZZ*
+   ----------------------------------------
+   Will italicize 'III' and retain the `*` after 'ZZZ', rather than retain the
+   `*` after 'XXX' and italicize 'ZZZ'.
+
+   Maybe add something to normalization to add extra blank lines before bullet
+   items?
+** TODO Text after bullet list should get paragraph                     :BUG:
+   In the following, the trailing `</p>` causes the text after the bullet item
+   to be interpreted as an HTML block rather than a paragraph.
+   ----------------------------------------
+   * XXX
+
+   Lorem ipsum</p>
+   ----------------------------------------
 ** TODO Better handling of block elements (like `<div>`)                :BUG:
    Will require:
    + Better paragraph tests for various HTML tags.
