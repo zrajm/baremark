@@ -479,8 +479,8 @@ codeblocks and blockquotes.
 A bullet list item is any line that starts with `-`, `+` or `*` followed by a
 space. The different bullet characters may be mixed freely within the same
 list. If an item is longer than one line, then the subsequent lines must start
-with space character. (In this way lists items is the only instance where
-indentation matters in Baremark.)
+with space character. (This is the only instance where indentation matters in
+Baremark.)
 
 ```
 - bullet one
@@ -573,10 +573,10 @@ render this correctly.—When in doubt, I suggest you just avoid using this
 [Backslash Escapes]: #backslash-escapes-x
 ### Backslash Escapes `\X`
 
-Any ASCII punctuation character may be escaped by preceding it with a
-backslash. An escaped character is always interpreted literally. So if you want
-an actual asterisk in your text, you can use `\*` to indicate that this is an
-asterisk that is not part of a Markdown tag (like for example an `*italic*`
+Any ASCII punctuation character or newline may be escaped by preceding it with
+a backslash. An escaped character is always interpreted literally. So if you
+want an actual asterisk in your text, you can use `\*` to indicate that this is
+an asterisk that is not part of a Markdown tag (like for example an `*italic*`
 tag). This is feature [CommonMark] compliant.
 
 The ASCII punctuation characters are:
@@ -585,8 +585,12 @@ The ASCII punctuation characters are:
 !"#$%&'()*+,-./:;<=>?@[\\\]^_`{|}~
 ```
 
-**NOTE:** Unescaped brackets and parentheses are not allowed in the text of
-[links and images].
+If a backslash precedes a newline (that is, if a backslash is the last
+character of a line), then the `\↲` combo is replaced by `<br>`, resulting in a
+hard line break.
+
+**NOTE:** Brackets and parentheses *must* be escaped with a backslash in the
+text of [links and images].
 
 
 [Links and Images]: #links--images

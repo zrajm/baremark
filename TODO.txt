@@ -99,7 +99,7 @@ DO NEXT
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/2] Features
+* [0/25] Features
 ** TODO `*ITALIC*` and bullet `* BULLET`                                :BUG:
    When a bullet list is written in condensed form, `*ITALIC*` will sometimes
    mess with the bullet.
@@ -171,6 +171,12 @@ DO NEXT
 
    Should we append & prepend blank lines to all block tags while processing so
    that these are correctly handled by the paragraph processing?
+** TODO Tab & space trimming at EOL messes up HTML                      :BUG:
+   ----------------------------------------
+   <a href="foo<space><space>
+   bar">
+   ----------------------------------------
+   Will have its <space>s removed by the line-ending normalization.
 ** TODO Support fenced code blocks with `~~~`
    https://spec.commonmark.org/0.31.2/#code-fence
    https://spec.commonmark.org/0.31.2/#example-120
