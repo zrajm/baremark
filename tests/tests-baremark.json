@@ -3982,11 +3982,31 @@
   }, {
     "data": "` xx `",
     "want": "<p><tt>xx</tt></p>",
-    "name": "single word surrounded by single spaces (stripped)"
+    "name": "single word surrounded by single spaces (trimmed)"
+  }, {
+    "data": "` xx\n`",
+    "want": "<p><tt>xx</tt></p>",
+    "name": "single word surrounded by single space/newline (trimmed)"
+  }, {
+    "data": "`\nxx `",
+    "want": "<p><tt>xx</tt></p>",
+    "name": "single word surrounded by single space/newline (trimmed)"
+  }, {
+    "data": "`\nxx\n`",
+    "want": "<p><tt>xx</tt></p>",
+    "name": "single word surrounded by single newlines (trimmed)"
+  }, {
+    "data": "`\n\nxx\n`",
+    "want": "<p>`</p>\n\n<p>xx\n`</p>",
+    "name": "don’t expand single word preceded by two newlines"
+  }, {
+    "data": "`\nxx\n\n`",
+    "want": "<p>`\nxx</p>\n\n<p>`</p>",
+    "name": "don’t expand single word followed by two newlines"
   }, {
     "data": "`  xx  `",
     "want": "<p><tt> xx </tt></p>",
-    "name": "single word surrounded by two spaces (one of them stripped)"
+    "name": "single word surrounded by two spaces (one of them trimmed)"
   }, {
     "data": "`xx\nyy`",
     "want": "<p><tt>xx&#10;yy</tt></p>",
