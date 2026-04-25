@@ -254,6 +254,11 @@
     "want": "<h2>xx</h2>\n\n\n<h2>yy</h2>",
     "name": "<tt class=multi>HEADING 2<br>---------</tt> several separated by blank line"
   }, {
+    "data": "pre<input type=text value=\"a lot\n-----\nof dashes\">post",
+    "want": "<h2>pre<input type=text value=\"a lot</h2>\n\n<p>of dashes\">post</p>",
+    "name": "<tt class=multi>HEADING 2<br>---------</tt> inside HTML tag",
+    "NOTE": "Will output bad HTML"
+  }, {
     "data": "xx\n--\nyy\n==",
     "want": "<h2>xx</h2>\n\n<h1>yy</h1>",
     "name": "<tt class=multi>HEADING 2<br>---------</tt> + <tt class=multi>HEADING 1<br>=========</tt> separated by newline"
@@ -4059,6 +4064,10 @@
     "data": "`x``y``z`",
     "want": "<p><tt>x&#96;&#96;y&#96;&#96;z</tt></p>",
     "name": "surrounded by single backticks, containing double backtick sequence"
+  }, {
+    "data": "`Foo\n---\n`",
+    "want": "<p><tt>Foo&#10;&#45;&#45;&#45;&#10;</tt></p>",
+    "name": "don’t expand <tt class=multi>HEADING<br>-------</tt>"
   }, {
     "data": "[text][ref]\n\n```\n[ref]: dest \"title\"```",
     "want": "<p>[text][ref]</p>\n\n<p><tt>&#10;&#91;ref&#93;&#58; dest &#34;title&#34;</tt></p>",
