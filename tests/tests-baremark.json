@@ -495,6 +495,10 @@
     "data": "* xx \t\n* yy \t",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>* BULLET</tt> space/tab at end-of-line"
+  }, {
+    "data": "* foo\n-----\n",
+    "want": "<ul><li>foo</li></ul>\n\n<p>-----</p>",
+    "name": "<tt class=multi>* BULLET<br>--------</tt> is bullet item, not <tt class=multi>HEADING<br>-------</tt>"
   },
   "<tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>", {
     "data": "1. xx\n2. yy",
