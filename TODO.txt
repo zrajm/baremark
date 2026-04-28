@@ -103,7 +103,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/25] Features
+* [0/27] Features
 ** TODO `*ITALIC*` and bullet `* BULLET`                                :BUG:
    When a bullet list is written in condensed form, `*ITALIC*` will sometimes
    mess with the bullet.
@@ -181,9 +181,13 @@
    bar">
    ----------------------------------------
    Will have its <space>s removed by the line-ending normalization.
+** TODO Allow <...> around URL in `[LABEL]: URL "TITLE"`
 ** TODO Support fenced code blocks with `~~~`
    https://spec.commonmark.org/0.31.2/#code-fence
    https://spec.commonmark.org/0.31.2/#example-120
+** TODO Fenced code blocks should allow variable number of `
+   Ending fence should have at least same length as start fence, but
+   possibly longer (CommonMark example 124).
 ** TODO Support info string for fenced code blocks
    https://spec.commonmark.org/0.31.2/#info-string
 ** TODO Only use `<h1>` once on a page (for page title)

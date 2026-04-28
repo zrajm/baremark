@@ -2,21 +2,21 @@
   "Tabs <span class=note>(Baremark does not consider tab a space character)</span>",
   {
     "data": "\tfoo\tbaz\t\tbim\n",
-    "want": "<pre><tt>foo\tbaz\t\tbim\n</tt></pre>",
+    "want": "<pre>foo\tbaz\t\tbim</pre>",
     "spec": "<pre><code>foo\tbaz\t\tbim\n</code></pre>\n",
     "name": "Test 1: <tt>⭲foo⭲baz⭲⭲bim↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "  \tfoo\tbaz\t\tbim\n",
-    "want": "<pre><tt>foo\tbaz\t\tbim\n</tt></pre>",
+    "want": "<pre>foo\tbaz\t\tbim</pre>",
     "spec": "<pre><code>foo\tbaz\t\tbim\n</code></pre>\n",
     "name": "Test 2: <tt>␣␣⭲foo⭲baz⭲⭲bim↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "    a\ta\n    ὐ\ta\n",
-    "want": "<pre><tt>a\ta\nὐ\ta\n</tt></pre>",
+    "want": "<pre>a\ta\nὐ\ta</pre>",
     "spec": "<pre><code>a\ta\nὐ\ta\n</code></pre>\n",
     "name": "Test 3: <tt>␣␣␣␣a⭲a↲␣␣␣␣ὐ⭲a↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -26,32 +26,32 @@
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
     "spec": "<ul>\n<li>\n<p>foo</p>\n<p>bar</p>\n</li>\n</ul>\n",
     "name": "Test 4: <tt>␣␣- foo↲↲⭲bar↲</tt>",
-    "skip": "Baremark lists must be unindented"
+    "skip": "Baremark tags must be unindented: lists"
   },
   {
     "data": "- foo\n\n\t\tbar\n",
-    "want": "<ul><li>\n\n<p>foo</p>\n\n<pre><tt>  bar\n</tt></pre>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>foo</p>\n\n<pre>  bar</pre>\n\n</li></ul>",
     "spec": "<ul>\n<li>\n<p>foo</p>\n<pre><code>  bar\n</code></pre>\n</li>\n</ul>\n",
     "name": "Test 5: <tt>- foo↲↲⭲⭲bar↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": ">\t\tfoo\n",
-    "want": "<blockquote>\n\n<pre><tt>  foo\n</tt></pre>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<pre>  foo</pre>\n\n</blockquote>",
     "spec": "<blockquote>\n<pre><code>  foo\n</code></pre>\n</blockquote>\n",
     "name": "Test 6: <tt>&gt;⭲⭲foo↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "-\t\tfoo\n",
-    "want": "<ul><li>\n\n<pre><tt>  foo\n</tt></pre>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<pre>  foo</pre>\n\n</li></ul>",
     "spec": "<ul>\n<li>\n<pre><code>  foo\n</code></pre>\n</li>\n</ul>\n",
     "name": "Test 7: <tt>-⭲⭲foo↲</tt>",
     "skip": "Baremark tabs cannot be used as space"
   },
   {
     "data": "    foo\n\tbar\n",
-    "want": "<pre><tt>foo\nbar\n</tt></pre>",
+    "want": "<pre>foo\nbar</pre>",
     "spec": "<pre><code>foo\nbar\n</code></pre>\n",
     "name": "Test 8: <tt>␣␣␣␣foo↲⭲bar↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -61,7 +61,7 @@
     "want": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz</li></ul>\n\n</li></ul>\n\n</li></ul>",
     "spec": "<ul>\n<li>foo\n<ul>\n<li>bar\n<ul>\n<li>baz</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n",
     "name": "Test 9: <tt>␣- foo↲␣␣␣- bar↲⭲␣- baz↲</tt>",
-    "skip": "Baremark lists must be unindented"
+    "skip": "Baremark tags must be unindented: lists"
   },
   {
     "data": "#\tFoo\n",
@@ -128,10 +128,10 @@
   },
   {
     "data": "~~~\n\\[\\]\n~~~\n",
-    "want": "<pre><tt>\\[\\]\n</tt></pre>",
+    "want": "<pre>\\[\\]</pre>",
     "spec": "<pre><code>\\[\\]\n</code></pre>\n",
     "name": "Test 19: <tt>~~~↲&#92;[&#92;]↲~~~↲</tt>",
-    "FIXME": "Add fenced code blocks with <tt>~~~</tt>"
+    "FIXME": "Add tilde code blocks"
   },
   {
     "data": "<https://example.com?find=\\*>\n",
@@ -323,11 +323,11 @@
     "data": " ***\n\n  ***\n\n   ***\n",
     "want": "<hr>\n\n<hr>\n\n<hr>",
     "name": "Test 47x: <tt>␣***↲↲␣␣***↲↲␣␣␣***↲</tt>",
-    "skip": "Baremark doesn’t support indented dinkus"
+    "skip": "Baremark tags must be unindented: dinkus"
   },
   {
     "data": "    ***\n",
-    "want": "<pre><tt>***\n</tt></pre>",
+    "want": "<pre>***</pre>",
     "spec": "<pre><code>***\n</code></pre>\n",
     "name": "Test 48: <tt>␣␣␣␣***↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -349,7 +349,7 @@
     "want": "<hr>",
     "spec": "<hr />\n",
     "name": "Test 51: <tt>␣- - -↲</tt>",
-    "skip": "Baremark doesn’t support indented dinkus"
+    "skip": "Baremark tags must be unindented: dinkus"
   },
   {
     "data": "- - -\n",
@@ -361,7 +361,7 @@
     "want": "<hr>",
     "spec": "<hr />\n",
     "name": "Test 52: <tt>␣**␣␣* ** * ** * **↲</tt>",
-    "skip": "Baremark doesn’t support indented dinkus"
+    "skip": "Baremark tags must be unindented: dinkus"
   },
   {
     "data": "**  * ** * ** * **\n",
@@ -392,7 +392,7 @@
     "want": "<p><i>-</i></p>",
     "spec": "<p><em>-</em></p>\n",
     "name": "Test 56: <tt>␣*-*↲</tt>",
-    "skip": "Baremark doesn’t support indented dinkus"
+    "skip": "Baremark tags must be unindented: dinkus"
   },
   {
     "data": "*-*\n",
@@ -501,7 +501,7 @@
   },
   {
     "data": "    # foo\n",
-    "want": "<pre><tt># foo\n</tt></pre>",
+    "want": "<pre># foo</pre>",
     "spec": "<pre><code># foo\n</code></pre>\n",
     "name": "Test 69: <tt>␣␣␣␣# foo↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -603,11 +603,11 @@
     "want": "<h2>Foo</h2>\n\n\n<h2>Foo</h2>\n\n\n<h1>Foo</h1>",
     "spec": "<h2>Foo</h2>\n<h2>Foo</h2>\n<h1>Foo</h1>\n",
     "name": "Test 84: <tt>␣␣␣Foo↲---↲↲␣␣Foo↲-----↲↲␣␣Foo↲␣␣===↲</tt>",
-    "skip": "Baremark <tt class=multi>HEADING 1<br>=========</tt> underline must not be indented."
+    "skip": "Baremark tags must be unindented: <tt class=multi>HEADING<br>-------</tt> underline"
   },
   {
     "data": "    Foo\n    ---\n\n    Foo\n---\n",
-    "want": "<pre><tt>Foo\n---\n\nFoo\n</tt></pre>\n\n<hr>",
+    "want": "<pre>Foo\n---\n\nFoo</pre>\n\n<hr>",
     "spec": "<pre><code>Foo\n---\n\nFoo\n</code></pre>\n<hr />\n",
     "name": "Test 85: <tt>␣␣␣␣Foo↲␣␣␣␣---↲↲␣␣␣␣Foo↲---↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -617,14 +617,14 @@
     "want": "<h2>Foo</h2>",
     "spec": "<h2>Foo</h2>\n",
     "name": "Test 86: <tt>Foo↲␣␣␣----␣␣␣␣␣␣↲</tt>",
-    "skip": "Baremark <tt class=multi>HEADING 2<br>---------</tt> underline must not be indented."
+    "skip": "Baremark tags must be unindented: <tt class=multi>HEADING<br>-------</tt> underline"
   },
   {
     "data": "Foo\n    ---\n",
     "want": "<p>Foo\n---</p>",
     "spec": "<p>Foo\n---</p>\n",
     "name": "Test 87: <tt>Foo↲␣␣␣␣---↲</tt>",
-    "skip": "Baremark <tt class=multi>HEADING 2<br>---------</tt> underline must not be indented."
+    "skip": "Baremark tags must be unindented: <tt class=multi>HEADING<br>-------</tt> underline"
   },
   {
     "data": "Foo\n= =\n\nFoo\n--- -\n",
@@ -664,21 +664,21 @@
     "want": "<blockquote>\n\n<p>Foo</p>\n\n</blockquote>\n\n\n<hr>",
     "spec": "<blockquote>\n<p>Foo</p>\n</blockquote>\n<hr />\n",
     "name": "Test 92: <tt>&gt; Foo↲---↲</tt>",
-    "skip": "Baremark allows <tt class=multi>HEADING<br>-------</tt> using lazy continuation line"
+    "skip": "Baremark allows <tt class=multi>HEADING<br>-------</tt> with lazy continuation line"
   },
   {
     "data": "> foo\nbar\n===\n",
     "want": "<blockquote>\n\n<p>foo\nbar\n===</p>\n\n</blockquote>",
     "spec": "<blockquote>\n<p>foo\nbar\n===</p>\n</blockquote>\n",
     "name": "Test 93: <tt>&gt; foo↲bar↲===↲</tt>",
-    "skip": "Baremark allows <tt class=multi>HEADING<br>-------</tt> using lazy continuation line"
+    "skip": "Baremark allows <tt class=multi>HEADING<br>=======</tt> with lazy continuation line"
   },
   {
     "data": "- Foo\n---\n",
     "want": "<ul><li>Foo</li></ul>\n\n<hr>",
     "spec": "<ul>\n<li>Foo</li>\n</ul>\n<hr />\n",
     "name": "Test 94: <tt>- Foo↲---↲</tt>",
-    "skip": "Baremark allows <tt class=multi>HEADING<br>-------</tt> using lazy continuation line"
+    "skip": "Baremark allows <tt class=multi>HEADING<br>-------</tt> with lazy continuation line"
   },
   {
     "data": "Foo\nBar\n---\n",
@@ -733,7 +733,7 @@
   },
   {
     "data": "    foo\n---\n",
-    "want": "<pre><tt>foo\n</tt></pre>\n\n<hr>",
+    "want": "<pre>foo</pre>\n\n<hr>",
     "spec": "<pre><code>foo\n</code></pre>\n<hr />\n",
     "name": "Test 100: <tt>␣␣␣␣foo↲---↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -743,7 +743,7 @@
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>\n\n\n<hr>",
     "spec": "<blockquote>\n<p>foo</p>\n</blockquote>\n<hr />\n",
     "name": "Test 101: <tt>&gt; foo↲-----↲</tt>",
-    "skip": "Baremark allows <tt class=multi>HEADING<br>-------</tt> using lazy continuation line"
+    "skip": "Baremark allows <tt class=multi>HEADING<br>-------</tt> with lazy continuation line"
   },
   {
     "data": "\\> foo\n------\n",
@@ -792,7 +792,7 @@
   "Indented Code Blocks <span class=note>(Baremark doesn’t support indented code blocks)</span>",
   {
     "data": "    a simple\n      indented code block\n",
-    "want": "<pre><tt>a simple\n  indented code block\n</tt></pre>",
+    "want": "<pre>a simple\n  indented code block</pre>",
     "spec": "<pre><code>a simple\n  indented code block\n</code></pre>\n",
     "name": "Test 107: <tt>␣␣␣␣a simple↲␣␣␣␣␣␣indented code block↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -802,32 +802,32 @@
     "want": "<ul><li>\n\n<p>foo</p>\n\n<p>bar</p>\n\n</li></ul>",
     "spec": "<ul>\n<li>\n<p>foo</p>\n<p>bar</p>\n</li>\n</ul>\n",
     "name": "Test 108: <tt>␣␣- foo↲↲␣␣␣␣bar↲</tt>",
-    "skip": "Baremark doesn’t support indented <tt>* BULLET</tt> items"
+    "skip": "Baremark tags must be unindented: <tt>* BULLET</tt>"
   },
   {
     "data": "1.  foo\n\n    - bar\n",
     "want": "<ol><li>\n\n<p>foo</p>\n\n<ul><li>bar</li></ul>\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<p>foo</p>\n<ul>\n<li>bar</li>\n</ul>\n</li>\n</ol>\n",
     "name": "Test 109: <tt>1.␣␣foo↲↲␣␣␣␣- bar↲</tt>",
-    "skip": "Baremark doesn’t support indented <tt>1. NUMBER</tt> items"
+    "skip": "Baremark tags must be unindented: <tt>1. NUMBER</tt>"
   },
   {
     "data": "    <a/>\n    *hi*\n\n    - one\n",
-    "want": "<pre><tt>&#60;a/&#62;\n*hi*\n\n- one\n</tt></pre>",
+    "want": "<pre>&#60;a/&#62;\n*hi*\n\n- one</pre>",
     "spec": "<pre><code>&lt;a/&gt;\n*hi*\n\n- one\n</code></pre>\n",
     "name": "Test 110: <tt>␣␣␣␣&lt;a/&gt;↲␣␣␣␣*hi*↲↲␣␣␣␣- one↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "    chunk1\n\n    chunk2\n  \n \n \n    chunk3\n",
-    "want": "<pre><tt>chunk1\n\nchunk2\n\n\n\nchunk3\n</tt></pre>",
+    "want": "<pre>chunk1\n\nchunk2\n\n\n\nchunk3</pre>",
     "spec": "<pre><code>chunk1\n\nchunk2\n\n\n\nchunk3\n</code></pre>\n",
     "name": "Test 111: <tt>␣␣␣␣chunk1↲↲␣␣␣␣chunk2↲␣␣↲␣↲␣↲␣␣␣␣chunk3↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "    chunk1\n      \n      chunk2\n",
-    "want": "<pre><tt>chunk1\n  \n  chunk2\n</tt></pre>",
+    "want": "<pre>chunk1\n  \n  chunk2</pre>",
     "spec": "<pre><code>chunk1\n  \n  chunk2\n</code></pre>\n",
     "name": "Test 112: <tt>␣␣␣␣chunk1↲␣␣␣␣␣␣↲␣␣␣␣␣␣chunk2↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -841,7 +841,7 @@
   },
   {
     "data": "    foo\nbar\n",
-    "want": "<pre><tt>foo\n</tt></pre>\n\n<p>bar</p>",
+    "want": "<pre>foo</pre>\n\n<p>bar</p>",
     "spec": "<pre><code>foo\n</code></pre>\n<p>bar</p>\n",
     "name": "Test 114: <tt>␣␣␣␣foo↲bar↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -855,7 +855,7 @@
   },
   {
     "data": "        foo\n    bar\n",
-    "want": "<pre><tt>    foo\nbar\n</tt></pre>",
+    "want": "<pre>    foo\nbar</pre>",
     "spec": "<pre><code>    foo\nbar\n</code></pre>\n",
     "name": "Test 116: <tt>␣␣␣␣␣␣␣␣foo↲␣␣␣␣bar↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -869,7 +869,7 @@
   },
   {
     "data": "    foo  \n",
-    "want": "<pre><tt>foo  \n</tt></pre>",
+    "want": "<pre>foo  </pre>",
     "spec": "<pre><code>foo  \n</code></pre>\n",
     "name": "Test 118: <tt>␣␣␣␣foo␣␣↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -877,15 +877,16 @@
   "<tt class=multi>```<br>CODEBLOCK<br>```</tt>",
   {
     "data": "```\n<\n >\n```\n",
-    "want": "<pre><tt>&#60;\n &#62;\n</tt></pre>",
+    "want": "<pre>&#60;&#10; &#62;</pre>",
     "spec": "<pre><code>&lt;\n &gt;\n</code></pre>\n",
     "name": "Test 119: <tt>```↲&lt;↲␣&gt;↲```↲</tt>"
   },
   {
     "data": "~~~\n<\n >\n~~~\n",
-    "want": "<pre><tt>&#60;\n &#62;\n</tt></pre>",
+    "want": "<pre>&#60;&#10; &#62;</pre>",
     "spec": "<pre><code>&lt;\n &gt;\n</code></pre>\n",
-    "name": "Test 120: <tt>~~~↲&lt;↲␣&gt;↲~~~↲</tt>"
+    "name": "Test 120: <tt>~~~↲&lt;↲␣&gt;↲~~~↲</tt>",
+    "FIXME": "Add tilde code blocks"
   },
   {
     "data": "``\nfoo\n``\n",
@@ -895,100 +896,137 @@
   },
   {
     "data": "```\naaa\n~~~\n```\n",
-    "want": "<pre><tt>aaa\n~~~\n</tt></pre>",
+    "want": "<pre>aaa&#10;&#126;&#126;&#126;</pre>",
     "spec": "<pre><code>aaa\n~~~\n</code></pre>\n",
     "name": "Test 122: <tt>```↲aaa↲~~~↲```↲</tt>"
   },
   {
     "data": "~~~\naaa\n```\n~~~\n",
-    "want": "<pre><tt>aaa\n```\n</tt></pre>",
+    "want": "<pre>aaa&#10;```</pre>",
     "spec": "<pre><code>aaa\n```\n</code></pre>\n",
-    "name": "Test 123: <tt>~~~↲aaa↲```↲~~~↲</tt>"
+    "name": "Test 123: <tt>~~~↲aaa↲```↲~~~↲</tt>",
+    "FIXME": "Add tilde code blocks"
   },
   {
     "data": "````\naaa\n```\n``````\n",
-    "want": "<pre><tt>aaa\n```\n</tt></pre>",
+    "want": "<pre>aaa&#10;```</pre>",
     "spec": "<pre><code>aaa\n```\n</code></pre>\n",
-    "name": "Test 124: <tt>````↲aaa↲```↲``````↲</tt>"
+    "name": "Test 124: <tt>````↲aaa↲```↲``````↲</tt>",
+    "FIXME": "Add variable number of backticks for code blocks"
   },
   {
     "data": "~~~~\naaa\n~~~\n~~~~\n",
-    "want": "<pre><tt>aaa\n~~~\n</tt></pre>",
+    "want": "<pre>aaa&#10;~~~</pre>",
     "spec": "<pre><code>aaa\n~~~\n</code></pre>\n",
-    "name": "Test 125: <tt>~~~~↲aaa↲~~~↲~~~~↲</tt>"
+    "name": "Test 125: <tt>~~~~↲aaa↲~~~↲~~~~↲</tt>",
+    "FIXME": "Add tilde code blocks"
   },
   {
     "data": "```\n",
-    "want": "<pre><tt></tt></pre>",
+    "want": "<pre></pre>",
     "spec": "<pre><code></code></pre>\n",
-    "name": "Test 126: <tt>```↲</tt>"
+    "name": "Test 126: <tt>```↲</tt>",
+    "skip": "Baremark doesn’t support unterminated <tt>```↲CODEBLOCK↲```</tt>"
   },
   {
     "data": "`````\n\n```\naaa\n",
-    "want": "<pre><tt>\n```\naaa\n</tt></pre>",
+    "want": "<pre>&#10;```&#10;aaa</pre>",
     "spec": "<pre><code>\n```\naaa\n</code></pre>\n",
-    "name": "Test 127: <tt>`````↲↲```↲aaa↲</tt>"
+    "name": "Test 127: <tt>`````↲↲```↲aaa↲</tt>",
+    "skip": "Baremark doesn’t support unterminated <tt>```↲CODEBLOCK↲```</tt>"
   },
   {
     "data": "> ```\n> aaa\n\nbbb\n",
-    "want": "<blockquote>\n\n<pre><tt>aaa\n</tt></pre>\n\n</blockquote>\n\n\n<p>bbb</p>",
+    "want": "<blockquote>\n\n<pre>aaa</pre>\n\n</blockquote>\n\n\n<p>bbb</p>",
     "spec": "<blockquote>\n<pre><code>aaa\n</code></pre>\n</blockquote>\n<p>bbb</p>\n",
-    "name": "Test 128: <tt>&gt; ```↲&gt; aaa↲↲bbb↲</tt>"
+    "name": "Test 128: <tt>&gt; ```↲&gt; aaa↲↲bbb↲</tt>",
+    "skip": "Baremark doesn’t support unterminated <tt>```↲CODEBLOCK↲```</tt>"
   },
   {
     "data": "```\n\n  \n```\n",
-    "want": "<pre><tt>\n  \n</tt></pre>",
+    "want": "<pre>&#10;</pre>",
     "spec": "<pre><code>\n  \n</code></pre>\n",
     "name": "Test 129: <tt>```↲↲␣␣↲```↲</tt>"
   },
   {
     "data": "```\n```\n",
-    "want": "<pre><tt></tt></pre>",
+    "want": "<pre></pre>",
     "spec": "<pre><code></code></pre>\n",
-    "name": "Test 130: <tt>```↲```↲</tt>"
+    "name": "Test 130: <tt>```↲```↲</tt>",
+    "skip": "Baremark ignores empty code blocks"
   },
   {
     "data": " ```\n aaa\naaa\n```\n",
-    "want": "<pre><tt>aaa\naaa\n</tt></pre>",
+    "want": " <pre> aaa&#10;aaa</pre>",
     "spec": "<pre><code>aaa\naaa\n</code></pre>\n",
-    "name": "Test 131: <tt>␣```↲␣aaa↲aaa↲```↲</tt>"
+    "name": "Test 131: <tt>␣```↲␣aaa↲aaa↲```↲</tt>",
+    "skip": "Baremark tags must be unindented: <tt>```↲CODEBLOCK↲```</tt>"
+  },
+  {
+    "data": "```\n aaa\naaa\n```\n",
+    "want": "<pre> aaa&#10;aaa</pre>",
+    "spec": "<pre><code>aaa\naaa\n</code></pre>\n",
+    "name": "Test 131x: <tt>```↲␣aaa↲aaa↲```↲</tt>"
   },
   {
     "data": "  ```\naaa\n  aaa\naaa\n  ```\n",
-    "want": "<pre><tt>aaa\naaa\naaa\n</tt></pre>",
+    "want": "<pre>aaa&#10;aaa&#10;aaa</pre>",
     "spec": "<pre><code>aaa\naaa\naaa\n</code></pre>\n",
-    "name": "Test 132: <tt>␣␣```↲aaa↲␣␣aaa↲aaa↲␣␣```↲</tt>"
+    "name": "Test 132: <tt>␣␣```↲aaa↲␣␣aaa↲aaa↲␣␣```↲</tt>",
+    "skip": "Baremark tags must be unindented: <tt>```↲CODEBLOCK↲```</tt>"
+  },
+  {
+    "data": "```\naaa\n  aaa\naaa\n```\n",
+    "want": "<pre>aaa&#10;  aaa&#10;aaa</pre>",
+    "spec": "<pre><code>aaa\naaa\naaa\n</code></pre>\n",
+    "name": "Test 132x: <tt>```↲aaa↲␣␣aaa↲aaa↲␣␣```↲</tt>"
   },
   {
     "data": "   ```\n   aaa\n    aaa\n  aaa\n   ```\n",
-    "want": "<pre><tt>aaa\n aaa\naaa\n</tt></pre>",
+    "want": "<pre>aaa&#10; aaa&#10;aaa</pre>",
     "spec": "<pre><code>aaa\n aaa\naaa\n</code></pre>\n",
-    "name": "Test 133: <tt>␣␣␣```↲␣␣␣aaa↲␣␣␣␣aaa↲␣␣aaa↲␣␣␣```↲</tt>"
+    "name": "Test 133: <tt>␣␣␣```↲␣␣␣aaa↲␣␣␣␣aaa↲␣␣aaa↲␣␣␣```↲</tt>",
+    "skip": "Baremark tags must be unindented: <tt>```↲CODEBLOCK↲```</tt>"
+  },
+  {
+    "data": "```\n   aaa\n    aaa\n  aaa\n```\n",
+    "want": "<pre>   aaa&#10;    aaa&#10;  aaa</pre>",
+    "spec": "<pre><code>aaa\n aaa\naaa\n</code></pre>\n",
+    "name": "Test 133x: <tt>```↲␣␣␣aaa↲␣␣␣␣aaa↲␣␣aaa↲```↲</tt>"
   },
   {
     "data": "    ```\n    aaa\n    ```\n",
-    "want": "<pre><tt>```\naaa\n```\n</tt></pre>",
+    "want": "<pre>```&#10;aaa&#10;```</pre>",
     "spec": "<pre><code>```\naaa\n```\n</code></pre>\n",
     "name": "Test 134: <tt>␣␣␣␣```↲␣␣␣␣aaa↲␣␣␣␣```↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "```\naaa\n  ```\n",
-    "want": "<pre><tt>aaa\n</tt></pre>",
+    "want": "<pre>aaa</pre>",
     "spec": "<pre><code>aaa\n</code></pre>\n",
-    "name": "Test 135: <tt>```↲aaa↲␣␣```↲</tt>"
+    "name": "Test 135: <tt>```↲aaa↲␣␣```↲</tt>",
+    "skip": "Baremark tags must be unindented: <tt>```↲CODEBLOCK↲```</tt>"
   },
   {
     "data": "   ```\naaa\n  ```\n",
-    "want": "<pre><tt>aaa\n</tt></pre>",
+    "want": "<pre>aaa</pre>",
     "spec": "<pre><code>aaa\n</code></pre>\n",
-    "name": "Test 136: <tt>␣␣␣```↲aaa↲␣␣```↲</tt>"
+    "name": "Test 136: <tt>␣␣␣```↲aaa↲␣␣```↲</tt>",
+    "skip": "Baremark tags must be unindented: <tt>```↲CODEBLOCK↲```</tt>"
+  },
+  {
+    "data": "```\naaa\n```\n",
+    "want": "<pre>aaa</pre>",
+    "spec": "<pre><code>aaa\n</code></pre>\n",
+    "name": "Test 136x: <tt>```↲aaa↲```↲</tt>"
   },
   {
     "data": "```\naaa\n    ```\n",
-    "want": "<pre><tt>aaa\n    ```\n</tt></pre>",
+    "want": "<pre>aaa&#10;    ```</pre>",
     "spec": "<pre><code>aaa\n    ```\n</code></pre>\n",
-    "name": "Test 137: <tt>```↲aaa↲␣␣␣␣```↲</tt>"
+    "name": "Test 137: <tt>```↲aaa↲␣␣␣␣```↲</tt>",
+    "skip": "Baremark tags must be unindented: <tt>```↲CODEBLOCK↲```</tt>"
   },
   {
     "data": "``` ```\naaa\n",
@@ -998,39 +1036,45 @@
   },
   {
     "data": "~~~~~~\naaa\n~~~ ~~\n",
-    "want": "<pre><tt>aaa\n~~~ ~~\n</tt></pre>",
+    "want": "<pre>aaa&#10;~~~ ~~</pre>",
     "spec": "<pre><code>aaa\n~~~ ~~\n</code></pre>\n",
-    "name": "Test 139: <tt>~~~~~~↲aaa↲~~~ ~~↲</tt>"
+    "name": "Test 139: <tt>~~~~~~↲aaa↲~~~ ~~↲</tt>",
+    "skip": "Baremark doesn’t support unterminated <tt>```↲CODEBLOCK↲```</tt>",
+    "FIXME": "Add tilde code blocks"
   },
   {
     "data": "foo\n```\nbar\n```\nbaz\n",
-    "want": "<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n<p>baz</p>",
+    "want": "<p>foo</p>\n\n<pre>bar</pre>\n\n<p>baz</p>",
     "spec": "<p>foo</p>\n<pre><code>bar\n</code></pre>\n<p>baz</p>\n",
     "name": "Test 140: <tt>foo↲```↲bar↲```↲baz↲</tt>"
   },
   {
     "data": "foo\n---\n~~~\nbar\n~~~\n# baz\n",
-    "want": "<h2>foo</h2>\n\n<pre><tt>bar\n</tt></pre>\n\n<h1>baz</h1>",
+    "want": "<h2>foo</h2>\n\n<pre>bar</pre>\n\n<h1>baz</h1>",
     "spec": "<h2>foo</h2>\n<pre><code>bar\n</code></pre>\n<h1>baz</h1>\n",
-    "name": "Test 141: <tt>foo↲---↲~~~↲bar↲~~~↲# baz↲</tt>"
+    "name": "Test 141: <tt>foo↲---↲~~~↲bar↲~~~↲# baz↲</tt>",
+    "FIXME": "Add tilde code blocks"
   },
   {
     "data": "```ruby\ndef foo(x)\n  return 3\nend\n```\n",
-    "want": "<pre><tt class=\"language-ruby\">def foo(x)\n  return 3\nend\n</tt></pre>",
+    "want": "<pre class=\"language-ruby\">def foo(x)\n  return 3\nend\n</pre>",
     "spec": "<pre><code class=\"language-ruby\">def foo(x)\n  return 3\nend\n</code></pre>\n",
-    "name": "Test 142: <tt>```ruby↲def foo(x)↲␣␣return 3↲end↲```↲</tt>"
+    "name": "Test 142: <tt>```ruby↲def foo(x)↲␣␣return 3↲end↲```↲</tt>",
+    "FIXME": "Add info string support for fenced code blocks"
   },
   {
     "data": "~~~~    ruby startline=3 $%@#$\ndef foo(x)\n  return 3\nend\n~~~~~~~\n",
-    "want": "<pre><tt class=\"language-ruby\">def foo(x)\n  return 3\nend\n</tt></pre>",
+    "want": "<pre class=\"language-ruby\">def foo(x)\n  return 3\nend\n</pre>",
     "spec": "<pre><code class=\"language-ruby\">def foo(x)\n  return 3\nend\n</code></pre>\n",
-    "name": "Test 143: <tt>~~~~␣␣␣␣ruby startline=3 $%@#$↲def foo(x)↲␣␣return 3↲end↲~~~~~~~↲</tt>"
+    "name": "Test 143: <tt>~~~~␣␣␣␣ruby startline=3 $%@#$↲def foo(x)↲␣␣return 3↲end↲~~~~~~~↲</tt>",
+    "FIXME": "Add tilde code blocks"
   },
   {
     "data": "````;\n````\n",
-    "want": "<pre><tt class=\"language-;\"></tt></pre>",
+    "want": "<pre class=\"language-;\"></pre>",
     "spec": "<pre><code class=\"language-;\"></code></pre>\n",
-    "name": "Test 144: <tt>````;↲````↲</tt>"
+    "name": "Test 144: <tt>````;↲````↲</tt>",
+    "FIXME": "Add info string support for fenced code blocks"
   },
   {
     "data": "``` aa ```\nfoo\n",
@@ -1040,13 +1084,14 @@
   },
   {
     "data": "~~~ aa ``` ~~~\nfoo\n~~~\n",
-    "want": "<pre><tt class=\"language-aa\">foo\n</tt></pre>",
+    "want": "<pre class=\"language-aa\">foo\n</pre>",
     "spec": "<pre><code class=\"language-aa\">foo\n</code></pre>\n",
-    "name": "Test 146: <tt>~~~ aa ``` ~~~↲foo↲~~~↲</tt>"
+    "name": "Test 146: <tt>~~~ aa ``` ~~~↲foo↲~~~↲</tt>",
+    "FIXME": "Add tilde code blocks"
   },
   {
     "data": "```\n``` aaa\n```\n",
-    "want": "<pre><tt>``` aaa\n</tt></pre>",
+    "want": "<pre>&#96;&#96;&#96; aaa</pre>",
     "spec": "<pre><code>``` aaa\n</code></pre>\n",
     "name": "Test 147: <tt>```↲``` aaa↲```↲</tt>"
   },
@@ -1067,7 +1112,8 @@
     "data": " <div>\n  *hello*\n         <foo><a>\n",
     "want": " <div>\n  *hello*\n         <foo><a>",
     "spec": " <div>\n  *hello*\n         <foo><a>\n",
-    "name": "Test 150: <tt>␣&lt;div&gt;↲␣␣*hello*↲␣␣␣␣␣␣␣␣␣&lt;foo&gt;&lt;a&gt;↲</tt>"
+    "name": "Test 150: <tt>␣&lt;div&gt;↲␣␣*hello*↲␣␣␣␣␣␣␣␣␣&lt;foo&gt;&lt;a&gt;↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "</div>\n*foo*\n",
@@ -1263,15 +1309,17 @@
   },
   {
     "data": "  <!-- foo -->\n\n    <!-- foo -->\n",
-    "want": "  <!-- foo -->\n\n<pre><tt>&#60;!-- foo --&#62;\n</tt></pre>",
+    "want": "  <!-- foo -->\n\n<pre>&#60;!-- foo --&#62;</pre>",
     "spec": "  <!-- foo -->\n<pre><code>&lt;!-- foo --&gt;\n</code></pre>\n",
-    "name": "Test 183: <tt>␣␣&lt;!-- foo --&gt;↲↲␣␣␣␣&lt;!-- foo --&gt;↲</tt>"
+    "name": "Test 183: <tt>␣␣&lt;!-- foo --&gt;↲↲␣␣␣␣&lt;!-- foo --&gt;↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "  <div>\n\n    <div>\n",
-    "want": "  <div>\n\n<pre><tt>&#60;div&#62;\n</tt></pre>",
+    "want": "  <div>\n\n<pre>&#60;div&#62;</pre>",
     "spec": "  <div>\n<pre><code>&lt;div&gt;\n</code></pre>\n",
-    "name": "Test 184: <tt>␣␣&lt;div&gt;↲↲␣␣␣␣&lt;div&gt;↲</tt>"
+    "name": "Test 184: <tt>␣␣&lt;div&gt;↲↲␣␣␣␣&lt;div&gt;↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "Foo\n<div>\nbar\n</div>\n",
@@ -1311,7 +1359,7 @@
   },
   {
     "data": "<table>\n\n  <tr>\n\n    <td>\n      Hi\n    </td>\n\n  </tr>\n\n</table>\n",
-    "want": "<table>\n  <tr>\n\n<pre><tt>&#60;td&#62;\n  Hi\n&#60;/td&#62;\n</tt></pre>\n  </tr>\n\n</table>",
+    "want": "<table>\n  <tr>\n\n<pre>&#60;td&#62;\n  Hi\n&#60;/td&#62;</pre>\n  </tr>\n\n</table>",
     "spec": "<table>\n  <tr>\n<pre><code>&lt;td&gt;\n  Hi\n&lt;/td&gt;\n</code></pre>\n  </tr>\n</table>\n",
     "name": "Test 191: <tt>&lt;table&gt;↲↲␣␣&lt;tr&gt;↲↲␣␣␣␣&lt;td&gt;↲␣␣␣␣␣␣Hi↲␣␣␣␣&lt;/td&gt;↲↲␣␣&lt;/tr&gt;↲↲&lt;/table&gt;↲</tt>"
   },
@@ -1326,7 +1374,8 @@
     "data": "   [foo]: \n      /url  \n           'the title'  \n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"the title\">foo</a></p>",
     "spec": "<p><a href=\"/url\" title=\"the title\">foo</a></p>\n",
-    "name": "Test 193: <tt>␣␣␣[foo]:␣↲␣␣␣␣␣␣/url␣␣↲␣␣␣␣␣␣␣␣␣␣␣'the title'␣␣↲↲[foo]↲</tt>"
+    "name": "Test 193: <tt>␣␣␣[foo]:␣↲␣␣␣␣␣␣/url␣␣↲␣␣␣␣␣␣␣␣␣␣␣'the title'␣␣↲↲[foo]↲</tt>",
+    "FIXME": "Allow newline as separator in <tt>[foo]: /url \"title\"↲↲[foo]↲</tt>"
   },
   {
     "data": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]\n",
@@ -1432,14 +1481,14 @@
   },
   {
     "data": "    [foo]: /url \"title\"\n\n[foo]\n",
-    "want": "<pre><tt>[foo]: /url &quot;title&quot;\n</tt></pre>\n\n<p>[foo]</p>",
+    "want": "<pre>[foo]: /url &quot;title&quot;</pre>\n\n<p>[foo]</p>",
     "spec": "<pre><code>[foo]: /url &quot;title&quot;\n</code></pre>\n<p>[foo]</p>\n",
     "name": "Test 211: <tt>␣␣␣␣[foo]: /url \"title\"↲↲[foo]↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "```\n[foo]: /url\n```\n\n[foo]\n",
-    "want": "<pre><tt>[foo]: /url\n</tt></pre>\n\n<p>[foo]</p>",
+    "want": "<pre>[foo]: /url</pre>\n\n<p>[foo]</p>",
     "spec": "<pre><code>[foo]: /url\n</code></pre>\n<p>[foo]</p>\n",
     "name": "Test 212: <tt>```↲[foo]: /url↲```↲↲[foo]↲</tt>"
   },
@@ -1502,7 +1551,8 @@
     "data": "  aaa\n bbb\n",
     "want": "<p>  aaa\n bbb</p>",
     "spec": "<p>aaa\nbbb</p>\n",
-    "name": "Test 222: <tt>␣␣aaa↲␣bbb↲</tt>"
+    "name": "Test 222: <tt>␣␣aaa↲␣bbb↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "aaa\n             bbb\n                                       ccc\n",
@@ -1514,7 +1564,8 @@
     "data": "   aaa\nbbb\n",
     "want": "<p>   aaa\nbbb</p>",
     "spec": "<p>aaa\nbbb</p>\n",
-    "name": "Test 224: <tt>␣␣␣aaa↲bbb↲</tt>"
+    "name": "Test 224: <tt>␣␣␣aaa↲bbb↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "    aaa\nbbb\n",
@@ -1542,23 +1593,38 @@
     "data": "> # Foo\n> bar\n> baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
     "spec": "<blockquote>\n<h1>Foo</h1>\n<p>bar\nbaz</p>\n</blockquote>\n",
-    "name": "Test 228: <tt>&gt; # Foo↲&gt; bar↲&gt; baz↲</tt>"
+    "name": "Test 228: <tt>&gt; # Foo↲&gt; bar↲&gt; baz↲</tt>",
+    "skip": "Baremark requires blank lines around <tt># HEADING</tt>"
+  },
+  {
+    "data": "> # Foo\n>\n> bar\n> baz\n",
+    "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
+    "spec": "<blockquote>\n<h1>Foo</h1>\n<p>bar\nbaz</p>\n</blockquote>\n",
+    "name": "Test 228x: <tt>&gt; # Foo↲&gt;↲&gt; bar↲&gt; baz↲</tt>"
   },
   {
     "data": "># Foo\n>bar\n> baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
     "spec": "<blockquote>\n<h1>Foo</h1>\n<p>bar\nbaz</p>\n</blockquote>\n",
-    "name": "Test 229: <tt>&gt;# Foo↲&gt;bar↲&gt; baz↲</tt>"
+    "name": "Test 229: <tt>&gt;# Foo↲&gt;bar↲&gt; baz↲</tt>",
+    "skip": "Baremark requires blank lines around <tt># HEADING</tt>"
+  },
+  {
+    "data": "># Foo\n>\n>bar\n> baz\n",
+    "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
+    "spec": "<blockquote>\n<h1>Foo</h1>\n<p>bar\nbaz</p>\n</blockquote>\n",
+    "name": "Test 229x: <tt>&gt;# Foo↲&gt;↲&gt;bar↲&gt; baz↲</tt>"
   },
   {
     "data": "   > # Foo\n   > bar\n > baz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
     "spec": "<blockquote>\n<h1>Foo</h1>\n<p>bar\nbaz</p>\n</blockquote>\n",
-    "name": "Test 230: <tt>␣␣␣&gt; # Foo↲␣␣␣&gt; bar↲␣&gt; baz↲</tt>"
+    "name": "Test 230: <tt>␣␣␣&gt; # Foo↲␣␣␣&gt; bar↲␣&gt; baz↲</tt>",
+    "skip": "Baremark tags must be unindented: <tt>&gt; BLOCKQUOTE</tt>"
   },
   {
     "data": "    > # Foo\n    > bar\n    > baz\n",
-    "want": "<pre><tt>&#62; # Foo\n&#62; bar\n&#62; baz\n</tt></pre>",
+    "want": "<pre>&#62; # Foo\n&#62; bar\n&#62; baz</pre>",
     "spec": "<pre><code>&gt; # Foo\n&gt; bar\n&gt; baz\n</code></pre>\n",
     "name": "Test 231: <tt>␣␣␣␣&gt; # Foo↲␣␣␣␣&gt; bar↲␣␣␣␣&gt; baz↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -1567,7 +1633,14 @@
     "data": "> # Foo\n> bar\nbaz\n",
     "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
     "spec": "<blockquote>\n<h1>Foo</h1>\n<p>bar\nbaz</p>\n</blockquote>\n",
-    "name": "Test 232: <tt>&gt; # Foo↲&gt; bar↲baz↲</tt>"
+    "name": "Test 232: <tt>&gt; # Foo↲&gt; bar↲baz↲</tt>",
+    "skip": "Baremark requires blank lines around <tt># HEADING</tt>"
+  },
+  {
+    "data": "> # Foo\n>\n> bar\nbaz\n",
+    "want": "<blockquote>\n\n<h1>Foo</h1>\n\n<p>bar\nbaz</p>\n\n</blockquote>",
+    "spec": "<blockquote>\n<h1>Foo</h1>\n<p>bar\nbaz</p>\n</blockquote>\n",
+    "name": "Test 232x: <tt>&gt; # Foo↲&gt;↲&gt; bar↲baz↲</tt>"
   },
   {
     "data": "> bar\nbaz\n> foo\n",
@@ -1579,41 +1652,62 @@
     "data": "> foo\n---\n",
     "want": "<blockquote>\n\n<p>foo</p>\n\n</blockquote>\n\n\n<hr>",
     "spec": "<blockquote>\n<p>foo</p>\n</blockquote>\n<hr />\n",
-    "name": "Test 234: <tt>&gt; foo↲---↲</tt>"
+    "name": "Test 234: <tt>&gt; foo↲---↲</tt>",
+    "skip": "Baremark allows <tt class=multi>HEADING<br>-------</tt> with lazy continuation line"
+  },
+  {
+    "data": "> foo\n---\n",
+    "want": "<blockquote>\n\n<h2>foo</h2>\n\n</blockquote>",
+    "spec": "<blockquote>\n<p>foo</p>\n</blockquote>\n<hr />\n",
+    "name": "Test 234x: <tt>&gt; foo↲---↲</tt>"
   },
   {
     "data": "> - foo\n- bar\n",
     "want": "<blockquote>\n\n<ul><li>foo</li></ul>\n\n</blockquote>\n\n\n<ul><li>bar</li></ul>",
     "spec": "<blockquote>\n<ul>\n<li>foo</li>\n</ul>\n</blockquote>\n<ul>\n<li>bar</li>\n</ul>\n",
-    "name": "Test 235: <tt>&gt; - foo↲- bar↲</tt>"
+    "name": "Test 235: <tt>&gt; - foo↲- bar↲</tt>",
+    "skip": "Baremark allows <tt>- BULLET</tt> with lazy continuation line"
+  },
+  {
+    "data": "> - foo\n- bar\n",
+    "want": "<blockquote>\n\n<ul><li>foo</li><li>bar</li></ul>\n\n</blockquote>",
+    "spec": "<blockquote>\n<ul>\n<li>foo</li>\n</ul>\n</blockquote>\n<ul>\n<li>bar</li>\n</ul>\n",
+    "name": "Test 235x: <tt>&gt; - foo↲- bar↲</tt>"
   },
   {
     "data": ">     foo\n    bar\n",
-    "want": "<blockquote>\n\n<pre><tt>foo\n</tt></pre>\n\n</blockquote>\n\n\n<pre><tt>bar\n</tt></pre>",
+    "want": "<blockquote>\n\n<pre>foo</pre>\n\n</blockquote>\n\n\n<pre>bar</pre>",
     "spec": "<blockquote>\n<pre><code>foo\n</code></pre>\n</blockquote>\n<pre><code>bar\n</code></pre>\n",
-    "name": "Test 236: <tt>&gt;␣␣␣␣␣foo↲␣␣␣␣bar↲</tt>"
+    "name": "Test 236: <tt>&gt;␣␣␣␣␣foo↲␣␣␣␣bar↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "> ```\nfoo\n```\n",
-    "want": "<blockquote>\n\n<pre><tt></tt></pre>\n\n</blockquote>\n\n\n<p>foo</p>\n\n<pre><tt></tt></pre>",
+    "want": "<blockquote>\n\n<pre></pre>\n\n</blockquote>\n\n\n<p>foo</p>\n\n<pre></pre>",
     "spec": "<blockquote>\n<pre><code></code></pre>\n</blockquote>\n<p>foo</p>\n<pre><code></code></pre>\n",
-    "name": "Test 237: <tt>&gt; ```↲foo↲```↲</tt>"
+    "name": "Test 237: <tt>&gt; ```↲foo↲```↲</tt>",
+    "skip": "Baremark allows <tt class=multi>```<br>CODEBLOCK<br>```</tt> with lazy continuation line"
+  },
+  {
+    "data": "> ```\nfoo\n```\n",
+    "want": "<blockquote>\n\n<pre>foo</pre>\n\n</blockquote>",
+    "name": "Test 237x: <tt>&gt; ```↲foo↲```↲</tt>"
   },
   {
     "data": "> foo\n    - bar\n",
-    "want": "<blockquote>\n\n<p>foo\n- bar</p>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<p>foo\n    - bar</p>\n\n</blockquote>",
     "spec": "<blockquote>\n<p>foo\n- bar</p>\n</blockquote>\n",
     "name": "Test 238: <tt>&gt; foo↲␣␣␣␣- bar↲</tt>"
   },
   {
     "data": ">\n",
-    "want": "<blockquote>\n\n</blockquote>",
+    "want": "<blockquote>\n\n\n\n</blockquote>",
     "spec": "<blockquote>\n</blockquote>\n",
     "name": "Test 239: <tt>&gt;↲</tt>"
   },
   {
     "data": ">\n>  \n> \n",
-    "want": "<blockquote>\n\n</blockquote>",
+    "want": "<blockquote>\n\n\n\n</blockquote>",
     "spec": "<blockquote>\n</blockquote>\n",
     "name": "Test 240: <tt>&gt;↲&gt;␣␣↲&gt;␣↲</tt>"
   },
@@ -1649,6 +1743,12 @@
     "skip": "Baremark <tt>&#62; BLOCKQUOTE</tt> must have leading blank line"
   },
   {
+    "data": "foo\n\n> bar\n",
+    "want": "<p>foo</p>\n\n<blockquote>\n\n<p>bar</p>\n\n</blockquote>",
+    "spec": "<p>foo</p>\n<blockquote>\n<p>bar</p>\n</blockquote>\n",
+    "name": "Test 245x: <tt>foo↲↲&gt; bar↲</tt>"
+  },
+  {
     "data": "> aaa\n***\n> bbb\n",
     "want": "<blockquote>\n\n<p>aaa</p>\n\n</blockquote>\n\n\n<hr>\n\n<blockquote>\n\n<p>bbb</p>\n\n</blockquote>",
     "spec": "<blockquote>\n<p>aaa</p>\n</blockquote>\n<hr />\n<blockquote>\n<p>bbb</p>\n</blockquote>\n",
@@ -1672,7 +1772,7 @@
     "want": "<blockquote>\n\n<p>bar</p>\n\n</blockquote>\n\n\n<p>baz</p>",
     "spec": "<blockquote>\n<p>bar</p>\n</blockquote>\n<p>baz</p>\n",
     "name": "Test 249: <tt>&gt; bar↲&gt;↲baz↲</tt>",
-    "skip": "Baremark allows <tt>&#62; BLOCKQUOTE</tt> using lazy continuation line"
+    "skip": "Baremark allows <tt>&#62; BLOCKQUOTE</tt> with lazy continuation line"
   },
   {
     "data": "> > > foo\nbar\n",
@@ -1688,7 +1788,7 @@
   },
   {
     "data": ">     code\n\n>    not code\n",
-    "want": "<blockquote>\n\n<pre><tt>code\n</tt></pre>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>not code</p>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<pre>code</pre>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>not code</p>\n\n</blockquote>",
     "spec": "<blockquote>\n<pre><code>code\n</code></pre>\n</blockquote>\n<blockquote>\n<p>not code</p>\n</blockquote>\n",
     "name": "Test 252: <tt>&gt;␣␣␣␣␣code↲↲&gt;␣␣␣␣not code↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
@@ -1696,15 +1796,17 @@
   "List Items",
   {
     "data": "A paragraph\nwith two lines.\n\n    indented code\n\n> A block quote.\n",
-    "want": "<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>",
+    "want": "<p>A paragraph\nwith two lines.</p>\n\n<pre>indented code</pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>",
     "spec": "<p>A paragraph\nwith two lines.</p>\n<pre><code>indented code\n</code></pre>\n<blockquote>\n<p>A block quote.</p>\n</blockquote>\n",
-    "name": "Test 253: <tt>A paragraph↲with two lines.↲↲␣␣␣␣indented code↲↲&gt; A block quote.↲</tt>"
+    "name": "Test 253: <tt>A paragraph↲with two lines.↲↲␣␣␣␣indented code↲↲&gt; A block quote.↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "1.  A paragraph\n    with two lines.\n\n        indented code\n\n    > A block quote.\n",
-    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
+    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre>indented code</pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<p>A paragraph\nwith two lines.</p>\n<pre><code>indented code\n</code></pre>\n<blockquote>\n<p>A block quote.</p>\n</blockquote>\n</li>\n</ol>\n",
-    "name": "Test 254: <tt>1.␣␣A paragraph↲␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣&gt; A block quote.↲</tt>"
+    "name": "Test 254: <tt>1.␣␣A paragraph↲␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣&gt; A block quote.↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "- one\n\n two\n",
@@ -1720,21 +1822,24 @@
   },
   {
     "data": " -    one\n\n     two\n",
-    "want": "<ul><li>one</li></ul>\n\n<pre><tt> two\n</tt></pre>",
+    "want": "<ul><li>one</li></ul>\n\n<pre> two</pre>",
     "spec": "<ul>\n<li>one</li>\n</ul>\n<pre><code> two\n</code></pre>\n",
-    "name": "Test 257: <tt>␣-␣␣␣␣one↲↲␣␣␣␣␣two↲</tt>"
+    "name": "Test 257: <tt>␣-␣␣␣␣one↲↲␣␣␣␣␣two↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": " -    one\n\n      two\n",
     "want": "<ul><li>\n\n<p>one</p>\n\n<p>two</p>\n\n</li></ul>",
     "spec": "<ul>\n<li>\n<p>one</p>\n<p>two</p>\n</li>\n</ul>\n",
-    "name": "Test 258: <tt>␣-␣␣␣␣one↲↲␣␣␣␣␣␣two↲</tt>"
+    "name": "Test 258: <tt>␣-␣␣␣␣one↲↲␣␣␣␣␣␣two↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "   > > 1.  one\n>>\n>>     two\n",
     "want": "<blockquote>\n\n<blockquote>\n\n<ol><li>\n\n<p>one</p>\n\n<p>two</p>\n\n</li></ol>\n\n</blockquote>\n\n</blockquote>",
     "spec": "<blockquote>\n<blockquote>\n<ol>\n<li>\n<p>one</p>\n<p>two</p>\n</li>\n</ol>\n</blockquote>\n</blockquote>\n",
-    "name": "Test 259: <tt>␣␣␣&gt; &gt; 1.␣␣one↲&gt;&gt;↲&gt;&gt;␣␣␣␣␣two↲</tt>"
+    "name": "Test 259: <tt>␣␣␣&gt; &gt; 1.␣␣one↲&gt;&gt;↲&gt;&gt;␣␣␣␣␣two↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": ">>- one\n>>\n  >  > two\n",
@@ -1756,13 +1861,14 @@
   },
   {
     "data": "1.  foo\n\n    ```\n    bar\n    ```\n\n    baz\n\n    > bam\n",
-    "want": "<ol><li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n<p>baz</p>\n\n<blockquote>\n\n<p>bam</p>\n\n</blockquote>\n\n\n</li></ol>",
+    "want": "<ol><li>\n\n<p>foo</p>\n\n<pre>bar</pre>\n\n<p>baz</p>\n\n<blockquote>\n\n<p>bam</p>\n\n</blockquote>\n\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<p>foo</p>\n<pre><code>bar\n</code></pre>\n<p>baz</p>\n<blockquote>\n<p>bam</p>\n</blockquote>\n</li>\n</ol>\n",
-    "name": "Test 263: <tt>1.␣␣foo↲↲␣␣␣␣```↲␣␣␣␣bar↲␣␣␣␣```↲↲␣␣␣␣baz↲↲␣␣␣␣&gt; bam↲</tt>"
+    "name": "Test 263: <tt>1.␣␣foo↲↲␣␣␣␣```↲␣␣␣␣bar↲␣␣␣␣```↲↲␣␣␣␣baz↲↲␣␣␣␣&gt; bam↲</tt>",
+    "skip": "Baremark tags must be unindented: <tt>```↲CODEBLOCK↲```</tt>"
   },
   {
     "data": "- Foo\n\n      bar\n\n\n      baz\n",
-    "want": "<ul><li>\n\n<p>Foo</p>\n\n<pre><tt>bar\n\n\nbaz\n</tt></pre>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>Foo</p>\n\n<pre>bar\n\n\nbaz</pre>\n\n</li></ul>",
     "spec": "<ul>\n<li>\n<p>Foo</p>\n<pre><code>bar\n\n\nbaz\n</code></pre>\n</li>\n</ul>\n",
     "name": "Test 264: <tt>- Foo↲↲␣␣␣␣␣␣bar↲↲↲␣␣␣␣␣␣baz↲</tt>"
   },
@@ -1798,40 +1904,45 @@
   },
   {
     "data": "- foo\n\n      bar\n",
-    "want": "<ul><li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n</li></ul>",
+    "want": "<ul><li>\n\n<p>foo</p>\n\n<pre>bar</pre>\n\n</li></ul>",
     "spec": "<ul>\n<li>\n<p>foo</p>\n<pre><code>bar\n</code></pre>\n</li>\n</ul>\n",
-    "name": "Test 270: <tt>- foo↲↲␣␣␣␣␣␣bar↲</tt>"
+    "name": "Test 270: <tt>- foo↲↲␣␣␣␣␣␣bar↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "  10.  foo\n\n           bar\n",
-    "want": "<ol start=\"10\">\n\n<li>\n\n<p>foo</p>\n\n<pre><tt>bar\n</tt></pre>\n\n</li></ol>",
+    "want": "<ol start=\"10\">\n\n<li>\n\n<p>foo</p>\n\n<pre>bar</pre>\n\n</li></ol>",
     "spec": "<ol start=\"10\">\n<li>\n<p>foo</p>\n<pre><code>bar\n</code></pre>\n</li>\n</ol>\n",
-    "name": "Test 271: <tt>␣␣10.␣␣foo↲↲␣␣␣␣␣␣␣␣␣␣␣bar↲</tt>"
+    "name": "Test 271: <tt>␣␣10.␣␣foo↲↲␣␣␣␣␣␣␣␣␣␣␣bar↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "    indented code\n\nparagraph\n\n    more code\n",
-    "want": "<pre><tt>indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>",
+    "want": "<pre>indented code</pre>\n\n<p>paragraph</p>\n\n<pre>more code</pre>",
     "spec": "<pre><code>indented code\n</code></pre>\n<p>paragraph</p>\n<pre><code>more code\n</code></pre>\n",
     "name": "Test 272: <tt>␣␣␣␣indented code↲↲paragraph↲↲␣␣␣␣more code↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "1.     indented code\n\n   paragraph\n\n       more code\n",
-    "want": "<ol><li>\n\n<pre><tt>indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>\n\n</li></ol>",
+    "want": "<ol><li>\n\n<pre>indented code</pre>\n\n<p>paragraph</p>\n\n<pre>more code</pre>\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<pre><code>indented code\n</code></pre>\n<p>paragraph</p>\n<pre><code>more code\n</code></pre>\n</li>\n</ol>\n",
-    "name": "Test 273: <tt>1.␣␣␣␣␣indented code↲↲␣␣␣paragraph↲↲␣␣␣␣␣␣␣more code↲</tt>"
+    "name": "Test 273: <tt>1.␣␣␣␣␣indented code↲↲␣␣␣paragraph↲↲␣␣␣␣␣␣␣more code↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "1.      indented code\n\n   paragraph\n\n       more code\n",
-    "want": "<ol><li>\n\n<pre><tt> indented code\n</tt></pre>\n\n<p>paragraph</p>\n\n<pre><tt>more code\n</tt></pre>\n\n</li></ol>",
+    "want": "<ol><li>\n\n<pre> indented code</pre>\n\n<p>paragraph</p>\n\n<pre>more code</pre>\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<pre><code> indented code\n</code></pre>\n<p>paragraph</p>\n<pre><code>more code\n</code></pre>\n</li>\n</ol>\n",
-    "name": "Test 274: <tt>1.␣␣␣␣␣␣indented code↲↲␣␣␣paragraph↲↲␣␣␣␣␣␣␣more code↲</tt>"
+    "name": "Test 274: <tt>1.␣␣␣␣␣␣indented code↲↲␣␣␣paragraph↲↲␣␣␣␣␣␣␣more code↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "   foo\n\nbar\n",
-    "want": "<p>foo</p>\n\n<p>bar</p>",
+    "want": "<p>   foo</p>\n\n<p>bar</p>",
     "spec": "<p>foo</p>\n<p>bar</p>\n",
-    "name": "Test 275: <tt>␣␣␣foo↲↲bar↲</tt>"
+    "name": "Test 275: <tt>␣␣␣foo↲↲bar↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "-    foo\n\n  bar\n",
@@ -1847,9 +1958,10 @@
   },
   {
     "data": "-\n  foo\n-\n  ```\n  bar\n  ```\n-\n      baz\n",
-    "want": "<ul><li>foo</li><li>\n\n<pre><tt>bar\n</tt></pre>\n\n</li><li>\n\n<pre><tt>baz\n</tt></pre>\n\n</li></ul>",
+    "want": "<ul><li>foo</li><li>\n\n<pre>bar</pre>\n\n</li><li>\n\n<pre>baz</pre>\n\n</li></ul>",
     "spec": "<ul>\n<li>foo</li>\n<li>\n<pre><code>bar\n</code></pre>\n</li>\n<li>\n<pre><code>baz\n</code></pre>\n</li>\n</ul>\n",
-    "name": "Test 278: <tt>-↲␣␣foo↲-↲␣␣```↲␣␣bar↲␣␣```↲-↲␣␣␣␣␣␣baz↲</tt>"
+    "name": "Test 278: <tt>-↲␣␣foo↲-↲␣␣```↲␣␣bar↲␣␣```↲-↲␣␣␣␣␣␣baz↲</tt>",
+    "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "-   \n  foo\n",
@@ -1895,40 +2007,45 @@
   },
   {
     "data": " 1.  A paragraph\n     with two lines.\n\n         indented code\n\n     > A block quote.\n",
-    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
+    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre>indented code</pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<p>A paragraph\nwith two lines.</p>\n<pre><code>indented code\n</code></pre>\n<blockquote>\n<p>A block quote.</p>\n</blockquote>\n</li>\n</ol>\n",
-    "name": "Test 286: <tt>␣1.␣␣A paragraph↲␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣&gt; A block quote.↲</tt>"
+    "name": "Test 286: <tt>␣1.␣␣A paragraph↲␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣&gt; A block quote.↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "  1.  A paragraph\n      with two lines.\n\n          indented code\n\n      > A block quote.\n",
-    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
+    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre>indented code</pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<p>A paragraph\nwith two lines.</p>\n<pre><code>indented code\n</code></pre>\n<blockquote>\n<p>A block quote.</p>\n</blockquote>\n</li>\n</ol>\n",
-    "name": "Test 287: <tt>␣␣1.␣␣A paragraph↲␣␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣&gt; A block quote.↲</tt>"
+    "name": "Test 287: <tt>␣␣1.␣␣A paragraph↲␣␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣&gt; A block quote.↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "   1.  A paragraph\n       with two lines.\n\n           indented code\n\n       > A block quote.\n",
-    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
+    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre>indented code</pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<p>A paragraph\nwith two lines.</p>\n<pre><code>indented code\n</code></pre>\n<blockquote>\n<p>A block quote.</p>\n</blockquote>\n</li>\n</ol>\n",
-    "name": "Test 288: <tt>␣␣␣1.␣␣A paragraph↲␣␣␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣␣&gt; A block quote.↲</tt>"
+    "name": "Test 288: <tt>␣␣␣1.␣␣A paragraph↲␣␣␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣␣&gt; A block quote.↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "    1.  A paragraph\n        with two lines.\n\n            indented code\n\n        > A block quote.\n",
-    "want": "<pre><tt>1.  A paragraph\n    with two lines.\n\n        indented code\n\n    &#62; A block quote.\n</tt></pre>",
+    "want": "<pre>1.  A paragraph\n    with two lines.\n\n        indented code\n\n    &#62; A block quote.</pre>",
     "spec": "<pre><code>1.  A paragraph\n    with two lines.\n\n        indented code\n\n    &gt; A block quote.\n</code></pre>\n",
     "name": "Test 289: <tt>␣␣␣␣1.␣␣A paragraph↲␣␣␣␣␣␣␣␣with two lines.↲↲␣␣␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣␣␣&gt; A block quote.↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
   {
     "data": "  1.  A paragraph\nwith two lines.\n\n          indented code\n\n      > A block quote.\n",
-    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre><tt>indented code\n</tt></pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
+    "want": "<ol><li>\n\n<p>A paragraph\nwith two lines.</p>\n\n<pre>indented code</pre>\n\n<blockquote>\n\n<p>A block quote.</p>\n\n</blockquote>\n\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<p>A paragraph\nwith two lines.</p>\n<pre><code>indented code\n</code></pre>\n<blockquote>\n<p>A block quote.</p>\n</blockquote>\n</li>\n</ol>\n",
-    "name": "Test 290: <tt>␣␣1.␣␣A paragraph↲with two lines.↲↲␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣&gt; A block quote.↲</tt>"
+    "name": "Test 290: <tt>␣␣1.␣␣A paragraph↲with two lines.↲↲␣␣␣␣␣␣␣␣␣␣indented code↲↲␣␣␣␣␣␣&gt; A block quote.↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "  1.  A paragraph\n    with two lines.\n",
     "want": "<ol><li>A paragraph\nwith two lines.</li></ol>",
     "spec": "<ol>\n<li>A paragraph\nwith two lines.</li>\n</ol>\n",
-    "name": "Test 291: <tt>␣␣1.␣␣A paragraph↲␣␣␣␣with two lines.↲</tt>"
+    "name": "Test 291: <tt>␣␣1.␣␣A paragraph↲␣␣␣␣with two lines.↲</tt>",
+    "skip": "XXX"
   },
   {
     "data": "> 1. > Blockquote\ncontinued here.\n",
@@ -2035,7 +2152,7 @@
   },
   {
     "data": "-   foo\n\n    notcode\n\n-   foo\n\n<!-- -->\n\n    code\n",
-    "want": "<ul><li>\n\n<p>foo</p>\n\n<p>notcode</p>\n\n</li><li>\n\n<p>foo</p>\n\n</li></ul>\n\n<!-- -->\n\n<pre><tt>code\n</tt></pre>",
+    "want": "<ul><li>\n\n<p>foo</p>\n\n<p>notcode</p>\n\n</li><li>\n\n<p>foo</p>\n\n</li></ul>\n\n<!-- -->\n\n<pre>code</pre>",
     "spec": "<ul>\n<li>\n<p>foo</p>\n<p>notcode</p>\n</li>\n<li>\n<p>foo</p>\n</li>\n</ul>\n<!-- -->\n<pre><code>code\n</code></pre>\n",
     "name": "Test 309: <tt>-␣␣␣foo↲↲␣␣␣␣notcode↲↲-␣␣␣foo↲↲&lt;!-- --&gt;↲↲␣␣␣␣code↲</tt>"
   },
@@ -2059,7 +2176,7 @@
   },
   {
     "data": "1. a\n\n  2. b\n\n    3. c\n",
-    "want": "<ol><li>\n\n<p>a</p>\n\n</li><li>\n\n<p>b</p>\n\n</li></ol>\n\n<pre><tt>3. c\n</tt></pre>",
+    "want": "<ol><li>\n\n<p>a</p>\n\n</li><li>\n\n<p>b</p>\n\n</li></ol>\n\n<pre>3. c</pre>",
     "spec": "<ol>\n<li>\n<p>a</p>\n</li>\n<li>\n<p>b</p>\n</li>\n</ol>\n<pre><code>3. c\n</code></pre>\n",
     "name": "Test 313: <tt>1. a↲↲␣␣2. b↲↲␣␣␣␣3. c↲</tt>"
   },
@@ -2089,7 +2206,7 @@
   },
   {
     "data": "- a\n- ```\n  b\n\n\n  ```\n- c\n",
-    "want": "<ul><li>a</li><li>\n\n<pre><tt>b\n\n\n</tt></pre>\n\n</li><li>c</li></ul>",
+    "want": "<ul><li>a</li><li>\n\n<pre>b\n\n</pre>\n\n</li><li>c</li></ul>",
     "spec": "<ul>\n<li>a</li>\n<li>\n<pre><code>b\n\n\n</code></pre>\n</li>\n<li>c</li>\n</ul>\n",
     "name": "Test 318: <tt>- a↲- ```↲␣␣b↲↲↲␣␣```↲- c↲</tt>"
   },
@@ -2107,7 +2224,7 @@
   },
   {
     "data": "- a\n  > b\n  ```\n  c\n  ```\n- d\n",
-    "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n<pre><tt>c\n</tt></pre>\n\n</li><li>d</li></ul>",
+    "want": "<ul><li>a\n<blockquote>\n\n<p>b</p>\n\n</blockquote>\n\n\n<pre>c</pre>\n\n</li><li>d</li></ul>",
     "spec": "<ul>\n<li>a\n<blockquote>\n<p>b</p>\n</blockquote>\n<pre><code>c\n</code></pre>\n</li>\n<li>d</li>\n</ul>\n",
     "name": "Test 321: <tt>- a↲␣␣&gt; b↲␣␣```↲␣␣c↲␣␣```↲- d↲</tt>"
   },
@@ -2125,7 +2242,7 @@
   },
   {
     "data": "1. ```\n   foo\n   ```\n\n   bar\n",
-    "want": "<ol><li>\n\n<pre><tt>foo\n</tt></pre>\n\n<p>bar</p>\n\n</li></ol>",
+    "want": "<ol><li>\n\n<pre>foo</pre>\n\n<p>bar</p>\n\n</li></ol>",
     "spec": "<ol>\n<li>\n<pre><code>foo\n</code></pre>\n<p>bar</p>\n</li>\n</ol>\n",
     "name": "Test 324: <tt>1. ```↲␣␣␣foo↲␣␣␣```↲↲␣␣␣bar↲</tt>"
   },
