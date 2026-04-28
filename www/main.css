@@ -5,7 +5,14 @@ html { box-sizing: border-box; }
 *, :before, :after { box-sizing: inherit; padding: 0; margin: 0; }
 
 /* Other. */
-body { margin: 1em; line-height: 1.75; }
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  max-width: 75ch;
+  margin: 0 auto;
+  line-height: 1.75;
+}
 html {
   --pass: #41b941aa;
   --fail: #ff4444aa;
@@ -167,7 +174,11 @@ td {
 }
 li { margin-left: 1em; }
 p, h1, h2, footer { margin: 1em 0 .5em; }
-footer { text-align: center; }
+footer {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 1em;
+}
 .fixme, .note, .skipnote { background: #ff0a; font-weight: bold; border-radius: .25em; }
 h1, h2, h3, h4, h5, h6 {
   & a {
