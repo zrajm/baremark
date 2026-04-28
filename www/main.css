@@ -41,8 +41,10 @@ code, tt, pre {
   background: #aaa5;
   bottom: .125em;
 }
-blockquote, pre { margin: 1.5em; padding: .5em 1em; }
+blockquote, pre { padding: .5em 1em; }
+pre { margin: 1.5em 0 }
 blockquote {
+  margin: 1.5em;
   border-left: .5em solid #0003;
   padding-left: .5em;
   background: #0001;
@@ -125,7 +127,7 @@ td {
   text-align: revert-layer !important;
 }
 li { margin-left: 1em; }
-p, h1, h2, footer { margin: 1em 0 .5em; }
+p, h1, h2, h3, h4, footer { margin: 1em 0 .5em; }
 footer {
   text-align: center;
   margin-top: auto;
