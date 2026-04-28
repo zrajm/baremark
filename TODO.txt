@@ -413,7 +413,9 @@ DO NEXT
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [53/53] FINISHED
+* [54/54] FINISHED
+** DONE Remove darkmode switch (i.e. use on browser darkmode only)
+   CLOSED: [2026-04-28 Tue 11:45]
 ** DONE List item with continuation line should work inside blockquote  :BUG:
    CLOSED: [2025-10-03 Fri 22:57]
 ** DONE Nested blockquotes

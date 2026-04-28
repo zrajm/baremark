@@ -23,60 +23,12 @@ html {
   --normal-fail: linear-gradient(var(--fail), var(--fail)), var(--back);
   --bright-pass: linear-gradient(#fff3, #fff3), linear-gradient(var(--pass), var(--pass)), var(--back);
   --bright-fail: linear-gradient(#fff3, #fff3), linear-gradient(var(--fail), var(--fail)), var(--back);
-  @media(prefers-color-scheme:light){&:has(#invertmode:checked)      { --fore: #ddd; --back: #000 } }
-  @media(prefers-color-scheme:dark) {&:has(#invertmode:not(:checked)){ --fore: #ddd; --back: #000 } }
+  @media(prefers-color-scheme:dark) { --fore: #ddd; --back: #000 }
   transition: background-color .1s ease-in, color .1s ease-in;
   color: var(--fore);
   background: var(--back);
   --indent: 1.5em;
   --border-width: 2px;
-}
-input[type="checkbox"] {
-  opacity: .5;
-  transition: opacity ease-in-out .1s;
-  &:hover { opacity: 1 }
-  --unit: 25px;
-  --right-distance: calc(100% - var(--unit));
-  --on-distance: var(--right-distance);
-  --off-distance: 0;
-  @media (prefers-color-scheme: dark) {
-    --on-distance: 0;
-    --off-distance: var(--right-distance);
-  }
-  &:before, &:after { /* groove + knob */
-    content: '';
-    display: block;
-    position: absolute; inset: 0;
-    border-radius: var(--unit);
-    transition: left .05s ease-in;
-  }
-  &:before { /* groove */
-    background: #999;
-    box-shadow: inset 0 0 0 1px #0002;
-  }
-  &:after { /* knob */
-    width: var(--unit);
-    background: #fff; box-shadow: 0 1px 2px 0 #0008;
-    left: var(--off-distance)
-  }
-  &:checked:after { left: var(--on-distance) }
-  appearance: none;
-  display: inline-block; height: var(--unit); width: calc(var(--unit) * 1.75);
-  position: relative; vertical-align: middle; bottom: .1em;
-  cursor: pointer;
-  font-size: inherit;
-  &#invertmode {
-    position: fixed; top: 0; right: 0; margin: 1rem;
-    --sun: url('data:image/svg+xml,<svg width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="3.5"/><path d="M10 2.5V5m0 10v2.5m5.3-12.8-1.8 1.8m-7 7-1.8 1.8M17.5 10H15M5 10H2.5m2.2-5.3 1.8 1.8m7 7 1.8 1.8" stroke="%23000" stroke-width="1.5px"/></svg>');
-    --moon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20"><path d="M10 3a7 7 0 0 0-7 7 7 7 0 0 0 7 7 7 7 0 0 0 5.77-3.05A6 6 0 0 1 15 14a6 6 0 0 1-6-6 6 6 0 0 1 2.48-4.84A7 7 0 0 0 10 3z"/></svg>');
-    /* knob */
-    &:after { content: var(--sun) }
-    &:checked:after { content: var(--moon) }
-    @media (prefers-color-scheme: dark) {
-      &:after { content: var(--moon) }
-      &:checked:after { content: var(--sun) }
-    }
-  }
 }
 a { border-radius: 1px; color: #00d }
 a:hover { background: #22f5; outline: 2px solid #22f5 }
