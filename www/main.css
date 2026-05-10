@@ -58,6 +58,7 @@ details, .error, .legend {
   margin: 2px 0;
   padding: .125em .25em;
   border: 1px solid #888a;
+  overflow-x: scroll;
 }
 details.group tt.multi { display: inline-block; vertical-align: middle; line-height: .9; }
 details.group.skip, .legend.skip { background: var(--none); }
