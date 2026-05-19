@@ -72,6 +72,7 @@ but they are perfectly usable.
 | [Docs][meta]     | Email-style metadata at beginning.       | [`meta.js`][meta.js]           |
 |                  | Use `^sup^` for superscript.             | [`sup.js`][sup.js]             |
 | [Docs][table]    | GFM-style tables.                        | [`table.js`][table.js]         |
+| [Docs][timing]   | Debugging addon, shows parsing time.     | [`timing.js`][timing.js]       |
 | [Docs][toc]      | Add table-of-contents.                   | [`toc.js`][toc.js]             |
 |                  | Remove HTML comments.                    | [`uncomment.js`][uncomment.js] |
 
@@ -85,6 +86,8 @@ but they are perfectly usable.
 [sup]: ?addon/sup.md
 [table.js]: addon/table.js
 [table]: ?addon/table.md
+[timing.js]: addon/timing.js
+[timing]: ?addon/timing.md
 [toc.js]: addon/toc.js
 [toc]: ?addon/toc.md
 [uncomment.js]: addon/uncomment.js
