@@ -539,7 +539,19 @@
   "<tt class=multi>```<br>CODEBLOCK</br>```</tt>", {
     "data": "```\nxx\n```",
     "want": "<pre>xx</pre>",
-    "name": "single paragraph"
+    "name": "single codeblock"
+  }, {
+    "data": "```\nxx\n```\n```\nyy\n```",
+    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "name": "two adjacent codeblocks"
+  }, {
+    "data": "```\nxx\n```\n\n```\nyy\n```",
+    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "name": "two adjacent codeblocks, blank line between"
+  }, {
+    "data": "```\nxx\n```\n\nyy\n\n```\nzz\n```",
+    "want": "<pre>xx</pre>\n\n<p>yy</p>\n\n<pre>zz</pre>",
+    "name": "two codeblocks, paragraph between"
   }, {
     "data": "```  \nxx\n```\t",
     "want": "<pre>xx</pre>",
@@ -552,6 +564,10 @@
     "data": "```\nxx\n```\n\nyy",
     "want": "<pre>xx</pre>\n\n<p>yy</p>",
     "name": "fenced block followed by paragraph, blank line between"
+  }, {
+    "data": "xx\n```\nyy\n```\nzz",
+    "want": "<p>xx</p>\n\n<pre>yy</pre>\n\n<p>zz</p>",
+    "name": "paragraphs before AND after fenced block, newlines between"
   }, {
     "data": "xx\n\n```\nyy\n```\n\nzz",
     "want": "<p>xx</p>\n\n<pre>yy</pre>\n\n<p>zz</p>",
