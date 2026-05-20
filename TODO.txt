@@ -421,7 +421,12 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [54/54] FINISHED
+* [55/55] FINISHED
+** DONE Shorten h()
+   CLOSED: [2026-05-20 Wed 06:14]
+   + Replace:
+	h=(q,t,u,x='')=>(u=e(s(u),''),q?`<img src="${u}" title="${e(x,'')}" alt="${e(t,'')}">`:`<a href="${u}" title="${e(x,'')}">${t}</a>`)
+	h=(q,t,u,x='')=>(u=e(s(u),''),x=e(x,''),q?`<img src="${u}" title="${x}" alt="${e(t,'')}">`:`<a href="${u}" title="${x}">${t}</a>`)
 ** DONE Remove darkmode switch (i.e. use on browser darkmode only)
    CLOSED: [2026-04-28 Tue 11:45]
 ** DONE List item with continuation line should work inside blockquote  :BUG:

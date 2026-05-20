@@ -1,5 +1,5 @@
 (w=>{
-	let l,b=x=>x==null?r:(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim()),m={N:'\n',X:'(\n?(?:.+?\n)*?.*?)',Y:'(\n?(?:[^()[\\]\n]+\n)*[^()[\\]\n]*)'},s=x=>x.trim().replace(/\s+/g,' '),q=c=>`&#${c.charCodeAt()};`,e=(x,r='&#|')=>x.replace(RegExp(`[${r}'\\\\<>\`*~_=:"![\\]()\n\t-]`,'g'),q),h=(q,t,u,x='')=>(u=e(s(u),''),q?`<img src="${u}" title="${e(x,'')}" alt="${e(t,'')}">`:`<a href="${u}" title="${e(x,'')}">${t}</a>`),y=x=>(w,t,r,u)=>u?h(x,t,u):(r=l[v(r||t)],r?h(x,t,...r):w),v=x=>s(x).toLowerCase(),r=[
+	let l,b=x=>x==null?r:(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim()),m={N:'\n',X:'(\n?(?:.+?\n)*?.*?)',Y:'(\n?(?:[^()[\\]\n]+\n)*[^()[\\]\n]*)'},s=x=>x.trim().replace(/\s+/g,' '),q=c=>`&#${c.charCodeAt()};`,e=(x,r='&#|')=>x.replace(RegExp(`[${r}'\\\\<>\`*~_=:"![\\]()\n\t-]`,'g'),q),h=(q,t,u,x='')=>(u=e(s(u),''),x=e(x,''),q?`<img src="${u}" title="${x}" alt="${e(t,'')}">`:`<a href="${u}" title="${x}">${t}</a>`),y=x=>(w,t,r,u)=>u?h(x,t,u):(r=l[v(r||t)],r?h(x,t,...r):w),v=x=>s(x).toLowerCase(),r=[
 		[/[ \t]*(\rN?|N)/,'\n'],
 		[/NN>(.*(N.+)*)(?=NN)/,x=>`\n\n<blockquote>\n\n${b(x.replace(/^> ?/gm,''))}\n\n</blockquote>\n`],
 		[/N+```N([^]*?)N```N*(?=N)/,(_,m)=>`\n\n<pre>${e(m)}</pre>\n`],
