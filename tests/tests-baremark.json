@@ -3965,6 +3965,18 @@
     "want": "<p>&#96;xx`</p>",
     "name": "single word, first delimiter backslashed"
   }, {
+    "data": "\\\\`xx`",
+    "want": "<p>&#92;<tt>xx</tt></p>",
+    "name": "single word, first delimiter preceded by escaped backslash"
+  }, {
+    "data": "\\\\\\`xx`",
+    "want": "<p>&#92;&#96;xx`</p>",
+    "name": "single word, first delimiter preceded by escaped, then unescaped backslash"
+  }, {
+    "data": "\\\\\\\\`xx`",
+    "want": "<p>&#92;&#92;<tt>xx</tt></p>",
+    "name": "single word, first delimiter preceded by two escaped backslashes"
+  }, {
     "data": "`xx\\`",
     "want": "<p>`xx&#96;</p>",
     "name": "single word, last delimiter backslashed"
