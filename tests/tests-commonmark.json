@@ -3629,7 +3629,7 @@
   },
   {
     "data": "[bar\\\\]: /uri\n\n[bar\\\\]\n",
-    "want": "<p><a href=\"/uri\" title=\"\">bar\\</a></p>",
+    "want": "<p><a href=\"/uri\" title=\"\">bar&#92;</a></p>",
     "spec": "<p><a href=\"/uri\">bar\\</a></p>\n",
     "name": "Test 550: <tt>[bar&#92;&#92;]: /uri↲↲[bar&#92;&#92;]↲</tt>"
   },
@@ -3708,6 +3708,7 @@
   {
     "data": "\\[foo]\n\n[foo]: /url \"title\"\n",
     "want": "<p>[foo]</p>",
+    "want": "<p>&#91;foo]</p>",
     "spec": "<p>[foo]</p>\n",
     "name": "Test 563: <tt>&#92;[foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
@@ -3749,7 +3750,7 @@
   },
   {
     "data": "[foo][bar][baz]\n\n[baz]: /url1\n[bar]: /url2\n",
-    "want": "<p><a href=\"/url2\" title=\"\">foo</a><a href=\"/url1\">baz</a></p>",
+    "want": "<p><a href=\"/url2\" title=\"\">foo</a><a href=\"/url1\" title=\"\">baz</a></p>",
     "spec": "<p><a href=\"/url2\">foo</a><a href=\"/url1\">baz</a></p>\n",
     "name": "Test 570: <tt>[foo][bar][baz]↲↲[baz]: /url1↲[bar]: /url2↲</tt>"
   },
@@ -3764,41 +3765,47 @@
     "data": "![foo](/url \"title\")\n",
     "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
     "spec": "<p><img src=\"/url\" alt=\"foo\" title=\"title\" /></p>\n",
-    "name": "Test 572: <tt>![foo](/url \"title\")↲</tt>"
+    "name": "Test 572: <tt>![foo](/url \"title\")↲</tt>",
+    "FIXME": "Add support for <tt>\"TITLE\"</tt> in inline image"
   },
   {
     "data": "![foo *bar*]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n",
-    "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
+    "want": "<p><img src=\"train.jpg\" title=\"train & tracks\" alt=\"foo &#42;bar&#42;\"></p>",
     "spec": "<p><img src=\"train.jpg\" alt=\"foo bar\" title=\"train &amp; tracks\" /></p>\n",
-    "name": "Test 573: <tt>![foo *bar*]↲↲[foo *bar*]: train.jpg \"train &amp; tracks\"↲</tt>"
+    "name": "Test 573: <tt>![foo *bar*]↲↲[foo *bar*]: train.jpg \"train &amp; tracks\"↲</tt>",
+    "NOTE": "CommonMark strips <tt>&#42;</tt> in picture <tt>LABEL</tt> Baremark does not"
   },
   {
     "data": "![foo ![bar](/url)](/url2)\n",
     "want": "<p><img src=\"/url2\" alt=\"foo bar\"></p>",
     "spec": "<p><img src=\"/url2\" alt=\"foo bar\" /></p>\n",
-    "name": "Test 574: <tt>![foo ![bar](/url)](/url2)↲</tt>"
+    "name": "Test 574: <tt>![foo ![bar](/url)](/url2)↲</tt>",
+    "skip": "Inline image text cannot contain an inline link"
   },
   {
     "data": "![foo [bar](/url)](/url2)\n",
     "want": "<p><img src=\"/url2\" alt=\"foo bar\"></p>",
     "spec": "<p><img src=\"/url2\" alt=\"foo bar\" /></p>\n",
-    "name": "Test 575: <tt>![foo [bar](/url)](/url2)↲</tt>"
+    "name": "Test 575: <tt>![foo [bar](/url)](/url2)↲</tt>",
+    "skip": "Inline image text cannot contain a link"
   },
   {
     "data": "![foo *bar*][]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n",
-    "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
+    "want": "<p><img src=\"train.jpg\" title=\"train & tracks\" alt=\"foo &#42;bar&#42;\"></p>",
     "spec": "<p><img src=\"train.jpg\" alt=\"foo bar\" title=\"train &amp; tracks\" /></p>\n",
-    "name": "Test 576: <tt>![foo *bar*][]↲↲[foo *bar*]: train.jpg \"train &amp; tracks\"↲</tt>"
+    "name": "Test 576: <tt>![foo *bar*][]↲↲[foo *bar*]: train.jpg \"train &amp; tracks\"↲</tt>",
+    "NOTE": "CommonMark strips <tt>&#42;</tt> in picture <tt>LABEL</tt> Baremark does not"
   },
   {
     "data": "![foo *bar*][foobar]\n\n[FOOBAR]: train.jpg \"train & tracks\"\n",
-    "want": "<p><img src=\"train.jpg\" title=\"train &amp; tracks\" alt=\"foo bar\"></p>",
+    "want": "<p><img src=\"train.jpg\" title=\"train & tracks\" alt=\"foo &#42;bar&#42;\"></p>",
     "spec": "<p><img src=\"train.jpg\" alt=\"foo bar\" title=\"train &amp; tracks\" /></p>\n",
-    "name": "Test 577: <tt>![foo *bar*][foobar]↲↲[FOOBAR]: train.jpg \"train &amp; tracks\"↲</tt>"
+    "name": "Test 577: <tt>![foo *bar*][foobar]↲↲[FOOBAR]: train.jpg \"train &amp; tracks\"↲</tt>",
+    "NOTE": "CommonMark strips <tt>&#42;</tt> in picture <tt>LABEL</tt> Baremark does not"
   },
   {
     "data": "![foo](train.jpg)\n",
-    "want": "<p><img src=\"train.jpg\" alt=\"foo\"></p>",
+    "want": "<p><img src=\"train.jpg\" title=\"\" alt=\"foo\"></p>",
     "spec": "<p><img src=\"train.jpg\" alt=\"foo\" /></p>\n",
     "name": "Test 578: <tt>![foo](train.jpg)↲</tt>"
   },
@@ -3806,29 +3813,31 @@
     "data": "My ![foo bar](/path/to/train.jpg  \"title\"   )\n",
     "want": "<p>My <img src=\"/path/to/train.jpg\" title=\"title\" alt=\"foo bar\"></p>",
     "spec": "<p>My <img src=\"/path/to/train.jpg\" alt=\"foo bar\" title=\"title\" /></p>\n",
-    "name": "Test 579: <tt>My ![foo bar](/path/to/train.jpg␣␣\"title\"␣␣␣)↲</tt>"
+    "name": "Test 579: <tt>My ![foo bar](/path/to/train.jpg␣␣\"title\"␣␣␣)↲</tt>",
+    "FIXME": "Add support for <tt>\"TITLE\"</tt> in inline image"
   },
   {
     "data": "![foo](<url>)\n",
-    "want": "<p><img src=\"url\" alt=\"foo\"></p>",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"foo\"></p>",
     "spec": "<p><img src=\"url\" alt=\"foo\" /></p>\n",
-    "name": "Test 580: <tt>![foo](&lt;url&gt;)↲</tt>"
+    "name": "Test 580: <tt>![foo](&lt;url&gt;)↲</tt>",
+    "FIXME": "Add support for <tt>&lt;...&gt;</tt> around <tt>URL</tt>"
   },
   {
     "data": "![](/url)\n",
-    "want": "<p><img src=\"/url\" alt=\"\"></p>",
+    "want": "<p><img src=\"/url\" title=\"\" alt=\"\"></p>",
     "spec": "<p><img src=\"/url\" alt=\"\" /></p>\n",
     "name": "Test 581: <tt>![](/url)↲</tt>"
   },
   {
     "data": "![foo][bar]\n\n[bar]: /url\n",
-    "want": "<p><img src=\"/url\" alt=\"foo\"></p>",
+    "want": "<p><img src=\"/url\" title=\"\" alt=\"foo\"></p>",
     "spec": "<p><img src=\"/url\" alt=\"foo\" /></p>\n",
     "name": "Test 582: <tt>![foo][bar]↲↲[bar]: /url↲</tt>"
   },
   {
     "data": "![foo][bar]\n\n[BAR]: /url\n",
-    "want": "<p><img src=\"/url\" alt=\"foo\"></p>",
+    "want": "<p><img src=\"/url\" title=\"\" alt=\"foo\"></p>",
     "spec": "<p><img src=\"/url\" alt=\"foo\" /></p>\n",
     "name": "Test 583: <tt>![foo][bar]↲↲[BAR]: /url↲</tt>"
   },
@@ -3840,9 +3849,10 @@
   },
   {
     "data": "![*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n",
-    "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo bar\"></p>",
+    "want": "<p><img src=\"/url\" title=\"title\" alt=\"&#42;foo&#42; bar\"></p>",
     "spec": "<p><img src=\"/url\" alt=\"foo bar\" title=\"title\" /></p>\n",
-    "name": "Test 585: <tt>![*foo* bar][]↲↲[*foo* bar]: /url \"title\"↲</tt>"
+    "name": "Test 585: <tt>![*foo* bar][]↲↲[*foo* bar]: /url \"title\"↲</tt>",
+    "NOTE": "CommonMark strips <tt>&#42;</tt> in picture <tt>LABEL</tt> Baremark does not"
   },
   {
     "data": "![Foo][]\n\n[foo]: /url \"title\"\n",
@@ -3864,16 +3874,16 @@
   },
   {
     "data": "![*foo* bar]\n\n[*foo* bar]: /url \"title\"\n",
-    "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo bar\"></p>",
+    "want": "<p><img src=\"/url\" title=\"title\" alt=\"&#42;foo&#42; bar\"></p>",
     "spec": "<p><img src=\"/url\" alt=\"foo bar\" title=\"title\" /></p>\n",
-    "name": "Test 589: <tt>![*foo* bar]↲↲[*foo* bar]: /url \"title\"↲</tt>"
+    "name": "Test 589: <tt>![*foo* bar]↲↲[*foo* bar]: /url \"title\"↲</tt>",
+    "NOTE": "CommonMark strips <tt>&#42;</tt> in picture <tt>LABEL</tt> Baremark does not"
   },
   {
     "data": "![[foo]]\n\n[[foo]]: /url \"title\"\n",
-    "want": "<p>![[foo]]</p>\n\n<p>[[foo]]: /url &quot;title&quot;</p>",
+    "want": "<p>![[foo]]</p>\n\n<p>[[foo]]: /url \"title\"</p>",
     "spec": "<p>![[foo]]</p>\n<p>[[foo]]: /url &quot;title&quot;</p>\n",
-    "name": "Test 590: <tt>![[foo]]↲↲[[foo]]: /url \"title\"↲</tt>",
-    "skip": "Baremark strips all label definitions, even unused ones."
+    "name": "Test 590: <tt>![[foo]]↲↲[[foo]]: /url \"title\"↲</tt>"
   },
   {
     "data": "![Foo]\n\n[foo]: /url \"title\"\n",
@@ -3883,13 +3893,13 @@
   },
   {
     "data": "!\\[foo]\n\n[foo]: /url \"title\"\n",
-    "want": "<p>![foo]</p>",
+    "want": "<p>!&#91;foo]</p>",
     "spec": "<p>![foo]</p>\n",
     "name": "Test 592: <tt>!&#92;[foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
   {
     "data": "\\![foo]\n\n[foo]: /url \"title\"\n",
-    "want": "<p>!<a href=\"/url\" title=\"title\">foo</a></p>",
+    "want": "<p>&#33;<a href=\"/url\" title=\"title\">foo</a></p>",
     "spec": "<p>!<a href=\"/url\" title=\"title\">foo</a></p>\n",
     "name": "Test 593: <tt>&#92;![foo]↲↲[foo]: /url \"title\"↲</tt>"
   },
@@ -4063,35 +4073,35 @@
     "want": "<p>&#60;33&#62; &#60;__&#62;</p>",
     "spec": "<p>&lt;33&gt; &lt;__&gt;</p>\n",
     "name": "Test 618: <tt>&lt;33&gt; &lt;__&gt;↲</tt>",
-    "skip": "Baremark always interpret <tt><...></tt> as HTML"
+    "skip": "Baremark always interpret <tt>&lt;...&gt;</tt> as HTML"
   },
   {
     "data": "<a h*#ref=\"hi\">\n",
     "want": "<p>&#60;a h*#ref=&quot;hi&quot;&#62;</p>",
     "spec": "<p>&lt;a h*#ref=&quot;hi&quot;&gt;</p>\n",
     "name": "Test 619: <tt>&lt;a h*#ref=\"hi\"&gt;↲</tt>",
-    "skip": "Baremark always interpret <tt><...></tt> as HTML"
+    "skip": "Baremark always interpret <tt>&lt;...&gt;</tt> as HTML"
   },
   {
     "data": "<a href=\"hi'> <a href=hi'>\n",
     "want": "<p>&#60;a href=&quot;hi'&#62; &#60;a href=hi'&#62;</p>",
     "spec": "<p>&lt;a href=&quot;hi'&gt; &lt;a href=hi'&gt;</p>\n",
     "name": "Test 620: <tt>&lt;a href=\"hi'&gt; &lt;a href=hi'&gt;↲</tt>",
-    "skip": "Baremark always interpret <tt><...></tt> as HTML"
+    "skip": "Baremark always interpret <tt>&lt;...&gt;</tt> as HTML"
   },
   {
     "data": "< a><\nfoo><bar/ >\n<foo bar=baz\nbim!bop />\n",
     "want": "<p>&#60; a&#62;&#60;\nfoo&#62;&#60;bar/ &#62;\n&#60;foo bar=baz\nbim!bop /&#62;</p>",
     "spec": "<p>&lt; a&gt;&lt;\nfoo&gt;&lt;bar/ &gt;\n&lt;foo bar=baz\nbim!bop /&gt;</p>\n",
     "name": "Test 621: <tt>&lt; a&gt;&lt;↲foo&gt;&lt;bar/ &gt;↲&lt;foo bar=baz↲bim!bop /&gt;↲</tt>",
-    "skip": "Baremark always interpret <tt><...></tt> as HTML"
+    "skip": "Baremark always interpret <tt>&lt;...&gt;</tt> as HTML"
   },
   {
     "data": "<a href='bar'title=title>\n",
     "want": "<p>&#60;a href='bar'title=title&#62;</p>",
     "spec": "<p>&lt;a href='bar'title=title&gt;</p>\n",
     "name": "Test 622: <tt>&lt;a href='bar'title=title&gt;↲</tt>",
-    "skip": "Baremark always interpret <tt><...></tt> as HTML"
+    "skip": "Baremark always interpret <tt>&lt;...&gt;</tt> as HTML"
   },
   {
     "data": "</a></foo >\n",
@@ -4104,7 +4114,7 @@
     "want": "<p>&#60;/a href=&quot;foo&quot;&#62;</p>",
     "spec": "<p>&lt;/a href=&quot;foo&quot;&gt;</p>\n",
     "name": "Test 624: <tt>&lt;/a href=\"foo\"&gt;↲</tt>",
-    "skip": "Baremark always interpret <tt><...></tt> as HTML"
+    "skip": "Baremark always interpret <tt>&lt;...&gt;</tt> as HTML"
   },
   {
     "data": "foo <!-- this is a --\ncomment - with hyphens -->\n",
@@ -4117,7 +4127,7 @@
     "want": "<p>foo <!--> foo --&#62;</p>\n\n<p>foo <!---> foo --&#62;</p>",
     "spec": "<p>foo <!--> foo --&gt;</p>\n<p>foo <!---> foo --&gt;</p>\n",
     "name": "Test 626: <tt>foo &lt;!--&gt; foo --&gt;↲↲foo &lt;!---&gt; foo --&gt;↲</tt>",
-    "skip": "Baremark always interpret <tt><...></tt> as HTML"
+    "skip": "Baremark always interpret <tt>&lt;...&gt;</tt> as HTML"
   },
   {
     "data": "foo <?php echo $a; ?>\n",
