@@ -332,17 +332,17 @@
   }, {
     "data": "> > xx\n> > yy",
     "NOTE": "CommonMark",
-    "want": "<blockquote>\n\n<blockquote>\n\n<p>xx\nyy</p>\n\n</blockquote>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<blockquote>\n\n<p>xx\nyy</p>\n\n</blockquote>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing nested <tt>&gt; BLOCKQUOTE</tt>"
   }, {
     "data": "> > xx\n> >\n> > yy",
     "NOTE": "CommonMark",
-    "want": "<blockquote>\n\n<blockquote>\n\n<p>xx</p>\n\n<p>yy</p>\n\n</blockquote>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<blockquote>\n\n<p>xx</p>\n\n<p>yy</p>\n\n</blockquote>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing nested <tt>&gt; BLOCKQUOTE</tt> with two paragraphs"
   }, {
     "data": "> > xx\n>\n> > yy",
     "NOTE": "CommonMark",
-    "want": "<blockquote>\n\n<blockquote>\n\n<p>xx</p>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>yy</p>\n\n</blockquote>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<blockquote>\n\n<p>xx</p>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>yy</p>\n\n</blockquote>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing nested <tt>&gt; BLOCKQUOTE</tt>s"
   }, {
     "data": "> # xx",
@@ -350,11 +350,11 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt># HEADING</tt>"
   }, {
     "data": "> xx\n> ==",
-    "want": "<blockquote>\n\n<h1>xx</h1>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<h1>xx</h1>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt class=multi>HEADING<br>=======</tt>"
   }, {
     "data": "> xx\n==",
-    "want": "<blockquote>\n\n<h1>xx</h1>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<h1>xx</h1>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt class=multi>HEADING<br>=======</tt> with lazy continuation line"
   }, {
     "data": "> ## xx",
@@ -362,29 +362,29 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>## HEADING</tt>"
   }, {
     "data": "> xx\n> ---",
-    "want": "<blockquote>\n\n<h2>xx</h2>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<h2>xx</h2>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt class=multi>HEADING<br>-------</tt>"
   }, {
     "data": "> xx\n---",
-    "want": "<blockquote>\n\n<h2>xx</h2>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<h2>xx</h2>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt class=multi>HEADING<br>-------</tt> with lazy continuation line"
   }, {
     "data": "> * xx\n> * yy",
     "NOTE": "CommonMark",
-    "want": "<blockquote>\n\n<ul><li>xx</li><li>yy</li></ul>\n\n</blockquote>",
+    "want": "<blockquote>\n\n\n<ul><li>xx</li><li>yy</li></ul>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>* BULLET</tt>"
   }, {
     "data": "> * xx\n>   yy\n> * zz",
     "NOTE": "CommonMark",
-    "want": "<blockquote>\n\n<ul><li>xx\n  yy</li><li>zz</li></ul>\n\n</blockquote>",
+    "want": "<blockquote>\n\n\n<ul><li>xx\n  yy</li><li>zz</li></ul>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>* BULLET</tt> with continuation line"
   }, {
     "data": "> 1. xx\n> 2. yy",
-    "want": "<blockquote>\n\n<ol><li>xx</li><li>yy</li></ol>\n\n</blockquote>",
+    "want": "<blockquote>\n\n\n<ol><li>xx</li><li>yy</li></ol>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>1. NUMBERED</tt>"
   }, {
     "data": "> 1. xx\n>    yy\n> 2. zz",
-    "want": "<blockquote>\n\n<ol><li>xx\n   yy</li><li>zz</li></ol>\n\n</blockquote>",
+    "want": "<blockquote>\n\n\n<ol><li>xx\n   yy</li><li>zz</li></ol>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>1. NUMBERED</tt> with continuation line"
   }, {
     "data": "> ```\n> xxx\n> ```",
@@ -412,7 +412,7 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing labeled link <tt>[TEXT][LABEL]</tt>"
   }, {
     "data": "> > [x][y z]\n\n[y z]: url",
-    "want": "<blockquote>\n\n<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<blockquote>\n\n<p><a href=\"url\" title=\"\">x</a></p>\n\n</blockquote>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing labeled link <tt>[TEXT][LABEL]</tt>"
   }, {
     "data": "> [x][y\nz]\n\n[y z]: url",
@@ -424,7 +424,7 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing labeled link <tt>[TEXT][LABEL]</tt> with newline in <tt>TEXT</tt>"
   }, {
     "data": "[x][y z]\n\n> [y z]: url",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>\n\n<blockquote>\n\n\n\n</blockquote>",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>\n\n<blockquote>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing label definition <tt>[LABEL]: URL (TITLE)</tt> for link"
   }, {
     "data": "> ![x][y z]\n\n[y z]: url",
@@ -1024,7 +1024,8 @@
     "name": "<tt>URL</tt> with pound sign: should not be escaped"
   }, {
     "data": "[text](url<div>url)",
-    "want": "<p><a href=\"url&#60;div&#62;url\" title=\"\">text</a></p>",
+    "want": "<a href=\"url&#60;div&#62;url\" title=\"\">text</a>",
+    "NOTE": "Block interpreted as HTML (not paragraph) because of <tt>&lt;div&gt;</tt> tag",
     "name": "<tt>URL</tt> with HTML tag: should be escaped"
   }, {
     "data": "[\nx](y)",

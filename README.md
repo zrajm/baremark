@@ -65,32 +65,32 @@ In there is a directory called `addon/` in the repository, containing addons
 you can play with. These addons are, still a little bit of a work-in-progress,
 but they are perfectly usable.
 
-| See              | Description                              | Source                         |
-|------------------|------------------------------------------|--------------------------------|
-| [Docs][autolink] | Turn plain URLs into links.              | [`autolink.js`][autolink.js]   |
-| [Docs][id]       | Use `[#id]` to create named HTML anchor. | [`id.js`][id.js]               |
-| [Docs][meta]     | Email-style metadata at beginning.       | [`meta.js`][meta.js]           |
-|                  | Use `^sup^` for superscript.             | [`sup.js`][sup.js]             |
-| [Docs][table]    | GFM-style tables.                        | [`table.js`][table.js]         |
-| [Docs][timing]   | Debugging addon, shows parsing time.     | [`timing.js`][timing.js]       |
-| [Docs][toc]      | Add table-of-contents.                   | [`toc.js`][toc.js]             |
-|                  | Remove HTML comments.                    | [`uncomment.js`][uncomment.js] |
+| See              | Description                              | Source           |
+|------------------|------------------------------------------|------------------|
+| [Docs][autolink] | Turn plain URLs into links.              | [`autolink.js`]  |
+| [Docs][id]       | Use `[#id]` to create named HTML anchor. | [`id.js`]        |
+| [Docs][meta]     | Email-style metadata at beginning.       | [`meta.js`]      |
+|                  | Use `^sup^` for superscript.             | [`sup.js`]       |
+| [Docs][table]    | GFM-style tables.                        | [`table.js`]     |
+| [Docs][timing]   | Debugging addon, shows parsing time.     | [`timing.js`]    |
+| [Docs][toc]      | Add table-of-contents.                   | [`toc.js`]       |
+|                  | Remove HTML comments.                    | [`uncomment.js`] |
 
-[autolink.js]: addon/autolink.js
+[`autolink.js`]: addon/autolink.js
 [autolink]: ?addon/autolink.md
-[id.js]: addon/id.js
+[`id.js`]: addon/id.js
 [id]: ?addon/id.md
-[meta.js]: addon/meta.js
+[`meta.js`]: addon/meta.js
 [meta]: ?addon/meta.md
-[sup.js]: addon/sup.js
+[`sup.js`]: addon/sup.js
 [sup]: ?addon/sup.md
-[table.js]: addon/table.js
+[`table.js`]: addon/table.js
 [table]: ?addon/table.md
-[timing.js]: addon/timing.js
+[`timing.js`]: addon/timing.js
 [timing]: ?addon/timing.md
-[toc.js]: addon/toc.js
+[`toc.js`]: addon/toc.js
 [toc]: ?addon/toc.md
-[uncomment.js]: addon/uncomment.js
+[`uncomment.js`]: addon/uncomment.js
 [uncomment]: ?addon/uncomment.md
 
 Order (sometimes) matter when you import these, as they add rules to the end or
@@ -905,6 +905,56 @@ Baremark vs. Landmark
   blockquote.
 
 
+[Baremark X]: #baremark-x
+Baremark X
+----------
+[Baremark X] is an experimental version of Baremark, which is currently not
+recommended for installation.
+
+Baremark X splits the ruleset into two, one for blocks, and one for inline
+tags. It is slightly larger (~60 bytes) than plain Baremark, and processes
+Markdown at about the same speed. (No major gains there.)
+
+The main function of Baremark X is called `baremarkx()` (allowing you—or more
+specifically the [test suite] page—to load both Baremark *and* Baremark X at
+the same time).
+
+**BREAKING CHANGE:** `baremarkx()` (without arguments) have a different return
+value than the same function for plain Baremark. It returns a list-of-lists,
+the first element contains (a list) of block rules, and the second (a list) of
+inline rules. To add custom rules, simply insert it into a suitable position in
+one of the set of rules before invoking `baremarkx()` (with a Markdown text as
+argument).
+
+To add a rule at the end of the inline rules:
+
+```
+baremarkx()[1].push([regex, replacement])
+```
+
+The following addons exist:
+
+| See              | Description                              | Old Addon                       | X Addon          |
+|------------------|------------------------------------------|---------------------------------|------------------|
+| [Docs][autolink] | Turn plain URLs into links.              | [`autolink.js`][xautolink.js]   | [`autolink.js`]  |
+| [Docs][id]       | Use `[#id]` to create named HTML anchor. | [`id.js`][xid.js]               | [`id.js`]        |
+| [Docs][meta]     | Email-style metadata at beginning.       | [`meta.js`][xmeta.js]           | [`meta.js`]      |
+|                  | Use `^sup^` for superscript.             | [`sup.js`][xsup.js]             | [`sup.js`]       |
+| [Docs][table]    | GFM-style tables.                        | [`table.js`][xtable.js]         | [`table.js`]     |
+| [Docs][timing]   | Debugging addon, shows parsing time.     | [`timing.js`][xtiming.js]       | [`timing.js`]    |
+| [Docs][toc]      | Add table-of-contents.                   | [`toc.js`][xtoc.js]             | [`toc.js`]       |
+|                  | Remove HTML comments.                    | [`uncomment.js`][xuncomment.js] | [`uncomment.js`] |
+
+[xautolink.js]: addonx/autolink.js
+[xid.js]: addonx/id.js
+[xmeta.js]: addonx/meta.js
+[xsup.js]: addonx/sup.js
+[xtable.js]: addonx/table.js
+[xtiming.js]: addonx/timing.js
+[xtoc.js]: addonx/toc.js
+[xuncomment.js]: addonx/uncomment.js
+
+[Baremark X]: https://zrajm.org/baremark/baremarkx.js
 [CommonMark]: https://commonmark.org/
 [CommonMark Spec: HTML blocks]: https://spec.commonmark.org/0.31.2/#html-blocks
 [Github repo]: https://github.com/zrajm/baremark/

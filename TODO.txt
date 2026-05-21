@@ -103,7 +103,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/27] Features
+* [0/31] Features
 ** TODO `*ITALIC*` and bullet `* BULLET`                                :BUG:
    When a bullet list is written in condensed form, `*ITALIC*` will sometimes
    mess with the bullet.
@@ -177,10 +177,132 @@
    that these are correctly handled by the paragraph processing?
 ** TODO Tab & space trimming at EOL messes up HTML                      :BUG:
    ----------------------------------------
-   <a href="foo<space><space>
+   <a href="foo␣␣
    bar">
    ----------------------------------------
+   (Where "␣" is an ordinary space.)
    Will have its <space>s removed by the line-ending normalization.
+** TODO Put source on web page with plenty of comments
+** TODO Process nested () and []?
+   The following can be used to replace all '[' and ']' except the outermost
+   ones with the coresponding HTML entities. Could we use a similar approach to
+   allow the '[]' inside the TEXT of links (`[TEXT]`, `[TEXT](URL)` and
+   `[TEXT][LABEL]`) and images (`![TEXT]`, `![TEXT](URL)` and `![TEXT][LABEL]`)?
+   ----------------------------------------
+   x.replace(/\[|\]/g,(i=>x=>(x<']'?i++:--i)?q(x):x)(0))
+   ----------------------------------------
+** TODO Shorten source by moving `m` (object) inside macro completion
+** TODO Parse block & inline separately
+   Instead of doing a strictly separated block and inline phases.
+
+   b) Baremark()
+   e) Escape
+   h) hyper-link (turns []xx and ![]xx into <a href="...">...</a> & <img src="...">)
+   l) link references (object)
+   m) macro
+   q) quote
+   s) space-something
+   v) normalize link reference (downcase, compress spaces)
+   y) return image/link replacement function
+
+   `* BULLET` / `1) NUMBERED`  --- Remove one `\n` from starting '\n\n' output.
+
+   -------------------------------------------------------------------------------
+
+   One way to do a more efficient parse is to match one block at a time from a
+   specific position `pos`. First `pos = 0` to match the first block, then
+   `pos` is the end of the first block, matching for the second etc. -- This
+   approach is strictly linear (which is efficient but) which does not allow
+   for doing a multiple passes across the input.
+
+   With the previous (non-linear, multi-pass) algorithm, each list item was
+   first converted into a HTML list (complete with it's own `<ul>...</ul>` tag)
+   and, in a second pass, adjacent HTML lists where merged (turning two item
+   from `<ul><li>...</ul><ul><li>...</ul>` into `<ul><li>...<li>...</ul>`).
+   This strategy is not viable with a strictly linear approach, meaning that
+   the function for processing list items (in the plural) must do much more
+   work (a whole `x.split().map().join()` thingy). This leads to an explosion
+   of code making this approach to lengthy.
+
+
+
+   The drawback of this is that the processing of list items cannot be
+   processed individually, but must be
+
+   the same way. `<ul><li>...</ul>`
+
+
+   starting from the beginning of the Markdown input, then match the subsequent b
+
+
+   ============================================================================
+   Fenced ```CODEBLOCK``` -- Starts (with a fence) on a line of its own (no
+   leading blank line necessary) ends at with a fence. Leading fence consist of
+   three or more backticks (`) or tilde (~), and ends with a fence of same
+   character of equal or greater length. Leading fence may optionally be
+   followed by info string (without space separation) which may contain any
+   character except backtick (`) or tilde (~) (if they were allowed, it would
+   introduce ambiguity between '`CODE`' vs '```↲CODEBLOCK↲```' and
+   '~~STRIKETROUGH~~' vs '~~~↲CODEBLOCK↲~~~') . First word of info string sets
+   'class=language-XX' attribute of the resulting `<pre>` tag.
+
+   TESTS:
+      * test info string (with/without ` and ~)
+   ----------------------------------------------------------------------------
+   Dinkus `***` `---` `___` -- On a line of its own, characters may be
+   separated by spaces.
+   ----------------------------------------------------------------------------
+
+   A paragraph -- Any text from the beginning of a line, up to the end of a
+   line which is followed by, either another newline, the end of the string, or
+   '>' (the beginning of `> BLOCKQUOTE`).
+   ----------------------------------------------------------------------------
+   `> BLOCKQUOTE` -- Any line.
+
+   ----------------------------------------------------------------------------
+   `SETEXT HEADING↲==============` and `SETEXT HEADING↲--------------` -- Blank
+   line is required before, but not after the heading. Multi-line headings are
+   allowed.
+   ----------------------------------------------------------------------------
+   `# ATX HEADING` ... `###### ATX HEADING` -- Space is *required* after
+   leading `#` (counter to CommonMark -- thus `#tag` words are never be
+   interpreted as headings). ATX headings are lazy and multi-line (also counter
+   CommonMark, but giving them the same semantics as `> BLOCKQUOTE`) -- this
+   means that multi-line headings can be thus written as either `# xx↲# xx` or
+   `# xx↲xx`. Trailing #s at end-of-line are trimmed (if preceded by space).
+
+   The following is thus an ATX heading, level 2:
+
+   ## hej  ########
+   ## osucrhoush ##
+   ============================================================================
+
+
+   Use one b() function that can take either /y or normal regexes. Where the /y
+   must all match contiguously.
+
+   Implement a dual ruleset, one with block, one with inline.
+
+   Two-phase matching?
+
+   ----------------------------------------
+   function transform (str, rules) {
+     str.replace(/[^]/g, (_, pos, s) => {
+       for (const [re, fn] of rules) {
+         re.lastIndex = pos;
+         const m = re.exec(s);
+         if (m) return m[0] === s.slice(pos, pos + m[0].length) ? fn(m) : '';
+       }
+       return s[pos];
+     }
+
+   const rules = [
+     [/[a-z]+/g, m => m.toUpperCase()],
+     [/\d+/g,    m => `[${m}]`],
+   ];
+
+   const result = rules.reduce((s, [regex, replacer]) => s.replace(regex, replacer), str);
+   ----------------------------------------
 ** TODO Allow <...> around URL in `[LABEL]: URL "TITLE"`
 ** TODO Support fenced code blocks with `~~~`
    https://spec.commonmark.org/0.31.2/#code-fence

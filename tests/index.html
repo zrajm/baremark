@@ -5,27 +5,53 @@
 <link rel=icon href=../www/baremark.svg>
 <title>Baremark: A Tiny Markdown Engine</title>
 <link rel=stylesheet href=../www/main.css>
+<style>pre:has(+ pre) { margin-bottom: 8px }
+pre + pre { margin-top: 0 }
+h2 + p { margin-top: 0 }</style>
 <dialog id=noscript style="position:absolute;inset:0;margin:auto;padding:1em 2em;border:5px dashed #ff0a;border-radius:1rem;font:bold 2em sans;color:#ff0a;background:#600;box-shadow:0 0 0 5px #600,0 0 0 999px #0008, 0 5px 10px #000" open><script>noscript.close()</script>Javascript needed.</dialog>
 
 <p><a href=../>« Back to Docs</a></p>
 
 <h1 id=top>Baremark: A Tiny Markdown Engine</h1>
 
+<h2 id=toc>Content</h2>
 
-<h2 id=baremark>Test Cases</h2>
+<ul class="toc">
+  <li><a href="#legend">Legend</a>
+  <li><a href="#baremark">Unit Tests</a>
+  <li><a href="#baremarkx">Unit Tests for <i>Baremark X</i></a>
+  <li><a href="#commonmark">CommmonMark 0.31.2 Unit Tests</a>
+  <li><a href="#framework">Test Framework</a>
+</ul>
 
-<p>The test cases below are intended as specs for Baremark, though they will
-evolve as Baremark does so.
+<h2 id=legend>Legend</h2>
 
-<p><b>Legend:</b>
-  <span class="legend pass">Passed</span>
+<p><span class="legend pass">Passed</span>
   <span class="legend fail">Failed</span>
   <span class="legend skip"><s>All skipped</s></span></p>
+
+<p>Symbols used in the test names below are: <tt>␣</tt> space (where needed for
+clarity), <tt>↲</tt> enter, <tt>⭲</tt> tab, and <tt>⍽</tt> no-break-space.
+
+
+<h2 id=baremark>Unit Tests</h2>
+
+<p>The test cases below are intended as spec for Baremark, though they will
+evolve as Baremark does so.
 
 <div data-testsuite="tests-baremark.json" data-function="baremark"></div>
 
 
-<h2 id=commonmark>CommmonMark 0.31.2 Test Cases</h2>
+<h2 id=baremarkx>Unit Tests for <i>Baremark X</i></h2>
+
+<p><a href="../baremarkx.js">Baremark X</a> is an experimental version of
+Baremark, which parses blocks and inline tags (somewhat) separately. For now
+it’s not recommended for installation.
+
+<div data-testsuite="tests-baremarkx.json" data-function="baremarkx"></div>
+
+
+<h2 id=commonmark>CommmonMark 0.31.2 Unit Tests</h2>
 
 <p>These are the <a href="https://spec.commonmark.org/0.31.2/spec.json"
 target=_blank>test cases</a> of
@@ -42,14 +68,6 @@ that’s still considered passing.) If however, the Markdown tags span a
 different part of the text, or interpreted differently in other ways, that is
 considered a fail.
 
-<p><b>Legend:</b>
-  <span class="legend pass">Passed</span>
-  <span class="legend fail">Failed</span>
-  <span class="legend skip"><s>All skipped</s></span></p>
-
-<p>Symbols used in the test names below are: <tt>␣</tt> space (where needed for
-clarity), <tt>↲</tt> enter, <tt>⭲</tt> tab, and <tt>⍽</tt> no-break-space.
-
 <div data-testsuite="tests-commonmark.json" data-function="baremark"></div>
 
 
@@ -60,10 +78,6 @@ together to present how well Baremark fared with the CommonMark test suite. The
 below “test results” are only meant to show what different kind of test results
 look like on the page.</p>
 
-<p><b>Legend:</b>
-  <span class="legend pass">Passed</span>
-  <span class="legend fail">Failed</span>
-  <span class="legend skip"><s>All skipped</s></span></p>
 
 <div data-testsuite="tests-framework.json" data-function="baremark"></div>
 
@@ -92,6 +106,7 @@ look like on the page.</p>
 </script>
 <script type=module>
   import '../baremark.js'
+  import '../baremarkx.js'
   $(()=>{
     // jQuery plugins.
     jQuery.fn.forEach = [].forEach
