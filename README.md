@@ -19,7 +19,7 @@ featurefulness.)
 * [Test suite]
 * [Github repo]
 
-It is currently 1933 bytes in size *before* minification and zipping!
+It is currently 1957 bytes in size *before* minification and zipping!
 
 
 <toc heading=Contents class=toc>
@@ -519,18 +519,32 @@ Numbered lists cannot be nested.
 
 [Code Block]: #codeblock
 [Code Blocks]: #codeblock
-### ` ```↲CODEBLOCK↲``` `
+### ` ```↲CODEBLOCK↲``` ` `~~~↲CODEBLOCK↲~~~`
 
-Code blocks start and end with ` ``` ` on a line of its own. (Markdown’s
-indented code blocks are not supported by Baremark.) A code block may contain
-any kind of preformatted text (not just code).
+A code block starts and ends with either ` ``` ` or `~~~` on a separate line.
+The end delimiter is the first line containing the same number, or more, of `~`
+or `` ` `` as the start line (the same character must be used in both start and
+end line).
 
+Markdown’s indented code blocks are not supported by Baremark. You can put any
+type of preformatted text inside a codeblock (not just code).
+
+~~~
 ```
-``` 
 first line of code
 second line of code
 etc...
-``` 
+```
+~~~
+
+or
+
+```
+~~~
+first line of code
+second line of code
+etc...
+~~~
 ```
 
 

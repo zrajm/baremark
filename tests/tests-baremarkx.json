@@ -545,6 +545,10 @@
     "want": "<pre>xx</pre>",
     "name": "single codeblock"
   }, {
+    "data": "```\nxx\n\nyy\n```",
+    "want": "<pre>xx&#10;&#10;yy</pre>",
+    "name": "codeblock with blank line inside"
+  }, {
     "data": "```\nxx\n```\n```\nyy\n```",
     "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
     "name": "two adjacent codeblocks"

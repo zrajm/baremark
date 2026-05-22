@@ -128,10 +128,9 @@
   },
   {
     "data": "~~~\n\\[\\]\n~~~\n",
-    "want": "<pre>\\[\\]</pre>",
+    "want": "<pre>&#92;&#91;&#92;&#93;</pre>",
     "spec": "<pre><code>\\[\\]\n</code></pre>\n",
-    "name": "Test 19: <tt>~~~↲&#92;[&#92;]↲~~~↲</tt>",
-    "FIXME": "Add tilde code blocks"
+    "name": "Test 19: <tt>~~~↲&#92;[&#92;]↲~~~↲</tt>"
   },
   {
     "data": "<https://example.com?find=\\*>\n",
@@ -885,8 +884,7 @@
     "data": "~~~\n<\n >\n~~~\n",
     "want": "<pre>&#60;&#10; &#62;</pre>",
     "spec": "<pre><code>&lt;\n &gt;\n</code></pre>\n",
-    "name": "Test 120: <tt>~~~↲&lt;↲␣&gt;↲~~~↲</tt>",
-    "FIXME": "Add tilde code blocks"
+    "name": "Test 120: <tt>~~~↲&lt;↲␣&gt;↲~~~↲</tt>"
   },
   {
     "data": "``\nfoo\n``\n",
@@ -902,24 +900,21 @@
   },
   {
     "data": "~~~\naaa\n```\n~~~\n",
-    "want": "<pre>aaa&#10;```</pre>",
+    "want": "<pre>aaa&#10;&#96;&#96;&#96;</pre>",
     "spec": "<pre><code>aaa\n```\n</code></pre>\n",
-    "name": "Test 123: <tt>~~~↲aaa↲```↲~~~↲</tt>",
-    "FIXME": "Add tilde code blocks"
+    "name": "Test 123: <tt>~~~↲aaa↲```↲~~~↲</tt>"
   },
   {
     "data": "````\naaa\n```\n``````\n",
-    "want": "<pre>aaa&#10;```</pre>",
+    "want": "<pre>aaa&#10;&#96;&#96;&#96;</pre>",
     "spec": "<pre><code>aaa\n```\n</code></pre>\n",
-    "name": "Test 124: <tt>````↲aaa↲```↲``````↲</tt>",
-    "FIXME": "Add variable number of backticks for code blocks"
+    "name": "Test 124: <tt>````↲aaa↲```↲``````↲</tt>"
   },
   {
     "data": "~~~~\naaa\n~~~\n~~~~\n",
-    "want": "<pre>aaa&#10;~~~</pre>",
+    "want": "<pre>aaa&#10;&#126;&#126;&#126;</pre>",
     "spec": "<pre><code>aaa\n~~~\n</code></pre>\n",
-    "name": "Test 125: <tt>~~~~↲aaa↲~~~↲~~~~↲</tt>",
-    "FIXME": "Add tilde code blocks"
+    "name": "Test 125: <tt>~~~~↲aaa↲~~~↲~~~~↲</tt>"
   },
   {
     "data": "```\n",
@@ -952,8 +947,7 @@
     "data": "```\n```\n",
     "want": "<pre></pre>",
     "spec": "<pre><code></code></pre>\n",
-    "name": "Test 130: <tt>```↲```↲</tt>",
-    "skip": "Baremark ignores empty code blocks"
+    "name": "Test 130: <tt>```↲```↲</tt>"
   },
   {
     "data": " ```\n aaa\naaa\n```\n",
@@ -1039,8 +1033,7 @@
     "want": "<pre>aaa&#10;~~~ ~~</pre>",
     "spec": "<pre><code>aaa\n~~~ ~~\n</code></pre>\n",
     "name": "Test 139: <tt>~~~~~~↲aaa↲~~~ ~~↲</tt>",
-    "skip": "Baremark doesn’t support unterminated <tt>```↲CODEBLOCK↲```</tt>",
-    "FIXME": "Add tilde code blocks"
+    "skip": "Baremark doesn’t support unterminated <tt>```↲CODEBLOCK↲```</tt>"
   },
   {
     "data": "foo\n```\nbar\n```\nbaz\n",
@@ -1050,10 +1043,9 @@
   },
   {
     "data": "foo\n---\n~~~\nbar\n~~~\n# baz\n",
-    "want": "<h2>foo</h2>\n\n<pre>bar</pre>\n\n<h1>baz</h1>",
+    "want": "<h2>foo</h2>\n\n\n<pre>bar</pre>\n\n<h1>baz</h1>",
     "spec": "<h2>foo</h2>\n<pre><code>bar\n</code></pre>\n<h1>baz</h1>\n",
-    "name": "Test 141: <tt>foo↲---↲~~~↲bar↲~~~↲# baz↲</tt>",
-    "FIXME": "Add tilde code blocks"
+    "name": "Test 141: <tt>foo↲---↲~~~↲bar↲~~~↲# baz↲</tt>"
   },
   {
     "data": "```ruby\ndef foo(x)\n  return 3\nend\n```\n",
@@ -1067,7 +1059,7 @@
     "want": "<pre class=\"language-ruby\">def foo(x)\n  return 3\nend\n</pre>",
     "spec": "<pre><code class=\"language-ruby\">def foo(x)\n  return 3\nend\n</code></pre>\n",
     "name": "Test 143: <tt>~~~~␣␣␣␣ruby startline=3 $%@#$↲def foo(x)↲␣␣return 3↲end↲~~~~~~~↲</tt>",
-    "FIXME": "Add tilde code blocks"
+    "FIXME": "Add info string support for fenced code blocks"
   },
   {
     "data": "````;\n````\n",
@@ -1087,7 +1079,7 @@
     "want": "<pre class=\"language-aa\">foo\n</pre>",
     "spec": "<pre><code class=\"language-aa\">foo\n</code></pre>\n",
     "name": "Test 146: <tt>~~~ aa ``` ~~~↲foo↲~~~↲</tt>",
-    "FIXME": "Add tilde code blocks"
+    "FIXME": "Add info string support for fenced code blocks"
   },
   {
     "data": "```\n``` aaa\n```\n",

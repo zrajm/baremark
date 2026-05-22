@@ -103,7 +103,7 @@
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/31] Features
+* [0/30] Features
 ** TODO `*ITALIC*` and bullet `* BULLET`                                :BUG:
    When a bullet list is written in condensed form, `*ITALIC*` will sometimes
    mess with the bullet.
@@ -304,9 +304,6 @@
    const result = rules.reduce((s, [regex, replacer]) => s.replace(regex, replacer), str);
    ----------------------------------------
 ** TODO Allow <...> around URL in `[LABEL]: URL "TITLE"`
-** TODO Support fenced code blocks with `~~~`
-   https://spec.commonmark.org/0.31.2/#code-fence
-   https://spec.commonmark.org/0.31.2/#example-120
 ** TODO Fenced code blocks should allow variable number of `
    Ending fence should have at least same length as start fence, but
    possibly longer (CommonMark example 124).
@@ -543,7 +540,11 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [55/55] FINISHED
+* [56/56] FINISHED
+** DONE Support fenced code blocks with `~~~`
+   CLOSED: [2026-05-22 Fri 08:56]
+   https://spec.commonmark.org/0.31.2/#code-fence
+   https://spec.commonmark.org/0.31.2/#example-120
 ** DONE Shorten h()
    CLOSED: [2026-05-20 Wed 06:14]
    + Replace:
