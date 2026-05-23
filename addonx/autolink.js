@@ -1,9 +1,9 @@
 /*-*- js-indent-level: 2 -*-*/
 // Copyright 2025-2026 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code).
-import './baremark.js'
+import './baremarkx.js'
 
 // Insert as first inline/span rule.
-baremark()[1].unshift([
+baremarkx()[1].unshift([
   /(?<!\]\(|\]: +)\b[a-z]+:\/\/[^ \n<>]*[^,;:.?!"'\)\]}<> \n]/gi, autolink])
   // /(?<!\]\()\b[a-z]+:\/\/[^ \n<>]*[^,;:.?!"'\)\]}<> \n]/gi,
 
@@ -18,8 +18,8 @@ function autolink(x) {
   const linkText = decodeHTMLEntities(x).split(
     /([\p{S}\p{Z}\p{Pi}\p{Ps}\p{Pd}\p{Pc}\p{Po}]*(?:[\p{Lt}\p{Lu}]+\p{Ll}*|[\p{Lt}\p{Lu}]*\p{Ll}+|\p{N}+)[:/\p{Pe}\p{Pf}]*)/u)
         .filter(x => x)
-        .map(x => baremark.escape(x))
+        .map(x => baremarkx.escape(x))
         .join('<wbr>')
-  return `<a href="${baremark.escape(x)}">${linkText}</a>`
+  return `<a href="${baremarkx.escape(x)}">${linkText}</a>`
 }
 //[eof]

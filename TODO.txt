@@ -540,8 +540,13 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [57/57] FINISHED
-** DONE Interactive demo
+* [58/58] FINISHED
+** DONE Baremark X addons should reference `baremarkx()`                :BUG:
+   CLOSED: [2026-05-23 Sat 18:03]
+   Baremark X addons accidentally still try to call `baremark()` in order to
+   modify the Baremark rules, this will fail as Baremark X internally uses
+   `baremarkx()`. Fix this.
+** DONE Added interactive demo page
    CLOSED: [2026-05-23 Sat 17:43]
 ** DONE Support fenced code blocks with `~~~`
    CLOSED: [2026-05-22 Fri 08:56]

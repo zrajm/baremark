@@ -1,12 +1,12 @@
 /*-*- js-indent-level: 2 -*-*/
 // Copyright 2025-2026 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code).
-import './baremark.js'
+import './baremarkx.js'
 import './uncomment.js' // or commented headings will be in toc
 
 let stack = [[]], idUniq = {}
 
 // Insert after last rule.
-baremark()[0].push(
+baremarkx()[0].push(
   // 1. Reset variables (rule match once, but change nothing).
   [/^/, tocReset],
   // 2. Make sure each <h#> has 'id' attr & add it to toc.

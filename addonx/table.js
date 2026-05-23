@@ -1,9 +1,9 @@
 /*-*- js-indent-level: 2 -*-*/
 // Copyright 2025-2026 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code).
-import './baremark.js'
+import './baremarkx.js'
 
 // Insert before last rule which matches '\n\n' at the start.
-let [r] = baremark(), i = r.findLastIndex(([re]) => /^\\n\\n/.test(re.source))
+let [r] = baremarkx(), i = r.findLastIndex(([re]) => /^\\n\\n/.test(re.source))
 
 r.splice(i, 0, [/\n\n(.+(\n.+)*)(?=\n\n)/g, table])
 
