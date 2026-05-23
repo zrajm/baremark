@@ -34,21 +34,21 @@ a { border-radius: 1px; color: #00d }
 a:hover { background: #22f5; outline: 2px solid #22f5 }
 :focus { outline-offset: 1px; outline: 2px solid #6668 }
 a:active {}
-code, tt, pre {
-  border-radius: .25em;
-  padding: .25em .25em .0625em;
-  outline: 1px solid #0003;
+code, tt, blockquote, pre {
   background: #aaa5;
-  bottom: .125em;
+  border-radius: .25em;
+  outline: 1px solid #0003;
 }
-blockquote, pre { padding: .5em 1em; }
-pre { margin: 1.5em 0 }
+code, tt {
+  padding: .25em .25em .0625em;
+}
+blockquote, pre {
+  padding: .5em 1em;
+  margin: 1.5em 0;
+}
 blockquote {
-  margin: 1.5em;
-  border-left: .5em solid #0003;
-  padding-left: .5em;
-  background: #0001;
-  outline: 0;
+  border-left: .7em solid #0002;
+  padding-left: .3em;
   & > :first-child { margin-top: 0 }
   & > :last-child { margin-bottom: 0 }
 }

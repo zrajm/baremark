@@ -540,7 +540,9 @@
    /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
                |
                HERE
-* [56/56] FINISHED
+* [57/57] FINISHED
+** DONE Interactive demo
+   CLOSED: [2026-05-23 Sat 17:43]
 ** DONE Support fenced code blocks with `~~~`
    CLOSED: [2026-05-22 Fri 08:56]
    https://spec.commonmark.org/0.31.2/#code-fence

@@ -1,0 +1,87 @@
+<!DOCTYPE html><!--*-js-indent-level:2;css-indent-offset:2-*-->
+<!-- Copyright (c) 2026 by zrajm. License: GPLv2 -->
+<meta charset=utf-8>
+<meta name=viewport content=width=device-width,initial-scale=1>
+<link rel=icon href=../www/baremark.svg>
+<link rel=stylesheet href=../www/main.css>
+<dialog id=noscript style="position:absolute;inset:0;margin:auto;padding:1em 2em;border:5px dashed #ff0a;border-radius:1rem;font:bold 2em sans;color:#ff0a;background:#600;box-shadow:0 0 0 5px #600,0 0 0 999px #0008, 0 5px 10px #000" open><script>noscript.close()</script>Javascript needed.</dialog>
+<style>
+  main {
+    display: flex; gap: 1em; flex: 1 1 auto;
+    & > * {
+      &:is(textarea) { width: 50% }
+      &:not(textarea) { flex: 1 }
+      border: 1px inset #888;
+      color: #fff;
+      height: auto;
+      resize: horizontal;
+      padding: .25rem;
+    }
+  }
+  img { background: #fff }
+</style>
+<h3>Try Out Baremark</h3>
+
+<main>
+  <textarea id=input autofocus>
+**← Type something to the left** to try it out.
+
+[Baremark] is a *super*-minimal Markdown parser. **Less** than 2K of *unminified* Javascript! It’s not fully CommonMark compliant, but support all the stuff one would expect, like *italics*, **bold,** ___underline___, `monospace` and ~~strikethrough~~.
+
+* * *
+
+Pros:
+
+1. Veeery small!
+2. Extendable (using [addons]).
+
+Cons:
+
++ No nested lists.
++ No indented code blocks.
+
+* * *
+
+[Different] [types][a] of [links](http://zrajm.org) and images are all supported.
+
+![labeled image][img]
+![inline image](../www/baremark.svg)
+
+
+Setext Headings
+===============
+
+# ATX Headings
+
+
+Setext Subheadings
+------------------
+
+## ATX Subheading
+
+> Blockquote
+
+```
+Codeblock (with `)
+```
+
+~~~
+Codeblock (with ~)
+~~~
+
+[a]: https://zrajm.org
+[addons]: ../#addons
+[baremark]: ..
+[different]: https://klingonska.org
+[img]: ../www/baremark.svg</textarea>
+  <div id=output></div>
+</main>
+<footer>© 2026 zrajm, Uppsala.</footer>
+<script type=module>
+  import '../baremark.js'
+  input.onkeyup = () => {
+    output.innerHTML = baremark(input.value)
+  }
+  input.onkeyup()
+</script>
+<!--[eof]-->

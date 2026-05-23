@@ -14,6 +14,7 @@ more [CommonMark] compliance. (Note that Baremark never will be *fully*
 CommonMark compliant, as the intent of Baremark is source code brevity above
 featurefulness.)
 
+* [Try it!]
 * [README]
 * [Source code]
 * [Test suite]
@@ -133,8 +134,9 @@ very last rule have very specific tasks.
 
 * The *first four rules* normalize whitespace and escape characters in
   different ways (that is, protect them from additional processing, as is
-  expected with backslash escapes `\X`, ` ```CODEBLOCKS``` ` and `` `CODE` ``).
-  – In order to not mess with this, you should insert new rules *after* this.
+  expected with backslash escapes `\X`, ` ```↲CODEBLOCK↲``` ` and `` `CODE`
+  ``). – In order to not mess with this, you should insert new rules *after*
+  this.
 
 * The *last rule* wraps any remaining paragraph-like text chunks in HTML `<p>`
   tags. – In order to not have to deal with spurious `<p>` tags in your input
@@ -462,9 +464,18 @@ Blockquotes may be nested, and they may contain both [lists] and [span
 elements].
 
 ```
-> Information is noise, unless it’s
-> the information you’re looking for.
+> To quote myself:
+>
+> > Information is noise, unless it’s
+> > the information you’re looking for.
 ```
+
+Looks like:
+
+> To quote myself:
+>
+> > Information is noise, unless it’s
+> > the information you’re looking for.
 
 A blockquote must start with a blank line. This is counter to the CommonMark
 spec, but is arguably better. :) It also allows for newline occurring inside
@@ -980,5 +991,6 @@ The following addons exist:
 [Sitemark]: http://plugnburn.github.io/sitemark/
 [Source code]: https://zrajm.org/baremark/baremark.js
 [Test suite]: https://zrajm.org/baremark/tests/
+[Try it!]: https://zrajm.org/baremark/try/
 
 <!--[eof]-->
