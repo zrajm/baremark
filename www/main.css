@@ -128,7 +128,7 @@ td {
   text-align: revert-layer !important;
 }
 li { margin-left: 1em; }
-p, h1, h2, h3, h4, footer { margin: 1em 0 .5em; }
+p, h1, h2, h3, h4, ul, ol, footer { margin: 1em 0 .5em; }
 footer {
   text-align: center;
   margin-top: auto;

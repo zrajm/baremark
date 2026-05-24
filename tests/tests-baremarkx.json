@@ -473,15 +473,31 @@
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>* BULLET</tt>"
   }, {
+    "data": "* xx\n\n* yy\n* zz",
+    "want": "<ul><li>xx</li></ul>\n\n\n\n<ul><li>yy</li><li>zz</li></ul>",
+    "name": "<tt>* BULLET</tt> two adjacent with blank line between"
+  }, {
     "data": "+ xx\n+ yy",
     "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>+ BULLET</tt>"
   }, {
+    "data": "+ xx\n\n+ yy",
+    "want": "<ul><li>xx</li></ul>\n\n\n\n<ul><li>yy</li></ul>",
+    "name": "<tt>+ BULLET</tt> two adjacent with blank line between"
+  }, {
     "data": "- xx\n- yy",
     "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>- BULLET</tt>"
+  }, {
+    "data": "- xx\n\n- yy",
+    "want": "<ul><li>xx</li></ul>\n\n\n\n<ul><li>yy</li></ul>",
+    "name": "<tt>- BULLET</tt> two adjacent with blank line between"
+  }, {
+    "data": "* xx\n+ yy\n- zz",
+    "want": "<ul><li>xx</li><li>yy</li><li>zz</li></ul>",
+    "name": "<tt>*/+/- BULLET</tt> mixed bullet characters"
   }, {
     "data": "* xx\n  yy\n* zz",
     "want": "<ul><li>xx\n  yy</li><li>zz</li></ul>",
@@ -507,7 +523,7 @@
   }, {
     "data": "* foo\n-----\n",
     "want": "<ul><li>foo</li></ul>\n\n<p>-----</p>",
-    "name": "<tt class=multi>* BULLET<br>--------</tt> is bullet item, not <tt class=multi>HEADING<br>-------</tt>"
+    "name": "<tt class=multi>* BULLET<br>--------</tt> is bullet + dinkus <tt>---</tt> not <tt class=multi>HEADING<br>-------</tt>"
   },
   "<tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>", {
     "data": "1. xx\n2. yy",
@@ -515,10 +531,20 @@
     "want": "<ol><li>xx</li><li>yy</li></ol>",
     "name": "<tt>1. NUMBERED</tt>"
   }, {
+    "data": "1. xx\n\n1. yy\n2. zz",
+    "NOTE": "CommonMark",
+    "want": "<ol><li>xx</li></ol>\n\n\n\n<ol><li>yy</li><li>zz</li></ol>",
+    "name": "<tt>1. NUMBERED</tt> two adjacent with blank line between"
+  }, {
     "data": "1) xx\n2) yy",
     "NOTE": "CommonMark",
     "want": "<ol><li>xx</li><li>yy</li></ol>",
     "name": "<tt>1) NUMBERED</tt>"
+  }, {
+    "data": "1) xx\n\n1) yy\n2) zz",
+    "NOTE": "CommonMark",
+    "want": "<ol><li>xx</li></ol>\n\n\n\n<ol><li>yy</li><li>zz</li></ol>",
+    "name": "<tt>1) NUMBERED</tt> two adjacent with blank line between"
   }, {
     "data": "1. xx\n  yy\n2. zz",
     "want": "<ol><li>xx\n  yy</li><li>zz</li></ol>",

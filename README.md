@@ -490,17 +490,19 @@ codeblocks and blockquotes.
 [Bullets]: #-bullet--bullet---bullet
 #### `* BULLET` `+ BULLET` `- BULLET`
 
-A bullet list item is any line that starts with `-`, `+` or `*` followed by a
+A bullet list item is any line that starts with `-`, `+` or `*` followed by
 space. The different bullet characters may be mixed freely within the same
 list. If an item is longer than one line, then the subsequent lines must start
 with space character. (This is the only instance where indentation matters in
-Baremark.)
+Baremark.) A blank line between two bullet items marks the beginning of a new
+list.
 
 ```
-- bullet one
-+ bullet two, which also happens to be
+- first bullet
++ second bullet, which also happens to be
   a very long multi-line bullet item
-* bullet three
+
+* first bullet in a second list
 ```
 
 Bullet lists cannot be nested.
@@ -510,19 +512,20 @@ Bullet lists cannot be nested.
 #### `1. NUMBERED` `2) NUMBERED`
 
 A numbered list item is any line that starts with a number, followed by `.` or
-`)` and then a space. Whether you use `.` or `)` may be mixed freely within the
-same list. If an item is longer than one line, then the subsequent lines must
-start with space character. (In this way lists items is the only instance where
-indentation matters in Baremark.)
+`)` and thereafter a space. The use of `.` and `)` can be mixed freely within
+the same list. If a list item is longer than one line, then the subsequent
+lines must start with space character. (In this way lists items is the only
+instance where indentation matters in Baremark.) A blank line between two
+numbered items marks the beginning of a new list.
 
 Like most Markdown parsers, Baremark ignores the actual numbers. (The outputted
 list will always be numbered from 1.)
 
 ```
-1. numbered item 1
-2. numbered item 2
-3. numbered item 3
-4. numbered item 4
+1. first numbered item
+2. second numbered item
+
+1. first numbered item in second list
 ```
 
 Numbered lists cannot be nested.
