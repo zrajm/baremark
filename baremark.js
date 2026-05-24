@@ -20,6 +20,5 @@
 		[/:"X":/,'<q>$1</q>'],
 		[/NN(.+(N.+)*)(?=NN)/,(w,m)=>/<\/?(address|article|aside|blockquote|details|div|[dou]l|fieldset|fig(caption|ure)|footer|form|h[1-6r]|header|hgroup|main|menu|nav|p|pre|(no)?script|search|section|style|table)\b/i.test(m)?w:`\n\n<p>${m}</p>`]
 	].map(([r,s])=>[RegExp(r.source.replace(/[NXY]/g,w=>m[w]),'g'),s])
-	w.baremark=b
-	w.baremark.escape=e
+	w.baremark=b;b.escape=e
 })(self)
