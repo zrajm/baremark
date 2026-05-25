@@ -109,12 +109,10 @@
     "name": "<tt># HEADING</tt> without text, don’t expand"
   }, {
     "data": "\\## xx",
-    "NOTE": "CommonMark",
     "want": "<p>&#35;# xx</p>",
     "name": "<tt># HEADING</tt> with first <tt>#</tt> escaped by <tt>&#92;X</tt>, don’t expand"
   }, {
     "data": "#\\# xx",
-    "NOTE": "CommonMark",
     "want": "<p>#&#35; xx</p>",
     "name": "<tt># HEADING</tt> with non-first <tt>#</tt> escaped by <tt>&#92;X</tt>, don’t expand"
   }, {
@@ -124,7 +122,6 @@
     "name": "<tt># HEADING</tt> with leading with blank line"
   }, {
     "data": "#xx",
-    "NOTE": "CommonMark",
     "want": "<p>#xx</p>",
     "name": "<tt># HEADING</tt> no space after <tt>#</tt>, don’t expand"
   }, {
@@ -144,12 +141,10 @@
     "name": "<tt># HEADING</tt> no trailing blank line, don’t expand"
   }, {
     "data": "# xx  ###",
-    "NOTE": "CommonMark",
     "want": "<h1>xx</h1>",
     "name": "<tt># HEADING</tt> strip <tt>#</tt>s at end-of-line"
   }, {
     "data": "# xx###",
-    "NOTE": "CommonMark",
     "want": "<h1>xx###</h1>",
     "name": "<tt># HEADING</tt> don’t strip <tt>#</tt>s at end-of-line with no preceding space"
   },
@@ -287,12 +282,10 @@
   },
   "<tt>&gt; BLOCKQUOTE</tt>", {
     "data": "> xx \t",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> with line ending in whitespace"
   }, {
     "data": "> xx",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n<p>xx</p>\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt>"
   }, {
@@ -307,12 +300,10 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> without leading blank line, not allowed"
   }, {
     "data": "> yy\nzz",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n<p>yy\nzz</p>\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing paragraph with lazy continuation line"
   }, {
     "data": "> xx\n> yy",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n<p>xx\nyy</p>\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing paragraph with newline"
   }, {
@@ -322,7 +313,6 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> without leading blank line, not allowed"
   }, {
     "data": "> xx\n>\n> yy",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n<p>xx</p>\n\n<p>yy</p>\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing two paragraphs"
   }, {
@@ -331,17 +321,14 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> followed by another <tt>&gt; BLOCKQUOTE</tt>"
   }, {
     "data": "> > xx\n> > yy",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n<blockquote>\n\n<p>xx\nyy</p>\n\n</blockquote>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing nested <tt>&gt; BLOCKQUOTE</tt>"
   }, {
     "data": "> > xx\n> >\n> > yy",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n<blockquote>\n\n<p>xx</p>\n\n<p>yy</p>\n\n</blockquote>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing nested <tt>&gt; BLOCKQUOTE</tt> with two paragraphs"
   }, {
     "data": "> > xx\n>\n> > yy",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n<blockquote>\n\n<p>xx</p>\n\n</blockquote>\n\n\n<blockquote>\n\n<p>yy</p>\n\n</blockquote>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing nested <tt>&gt; BLOCKQUOTE</tt>s"
   }, {
@@ -370,12 +357,10 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt class=multi>HEADING<br>-------</tt> with lazy continuation line"
   }, {
     "data": "> * xx\n> * yy",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n\n<ul><li>xx</li><li>yy</li></ul>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>* BULLET</tt>"
   }, {
     "data": "> * xx\n>   yy\n> * zz",
-    "NOTE": "CommonMark",
     "want": "<blockquote>\n\n\n<ul><li>xx\n  yy</li><li>zz</li></ul>\n\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>* BULLET</tt> with continuation line"
   }, {
@@ -469,17 +454,14 @@
   },
   "<tt>* BULLET</tt> <tt>+ BULLET</tt> <tt>- BULLET</tt>", {
     "data": "* xx\n* yy",
-    "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>* BULLET</tt>"
   }, {
     "data": "+ xx\n+ yy",
-    "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>+ BULLET</tt>"
   }, {
     "data": "- xx\n- yy",
-    "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>- BULLET</tt>"
   }, {
@@ -518,12 +500,10 @@
     "name": "<tt>* BULLET</tt> with indented continuation lines"
   }, {
     "data": "xx\n* yy\n* zz",
-    "NOTE": "CommonMark",
     "want": "<p>xx</p>\n\n<ul><li>yy</li><li>zz</li></ul>",
     "name": "<tt>* BULLET</tt> with no leading blank line"
   }, {
     "data": "* xx\n* yy\nzz",
-    "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>\n\n<p>zz</p>",
     "name": "<tt>* BULLET</tt> with no trailing blank line"
   }, {
@@ -541,12 +521,10 @@
   },
   "<tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>", {
     "data": "1. xx\n2. yy",
-    "NOTE": "CommonMark",
     "want": "<ol><li>xx</li><li>yy</li></ol>",
     "name": "<tt>1. NUMBERED</tt>"
   }, {
     "data": "1) xx\n2) yy",
-    "NOTE": "CommonMark",
     "want": "<ol><li>xx</li><li>yy</li></ol>",
     "name": "<tt>1) NUMBERED</tt>"
   }, {

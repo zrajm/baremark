@@ -44,8 +44,7 @@
   vfmd is a variant of Markdown with an unambiguous specification of its syntax.
   https://web.archive.org/web/20160306050706/http://www.vfmd.org/differences/
 * TODO Bring this TODO up to speed with the project
-* [0/8] Web page
-** TODO Remove 'NOTE: CommonMark' from the test cases                   :web:
+* [0/7] Web page
 ** TODO Source code on web page with plenty of comments                 :web:
    There should also exist a git hook to verify that these always are in sync.
 ** TODO Unit tests search improvement                                   :web:
@@ -488,7 +487,9 @@
 *** TODO Should remove additional comments?
    Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
    <?...>?
-* [62/62] FINISHED
+* [64/64] FINISHED
+** DONE Remove 'NOTE: CommonMark' from the test cases                   :web:
+   CLOSED: [2026-05-25 Mon 23:22]
 ** DONE [#A] Better link color (should be readable inside `...`)        :web:
    CLOSED: [2026-05-25 Mon 23:16]
 ** DONE Test empty bullet list, numbered list, code block              :test:
