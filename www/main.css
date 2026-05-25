@@ -30,8 +30,8 @@ html {
   --indent: 1.5em;
   --border-width: 2px;
 }
-a { border-radius: 1px; color: #00d }
-a:hover { background: #22f5; outline: 2px solid #22f5 }
+a { border-radius: 1px; color: #88fd }
+a:hover { background: #44f4; outline: 2px solid #44f4 }
 :focus { outline-offset: 1px; outline: 2px solid #6668 }
 a:active {}
 code, tt, blockquote, pre {
