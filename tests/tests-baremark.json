@@ -90,6 +90,14 @@
     "want": "<p>####### xx</p>",
     "name": "<tt>####### HEADING 7</tt>, don’t expand"
   }, {
+    "data": "# aa *bb* cc",
+    "want": "<h1>aa <i>bb</i> cc</h1>",
+    "name": "<tt># HEADING</tt> containing <tt>*ITALIC*</tt>"
+  }, {
+    "data": "# aa **bb** cc",
+    "want": "<h1>aa <b>bb</b> cc</h1>",
+    "name": "<tt># HEADING</tt> containing <tt>**BOLD**</tt>"
+  }, {
     "data": "text\n\n# xx\n\ntext",
     "want": "<p>text</p>\n\n<h1>xx</h1>\n\n<p>text</p>",
     "name": "<tt># HEADING 1</tt> with paragraphs before/after"
@@ -515,9 +523,49 @@
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>* BULLET</tt> space/tab at end-of-line"
   }, {
+    "data": "* # xx yy\n* aa",
+    "want": "<ul><li># xx yy</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing <tt># HEADING</tt> which is not expanded"
+  }, {
+    "data": "* ## xx yy\n* aa",
+    "want": "<ul><li>## xx yy</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing <tt>## HEADING</tt> which is not expanded"
+  }, {
+    "data": "* xx yy\n  =====\n* aa",
+    "want": "<ul><li>xx yy\n  =====</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing indented <tt class=multi>HEADING<br>=======</tt> which is not expanded"
+  }, {
     "data": "* foo\n-----\n",
     "want": "<ul><li>foo</li></ul>\n\n<p>-----</p>",
-    "name": "<tt class=multi>* BULLET<br>--------</tt> is bullet + dinkus <tt>---</tt> not <tt class=multi>HEADING<br>-------</tt>"
+    "name": "<tt class=multi>* BULLET</tt> containing unindented <tt class=multi>HEADING<br>-------</tt> which is not expanded"
+  }, {
+    "data": "* ---\n* aa",
+    "want": "<ul><li>---</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing dinkus <tt>---</tt> which is not expanded"
+  }, {
+    "data": "* xx *yy* zz\n* aa",
+    "want": "<ul><li>xx <i>yy</i> zz</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing <tt>*ITALIC*</tt>"
+  }, {
+    "data": "* xx **yy** zz\n* aa",
+    "want": "<ul><li>xx <b>yy</b> zz</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing <tt>*BOLD*</tt>"
+  }, {
+    "data": "* xx ___yy___ zz\n* aa",
+    "want": "<ul><li>xx <u>yy</u> zz</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing <tt>___UNDERLINE___</tt>"
+  }, {
+    "data": "* xx ~~yy~~ zz\n* aa",
+    "want": "<ul><li>xx <s>yy</s> zz</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing <tt>___STRIKETHROUGH___</tt>"
+  }, {
+    "data": "* xx :\"yy\": zz\n* aa",
+    "want": "<ul><li>xx <q>yy</q> zz</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing <tt>:\"QUOTE\":</tt>"
+  }, {
+    "data": "* xx `yy` zz\n* aa",
+    "want": "<ul><li>xx <tt>yy</tt> zz</li><li>aa</li></ul>",
+    "name": "<tt>* BULLET</tt> containing <tt>`CODE`</tt>"
   },
   "<tt>1. NUMBERED</tt> <tt>1) NUMBERED</tt>", {
     "data": "1. xx\n2. yy",
