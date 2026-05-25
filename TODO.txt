@@ -70,20 +70,11 @@
    <details> are just laggy. Can this be fixed?
 ** TODO Remember which <details> where opened on reload                 :web:
 ** TODO Make sure README is up-to date                                  :web:
-* [1/13] Tests
+* [0/11] Tests
   List of different Markdown test suites:
   https://github.com/karlcow/markdown-testsuite
 ** TODO Tests for HTML blocks                                          :test:
 *** TODO Add test case for HTML block with lines followed by space
-** TODO Test empty bullet list, numbered list, code block              :test:
-   What should all the following result in?
-
-   ```
-   ```
-
-   *
-
-   1)
 ** TODO Multiple of each element after each other                      :test:
    Each thingy should be tested with two after each other. E.g. two *code
    blocks* after each other. This will, for the blocks make sure that the
@@ -150,7 +141,7 @@
    Would it be beneficial to be able to use 'Y' in the regexes to indicate a
    string that may not begin or end with a newline, but otherwise match the
    same as 'X'?
-* [0/4] Bugs
+* [0/5] Bugs
 ** TODO `*ITALIC*` and bullet `* BULLET`                                :bug:
    When a bullet list is written in condensed form, `*ITALIC*` will sometimes
    mess with the bullet.
@@ -160,11 +151,58 @@
    * XXX *
    * III *ZZZ*
    ----------------------------------------
+   becomes
+   ----------------------------------------
+   <ul>
+   <li>XXX <i></i></li>
+   <li><i>III </i> ZZZ</li>
+   </ul>
+   ----------------------------------------
+
    Will italicize 'III' and retain the `*` after 'ZZZ', rather than retain the
    `*` after 'XXX' and italicize 'ZZZ'.
 
    Maybe add something to normalization to add extra blank lines before bullet
    items?
+
+   Also, writing a bullet list with empty bullet points will cause italics
+   instead of the expected result.
+
+   ----------------------------------------
+   *
+   *
+   *
+   ----------------------------------------
+   becomes
+   ----------------------------------------
+   <p><i></i>
+   *</p>
+   ----------------------------------------
+** TODO `HEADING↲-------` and empty `- BULLET`s                         :bug:
+   If using multiple empty `- BULLET`s, the first '-' is interpreted as a
+   heading with the text '-'. :( This probably shouldn't be the case.
+   ----------------------------------------
+   -
+   -
+   -
+   ----------------------------------------
+   becomes
+   ----------------------------------------
+   <h2>-</h2>
+
+   <p>-</p>
+   ----------------------------------------
+
+   NOTE: The same happens with an '=' underlined by '-' or '=', but this might
+   be(?) less problematic since '=' does not start list items.
+   ----------------------------------------
+   =
+   =
+   ----------------------------------------
+   becomes
+   ----------------------------------------
+   <h1>=</h1>
+   ----------------------------------------
 ** TODO Text after bullet list should get paragraph                     :bug:
    In the following, the trailing `</p>` causes the text after the bullet item
    to be interpreted as an HTML block rather than a paragraph.
@@ -451,7 +489,17 @@
 *** TODO Should remove additional comments?
    Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
    <?...>?
-* [60/60] FINISHED
+* [62/62] FINISHED
+** DONE Test empty bullet list, numbered list, code block              :test:
+   CLOSED: [2026-05-25 Mon 19:20]
+   What should all the following result in?
+
+   ```
+   ```
+
+   *
+
+   1)
 ** DONE Baremark X addons should reference `baremarkx()`                :bug:
    CLOSED: [2026-05-23 Sat 18:03]
    Baremark X addons accidentally still try to call `baremark()` in order to

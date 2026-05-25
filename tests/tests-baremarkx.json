@@ -473,23 +473,37 @@
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>* BULLET</tt>"
   }, {
-    "data": "* xx\n\n* yy\n* zz",
-    "want": "<ul><li>xx</li></ul>\n\n\n\n<ul><li>yy</li><li>zz</li></ul>",
-    "name": "<tt>* BULLET</tt> two adjacent with blank line between"
-  }, {
     "data": "+ xx\n+ yy",
     "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>+ BULLET</tt>"
   }, {
-    "data": "+ xx\n\n+ yy",
-    "want": "<ul><li>xx</li></ul>\n\n\n\n<ul><li>yy</li></ul>",
-    "name": "<tt>+ BULLET</tt> two adjacent with blank line between"
-  }, {
     "data": "- xx\n- yy",
     "NOTE": "CommonMark",
     "want": "<ul><li>xx</li><li>yy</li></ul>",
     "name": "<tt>- BULLET</tt>"
+  }, {
+    "data": "*\n* \n*  ",
+    "want": "<p><i>\n</i>\n*</p>",
+    "name": "<tt>* BULLET</tt> without content (empty)",
+    "NOTE": "Possibly a bug"
+  }, {
+    "data": "+\n+ \n+  ",
+    "want": "<p>+\n+\n+</p>",
+    "name": "<tt>+ BULLET</tt> without content (empty)"
+  }, {
+    "data": "-\n- \n-  ",
+    "want": "<h2>-</h2>\n\n<p>-</p>",
+    "name": "<tt>- BULLET</tt> without content (empty)",
+    "NOTE": "Possibly a bug"
+  }, {
+    "data": "* xx\n\n* yy\n* zz",
+    "want": "<ul><li>xx</li></ul>\n\n\n\n<ul><li>yy</li><li>zz</li></ul>",
+    "name": "<tt>* BULLET</tt> two adjacent with blank line between"
+  }, {
+    "data": "+ xx\n\n+ yy",
+    "want": "<ul><li>xx</li></ul>\n\n\n\n<ul><li>yy</li></ul>",
+    "name": "<tt>+ BULLET</tt> two adjacent with blank line between"
   }, {
     "data": "- xx\n\n- yy",
     "want": "<ul><li>xx</li></ul>\n\n\n\n<ul><li>yy</li></ul>",
@@ -531,18 +545,24 @@
     "want": "<ol><li>xx</li><li>yy</li></ol>",
     "name": "<tt>1. NUMBERED</tt>"
   }, {
-    "data": "1. xx\n\n1. yy\n2. zz",
-    "NOTE": "CommonMark",
-    "want": "<ol><li>xx</li></ol>\n\n\n\n<ol><li>yy</li><li>zz</li></ol>",
-    "name": "<tt>1. NUMBERED</tt> two adjacent with blank line between"
-  }, {
     "data": "1) xx\n2) yy",
     "NOTE": "CommonMark",
     "want": "<ol><li>xx</li><li>yy</li></ol>",
     "name": "<tt>1) NUMBERED</tt>"
   }, {
+    "data": "1.\n2. ",
+    "want": "<p>1.\n2.</p>",
+    "name": "<tt>1. NUMBERED</tt> without content (empty)"
+  }, {
+    "data": "1)\n2) ",
+    "want": "<p>1)\n2)</p>",
+    "name": "<tt>1) NUMBERED</tt> without content (empty)"
+  }, {
+    "data": "1. xx\n\n1. yy\n2. zz",
+    "want": "<ol><li>xx</li></ol>\n\n\n\n<ol><li>yy</li><li>zz</li></ol>",
+    "name": "<tt>1. NUMBERED</tt> two adjacent with blank line between"
+  }, {
     "data": "1) xx\n\n1) yy\n2) zz",
-    "NOTE": "CommonMark",
     "want": "<ol><li>xx</li></ol>\n\n\n\n<ol><li>yy</li><li>zz</li></ol>",
     "name": "<tt>1) NUMBERED</tt> two adjacent with blank line between"
   }, {
@@ -574,6 +594,14 @@
     "data": "~~~\nxx\n~~~",
     "want": "<pre>xx</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt>"
+  }, {
+    "data": "```\n```",
+    "want": "<pre></pre>",
+    "name": "<tt>```↲CODEBLOCK↲```</tt> without content (empty)"
+  }, {
+    "data": "~~~\n~~~",
+    "want": "<pre></pre>",
+    "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> without content (empty)"
   }, {
     "data": "```\nxx\n```\n```\nyy\n```",
     "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
