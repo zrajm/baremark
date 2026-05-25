@@ -873,7 +873,7 @@
     "name": "Test 118: <tt>␣␣␣␣foo␣␣↲</tt>",
     "skip": "Baremark doesn’t support indented code blocks"
   },
-  "<tt class=multi>```<br>CODEBLOCK<br>```</tt>",
+  "<tt class=multi>```<br>CODEBLOCK<br>```</tt> <tt class=multi>~~~<br>CODEBLOCK<br>~~~</tt>",
   {
     "data": "```\n<\n >\n```\n",
     "want": "<pre>&#60;&#10; &#62;</pre>",
