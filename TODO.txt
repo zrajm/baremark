@@ -1,5 +1,25 @@
 -*- org -*-
 
+* TODO Policy decision -- Maintain or break Markdown compatibility?  :design:
+  Break category:
+
+  + Require blank lines around block tags, `+ BULLET`, `# HEADING`,
+    `> BLOCKQUOTE`, dinkus `***`, ```CODEBLOCK`` etc---this would allow for
+    multi-line `# heading`, and the block tags being more consistent in
+    behavior (and thus easier to understand/use).
+
+  + Don't allow lazy evaluation. All `> BLOCKQUOTE` would require leading `>`,
+    and `- BULLET` continuation must be indented. This forces good-looking
+    easier-to-read Markdown documents, but breaks CommonMark. It also means
+    careless line breaking can cause a document to be interpreted differently.
+
+  + Doubled `- BULLET` for sublists, and double '.' (or ')') for `1) NUMBERED`.
+
+  Maintain:
+
+  + Support indentation (indented code blocks, and indented sublists).
+
+  + Allow full lazy evaluation.
 * TODO Lazy continuation of lists
   + Include a test for this inside a blockquote as well.
   If implemented, what does then terminate a list?
@@ -24,34 +44,38 @@
   vfmd is a variant of Markdown with an unambiguous specification of its syntax.
   https://web.archive.org/web/20160306050706/http://www.vfmd.org/differences/
 * TODO Bring this TODO up to speed with the project
-* [0/6] Web page
-** TODO Unit tests search improvement
+* [0/9] Web page
+** TODO [#A] Better link color (should be readable inside `...`)        :web:
+** TODO Remove 'NOTE: CommonMark' from the test cases                   :web:
+** TODO Source code on web page with plenty of comments                 :web:
+   There should also exist a git hook to verify that these always are in sync.
+** TODO Unit tests search improvement                                   :web:
    On mobile the search function should be collapsible (showing a magnifying
    class icon) which slides out into a line at top of the screen showing the
    search bar.
 
    If there's enough width of the screen, then the search interface should
    instead be shown in the margin.
-** TODO Something similar to CommonMark & Github Markdown spec
+** TODO Something similar to CommonMark & Github Markdown spec          :web:
    It should illustrate, and also provide test cases for the Markdown syntax
    used.
 
      + https://spec.commonmark.org/current/
      + https://github.github.com/gfm/
-** TODO Colored borders should be bright in dark mode?
+** TODO Colored borders should be bright in dark mode?                  :web:
    Maybe use #8888, or #aaa4 or similar?
-** TODO Webpage should become responsive quicker
+** TODO Webpage should become responsive quicker                        :web:
    It takes a long while after loading for page to become responsive. While the
    tests are still running, the dark mode button, and opening/closing of
    <details> are just laggy. Can this be fixed?
-** TODO Remember which <details> where opened on reload
-** TODO Make sure README is up-to date
-* [0/13] Tests
+** TODO Remember which <details> where opened on reload                 :web:
+** TODO Make sure README is up-to date                                  :web:
+* [1/13] Tests
   List of different Markdown test suites:
   https://github.com/karlcow/markdown-testsuite
-** TODO Tests for HTML blocks
+** TODO Tests for HTML blocks                                          :test:
 *** TODO Add test case for HTML block with lines followed by space
-** TODO Test empty bullet list, numbered list, code block
+** TODO Test empty bullet list, numbered list, code block              :test:
    What should all the following result in?
 
    ```
@@ -60,12 +84,12 @@
    *
 
    1)
-** TODO Multiple of each element after each other
+** TODO Multiple of each element after each other                      :test:
    Each thingy should be tested with two after each other. E.g. two *code
    blocks* after each other. This will, for the blocks make sure that the
    handling of the edges between each match is handled correctly.
-** TODO Add tests for implicit links/images `[...][]`/`![...][]`
-** TODO Tags for test cases
+** TODO Add tests for implicit links/images `[...][]`/`![...][]`       :test:
+** TODO Tags for test cases                                            :test:
    The test cases usually test interactions of markup, meaning that a
    hierarchical isn't actually the best. Could we instead tag each test case
    with the relevant markup tested, and add a filter feature to the test
@@ -81,30 +105,53 @@
    one. (Note that for complex test cases, testing interactions between
    multiple elements, a test might be testing both positive AND negative at the
    same time.)
-** TODO Test cases testing [![pic]](url),  [![pic]][ref]
-** TODO Test markdown inside `text` of links and images
+** TODO Test cases testing [![pic]](url),  [![pic]][ref]               :test:
+** TODO Test markdown inside `text` of links and images                :test:
    In images (`![text][ref]`, `![text]` and `![text](url)`) markdown in `text`
    should be left as-is as it is inserted into the `alt` attribute of the HTML
    tag, but in links (`[text][ref]`, `[text]` and `[text](url)`) the markdown
    should be processed as it is inserted as content into the <a...>...</a> tag.
-** TODO Add test summary (total number of failed/passed/ran tests)
-** TODO Add timing info (total + for each series of subtests)
-** TODO Improve test names
+** TODO Add test summary (total number of failed/passed/ran tests)      :web:
+** TODO Add timing info (total + for each series of subtests)           :web:
+** TODO Improve test names                                              :web:
    Under 'Reference links' <tt>...</tt> is used to mark the variables set in
    the tests, this improves readability. Use this for all tests.
-** TODO Combine 'Inline links' & 'Inline images'
+** TODO Combine 'Inline links' & 'Inline images'                       :test:
    Since this is the same function in the code, they should be tested together.
    (Maybe the number of test cases can also be reduced?)
-** TODO Upgrade CommonMark tests to latest version
-   https://spec.commonmark.org/0.31.2/
-** TODO Use passing CommonMark 0.30 tests as baseline
-* [0/2] Size
-** TODO Remove optional trailing HTML tags
+** TODO Use passing CommonMark 0.30 tests as baseline                  :test:
+* [0/5] Size
+** TODO Remove optional trailing HTML tags                             :size:
    </li>, </p>
-** TODO Replaced unnecessary `.*?` with `.*`
+** TODO Replaced unnecessary `.*?` with `.*`                           :size:
    Greediness is fine if anchored by `\n`, since `.` doesn't match newlines.
-* [0/30] Features
-** TODO `*ITALIC*` and bullet `* BULLET`                                :BUG:
+** TODO Optimize list items                                            :size:
+   `* BULLET` / `1) NUMBERED`  --- Remove one `\n` from starting '\n\n' output.
+** TODO Shorten source by moving `m` (object) into macro               :size:
+** TODO Regex optimization                                             :size:
+   A: There's a macro for a regex matching 'any string which does not contain
+   two or more consecutive linefeeds'
+
+   B: Rewrite this as 'any string which does not begin or end with linefeed,
+   and which does not contain two or more consecutive linefeeds'.
+
+   With B we could then write A as /\n?B\n?/, which is pretty short. :)
+** TODO Optimize `[LABEL]: URL (TITLE)` code                           :size:
+   I think this can benefit from more use of 'X'.
+** TODO Optimize use of preprocessing step                             :size:
+   Currently 'X' is used in regexes to match 'any string that does not contain
+   two newlines', this (intentionally) allows for whitespace at the beginning
+   and end of the string. This is useful when the string is surrounded by
+   markup characters (e.g. inside '[...]' etc.) less so when markup isn't
+   surrounding the text (as with paragraphs, atx heading `# ...`), or in a
+   [bullet or ordered] list items, where there's no markup character to
+   delineate the end).
+
+   Would it be beneficial to be able to use 'Y' in the regexes to indicate a
+   string that may not begin or end with a newline, but otherwise match the
+   same as 'X'?
+* [0/4] Bugs
+** TODO `*ITALIC*` and bullet `* BULLET`                                :bug:
    When a bullet list is written in condensed form, `*ITALIC*` will sometimes
    mess with the bullet.
 
@@ -118,7 +165,7 @@
 
    Maybe add something to normalization to add extra blank lines before bullet
    items?
-** TODO Text after bullet list should get paragraph                     :BUG:
+** TODO Text after bullet list should get paragraph                     :bug:
    In the following, the trailing `</p>` causes the text after the bullet item
    to be interpreted as an HTML block rather than a paragraph.
    ----------------------------------------
@@ -126,7 +173,7 @@
 
    Lorem ipsum</p>
    ----------------------------------------
-** TODO Better handling of block elements (like `<div>`)                :BUG:
+** TODO Better handling of block elements (like `<div>`)                :bug:
    Will require:
    + Better paragraph tests for various HTML tags.
    + Some kinda decision on how to treat HTML tags.
@@ -175,15 +222,15 @@
 
    Should we append & prepend blank lines to all block tags while processing so
    that these are correctly handled by the paragraph processing?
-** TODO Tab & space trimming at EOL messes up HTML                      :BUG:
+** TODO Tab & space trimming at EOL messes up HTML                      :bug:
    ----------------------------------------
    <a href="foo␣␣
    bar">
    ----------------------------------------
    (Where "␣" is an ordinary space.)
    Will have its <space>s removed by the line-ending normalization.
-** TODO Put source on web page with plenty of comments
-** TODO Process nested () and []?
+* [0/17] Features
+** TODO Process nested () and []?                                      :feat:
    The following can be used to replace all '[' and ']' except the outermost
    ones with the coresponding HTML entities. Could we use a similar approach to
    allow the '[]' inside the TEXT of links (`[TEXT]`, `[TEXT](URL)` and
@@ -191,8 +238,227 @@
    ----------------------------------------
    x.replace(/\[|\]/g,(i=>x=>(x<']'?i++:--i)?q(x):x)(0))
    ----------------------------------------
-** TODO Shorten source by moving `m` (object) inside macro completion
-** TODO Parse block & inline separately
+** TODO Allow <URL> (instead of URL) in `[LABEL]: URL "TITLE"`         :feat:
+** TODO [#A] Support info string for fenced code blocks                :feat:
+   https://spec.commonmark.org/0.31.2/#info-string
+** TODO Only use `<h1>` once on a page (for page title)                :feat:
+   Hopefully, you’ve come away with these take-homes:
+
+  + Don’t use loads of `<h1>`s. Make `<h1>` the main heading of your page, then
+    use `<h2>`, `<h3>`, `<h4>`, etc. in a proper hierarchy without skipping
+    levels.
+  + `<section>` can be used with aria-label to signal to a screen reader user
+    where a particular sub-part of an article begins and ends. Otherwise,
+    forget about it, or use another element, such as `<aside aria-label="quick
+    summary">` or `<div role="region" aria-label="quick summary">`.
+  + `<main>`, `<header>`, `<footer>` and `<nav>` are very useful for screen
+    reader users, and entirely transparent to those who don’t use assistive
+    technology. So use them.
+  + `<article>` isn’t just for blog posts — it’s for any self-contained thing.
+    It also helps WatchOS display your content properly.
+    (https://www.smashingmagazine.com/2020/01/html5-article-section/#conclusion)
+
+   https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements#avoid_using_multiple_h1_elements_on_one_page
+   https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html
+   https://adrianroselli.com/2013/12/the-truth-about-truth-about-multiple-h1.html
+** TODO Multiline ATX headings                                         :feat:
+   # One should be able to
+   # break a heading into multiple
+   # lines like this
+
+   This an anti-CommonMark feature, since CommonMark requires each atx heading
+   to be a single line, and interprets two subsequent '#'-lines as two headings
+   after each other (as atx headings need not be separated from other content
+   by blank lines).
+
+   But frankly, I think the CommonMark definition is kinda insane. :)
+   Especially in the light of allowing multi-line Setext headings.
+** TODO [#A] Add TITLE support for inline links & images               :feat:
+   Also update README on this topic.
+
+   Syntax is:
+   [TEXT](URL "TITLE")
+   [TEXT](URL 'TITLE')
+   [TEXT](URL (TITLE))
+   ![TEXT](URL "TITLE")
+   ![TEXT](URL 'TITLE')
+   ![TEXT](URL (TITLE))
+** TODO Allow single parenthesis in link/image?                        :feat:
+   This could be done by a rule that replaces '(...)', with its
+   '&#40;...&#41;', maybe? Would that be smart?
+** TODO Allow newline in 'label definition' space                      :feat:
+   The `[LABEL]: URL (TITLE)` thing should allow for a single newline the
+   spaces between LABEL and URL, and URL and TITLE.
+
+   NOTE: Also update README after this.
+** TODO `*` surrounded by `_` or spaces                                :feat:
+   The Gruber Markdown spec says: […] if you surround an `*` or `_` with
+   spaces, it’ll be treated as a literal asterisk or underscore.'
+
+   Make sure that this is true. Add test cases.
+
+   [https://daringfireball.net/projects/markdown/syntax#em]
+** TODO Remove extended Markdown syntax?                               :feat:
+   www.markdownguide.org separates syntax into Markdown into "Basic" and
+   "Extended" syntax.
+
+       https://www.markdownguide.org/cheat-sheet/#extended-syntax
+
+   Should Baremark perchance only support the basic syntax? With an additional
+   plugin for the extended stuff?
+
+   Basic is:
+   |-------------------------------|
+   | # heading (`## heading` etc)  |
+   | **bold**                      |
+   | *italic*                      |
+   | > blockquote                  |
+   | 1. ordered list               |
+   | - bullet list                 |
+   | `code`                        |
+   | --- (horisontal rule)         |
+   | [link](url) + [link][ref]     |
+   | ![image](url) + ![image][ref] |
+   |-------------------------------|
+
+   Extended is:
+   |----------------------|
+   | table                |
+   |----------------------|
+   | ```                  |
+   | fenced code block    |
+   | ```                  |
+   |----------------------|
+   | Footnotes.[^1]       |
+   |                      |
+   | [^1]: Footnote text. |
+   |----------------------|
+   | # heading {#id}      |
+   |----------------------|
+   | term                 |
+   | :definition list     |
+   |----------------------|
+   | ~~strikethrough~~    |
+   | - [ ] task list      |
+   | :emoji:              |
+   | ==hilite==           |
+   | H~2~O (subscript)    |
+   | x^2^  (superscript)  |
+   |----------------------|
+** TODO Change backslash escapes?                                      :feat:
+   Daring Fireball's backslash only escapes the following:
+   (https://daringfireball.net/projects/markdown/syntax#link)
+
+   |----+---------------------|
+   | \  | backslash           |
+   | `  | backtick            |
+   | *  | asterisk            |
+   | _  | underscore          |
+   | {} | curly braces        |
+   | [] | square brackets     |
+   | () | parentheses         |
+   | #  | hash mark           |
+   | +  | plus sign           |
+   | -  | minus sign (hyphen) |
+   | .  | dot                 |
+   | !  | exclamation mark    |
+   |----+---------------------|
+
+   Should Baremark's be more limited?
+** TODO '  \n' should result in '<br>'                                 :feat:
+   Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
+   interfere with backslash escapes).
+** TODO Support reference image inside inline links                    :feat:
+   That is, this should work:
+
+       [![alt][imgref]](url)
+
+       [imgref]: imgurl
+
+   Currently, the text is interpreted like this:
+
+       [![alt][imgref]](url)
+        ↑↑----alt-----↑↑url↑                       = image found
+       [<img src="url" title="" alt="alt][imgref]">
+       ↑----------text------------------↑↑imgref↑  = link found
+       <a href="imgurl" title=""><img src="url" title="" alt="alt</a>">
+
+   Another, slightly less insane than the current approach would be to escape
+   all values outputted into HTML attributes, so that, at least, the above
+   weird interpretation doesn't take place? This would cause the image to fail
+   in a slightly saner way, at least.
+** TODO Hanging indent lists                                           :feat:
+** TODO Indented code blocks                                           :feat:
+** TODO Autolink(?) without the <...>?                                 :feat:
+** [0/3] Add autolinks `<URL>`                                         :feat:
+*** TODO Also update README mention of autolink.
+*** TODO Autolinked URLs <http://example.com?find=\\*>
+    Content need to be URL encoded. CommonMark example 20 illustrate this.
+*** TODO Autolinked emails <me@email.com>
+    Email be turned into '&#x102;&#x97;&#x107;...' in both href and link text
+    (as a basic spam protection measure).
+** TODO Nested lists                                                   :feat:
+* [0/3] Addons
+** TODO Extended Markdown addon
+   + move ___..___ into addon
+   + move :"...": into addon
+   + move ~~...~~ into addon
+** TODO Create util addon for use with other addons
+   Basically I want methods for `.push()` and `.unshift()` equivalents.
+** TODO Review module initialization -- is it consistent?
+** [0/0] Create `addon/gfm.js` module
+   Which is just a meta module that loads the relevant submodules required for
+   implementing all GFM features.
+** [0/1] `addon/autolink.js`
+*** TODO Cleanup
+** [0/0] `addon/id.js`
+*** Tests
+    There are three important cases:
+    + '<p>[#test]'          -> '<p id=test>'
+    + '<p id=hej>[#test]'   -> '<p id=hej><a id=test></a>'
+    + '<p>texttext[#test]'  -> <p>texttext<a id=test></a>'
+** [0/2] `addon/meta.js`
+*** TODO Can we pass args to when importing?
+    It'd be lovely to be able to turn off turning the first heading into
+    'title', by specifying this when importing the module.
+*** TODO Id attribute of title should be captured too
+** [0/0] `addon/sup.js`
+** [0/1] `addon/table.js`
+*** TODO Test case for use of `|`
+    Had to add `|` to the list of characters to escape with
+    `baremark.escape()`. It is not clear to me, however, if it should be in the
+    optional list invoked by `...`, or if it should always be escaped (added it
+    to the optional list in the meanwhile).
+** [1/7] `addon/toc.js`
+*** TODO `<toc>` option to exclude page title from toc
+    Ignore all headings before <toc> tag?
+*** TODO `<toc>` option to make collapsible
+    I.e. wrap in <details class=toc>...</details>. Also have 'open' attribute
+    to allow for table to be initially opened?
+*** TODO `<toc>` option to skip x number of headings
+    E.g. `skip=2` to skip the two first headings (useful to skip any heading
+    above the table-of-content, as well as a page title etc.)
+*** TODO Make function for handling id? (see FIXME comment in code)
+*** TODO In anchorize(), should text be Unicode normalized?
+    Should the Unicode characters be normalized? Do what Github does.
+*** TODO Should not include heading before table-of-content
+    Currently a heading with the id 'toc' will be excluded from the contents,
+    but this should be smarter, and include the heading just before the
+    table-of-content.
+*** DONE Should import `./uncomment.js'`
+    CLOSED: [2025-03-27 Thu 22:24]
+** [0/1] `addon/uncomment.js`
+*** TODO Should remove additional comments?
+   Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
+   <?...>?
+* [60/60] FINISHED
+** DONE Baremark X addons should reference `baremarkx()`                :bug:
+   CLOSED: [2026-05-23 Sat 18:03]
+   Baremark X addons accidentally still try to call `baremark()` in order to
+   modify the Baremark rules, this will fail as Baremark X internally uses
+   `baremarkx()`. Fix this.
+** DONE Baremark X: Parse block & inline tags separately               :feat:
+   CLOSED: [2026-05-23 Sat 18:03]
    Instead of doing a strictly separated block and inline phases.
 
    b) Baremark()
@@ -204,8 +470,6 @@
    s) space-something
    v) normalize link reference (downcase, compress spaces)
    y) return image/link replacement function
-
-   `* BULLET` / `1) NUMBERED`  --- Remove one `\n` from starting '\n\n' output.
 
    -------------------------------------------------------------------------------
 
@@ -303,267 +567,31 @@
 
    const result = rules.reduce((s, [regex, replacer]) => s.replace(regex, replacer), str);
    ----------------------------------------
-** TODO Allow <...> around URL in `[LABEL]: URL "TITLE"`
-** TODO Fenced code blocks should allow variable number of `
+** DONE Add interactive demo page                                       :web:
+   CLOSED: [2026-05-23 Sat 17:43]
+** DONE Fenced code blocks should allow variable number of `           :feat:
+   CLOSED: [2026-05-22 Fri 08:56]
    Ending fence should have at least same length as start fence, but
    possibly longer (CommonMark example 124).
-** TODO Support info string for fenced code blocks
-   https://spec.commonmark.org/0.31.2/#info-string
-** TODO Only use `<h1>` once on a page (for page title)
-   Hopefully, you’ve come away with these take-homes:
-
-  + Don’t use loads of `<h1>`s. Make `<h1>` the main heading of your page, then
-    use `<h2>`, `<h3>`, `<h4>`, etc. in a proper hierarchy without skipping
-    levels.
-  + `<section>` can be used with aria-label to signal to a screen reader user
-    where a particular sub-part of an article begins and ends. Otherwise,
-    forget about it, or use another element, such as `<aside aria-label="quick
-    summary">` or `<div role="region" aria-label="quick summary">`.
-  + `<main>`, `<header>`, `<footer>` and `<nav>` are very useful for screen
-    reader users, and entirely transparent to those who don’t use assistive
-    technology. So use them.
-  + `<article>` isn’t just for blog posts — it’s for any self-contained thing.
-    It also helps WatchOS display your content properly.
-    (https://www.smashingmagazine.com/2020/01/html5-article-section/#conclusion)
-
-   https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements#avoid_using_multiple_h1_elements_on_one_page
-   https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html
-   https://adrianroselli.com/2013/12/the-truth-about-truth-about-multiple-h1.html
-** TODO Multiline atx headings
-   # One should be able to
-   # break a heading into multiple
-   # lines like this
-
-   This an anti-CommonMark feature, since CommonMark requires each atx heading
-   to be a single line, and interprets two subsequent '#'-lines as two headings
-   after each other (as atx headings need not be separated from other content
-   by blank lines).
-
-   But frankly, I think the CommonMark definition is kinda insane. :)
-   Especially in the light of allowing multi-line Setext headings.
-** TODO Add title support for inline links & images
-   Also update README on this topic.
-** TODO Allow single parenthesis in link/image?
-   This could be done by a rule that replaces '(...)', with its
-   '&#40;...&#41;', maybe? Would that be smart?
-** TODO Regex optimization
-   A: There's a macro for a regex matching 'any string which does not contain
-   two or more consecutive linefeeds'
-
-   B: Rewrite this as 'any string which does not begin or end with linefeed,
-   and which does not contain two or more consecutive linefeeds'.
-
-   With B we could then write A as /\n?B\n?/, which is pretty short. :)
-** TODO Allow newline 'label definition' space
-   The `[LABEL]: URL (TITLE)` thing should allow for a single newline the
-   spaces between LABEL and URL, and URL and TITLE.
-
-   NOTE: Also update README after this.
-** TODO `*` surrounded by `_` or spaces
-   The Gruber Markdown spec says: […] if you surround an `*` or `_` with
-   spaces, it’ll be treated as a literal asterisk or underscore.'
-
-   Make sure that this is true. Add test cases.
-
-   [https://daringfireball.net/projects/markdown/syntax#em]
-** TODO Remove extended Markdown syntax?
-   www.markdownguide.org separates syntax into Markdown into "Basic" and
-   "Extended" syntax.
-
-       https://www.markdownguide.org/cheat-sheet/#extended-syntax
-
-   Should Baremark perchance only support the basic syntax? With an additional
-   plugin for the extended stuff?
-
-   Basic is:
-   |-------------------------------|
-   | # heading (`## heading` etc)  |
-   | **bold**                      |
-   | *italic*                      |
-   | > blockquote                  |
-   | 1. ordered list               |
-   | - bullet list                 |
-   | `code`                        |
-   | --- (horisontal rule)         |
-   | [link](url) + [link][ref]     |
-   | ![image](url) + ![image][ref] |
-   |-------------------------------|
-
-   Extended is:
-   |----------------------|
-   | table                |
-   |----------------------|
-   | ```                  |
-   | fenced code block    |
-   | ```                  |
-   |----------------------|
-   | Footnotes.[^1]       |
-   |                      |
-   | [^1]: Footnote text. |
-   |----------------------|
-   | # heading {#id}      |
-   |----------------------|
-   | term                 |
-   | :definition list     |
-   |----------------------|
-   | ~~strikethrough~~    |
-   | - [ ] task list      |
-   | :emoji:              |
-   | ==hilite==           |
-   | H~2~O (subscript)    |
-   | x^2^  (superscript)  |
-   |----------------------|
-** TODO Change backslash escapes?
-   Daring Fireball's backslash only escapes the following:
-   (https://daringfireball.net/projects/markdown/syntax#link)
-
-   |----+---------------------|
-   | \  | backslash           |
-   | `  | backtick            |
-   | *  | asterisk            |
-   | _  | underscore          |
-   | {} | curly braces        |
-   | [] | square brackets     |
-   | () | parentheses         |
-   | #  | hash mark           |
-   | +  | plus sign           |
-   | -  | minus sign (hyphen) |
-   | .  | dot                 |
-   | !  | exclamation mark    |
-   |----+---------------------|
-
-   Should Baremark's be more limited?
-** TODO Optimize `[ref]: url "title"` code
-   I think this can benefit from more use of 'X'.
-** TODO Optimize use of preprocessing step
-   Currently 'X' is used in regexes to match 'any string that does not contain
-   two newlines', this (intentionally) allows for whitespace at the beginning
-   and end of the string. This is useful when the string is surrounded by
-   markup characters (e.g. inside '[...]' etc.) less so when markup isn't
-   surrounding the text (as with paragraphs, atx heading `# ...`), or in a
-   [bullet or ordered] list items, where there's no markup character to
-   delineate the end).
-
-   Would it be beneficial to be able to use 'Y' in the regexes to indicate a
-   string that may not begin or end with a newline, but otherwise match the
-   same as 'X'?
-** TODO '  \n' should result in '<br>'
-   Using something like `[/(\\| {2,})\n/g, '<br>']` (and making sure it doesn't
-   interfere with backslash escapes).
-** TODO Support reference image inside inline links
-   That is, this should work:
-
-       [![alt][imgref]](url)
-
-       [imgref]: imgurl
-
-   Currently, the text is interpreted like this:
-
-       [![alt][imgref]](url)
-        ↑↑----alt-----↑↑url↑                       = image found
-       [<img src="url" title="" alt="alt][imgref]">
-       ↑----------text------------------↑↑imgref↑  = link found
-       <a href="imgurl" title=""><img src="url" title="" alt="alt</a>">
-
-   Another, slightly less insane than the current approach would be to escape
-   all values outputted into HTML attributes, so that, at least, the above
-   weird interpretation doesn't take place? This would cause the image to fail
-   in a slightly saner way, at least.
-** TODO Add comments to code (and include a version stripped of comments)
-   There should also exist a git hook to verify that these always are in sync.
-** TODO Horizontal line should need only 3 chars
-   And may be either _, - or * according to CommonMark standard.
-** TODO Hanging indent lists
-** TODO Indented code blocks
-** TODO Autolink(?) without the <...>?
-** [0/3] Add autolinks `<URL>`
-*** TODO Also update README mention of autolink.
-*** TODO Autolinked URLs <http://example.com?find=\\*>
-    Content need to be URL encoded. CommonMark example 20 illustrate this.
-*** TODO Autolinked emails <me@email.com>
-** TODO Nested lists
-* [0/2] Addons
-** TODO Create util addon for use with other addons
-   Basically I want methods for `.push()` and `.unshift()` equvalents.
-** TODO Review module initialization -- is it consistent?
-** [0/0] Create `addon/gfm.js` module
-   Which is just a meta module that loads the relevant submodules required for
-   implementing all GFM features.
-** [0/1] `addon/autolink.js`
-*** TODO Cleanup
-** [0/0] `addon/id.js`
-*** Tests
-    There are three important cases:
-    + '<p>[#test]'          -> '<p id=test>'
-    + '<p id=hej>[#test]'   -> '<p id=hej><a id=test></a>'
-    + '<p>texttext[#test]'  -> <p>texttext<a id=test></a>'
-** [0/2] `addon/meta.js`
-*** TODO Can we pass args to when importing?
-    It'd be lovely to be able to turn off turning the first heading into
-    'title', by specifying this when importing the module.
-*** TODO Id attribute of title should be captured too
-** [0/0] `addon/sup.js`
-** [0/1] `addon/table.js`
-*** TODO Test case for use of `|`
-    Had to add `|` to the list of characters to escape with
-    `baremark.escape()`. It is not clear to me, however, if it should be in the
-    optional list invoked by `...`, or if it should always be escaped (added it
-    to the optional list in the meanwhile).
-** [1/7] `addon/toc.js`
-*** TODO `<toc>` option to exclude page title from toc
-    Ignore all headings before <toc> tag?
-*** TODO `<toc>` option to make collapsible
-    I.e. wrap in <details class=toc>...</details>. Also have 'open' attribute
-    to allow for table to be initially opened?
-*** TODO `<toc>` option to skip x number of headings
-    E.g. `skip=2` to skip the two first headings (useful to skip any heading
-    above the table-of-content, as well as a page title etc.)
-*** TODO Make function for handling id? (see FIXME comment in code)
-*** TODO In anchorize(), should text be Unicode normalized?
-    Should the Unicode characters be normalized? Do what Github does.
-*** TODO Should not include heading before table-of-content
-    Currently a heading with the id 'toc' will be excluded from the contents,
-    but this should be smarter, and include the heading just before the
-    table-of-content.
-*** DONE Should import `./uncomment.js'`
-    CLOSED: [2025-03-27 Thu 22:24]
-** [0/1] `addon/uncomment.js`
-*** TODO Should remove additional comments?
-   Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
-   <?...>?
-* [0/2] Bugs
-** TODO Blank line in list/blockquote should start new list/blockquote
-** TODO Link/image regex shortening
-   Both link and image regex have a needless non-greedy regex.
-
-   /\!\[([^\[]+?)\]\s*\(([^\)]+?)\)/g
-   /  \[([^\[]+?)\]\s*\(([^\)]+?)\)/g
-               |
-               HERE
-* [58/58] FINISHED
-** DONE Baremark X addons should reference `baremarkx()`                :BUG:
-   CLOSED: [2026-05-23 Sat 18:03]
-   Baremark X addons accidentally still try to call `baremark()` in order to
-   modify the Baremark rules, this will fail as Baremark X internally uses
-   `baremarkx()`. Fix this.
-** DONE Added interactive demo page
-   CLOSED: [2026-05-23 Sat 17:43]
-** DONE Support fenced code blocks with `~~~`
+** DONE Support fenced code blocks with `~~~`                          :feat:
    CLOSED: [2026-05-22 Fri 08:56]
    https://spec.commonmark.org/0.31.2/#code-fence
    https://spec.commonmark.org/0.31.2/#example-120
-** DONE Shorten h()
+** DONE Shorten h()                                                    :size:
    CLOSED: [2026-05-20 Wed 06:14]
    + Replace:
 	h=(q,t,u,x='')=>(u=e(s(u),''),q?`<img src="${u}" title="${e(x,'')}" alt="${e(t,'')}">`:`<a href="${u}" title="${e(x,'')}">${t}</a>`)
 	h=(q,t,u,x='')=>(u=e(s(u),''),x=e(x,''),q?`<img src="${u}" title="${x}" alt="${e(t,'')}">`:`<a href="${u}" title="${x}">${t}</a>`)
-** DONE Remove darkmode switch (i.e. use on browser darkmode only)
+** DONE Remove darkmode switch (i.e. use on browser darkmode only)      :web:
    CLOSED: [2026-04-28 Tue 11:45]
-** DONE List item with continuation line should work inside blockquote  :BUG:
+** DONE Upgrade CommonMark tests to latest version                     :test:
+   CLOSED: [2025-10-04 Sat 05:33]
+   https://spec.commonmark.org/0.31.2/
+** DONE List item with continuation line should work inside blockquote  :bug:
    CLOSED: [2025-10-03 Fri 22:57]
-** DONE Nested blockquotes
+** DONE Nested blockquotes                                             :feat:
    CLOSED: [2025-09-02 Tue 02:49]
-** DONE Blockquotes should allow lazy continuation lines
+** DONE Blockquotes should allow lazy continuation lines               :feat:
    CLOSED: [2025-09-01 Mon 21:23]
    There's a test case for this "Labeled link `[TEXT][LABEL]` with newline in
    `TEXT` inside `> BLOCKQUOTE`", also marked `"FIXME": "BUG"` in the JSON.
@@ -585,7 +613,7 @@
      ----------------------------------------
 
    Which it would, if lazy continuation lines where allowed.
-** DONE Line-broken links don't work inside blockquote                  :BUG:
+** DONE Line-broken links don't work inside blockquote                  :bug:
    CLOSED: [2025-09-01 Mon 19:15]
    These two work just fine (given that there's a link reference 'Mallory 1886'
    in the document too, of course).
@@ -610,44 +638,44 @@
      > [Mallery
      > 1886]
      ----------------------------------------
-** DONE How to add `.unshift()` new rules in addons?
+** DONE How to add `.unshift()` new rules in addons?                   :feat:
    CLOSED: [2025-03-29 Sat 14:08]
    Addons currently use `baremark().unshift()`, but this bypasses the
    normalization step of Baremark. Is there a cleverer way of doing this?
-** DONE Don't insert `<p>...</p>` around the <toc> tag
+** DONE Don't insert `<p>...</p>` around the <toc> tag                 :feat:
    CLOSED: [2025-03-29 Sat 14:07]
-** DONE Scroll down to URL #hash (except on reload)
+** DONE Scroll down to URL #hash (except on reload)                     :web:
    CLOSED: [2025-03-29 Sat 10:00]
    Will scroll down only if at the top of the page.
-** DONE <toc>: Option to add a heading to table-of-contents?
+** DONE <toc>: Option to add a heading to table-of-contents?     :ADDON:feat:
    CLOSED: [2025-03-29 Sat 09:12]
    Add a `<toc>` heading as attribute `heading="..."` maybe? Adding it this way
    would mean that platforms that doesn't support Baremark `<toc>` tags
    wouldn't display the heading.
-** DONE Use `...` instead of `…` inside backticks
+** DONE Use `...` instead of `…` inside backticks                       :web:
    CLOSED: [2025-03-29 Sat 08:46]
-** DONE Addon doc pages should link back to README
+** DONE Addon doc pages should link back to README                      :web:
    CLOSED: [2025-03-29 Sat 08:36]
-** DONE Move README to main page, tests to subpage
+** DONE Move README to main page, tests to subpage                      :web:
    CLOSED: [2025-03-29 Sat 08:21]
    And `index.html` should load README, and all the addon docs, while test
    should get its own placement.
-** DONE Move all include files into separate `www` dir
+** DONE Move all include files into separate `www` dir                  :web:
    CLOSED: [2025-03-29 Sat 08:06]
-** DONE Move click event script higher in `index.html`
+** DONE Move click event script higher in `index.html`                  :web:
    CLOSED: [2025-03-29 Sat 05:40]
    Should reduce sluggishness in opening/closing the README `<details>` section
    while page is loading.
-** DONE Add HTML pages for addon docs
+** DONE Add HTML pages for addon docs                                   :web:
    CLOSED: [2025-03-29 Sat 05:34]
-** DONE Add documentation section which lists the addons
+** DONE Add documentation section which lists the addons                :web:
    CLOSED: [2025-03-29 Sat 01:05]
    Should include download links, and also test cases for the addons.
-** DONE Moved addons to a separate directory
+** DONE Moved addons to a separate directory                            :web:
    CLOSED: [2025-03-29 Sat 00:18]
-** DONE Blockquotes should be able to contain lists & heading etc.
+** DONE Blockquotes should be able to contain lists & heading etc.     :feat:
    CLOSED: [2025-03-14 Fri 15:28]
-** [8/8] Support trailing whitespace
+** [8/8] Support trailing whitespace                                   :feat:
    The line ending normalization rule just need an added `\s+` to completely
    erase trailing whitespace!
 *** DONE Update README with information about this
@@ -666,11 +694,11 @@
     CLOSED: [2025-03-02 Sun 12:36]
 *** DONE Add test case for paragraph with lines followed by space
     CLOSED: [2025-03-02 Sun 12:36]
-** DONE Use consistent metasyntactical variables for images and links
+** DONE Use consistent metasyntactical variables for images and links   :web:
    CLOSED: [2025-03-02 Sun 10:16]
    Use: `[text](url)`, `[text][ref]` & `[text]`
    And: `![text](url)`, `![text][ref]` & `![text]`?
-** [4/4] Use consistent terms for image & link markup
+** [4/4] Use consistent terms for image & link markup                   :web:
    CLOSED: [2025-03-02 Sun 10:16]
    The CommonMark terms for links and pictures are wee bit of a mouthful. (See
    https://spec.commonmark.org/0.31.2/.) Baremark prefers being somewhat more
@@ -720,7 +748,7 @@
      No occurrences.
 **** TODO `LABEL` not `ref` or `REF`
 **** TODO `TEXT` not `text` or `alt` or `ALT`
-** DONE Add tests for two block quotes
+** DONE Add tests for two block quotes                                  :web:
    CLOSED: [2025-02-28 Fri 07:17]
    This thing (that there already is a test for)
      > paragraph 1
@@ -730,9 +758,9 @@
      > paragraph 1
 
      > paragraph 2
-** DONE 'Thematic break' / 'horizontal rule' -> 'dinkus'
+** DONE 'Thematic break' / 'horizontal rule' -> 'dinkus'                :web:
    CLOSED: [2025-02-28 Fri 05:44]
-** DONE Better Markdown description
+** DONE Better Markdown description                                     :web:
    CLOSED: [2025-02-28 Fri 05:44]
 *** DONE Make sure all Markdown arguments are written in ALL CAPS
     CLOSED: [2025-02-28 Fri 05:43]
@@ -794,15 +822,15 @@
    | ___…___   | underline                |                                        |                                |
    | :"…":     | (curly) quotes           |                                        |                                |
    |-----------+--------------------------+----------------------------------------+--------------------------------|
-** DONE Make link/image labels case insensitive
+** DONE Make link/image labels case insensitive                        :feat:
    CLOSED: [2025-02-24 Mon 23:39]
    Currently they are spaces are trimmed and squeezed, but we should also
    downcase. Would it work to add .toLowerCase() to the squeeze function?
 
    Also update README to reflect that it's not case sensitive any more!
-** DONE Add table-of-content to 'README.html'
+** DONE Add table-of-content to 'README.html'                           :web:
    CLOSED: [2025-02-13 Thu 17:51]
-** DONE Don't allow '[]()' in link & image `[text]`
+** DONE Don't allow '[]()' in link & image `[text]`                    :feat:
    CLOSED: [2025-02-03 Mon 10:12]
    In order to use `[` or `]` in link and image texts, they should have to be
    backslashed. -- Should both `[` AND `]` be disallowed? I strongly suspect
@@ -811,7 +839,7 @@
     CLOSED: [2025-02-03 Mon 09:50]
 *** DONE Rewrite README.md to reflect the changes
     CLOSED: [2025-02-03 Mon 10:12]
-** DONE Fix subtest background color
+** DONE Fix subtest background color                                    :web:
    CLOSED: [2025-01-23 Thu 19:36]
    The subtest background color shouldn't be transparent, as this will make any
    passed subtests almost indistinguishable from failed subtests -- the
@@ -819,23 +847,23 @@
    the passed subtests look (almost) failed too.
 
    How can this be made to work with dark mode background colors?
-** DONE Link colors should look better in dark mode
+** DONE Link colors should look better in dark mode                     :web:
    CLOSED: [2025-01-23 Thu 19:35]
-** DONE Webpage: Dark mode
+** DONE Webpage: Dark mode                                              :web:
    CLOSED: [2025-01-21 Tue 18:03]
    This is a CSS-only dark mode with an override switch. It defaults to using
    whatever your browser is set to using the media query `@media
    (prefers-color-scheme: dark)`, but allows the user to override with a toggle
    switch in the top right corner.
-** DONE Web page should work for mobile
+** DONE Web page should work for mobile                                 :web:
    CLOSED: [2025-01-20 Mon 00:16]
-** DONE <details> should work like in org-mode
+** DONE <details> should work like in org-mode                          :web:
    CLOSED: [2025-01-20 Mon 00:01]
    Org-mode style opening of <details>. Clicking a <summary> cycles through:
      + children = opens this <details> (but none of its children)
      + subtree  = opens up all child <details> recursively
      + folded   = closes this & all child <details>
-** DONE Don't process markup in URLs
+** DONE Don't process markup in URLs                                   :feat:
    CLOSED: [2025-01-19 Sun 18:38]
    This should be done my expanding all markup characters into '&#...;' so
    that, for example, `__...__` are not expanded into `<i>...</i>` inside URLs.
@@ -850,9 +878,9 @@
    Maybe something like the following could be used?
 
    x.replace(/[*_~:"\\[\\]()]/g,m=>e(m))
-** DONE Add '![text][ref]' image support
+** DONE Add '![text][ref]' image support                               :feat:
    CLOSED: [2025-01-18 Sat 00:30]
-** DONE Improved insertion of <p> tags
+** DONE Improved insertion of <p> tags                                 :feat:
    CLOSED: [2024-09-24 Tue 20:30]
    Will no longer insert <p> around the following HTML tags:
 
@@ -900,10 +928,10 @@
    <p> -- it will be added around some HTML elements (like <div> and others)
    which <p> can't contain, so if user uses those, you'll get some empty <p>
    elements in the DOM (before and after those block elements)."
-** DONE Prettier CSS
+** DONE Prettier CSS                                                    :web:
    CLOSED: [2024-09-20 Fri 04:55]
    <tt> and <pre> should use gray background (a la Github or Stackoverflow).
-** DONE Bugfix: Normalize space in reference links (+158 bytes)
+** DONE Fix: Normalize space in reference links (+158 bytes)            :bug:
    CLOSED: [2024-09-20 Fri 04:03]
    Space in reference links needs to be normalized, so that wrapped lines (or
    multiple spaces) do not break links. That is, this should work:
@@ -920,7 +948,7 @@
    The builtin rules match for one optional newline in the beginning/end of the
    link references. (Since this is shorter than writing a regex that forbids
    space in the beginning/end of the reference.)
-** DONE Bugfix: Don't mangle regex flags in user added rules (-15 bytes)
+** DONE Fix: Don't mangle regex flags in user rules (-15 bytes)         :bug:
    CLOSED: [2024-09-19 Thu 21:57]
    Previously forced the RegExp flag 'g' by running the first argument of
    `baremark.add()` through `RegExp(p,'g')` which stripped all *other* flags
@@ -928,22 +956,22 @@
    additional error checks Baremark now the arguments are now fed as-is into
    the rules array (i.e. when applied, whatever you specify is passed as to
    Javascript's 'String.replace()' function).
-** DONE Remove unneeded backslash escapes in regexes
+** DONE Remove unneeded backslash escapes in regexes                   :size:
    CLOSED: [2022-09-09 Fri 14:19]
    These superfluous backslash escapes where found by Taco de Wolff's 'minify'
    tool for Javascript: https://go.tacodewolff.nl/minify
-** DONE Remove Landmark tests, focus more on CommonMark tests
+** DONE Remove Landmark tests, focus more on CommonMark tests           :web:
    CLOSED: [2022-09-09 Fri 14:10]
-** DONE Invoke Baremark as `baremark(...)` rather than `Baremark.render(...)`
+** DONE Call Baremark as `baremark(...)` not `Baremark.render(...)`    :feat:
    CLOSED: [2022-09-09 Fri 12:34]
    Adding a rule should then use `baremark.add(regex, repl)`.
-** DONE Shorten method name 'addRule' to 'add' (-4 bytes)
+** DONE Shorten method name 'addRule' to 'add' (-4 bytes)              :size:
    CLOSED: [2022-09-07 Wed 16:14]
-** DONE Shorten variable name 'ref' => 'l' (-12 bytes)
+** DONE Shorten variable name 'ref' => 'l' (-12 bytes)                 :size:
    CLOSED: [2022-09-07 Wed 14:58]
-** DONE Shorten function name 'esc' => 'e' (-6 bytes)
+** DONE Shorten function name 'esc' => 'e' (-6 bytes)                  :size:
    CLOSED: [2022-09-07 Wed 14:53]
-** DONE Use shorter HTML tag names
+** DONE Use shorter HTML tag names                                     :size:
    CLOSED: [2022-09-07 Wed 09:35]
    |----------+------|
    | CHANGE   | TO   |
@@ -953,29 +981,29 @@
    | <code>   | <tt> |
    | <del>    | <u>  |
    |----------+------|
-** DONE Add reference links (+297 bytes)
+** DONE Add reference links (+297 bytes)                               :feat:
    CLOSED: [2022-09-05 Mon 17:09]
-** DONE Support Markdown backslash escapes
+** DONE Support Markdown backslash escapes                             :feat:
    CLOSED: [2022-03-28 Mon 03:03]
-** DONE Use regex character class instead of group
+** DONE Use regex character class instead of group                     :size:
    CLOSED: [2022-03-28 Mon 03:03]
    E.g. change `(-|*)` to `[-*]`.
-** DONE Refactored `esc()` and `for` loop (-161 bytes)
+** DONE Refactored `esc()` and `for` loop (-161 bytes)                 :size:
    CLOSED: [2022-03-27 Sun 06:42]
    Now using `.reduce()` instead for loop.
-** DONE Use template strings (-10 bytes)
+** DONE Use template strings (-10 bytes)                               :size:
    CLOSED: [2022-03-27 Sun 06:25]
-** DONE Use fat arrow functions (`=>`) (-91 bytes)
+** DONE Use fat arrow functions (`=>`) (-91 bytes)                     :size:
    CLOSED: [2022-03-27 Sun 05:51]
-** DONE Make all variable names one letter (-149 bytes)
+** DONE Make all variable names one letter (-149 bytes)                :size:
    CLOSED: [2022-03-27 Sun 05:44]
-** DONE Remove unnecessary space (-67 bytes)
+** DONE Remove unnecessary space (-67 bytes)                           :size:
    CLOSED: [2022-03-27 Sun 05:24]
    E.g. after comma, around equal sign, plus etc.
-** DONE Indent with tabs (-234 bytes)
+** DONE Indent with tabs (-234 bytes)                                  :size:
    CLOSED: [2022-03-27 Sun 05:13]
-** DONE Make rules list-of-lists (not list-of-objects) (-85 bytes)
+** DONE Make rules list-of-lists (not list-of-objects) (-85 bytes)     :size:
    CLOSED: [2022-03-27 Sun 04:58]
-** DONE Add own testsuite
+** DONE Add own testsuite                                               :web:
    CLOSED: [2022-03-17 Thu 19:27]
 * [eof]
