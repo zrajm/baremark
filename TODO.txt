@@ -265,7 +265,7 @@
    ----------------------------------------
    (Where "␣" is an ordinary space.)
    Will have its <space>s removed by the line-ending normalization.
-* [0/17] Features
+* [0/16] Features
 ** TODO Process nested () and []?                                      :feat:
    The following can be used to replace all '[' and ']' except the outermost
    ones with the coresponding HTML entities. Could we use a similar approach to
@@ -275,8 +275,6 @@
    x.replace(/\[|\]/g,(i=>x=>(x<']'?i++:--i)?q(x):x)(0))
    ----------------------------------------
 ** TODO Allow <URL> (instead of URL) in `[LABEL]: URL "TITLE"`         :feat:
-** TODO [#A] Support info string for fenced code blocks                :feat:
-   https://spec.commonmark.org/0.31.2/#info-string
 ** TODO Only use `<h1>` once on a page (for page title)                :feat:
    Hopefully, you’ve come away with these take-homes:
 
@@ -487,7 +485,10 @@
 *** TODO Should remove additional comments?
    Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
    <?...>?
-* [64/64] FINISHED
+* [65/65] FINISHED
+** DONE [#A] Support info string for fenced code blocks                :feat:
+   CLOSED: [2026-05-26 Tue 02:22]
+   https://spec.commonmark.org/0.31.2/#info-string
 ** DONE Remove 'NOTE: CommonMark' from the test cases                   :web:
    CLOSED: [2026-05-25 Mon 23:22]
 ** DONE [#A] Better link color (should be readable inside `...`)        :web:

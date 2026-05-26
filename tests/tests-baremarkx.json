@@ -381,11 +381,11 @@
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt>1. NUMBERED</tt> with continuation line"
   }, {
     "data": "> ```\n> xxx\n> ```",
-    "want": "<blockquote>\n\n<pre>xxx</pre>\n\n</blockquote>",
+    "want": "<blockquote>\n\n<pre class=\"\">xxx</pre>\n\n</blockquote>",
     "name": "<tt>&gt; BLOCKQUOTE</tt> containing <tt class=multi>```<br>CODEBLOCK<br>```</tt>"
   }, {
     "data": "```\n> xxx\n```",
-    "want": "<pre>&#62; xxx</pre>",
+    "want": "<pre class=\"\">&#62; xxx</pre>",
     "name": "<tt class=multi>```<br>CODEBLOCK<br>```</tt> containing <tt>&gt; BLOCKQUOTE</tt>, not allowed"
   }, {
     "data": "> xx\n>\n> ---\n>\n> yy",
@@ -614,163 +614,171 @@
   },
   "<tt class=multi>```<br>CODEBLOCK<br>```</tt> <tt class=multi>~~~<br>CODEBLOCK<br>~~~</tt>", {
     "data": "```\nxx\n```",
-    "want": "<pre>xx</pre>",
+    "want": "<pre class=\"\">xx</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt>"
   }, {
     "data": "~~~\nxx\n~~~",
-    "want": "<pre>xx</pre>",
+    "want": "<pre class=\"\">xx</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt>"
   }, {
+    "data": "```info\nxx\n```",
+    "want": "<pre class=\"info\">xx</pre>",
+    "name": "<tt>```↲CODEBLOCK↲```</tt> with infostring"
+  }, {
+    "data": "~~~info\nxx\n~~~",
+    "want": "<pre class=\"info\">xx</pre>",
+    "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> with infostring"
+  }, {
     "data": "```\n```",
-    "want": "<pre></pre>",
+    "want": "<pre class=\"\"></pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> without content (empty)"
   }, {
     "data": "~~~\n~~~",
-    "want": "<pre></pre>",
+    "want": "<pre class=\"\"></pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> without content (empty)"
   }, {
     "data": "```\nxx\n```\n```\nyy\n```",
-    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> two adjacent with newline between"
   }, {
     "data": "~~~\nxx\n~~~\n~~~\nyy\n~~~",
-    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> two adjacent with newline between"
   }, {
     "data": "~~~\nxx\n~~~\n```\nyy\n```",
-    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> before <tt>```↲CODEBLOCK↲```</tt> with newline between"
   }, {
     "data": "```\nxx\n```\n~~~\nyy\n~~~",
-    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> before <tt>~~~↲CODEBLOCK↲~~~</tt> with newline between"
   }, {
     "data": "```\nxx\n```\n\n```\nyy\n```",
-    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> two adjacent with blank line between"
   }, {
     "data": "~~~\nxx\n~~~\n\n~~~\nyy\n~~~",
-    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> two adjacent with blank line between"
   }, {
     "data": "~~~\nxx\n~~~\n\n```\nyy\n```",
-    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> before <tt>```↲CODEBLOCK↲```</tt> with blank line between"
   }, {
     "data": "```\nxx\n```\n\n~~~\nyy\n~~~",
-    "want": "<pre>xx</pre>\n\n\n<pre>yy</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> before <tt>~~~↲CODEBLOCK↲~~~</tt> with blank line between"
   }, {
     "data": "```\nxx\n```\n\nyy\n\n```\nzz\n```",
-    "want": "<pre>xx</pre>\n\n<p>yy</p>\n\n<pre>zz</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n<p>yy</p>\n\n<pre class=\"\">zz</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> two adjacent with paragraph between"
   }, {
     "data": "~~~\nxx\n~~~\n\nyy\n\n~~~\nzz\n~~~",
-    "want": "<pre>xx</pre>\n\n<p>yy</p>\n\n<pre>zz</pre>",
+    "want": "<pre class=\"\">xx</pre>\n\n<p>yy</p>\n\n<pre class=\"\">zz</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> two adjacent with paragraph between"
   }, {
     "data": "```  \nxx\n```\t\t",
-    "want": "<pre>xx</pre>",
+    "want": "<pre class=\"\">xx</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> spaces/tabs after <tt>```</tt> separator"
   }, {
     "data": "~~~  \nxx\n~~~\t\t",
-    "want": "<pre>xx</pre>",
+    "want": "<pre class=\"\">xx</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> spaces/tabs after <tt>~~~</tt> separator"
   }, {
     "data": "xx\n```\nyy\n```",
-    "want": "<p>xx</p>\n\n<pre>yy</pre>",
+    "want": "<p>xx</p>\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> after paragraph, newline between"
   }, {
     "data": "xx\n~~~\nyy\n~~~",
-    "want": "<p>xx</p>\n\n<pre>yy</pre>",
+    "want": "<p>xx</p>\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> after paragraph, newline between"
   }, {
     "data": "xx\n\n```\nyy\n```",
-    "want": "<p>xx</p>\n\n<pre>yy</pre>",
+    "want": "<p>xx</p>\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> after paragraph, blank line between"
   }, {
     "data": "xx\n\n~~~\nyy\n~~~",
-    "want": "<p>xx</p>\n\n<pre>yy</pre>",
+    "want": "<p>xx</p>\n\n<pre class=\"\">yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> after paragraph, blank line between"
   }, {
     "data": "```\nxx\n```\nyy",
-    "want": "<pre>xx</pre>\n\n<p>yy</p>",
+    "want": "<pre class=\"\">xx</pre>\n\n<p>yy</p>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> before paragraph, newline between"
   }, {
     "data": "~~~\nxx\n~~~\nyy",
-    "want": "<pre>xx</pre>\n\n<p>yy</p>",
+    "want": "<pre class=\"\">xx</pre>\n\n<p>yy</p>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> before paragraph, newline between"
   }, {
     "data": "```\nxx\n```\n\nyy",
-    "want": "<pre>xx</pre>\n\n<p>yy</p>",
+    "want": "<pre class=\"\">xx</pre>\n\n<p>yy</p>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> before paragraph, blank line between"
   }, {
     "data": "~~~\nxx\n~~~\n\nyy",
-    "want": "<pre>xx</pre>\n\n<p>yy</p>",
+    "want": "<pre class=\"\">xx</pre>\n\n<p>yy</p>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> before paragraph, blank line between"
   }, {
     "data": "xx\n```\nyy\n```\nzz",
-    "want": "<p>xx</p>\n\n<pre>yy</pre>\n\n<p>zz</p>",
+    "want": "<p>xx</p>\n\n<pre class=\"\">yy</pre>\n\n<p>zz</p>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> paragraphs before AND after, newlines between"
   }, {
     "data": "xx\n~~~\nyy\n~~~\nzz",
-    "want": "<p>xx</p>\n\n<pre>yy</pre>\n\n<p>zz</p>",
+    "want": "<p>xx</p>\n\n<pre class=\"\">yy</pre>\n\n<p>zz</p>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> paragraphs before AND after, newlines between"
   }, {
     "data": "xx\n\n```\nyy\n```\n\nzz",
-    "want": "<p>xx</p>\n\n<pre>yy</pre>\n\n<p>zz</p>",
+    "want": "<p>xx</p>\n\n<pre class=\"\">yy</pre>\n\n<p>zz</p>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> paragraphs before AND after, blank lines between"
   }, {
     "data": "xx\n\n~~~\nyy\n~~~\n\nzz",
-    "want": "<p>xx</p>\n\n<pre>yy</pre>\n\n<p>zz</p>",
+    "want": "<p>xx</p>\n\n<pre class=\"\">yy</pre>\n\n<p>zz</p>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> paragraphs before AND after, blank lines between"
   }, {
     "data": "```\nxx\nyy\n```",
-    "want": "<pre>xx&#10;yy</pre>",
+    "want": "<pre class=\"\">xx&#10;yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> with newline inside"
   }, {
     "data": "~~~\nxx\nyy\n~~~",
-    "want": "<pre>xx&#10;yy</pre>",
+    "want": "<pre class=\"\">xx&#10;yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> with newline inside"
   }, {
     "data": "```\nxx\n\nyy\n```",
-    "want": "<pre>xx&#10;&#10;yy</pre>",
+    "want": "<pre class=\"\">xx&#10;&#10;yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> with blank line inside"
   }, {
     "data": "~~~\nxx\n\nyy\n~~~",
-    "want": "<pre>xx&#10;&#10;yy</pre>",
+    "want": "<pre class=\"\">xx&#10;&#10;yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> with blank line inside"
   }, {
     "data": "```\nxx\n\nyy\n\nzz\n```",
-    "want": "<pre>xx&#10;&#10;yy&#10;&#10;zz</pre>",
+    "want": "<pre class=\"\">xx&#10;&#10;yy&#10;&#10;zz</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> with multiple blank lines inside"
   }, {
     "data": "~~~\nxx\n\nyy\n\nzz\n~~~",
-    "want": "<pre>xx&#10;&#10;yy&#10;&#10;zz</pre>",
+    "want": "<pre class=\"\">xx&#10;&#10;yy&#10;&#10;zz</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> with multiple blank lines inside"
   }, {
     "data": "```\nxx\n~~~\nyy\n```",
-    "want": "<pre>xx&#10;&#126;&#126;&#126;&#10;yy</pre>",
+    "want": "<pre class=\"\">xx&#10;&#126;&#126;&#126;&#10;yy</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> with <tt>~~~</tt> inside"
   }, {
     "data": "~~~\nxx\n```\nyy\n~~~",
-    "want": "<pre>xx&#10;&#96;&#96;&#96;&#10;yy</pre>",
+    "want": "<pre class=\"\">xx&#10;&#96;&#96;&#96;&#10;yy</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> with <tt>```</tt> inside"
   }, {
     "data": "````\nxx\n```\nyy\n````",
-    "want": "<pre>xx&#10;&#96;&#96;&#96;&#10;yy</pre>",
+    "want": "<pre class=\"\">xx&#10;&#96;&#96;&#96;&#10;yy</pre>",
     "name": "<tt>````↲CODEBLOCK↲````</tt> (with extra <tt>`</tt> in separator) with <tt>```</tt> inside"
   }, {
     "data": "~~~~\nxx\n~~~\nyy\n~~~~",
-    "want": "<pre>xx&#10;&#126;&#126;&#126;&#10;yy</pre>",
+    "want": "<pre class=\"\">xx&#10;&#126;&#126;&#126;&#10;yy</pre>",
     "name": "<tt>~~~~↲CODEBLOCK↲~~~~</tt> (with extra <tt>~</tt> in separator) with <tt>~~~</tt> inside"
   }, {
     "data": "```\nxx\n`````",
-    "want": "<pre>xx</pre>",
+    "want": "<pre class=\"\">xx</pre>",
     "name": "<tt>```↲CODEBLOCK↲`````</tt> end separator longer than start"
   }, {
     "data": "~~~\nxx\n~~~~~",
-    "want": "<pre>xx</pre>",
+    "want": "<pre class=\"\">xx</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~~~</tt> end separator longer than start"
   }, {
     "data": "`````\nxx\n```",
@@ -783,154 +791,154 @@
     "NOTE": "Unintended <tt>~~STRIKETHROUGH~~</tt> expansion happens"
   }, {
     "data": "```\n\n*****\n\n```",
-    "want": "<pre>&#10;&#42;&#42;&#42;&#42;&#42;&#10;</pre>",
+    "want": "<pre class=\"\">&#10;&#42;&#42;&#42;&#42;&#42;&#10;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand dinkus <tt>---</tt>"
   }, {
     "data": "~~~\n\n*****\n\n~~~",
-    "want": "<pre>&#10;&#42;&#42;&#42;&#42;&#42;&#10;</pre>",
+    "want": "<pre class=\"\">&#10;&#42;&#42;&#42;&#42;&#42;&#10;</pre>",
     "name": "<tt>~~~↲CODEBLOCK↲~~~</tt> don’t expand dinkus <tt>---</tt>"
   }, {
     "data": "```\n\n# xx\n\n```",
-    "want": "<pre>&#10;&#35; xx&#10;</pre>",
+    "want": "<pre class=\"\">&#10;&#35; xx&#10;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt># HEADING</tt>"
   }, {
     "data": "```\n`xx`\n```",
-    "want": "<pre>&#96;xx&#96;</pre>",
+    "want": "<pre class=\"\">&#96;xx&#96;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt>`CODE`</tt>"
   }, {
     "data": "```\n*xx*\n```",
-    "want": "<pre>&#42;xx&#42;</pre>",
+    "want": "<pre class=\"\">&#42;xx&#42;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt>*ITALIC*</tt>"
   }, {
     "data": "```\n_xx_\n```",
-    "want": "<pre>&#95;xx&#95;</pre>",
+    "want": "<pre class=\"\">&#95;xx&#95;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt>_ITALIC_</tt>"
   }, {
     "data": "```\n**xx**\n```",
-    "want": "<pre>&#42;&#42;xx&#42;&#42;</pre>",
+    "want": "<pre class=\"\">&#42;&#42;xx&#42;&#42;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt>**BOLD**</tt>"
   }, {
     "data": "```\n__xx__\n```",
-    "want": "<pre>&#95;&#95;xx&#95;&#95;</pre>",
+    "want": "<pre class=\"\">&#95;&#95;xx&#95;&#95;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt>__BOLD__</tt>"
   }, {
     "data": "```\n___xx___\n```",
     "NOTE": "Landmark-specific",
-    "want": "<pre>&#95;&#95;&#95;xx&#95;&#95;&#95;</pre>",
+    "want": "<pre class=\"\">&#95;&#95;&#95;xx&#95;&#95;&#95;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt>___UNDERLINE___</tt>"
   }, {
     "data": "```\n~~xx~~\n```",
     "NOTE": "Landmark-specific",
-    "want": "<pre>&#126;&#126;xx&#126;&#126;</pre>",
+    "want": "<pre class=\"\">&#126;&#126;xx&#126;&#126;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt>~~STRIKETHROUGH~~</tt>"
   }, {
     "data": "```\n:\"xx\":\n```",
     "NOTE": "Landmark-specific",
-    "want": "<pre>&#58;&#34;xx&#34;&#58;</pre>",
+    "want": "<pre class=\"\">&#58;&#34;xx&#34;&#58;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand <tt>:\"QUOTE\":</tt>"
   }, {
     "data": "```\n[x](y)\n```",
-    "want": "<pre>&#91;x&#93;&#40;y&#41;</pre>",
+    "want": "<pre class=\"\">&#91;x&#93;&#40;y&#41;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand inline link <tt>[TEXT](URL)</tt>"
   }, {
     "data": "```\n[text][ref]\n```\n\n[text][ref]\n\n[ref]: dest \"title\"",
-    "want": "<pre>&#91;text&#93;&#91;ref&#93;</pre>\n\n<p><a href=\"dest\" title=\"title\">text</a></p>",
+    "want": "<pre class=\"\">&#91;text&#93;&#91;ref&#93;</pre>\n\n<p><a href=\"dest\" title=\"title\">text</a></p>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand labeled link <tt>[TEXT][LABEL]</tt>"
   }, {
     "data": "[text][ref]\n\n```\n[ref]: dest \"title\"\n```",
-    "want": "<p>[text][ref]</p>\n\n<pre>&#91;ref&#93;&#58; dest &#34;title&#34;</pre>",
+    "want": "<p>[text][ref]</p>\n\n<pre class=\"\">&#91;ref&#93;&#58; dest &#34;title&#34;</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand link/image definition <tt>[LABEL]: URL \"TITLE\"</tt>"
   }, {
     "data": "```\nx&x\n```",
-    "want": "<pre>x&#38;x</pre>",
+    "want": "<pre class=\"\">x&#38;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand ampersand <tt>&</tt>"
   }, {
     "data": "```\nx\\x\n```",
-    "want": "<pre>x&#92;x</pre>",
+    "want": "<pre class=\"\">x&#92;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand backslash <tt>&#92;</tt>"
   }, {
     "data": "```\nx\\\\x\n```",
-    "want": "<pre>x&#92;&#92;x</pre>",
+    "want": "<pre class=\"\">x&#92;&#92;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand two backslashes <tt>&#92;&#92;</tt>"
   }, {
     "data": "```\nx|x\n```",
-    "want": "<pre>x&#124;x</pre>",
+    "want": "<pre class=\"\">x&#124;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand pipe <tt>|</tt>"
   }, {
     "data": "```\nx\tx\n```",
-    "want": "<pre>x&#9;x</pre>",
+    "want": "<pre class=\"\">x&#9;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand tab <tt>⇥</tt>"
   }, {
     "data": "```\nx\nx\n```",
-    "want": "<pre>x&#10;x</pre>",
+    "want": "<pre class=\"\">x&#10;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand newline <tt>↲</tt>"
   }, {
     "data": "```\nx!x\n```",
-    "want": "<pre>x&#33;x</pre>",
+    "want": "<pre class=\"\">x&#33;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand exclamation mark <tt>!</tt>"
   }, {
     "data": "```\nx\"x\n```",
-    "want": "<pre>x&#34;x</pre>",
+    "want": "<pre class=\"\">x&#34;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand double quote <tt>\"</tt>"
   }, {
     "data": "```\nx#x\n```",
-    "want": "<pre>x&#35;x</pre>",
+    "want": "<pre class=\"\">x&#35;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand hashtag sign <tt>#</tt>"
   }, {
     "data": "```\nx'x\n```",
-    "want": "<pre>x&#39;x</pre>",
+    "want": "<pre class=\"\">x&#39;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand apostrophe <tt>'</tt>"
   }, {
     "data": "```\nx(x\n```",
-    "want": "<pre>x&#40;x</pre>",
+    "want": "<pre class=\"\">x&#40;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand start parenthesis <tt>(</tt>"
   }, {
     "data": "```\nx)x\n```",
-    "want": "<pre>x&#41;x</pre>",
+    "want": "<pre class=\"\">x&#41;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand end parenthesis <tt>)</tt>"
   }, {
     "data": "```\nx*x\n```",
-    "want": "<pre>x&#42;x</pre>",
+    "want": "<pre class=\"\">x&#42;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand asterisk <tt>*</tt>"
   }, {
     "data": "```\nx-x\n```",
-    "want": "<pre>x&#45;x</pre>",
+    "want": "<pre class=\"\">x&#45;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand hyphen <tt>-</tt>"
   }, {
     "data": "```\nx:x\n```",
-    "want": "<pre>x&#58;x</pre>",
+    "want": "<pre class=\"\">x&#58;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand colon <tt>:</tt>"
   }, {
     "data": "```\nx<x\n```",
-    "want": "<pre>x&#60;x</pre>",
+    "want": "<pre class=\"\">x&#60;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand less than sign <tt>&lt;</tt>"
   }, {
     "data": "```\nx=x\n```",
-    "want": "<pre>x&#61;x</pre>",
+    "want": "<pre class=\"\">x&#61;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand equal sign <tt>=</tt>"
   }, {
     "data": "```\nx>x\n```",
-    "want": "<pre>x&#62;x</pre>",
+    "want": "<pre class=\"\">x&#62;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand greater than sign <tt>&gt;</tt>"
   }, {
     "data": "```\nx[x\n```",
-    "want": "<pre>x&#91;x</pre>",
+    "want": "<pre class=\"\">x&#91;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand start bracket <tt>[</tt>"
   }, {
     "data": "```\nx]x\n```",
-    "want": "<pre>x&#93;x</pre>",
+    "want": "<pre class=\"\">x&#93;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand end bracket <tt>]</tt>"
   }, {
     "data": "```\nx_x\n```",
-    "want": "<pre>x&#95;x</pre>",
+    "want": "<pre class=\"\">x&#95;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand underline char <tt>_</tt>"
   }, {
     "data": "```\nx`x\n```",
-    "want": "<pre>x&#96;x</pre>",
+    "want": "<pre class=\"\">x&#96;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand backtick <tt>`</tt>"
   }, {
     "data": "```\nx~x\n```",
-    "want": "<pre>x&#126;x</pre>",
+    "want": "<pre class=\"\">x&#126;x</pre>",
     "name": "<tt>```↲CODEBLOCK↲```</tt> don’t expand tilde <tt>~</tt>"
   },
   "Dinkus <tt>---</tt> <tt>___</tt> <tt>***</tt>", {
