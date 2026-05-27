@@ -106,8 +106,10 @@ table {
   border-spacing: .125em;
 }
 td, th {
-  vertical-align: baseline;
+  vertical-align: top;
   font-family: sans;
+  & > :first-child { margin-top: 0 }
+  & > :last-child { margin-bottom: 0 }
 }
 tbody th { text-align: right; }
 td {
