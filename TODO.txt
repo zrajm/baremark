@@ -47,6 +47,35 @@
 * [0/7] Web page
 ** TODO Source code on web page with plenty of comments                 :web:
    There should also exist a git hook to verify that these always are in sync.
+
+   Global variables
+   ----------------------------------------
+   + l = links read from link references
+   + m = 'macros' (expanded in ruleset `.map()`)
+   + r = rules
+   ----------------------------------------
+
+   Functions
+   ----------------------------------------
+   + b = 'baremark' internal name of main parsing function `baremark()`
+   + e = 'escape' quote all Markdown-specific tags in a string
+   + h = h=(q,t,u,x='')=>(u=e(s(u),''),x=e(x,''),q?`<img src="${u}" title="${x}" alt="${e(t,'')}">`:`<a href="${u}" title="${x}">${t}</a>`),
+   + n = 'normalize' normalize space and downcase string (used for link labels)
+   + q = 'quote' turn any single char into &#...; entity
+   + s = 'squeeze' spaces (trims and squeezes space)
+   + t(charclass) = 'text' -- return regex string matching consecutive lines of charclass
+   + y y=z=>(w,x,r,u)=>u?h(z,x,u):(r=l[n(r??x)],r?h(z,x,...r):w),
+
+   Argument variables
+   ------------------------------
+   + _/a/b = throwaway
+   + a/b/c/d = title
+   + i = number & numeric (length of '###' etc.)
+   + x = main text (visible in output) -- not used in `[LABEL]: URL TITLE`
+   + r = referent (for links) or 'rule'
+   + u/v = url
+   + z = image/link selector (truthy means `<img ...>`, falsy means `<a ...>`)
+   ------------------------------
 ** TODO Unit tests search improvement                                   :web:
    On mobile the search function should be collapsible (showing a magnifying
    class icon) which slides out into a line at top of the screen showing the
@@ -109,7 +138,7 @@
    Since this is the same function in the code, they should be tested together.
    (Maybe the number of test cases can also be reduced?)
 ** TODO Use passing CommonMark 0.30 tests as baseline                  :test:
-* [0/5] Size
+* [0/9] Size
 ** TODO Remove optional trailing HTML tags                             :size:
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`                           :size:
@@ -139,7 +168,43 @@
    Would it be beneficial to be able to use 'Y' in the regexes to indicate a
    string that may not begin or end with a newline, but otherwise match the
    same as 'X'?
-* [0/5] Bugs
+** TODO Store regexes in ruleset as `...` (instead of /.../)           :size:
+   This would allow shortening of the compilation/macro step (as //.source
+   wouldn't be needed) but what would happen with backslashes in regexes?
+** TODO Remove need for sublists in ruleset(?)
+   Drawback: This would break current addons' way of inserting new rules.
+   (-26 bytes).
+
+   This would require rewriting of macro expansion from (±0 bytes)::
+   ----------------------------------------
+   .map(([r,s])=>[RegExp(r.source.replace(/[NXY]/g,w=>m[w]),'g'),s])
+   ----------------------------------------
+   To:
+   ----------------------------------------
+   .map((x,i)=>i%2?x:RegExp(x.source.replace(/[NXY]/g,x=>m[x]),'g'))
+   ----------------------------------------
+
+   And instead of the current rule processing (which processes one element at a
+   time), a system which reads two values at a time would be instated. Current
+   code:
+   ----------------------------------------
+   b=x=>x==null?r:(l={},r.reduce((a,r)=>a.replace(...r),`\n\n${x}\n\n`).trim())
+   ----------------------------------------
+   But the new code would look like this (some +12 bytes larger):
+   ----------------------------------------
+   b=x=>x==null?r:(l={},r.reduce((a,x,i)=>i%2?a.replace(r[i-1],x):a,`\n\n${x}\n\n`).trim()),
+   ----------------------------------------
+* [0/7] Bugs
+** TODO `0) NUMBERED`?
+   Do it incorectly count as '<ul>' (since 0 is falsy), or not (since '0' is
+   truthy). Make sure `0) NUMBERED` results in `<ol>` and add a test case for
+   this.
+** TODO Label definition without title                                  :bug:
+   [LABEL]: URL
+
+   Results in 'TITLE' being set to a number.
+*** TODO Write unit test(s)
+*** TODO Fix bug
 ** TODO `*ITALIC*` and bullet `* BULLET`                                :bug:
    When a bullet list is written in condensed form, `*ITALIC*` will sometimes
    mess with the bullet.
