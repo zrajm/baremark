@@ -138,7 +138,22 @@
    Since this is the same function in the code, they should be tested together.
    (Maybe the number of test cases can also be reduced?)
 ** TODO Use passing CommonMark 0.30 tests as baseline                  :test:
-* [0/9] Size
+* [0/10] Size
+** TODO New image/link processing?
+*** TODO Shorten using T 'macro' using `(['"])...\1` ?
+    Shorten the following bit?
+    T:`(?: +(?:'${t("[^'\n]")}'|"${t('[^"\n]')}"|\\(${t('[^()\n]')}\\)))?`,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*** TODO maybe use t`` to invoke t()?
+*** TODO Maybe use this more advanced `t()` (-28 + 18 = 10 bytes saved)
+   t=x=>`(\n?(?:${x=x?`[^${x}\n]`:'.'}+?\n)*?${x}*?)`,
+   m={
+   	T:`(?: +(?:'${t("'")}'|"${t('"')}"|\\(${t('()')}\\)))?`,  // GOOD
+   	U:t('() '),
+   	N:'\n',
+   	X:t(),
+   	Y:t('()[\\]')
+   },
 ** TODO Remove optional trailing HTML tags                             :size:
    </li>, </p>
 ** TODO Replaced unnecessary `.*?` with `.*`                           :size:
