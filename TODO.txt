@@ -97,7 +97,7 @@
    <details> are just laggy. Can this be fixed?
 ** TODO Remember which <details> where opened on reload                 :web:
 ** TODO Make sure README is up-to date                                  :web:
-* [0/11] Tests
+* [0/10] Tests
   List of different Markdown test suites:
   https://github.com/karlcow/markdown-testsuite
 ** TODO Tests for HTML blocks                                          :test:
@@ -106,8 +106,7 @@
    Each thingy should be tested with two after each other. E.g. two *code
    blocks* after each other. This will, for the blocks make sure that the
    handling of the edges between each match is handled correctly.
-** TODO Add tests for implicit links/images `[...][]`/`![...][]`       :test:
-** TODO Tags for test cases                                            :test:
+** TODO Tags for test cases                                             :web:
    The test cases usually test interactions of markup, meaning that a
    hierarchical isn't actually the best. Could we instead tag each test case
    with the relevant markup tested, and add a filter feature to the test
@@ -565,7 +564,9 @@
 *** TODO Should remove additional comments?
    Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
    <?...>?
-* [65/65] FINISHED
+* [66/66] FINISHED
+** DONE Add tests for implicit links/images `[...][]`/`![...][]`       :test:
+   CLOSED: [2026-05-30 Sat 01:52]
 ** DONE [#A] Support info string for fenced code blocks                :feat:
    CLOSED: [2026-05-26 Tue 02:22]
    https://spec.commonmark.org/0.31.2/#info-string

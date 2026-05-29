@@ -2286,6 +2286,10 @@
     "want": "<p><a href=\"url1\" title=\"\">x</a></p>",
     "name": "With multiple <tt>LABEL</tt> definitions, use the first one"
   }, {
+    "data": "[x][]\n\n[x]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[TEXT][]</tt> empty link"
+  }, {
     "data": "[x]\n\n[x]: url",
     "want": "<p><a href=\"url\" title=\"\">x</a></p>",
     "name": "<tt>TEXT</tt> without space (labeled link)"
@@ -3107,6 +3111,10 @@
     "data": "![x][y]\n\n[y]: url",
     "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
     "name": "<tt>TEXT</tt> and <tt>LABEL</tt> without space"
+  }, {
+    "data": "![x][]\n\n[x]: url",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>![TEXT][]</tt> empty image"
   }, {
     "data": "![x]\n\n[x]: url",
     "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
