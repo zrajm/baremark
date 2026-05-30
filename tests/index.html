@@ -177,6 +177,7 @@ look like on the page.</p>
             return `CAUGHT ERROR: ${e}`
           }
         })()
+        const [testNum] = (test.name ?? '').match(/\d+/) ?? []
 
         // Add test result to current section.
         $section.append(
@@ -184,23 +185,30 @@ look like on the page.</p>
             <summary>
               ${test.example ? `Test ${test.example}` : ''}${test.example && test.name ? ': ' : ''}
               ${test.name ? escapeAscii(test.name) : (test.example ? '' : escapeHtml(escapeAscii(test.data)) + '<br>→ ' + escapeHtml(escapeAscii(test.want)))}
-              ${test.hasOwnProperty('FIXME') ? ` <span class=fixme>(FIXME${test.FIXME ? ': ' + escapeAscii(test.FIXME) : ''})</span>` : ''}
               ${test.hasOwnProperty('NOTE')  ? ` <span class=note >(NOTE${ test.NOTE  ? ': ' + escapeAscii(test.NOTE)  : ''})</span>` : ''}
               ${typeof(test.skip)==='string' ? ` <span class=skipnote>(SKIPPED${ test.skip  ? ': ' + escapeAscii(test.skip)  : ''})</span>` : ''}
+              ${test.hasOwnProperty('FIXME') ? ` <span class=fixme>(FIXME${test.FIXME ? ': ' + escapeAscii(test.FIXME) : ''})</span>` : ''}
               ${test.comment                 ? '<div style="float:right;opacity:.5">#</div>'                                          : ''}
             </summary>
             <table>
               <thead><tr><th><th>Code<th>Appearance</thead>
-              <tr><th>Data
-                <td>
-                  <pre>${test.comment ? inputComment(test.comment) : ''}${escapeAscii(escapeHtml(test.data))}</pre>
+              <tr title="Input Markdown data">
+                <th>Data
+                <td><pre>${test.comment ? inputComment(test.comment) : ''}${escapeAscii(escapeHtml(test.data))}</pre>
                 <td><pre>${warn(test.data) || escapeHtml(test.data)}</pre>
-              <tr><th>Want
-                <td><pre>${escapeAscii(escapeHtml(want))}</pre>
-                <td>${warn(want) || want}
-              <tr><th>Got
+              <tr title="HTML outputted by Baremark">
+                <th>Got
                 <td><pre>${escapeAscii(escapeHtml(got))}</pre>
                 <td>${warn(got) || got}
+              <tr title="HTML output required for test to pass">
+                <th>Want
+                <td><pre>${escapeAscii(escapeHtml(want))}</pre>
+                <td>${warn(want) || want}
+              ${test.spec ? `
+              <tr title="HTML output specified by CommonMark (for reference)">
+                <th><a target=_blank href="https://spec.commonmark.org/0.31.2/${testNum?'#example-'+testNum:''}" style="color:canvastext">Spec</a>
+                <td><pre>${escapeAscii(escapeHtml(test.spec))}</pre>
+                <td>${warn(test.spec) || test.spec}` : ''}
             </table>
           </details>`)
       })
