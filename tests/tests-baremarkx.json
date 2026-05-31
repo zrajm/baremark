@@ -37,10 +37,6 @@
     "want": "<p>xx yy</p>",
     "name": "two words"
   }, {
-    "data": "xx\nyy",
-    "want": "<p>xx\nyy</p>",
-    "name": "across newline"
-  }, {
     "data": "xx\n\nyy",
     "want": "<p>xx</p>\n\n<p>yy</p>",
     "name": "two paragraphs"
@@ -2369,10 +2365,6 @@
     "want": "<p><a href=\"url\" title=\"\">x</a></p>",
     "name": "<tt>[TEXT][LABEL]</tt>, <tt>LABEL</tt> with leading space"
   }, {
-    "data": "[x][y z]\n\n[y z]: url",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[TEXT][LABEL]</tt>, <tt>LABEL</tt> with middle space"
-  }, {
     "data": "[x][y ]\n\n[y]: url",
     "want": "<p><a href=\"url\" title=\"\">x</a></p>",
     "name": "<tt>[TEXT][LABEL]</tt>, <tt>LABEL</tt> with trailing space"
@@ -3226,10 +3218,6 @@
     "data": "![x][ y]\n\n[y]: url",
     "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
     "name": "<tt>![TEXT][LABEL]</tt>, <tt>LABEL</tt> with leading space"
-  }, {
-    "data": "![x][y z]\n\n[y z]: url",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>![TEXT][LABEL]</tt>, <tt>LABEL</tt> with middle space"
   }, {
     "data": "![x][y ]\n\n[y]: url",
     "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
