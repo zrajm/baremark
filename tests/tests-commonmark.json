@@ -134,9 +134,10 @@
   },
   {
     "data": "<https://example.com?find=\\*>\n",
-    "want": "<p><a href=\"https://example.com?find=%5C*\">https://example.com?find=\\*</a></p>",
+    "want": "<p><a href=\"https&#58;//example.com?find&#61;&#92;&#42;\">https&#58;//example.com?find&#61;&#92;&#42;</a></p>",
     "spec": "<p><a href=\"https://example.com?find=%5C*\">https://example.com?find=\\*</a></p>\n",
     "name": "Test 20: <tt>&lt;https://example.com?find=&#92;*&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
@@ -212,13 +213,15 @@
     "want": "<p><a href=\"/f&ouml;&ouml;\" title=\"f&ouml;&ouml;\">foo</a></p>",
     "spec": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>\n",
     "name": "Test 32: <tt>[foo](/f&amp;ouml;&amp;ouml; \"f&amp;ouml;&amp;ouml;\")↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add title support for inline links &amp; images"
   },
   {
     "data": "[foo]\n\n[foo]: /f&ouml;&ouml; \"f&ouml;&ouml;\"\n",
     "want": "<p><a href=\"/f&ouml;&ouml;\" title=\"f&ouml;&ouml;\">foo</a></p>",
     "spec": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>\n",
-    "name": "Test 33: <tt>[foo]↲↲[foo]: /f&amp;ouml;&amp;ouml; \"f&amp;ouml;&amp;ouml;\"↲</tt>"
+    "name": "Test 33: <tt>[foo]↲↲[foo]: /f&amp;ouml;&amp;ouml; \"f&amp;ouml;&amp;ouml;\"↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark does not"
   },
   {
     "data": "``` f&ouml;&ouml;\nfoo\n```\n",
@@ -1363,7 +1366,7 @@
     "want": "<p><a href=\"/url\" title=\"the title\">foo</a></p>",
     "spec": "<p><a href=\"/url\" title=\"the title\">foo</a></p>\n",
     "name": "Test 193: <tt>␣␣␣[foo]:␣↲␣␣␣␣␣␣/url␣␣↲␣␣␣␣␣␣␣␣␣␣␣'the title'␣␣↲↲[foo]↲</tt>",
-    "FIXME": "Allow newline as separator in <tt>[foo]: /url \"title\"↲↲[foo]↲</tt>"
+    "FIXME": "Allow newline in separator for <tt>[LABEL]: URL</tt>"
   },
   {
     "data": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]\n",
@@ -1373,13 +1376,15 @@
   },
   {
     "data": "[Foo bar]:\n<my url>\n'title'\n\n[Foo bar]\n",
-    "want": "<p><a href=\"my%20url\" title=\"title\">Foo bar</a></p>",
+    "want": "<p><a href=\"my url\" title=\"title\">Foo bar</a></p>",
     "spec": "<p><a href=\"my%20url\" title=\"title\">Foo bar</a></p>\n",
-    "name": "Test 195: <tt>[Foo bar]:↲&lt;my url&gt;↲'title'↲↲[Foo bar]↲</tt>"
+    "name": "Test 195: <tt>[Foo bar]:↲&lt;my url&gt;↲'title'↲↲[Foo bar]↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "FIXME": "Allow newline in separator for <tt>[LABEL]: URL</tt>"
   },
   {
     "data": "[foo]: /url '\ntitle\nline1\nline2\n'\n\n[foo]\n",
-    "want": "<p><a href=\"/url\" title=\"\ntitle\nline1\nline2\n\">foo</a></p>",
+    "want": "<p><a href=\"/url\" title=\"&#10;title&#10;line1&#10;line2&#10;\">foo</a></p>",
     "spec": "<p><a href=\"/url\" title=\"\ntitle\nline1\nline2\n\">foo</a></p>\n",
     "name": "Test 196: <tt>[foo]: /url '↲title↲line1↲line2↲'↲↲[foo]↲</tt>"
   },
@@ -1387,13 +1392,15 @@
     "data": "[foo]: /url 'title\n\nwith blank line'\n\n[foo]\n",
     "want": "<p>[foo]: /url 'title</p>\n\n<p>with blank line'</p>\n\n<p>[foo]</p>",
     "spec": "<p>[foo]: /url 'title</p>\n<p>with blank line'</p>\n<p>[foo]</p>\n",
-    "name": "Test 197: <tt>[foo]: /url 'title↲↲with blank line'↲↲[foo]↲</tt>"
+    "name": "Test 197: <tt>[foo]: /url 'title↲↲with blank line'↲↲[foo]↲</tt>",
+    "FIXME": "Disallow unterminated <tt>TITLE</tt> in <tt>[LABEL]: URL 'TITLE'</tt>"
   },
   {
     "data": "[foo]:\n/url\n\n[foo]\n",
     "want": "<p><a href=\"/url\" title=\"\">foo</a></p>",
     "spec": "<p><a href=\"/url\">foo</a></p>\n",
-    "name": "Test 198: <tt>[foo]:↲/url↲↲[foo]↲</tt>"
+    "name": "Test 198: <tt>[foo]:↲/url↲↲[foo]↲</tt>",
+    "FIXME": "Allow newline in separator for <tt>[LABEL]: URL</tt>"
   },
   {
     "data": "[foo]:\n\n[foo]\n",
@@ -1415,9 +1422,10 @@
   },
   {
     "data": "[foo]: /url\\bar\\*baz \"foo\\\"bar\\baz\"\n\n[foo]\n",
-    "want": "<p><a href=\"/url%5Cbar*baz\" title=\"foo&quot;bar\\baz\">foo</a></p>",
+    "want": "<p><a href=\"/url&#92;bar&#92;&#42;baz\" title=\"foo&#92;&#34;bar&#92;baz\">foo</a></p>",
     "spec": "<p><a href=\"/url%5Cbar*baz\" title=\"foo&quot;bar\\baz\">foo</a></p>\n",
-    "name": "Test 202: <tt>[foo]: /url&#92;bar&#92;*baz \"foo&#92;\"bar&#92;baz\"↲↲[foo]↲</tt>"
+    "name": "Test 202: <tt>[foo]: /url&#92;bar&#92;*baz \"foo&#92;\"bar&#92;baz\"↲↲[foo]↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark does not"
   },
   {
     "data": "[foo]\n\n[foo]: url\n",
@@ -1439,9 +1447,10 @@
   },
   {
     "data": "[ΑΓΩ]: /φου\n\n[αγω]\n",
-    "want": "<p><a href=\"/%CF%86%CE%BF%CF%85\" title=\"\">αγω</a></p>",
+    "want": "<p><a href=\"/φου\" title=\"\">αγω</a></p>",
     "spec": "<p><a href=\"/%CF%86%CE%BF%CF%85\">αγω</a></p>\n",
-    "name": "Test 206: <tt>[ΑΓΩ]: /φου↲↲[αγω]↲</tt>"
+    "name": "Test 206: <tt>[ΑΓΩ]: /φου↲↲[αγω]↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark does not"
   },
   {
     "data": "[foo]: /url\n",
@@ -2379,9 +2388,10 @@
   },
   {
     "data": "<https://foo.bar.`baz>`\n",
-    "want": "<p><a href=\"https://foo.bar.%60baz\">https://foo.bar.`baz</a>`</p>",
+    "want": "<p><a href=\"https&#58;//foo.bar.&#96;baz\">https&#58;//foo.bar.&#96;baz</a>`</p>",
     "spec": "<p><a href=\"https://foo.bar.%60baz\">https://foo.bar.`baz</a>`</p>\n",
     "name": "Test 346: <tt>&lt;https://foo.bar.`baz&gt;`↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
@@ -3186,15 +3196,19 @@
   },
   {
     "data": "**a<https://foo.bar/?q=**>\n",
-    "want": "<p>**a<a href=\"https://foo.bar/?q=**\">https://foo.bar/?q=**</a></p>",
+    "want": "<p>**a<a href=\"https&#58;//foo.bar/?q&#61;&#42;&#42;\">https&#58;//foo.bar/?q&#61;&#42;&#42;</a></p>",
     "spec": "<p>**a<a href=\"https://foo.bar/?q=**\">https://foo.bar/?q=**</a></p>\n",
-    "name": "Test 480: <tt>**a&lt;https://foo.bar/?q=**&gt;↲</tt>"
+    "name": "Test 480: <tt>**a&lt;https://foo.bar/?q=**&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "FIXME": "Add autolinking"
   },
   {
     "data": "__a<https://foo.bar/?q=__>\n",
-    "want": "<p>__a<a href=\"https://foo.bar/?q=__\">https://foo.bar/?q=__</a></p>",
+    "want": "<p>__a<a href=\"https&#58;//foo.bar/?q&#61;&#95;&#95;\">https&#58;//foo.bar/?q&#61;&#95;&#95;</a></p>",
     "spec": "<p>__a<a href=\"https://foo.bar/?q=__\">https://foo.bar/?q=__</a></p>\n",
-    "name": "Test 481: <tt>__a&lt;https://foo.bar/?q=__&gt;↲</tt>"
+    "name": "Test 481: <tt>__a&lt;https://foo.bar/?q=__&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "FIXME": "Add autolinking"
   },
   "Inline Links <tt>[TEXT](URL)</tt>",
   {
@@ -3242,9 +3256,11 @@
   },
   {
     "data": "[link](</my uri>)\n",
-    "want": "<p><a href=\"/my%20uri\" title=\"\">link</a></p>",
+    "want": "<p><a href=\"/my uri\" title=\"\">link</a></p>",
     "spec": "<p><a href=\"/my%20uri\">link</a></p>\n",
-    "name": "Test 489: <tt>[link](&lt;/my uri&gt;)↲</tt>"
+    "name": "Test 489: <tt>[link](&lt;/my uri&gt;)↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "FIXME": "Add support for <tt>&lt;...&gt;</tt> around <tt>URL</tt> in <tt>[TEXT](&lt;URL&gt;)</tt>"
   },
   {
     "data": "[link](foo\nbar)\n",
@@ -3327,22 +3343,24 @@
   },
   {
     "data": "[link](foo\\bar)\n",
-    "want": "<p><a href=\"foo%5Cbar\" title=\"\">link</a></p>",
+    "want": "<p><a href=\"foo&#92;bar\" title=\"\">link</a></p>",
     "spec": "<p><a href=\"foo%5Cbar\">link</a></p>\n",
     "name": "Test 502: <tt>[link](foo&#92;bar)↲</tt>",
-    "FIXME": "Maybe add support for URL encoding in <tt>URL</tt> of <tt>[TEXT](URL)</tt>?"
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark does not"
   },
   {
     "data": "[link](foo%20b&auml;)\n",
-    "want": "<p><a href=\"foo%20b%C3%A4\" title=\"\">link</a></p>",
+    "want": "<p><a href=\"foo%20b&auml;\" title=\"\">link</a></p>",
     "spec": "<p><a href=\"foo%20b%C3%A4\">link</a></p>\n",
-    "name": "Test 503: <tt>[link](foo%20b&amp;auml;)↲</tt>"
+    "name": "Test 503: <tt>[link](foo%20b&amp;auml;)↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark does not"
   },
   {
     "data": "[link](\"title\")\n",
     "want": "<p><a href=\"&#34;title&#34;\" title=\"\">link</a></p>",
     "spec": "<p><a href=\"%22title%22\">link</a></p>\n",
-    "name": "Test 504: <tt>[link](\"title\")↲</tt>"
+    "name": "Test 504: <tt>[link](\"title\")↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark does not"
   },
   {
     "data": "[link](/url \"title\")\n[link](/url 'title')\n[link](/url (title))\n",
@@ -3359,9 +3377,11 @@
   },
   {
     "data": "[link](/url \"title\")\n",
-    "want": "<p><a href=\"/url%C2%A0%22title%22\" title=\"\">link</a></p>",
+    "want": "<p><a href=\"/url &#34;title&#34;\" title=\"\">link</a></p>",
     "spec": "<p><a href=\"/url%C2%A0%22title%22\">link</a></p>\n",
-    "name": "Test 507: <tt>[link](/url⍽\"title\")↲</tt>"
+    "name": "Test 507: <tt>[link](/url⍽\"title\")↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "FIXME": "Don’t change <tt>⍽</tt> into <tt>␣</tt> in <tt>[TEXT](URL⍽\"TITLE\")</tt>"
   },
   {
     "data": "[link](/url \"title \"and\" title\")\n",
@@ -3473,9 +3493,11 @@
   },
   {
     "data": "[foo<https://example.com/?search=](uri)>\n",
-    "want": "<p>[foo<a href=\"https://example.com/?search=%5D(uri)\" title=\"\">https://example.com/?search=](uri)</a></p>",
+    "want": "<p>[foo<a href=\"https&#58;//example.com/?search&#61;&#93;&#40;uri&#41;\" title=\"\">https&#58;//example.com/?search&#61;&#93;&#40;uri&#41;</a></p>",
     "spec": "<p>[foo<a href=\"https://example.com/?search=%5D(uri)\">https://example.com/?search=](uri)</a></p>\n",
-    "name": "Test 526: <tt>[foo&lt;https://example.com/?search=](uri)&gt;↲</tt>"
+    "name": "Test 526: <tt>[foo&lt;https://example.com/?search=](uri)&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "FIXME": "Add autolinking"
   },
   {
     "data": "[foo][bar]\n\n[bar]: /url \"title\"\n",
@@ -3547,9 +3569,11 @@
   },
   {
     "data": "[foo<https://example.com/?search=][ref]>\n\n[ref]: /uri\n",
-    "want": "<p>[foo<a href=\"https://example.com/?search=%5D%5Bref%5D\">https://example.com/?search=][ref]</a></p>",
+    "want": "<p>[foo<a href=\"https&#58;//example.com/?search&#61;&#93;&#91;ref&#93;\">https&#58;//example.com/?search&#61;&#93;&#91;ref&#93;</a></p>",
     "spec": "<p>[foo<a href=\"https://example.com/?search=%5D%5Bref%5D\">https://example.com/?search=][ref]</a></p>\n",
-    "name": "Test 538: <tt>[foo&lt;https://example.com/?search=][ref]&gt;↲↲[ref]: /uri↲</tt>"
+    "name": "Test 538: <tt>[foo&lt;https://example.com/?search=][ref]&gt;↲↲[ref]: /uri↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "FIXME": "Add autolinking"
   },
   {
     "data": "[foo][BaR]\n\n[bar]: /url \"title\"\n",
@@ -3816,7 +3840,7 @@
     "want": "<p><img src=\"url\" title=\"\" alt=\"foo\"></p>",
     "spec": "<p><img src=\"url\" alt=\"foo\" /></p>\n",
     "name": "Test 580: <tt>![foo](&lt;url&gt;)↲</tt>",
-    "FIXME": "Add support for <tt>&lt;...&gt;</tt> around <tt>URL</tt>"
+    "FIXME": "Add support for <tt>&lt;...&gt;</tt> around <tt>URL</tt> in <tt>![TEXT](&lt;URL&gt;)</tt>"
   },
   {
     "data": "![](/url)\n",
@@ -3901,30 +3925,34 @@
   "Autolinks <span class=note>(FIXME: Add autolinking)</span>",
   {
     "data": "<http://foo.bar.baz>\n",
-    "want": "<p><a href=\"http://foo.bar.baz\">http://foo.bar.baz</a></p>",
+    "want": "<p><a href=\"http&#58;//foo.bar.baz\">http&#58;//foo.bar.baz</a></p>",
     "spec": "<p><a href=\"http://foo.bar.baz\">http://foo.bar.baz</a></p>\n",
     "name": "Test 594: <tt>&lt;http://foo.bar.baz&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
     "data": "<https://foo.bar.baz/test?q=hello&id=22&boolean>\n",
-    "want": "<p><a href=\"https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean\">https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean</a></p>",
+    "want": "<p><a href=\"https&#58;//foo.bar.baz/test?q&#61;hello&id&#61;22&boolean\">https&#58;//foo.bar.baz/test?q&#61;hello&id&#61;22&boolean</a></p>",
     "spec": "<p><a href=\"https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean\">https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean</a></p>\n",
     "name": "Test 595: <tt>&lt;https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
     "data": "<irc://foo.bar:2233/baz>\n",
-    "want": "<p><a href=\"irc://foo.bar:2233/baz\">irc://foo.bar:2233/baz</a></p>",
+    "want": "<p><a href=\"irc&#58;//foo.bar&#58;2233/baz\">irc&#58;//foo.bar&#58;2233/baz</a></p>",
     "spec": "<p><a href=\"irc://foo.bar:2233/baz\">irc://foo.bar:2233/baz</a></p>\n",
     "name": "Test 596: <tt>&lt;irc://foo.bar:2233/baz&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
     "data": "<MAILTO:FOO@BAR.BAZ>\n",
-    "want": "<p><a href=\"MAILTO:FOO@BAR.BAZ\">MAILTO:FOO@BAR.BAZ</a></p>",
+    "want": "<p><a href=\"MAILTO&#58;FOO@BAR.BAZ\">MAILTO&#58;FOO@BAR.BAZ</a></p>",
     "spec": "<p><a href=\"MAILTO:FOO@BAR.BAZ\">MAILTO:FOO@BAR.BAZ</a></p>\n",
     "name": "Test 597: <tt>&lt;MAILTO:FOO@BAR.BAZ&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
@@ -3943,9 +3971,10 @@
   },
   {
     "data": "<https://../>\n",
-    "want": "<p><a href=\"https://../\">https://../</a></p>",
+    "want": "<p><a href=\"https&#58;//../\">https&#58;//../</a></p>",
     "spec": "<p><a href=\"https://../\">https://../</a></p>\n",
     "name": "Test 600: <tt>&lt;https://../&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
@@ -3960,35 +3989,39 @@
     "want": "<p>&#60;https://foo.bar/baz bim&#62;</p>",
     "spec": "<p>&lt;https://foo.bar/baz bim&gt;</p>\n",
     "name": "Test 602: <tt>&lt;https://foo.bar/baz bim&gt;↲</tt>",
-    "FIXME": "Add autolinking"
+    "FIXME": "Add autolinking, <tt>&lt;...&gt;</tt> with invalid content <tt>&#...;</tt> is escaped in CommonMark"
   },
   {
     "data": "<https://example.com/\\[\\>\n",
-    "want": "<p><a href=\"https://example.com/%5C%5B%5C\">https://example.com/\\[\\</a></p>",
+    "want": "<p><a href=\"https&#58;//example.com/&#92;&#91;&#92;\">https&#58;//example.com/&#92;&#91;&#92;</a></p>",
     "spec": "<p><a href=\"https://example.com/%5C%5B%5C\">https://example.com/\\[\\</a></p>\n",
     "name": "Test 603: <tt>&lt;https://example.com/&#92;[&#92;&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
     "data": "<foo@bar.example.com>\n",
-    "want": "<p><a href=\"mailto:foo@bar.example.com\">foo@bar.example.com</a></p>",
+    "want": "<p><a href=\"mailto&#58;foo@bar.example.com\">foo@bar.example.com</a></p>",
     "spec": "<p><a href=\"mailto:foo@bar.example.com\">foo@bar.example.com</a></p>\n",
     "name": "Test 604: <tt>&lt;foo@bar.example.com&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
     "data": "<foo+special@Bar.baz-bar0.com>\n",
-    "want": "<p><a href=\"mailto:foo+special@Bar.baz-bar0.com\">foo+special@Bar.baz-bar0.com</a></p>",
+    "want": "<p><a href=\"mailto&#58;foo+special@Bar.baz&#45;bar0.com\">foo+special@Bar.baz&#45;bar0.com</a></p>",
     "spec": "<p><a href=\"mailto:foo+special@Bar.baz-bar0.com\">foo+special@Bar.baz-bar0.com</a></p>\n",
     "name": "Test 605: <tt>&lt;foo+special@Bar.baz-bar0.com&gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
     "data": "<foo\\+@bar.example.com>\n",
-    "want": "<p>&#60;foo+@bar.example.com&#62;</p>",
+    "want": "<p>&#60;foo&#92;+@bar.example.com&#62;</p>",
     "spec": "<p>&lt;foo+@bar.example.com&gt;</p>\n",
     "name": "Test 606: <tt>&lt;foo&#92;+@bar.example.com&gt;↲</tt>",
-    "FIXME": "Add autolinking"
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "FIXME": "Add autolinking, <tt>&lt;...&gt;</tt> with invalid content <tt>&#...;</tt> is escaped in CommonMark"
   },
   {
     "data": "<>\n",
@@ -3999,9 +4032,10 @@
   },
   {
     "data": "< https://foo.bar >\n",
-    "want": "<p>&#60; https://foo.bar &#62;</p>",
+    "want": "<p>&#60; https&#58;//foo.bar &#62;</p>",
     "spec": "<p>&lt; https://foo.bar &gt;</p>\n",
     "name": "Test 608: <tt>&lt; https://foo.bar &gt;↲</tt>",
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
     "FIXME": "Add autolinking"
   },
   {
@@ -4086,10 +4120,10 @@
   },
   {
     "data": "< a><\nfoo><bar/ >\n<foo bar=baz\nbim!bop />\n",
-    "want": "<p>&#60; a&#62;&#60;\nfoo&#62;&#60;bar/ &#62;\n&#60;foo bar=baz\nbim!bop /&#62;</p>",
+    "want": "<p>&#60; a&#62;&#60;&#10;foo&#62;&#60;bar/ &#62;&#10;&#60;foo bar&#61;baz&#10;bim&#33;bop /&#62;</p>",
     "spec": "<p>&lt; a&gt;&lt;\nfoo&gt;&lt;bar/ &gt;\n&lt;foo bar=baz\nbim!bop /&gt;</p>\n",
     "name": "Test 621: <tt>&lt; a&gt;&lt;↲foo&gt;&lt;bar/ &gt;↲&lt;foo bar=baz↲bim!bop /&gt;↲</tt>",
-    "skip": "Baremark always interpret <tt>&lt;...&gt;</tt> as HTML"
+    "FIXME": "Add autolinking, <tt>&lt;...&gt;</tt> with invalid content <tt>&#...;</tt> is escaped in CommonMark"
   },
   {
     "data": "<a href='bar'title=title>\n",

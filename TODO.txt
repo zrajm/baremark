@@ -503,13 +503,31 @@
 ** TODO Hanging indent lists                                           :feat:
 ** TODO Indented code blocks                                           :feat:
 ** TODO Autolink(?) without the <...>?                                 :feat:
-** [0/3] Add autolinks `<URL>`                                         :feat:
+** [0/4] Add autolinks `<URL>`                                         :feat:
+   + A backslash or space in a `<...>` results in the whole thing being escaped
+     and not outputted as a link.
+     https://spec.commonmark.org/0.31.2/#example-602 -- space
+     https://spec.commonmark.org/0.31.2/#example-606 -- backslash
+     https://spec.commonmark.org/0.31.2/#example-608 -- space
 *** TODO Also update README mention of autolink.
-*** TODO Autolinked URLs <http://example.com?find=\\*>
-    Content need to be URL encoded. CommonMark example 20 illustrate this.
-*** TODO Autolinked emails <me@email.com>
+*** TODO Autolinked URLs `<http://example.com?find=\\*>`
+    For it to be considered a link (URL), there it should start with [a-z]+,
+    followed by ':' (used for 'mailto:') (or maybe '://'?). Matching
+    /^<[a-z]+:/ maybe?
+*** TODO Autolinked emails `<me@email.com>`
+    For it to be considered an email, there should be a) one '@' and b) no
+    spaces. Matching /<[^@ ]+@[^@ ]+>/ maybe?
+
+    For naked email addresses, prefix with 'mailto&#58;' (with the ':' as an
+    URL entity).
+
     Email be turned into '&#x102;&#x97;&#x107;...' in both href and link text
     (as a basic spam protection measure).
+*** TODO Invalid `<...>` content should be HTML escaped
+    To test for HTML tag, maybe match /^<[\w-]+\b/? -- Not sure exactly where
+    the `\b` will match though.
+
+    Unless it is a valid HTML tag, in which case it should be left as-is.
 ** TODO Nested lists                                                   :feat:
 * [0/3] Addons
 ** TODO Extended Markdown addon
