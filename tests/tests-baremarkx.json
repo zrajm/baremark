@@ -1,5 +1,5 @@
 [
-  "Newlines", {
+  "Newline Normalization", {
     "data": "xx\nyy",
     "want": "<p>xx\nyy</p>",
     "name": "Linux newline <tt>\n</tt>"
@@ -61,100 +61,55 @@
     "want": "<p>xx\nyy</p>",
     "name": "lines with trailing tabs and spaces"
   },
-  "<tt># HEADING 1</tt> … <tt>###### HEADING 6</tt>", {
-    "data": "# xx",
-    "want": "<h1>xx</h1>",
-    "name": "<tt># HEADING 1</tt>"
+  "Raw HTML", {
+    "data": "aa\n\n<div>bb</div>\n\ncc",
+    "want": "<p>aa</p>\n\n<div>bb</div>\n\n<p>cc</p>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping single paragraph"
   }, {
-    "data": "## xx",
-    "want": "<h2>xx</h2>",
-    "name": "<tt>## HEADING 2</tt>"
+    "data": "<div>\n\naa\n\nbb\n\n</div>",
+    "want": "<div>\n\n<p>aa</p>\n\n<p>bb</p>\n\n</div>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping multiple paragraphs, <tt>&lt;div&gt;</tt> tags in separate paragraphs"
   }, {
-    "data": "### xx",
-    "want": "<h3>xx</h3>",
-    "name": "<tt>### HEADING 3</tt>"
+    "data": "<div>aa\n\nbb</div>",
+    "want": "<div>aa\n\nbb</div>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping two paragraphs"
   }, {
-    "data": "#### xx",
-    "want": "<h4>xx</h4>",
-    "name": "<tt>#### HEADING 4</tt>"
+    "data": "<div>aa\n\nbb\n\ncc</div>",
+    "want": "<div>aa\n\n<p>bb</p>\n\ncc</div>",
+    "name": "<tt>&lt;div&gt;</tt> wrapping three paragraphs, middle should be wrapped in <tt>&lt;p&gt;</tt>"
   }, {
-    "data": "##### xx",
-    "want": "<h5>xx</h5>",
-    "name": "<tt>##### HEADING 5</tt>"
+    "data": "<b>aa</b>",
+    "want": "<p><b>aa</b></p>",
+    "name": "Paragraph containing literal <tt>&lt;b&gt;...&lt;/b&gt;</tt>"
   }, {
-    "data": "###### xx",
-    "want": "<h6>xx</h6>",
-    "name": "<tt>###### HEADING 6</tt>"
+    "data": "<div>aa",
+    "want": "<div>aa",
+    "name": "HTML block starting with <tt>&lt;div&gt;</tt>"
   }, {
-    "data": "####### xx",
-    "want": "<p>####### xx</p>",
-    "name": "<tt>####### HEADING 7</tt>, don’t expand"
+    "data": "</div>aa",
+    "want": "</div>aa",
+    "name": "HTML block starting with <tt>&lt;/div&gt;</tt>"
   }, {
-    "data": "# aa *bb* cc",
-    "want": "<h1>aa <i>bb</i> cc</h1>",
-    "name": "<tt># HEADING</tt> containing <tt>*ITALIC*</tt>"
+    "data": "<b>aa",
+    "want": "<p><b>aa</p>",
+    "name": "Paragraph starting with <tt>&lt;b&gt;</tt>"
   }, {
-    "data": "# aa **bb** cc",
-    "want": "<h1>aa <b>bb</b> cc</h1>",
-    "name": "<tt># HEADING</tt> containing <tt>**BOLD**</tt>"
+    "data": "</b>aa",
+    "want": "<p></b>aa</p>",
+    "name": "Paragraph starting with <tt>&lt;/b&gt;</tt>"
   }, {
-    "data": "text\n\n# xx\n\ntext",
-    "want": "<p>text</p>\n\n<h1>xx</h1>\n\n<p>text</p>",
-    "name": "<tt># HEADING 1</tt> with paragraphs before/after"
+    "data": "<x>aa",
+    "want": "<p><x>aa</p>",
+    "name": "Paragraph starting with <tt>&lt;x&gt;</tt> (custom tag)"
   }, {
-    "data": "# xx\n\n## yy\n\n### zz",
-    "want": "<h1>xx</h1>\n\n<h2>yy</h2>\n\n<h3>zz</h3>",
-    "name": "<tt># HEADING</tt> several separated by blank line"
+    "data": "</x>aa",
+    "want": "<p></x>aa</p>",
+    "name": "Paragraph starting with <tt>&lt;/x&gt;</tt> (custom tag)"
   }, {
-    "data": "# yy\n# xx",
-    "NOTE": "anti-CommonMark",
-    "want": "<p># yy\n# xx</p>",
-    "name": "<tt># HEADING</tt>s with no blank line between, don’t expand"
-  }, {
-    "data": "#",
-    "NOTE": "anti-CommonMark",
-    "want": "<p>#</p>",
-    "name": "<tt># HEADING</tt> without text, don’t expand"
-  }, {
-    "data": "\\## xx",
-    "want": "<p>&#35;# xx</p>",
-    "name": "<tt># HEADING</tt> with first <tt>#</tt> escaped by <tt>&#92;X</tt>, don’t expand"
-  }, {
-    "data": "#\\# xx",
-    "want": "<p>#&#35; xx</p>",
-    "name": "<tt># HEADING</tt> with non-first <tt>#</tt> escaped by <tt>&#92;X</tt>, don’t expand"
-  }, {
-    "data": "xx\n\n# yy",
-    "NOTE": "anti-CommonMark",
-    "want": "<p>xx</p>\n\n<h1>yy</h1>",
-    "name": "<tt># HEADING</tt> with leading with blank line"
-  }, {
-    "data": "#xx",
-    "want": "<p>#xx</p>",
-    "name": "<tt># HEADING</tt> no space after <tt>#</tt>, don’t expand"
-  }, {
-    "data": " # xx",
-    "NOTE": "anti-CommonMark",
-    "want": "<p> # xx</p>",
-    "name": "<tt># HEADING</tt> indented, don’t expand"
-  }, {
-    "data": "xx\n# yy",
-    "NOTE": "anti-CommonMark",
-    "want": "<p>xx\n# yy</p>",
-    "name": "<tt># HEADING</tt> no leading blank line, don’t expand"
-  }, {
-    "data": "# yy\nxx",
-    "NOTE": "anti-CommonMark",
-    "want": "<p># yy\nxx</p>",
-    "name": "<tt># HEADING</tt> no trailing blank line, don’t expand"
-  }, {
-    "data": "# xx  ###",
-    "want": "<h1>xx</h1>",
-    "name": "<tt># HEADING</tt> strip <tt>#</tt>s at end-of-line"
-  }, {
-    "data": "# xx###",
-    "want": "<h1>xx###</h1>",
-    "name": "<tt># HEADING</tt> don’t strip <tt>#</tt>s at end-of-line with no preceding space"
+    "data": "<p>**aa**",
+    "NOTE": "anti-CommonMark, Markdown expanded in HTML blocks too",
+    "want": "<p><b>aa</b>",
+    "name": "HTML block containing <tt>**BOLD**</tt>"
   },
   "<tt class=multi>HEADING 1<br>=========</tt> <tt class=multi>HEADING 2<br>---------</tt>", {
     "data": "xx\n==",
@@ -287,6 +242,101 @@
     "NOTE": "Unsupported CommonMark feature",
     "want": "<h1>xx</h1>",
     "name": "<tt class=multi>HEADING 1<br>=========</tt> underline with trailing space"
+  },
+  "<tt># HEADING 1</tt> … <tt>###### HEADING 6</tt>", {
+    "data": "# xx",
+    "want": "<h1>xx</h1>",
+    "name": "<tt># HEADING 1</tt>"
+  }, {
+    "data": "## xx",
+    "want": "<h2>xx</h2>",
+    "name": "<tt>## HEADING 2</tt>"
+  }, {
+    "data": "### xx",
+    "want": "<h3>xx</h3>",
+    "name": "<tt>### HEADING 3</tt>"
+  }, {
+    "data": "#### xx",
+    "want": "<h4>xx</h4>",
+    "name": "<tt>#### HEADING 4</tt>"
+  }, {
+    "data": "##### xx",
+    "want": "<h5>xx</h5>",
+    "name": "<tt>##### HEADING 5</tt>"
+  }, {
+    "data": "###### xx",
+    "want": "<h6>xx</h6>",
+    "name": "<tt>###### HEADING 6</tt>"
+  }, {
+    "data": "####### xx",
+    "want": "<p>####### xx</p>",
+    "name": "<tt>####### HEADING 7</tt>, don’t expand"
+  }, {
+    "data": "# aa *bb* cc",
+    "want": "<h1>aa <i>bb</i> cc</h1>",
+    "name": "<tt># HEADING</tt> containing <tt>*ITALIC*</tt>"
+  }, {
+    "data": "# aa **bb** cc",
+    "want": "<h1>aa <b>bb</b> cc</h1>",
+    "name": "<tt># HEADING</tt> containing <tt>**BOLD**</tt>"
+  }, {
+    "data": "text\n\n# xx\n\ntext",
+    "want": "<p>text</p>\n\n<h1>xx</h1>\n\n<p>text</p>",
+    "name": "<tt># HEADING 1</tt> with paragraphs before/after"
+  }, {
+    "data": "# xx\n\n## yy\n\n### zz",
+    "want": "<h1>xx</h1>\n\n<h2>yy</h2>\n\n<h3>zz</h3>",
+    "name": "<tt># HEADING</tt> several separated by blank line"
+  }, {
+    "data": "# yy\n# xx",
+    "NOTE": "anti-CommonMark",
+    "want": "<p># yy\n# xx</p>",
+    "name": "<tt># HEADING</tt>s with no blank line between, don’t expand"
+  }, {
+    "data": "#",
+    "NOTE": "anti-CommonMark",
+    "want": "<p>#</p>",
+    "name": "<tt># HEADING</tt> without text, don’t expand"
+  }, {
+    "data": "\\## xx",
+    "want": "<p>&#35;# xx</p>",
+    "name": "<tt># HEADING</tt> with first <tt>#</tt> escaped by <tt>&#92;X</tt>, don’t expand"
+  }, {
+    "data": "#\\# xx",
+    "want": "<p>#&#35; xx</p>",
+    "name": "<tt># HEADING</tt> with non-first <tt>#</tt> escaped by <tt>&#92;X</tt>, don’t expand"
+  }, {
+    "data": "xx\n\n# yy",
+    "NOTE": "anti-CommonMark",
+    "want": "<p>xx</p>\n\n<h1>yy</h1>",
+    "name": "<tt># HEADING</tt> with leading with blank line"
+  }, {
+    "data": "#xx",
+    "want": "<p>#xx</p>",
+    "name": "<tt># HEADING</tt> no space after <tt>#</tt>, don’t expand"
+  }, {
+    "data": " # xx",
+    "NOTE": "anti-CommonMark",
+    "want": "<p> # xx</p>",
+    "name": "<tt># HEADING</tt> indented, don’t expand"
+  }, {
+    "data": "xx\n# yy",
+    "NOTE": "anti-CommonMark",
+    "want": "<p>xx\n# yy</p>",
+    "name": "<tt># HEADING</tt> no leading blank line, don’t expand"
+  }, {
+    "data": "# yy\nxx",
+    "NOTE": "anti-CommonMark",
+    "want": "<p># yy\nxx</p>",
+    "name": "<tt># HEADING</tt> no trailing blank line, don’t expand"
+  }, {
+    "data": "# xx  ###",
+    "want": "<h1>xx</h1>",
+    "name": "<tt># HEADING</tt> strip <tt>#</tt>s at end-of-line"
+  }, {
+    "data": "# xx###",
+    "want": "<h1>xx###</h1>",
+    "name": "<tt># HEADING</tt> don’t strip <tt>#</tt>s at end-of-line with no preceding space"
   },
   "<tt>&gt; BLOCKQUOTE</tt>", {
     "data": "> xx \t",
@@ -4450,55 +4500,5 @@
     "data": "`x\\`y`",
     "want": "<p><tt>x&#92;&#96;y</tt></p>",
     "name": "don’t expand backslashed backtick <tt>&#92;`</tt>"
-  },
-  "Raw HTML", {
-    "data": "aa\n\n<div>bb</div>\n\ncc",
-    "want": "<p>aa</p>\n\n<div>bb</div>\n\n<p>cc</p>",
-    "name": "<tt>&lt;div&gt;</tt> wrapping single paragraph"
-  }, {
-    "data": "<div>\n\naa\n\nbb\n\n</div>",
-    "want": "<div>\n\n<p>aa</p>\n\n<p>bb</p>\n\n</div>",
-    "name": "<tt>&lt;div&gt;</tt> wrapping multiple paragraphs, <tt>&lt;div&gt;</tt> tags in separate paragraphs"
-  }, {
-    "data": "<div>aa\n\nbb</div>",
-    "want": "<div>aa\n\nbb</div>",
-    "name": "<tt>&lt;div&gt;</tt> wrapping two paragraphs"
-  }, {
-    "data": "<div>aa\n\nbb\n\ncc</div>",
-    "want": "<div>aa\n\n<p>bb</p>\n\ncc</div>",
-    "name": "<tt>&lt;div&gt;</tt> wrapping three paragraphs, middle should be wrapped in <tt>&lt;p&gt;</tt>"
-  }, {
-    "data": "<b>aa</b>",
-    "want": "<p><b>aa</b></p>",
-    "name": "Paragraph containing literal <tt>&lt;b&gt;...&lt;/b&gt;</tt>"
-  }, {
-    "data": "<div>aa",
-    "want": "<div>aa",
-    "name": "HTML block starting with <tt>&lt;div&gt;</tt>"
-  }, {
-    "data": "</div>aa",
-    "want": "</div>aa",
-    "name": "HTML block starting with <tt>&lt;/div&gt;</tt>"
-  }, {
-    "data": "<b>aa",
-    "want": "<p><b>aa</p>",
-    "name": "Paragraph starting with <tt>&lt;b&gt;</tt>"
-  }, {
-    "data": "</b>aa",
-    "want": "<p></b>aa</p>",
-    "name": "Paragraph starting with <tt>&lt;/b&gt;</tt>"
-  }, {
-    "data": "<x>aa",
-    "want": "<p><x>aa</p>",
-    "name": "Paragraph starting with <tt>&lt;x&gt;</tt> (custom tag)"
-  }, {
-    "data": "</x>aa",
-    "want": "<p></x>aa</p>",
-    "name": "Paragraph starting with <tt>&lt;/x&gt;</tt> (custom tag)"
-  }, {
-    "data": "<p>**aa**",
-    "NOTE": "anti-CommonMark, Markdown expanded in HTML blocks too",
-    "want": "<p><b>aa</b>",
-    "name": "HTML block containing <tt>**BOLD**</tt>"
   }
 ]

@@ -524,7 +524,7 @@
     Email be turned into '&#x102;&#x97;&#x107;...' in both href and link text
     (as a basic spam protection measure).
 *** TODO Invalid `<...>` content should be HTML escaped
-    To test for HTML tag, maybe match /^<[\w-]+\b/? -- Not sure exactly where
+    To test for HTML tag, maybe match /^<\/?[\w-]+\b/? -- Not sure exactly where
     the `\b` will match though.
 
     Unless it is a valid HTML tag, in which case it should be left as-is.

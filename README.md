@@ -269,7 +269,6 @@ CommonMark / Baremark differences (some of these may change in the future):
   followed by one).
 
 
-
 [Markdown]: #markdown
 Markdown
 ========
@@ -406,6 +405,27 @@ There are two types of headings: [Atx headings] which start with 1–6 hashtags
 `#` (optionally also followed by hashtags), and [Setext headings] which
 underlined with a line of equal signs `=` or hyphens `-`.
 
+[Setext Heading]: #heading-1-heading-2---------
+[Setext Headings]: #heading-1-heading-2---------
+#### `HEADING 1↲=========` `HEADING 2↲---------`
+
+This is a Setext heading, which consist of (one or more lines) of text,
+underlined by a line consisting of either `=` or `-` characters. If the
+underlining uses `=` the heading expands into `<h1>`, while if the underlining
+consists of `-` it expands into `<h2>`. The heading must be preceded by a blank
+line, no blank line is required after the underlining.
+
+```
+Heading 1
+=========
+Blabla...
+
+Heading 2
+---------
+Blabla...
+```
+
+
 [Atx Heading]: #-heading-1---heading-6
 [Atx Headings]: #-heading-1---heading-6
 #### `# HEADING 1` … `###### HEADING 6`
@@ -429,26 +449,6 @@ A heading may also (optionally) be followed by (any number of) `#`.
 
 ###### Heading 6
  
-```
-
-[Setext Heading]: #heading-1-heading-2---------
-[Setext Headings]: #heading-1-heading-2---------
-#### `HEADING 1↲=========` `HEADING 2↲---------`
-
-This is a Setext heading, which consist of (one or more lines) of text,
-underlined by a line consisting of either `=` or `-` characters. If the
-underlining uses `=` the heading expands into `<h1>`, while if the underlining
-consists of `-` it expands into `<h2>`. The heading must be preceded by a blank
-line, no blank line is required after the underlining.
-
-```
-Heading 1
-=========
-Blabla...
-
-Heading 2
----------
-Blabla...
 ```
 
 
