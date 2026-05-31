@@ -1181,7 +1181,7 @@
     "want": "<p>\\1</p>",
     "name": "backslashed number ‘1’ <tt>&#92;1</tt>"
   },
-  "Inline Links <tt>[TEXT](URL)</tt> <span class=note>(Unsupported CommonMark feature: Matching balanced brackets in <tt>TEXT</tt>)</span>", {
+  "Inline Links <tt>[TEXT](URL)</tt>", {
     "data": "[x](y)",
     "want": "<p><a href=\"y\" title=\"\">x</a></p>",
     "name": "<tt>TEXT</tt> and <tt>URL</tt> without space"
@@ -1777,7 +1777,7 @@
     "want": "<p><a href=\"url\" title=\"\">&#33;&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
     "name": "<tt>[TEXT](URL)</tt> with <tt>&#92;!&#92;[TEXT&#92;]&#92;[LABEL&#92;]</tt> inside, outer expanded"
   },
-  "Inline Images <tt>![TEXT](URL)</tt> <span class=note>(Unsupported CommonMark feature: Matching balanced brackets in <tt>TEXT</tt>)</span>", {
+  "Inline Images <tt>![TEXT](URL)</tt>", {
     "data": "![x](y)",
     "want": "<p><img src=\"y\" title=\"\" alt=\"x\"></p>",
     "name": "<tt>TEXT</tt> and <tt>URL</tt> without space"
@@ -2323,14 +2323,10 @@
     "want": "<p><img src=\"imgurl\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
     "name": "<tt>![TEXT](URL)</tt> with <tt>&#92;!&#92;[TEXT&#92;]&#92;[LABEL&#92;]</tt> inside, outer expanded"
   },
-  "Labeled Links <tt>[TEXT][LABEL]</tt> & Definition <tt>[LABEL]: URL \"TITLE\"</tt> (not supported by Landmark)", {
+  "Labeled Links <tt>[TEXT][LABEL]</tt> <tt>[TEXT][]</tt> <tt>[TEXT]</tt>", {
     "data": "[x][y]\n\n[y]: url",
     "want": "<p><a href=\"url\" title=\"\">x</a></p>",
     "name": "<tt>[TEXT][LABEL]</tt>"
-  }, {
-    "data": "[x][y]\n\n[y]: url1\n\n[y]: url2",
-    "want": "<p><a href=\"url1\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, use first matching <tt>LABEL</tt>"
   }, {
     "data": "[x][]\n\n[x]: url",
     "want": "<p><a href=\"url\" title=\"\">x</a></p>",
@@ -2392,18 +2388,6 @@
     "want": "<p><a href=\"url\" title=\"\">x </a></p>",
     "name": "<tt>[TEXT]</tt> shortcut link, <tt>TEXT</tt> with trailing space"
   }, {
-    "data": "[x][y]\n\n[ y]: url",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading space"
-  }, {
-    "data": "[x][y z]\n\n[y z]: url",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle space"
-  }, {
-    "data": "[x][y]\n\n[y ]: url",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing space"
-  }, {
     "data": "[x][\\[y\\]]\n\n[\\[y\\]]: url",
     "want": "<p><a href=\"url\" title=\"\">x</a></p>",
     "name": "<tt>[TEXT][LABEL]</tt>, <tt>LABEL</tt> with escaped brackets"
@@ -2419,66 +2403,6 @@
     "data": "[x][(y)]\n\n[(y)]: url",
     "want": "<p>[x][(y)]</p>\n\n<p>[(y)]: url</p>",
     "name": "<tt>[TEXT][LABEL]</tt>, <tt>LABEL</tt> with unescaped parentheses, not allowed"
-  }, {
-    "data": "[x][y]\n\n[y]: _url_",
-    "want": "<p><a href=\"&#95;url&#95;\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>_…_</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[x][y]\n\n[y]: /*url*",
-    "want": "<p><a href=\"/&#42;url&#42;\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>*…*</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url__url__url",
-    "want": "<p><a href=\"url&#95;&#95;url&#95;&#95;url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>__…__</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url**url**url",
-    "want": "<p><a href=\"url&#42;&#42;url&#42;&#42;url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>**…**</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url___url___url",
-    "want": "<p><a href=\"url&#95;&#95;&#95;url&#95;&#95;&#95;url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>___…___</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url***url***url",
-    "want": "<p><a href=\"url&#42;&#42;&#42;url&#42;&#42;&#42;url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>***…***</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url~~url~~url",
-    "want": "<p><a href=\"url&#126;&#126;url&#126;&#126;url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>~~…~~</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url:\"url\":url",
-    "want": "<p><a href=\"url&#58;&#34;url&#34;&#58;url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>:\"…\":</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url?url",
-    "want": "<p><a href=\"url?url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>?</tt> should be kept as-is"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url&url",
-    "want": "<p><a href=\"url&url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>&</tt> should be kept as-is"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url#url",
-    "want": "<p><a href=\"url#url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>#</tt> should be kept as-is"
-  }, {
-    "data": "[text][ref]\n\n[ref]: url<div>url",
-    "want": "<p><a href=\"url&#60;div&#62;url\" title=\"\">text</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>&lt;</tt> or <tt>&gt;</tt> should turn into <tt>&#…;</tt> entities"
-  }, {
-    "data": "[x][y]\n\n[y]: < url>",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading space"
-  }, {
-    "data": "[x][y z]\n\n[y z]: <u  r  l>",
-    "want": "<p><a href=\"u r l\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle space"
-  }, {
-    "data": "[x][y]\n\n[y]: <url >",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing space"
   }, {
     "data": "[\nx][y]\n\n[y]: url",
     "want": "<p><a href=\"url\" title=\"\">\nx</a></p>",
@@ -2527,30 +2451,6 @@
     "data": "[x\n]\n\n[x]: url",
     "want": "<p><a href=\"url\" title=\"\">x\n</a></p>",
     "name": "<tt>[TEXT]</tt> shortcut link, <tt>TEXT</tt> with trailing newline"
-  }, {
-    "data": "[x][y]\n\n[\ny]: url",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading newline"
-  }, {
-    "data": "[x][y z]\n\n[y\nz]: url",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle newline"
-  }, {
-    "data": "[x][y]\n\n[y\n]: url",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing newline"
-  }, {
-    "data": "[x][y]\n\n[\ny]: <\nurl>",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading newline"
-  }, {
-    "data": "[x][y z]\n\n[y\nz]: <u\nr\nl>",
-    "want": "<p><a href=\"u r l\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle newline"
-  }, {
-    "data": "[x][y]\n\n[y\n]: <url\n>",
-    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing newline"
   }, {
     "data": "[\n\nx][y]\n\n[y]: url",
     "NOTE": "<tt>[LABEL]</tt> expanded as shortcut link",
@@ -2603,42 +2503,6 @@
     "want": "<p>[x</p>\n\n<p>]</p>",
     "name": "<tt>[TEXT]</tt> shortcut link, <tt>TEXT</tt> with trailing blank line, not allowed"
   }, {
-    "data": "[x][y]\n\n[\n\ny]: url",
-    "want": "<p>[x][y]</p>\n\n<p>[</p>\n\n<p>y]: url</p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading blank line, not allowed"
-  }, {
-    "data": "[x][y z]\n\n[y\n\nz]: url",
-    "want": "<p>[x][y z]</p>\n\n<p>[y</p>\n\n<p>z]: url</p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle blank line, not allowed"
-  }, {
-    "data": "[x][y]\n\n[y\n\n]: url",
-    "want": "<p>[x][y]</p>\n\n<p>[y</p>\n\n<p>]: url</p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing blank line, not allowed"
-  }, {
-    "data": "[x][y]\n\n[y]: <\n\nurl>",
-    "want": "<p>[x][y]</p>\n\n<p>[y]: <</p>\n\n<p>url></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading blank line, not allowed"
-  }, {
-    "data": "[x][y z]\n\n[yz]: <ur\n\nl>",
-    "want": "<p>[x][y z]</p>\n\n<p>[yz]: <ur</p>\n\n<p>l></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle blank line, not allowed"
-  }, {
-    "data": "[x][y]\n\n[y]: <url\n\n>",
-    "want": "<p>[x][y]</p>\n\n<p>[y]: <url</p>\n\n<blockquote>\n\n\n\n</blockquote>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing blank line, not allowed"
-  }, {
-    "data": "[foo]: /url 'title'\n\n[foo]\n",
-    "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "<tt>[LABEL]: URL 'TITLE'</tt>, <tt>TITLE</tt> with single-quotes"
-  }, {
-    "data": "[foo]: /url \"title\"\n\n[foo]\n",
-    "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "<tt>[LABEL]: URL \"TITLE\"</tt>, <tt>TITLE</tt> with double-quotes"
-  }, {
-    "data": "[foo]: /url (title)\n\n[foo]\n",
-    "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
-    "name": "<tt>[LABEL]: URL (TITLE)</tt>, <tt>TITLE</tt> with parentheses"
-  }, {
     "data": "[*\\*][ref]\n\n[ref]: link \"title\"",
     "want": "<p><a href=\"link\" title=\"title\">*&#42;</a></p>",
     "name": "<tt>[TEXT][LABEL]</tt>, <tt>TEXT</tt> with backslash escape <tt>&#92;X</tt>"
@@ -2657,10 +2521,6 @@
     "NOTE": "<tt>LABEL</tt> in link and definition must have the same backslash escapes",
     "want": "<p><a href=\"link\" title=\"title\">text</a></p>",
     "name": "<tt>[TEXT][LABEL]</tt> & <tt>[LABEL]: URL \"TITLE\"</tt>, <tt>LABEL</tt> in both with backslash escape <tt>&#92;X</tt>"
-  }, {
-    "data": "[text][ref]\n\n[ref]: link \"*\\*\"",
-    "want": "<p><a href=\"link\" title=\"&#42;&#42;\">text</a></p>",
-    "name": "<tt>[LABEL]: URL \"TITLE\"</tt>, <tt>TITLE</tt> with backslash escape <tt>&#92;X</tt>"
   }, {
     "data": "[text] [ref]\n\n[ref]: url",
     "NOTE": "Unsupported CommonMark feature; <tt>[LABEL]</tt> expanded as shortcut link",
@@ -3189,7 +3049,7 @@
     "want": "<p><a href=\"refurl2\" title=\"\">&#33;&#91;AAAA&#93;&#91;BBBB&#93;</a></p>",
     "name": "<tt>[TEXT][LABEL]</tt> with <tt>&#92;!&#92;[TEXT&#92;]&#92;[LABEL&#92;]</tt> inside, outer expanded"
   },
-  "Labeled Images <tt>![TEXT][LABEL]</tt> & Definition <tt>[LABEL]: URL \"TITLE\"</tt> (not supported by Landmark)", {
+  "Labeled Images <tt>![TEXT][LABEL]</tt> <tt>![TEXT][]</tt> <tt>![TEXT]</tt>", {
     "data": "![x][y]\n\n[y]: url",
     "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
     "name": "<tt>![TEXT][LABEL]</tt>"
@@ -3234,30 +3094,6 @@
     "want": "<p><img src=\"url\" title=\"\" alt=\"x \"></p>",
     "name": "<tt>![TEXT]</tt> shortcut image, <tt>TEXT</tt> with trailing space"
   }, {
-    "data": "![x][y]\n\n[ y]: url",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading space"
-  }, {
-    "data": "![x][y z]\n\n[y z]: url",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle space"
-  }, {
-    "data": "![x][y]\n\n[y ]: url",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing space"
-  }, {
-    "data": "![x][y]\n\n[y]: < url>",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading space"
-  }, {
-    "data": "![x][y z]\n\n[y z]: <u  r  l>",
-    "want": "<p><img src=\"u r l\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle space"
-  }, {
-    "data": "![x][y]\n\n[y]: <url >",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing space"
-  }, {
     "data": "![\nx][y]\n\n[y]: url",
     "want": "<p><img src=\"url\" title=\"\" alt=\"&#10;x\"></p>",
     "name": "<tt>![TEXT][LABEL]</tt>, <tt>TEXT</tt> with leading newline"
@@ -3293,30 +3129,6 @@
     "data": "![x\n]\n\n[x]: url",
     "want": "<p><img src=\"url\" title=\"\" alt=\"x&#10;\"></p>",
     "name": "<tt>![TEXT]</tt> shortcut image, <tt>TEXT</tt> with trailing newline"
-  }, {
-    "data": "![x][y]\n\n[\ny]: url",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading newline"
-  }, {
-    "data": "![x][y z]\n\n[y\nz]: url",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle newline"
-  }, {
-    "data": "![x][y]\n\n[y\n]: url",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing newline"
-  }, {
-    "data": "![x][y]\n\n[\ny]: <\nurl>",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading newline"
-  }, {
-    "data": "![x][y z]\n\n[y\nz]: <u\nr\nl>",
-    "want": "<p><img src=\"u r l\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle newline"
-  }, {
-    "data": "![x][y]\n\n[y\n]: <url\n>",
-    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing newline"
   }, {
     "data": "![\n\nx][y]\n\n[y]: url",
     "NOTE": "<tt>[LABEL]</tt> expanded as shortcut link",
@@ -3357,42 +3169,6 @@
     "want": "<p>![x</p>\n\n<p>]</p>",
     "name": "<tt>![TEXT]</tt> shortcut image, <tt>TEXT</tt> with trailing blank line, not allowed"
   }, {
-    "data": "![x][y]\n\n[\n\ny]: url",
-    "want": "<p>![x][y]</p>\n\n<p>[</p>\n\n<p>y]: url</p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading blank line, not allowed"
-  }, {
-    "data": "![x][y z]\n\n[y\n\nz]: url",
-    "want": "<p>![x][y z]</p>\n\n<p>[y</p>\n\n<p>z]: url</p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle blank line, not allowed"
-  }, {
-    "data": "![x][y]\n\n[y\n\n]: url",
-    "want": "<p>![x][y]</p>\n\n<p>[y</p>\n\n<p>]: url</p>",
-    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing blank line, not allowed"
-  }, {
-    "data": "![x][y]\n\n[y]: <\n\nurl>",
-    "want": "<p>![x][y]</p>\n\n<p>[y]: <</p>\n\n<p>url></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading blank line, not allowed"
-  }, {
-    "data": "![x][y z]\n\n[yz]: <ur\n\nl>",
-    "want": "<p>![x][y z]</p>\n\n<p>[yz]: <ur</p>\n\n<p>l></p>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle blank line, not allowed"
-  }, {
-    "data": "![x][y]\n\n[y]: <url\n\n>",
-    "want": "<p>![x][y]</p>\n\n<p>[y]: <url</p>\n\n<blockquote>\n\n\n\n</blockquote>",
-    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing blank line, not allowed"
-  }, {
-    "data": "[foo]: /url 'title'\n\n![foo]\n",
-    "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "<tt>[LABEL]: URL 'TITLE'</tt>, <tt>TITLE</tt> with single-quotes"
-  }, {
-    "data": "[foo]: /url \"title\"\n\n![foo]\n",
-    "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "<tt>[LABEL]: URL \"TITLE\"</tt>, <tt>TITLE</tt> with double-quotes"
-  }, {
-    "data": "[foo]: /url (title)\n\n![foo]\n",
-    "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
-    "name": "<tt>[LABEL]: URL (TITLE)</tt>, <tt>TITLE</tt> with parentheses"
-  }, {
     "data": "![*\\*][ref]\n\n[ref]: link \"title\"",
     "want": "<p><img src=\"link\" title=\"title\" alt=\"&#42;&#42;\"></p>",
     "name": "<tt>![TEXT][LABEL]</tt>, <tt>TEXT</tt> with backslash escape <tt>&#92;X</tt>"
@@ -3411,10 +3187,6 @@
     "NOTE": "<tt>LABEL</tt> in link and definition must have the same backslash escapes",
     "want": "<p><img src=\"link\" title=\"title\" alt=\"text\"></p>",
     "name": "<tt>![TEXT][LABEL]</tt> & <tt>[LABEL]: URL \"TITLE\"</tt>, <tt>LABEL</tt> in both with backslash escape <tt>&#92;X</tt>"
-  }, {
-    "data": "![text][ref]\n\n[ref]: link \"*\\*\"",
-    "want": "<p><img src=\"link\" title=\"&#42;&#42;\" alt=\"text\"></p>",
-    "name": "<tt>[LABEL]: URL \"TITLE\"</tt>, <tt>TITLE</tt> with backslash escape <tt>&#92;X</tt>"
   }, {
     "data": "![text] [ref]\n\n[ref]: url",
     "NOTE": "Unsupported CommonMark feature; <tt>[LABEL]</tt> expanded as shortcut link",
@@ -3944,6 +3716,235 @@
     "data": "![\\!\\[AAAA\\]\\[BBBB\\]][XXXX]\n\n[BBBB]: refurl1\n[XXXX]: refurl2",
     "want": "<p><img src=\"refurl2\" title=\"\" alt=\"&#33;&#91;AAAA&#93;&#91;BBBB&#93;\"></p>",
     "name": "<tt>![TEXT][LABEL]</tt> with <tt>&#92;!&#92;[TEXT&#92;]&#92;[LABEL&#92;]</tt> inside, outer expanded"
+  },
+  "Label Definitions <tt>[LABEL]: URL \"TITLE\"</tt> <tt>[LABEL]: URL</tt>", {
+    "data": "[x][y]\n\n[y]: url1\n\n[y]: url2",
+    "want": "<p><a href=\"url1\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, use first matching <tt>LABEL</tt>"
+  }, {
+    "data": "[x][y]\n\n[ y]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading space"
+  }, {
+    "data": "![x][y]\n\n[ y]: url",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading space"
+  }, {
+    "data": "[x][y z]\n\n[y z]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle space"
+  }, {
+    "data": "![x][y z]\n\n[y z]: url",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle space"
+  }, {
+    "data": "[x][y]\n\n[y ]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing space"
+  }, {
+    "data": "![x][y]\n\n[y ]: url",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing space"
+  }, {
+    "data": "[x][y]\n\n[y]: _url_",
+    "want": "<p><a href=\"&#95;url&#95;\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>_…_</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[x][y]\n\n[y]: /*url*",
+    "want": "<p><a href=\"/&#42;url&#42;\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>*…*</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url__url__url",
+    "want": "<p><a href=\"url&#95;&#95;url&#95;&#95;url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>__…__</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url**url**url",
+    "want": "<p><a href=\"url&#42;&#42;url&#42;&#42;url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>**…**</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url___url___url",
+    "want": "<p><a href=\"url&#95;&#95;&#95;url&#95;&#95;&#95;url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>___…___</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url***url***url",
+    "want": "<p><a href=\"url&#42;&#42;&#42;url&#42;&#42;&#42;url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>***…***</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url~~url~~url",
+    "want": "<p><a href=\"url&#126;&#126;url&#126;&#126;url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>~~…~~</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url:\"url\":url",
+    "want": "<p><a href=\"url&#58;&#34;url&#34;&#58;url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>:\"…\":</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url?url",
+    "want": "<p><a href=\"url?url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>?</tt> should be kept as-is"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url&url",
+    "want": "<p><a href=\"url&url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>&</tt> should be kept as-is"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url#url",
+    "want": "<p><a href=\"url#url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>#</tt> should be kept as-is"
+  }, {
+    "data": "[text][ref]\n\n[ref]: url<div>url",
+    "want": "<p><a href=\"url&#60;div&#62;url\" title=\"\">text</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>URL</tt> with <tt>&lt;</tt> or <tt>&gt;</tt> should turn into <tt>&#…;</tt> entities"
+  }, {
+    "data": "[x][y]\n\n[y]: < url>",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading space"
+  }, {
+    "data": "![x][y]\n\n[y]: < url>",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading space"
+  }, {
+    "data": "[x][y z]\n\n[y z]: <u  r  l>",
+    "want": "<p><a href=\"u r l\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle space"
+  }, {
+    "data": "![x][y z]\n\n[y z]: <u  r  l>",
+    "want": "<p><img src=\"u r l\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle space"
+  }, {
+    "data": "[x][y]\n\n[y]: <url >",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing space"
+  }, {
+    "data": "![x][y]\n\n[y]: <url >",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing space"
+  }, {
+    "data": "[x][y]\n\n[\ny]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading newline"
+  }, {
+    "data": "![x][y]\n\n[\ny]: url",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading newline"
+  }, {
+    "data": "[x][y z]\n\n[y\nz]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle newline"
+  }, {
+    "data": "![x][y z]\n\n[y\nz]: url",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle newline"
+  }, {
+    "data": "[x][y]\n\n[y\n]: url",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing newline"
+  }, {
+    "data": "![x][y]\n\n[y\n]: url",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing newline"
+  }, {
+    "data": "[x][y]\n\n[\ny]: <\nurl>",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading newline"
+  }, {
+    "data": "![x][y]\n\n[\ny]: <\nurl>",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading newline"
+  }, {
+    "data": "[x][y z]\n\n[y\nz]: <u\nr\nl>",
+    "want": "<p><a href=\"u r l\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle newline"
+  }, {
+    "data": "![x][y z]\n\n[y\nz]: <u\nr\nl>",
+    "want": "<p><img src=\"u r l\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle newline"
+  }, {
+    "data": "[x][y]\n\n[y\n]: <url\n>",
+    "want": "<p><a href=\"url\" title=\"\">x</a></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing newline"
+  }, {
+    "data": "![x][y]\n\n[y\n]: <url\n>",
+    "want": "<p><img src=\"url\" title=\"\" alt=\"x\"></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing newline"
+  }, {
+    "data": "[x][y]\n\n[\n\ny]: url",
+    "want": "<p>[x][y]</p>\n\n<p>[</p>\n\n<p>y]: url</p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading blank line, not allowed"
+  }, {
+    "data": "![x][y]\n\n[\n\ny]: url",
+    "want": "<p>![x][y]</p>\n\n<p>[</p>\n\n<p>y]: url</p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with leading blank line, not allowed"
+  }, {
+    "data": "[x][y z]\n\n[y\n\nz]: url",
+    "want": "<p>[x][y z]</p>\n\n<p>[y</p>\n\n<p>z]: url</p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle blank line, not allowed"
+  }, {
+    "data": "![x][y z]\n\n[y\n\nz]: url",
+    "want": "<p>![x][y z]</p>\n\n<p>[y</p>\n\n<p>z]: url</p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with middle blank line, not allowed"
+  }, {
+    "data": "[x][y]\n\n[y\n\n]: url",
+    "want": "<p>[x][y]</p>\n\n<p>[y</p>\n\n<p>]: url</p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing blank line, not allowed"
+  }, {
+    "data": "![x][y]\n\n[y\n\n]: url",
+    "want": "<p>![x][y]</p>\n\n<p>[y</p>\n\n<p>]: url</p>",
+    "name": "<tt>[LABEL]: URL</tt>, <tt>LABEL</tt> with trailing blank line, not allowed"
+  }, {
+    "data": "[x][y]\n\n[y]: <\n\nurl>",
+    "want": "<p>[x][y]</p>\n\n<p>[y]: <</p>\n\n<p>url></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading blank line, not allowed"
+  }, {
+    "data": "![x][y]\n\n[y]: <\n\nurl>",
+    "want": "<p>![x][y]</p>\n\n<p>[y]: <</p>\n\n<p>url></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with leading blank line, not allowed"
+  }, {
+    "data": "[x][y z]\n\n[yz]: <ur\n\nl>",
+    "want": "<p>[x][y z]</p>\n\n<p>[yz]: <ur</p>\n\n<p>l></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle blank line, not allowed"
+  }, {
+    "data": "![x][y z]\n\n[yz]: <ur\n\nl>",
+    "want": "<p>![x][y z]</p>\n\n<p>[yz]: <ur</p>\n\n<p>l></p>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with middle blank line, not allowed"
+  }, {
+    "data": "[x][y]\n\n[y]: <url\n\n>",
+    "want": "<p>[x][y]</p>\n\n<p>[y]: <url</p>\n\n<blockquote>\n\n\n\n</blockquote>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing blank line, not allowed"
+  }, {
+    "data": "![x][y]\n\n[y]: <url\n\n>",
+    "want": "<p>![x][y]</p>\n\n<p>[y]: <url</p>\n\n<blockquote>\n\n\n\n</blockquote>",
+    "name": "<tt>[LABEL]: &lt;URL&gt;</tt>, <tt>&lt;URL&gt;</tt> with trailing blank line, not allowed"
+  }, {
+    "data": "[foo]: /url 'title'\n\n[foo]\n",
+    "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
+    "name": "<tt>[LABEL]: URL 'TITLE'</tt>, <tt>TITLE</tt> with single-quotes"
+  }, {
+    "data": "[foo]: /url \"title\"\n\n[foo]\n",
+    "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
+    "name": "<tt>[LABEL]: URL \"TITLE\"</tt>, <tt>TITLE</tt> with double-quotes"
+  }, {
+    "data": "[foo]: /url (title)\n\n[foo]\n",
+    "want": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
+    "name": "<tt>[LABEL]: URL (TITLE)</tt>, <tt>TITLE</tt> with parentheses"
+  }, {
+    "data": "[text][ref]\n\n[ref]: link \"*\\*\"",
+    "want": "<p><a href=\"link\" title=\"&#42;&#42;\">text</a></p>",
+    "name": "<tt>[LABEL]: URL \"TITLE\"</tt>, <tt>TITLE</tt> with backslash escape <tt>&#92;X</tt>"
+  }, {
+    "data": "![text][ref]\n\n[ref]: link \"*\\*\"",
+    "want": "<p><img src=\"link\" title=\"&#42;&#42;\" alt=\"text\"></p>",
+    "name": "<tt>[LABEL]: URL \"TITLE\"</tt>, <tt>TITLE</tt> with backslash escape <tt>&#92;X</tt>"
+  }, {
+    "data": "[foo]: /url 'title'\n\n![foo]\n",
+    "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
+    "name": "<tt>[LABEL]: URL 'TITLE'</tt>, <tt>TITLE</tt> with single-quotes"
+  }, {
+    "data": "[foo]: /url \"title\"\n\n![foo]\n",
+    "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
+    "name": "<tt>[LABEL]: URL \"TITLE\"</tt>, <tt>TITLE</tt> with double-quotes"
+  }, {
+    "data": "[foo]: /url (title)\n\n![foo]\n",
+    "want": "<p><img src=\"/url\" title=\"title\" alt=\"foo\"></p>",
+    "name": "<tt>[LABEL]: URL (TITLE)</tt>, <tt>TITLE</tt> with parentheses"
   },
   "<tt>*ITALIC*</tt> <tt>_ITALIC_</tt>", {
     "data": "_xx_",
