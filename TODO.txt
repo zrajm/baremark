@@ -44,7 +44,7 @@
   vfmd is a variant of Markdown with an unambiguous specification of its syntax.
   https://web.archive.org/web/20160306050706/http://www.vfmd.org/differences/
 * TODO Bring this TODO up to speed with the project
-* [0/7] Web page
+* [0/8] Web page
 ** TODO Source code on web page with plenty of comments                 :web:
    There should also exist a git hook to verify that these always are in sync.
 
@@ -76,13 +76,10 @@
    + u/v = url
    + z = image/link selector (truthy means `<img ...>`, falsy means `<a ...>`)
    ------------------------------
-** TODO Unit tests search improvement                                   :web:
-   On mobile the search function should be collapsible (showing a magnifying
-   class icon) which slides out into a line at top of the screen showing the
-   search bar.
-
-   If there's enough width of the screen, then the search interface should
-   instead be shown in the margin.
+** TODO Search should index in right order                              :web:
+   Currently each test suite is indexed in the order they are returned, which
+   will usually not be the correct order.
+** TODO Search bar should use full screen width on mobile               :web:
 ** TODO Something similar to CommonMark & Github Markdown spec          :web:
    It should illustrate, and also provide test cases for the Markdown syntax
    used.
@@ -582,7 +579,15 @@
 *** TODO Should remove additional comments?
    Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
    <?...>?
-* [66/66] FINISHED
+* [67/67] FINISHED
+** DONE Unit tests search improvement                                   :web:
+   CLOSED: [2026-06-02 Tue 05:06]
+   On mobile the search function should be collapsible (showing a magnifying
+   class icon) which slides out into a line at top of the screen showing the
+   search bar.
+
+   If there's enough width of the screen, then the search interface should
+   instead be shown in the margin.
 ** DONE Add tests for implicit links/images `[...][]`/`![...][]`       :test:
    CLOSED: [2026-05-30 Sat 01:52]
 ** DONE [#A] Support info string for fenced code blocks                :feat:

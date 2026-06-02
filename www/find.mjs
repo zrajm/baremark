@@ -6,26 +6,34 @@
 const css = `
   #find {
     position: fixed;
-    top: 10px;
-    right: 12px;
+    top: 0; right: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 0;
-    font-family: 'DM Mono', 'Fira Mono', 'Cascadia Code', monospace;
-    font-size: 13px;
+    font: 16px/22px sans-serif;
     & .box {
+      position: relative;
+      left: 0%;
+      /* unfocused empty input = hide */
+      &:has(input:not(:focus)):has(input:placeholder-shown) { left: calc(100% - 40px) }
+      transition: left 0.3s ease;
       display: flex;
       align-items: center;
       gap: 0;
       overflow: hidden;
       background: #222;
-      border: 1.5px solid #777;
-      border-radius: 20px;
+      border: 1.5px solid currentColor;
+      border-radius: 22px;
       padding: 0 6px;
       box-shadow: 0 4px 8px #000;
-      &:focus-within { border-color: currentColor; }
+      color: #777;
+      &:has(input:focus) { color: #aaa; }
+      & > svg {
+        margin: 2px 0 0 8px;
+        opacity: .8;
+      }
     }
     & input {
       background: transparent;
@@ -35,16 +43,17 @@ const css = `
       padding: 8px 12px;
       width: 200px;
       font: inherit;
-      &::placeholder { color: #777; }
+      &::placeholder { color: #7778; }
+      caret-color: #fff;
     }
     & .divider {
       width: 1px;
-      height: 20px;
-      background: #555;
+      height: 22px;
+      opacity: .5;
+      background: currentColor;
       flex-shrink: 0;
     }
     & .count {
-      color: #aaa;
       padding: 0 10px;
       min-width: 60px;
       text-align: center;
@@ -54,7 +63,7 @@ const css = `
       background: transparent;
       border: none;
       cursor: pointer;
-      color: #555;
+      color: inherit;
       padding: 7px 9px;
       display: flex;
       align-items: center;
@@ -66,25 +75,26 @@ const css = `
     }
   }
   mark.find-hilite {
-    background: #970;
+    background: #88fa;
     color: inherit;
-    border-radius: 2px;
     padding: 0 1px;
     transition: background 0.12s;
   }
   mark.find-hilite-current {
-    background: #fc0;
+    background: #88f;
     color: #000;
-    border-radius: 2px;
     box-shadow: 0 0 0 1.5px #f5c40055;
   }`
 const html = `
   <style>${css}</style>
   <div id="find">
     <div class="box">
-      <input type="text" placeholder="Type to search…" autocomplete="off" spellcheck="false">
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <path d="m22 24-8-8 2-2 8 8zM16.1 9.4a6.7 6.7 0 1 0-13.4 0 6.7 6.7 0 0 0 13.4 0zm2.7 0A9.4 9.4 0 1 1 0 9.4a9.4 9.4 0 0 1 18.8 0z" fill="currentColor"></path>
+      </svg>
+      <input type="text" placeholder="Search test names…" autocomplete="off" spellcheck="false">
       <div class="divider"></div>
-      <span class="count"></span>
+      <span class="count">—</span>
       <div class="divider"></div>
       <button id="find-prev" title="Previous (Shift+Enter)">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -197,42 +207,34 @@ function scrollToCurrent() {
 
 // Update the "N/M" counter label.
 function updateCount() {
-  const q = $input.value.trim()
-  if (!q) {
-    $count.textContent = ''
-    return
-  }
-  if (matches.length === 0) {
-    $count.textContent = '0'
-  } else {
-    $count.textContent = `${currentIdx + 1}/${matches.length}`
-  }
+  $count.textContent = $input.value.trim()
+    ?`${currentIdx + 1}/${matches.length}` : '—'
 }
 
 // Core search
-function doSearch() {
+function doSearch(queryStr) {
   clearAllHighlights()
   matches = []
   currentIdx = -1
   updateCount()
-  const query = $input.value.trim()
-  if (!query) { return }
+  queryStr = queryStr.trim()
+  if (!queryStr) { return }
 
   // Each whitespace-separated token is searched independently
-  const words = query.split(/\s+/).filter(Boolean)
-  if (!words.length) { return }
+  const queryWords = queryStr.split(/\s+/)
+    .filter(Boolean)
+    .map(x => x.toLowerCase())
+  if (!queryWords.length) { return }
 
-  const summaries = [...document.querySelectorAll('details > summary')]
-  for (const summary of summaries) {
-    const text = summary.textContent.toLowerCase()
-    const allPresent = words.every(w => text.includes(w.toLowerCase()))
+  for (const [summary, text] of searchIndex()) {
+    const allPresent = queryWords.every(x => text.includes(x))
     if (!allPresent) { continue }
 
     // Open ancestor <details> so this summary is reachable
     openAncestors(summary)
 
     // Highlight matching words inside the summary
-    const created = highlightInElement(summary, words)
+    const created = highlightInElement(summary, queryWords)
     if (created.length > 0) {
       matches.push({ summary, marks: created })
     }
@@ -267,7 +269,8 @@ append(html)
 // $input (mainly)
 // $count (number of matches)
 // $btnUp, $btnDn (for events)
-const $input = document.querySelector('#find input')
+const $find  = document.querySelector('#find')
+const $input = document.querySelector('#find input[type="text"]')
 const $count = document.querySelector('#find .count')
 const $btnUp = document.querySelector('#find-prev')
 const $btnDn = document.querySelector('#find-next')
@@ -275,34 +278,44 @@ const $btnDn = document.querySelector('#find-next')
 ///////////////////////////////////////////////////////////////////////////////
 // Events
 
-{
-  let debounceTimer
-  $input.addEventListener('input', () => {
-    clearTimeout(debounceTimer)
-    debounceTimer = setTimeout(doSearch, 120)
-  })
-}
+// Next/previous match keys.
+$btnDn.addEventListener('click', e => { event.stopPropagation(); navigate( 1) })
+$btnUp.addEventListener('click', e => { event.stopPropagation(); navigate(-1) })
+$find .addEventListener('click', e => { $input.focus() })
 
-$btnDn.addEventListener('click', () => navigate(1))
-$btnUp.addEventListener('click', () => navigate(-1))
+// Enter/Shift-Enter & Escape in <input>.
+let prevInputStr = ''
 $input.addEventListener('keydown', e => {
   if (e.key === 'Enter') {
     e.preventDefault()
+    const inputStr = $input.value.trim()
+    if (inputStr !== prevInputStr) {
+      doSearch(prevInputStr = inputStr)
+    }
     navigate(e.shiftKey ? -1 : 1)
   } else if (e.key === 'Escape') {
+    e.preventDefault()
     $input.value = ''
-    doSearch()
+    $input.blur()
   }
 })
+// Any keypress in document that results in a character being inputted, will
+// first focus the search field.
 document.addEventListener('keydown', e => {
-  if (e.ctrlKey || e.metaKey || e.altKey       // keycombo with a qualifier
-      || e.key === 'Shift'                     // shift alone
-      || e.key === 'CapsLock'                  // shift alone
-      || $input.contains(e.target)) {
-    return
+  if (e.key.length === 1                       // if would input a character
+      && !(e.ctrlKey || e.metaKey || e.altKey) //   and doesn't use qualifier
+      && e.target !== $input) {                //   <input> isn't selected
+    $input.focus()
   }
-  $input.focus()
-  $input.select()
 })
+
+export default function searchIndex(...elements) {
+  searchIndex.index ??= []
+  if (elements.length) {
+    searchIndex.index.push(...elements.map(
+      el => [el, el.textContent.toLowerCase()]))
+  }
+  return searchIndex.index
+}
 
 //[eof]

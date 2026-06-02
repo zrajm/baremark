@@ -107,6 +107,8 @@ look like on the page.</p>
 <script type=module>
   import '../baremark.js'
   import '../baremarkx.js'
+  import index from '../www/find.mjs'
+  self.index = index
   $(()=>{
     // jQuery plugins.
     jQuery.fn.forEach = [].forEach
@@ -148,7 +150,7 @@ look like on the page.</p>
       }
       return ''
     }
-    function processTests(tests, $e, cb) {
+    function processTests(tests, $e, loopFunc, postFunc) {
       if (!tests.length) {
         $e.html('[NONE YET]')
         return
@@ -172,7 +174,7 @@ look like on the page.</p>
         const want = test.want
         const got = (() => {
           try {
-            return cb(test.data)
+            return loopFunc(test.data)
           } catch (e) {
             return `CAUGHT ERROR: ${e}`
           }
@@ -232,9 +234,10 @@ look like on the page.</p>
               <span class=skip>${counter.skip}</span>
             </div>`)
       })
+      postFunc()
     }
     // Load test cases from jsonUrl and show in $e (jQuery DOM element).
-    function testSuite(jsonUrl, $e, cb) {
+    function testSuite(jsonUrl, $e, testFunc, postFunc) {
       window.fetch(jsonUrl)
         .then(response => response.text())
         .then(json => {
@@ -245,7 +248,7 @@ look like on the page.</p>
             $e.append(`<div class=error><b>Failed to parse JSON file ‘${jsonUrl}’</b><br>${e}`)
           }
           try {
-            return processTests(data, $e, cb)
+            return processTests(data, $e, testFunc, postFunc)
           } catch (e) {
             $e.append(`<div class=error><b>Failed to run tests in ‘${jsonUrl}’</b><br>${e}`)
           }
@@ -253,9 +256,11 @@ look like on the page.</p>
     }
     $('[data-testsuite]').forEach(t => {
       const { function: funcName, testsuite } = t.dataset
-      testSuite(testsuite, $(t), self[funcName])
+      testSuite(testsuite, $(t), self[funcName], () => {
+        index(...t.querySelectorAll('details > summary'))
+        console.log(`Indexed '${testsuite}' results`)
+      })
     })
   })
 </script>
-<script type="module" src="../www/find.mjs"></script>
 <!--[eof]-->
