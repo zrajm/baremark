@@ -1,19 +1,22 @@
 #!/bin/dash
 
 FILE="baremark.js"
-SIZE="$(wc -c < "$FILE")"
+README="README.md"
 
-FOUND="$(grep -oEw "currently [0-9]+ bytes" README.md)"
+# Get size of staged 'baremark.js' module.
+SIZE="$(git show ":$FILE" | wc -c)"
+
+# Make sure that's the size given in staged README file.
+FOUND="$(git show ":$README" | grep -oEw "currently [0-9]+ bytes")"
 
 # We're good.
 case "$FOUND" in "currently $SIZE bytes") exit 0 ; esac
 
 # No, we're not.
 printf '%s\n' \
-       "README.md should contain $FILE filesize!" \
-       "    Currently says: '$FOUND'" \
-       "    But should say: 'currently $SIZE bytes'" >&2
+       "Staged '$README' should contain current '$FILE' filesize!" \
+       "    README says: '$FOUND'" \
+       "    Should say : 'currently $SIZE bytes'" >&2
 
 exit 1
-
 #[eof]
