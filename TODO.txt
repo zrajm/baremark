@@ -134,7 +134,18 @@
    Since this is the same function in the code, they should be tested together.
    (Maybe the number of test cases can also be reduced?)
 ** TODO Use passing CommonMark 0.30 tests as baseline                  :test:
-* [0/10] Size
+* [0/12] Size
+** TODO Shorten character classes                                      :size:
+   Character class
+   ----------------------------------------
+   `[${r}'\\\\<>\`*~_=:"![\\]()\n\t-]`
+   ----------------------------------------
+   Can be written as
+   ----------------------------------------
+   `[${r}<>\`'-*~_=:"![-\\]\n\t-]`
+   ----------------------------------------
+   Are there other classes that could also benefit from having ranges added?
+** TODO Maybe do not escape ':'?                                       :size:
 ** TODO New image/link processing?
 *** TODO Shorten using T 'macro' using `(['"])...\1` ?
     Shorten the following bit?
@@ -341,7 +352,14 @@
    ----------------------------------------
    (Where "␣" is an ordinary space.)
    Will have its <space>s removed by the line-ending normalization.
-* [0/16] Features
+* [0/17] Features
+** TODO Allow user to specify characters to escape?                    :feat:
+   This would affect e(), and should be used when you add an addon that use
+   characters not used by Markdown by default. For example, the extended
+   `==HIGHLIGHT==` markup use the character `=` which is not used by default.
+   This might necessitate escaping `=` in other contexts (e.g. when it's found
+   inside `CODE`), so that Baremark do not accidentally expand a
+   `==HIGHLIGHT==` tag that should've been left as-is.
 ** TODO Process nested () and []?                                      :feat:
    The following can be used to replace all '[' and ']' except the outermost
    ones with the coresponding HTML entities. Could we use a similar approach to
@@ -507,6 +525,8 @@
      https://spec.commonmark.org/0.31.2/#example-606 -- backslash
      https://spec.commonmark.org/0.31.2/#example-608 -- space
 *** TODO Also update README mention of autolink.
+    "NOTE": "CommonMark <tt>%XX</tt> encodes <tt>URL</tt>, Baremark leaves as-is",
+    "skip": "Backslash escape <tt>&#92;X</tt> not allowed in autolink"
 *** TODO Autolinked URLs `<http://example.com?find=\\*>`
     For it to be considered a link (URL), there it should start with [a-z]+,
     followed by ':' (used for 'mailto:') (or maybe '://'?). Matching
@@ -579,7 +599,17 @@
 *** TODO Should remove additional comments?
    Like CDATA, tags and odd quirky versions of <!--...-->, and <!...> and
    <?...>?
-* [67/67] FINISHED
+* [68/68] FINISHED
+** DONE Optimize `.replace()` functions                                :size:
+   CLOSED: [2026-06-03 Wed 07:24]
+   What I have written as:
+   ----------------------------------------
+   (a,b,c) => a??b??c
+   ----------------------------------------
+   Can be written shorter as:
+   ----------------------------------------
+   (a,b=a,c=b) => c
+   ----------------------------------------
 ** DONE Unit tests search improvement                                   :web:
    CLOSED: [2026-06-02 Tue 05:06]
    On mobile the search function should be collapsible (showing a magnifying
