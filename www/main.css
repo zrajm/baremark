@@ -9,7 +9,8 @@ body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
-  max-width: 75ch;
+  max-width: 76ch;
+  padding: 0 .5ch;
   margin: 0 auto;
   line-height: 1.75;
 }
