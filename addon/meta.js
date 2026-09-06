@@ -6,8 +6,8 @@ import './uncomment.js' // or top heading might not match
 let meta = {}
 baremark.meta = meta
 
-// Insert after first rule which matches a backslash at the start.
-const i = baremark().findIndex(([re]) => /^\\\\/.test(re.source)) + 1
+// Insert after uncomment rule (rule with '<!--').
+const i = baremark().findIndex(([re]) => /<!--/.test(re.source)) + 1
 
 // Insert before last rule which matches '\n\n' at the start.
 const j = baremark().findLastIndex(([re]) => /^\\n\\n/.test(re.source))
