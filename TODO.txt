@@ -546,7 +546,7 @@
 
     Unless it is a valid HTML tag, in which case it should be left as-is.
 ** TODO Nested lists                                                   :feat:
-* [0/3] Addons
+* [0/4] Addons
 ** TODO Extended Markdown addon
    + move ___..___ into addon
    + move :"...": into addon
@@ -565,7 +565,41 @@
     + '<p>[#test]'          -> '<p id=test>'
     + '<p id=hej>[#test]'   -> '<p id=hej><a id=test></a>'
     + '<p>texttext[#test]'  -> <p>texttext<a id=test></a>'
-** [0/2] `addon/meta.js`
+** [0/3] `addon/meta.js`
+*** TODO Support (optional) metadata separators
+    Both '---' ... '---' and '<!--' ... '-->' should be supported.
+
+    On Github, the '---' delimited causes the metadata to be rendered as a
+    table, with a column for each metadata field. This actually (supposedly)
+    supports YAML, and not just an email-like header. (They're *technically*
+    incompatible, e.g. because YAML values containing spaces must be
+    quoted---this is not a thing in email headers.)
+
+    ---
+    Title: README
+    Author: Zrajm
+    Created: 6 September 2026
+    ---
+
+    The <!-- ... --> on the other hand is useful to suppress any output on
+    Github altogether.---I sometimes use metadata to display modification time,
+    or set which favicon to use for my [[https://zrajm.org/www/][HTML-Scented Markdown]] pages, and this
+    metadata is usually better NOT SHOWN on Github. (See the source code found
+    in: https://zrajm.org/rong/index.html and https://zrajm.org/zdb/index.html)
+
+    <!--
+    Author: Zrajm
+    Favicon: firefox-extension/pic/thumbsup-active.svg
+    License: <a href="https://gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2</a>.
+    Created: 2026-06-25 20:16:34+02:00
+    Updated: 2026-09-06 12:33:46+02:00
+    -->
+
+    Feature suggestion: Support GFM YAML metadata block #66
+    https://github.com/jrblevin/markdown-mode/issues/66
+
+    8.10.2 Extension: `yaml_metadata_block`
+    https://pandoc.org/demo/example33/8.10-metadata-blocks.html#extension-yaml_metadata_block
 *** TODO Can we pass args to when importing?
     It'd be lovely to be able to turn off turning the first heading into
     'title', by specifying this when importing the module.
